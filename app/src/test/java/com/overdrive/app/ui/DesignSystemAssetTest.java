@@ -89,7 +89,7 @@ public class DesignSystemAssetTest {
         String styles = readRepositoryFile("app/src/main/assets/web/shared/styles.css");
         String tabs = readRepositoryFile("app/src/main/assets/web/shared/app-tabs.css");
         String themePicker = readRepositoryFile("app/src/main/assets/web/shared/theme.js");
-        assertTrue(tokens.contains("--family-sans: system-ui"));
+        assertTrue(tokens.contains("--family-sans: 'Inter', system-ui"));
         assertTrue(styles.contains("button:focus,"));
         assertTrue(styles.contains("min-height: 48px"));
         assertTrue(tabs.contains("height: 48px"));

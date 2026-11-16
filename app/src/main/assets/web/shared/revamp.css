@@ -3,7 +3,7 @@
  * Linked right after styles.css: same-specificity rules here beat the base,
  * while page <style> blocks and later stylesheets still beat these.
  */
-@import url("design-tokens.css?v=2");
+@import url("design-tokens.css?v=3");
 
 /* ── Page ─────────────────────────────────────────────────────────────── */
 body {
