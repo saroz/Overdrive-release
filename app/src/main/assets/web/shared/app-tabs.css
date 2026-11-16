@@ -91,19 +91,6 @@ html[data-app-shell="1"] .bottom-tabs {
     right: 0;
 }
 
-.bottom-tabs::before {
-    /* Identity accent stripe above the bar — mirrors the toolbar accent
-       on the native side and the sidebar / app-bar accents in app-shell.css.
-       Only 2px here (3px would compete with the bar's own border-top). */
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -2px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
-    pointer-events: none;
-}
 
 .bottom-tab {
     display: flex;
@@ -298,4 +285,15 @@ body.ot-tabs-on .toast-container { bottom: 96px; }
 @keyframes ot-tab-fade-in {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
+}
+
+/* REDESIGN 2026-11-16 — small phones: active tab reads as accent text on
+   the soft accent fill, like the sidebar's active item. */
+@media (max-width: 540px) {
+    .bottom-tab-label { font-size: 11px; }
+    .bottom-tab.is-active {
+        background: var(--primary-container);
+        color: var(--primary-text);
+        border-radius: var(--radius-control);
+    }
 }

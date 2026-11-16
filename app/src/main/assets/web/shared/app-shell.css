@@ -23,25 +23,6 @@
  *  is theme-agnostic and contains no raw hex values.
  */
 
-/* === ACCENT STRIPE ============================================== */
-/* A 3px gradient that anchors the brand at the top of every page.
-   Sits inside the sidebar, above the header, and tints from primary
-   (teal-green) into tertiary (sky-blue) — the same ramp the native
-   toolbar stripe uses. */
-.sidebar::before {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
-    /* Pin to the top of the sticky sidebar. Position relative+top:0 wins
-       over the sidebar-header's sticky positioning. */
-    flex-shrink: 0;
-    /* Account for safe-area inset on devices with notches so the stripe
-       isn't clipped. The sticky sidebar-header below already pads down. */
-    margin-top: 0;
-}
-
 /* === BRAND CLUSTER — clickable home affordance ====================
  * The header brand reads as "go home" (Dashboard). Hover lifts it onto a
  * tonal-primary surface; press scales it down — same interaction language
@@ -116,30 +97,16 @@ body.dashboard-page .sidebar .brand-link:hover {
     position: relative;
 }
 
-.sidebar-nav .nav-link.active::before,
-.sidebar-nav .nav-link[aria-current="page"]::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 8px;
-    bottom: 8px;
-    width: 3px;
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    background: var(--primary);
-}
-
-/* Override the legacy active background — that hardcoded teal rgba reads
-   off-brand under the unified palette. Use the surface-container-high tier
-   for a subtle tonal lift instead. */
+/* Active item: soft accent fill, accent text, no inset stripe (mockup). */
 .sidebar-nav .nav-link.active,
 .sidebar-nav .nav-link[aria-current="page"] {
-    background: var(--surface-container-high);
-    color: var(--on-surface);
+    background: var(--primary-container);
+    color: var(--primary-text);
 }
 
 .sidebar-nav .nav-link.active .nav-icon,
 .sidebar-nav .nav-link[aria-current="page"] .nav-icon {
-    color: var(--primary);
+    color: var(--primary-text);
 }
 
 /* === SIDEBAR NAV: GROUP HEADERS + HAIRLINES =================== */
@@ -158,16 +125,16 @@ body.dashboard-page .sidebar .brand-link:hover {
 }
 
 .sidebar .nav-group-line {
-    flex: 1;
-    height: 1px;
-    background: var(--outline-variant);
+    display: none;
 }
 
+/* Sentence-case group labels, small and muted (mockup "Security"). */
 .sidebar .nav-group-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.10em;
-    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--on-surface-variant);
 }
 
 .sidebar .nav-divider {
@@ -560,3 +527,141 @@ html.shell-ready { visibility: visible; }
 [data-app-shell="1"] .tier-card > .tier-icon { margin-right: 8px !important; }
 [data-app-shell="1"] .credit-row { gap: 16px !important; }
 [data-app-shell="1"] .credit-row > .credit-avatar { margin-right: 4px !important; }
+
+/* === REDESIGN 2026-11-16 — sidebar + top bar (approved mockup) =========
+ * docs/superpowers/specs/2026-11-16-web-theme-redesign-design.md
+ * Browser only: inside the car app the native menu replaces this shell.
+ * Selectors are prefixed with body[data-app-shell="1"] because styles.css
+ * imports this file first and would otherwise win on equal specificity.
+ * Logical properties so the sidebar mirrors in RTL.
+ */
+@media (min-width: 769px) {
+    :root:root { --sidebar-width: 208px; }
+}
+@media (min-width: 769px) and (max-width: 1150px) {
+    :root:root { --sidebar-width: 176px; }
+}
+
+body[data-app-shell="1"] .sidebar {
+    background: var(--surface-container);
+    border: 0;
+    border-inline-end: 1px solid var(--outline-variant);
+    box-shadow: none;
+}
+body[data-app-shell="1"] .sidebar-header {
+    background: var(--surface-container);
+    border-bottom: 0;
+}
+body[data-app-shell="1"] .sidebar .brand-logo {
+    border-radius: 9px;
+    box-shadow: none;
+}
+body[data-app-shell="1"] .sidebar .brand-name {
+    font-weight: 700;
+    color: var(--on-surface);
+}
+body[data-app-shell="1"] .sidebar .brand-tagline,
+body[data-app-shell="1"] .sidebar .brand-online-pulse {
+    display: none;
+}
+body[data-app-shell="1"] .sidebar-nav .nav-link {
+    min-height: 44px;
+    border-radius: var(--radius-control);
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    font-weight: 550;
+    box-shadow: none;
+}
+body[data-app-shell="1"] .sidebar-nav .nav-link:hover {
+    background: var(--surface-container-high);
+    color: var(--on-surface);
+}
+body[data-app-shell="1"] .sidebar-nav .nav-link.active,
+body[data-app-shell="1"] .sidebar-nav .nav-link[aria-current="page"] {
+    background: var(--primary-container);
+    color: var(--primary-text);
+}
+body[data-app-shell="1"] .sidebar .status-card,
+body[data-app-shell="1"] .sidebar .ev-card,
+body[data-app-shell="1"] .sidebar .fuel-card {
+    background: var(--surface-container-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-panel);
+    box-shadow: none;
+}
+
+/* Top bar: breadcrumb + day/night switch, 72px, same colour as the page. */
+.shell-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 72px;
+    padding: 0 var(--page-pad-x);
+    background: var(--background);
+}
+.shell-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    font-size: 12px;
+    color: var(--on-surface-variant);
+}
+.shell-breadcrumb strong {
+    color: var(--on-surface);
+    font-weight: 550;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.shell-theme-switch {
+    display: flex;
+    gap: 2px;
+    padding: 3px;
+    background: var(--surface-container-high);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-control);
+}
+.shell-theme-switch button {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 38px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: var(--on-surface-variant);
+    cursor: pointer;
+}
+.shell-theme-switch button[aria-pressed="true"] {
+    background: var(--surface-container);
+    color: var(--on-surface);
+    box-shadow: 0 1px 4px #00000014;
+}
+.shell-theme-switch svg {
+    width: 16px;
+    height: 16px;
+}
+@media (max-width: 768px) {
+    /* Phones keep their own compact header and bottom navigation. */
+    .shell-topbar { display: none; }
+}
+
+/* 769–850px: icon-only rail, labels in tooltips (aria-label). */
+@media (min-width: 769px) and (max-width: 850px) {
+    :root:root { --sidebar-width: 72px; }
+    body[data-app-shell="1"] .sidebar .brand-text,
+    body[data-app-shell="1"] .sidebar-nav .nav-link > span,
+    body[data-app-shell="1"] .sidebar .nav-group-header,
+    body[data-app-shell="1"] .sidebar-footer,
+    body[data-app-shell="1"] .sidebar .sidebar-search-label,
+    body[data-app-shell="1"] .sidebar .sidebar-search-kbd { display: none; }
+    body[data-app-shell="1"] .sidebar-nav .nav-link { justify-content: center; padding-inline: 12px; }
+}
+
+/* The top bar carries the day/night switch on wider screens, so the older
+   floating theme button would be a duplicate there. Phones keep it. */
+@media (min-width: 769px) {
+    body[data-app-shell="1"] #bydThemePicker { display: none !important; }
+}

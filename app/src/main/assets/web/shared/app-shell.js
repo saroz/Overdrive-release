@@ -768,6 +768,62 @@
         window.toggleSidebar = wrapped;
     }
 
+    // Browser-only top bar (approved mockup): breadcrumb on the left, a
+    // two-button day/night switch on the right. Inserted at the top of
+    // .main-content; phones hide it via CSS and keep their compact header.
+    function renderTopbar(pageTitle) {
+        var main = document.querySelector('.main-content');
+        if (!main || main.querySelector('.shell-topbar')) return;
+        var esc = function (s) {
+            return String(s).replace(/[&<>"]/g, function (c) {
+                return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+            });
+        };
+        var bar = document.createElement('header');
+        bar.className = 'shell-topbar';
+        bar.innerHTML =
+            '<nav class="shell-breadcrumb" aria-label="Breadcrumb">' +
+              '<span data-i18n="app.name">OverDrive</span><span aria-hidden="true">/</span>' +
+              '<strong>' + esc(pageTitle) + '</strong>' +
+            '</nav>' +
+            '<div class="shell-theme-switch" role="group" aria-label="Colour theme" data-i18n-attr="aria-label:settings.theme">' +
+              '<button type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="false">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>' +
+              '</button>' +
+              '<button type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false">' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 1 1 11 3.5a6.5 6.5 0 0 0 9.5 9.5z"/></svg>' +
+              '</button>' +
+            '</div>';
+        var buttons = bar.querySelectorAll('[data-theme-choice]');
+        var sync = function () {
+            var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].setAttribute('aria-pressed', String(buttons[i].getAttribute('data-theme-choice') === current));
+            }
+        };
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].addEventListener('click', function () {
+                var choice = this.getAttribute('data-theme-choice');
+                if (window.BYD && window.BYD.theme && typeof window.BYD.theme.set === 'function') {
+                    window.BYD.theme.set(choice);
+                } else {
+                    document.documentElement.setAttribute('data-theme', choice);
+                }
+                sync();
+            });
+        }
+        new MutationObserver(sync).observe(document.documentElement,
+            { attributes: true, attributeFilter: ['data-theme'] });
+        sync();
+        main.insertBefore(bar, main.firstChild);
+    }
+
+    function currentPageTitle() {
+        var source = document.querySelector('.page-title, .dev-view-header h1, main h1');
+        var text = source && source.textContent ? source.textContent.replace(/^\s+|\s+$/g, '') : '';
+        return text || (document.title || '').replace(/\s*[—|-].*$/, '') || 'Dashboard';
+    }
+
     function mount() {
         var holder = findMount();
         if (!holder) return;
@@ -790,6 +846,7 @@
         // Fill the two shell pieces that legacy pages occasionally omitted:
         // the dismiss overlay and the compact mobile app bar.
         ensureResponsiveShell(aside);
+        if (!embeddedInNativeApp) renderTopbar(currentPageTitle());
         hideHeaderClock();
         mountBottomNav();
         watchSwitchRows();
