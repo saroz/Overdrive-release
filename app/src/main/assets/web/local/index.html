@@ -33,16 +33,41 @@
             </div>
 
             <div class="dashboard-page-body">
+                <section class="home-heading" id="homeHeading">
+                    <div class="home-summary" id="homeSummary">
                 <div class="dash-hero-copy" data-theme-dock>
                     <h1 data-i18n="dashboard.heading">Dashboard</h1>
                     <p id="dashHeroSubtitle" data-i18n="dashboard.subtitle">Vehicle status, position and main controls.</p>
                 </div>
-
-                <!-- Bento grid. The hero and the AI insight come first and carry
-                     no data-card-id, so the reorder controller below never moves
-                     them; the remaining cards carry data-card-id for layout
-                     persistence. -->
-                <section class="dash-grid" id="dashCards">
+                    </div>
+                    <a class="home-details-link" href="vehicle-control.html" data-i18n="dashboard.home.vehicle_details">Vehicle details</a>
+                </section>
+                <button class="dash-ai-insight" id="dashAiInsight" type="button"
+                        aria-expanded="false" aria-live="polite" hidden>
+                    <span class="dash-ai-insight-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                             stroke-width="1.8" stroke-linecap="round"
+                             stroke-linejoin="round">
+                            <rect x="4" y="6" width="16" height="13" rx="3"/>
+                            <path d="M9 3v3M8 12h.01M16 12h.01M9 16h6"/>
+                        </svg>
+                    </span>
+                    <span class="dash-ai-insight-copy">
+                        <span class="dash-ai-insight-kicker"
+                              data-i18n="dashboard.ai_insight_kicker">AI insight</span>
+                        <strong id="dashAiInsightTitle"
+                                data-i18n="dashboard.ai_insight_default_title">Vehicle brief</strong>
+                        <span id="dashAiInsightText" class="dash-ai-insight-text"></span>
+                        <small id="dashAiInsightMeta"></small>
+                    </span>
+                    <svg class="dash-ai-insight-arrow" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2"
+                         aria-hidden="true">
+                        <path d="m6 9 6 6 6-6"/>
+                    </svg>
+                </button>
+                <div class="home-overview">
+                <section class="home-panel home-vehicle" id="homeVehicle">
                 <section class="dash-hero">
                     <!--
                       Vehicle glance panel. Replaces the decorative hero GLB
@@ -219,41 +244,14 @@
                         </div>
                     </div>
                 </section>
-
-                <button class="dash-ai-insight" id="dashAiInsight" type="button"
-                        aria-expanded="false" aria-live="polite" hidden>
-                    <span class="dash-ai-insight-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                             stroke-width="1.8" stroke-linecap="round"
-                             stroke-linejoin="round">
-                            <rect x="4" y="6" width="16" height="13" rx="3"/>
-                            <path d="M9 3v3M8 12h.01M16 12h.01M9 16h6"/>
-                        </svg>
-                    </span>
-                    <span class="dash-ai-insight-copy">
-                        <span class="dash-ai-insight-kicker"
-                              data-i18n="dashboard.ai_insight_kicker">AI insight</span>
-                        <strong id="dashAiInsightTitle"
-                                data-i18n="dashboard.ai_insight_default_title">Vehicle brief</strong>
-                        <span id="dashAiInsightText" class="dash-ai-insight-text"></span>
-                        <small id="dashAiInsightMeta"></small>
-                    </span>
-                    <svg class="dash-ai-insight-arrow" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2"
-                         aria-hidden="true">
-                        <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-
+                </section>
+                <section class="home-panel home-controls" id="homeControls">
                     <article class="dash-card dash-actions-card" data-card-id="commands">
                         <div class="dash-card-head">
                             <div>
                                 <span class="dash-card-kicker" data-i18n="dashboard.kicker_commands">Commands</span>
                                 <h2 data-i18n="dashboard.card_commands">Quick controls</h2>
                             </div>
-                            <button class="dash-card-grip" type="button" aria-label="Drag to reorder" tabindex="-1" data-i18n-attr="aria-label:dashboard.drag_to_reorder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
-                            </button>
                         </div>
                         <div class="dash-command-grid dash-command-grid-main">
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/lock')">
@@ -319,74 +317,15 @@
                             <button type="button" class="dash-pills-more" id="dashPillsMore" hidden aria-expanded="false" aria-controls="dashPills"><span data-i18n="common.more">More</span></button>
                         </div>
                     </article>
-
-                    <!-- Charging card — live plug/charge state + key metrics,
-                         tap-through to the full charging.html history page. -->
-                    <article class="dash-card dash-info-card dash-charge-card" data-card-id="charging">
-                        <div class="dash-card-head">
-                            <span class="dash-tile-icon" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L4 14 h7 l-1 8 9-12 h-7 z"/></svg>
-                            </span>
-                            <div>
-                                <span class="dash-card-kicker" data-i18n="charge.kicker">Energy</span>
-                                <h2 data-i18n="charge.card_title">Charging</h2>
-                            </div>
-                            <button class="dash-card-grip" type="button" aria-label="Drag to reorder" tabindex="-1" data-i18n-attr="aria-label:dashboard.drag_to_reorder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
-                            </button>
-                        </div>
-                        <div class="dash-charge-chip" id="dashChargeChip">
-                            <span class="ic_status_dot dot-idle" id="dashChargeDot"></span>
-                            <span id="dashChargeState" data-i18n="charge.state_idle">Idle</span>
-                        </div>
-                        <div class="dash-charge-big">
-                            <strong id="dashChargeTtf">--</strong>
-                            <span data-i18n="charge.metric_ttf">Time to full</span>
-                        </div>
-                        <div class="dash-mini-bar" aria-hidden="true"><i id="dashChargeSocBar"></i></div>
-                        <div class="dash-metric-grid dash-metric-grid--4">
-                            <div class="dash-metric"><span data-i18n="charge.metric_soc">SoC</span><strong id="dashChargeSoc">--</strong></div>
-                            <div class="dash-metric"><span data-i18n="charge.metric_power">Power</span><strong id="dashChargePower">--</strong></div>
-                            <div class="dash-metric"><span data-i18n="charge.metric_session">Session</span><strong id="dashChargeKwh">--</strong></div>
-                        </div>
-                        <div class="dash-action-row">
-                            <button class="dash-primary-btn dash-tile-link" type="button" onclick="location.href='charging.html'">
-                                <span data-i18n="charge.open">Charging details</span>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                            </button>
-                        </div>
-                    </article>
-
-                    <article class="dash-card dash-location-card" data-card-id="location">
-                        <div class="dash-card-head">
-                            <div>
-                                <span class="dash-card-kicker" data-i18n="dashboard.kicker_position">Position</span>
-                                <h2 data-i18n="dashboard.card_location">Vehicle location</h2>
-                            </div>
-                            <button class="dash-card-grip" type="button" aria-label="Drag to reorder" tabindex="-1" data-i18n-attr="aria-label:dashboard.drag_to_reorder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
-                            </button>
-                        </div>
-                        <div class="dash-location-map">
-                            <div id="mapContainer"></div>
-                        </div>
-                        <div class="dash-action-row">
-                            <button class="dash-primary-btn" type="button" onclick="BYD.dashboard.openDirections()">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 22 2l-9 19-2-8-8-2Z"/><path d="m11 13 4-4"/></svg>
-                                <span data-i18n="dashboard.directions">Navigate to car</span>
-                            </button>
-                        </div>
-                    </article>
-
+                </section>
+                </div>
+                <section class="home-stats" id="homeStats">
                     <article class="dash-card dash-info-card" data-card-id="info">
                         <div class="dash-card-head">
                             <div>
                                 <span class="dash-card-kicker" data-i18n="dashboard.kicker_vehicle">Vehicle</span>
                                 <h2 data-i18n="dashboard.card_info">Main info</h2>
                             </div>
-                            <button class="dash-card-grip" type="button" aria-label="Drag to reorder" tabindex="-1" data-i18n-attr="aria-label:dashboard.drag_to_reorder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="6" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="18" r="1"/><circle cx="15" cy="6" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="18" r="1"/></svg>
-                            </button>
                         </div>
                         <div class="dash-metric-grid has-connectivity" id="dashInfoGrid">
                             <div class="dash-metric"><span data-i18n="dashboard.metric_battery"><svg class="dash-metric-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="16" height="10" rx="2"/><path d="M22 11v2"/></svg>Battery</span><strong id="dashSoc">--</strong></div>
@@ -417,6 +356,60 @@
                         </div>
                     </article>
                 </section>
+                <div class="home-details">
+                <section class="home-panel home-energy" id="homeEnergy">
+                    <article class="dash-card dash-info-card dash-charge-card" data-card-id="charging">
+                        <div class="dash-card-head">
+                            <span class="dash-tile-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L4 14 h7 l-1 8 9-12 h-7 z"/></svg>
+                            </span>
+                            <div>
+                                <span class="dash-card-kicker" data-i18n="charge.kicker">Energy</span>
+                                <h2 data-i18n="charge.card_title">Charging</h2>
+                            </div>
+                        </div>
+                        <div class="dash-charge-chip" id="dashChargeChip">
+                            <span class="ic_status_dot dot-idle" id="dashChargeDot"></span>
+                            <span id="dashChargeState" data-i18n="charge.state_idle">Idle</span>
+                        </div>
+                        <div class="dash-charge-big">
+                            <strong id="dashChargeTtf">--</strong>
+                            <span data-i18n="charge.metric_ttf">Time to full</span>
+                        </div>
+                        <div class="dash-mini-bar" aria-hidden="true"><i id="dashChargeSocBar"></i></div>
+                        <div class="dash-metric-grid dash-metric-grid--4">
+                            <div class="dash-metric"><span data-i18n="charge.metric_soc">SoC</span><strong id="dashChargeSoc">--</strong></div>
+                            <div class="dash-metric"><span data-i18n="charge.metric_power">Power</span><strong id="dashChargePower">--</strong></div>
+                            <div class="dash-metric"><span data-i18n="charge.metric_session">Session</span><strong id="dashChargeKwh">--</strong></div>
+                        </div>
+                        <div class="dash-action-row">
+                            <button class="dash-primary-btn dash-tile-link" type="button" onclick="location.href='charging.html'">
+                                <span data-i18n="charge.open">Charging details</span>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                            </button>
+                        </div>
+                    </article>
+                </section>
+                <section class="home-panel home-location" id="homeLocationStrip">
+                    <article class="dash-card dash-location-card" data-card-id="location">
+                        <div class="dash-card-head">
+                            <div>
+                                <span class="dash-card-kicker" data-i18n="dashboard.kicker_position">Position</span>
+                                <h2 data-i18n="dashboard.card_location">Vehicle location</h2>
+                            </div>
+                        </div>
+                        <div class="dash-location-map">
+                            <div id="mapContainer"></div>
+                        </div>
+                        <div class="dash-action-row">
+                            <button class="dash-primary-btn" type="button" onclick="BYD.dashboard.openDirections()">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11 22 2l-9 19-2-8-8-2Z"/><path d="m11 13 4-4"/></svg>
+                                <span data-i18n="dashboard.directions">Navigate to car</span>
+                            </button>
+                        </div>
+                    </article>
+                </section>
+                </div>
             </div>
         </main>
     </div>
@@ -1311,45 +1304,6 @@
         .dash-location-card > .dash-card-head { margin: 0; padding: 16px 20px 0; }
         .dash-location-card > .dash-action-row { padding: 16px 20px 20px; }
 
-        /* ── Drag-reorder handle ─────────────────────────────────────
-           Six-dot grip sitting in the card head (or top-right corner
-           for cards without a head). Wide hit target for thumb drag;
-           visual is a small icon so it doesn't dominate. cursor:grab
-           when idle, grabbing when dragging. Only shown when JS has
-           attached the reorder controller (.dash-cards-ready on the
-           parent). */
-        .dash-card-grip {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            margin: -8px -10px -8px 12px;
-            padding: 0;
-            border: 0;
-            background: transparent;
-            color: var(--on-surface-variant);
-            cursor: grab;
-            border-radius: var(--radius-full);
-            touch-action: none;
-            -webkit-user-select: none;
-            user-select: none;
-            transition: background-color 0.15s ease, color 0.15s ease;
-            flex: 0 0 auto;
-        }
-        [dir="rtl"] .dash-card-grip { margin: -8px 12px -8px -10px; }
-        @media (pointer: coarse) {
-            .dash-card-grip { width: 44px; height: 44px; }
-        }
-        .dash-cards-ready .dash-card-grip { display: inline-flex; }
-        @media (hover: hover) {
-            .dash-card-grip:hover {
-                background: var(--state-hover);
-                color: var(--on-surface);
-            }
-        }
-        .dash-card-grip:active { cursor: grabbing; }
-        .dash-card-grip svg { width: 18px; height: 18px; }
         /* While a card is being dragged: lift it visually with a
            shadow + slight scale, and dim the rest. The .dash-card-ghost
            class marks the placeholder slot so siblings know where the
@@ -2798,11 +2752,60 @@
 
         /* Car density: larger targets. */
         :root[data-android-embed="1"] .dash-primary-btn { min-height: 56px; }
-        :root[data-android-embed="1"] .dash-card-grip { width: 48px; height: 48px; }
         :root[data-android-embed="1"] .dash-location-map .leaflet-bar a {
             width: 48px;
             height: 48px;
             line-height: 48px;
+        }
+        /* == HOME LAYOUT 2026-11-16 (approved mockup) ===============
+           docs/superpowers/specs/2026-11-16-web-theme-redesign-design.md
+           Sections: heading, vehicle + controls, plain stats, charging +
+           location. Inner widgets keep their own rules above. Tokens only. */
+        .home-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+        .home-heading .dash-hero-copy { margin: 0; padding: 0; }
+        .home-heading h1 { font-size: 28px; font-weight: 650; line-height: 1.2; }
+        .home-heading #dashHeroSubtitle { margin-top: 6px; color: var(--on-surface-variant); font-size: 14px; }
+        .home-details-link {
+            display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px;
+            border: 1px solid var(--outline-variant); border-radius: var(--radius-control);
+            background: var(--surface-container); color: var(--on-surface);
+            font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap;
+        }
+        .home-details-link:hover { background: var(--surface-container-high); }
+        #dashAiInsight { margin: 0 0 20px; }
+        .home-overview { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(300px, 1fr); gap: 20px; }
+        .home-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+        .home-panel {
+            min-width: 0; overflow: hidden;
+            background: var(--surface-container); border: 1px solid var(--outline-variant);
+            border-radius: var(--radius-card); box-shadow: none;
+        }
+        .home-panel > .dash-card,
+        .home-panel > .dash-hero,
+        .home-stats > .dash-card {
+            margin: 0; background: transparent; border: 0; border-radius: 0; box-shadow: none;
+        }
+        .home-vehicle .dash-glance { background: var(--hero); }
+        .home-stats { margin: 24px 0; }
+        .home-stats .dash-card-head { display: none; }
+        .home-stats .dash-metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 20px 0; }
+        .home-stats .dash-connectivity-metrics { display: contents; }
+        .home-stats .dash-metric {
+            padding: 0 24px; background: transparent; border: 0; border-radius: 0; box-shadow: none;
+            border-inline-start: 1px solid var(--outline-variant);
+        }
+        .home-stats .dash-metric:first-child { padding-inline-start: 0; border-inline-start: 0; }
+        @media (max-width: 1150px) {
+            .home-overview { grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr); }
+            .home-details { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 850px) {
+            .home-overview { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 540px) {
+            .home-heading { align-items: center; }
+            .home-heading h1 { font-size: 24px; }
+            .home-stats .dash-metric-grid { grid-template-columns: 1fr 1fr; row-gap: 20px; }
         }
     </style>
 
@@ -4321,214 +4324,6 @@
             BYD.dashboard.loadCustomCommands();
             BYD.dashboard.loadPowerControls();
         });
-
-        // ── Dashboard card reorder ──────────────────────────────────
-        // PWA-only feature (the head-unit's in-app WebView never loads
-        // this page). Long-press / pointer-down on a card's grip
-        // handle starts a drag; sibling cards reflow with a slide
-        // animation; on drop, the new sibling order is persisted to
-        // localStorage and restored on next load.
-        //
-        // Why this design:
-        //   - Native HTML5 drag-and-drop has too many WebKit/iOS
-        //     quirks (drag images that won't follow the pointer,
-        //     event ordering differences) so we use Pointer Events
-        //     directly and move the dragged card with absolute
-        //     position + transform.
-        //   - Drag is initiated only from the .dash-card-grip handle,
-        //     not from anywhere on the card. That keeps inner buttons,
-        //     selects, and the map fully interactive.
-        //   - We don't change CSS grid lines per-card; we only
-        //     reorder the DOM. The grid-column property stays on the
-        //     class (e.g. .dash-card-full spans all columns), so a
-        //     full-width card looks full-width regardless of order.
-        (function () {
-            var STORAGE_KEY = 'overdrive.dashboard.cardOrder';
-            var grid = document.getElementById('dashCards');
-            if (!grid) return;
-
-            // Restore saved order before the controller goes interactive
-            // so first paint matches the user's last layout.
-            try {
-                var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
-                if (saved && Array.isArray(saved)) {
-                    var byId = {};
-                    Array.prototype.forEach.call(grid.children, function (el) {
-                        var id = el.getAttribute('data-card-id');
-                        if (id) byId[id] = el;
-                    });
-                    saved.forEach(function (id) {
-                        if (byId[id]) grid.appendChild(byId[id]);
-                    });
-                    // Anything not in the saved list (newly added cards
-                    // in a future build) sticks to the natural-order
-                    // position — they'll already be after the moved
-                    // siblings since appendChild moves to end.
-                }
-            } catch (e) { /* corrupted entry — ignore, keep default order */ }
-
-            grid.classList.add('dash-cards-ready');
-
-            var dragging = null;       // the card element being dragged
-            var pointerId = null;
-            var startX = 0, startY = 0;
-            var grabOffsetX = 0, grabOffsetY = 0;
-            var ghost = null;          // placeholder element shown in flow
-            var savedStyle = null;     // restore on drop
-
-            function siblingCards() {
-                return Array.prototype.filter.call(grid.children, function (c) {
-                    return c !== ghost && c !== dragging
-                        && c.getAttribute('data-card-id') !== null;
-                });
-            }
-
-            // Find the sibling whose center the pointer is closest to,
-            // and whether to insert before or after it. We use centroid
-            // distance (not bounding-box hit-test) so the user can drag
-            // over the gap between two cards and the closer one wins.
-            function pickInsertion(pointerX, pointerY) {
-                var cards = siblingCards();
-                var bestEl = null;
-                var bestBefore = false;
-                var bestDist = Infinity;
-                for (var i = 0; i < cards.length; i++) {
-                    var r = cards[i].getBoundingClientRect();
-                    var cx = r.left + r.width / 2;
-                    var cy = r.top + r.height / 2;
-                    var dx = pointerX - cx, dy = pointerY - cy;
-                    var d = dx * dx + dy * dy;
-                    if (d < bestDist) {
-                        bestDist = d;
-                        bestEl = cards[i];
-                        // Insert BEFORE this card if pointer is above-left
-                        // of its center, AFTER otherwise. For a CSS grid
-                        // that wraps to multiple rows, "before" means
-                        // pointer.y < center.y (or same row & pointer.x <
-                        // center.x).
-                        bestBefore = pointerY < cy
-                            || (Math.abs(pointerY - cy) < r.height / 2
-                                && pointerX < cx);
-                    }
-                }
-                return { el: bestEl, before: bestBefore };
-            }
-
-            function updateGhostPosition(pointerX, pointerY) {
-                var pick = pickInsertion(pointerX, pointerY);
-                if (!pick.el || !ghost) return;
-                if (pick.before) {
-                    grid.insertBefore(ghost, pick.el);
-                } else {
-                    var nxt = pick.el.nextSibling;
-                    while (nxt && nxt.nodeType !== 1) nxt = nxt.nextSibling;
-                    grid.insertBefore(ghost, nxt);
-                }
-            }
-
-            function startDrag(card, ev) {
-                if (dragging) return;
-                dragging = card;
-                pointerId = ev.pointerId;
-                var r = card.getBoundingClientRect();
-                grabOffsetX = ev.clientX - r.left;
-                grabOffsetY = ev.clientY - r.top;
-                startX = ev.clientX;
-                startY = ev.clientY;
-
-                // Build the placeholder ghost: same dimensions as the
-                // card so the grid layout doesn't shift when we lift
-                // the original out of flow.
-                ghost = document.createElement(card.tagName);
-                ghost.className = card.className + ' dash-card-ghost';
-                ghost.style.height = r.height + 'px';
-                ghost.setAttribute('data-card-ghost', '1');
-                grid.insertBefore(ghost, card);
-
-                // Lift the dragged card out of the grid flow.
-                savedStyle = {
-                    position: card.style.position,
-                    top: card.style.top,
-                    left: card.style.left,
-                    width: card.style.width,
-                    height: card.style.height,
-                    margin: card.style.margin,
-                    pointerEvents: card.style.pointerEvents,
-                };
-                card.style.position = 'fixed';
-                card.style.top = r.top + 'px';
-                card.style.left = r.left + 'px';
-                card.style.width = r.width + 'px';
-                card.style.height = r.height + 'px';
-                card.style.margin = '0';
-                card.style.pointerEvents = 'none';
-                card.classList.add('dash-card-dragging');
-                grid.classList.add('dash-cards-dragging');
-                document.body.style.userSelect = 'none';
-                document.body.style.webkitUserSelect = 'none';
-            }
-
-            function moveDrag(ev) {
-                if (!dragging || ev.pointerId !== pointerId) return;
-                if (ev.cancelable) ev.preventDefault();
-                dragging.style.left = (ev.clientX - grabOffsetX) + 'px';
-                dragging.style.top = (ev.clientY - grabOffsetY) + 'px';
-                updateGhostPosition(ev.clientX, ev.clientY);
-            }
-
-            function endDrag(ev) {
-                if (!dragging || ev.pointerId !== pointerId) return;
-                // Place the dragged card where the ghost is.
-                if (ghost && ghost.parentNode === grid) {
-                    grid.insertBefore(dragging, ghost);
-                    grid.removeChild(ghost);
-                }
-                ghost = null;
-                // Restore inline styles.
-                if (savedStyle) {
-                    dragging.style.position = savedStyle.position;
-                    dragging.style.top = savedStyle.top;
-                    dragging.style.left = savedStyle.left;
-                    dragging.style.width = savedStyle.width;
-                    dragging.style.height = savedStyle.height;
-                    dragging.style.margin = savedStyle.margin;
-                    dragging.style.pointerEvents = savedStyle.pointerEvents;
-                }
-                dragging.classList.remove('dash-card-dragging');
-                grid.classList.remove('dash-cards-dragging');
-                document.body.style.userSelect = '';
-                document.body.style.webkitUserSelect = '';
-                dragging = null;
-                pointerId = null;
-                savedStyle = null;
-                // Persist new order.
-                var order = Array.prototype.map.call(grid.children, function (c) {
-                    return c.getAttribute('data-card-id');
-                }).filter(function (id) { return id; });
-                try { localStorage.setItem(STORAGE_KEY, JSON.stringify(order)); }
-                catch (e) { /* localStorage may be disabled — silently ignore */ }
-            }
-
-            // Delegate pointer events on the grid so we don't bind
-            // per-card. Drag origin must be a .dash-card-grip; clicks
-            // / drags anywhere else inside a card pass through to the
-            // inner controls (buttons, links, the map).
-            grid.addEventListener('pointerdown', function (ev) {
-                if (ev.button !== undefined && ev.button !== 0) return;
-                var grip = ev.target.closest && ev.target.closest('.dash-card-grip');
-                if (!grip) return;
-                var card = grip.closest('[data-card-id]');
-                if (!card) return;
-                ev.preventDefault();
-                try { grip.setPointerCapture(ev.pointerId); } catch (e) {}
-                startDrag(card, ev);
-            });
-            // pointermove / up are bound to the document so the drag
-            // survives the pointer leaving the grid bounds.
-            document.addEventListener('pointermove', moveDrag);
-            document.addEventListener('pointerup', endDrag);
-            document.addEventListener('pointercancel', endDrag);
-        })();
     </script>
 </body>
 </html>
