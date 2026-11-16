@@ -219,6 +219,20 @@
                         <div class="ui-panel-foot"><a class="ui-text-button" href="charging.html"><span data-i18n="charge.open">Charging details</span><svg class="ui-icon" aria-hidden="true"><use href="#ph-arrow-up-right"></use></svg></a></div>
                     </section>
 
+                    <section class="ui-panel home-faults" id="dashModuleFaults" hidden aria-live="polite">
+                        <div class="ui-panel-head">
+                            <div>
+                                <h2 data-i18n="moduleFaults.dashboard_title">Module faults detected</h2>
+                                <p id="dashModuleFaultsSummary" data-i18n="moduleFaults.dashboard_summary">The vehicle is reporting diagnostic warnings.</p>
+                            </div>
+                            <span class="ui-status ui-status-bad" id="dashModuleFaultsCount"></span>
+                        </div>
+                        <div class="ui-panel-body">
+                            <ul class="home-faults-list" id="dashModuleFaultsList"></ul>
+                        </div>
+                        <div class="ui-panel-foot"><a class="ui-text-button" href="module-faults.html"><span data-i18n="moduleFaults.dashboard_details">View module fault details</span><svg class="ui-icon" aria-hidden="true"><use href="#ph-arrow-up-right"></use></svg></a></div>
+                    </section>
+
                     <section class="ui-panel" id="homeActivity" aria-labelledby="homeActivityTitle">
                         <div class="ui-panel-head">
                             <div><h2 id="homeActivityTitle" data-i18n="dashboard.home_activity_title">Recent activity</h2><p data-i18n="dashboard.home_activity_sub">Latest recordings</p></div>
@@ -244,6 +258,7 @@
     <div id="toastContainer" class="ui-toast-stack"></div>
 
     <style>
+<<<<<<< HEAD
         /* Home — only what the shared ui- components don't cover. Colours are ui tokens. */
         .home-insight { width: 100%; margin-bottom: 20px; color: inherit; font: inherit; text-align: start; cursor: pointer; }
         .home-insight strong { display: block; font-size: 14px; }
@@ -298,6 +313,8 @@
         .home-bar b { color: var(--ui-ink); font-size: 10px; font-weight: 600; }
         .home-charge-now { margin-top: 12px; }
         .home-location { margin-top: 20px; }
+        .home-faults { margin-bottom: 16px; border-color: var(--ui-red); }
+        .home-faults-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--ui-ink); }
         .home-map { height: 240px; border-top: 1px solid var(--ui-line); }
         #mapContainer { width: 100%; height: 100%; }
         @media (max-width: 540px) { .home-facts { grid-template-columns: 1fr; } .home-drive { justify-content: flex-start; } }
@@ -306,6 +323,7 @@
     <script src="../shared/auth.js"></script>
     <script src="../shared/pwa-init.js?v=index1"></script>
     <script src="../shared/core.js?v=24"></script>
+    <script src="../shared/module-faults-dashboard.js?v=1"></script>
     <script src="../shared/update-flow.js?v=4"></script>
     <script src="../shared/map.js?v=8"></script>
     <script>
@@ -1944,6 +1962,7 @@
         BYD.i18n.init().then(function() {
             BYD.core.init();
             BYD.dashboard.initVehicleVisuals();
+            if (BYD.moduleFaultsDashboard) BYD.moduleFaultsDashboard.init();
             if (BYD.map) BYD.map.init();
             // The map fills its tile, whose height follows the bento row; Leaflet
             // only re-measures on window resize, so re-measure when the box changes.
