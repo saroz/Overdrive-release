@@ -113,7 +113,7 @@
 .community-filter-chips .filter-chip.active {
     background: var(--primary, #3b82f6);
     border-color: var(--primary, #3b82f6);
-    color: #fff;
+    color: var(--fixed-white);
 }
 /* The "Mine" ownership filter uses the same brand teal as the "Yours" badge and
    the owned-card accent, so the ownership cue reads as one consistent language
@@ -121,7 +121,7 @@
 .community-filter-chips .community-chip-mine.active {
     background: var(--brand-primary, var(--primary));
     border-color: var(--brand-primary, var(--primary));
-    color: #05100c;
+    color: var(--fixed-black);
 }
 
 /* ── Browse grid + cards ──────────────────────────────────────────────────── */
@@ -163,7 +163,7 @@
 .community-badge-mine {
     background: var(--brand-primary, var(--primary));
     border-color: var(--brand-primary, var(--primary));
-    color: #05100c;
+    color: var(--fixed-black);
     /* No margin-left here: .community-card-head's sibling-margin shim already
        spaces this badge from the category pill. Adding one would double it. */
     font-weight: 700;
@@ -247,7 +247,7 @@
     display: inline-flex;
     width: 16px;
     height: 16px;
-    color: #f5b301; /* amber — same warm accent for filled + outline stars */
+    color: var(--status-warning); /* amber — same warm accent for filled + outline stars */
 }
 .community-star svg { width: 16px; height: 16px; }
 .community-star-count {
@@ -266,7 +266,7 @@
     cursor: pointer;
     width: 28px;
     height: 28px;
-    color: #f5b301;
+    color: var(--status-warning);
 }
 .community-stars.interactive .star-btn svg { width: 24px; height: 24px; }
 

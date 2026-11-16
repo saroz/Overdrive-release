@@ -1906,12 +1906,12 @@ select.md-input ~ .md-label {
     display: block;
 }
 .safe-zone-popup-name {
-    color: #1f2937;
+    color: var(--google-ink);
     font-size: 13px;
 }
 .safe-zone-popup-radius {
     margin-top: 2px;
-    color: #6b7280;
+    color: var(--google-muted);
     font-size: 12px;
 }
 
@@ -2160,7 +2160,7 @@ select.md-input ~ .md-label {
 
 .pip-video {
     aspect-ratio: 16/9;
-    background: #000;
+    background: var(--fixed-black);
     position: relative;
 }
 
@@ -2210,7 +2210,7 @@ select.md-input ~ .md-label {
 
 .pip-cam-btn.active {
     background: var(--brand-primary);
-    color: #000;
+    color: var(--fixed-black);
 }
 
 .pip-cam-btn.loading {
@@ -2245,7 +2245,7 @@ select.md-input ~ .md-label {
 .pip-toggle-btn svg {
     width: 24px;
     height: 24px;
-    color: #000;
+    color: var(--fixed-black);
 }
 
 @media (max-width: 768px) {
@@ -2784,7 +2784,7 @@ select.md-input ~ .md-label {
 .user-dot {
     width: 14px;
     height: 14px;
-    background: #4285f4;
+    background: var(--google-blue);
     border: 3px solid white;
     border-radius: 50%;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
@@ -2813,7 +2813,7 @@ select.md-input ~ .md-label {
 
 .distance-label-content {
     background: rgba(0, 212, 170, 0.9);
-    color: #000;
+    color: var(--fixed-black);
     padding: 4px 10px;
     border-radius: 12px;
     font-size: 12px;
@@ -3154,7 +3154,7 @@ select.md-input ~ .md-label {
     padding: 12px 24px;
     font-size: 14px;
     font-weight: 600;
-    color: #000;
+    color: var(--fixed-black);
     background: var(--brand-gradient);
     border: none;
     border-radius: var(--radius-full);
@@ -3227,7 +3227,7 @@ select.md-input ~ .md-label {
 .stream-badge.connecting {
     background: rgba(245, 158, 11, 0.25);
     border-color: rgba(245, 158, 11, 0.5);
-    color: #fbbf24;
+    color: var(--status-warning);
 }
 
 .status-dot {
@@ -3243,7 +3243,7 @@ select.md-input ~ .md-label {
 }
 
 .status-dot.connecting {
-    background: #fbbf24;
+    background: var(--status-warning);
     animation: pulse 0.8s infinite;
 }
 
@@ -3908,7 +3908,7 @@ select.md-input ~ .md-label {
 
 .ev-soh-label {
     font-size: 11px;
-    color: #a855f7;
+    color: var(--chart-2);
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -3954,7 +3954,7 @@ select.md-input ~ .md-label {
 }
 .fuel-bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--status-warning), #FBBF24);
+    background: linear-gradient(90deg, var(--status-warning), var(--status-warning));
     border-radius: 3px;
     transition: width 0.6s ease;
 }
@@ -4230,19 +4230,19 @@ select.md-input ~ .md-label {
 .timeline-label {
     font-size: 12px;
     font-weight: 600;
-    color: #f1f5f9;
+    color: var(--on-surface);
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .info-note {
     font-size: 13px;
-    color: #94a3b8;
+    color: var(--on-surface-variant);
     line-height: 1.5;
     padding: 12px;
     background: rgba(59, 130, 246, 0.05);
     border-radius: 8px;
-    border-left: 3px solid #3b82f6;
+    border-left: 3px solid var(--status-info);
 }
 
 .select-input {
@@ -4250,7 +4250,7 @@ select.md-input ~ .md-label {
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(148, 163, 184, 0.2);
     border-radius: 8px;
-    color: #f1f5f9;
+    color: var(--on-surface);
     font-size: 14px;
     font-family: inherit;
     cursor: pointer;
@@ -4265,20 +4265,20 @@ select.md-input ~ .md-label {
 
 .select-input:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: var(--status-info);
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
 }
 
 .select-input option {
-    background: #0f172a;
-    color: #f1f5f9;
+    background: var(--surface-container);
+    color: var(--on-surface);
     padding: 8px;
 }
 
 /* ==================== PROXIMITY BADGE ==================== */
 
 .recording-badge.proximity {
-    background: linear-gradient(135deg, #f97316, #fb923c);
+    background: var(--status-warning);
     color: white;
     font-weight: 600;
     box-shadow: 0 0 12px rgba(249, 115, 22, 0.3);

@@ -27,6 +27,45 @@ public class TokenOnlyColoursAssetTest {
         assertTrue("raw colours: " + offenders, offenders.isEmpty());
     }
 
+    /** Content colours (colour-wheel/paint swatches, a test page, the dev screen mirror) are not theme. */
+    private static final java.util.Set<String> EXEMPT = new java.util.HashSet<>(java.util.Arrays.asList(
+            "design-tokens.css", "leaflet.css", "vehicle-control.css",
+            "vehicle-control-3d-test.html", "remote-dev-view.html"));
+
+    @Test
+    public void allWebStylesUseTokens() throws IOException {
+        java.nio.file.Path web = WebThemeTokensAssetTest.locate("app/src/main/assets/web");
+        List<String> offenders = new ArrayList<>();
+        for (String dir : new String[]{"local", "shared"}) {
+            try (java.util.stream.Stream<java.nio.file.Path> files = java.nio.file.Files.list(web.resolve(dir))) {
+                for (java.nio.file.Path path : (Iterable<java.nio.file.Path>) files::iterator) {
+                    String name = path.getFileName().toString();
+                    boolean html = name.endsWith(".html");
+                    if (!(html || name.endsWith(".css")) || EXEMPT.contains(name)) continue;
+                    String text = new String(java.nio.file.Files.readAllBytes(path),
+                            java.nio.charset.StandardCharsets.UTF_8);
+                    String css = (html ? styles(text) : text).replaceAll("(?s)/\\*.*?\\*/", "");
+                    for (String hex : rawHexInDeclarations(css)) offenders.add(dir + "/" + name + " " + hex);
+                }
+            }
+        }
+        assertTrue("raw colours outside token definitions: " + offenders, offenders.isEmpty());
+    }
+
+    /** Raw hex used in an ordinary declaration: not a var() fallback and not a --custom-property definition. */
+    static List<String> rawHexInDeclarations(String css) {
+        List<String> found = new ArrayList<>();
+        Matcher m = HEX.matcher(css);
+        while (m.find()) {
+            String before = css.substring(Math.max(0, m.start() - 200), m.start());
+            if (VAR_FALLBACK_OPEN.matcher(before).find()) continue;
+            int declStart = Math.max(css.lastIndexOf(';', m.start()), css.lastIndexOf('{', m.start())) + 1;
+            if (css.substring(declStart, m.start()).trim().startsWith("--")) continue;
+            found.add(m.group());
+        }
+        return found;
+    }
+
     @Test
     public void performanceChartSeriesFollowTheLegendTokens() throws IOException {
         String js = WebThemeTokensAssetTest.read("app/src/main/assets/web/shared/performance.js");

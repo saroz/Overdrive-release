@@ -158,6 +158,12 @@
     --on-video: #FFFFFF;
     --video-bg: #000000;
     --switch-thumb: #FFFFFF;
+    --fixed-white: #FFFFFF;
+    --fixed-black: #000000;
+    /* Google sign-in button brand colours */
+    --google-blue: #4285F4;
+    --google-ink: #1F2937;
+    --google-muted: #6B7280;
 
     /* Legacy aliases (do not use in new code) */
     --bg-base: var(--surface);

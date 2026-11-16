@@ -121,7 +121,7 @@
 .field-warning > * + * { margin-left: 8px; }
 /* min-width:0 so the message wraps inside the box instead of widening the row. */
 .field-warning > span { min-width: 0; }
-.field-warning svg { width: 16px; height: 16px; flex: none; color: #ffb300; margin-top: 1px; }
+.field-warning svg { width: 16px; height: 16px; flex: none; color: var(--status-warning); margin-top: 1px; }
 
 /* Neutral (info) note — same shape as .field-warning but calm blue, used for the
    "How variables work" help under the Set Variable action / Variable condition. */
@@ -137,7 +137,7 @@
 .field-help > * + * { margin-left: 8px; }
 /* min-width:0 so the prose wraps inside the box rather than widening its row. */
 .field-help > div { min-width: 0; }
-.field-help svg { width: 16px; height: 16px; flex: none; color: #3b82f6; margin-top: 1px; }
+.field-help svg { width: 16px; height: 16px; flex: none; color: var(--status-info); margin-top: 1px; }
 .field-help p { margin: 0 0 4px; }
 .field-help p:last-child { margin-bottom: 0; }
 .field-help code {
@@ -605,7 +605,7 @@
 .zone-field { display: flex; flex-direction: column; margin-right: 8px; margin-bottom: 6px; }
 .zone-field > span { font-size: 11px; opacity: 0.75; margin-bottom: 2px; }
 .zone-field > .input { min-width: 120px; }
-.zone-error { flex-basis: 100%; color: #ff6b6b; font-size: 12px; min-height: 14px; }
+.zone-error { flex-basis: 100%; color: var(--status-danger); font-size: 12px; min-height: 14px; }
 .zone-picker .field-help { margin-top: 4px; }
 
 /* Per-attribute selectors of a chosen signal (side / area / seat / units …), used by both
@@ -697,7 +697,7 @@
 .cond-mode-toggle > .cond-mode-btn + .cond-mode-btn { margin-left: 2px; }
 .cond-mode-btn.active {
     background: var(--accent, #4a90d9);
-    color: #fff;
+    color: var(--fixed-white);
 }
 /* Body fills the cell width so the value input/select lines up with sibling
    dropdowns in the row, while the toggle above stays compact. */

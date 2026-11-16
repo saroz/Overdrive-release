@@ -46,7 +46,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             /* Shows as bands beside a video narrower than the panel. */
-            background: #000;
+            background: var(--fixed-black);
             border-radius: var(--radius-2xl);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
             animation: popIn 0.2s ease;
@@ -93,7 +93,7 @@
             max-height: calc(var(--vh, 1vh) * 100);
             overflow: hidden;
             border-radius: 0;
-            background: #000;
+            background: var(--fixed-black);
             box-shadow: none;
             z-index: 2000;
             /* Push the video player block to fill the remaining space
@@ -182,7 +182,7 @@
             height: 44px;
             border-radius: 22px;
             background: rgba(0, 0, 0, 0.55);
-            color: #fff;
+            color: var(--fixed-white);
             border: 1px solid rgba(255, 255, 255, 0.18);
             flex-shrink: 0;
             margin: 0;
@@ -198,7 +198,7 @@
             top: calc(env(safe-area-inset-top, 0px) + 22px);
             left: calc(env(safe-area-inset-left, 0px) + 68px);
             right: calc(env(safe-area-inset-right, 0px) + 280px);
-            color: #fff;
+            color: var(--fixed-white);
             text-shadow: 0 1px 4px rgba(0,0,0,0.6);
             white-space: nowrap;
             overflow: hidden;
@@ -248,7 +248,7 @@
         .video-container:-webkit-full-screen .timeline-legend,
         .video-container.is-fullscreen .timeline-legend {
             border-top: none;
-            color: #fff;
+            color: var(--fixed-white);
         }
         .video-container:fullscreen .video-ctrl-btn,
         .video-container:-webkit-full-screen .video-ctrl-btn,
@@ -259,7 +259,7 @@
         .video-container:fullscreen .legend-item,
         .video-container:-webkit-full-screen .legend-item,
         .video-container.is-fullscreen .legend-item {
-            color: #fff;
+            color: var(--fixed-white);
         }
         .video-container:fullscreen .timeline-track,
         .video-container:-webkit-full-screen .timeline-track,
@@ -589,7 +589,7 @@
         /* The 2x2 grid icon — cells are inline rects so we can use opacity
            on the inactive cells for a glance-readable map. */
         .quadrant-bar .qcell { fill: rgba(255, 255, 255, 0.45); }
-        .quadrant-bar .qcell.lit { fill: #FFFFFF; }
+        .quadrant-bar .qcell.lit { fill: var(--fixed-white); }
         /* Two icon variants per button: q2x2 (standard mosaic map) and qdash
            (dashcam map — full-width front band over three lower thirds). Show
            the dashcam variant only when the open clip is a dashcam clip

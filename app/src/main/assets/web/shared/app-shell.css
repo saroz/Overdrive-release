@@ -635,7 +635,7 @@ body[data-app-shell="1"] .sidebar .fuel-card {
 .shell-theme-switch button[aria-pressed="true"] {
     background: var(--surface-container);
     color: var(--on-surface);
-    box-shadow: 0 1px 4px #00000014;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 .shell-theme-switch svg {
     width: 16px;
