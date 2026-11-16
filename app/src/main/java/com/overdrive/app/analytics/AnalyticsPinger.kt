@@ -31,8 +31,8 @@ import java.util.concurrent.TimeUnit
  *   - At most ONE ping per install per UTC day (guarded by `analytics.lastPingDay`
  *     in UnifiedConfig). Same-day repeats are also no-ops server-side (PK), so this
  *     guard is purely to save the network round-trip, not for correctness.
- *   - Honors an `analytics.enabled` kill-switch (default true): a single flag lets
- *     a user, or you (remotely, no rebuild), disable the whole feature.
+ *   - Opt-in: `analytics.enabled` defaults to FALSE in this fork, so nothing is
+ *     sent unless the flag is explicitly set to true.
  *
  * Never throws to the caller — analytics must never affect app behavior. All
  * failures (offline, proxy down, bad URL, HTTP error) are swallowed; the day guard
@@ -69,8 +69,9 @@ object AnalyticsPinger {
                 UnifiedConfigManager.forceReload().optJSONObject(SECTION)
             } catch (_: Throwable) { null }
 
-            // Kill-switch (default ON). Absent section/flag ⇒ enabled.
-            if (section != null && !section.optBoolean(KEY_ENABLED, true)) return
+            // Opt-in only (this fork): absent section/flag ⇒ disabled, so no ping
+            // leaves the car unless analytics.enabled is explicitly set to true.
+            if (section == null || !section.optBoolean(KEY_ENABLED, false)) return
 
             val today = dayOf(nowMs)
             if (section?.optString(KEY_LAST_PING_DAY, "") == today) return // already pinged today
