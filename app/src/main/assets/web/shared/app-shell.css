@@ -157,8 +157,6 @@ body.dashboard-page .sidebar .brand-link:hover {
     align-items: center;
     padding: 0 24px;
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    backdrop-filter: saturate(180%) blur(16px);
     border-bottom: 1px solid var(--outline-variant);
 }
 

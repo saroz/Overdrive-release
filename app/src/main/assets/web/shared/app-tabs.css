@@ -6,7 +6,7 @@
  * bar; this stylesheet gives it a M3-Expressive look that matches the rest
  * of the app shell.
  *
- *   - Glass app bar treatment (translucent + backdrop-filter blur), so
+ *   - Glass app bar treatment (solid background), so
  *     it floats over the bottom of the content area.
  *   - 4px hairline accent above the bar (primary → tertiary gradient,
  *     same identity stripe as the toolbar / sidebar).
@@ -48,8 +48,6 @@
     height: 78px;
     padding: 6px 8px;
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    backdrop-filter: saturate(180%) blur(16px);
     border-top: 1px solid var(--outline-variant);
     /* Scroll horizontally only as a last-resort fallback — the layout below
        sizes tabs so 6 of them + an Apply slot fit edge-to-edge at 768px. */

@@ -306,8 +306,6 @@ html[data-app-shell="1"] .ra-page .page-header {
     padding-bottom: 0;
     border-bottom: 0;
     background: transparent;
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
 }
 html[data-app-shell="1"] .ra-page .page-title,
 html[data-app-shell="1"] .ra-page .ra-clock-badge { display: none; }

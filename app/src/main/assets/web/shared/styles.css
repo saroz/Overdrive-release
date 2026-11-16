@@ -14,7 +14,7 @@
 
 :root {
     --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
-    --bg-glass: rgba(22, 22, 26, 0.85);
+    --bg-glass: var(--surface-container);
 
     /* Chart palette — accents used by data visualizations / legends.
        Mid-luminance hues that read OK on either theme; the light-theme
@@ -69,7 +69,7 @@
 /* Light-theme overrides — only the supplementals; palette / shadow / shape
    are flipped automatically by design-tokens.css. */
 :root[data-theme="light"] {
-    --bg-glass: rgba(247, 250, 247, 0.88);
+    --bg-glass: var(--surface-container);
 
     --chart-line-1: #007A62;
     --chart-line-2: #00658F;
@@ -651,8 +651,6 @@ textarea:focus,
     justify-content: space-between;
     border-bottom: 1px solid var(--border-subtle);
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(160%) blur(16px);
-    backdrop-filter: saturate(160%) blur(16px);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -2300,11 +2298,9 @@ select.md-input ~ .md-label {
     top: 0;
     z-index: 60;
     background: var(--bg-glass);
-    -webkit-backdrop-filter: saturate(160%) blur(16px);
-    backdrop-filter: saturate(160%) blur(16px);
     border-bottom: 1px solid var(--border-subtle);
     flex-shrink: 0;
-    transition: background-color 200ms ease-out, border-color 200ms ease-out, backdrop-filter 200ms ease-out;
+    transition: background-color 200ms ease-out, border-color 200ms ease-out;
 }
 
 /* When the user is on the map tab (body.live-map-active flips on it),
@@ -2323,8 +2319,6 @@ select.md-input ~ .md-label {
         right: 0;
         z-index: 60;
         background: var(--bg-glass, rgba(22, 22, 26, 0.55));
-        -webkit-backdrop-filter: saturate(180%) blur(14px);
-                backdrop-filter: saturate(180%) blur(14px);
         border-bottom: 1px solid transparent;
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
     }
@@ -2566,8 +2560,6 @@ select.md-input ~ .md-label {
     padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
     background: var(--bg-glass, rgba(10, 20, 20, 0.9));
     border-top: 1px solid var(--lv-pill-border, rgba(255, 255, 255, 0.10));
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
 }
 
 .map-info-bar .map-info-item {
@@ -2867,7 +2859,6 @@ select.md-input ~ .md-label {
     gap: 6px;
     padding: 10px;
     background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
 }
@@ -3037,7 +3028,6 @@ select.md-input ~ .md-label {
     color: var(--text-muted);
     padding: 5px 10px;
     background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(4px);
     border-radius: var(--radius-full);
     border: 1px solid rgba(255, 255, 255, 0.08);
     cursor: pointer;
@@ -3121,7 +3111,6 @@ select.md-input ~ .md-label {
     font-weight: 500;
     color: var(--text-primary);
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -3225,7 +3214,6 @@ select.md-input ~ .md-label {
     font-size: 11px;
     font-weight: 600;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
     border-radius: var(--radius-full);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -3272,7 +3260,6 @@ select.md-input ~ .md-label {
     font-weight: 500;
     color: var(--text-primary);
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
     cursor: pointer;
@@ -3301,7 +3288,6 @@ select.md-input ~ .md-label {
     align-items: center;
     justify-content: center;
     background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-md);
     color: var(--text-secondary);
@@ -3445,8 +3431,6 @@ select.md-input ~ .md-label {
         padding-left: calc(16px + env(safe-area-inset-left, 0px));
         padding-right: calc(16px + env(safe-area-inset-right, 0px));
         background: var(--bg-glass);
-        -webkit-backdrop-filter: saturate(160%) blur(16px);
-        backdrop-filter: saturate(160%) blur(16px);
         border-bottom: 1px solid var(--border-subtle);
     }
 

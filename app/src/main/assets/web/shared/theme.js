@@ -318,7 +318,7 @@
     // Mini-picker injected once per page so the user can toggle without
     // navigating to a settings panel. Its 48px target remains collision-free
     // with the camera top bar / vehicle-control bar by
-    // anchoring to bottom-right with backdrop-filter glass.
+    // anchoring to bottom-right on a solid surface.
     function injectPickerStyles() {
         if (document.getElementById('byd-theme-picker-style')) return;
         var s = document.createElement('style');
@@ -339,7 +339,7 @@
             '   border: 1px solid var(--border-default, rgba(255,255,255,0.1));',
             '   box-shadow: 0 4px 16px rgba(0,0,0,0.25);',
             '   cursor: pointer; transition: transform .15s ease, background .15s ease, opacity .15s ease;',
-            '   -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }',
+            ' }',
             '#bydThemePicker .byd-theme-fab:hover { transform: scale(1.08); }',
             '#bydThemePicker .byd-theme-fab:active { transform: scale(0.94); }',
             '#bydThemePicker .byd-theme-fab:focus { outline: 2px solid var(--primary, #5DDBB6); outline-offset: 2px; }',
@@ -383,7 +383,7 @@
             '.header-actions > #bydThemePicker.is-docked { margin: 0; }',
             '#bydThemePicker.is-docked .byd-theme-fab { width: 44px; height: 44px; border-color: transparent;',
             '   background: var(--well, rgba(255,255,255,0.06)); box-shadow: none;',
-            '   -webkit-backdrop-filter: none; backdrop-filter: none; }',
+            ' }',
             '.mobile-header > #bydThemePicker.is-docked .byd-theme-fab { background: transparent; }',
             '#bydThemePicker.is-docked:not(:hover):not(.open) .byd-theme-fab { opacity: 1; }',
             '#bydThemePicker.is-docked .byd-theme-fab:hover { transform: none; background: var(--state-hover, rgba(255,255,255,0.08)); }',

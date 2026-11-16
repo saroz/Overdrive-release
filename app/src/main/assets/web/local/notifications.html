@@ -689,8 +689,8 @@
 
         /* ---- Bottom sheet + range calendar (ported from charging) ---- */
         .calendar-popup { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 500; display: none; align-items: flex-end; justify-content: center; background: var(--panel-overlay-bg-deep); }
-        @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-            .calendar-popup { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+        @media all {
+            .calendar-popup { }
         }
         .calendar-popup.active { display: flex; }
         .calendar-panel {

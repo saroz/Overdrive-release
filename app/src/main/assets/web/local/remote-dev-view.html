@@ -46,7 +46,7 @@
         #message { position: absolute; left: 14px; right: 14px; bottom: 9px; min-height: 16px; color: var(--text-secondary); font-size: 12px; line-height: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         #message:empty { visibility: hidden; }
         #message.error { color: var(--danger); }
-        .fullscreen-toolbar { display: none; position: absolute; z-index: 3; top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); max-width: calc(100vw - 20px); flex-wrap: wrap; justify-content: flex-end; gap: 7px; padding: 6px; border-radius: 10px; background: rgba(8, 11, 16, .78); backdrop-filter: blur(10px); }
+        .fullscreen-toolbar { display: none; position: absolute; z-index: 3; top: max(10px, env(safe-area-inset-top)); right: max(10px, env(safe-area-inset-right)); max-width: calc(100vw - 20px); flex-wrap: wrap; justify-content: flex-end; gap: 7px; padding: 6px; border-radius: 10px; background: rgba(8, 11, 16, .78); }
         #viewerCard:fullscreen, #viewerCard:-webkit-full-screen, body.dev-view-focus #viewerCard { width: 100vw; height: 100vh; max-width: none; margin: 0; padding: 0; border: 0; border-radius: 0; background: #050608; }
         body.dev-view-focus { overflow: hidden; }
         body.dev-view-focus #viewerCard { position: fixed; inset: 0; z-index: 10000; }

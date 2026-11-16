@@ -1665,13 +1665,11 @@
 
         /* Glass blur where supported; the 60% fill alone carries legibility.
            Kept off .quality-menu, whose fixed list must not be re-anchored. */
-        @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+        @media all {
             .quality-menu__trigger,
             .top-bar-btn,
             .camera-label-overlay,
             .deterrent-btn {
-                -webkit-backdrop-filter: blur(8px);
-                backdrop-filter: blur(8px);
             }
         }
 

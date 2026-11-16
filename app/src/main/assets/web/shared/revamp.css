@@ -525,12 +525,10 @@ html.has-bottom-nav[dir="rtl"] .mobile-header.has-lead .mh-home { margin-left: 4
 @media (hover: hover) {
     .mh-back:hover { background: var(--state-hover); }
 }
-@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
-    .page-header, .mobile-header { -webkit-backdrop-filter: none; backdrop-filter: none; }
+@media all {
+    .page-header, .mobile-header { }
     html.is-scrolled .page-header, html.is-scrolled .mobile-header {
         background: var(--bar-blur);
-        -webkit-backdrop-filter: saturate(160%) blur(18px);
-        backdrop-filter: saturate(160%) blur(18px);
     }
 }
 
@@ -825,11 +823,9 @@ body.ot-tabs-on .pip-toggle-btn, body.ot-tabs-on .pip-container { bottom: 24px; 
         border-top: 1px solid var(--hairline);
         background: var(--bar);
     }
-    @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+    @media all {
         html.has-bottom-nav .app-bottom-nav {
             background: var(--bar-blur);
-            -webkit-backdrop-filter: saturate(160%) blur(18px);
-            backdrop-filter: saturate(160%) blur(18px);
         }
     }
     .app-bottom-nav .abn-item {
