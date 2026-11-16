@@ -119,6 +119,7 @@
                                     <span class="ui-slider-value" id="survLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="survLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateSurvLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
+                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="surveillanceNoLimit" onchange="StoragePage.setNoLimit('surveillance', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -184,6 +185,7 @@
                                     <span class="ui-slider-value" id="recLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="recLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateRecLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
+                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="recordingsNoLimit" onchange="StoragePage.setNoLimit('recordings', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -243,6 +245,7 @@
                                     <span class="ui-slider-value" id="storageLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="storageLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateTripLimit(this.value)" data-i18n-attr="aria-label:trip.settings.storage_limit" aria-label="Storage Limit">
                                 </div>
+                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="tripsNoLimit" onchange="StoragePage.setNoLimit('trips', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
