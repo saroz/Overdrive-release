@@ -2927,6 +2927,7 @@
                     title || BYD.i18n.t('dashboard.ai_insight_default_title')
                     || 'Vehicle brief';
                 document.getElementById('dashAiInsightText').textContent = text;
+                this.renderHomeSummary(text, null);
                 document.getElementById('dashAiInsightMeta').textContent =
                     this.aiInsightAge(createdAt) + (model ? ' · ' + model : '');
                 card.hidden = false;
@@ -3877,6 +3878,25 @@
                     detailVars: detailVars
                 };
             },
+            // Summary under the page title (approved mockup): the first
+            // sentence of the AI vehicle brief when one exists, otherwise the
+            // live drive state ("Parked. Vehicle powered down."). With
+            // neither, the translated default subtitle stays.
+            homeBrief: '',
+            homeStateLine: '',
+            renderHomeSummary: function(brief, stateLine) {
+                if (typeof brief === 'string') {
+                    var first = brief.trim().match(/^[^.!?]*[.!?]?/);
+                    this.homeBrief = first ? first[0].trim() : '';
+                }
+                if (typeof stateLine === 'string') this.homeStateLine = stateLine;
+                var el = document.getElementById('dashHeroSubtitle');
+                if (!el) return;
+                var line = this.homeBrief || this.homeStateLine;
+                if (!line) return;
+                el.removeAttribute('data-i18n');
+                if (el.textContent !== line) el.textContent = line;
+            },
             updateDriveState: function(status) {
                 var state = this.resolveDriveState(status);
                 var root = document.getElementById('dashDriveState');
@@ -3902,6 +3922,10 @@
                 setIfChanged('dashDrivePower', powerText);
                 setIfChanged('dashDriveMode', stateText);
                 setIfChanged('dashDriveDetail', detailText);
+                var stateLine = stateText && stateText !== '--'
+                    ? stateText + (detailText && detailText !== '--' ? '. ' + detailText + '.' : '.')
+                    : '';
+                this.renderHomeSummary(null, stateLine);
 
                 root.className = 'dash-drive-state is-' + state.mode;
                 if (state.speedKmh !== null) root.classList.add('has-speed');
