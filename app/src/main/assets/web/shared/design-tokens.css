@@ -154,6 +154,10 @@
     --hero: #2B2E2F;
     --chart-2: #A1A5A5;
     --chart-3: #626767;
+    /* Fixed colours that do not change with the theme */
+    --on-video: #FFFFFF;
+    --video-bg: #000000;
+    --switch-thumb: #FFFFFF;
 
     /* Legacy aliases (do not use in new code) */
     --bg-base: var(--surface);

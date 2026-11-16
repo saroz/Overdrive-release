@@ -123,7 +123,7 @@
         
         .metric-bar-fill.warning { background: var(--warning); }
         .metric-bar-fill.danger { background: var(--danger); }
-        .metric-bar-fill.ev-battery { background: linear-gradient(90deg, var(--success), #22d3ee); }
+        .metric-bar-fill.ev-battery { background: var(--status-success); }
         
         /* Chart Container */
         .chart-card {
@@ -168,7 +168,7 @@
         
         .legend-dot.system { background: var(--brand-primary); }
         .legend-dot.app { background: var(--brand-secondary); }
-        .legend-dot.gpu { background: #a855f7; }
+        .legend-dot.gpu { background: var(--chart-2); }
         
         .chart-container {
             position: relative;
@@ -202,7 +202,7 @@
         }
         .du-toggle-thumb {
             position: absolute; top: 2px; left: 2px; width: 18px; height: 18px;
-            background: #fff; border-radius: 50%; transition: transform .2s;
+            background: var(--switch-thumb); border-radius: 50%; transition: transform .2s;
         }
         .du-toggle input:checked + .du-toggle-track { background: var(--brand-secondary); }
         .du-toggle input:checked + .du-toggle-track .du-toggle-thumb { transform: translateX(16px); }

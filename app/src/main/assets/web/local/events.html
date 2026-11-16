@@ -658,7 +658,7 @@
             overflow: hidden;
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.62);
-            color: #FFFFFF;
+            color: var(--on-video);
             box-shadow: none;
             font-size: 12px;
             font-weight: 700;
@@ -675,14 +675,14 @@
             margin: 0 6px 1px 0;
             border-radius: 50%;
             vertical-align: middle;
-            background: #9AA5A0;
+            background: var(--on-surface-variant);
         }
         [dir="rtl"] .recording-thumbnail .clip-type::before { margin: 0 0 1px 6px; }
         /* Fixed light dots: the pill is always dark. Same hues as the storage meter in the dark theme. */
-        .recording-thumbnail .clip-type.sentry::before { background: #FF8A7A; }
-        .recording-thumbnail .clip-type.proximity::before { background: #85CFFF; }
-        .recording-thumbnail .clip-type.normal::before { background: #5DDBB6; }
-        .recording-thumbnail .clip-type.replay::before { background: #FFB870; }
+        .recording-thumbnail .clip-type.sentry::before { background: var(--status-danger); }
+        .recording-thumbnail .clip-type.proximity::before { background: var(--status-info); }
+        .recording-thumbnail .clip-type.normal::before { background: var(--status-success); }
+        .recording-thumbnail .clip-type.replay::before { background: var(--status-warning); }
 
         /* Bottom-right: duration (when the server sends one) and file size. */
         .recording-thumbnail .thumb-meta {
@@ -695,7 +695,7 @@
             padding: 2px 8px;
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.66);
-            color: #FFFFFF;
+            color: var(--on-video);
             font-size: 12px;
             font-weight: 700;
             font-variant-numeric: tabular-nums;

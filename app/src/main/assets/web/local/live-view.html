@@ -372,9 +372,9 @@
             --lv-pill-bg-hover: rgba(0,0,0,0.74);
             --lv-pill-border: rgba(255,255,255,0.2);
             --lv-pill-border-soft: var(--hairline);
-            --lv-overlay-text: #ffffff;
+            --lv-overlay-text: var(--on-video);
             --lv-overlay-muted: rgba(255,255,255,0.8);
-            --lv-overlay-warning: #FFB870;
+            --lv-overlay-warning: var(--status-warning);
             --lv-label-overlay-bg: rgba(0,0,0,0.6);
             --lv-idle-icon-bg: var(--well-2);
             --lv-idle-icon-border: transparent;
@@ -386,15 +386,15 @@
             --lv-hotspot-ring-halo: rgba(0,0,0,0.88);
             --lv-hotspot-label-bg: rgba(5,9,12,0.92);
             --lv-hotspot-label-border: rgba(255,255,255,0.24);
-            --lv-hotspot-label-text: #ffffff;
-            --lv-hotspot-active-text: #72f4d9;
+            --lv-hotspot-label-text: var(--on-video);
+            --lv-hotspot-active-text: var(--primary);
             /* Video stage / letterbox background. Dark theme keeps the
                classic black-bars look; light theme flips to the page surface
                so the camera tab isn't a giant black slab on a light cabin
                display. The decoded video's own pixels still cover most of
                the area while a stream is active — this colour is only
                visible in idle / buffer / aspect-mismatch regions. */
-            --lv-video-bg: #000;
+            --lv-video-bg: var(--video-bg);
         }
         :root[data-theme="light"] .live-view-page {
             /* Everything else already flips with the shared tokens. The scrim
@@ -605,7 +605,7 @@
         /* Video Display — the stage and the layered video / canvas /
            software-decoder containers all share --lv-video-bg so the camera
            tab flips palette with the rest of the app. Dark theme resolves
-           it to #000 (the classic letterbox look); light theme resolves it
+           it to black (the classic letterbox look); light theme resolves it
            to the page surface so the panel doesn't read as a black slab on
            a light cabin display. The decoded video's own pixels cover most
            of the area while streaming, so this colour is only visible in

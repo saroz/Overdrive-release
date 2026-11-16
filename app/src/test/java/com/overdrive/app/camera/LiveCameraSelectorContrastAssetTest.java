@@ -44,7 +44,10 @@ public class LiveCameraSelectorContrastAssetTest {
             "app/src/main/assets/web/local/live-view.html");
 
         assertTrue(liveView.contains("--lv-hotspot-label-bg: rgba(5,9,12,0.92)"));
-        assertTrue(liveView.contains("--lv-hotspot-label-text: #ffffff"));
+        // White label text on the dark pill; --on-video is the fixed white token.
+        assertTrue(liveView.contains("--lv-hotspot-label-text: var(--on-video)"));
+        assertTrue(readRepositoryFile("app/src/main/assets/web/shared/design-tokens.css")
+                .contains("--on-video: #FFFFFF;"));
         assertTrue(liveView.contains("background: var(--lv-hotspot-label-bg)"));
         assertTrue(liveView.contains("border: 1px solid var(--lv-hotspot-label-border)"));
         assertTrue(liveView.contains("border-radius: 999px"));

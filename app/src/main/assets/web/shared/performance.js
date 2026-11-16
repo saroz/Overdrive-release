@@ -94,6 +94,12 @@ BYD.performance = {
                 const v = (s.getPropertyValue(name) || '').trim();
                 return v || fallback;
             };
+            // Series colours follow the legend dots in performance.html.
+            this.colors.system = pick('--primary', this.colors.system);
+            this.colors.app = pick('--tertiary', this.colors.app);
+            this.colors.gpu = pick('--chart-2', this.colors.gpu);
+            this.colors.soc = pick('--status-success', this.colors.soc);
+            this.colors.charging = pick('--status-info', this.colors.charging);
             this.colors.grid = pick('--chart-grid', this.colors.grid);
             this.colors.text = pick('--chart-text', this.colors.text);
             this.colors.textStrong = pick('--chart-text-strong', this.colors.textStrong);
