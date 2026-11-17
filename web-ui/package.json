@@ -1,0 +1,17 @@
+{
+  "name": "overdrive-web-ui",
+  "private": true,
+  "description": "Builds the web UI stylesheet (Tailwind v4) and icon sprite into app/src/main/assets/web/shared.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.5",
+    "tailwindcss": "4.3.5"
+  },
+  "allowScripts": {
+    "@parcel/watcher": false
+  }
+}
