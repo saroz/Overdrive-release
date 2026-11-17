@@ -20,8 +20,6 @@ public class AutomationSafetySettingsAssetTest {
                 "app/src/main/assets/web/local/automations.html");
         String script = readRepositoryFile(
                 "app/src/main/assets/web/shared/automations.js");
-        String styles = readRepositoryFile(
-                "app/src/main/assets/web/shared/styles.css");
         String english = readRepositoryFile(
                 "app/src/main/assets/web/i18n/en.json");
         String api = readRepositoryFile(
@@ -91,10 +89,10 @@ public class AutomationSafetySettingsAssetTest {
         assertTrue(script.contains(
                 "for (let i = 0; i < toggles.length; i++) toggles[i].disabled = false"));
         assertTrue(script.contains("JSON.stringify({ drivingSafety: drivingSafety })"));
-        assertTrue(styles.contains(
-                ".info-box-note[hidden],\n"
-                        + ".info-box-warning[hidden] {\n"
-                        + "    display: none;"));
+        // Hidden notes stay hidden: the notes are ui-note now (2026-11-17 rebuild) and ui.css hides
+        // every [hidden] element whatever its display rule.
+        assertTrue(readRepositoryFile("app/src/main/assets/web/shared/ui.css")
+                .contains("[hidden]{display:none!important}"));
         assertTrue(api.contains("resp.put(\"drivingSafety\", DrivingSafetyGuard.getGuardSettings())"));
         assertTrue(api.contains("Unknown drivingSafety setting: "));
         assertTrue(api.contains("\"drivingSafety\", safetyUpdate"));
