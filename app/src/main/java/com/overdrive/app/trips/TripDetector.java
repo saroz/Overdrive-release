@@ -168,6 +168,9 @@ public class TripDetector {
                     + (speedTrustworthy ? " (stopped)" : " IGNORED (fix " + fixAgeMs + "ms old)")
                     + " → starting " + (PARK_DEBOUNCE_MS / 1000) + "s debounce");
                 state = State.PARK_PENDING;
+                // No ICE integration is needed while parked; avoid a 1 Hz task
+                // waking the daemon for the full debounce window.
+                stopIceSampler();
                 parkStartTime = System.currentTimeMillis();
                 startParkDebounceTimer();
             } else {
@@ -187,6 +190,9 @@ public class TripDetector {
             cancelParkDebounceTimer();
             parkStartTime = 0;
             state = State.ACTIVE;
+            if (activeTrip != null && activeTrip.isPhev) {
+                startIceSampler();
+            }
         }
     }
 
@@ -740,7 +746,8 @@ public class TripDetector {
         }
         activeTrip = trip;
         startOdometerKm = trip.odometerStartKm > 0 ? trip.odometerStartKm : -1;
-        if (trip.isPhev) {
+        // A parked resumed trip has no running ICE sampler until driving resumes.
+        if (!parked && trip.isPhev) {
             startIceSampler();
         }
         if (parked) {
