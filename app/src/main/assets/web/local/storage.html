@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=20"></script>
+    <script src="../shared/app-shell.js?v=23"></script>
     <!--
       Storage: every storage option on one page (moved here from the Surveillance,
       Recording and Trips pages). Location + limit picks are staged and committed
@@ -26,7 +26,7 @@
 </head>
 <body class="ui-app st-page" data-page="storage">
     <div class="app-layout">
-        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=20) -->
+        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=23) -->
         <div id="app-shell-mount"></div>
         <main class="main-content" aria-busy="true" inert style="pointer-events:none">
             <div class="ui-main">
@@ -119,7 +119,7 @@
                                     <span class="ui-slider-value" id="survLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="survLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateSurvLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
-                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="surveillanceNoLimit" onchange="StoragePage.setNoLimit('surveillance', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
+                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="surveillanceNoLimit" onchange="StoragePage.setNoLimit('surveillance', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -185,7 +185,7 @@
                                     <span class="ui-slider-value" id="recLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="recLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateRecLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
-                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="recordingsNoLimit" onchange="StoragePage.setNoLimit('recordings', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
+                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="recordingsNoLimit" onchange="StoragePage.setNoLimit('recordings', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -245,7 +245,6 @@
                                     <span class="ui-slider-value" id="storageLimitValue">500 MB</span>
                                     <input type="range" class="ui-range" id="storageLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateTripLimit(this.value)" data-i18n-attr="aria-label:trip.settings.storage_limit" aria-label="Storage Limit">
                                 </div>
-                                <label class="st-no-limit" style="display:flex;align-items:center;gap:6px;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" id="tripsNoLimit" onchange="StoragePage.setNoLimit('trips', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -387,11 +386,11 @@
 
     <script src="../shared/auth.js"></script>
     <script src="../shared/pwa-init.js?v=index1"></script>
-    <script src="../shared/core.js?v=24"></script>
+    <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/storage-budget.js?v=8"></script>
+    <script src="../shared/storage-budget.js?v=9"></script>
     <script src="../shared/settings-hydration.js?v=1"></script>
-    <script src="../shared/storage.js?v=2"></script>
+    <script src="../shared/storage.js?v=3"></script>
     <script>
         var unlockSettings = function () {
             if (BYD.utils && BYD.utils.unlockSettingsHydration) {

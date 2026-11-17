@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=20"></script>
+    <script src="../shared/app-shell.js?v=23"></script>
     <!--
       Bottom-tab manifest (same idiom as trips.html). Tabs apply to the LIST
       VIEW only; the session DETAIL view (#pkDetailView) is a drill-in that
@@ -35,7 +35,7 @@
 </head>
 <body class="ui-app" data-page="parking">
     <div class="app-layout">
-        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=20) -->
+        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=23) -->
         <div id="app-shell-mount"></div>
         <!-- Main Content -->
         <main class="main-content">
@@ -232,13 +232,15 @@
         <img id="pkLightboxImg" alt="">
     </div>
 
-    <script src="../shared/video-player.js?v=1"></script>
+    <script src="../shared/video-player.js?v=2"></script>
+    <script src="../shared/lens-dewarp.js?v=3"></script>
     <script src="../shared/auth.js"></script>
     <script src="../shared/pwa-init.js?v=index1"></script>
-    <script src="../shared/core.js?v=24"></script>
+    <script src="../shared/core.js?v=27"></script>
+    <script src="../shared/update-flow.js?v=4"></script>
     <script src="../shared/parking-settings.js?v=5"></script>
-    <script src="../shared/events.js?v=parking-player1"></script>
-    <script src="../shared/parking.js?v=12"></script>
+    <script src="../shared/events.js?v=revamp18"></script>
+    <script src="../shared/parking.js?v=16"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             BYD.i18n.init().then(function () {

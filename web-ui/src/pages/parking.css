@@ -247,6 +247,16 @@ body[data-page="parking"] [dir="rtl"] .detail-header > .detail-back-btn svg { -w
 @media (hover: hover) {
 body[data-page="parking"] .detail-back-btn:hover { background: var(--well-2); }
 }
+body[data-page="parking"] .detail-pager { display: -webkit-flex; display: flex; }
+body[data-page="parking"] .detail-pager > * + * { margin-left: 8px; }
+body[data-page="parking"] [dir="rtl"] .detail-pager > * + * { margin-left: 0; margin-right: 8px; }
+body[data-page="parking"] .detail-pager-next svg { margin-right: 0; margin-left: 8px; }
+body[data-page="parking"] [dir="rtl"] .detail-pager-next svg { margin-left: 0; margin-right: 8px; }
+body[data-page="parking"] [dir="rtl"] .detail-pager-btn svg { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
+body[data-page="parking"] .detail-back-btn:disabled { opacity: 0.38; cursor: default; }
+@media (hover: hover) {
+body[data-page="parking"] .detail-back-btn:disabled:hover { background: var(--well); }
+}
 body[data-page="parking"] .summary-card,
 body[data-page="parking"] .detail-summary {
             padding: 20px;

@@ -1309,3 +1309,24 @@ body[data-page="events"] .calendar-close { min-height: 48px; }
 :root[data-android-embed="1"] body[data-page="events"] .calendar-close { min-height: 56px; font-size: var(--fs-body); }
 :root[data-android-embed="1"] body[data-page="events"] .empty-title { font-size: var(--fs-headline); }
 :root[data-android-embed="1"] body[data-page="events"] .empty-text { font-size: var(--fs-body); }
+
+html.tlv-on.tlv-port-on body[data-page="events"] .events-container,
+html.tlv-on.tlv-short-on body[data-page="events"] .events-container { min-height: 0; padding-bottom: 0; }
+html.tlv-on.tlv-short-on body[data-page="events"] .page-header,
+html.tlv-on.tlv-short-on body[data-page="events"] .ui-page-head,
+html.tlv-on.tlv-short-on body[data-page="events"] .mobile-header,
+html.tlv-on.tlv-short-on body[data-page="events"] .app-bottom-nav { display: none; }
+html.tlv-on.tlv-short-on body[data-page="events"] .main-content { padding-bottom: 0; }
+html.tlv-on.tlv-short-on body[data-page="events"] .events-container { padding-top: 8px; }
+html.tlv-on.tlv-short-on body[data-page="events"] .events-container > * + * { margin-top: 8px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-stage { column-gap: 12px; row-gap: 8px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-panel { padding: 4px 12px 6px; border-radius: 16px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-tb { min-height: 26px; margin-bottom: 4px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-chip,
+body[data-page="events"] .tlv-root.tlv-short .tlv-zb { min-height: 26px; padding: 0 10px; font-size: 12.5px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-striphost { height: 72px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-player { border-radius: 14px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-ctl { bottom: 8px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-b2 { width: 40px; height: 40px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-spd { height: 40px; min-width: 40px; }
+body[data-page="events"] .tlv-root.tlv-short .tlv-lh { min-height: 26px; }

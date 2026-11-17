@@ -4,7 +4,7 @@
     <dimen name="dashboard_modern_card_padding">16dp</dimen>
     <dimen name="dashboard_modern_radius">16dp</dimen>
     <dimen name="dashboard_modern_touch_target">48dp</dimen>
-    <dimen name="dashboard_modern_action_min_height">72dp</dimen>
+    <dimen name="dashboard_modern_action_min_height">@dimen/od_touch_primary</dimen>
     <dimen name="dashboard_modern_metric_gap">12dp</dimen>
     <dimen name="dashboard_modern_qr_size">184dp</dimen>
 

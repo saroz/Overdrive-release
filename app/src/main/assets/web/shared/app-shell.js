@@ -13,7 +13,7 @@
  *       <div id="app-shell-mount"></div>
  *       <main class="main-content">…page-specific content…</main>
  *     </div>
- *     <script src="../shared/app-shell.js?v=18"></script>
+ *     <script src="../shared/app-shell.js?v=20"></script>
  *
  * If a page omits #app-shell-mount the shell appends itself to <body>.
  *
@@ -74,11 +74,12 @@
         { href: 'key-mapping.html',     i18n: 'nav.key_mapping',     label: 'Key Mapping',     icon: 'key-mapping' },
 
         // ===== Integrations group ===== — mirrors the native Integrations
-        // sub-page (Telegram, ABRP, MQTT, BYD Cloud).
+        // sub-page (Telegram, ABRP, MQTT, BYD Cloud); WireGuard is configured natively under Daemons.
         { divider: true, label: 'Integrations', i18n: 'nav.integrations_group' },
         { href: 'telegram.html',                          i18n: 'nav.telegram',       label: 'Telegram',       icon: 'telegram' },
         { href: 'abrp.html',                              i18n: 'nav.abrp',           label: 'ABRP',           icon: 'abrp' },
         { href: 'mqtt.html',                              i18n: 'nav.mqtt',           label: 'MQTT',           icon: 'mqtt' },
+        { href: 'wireguard.html', browserOnly: true,     i18n: 'wireguard.page_title', label: 'WireGuard Tunnel', icon: 'wireguard' },
         { href: 'byd-cloud.html',                         i18n: 'nav.byd_cloud',      label: 'BYD Cloud',      icon: 'byd-cloud' },
         { href: 'safekeep.html',                          i18n: 'nav.safekeep',       label: 'SafeKeep',       icon: 'safekeep' },
 
@@ -100,6 +101,8 @@
         { href: 'widgets.html',                           i18n: 'nav.widgets',        label: 'Widgets',        icon: 'widgets' },
         { href: 'widget-builder.html', browserOnly: true, i18n: 'widgetBuilder.nav', label: 'Widget Builder', icon: 'widget-builder' },
         { href: 'notifications.html',                     i18n: 'nav.notifications',  label: 'Notifications',  icon: 'notifications' },
+        { href: 'daemons.html', browserOnly: true,        i18n: 'nav.daemons',        label: 'Daemons',        icon: 'widgets' },
+        { href: 'sessions.html', browserOnly: true,       i18n: 'nav.sessions',       label: 'Signed-in Browsers', icon: 'remote-dev-view' },
 
         // ===== About ===== — version, license, source, support links,
         // Check for Updates. Sits in its own group so the link isn't
@@ -322,14 +325,14 @@
     // A switch whose label holds only the track gets its name from the row title.
     var switchNameSeq = 0;
     function nameSwitches(root) {
-        var inputs = root.querySelectorAll('.toggle-switch input');
+        var inputs = root.querySelectorAll('.ui-toggle input');
         for (var i = 0; i < inputs.length; i++) {
             var input = inputs[i];
             if (input.getAttribute('aria-label') || input.getAttribute('aria-labelledby')) continue;
             var label = input.closest ? input.closest('label') : null;
             if (label && (label.textContent || '').replace(/\s+/g, '') !== '') continue;
-            var row = input.closest ? input.closest('.setting-row, .setting-stack, .r-hero, .card-header, li, [class*="-row"], [class*="-item"], [class*="-card"]') : null;
-            var name = row ? row.querySelector('.setting-name, .r-hero-title, .card-title, [class*="-name"], [class*="-title"], h2, h3, h4, strong') : null;
+            var row = input.closest ? input.closest('.ui-row, .ui-row-stack, .ui-summary, .ui-panel-head, li, [class*="-row"], [class*="-item"], [class*="-card"]') : null;
+            var name = row ? row.querySelector('.ui-row-title, .ui-panel-title, .ui-summary-text h2, [class*="-name"], [class*="-title"], h2, h3, h4, strong') : null;
             if (!name || !(name.textContent || '').replace(/\s+/g, '')) continue;
             if (!name.id) name.id = 'sw-name-' + (++switchNameSeq);
             input.setAttribute('aria-labelledby', name.id);
@@ -1654,7 +1657,7 @@
         if (document.querySelector('link[data-overdrive-search-css]')) return;
         var l = document.createElement('link');
         l.rel = 'stylesheet';
-        l.href = '../shared/search.css';
+        l.href = '../shared/search.css?v=1';
         l.setAttribute('data-overdrive-search-css', '1');
         document.head.appendChild(l);
     }
@@ -1663,7 +1666,7 @@
         if (document.querySelector('script[data-overdrive-search]')) return;
         ensureSearchCss();
         var s = document.createElement('script');
-        s.src = '../shared/search.js';
+        s.src = '../shared/search.js?v=3';
         s.setAttribute('data-overdrive-search', '1');
         s.async = false;
         var ref = document.querySelector('script[src*="app-shell.js"]');
@@ -1719,10 +1722,14 @@
     // Warm the palette on idle so the first open is instant and a setting
     // deep-link's arrival handler (which reads the sessionStorage handoff — no
     // query string, the static server 404s those) runs even without a trigger.
-    if (typeof window.requestIdleCallback === 'function') {
-        window.requestIdleCallback(function () { ensureSearchScript(); }, { timeout: 4000 });
-    } else {
-        setTimeout(ensureSearchScript, 1500);
+    // Not in the car app: its chrome hides every trigger, and the warm-up would
+    // crawl every page on the head unit for a palette nobody can open.
+    if (!embeddedInNativeApp) {
+        if (typeof window.requestIdleCallback === 'function') {
+            window.requestIdleCallback(function () { ensureSearchScript(); }, { timeout: 4000 });
+        } else {
+            setTimeout(ensureSearchScript, 1500);
+        }
     }
 
     if (document.readyState === 'loading') {

@@ -7,7 +7,7 @@
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=20"></script>
+    <script src="../shared/app-shell.js?v=23"></script>
     <script>
         window.OT_TABS = [
             { id: 'overview', label: 'Overview', i18n: 'safekeep.tab_overview', svg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', readOnly: true },
@@ -185,7 +185,7 @@
                     <div class="ui-panel-body">
                         <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="safekeep.parked_minutes">Upload time per parking</div><div class="ui-row-desc" data-i18n="safekeep.parked_minutes_desc">Caps how long uploads keep going after you park (unlimited while charging).</div></div>
                             <div class="ui-row-end"><select class="ui-select" id="skParkedMinutes">
-                                <option value="15">15 min</option><option value="30">30 min</option><option value="60">1 h</option><option value="120">2 h</option><option value="240">4 h</option><option value="0" data-i18n="safekeep.no_limit">No limit</option>
+                                <option value="15" data-i18n="safekeep.opt_15min">15 min</option><option value="30" data-i18n="safekeep.opt_30min">30 min</option><option value="60" data-i18n="safekeep.opt_1h">1 h</option><option value="120" data-i18n="safekeep.opt_2h">2 h</option><option value="240" data-i18n="safekeep.opt_4h">4 h</option><option value="0" data-i18n="safekeep.no_limit">No limit</option>
                             </select></div></div>
                         <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="safekeep.min_12v">Stop below 12 V battery</div><div class="ui-row-desc" data-i18n="safekeep.min_12v_desc">Protects the starter battery while parked.</div></div>
                             <div class="ui-row-end"><select class="ui-select" id="skMin12v">
@@ -306,9 +306,9 @@
     <div id="toastContainer" class="ui-toast-stack"></div>
 
     <script src="../shared/auth.js"></script>
-    <script src="../shared/core.js?v=24"></script>
+    <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/safekeep.js?v=6"></script>
+    <script src="../shared/safekeep.js?v=9"></script>
     <script>
         BYD.i18n.init().then(function () {
             BYD.core.init();

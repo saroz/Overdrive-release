@@ -1686,3 +1686,114 @@ body[data-page="trips"] .trip-rate-ctl > .trip-rate-field { flex: 1 1 auto; widt
 body[data-page="trips"] .trip-inline-ctl:not(.trip-rate-ctl) { flex-wrap: nowrap; }
 body[data-page="trips"] .trip-inline-ctl:not(.trip-rate-ctl) > .trip-num-input { flex: 1 1 auto; width: auto; }
 }
+
+/* Ported from upstream d50b8996: range calibration row + sheet. */
+        /* Range calibration: the card's entry row (under the hover tooltip, which passes taps through) and its sheet. */
+        body[data-page="trips"] .range-cal-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+        }
+        body[data-page="trips"] .range-cal-row > * { margin: 3px 4px; }
+        body[data-page="trips"] .range-hero-card .range-cal-row:hover ~ .range-hero-tooltip { opacity: 0; }
+        body[data-page="trips"] .range-cal-chip {
+            padding: 4px 10px;
+            border-radius: var(--radius-full);
+            background: var(--primary-soft);
+            color: var(--primary);
+            font-size: var(--fs-caption);
+            font-weight: 600;
+        }
+        body[data-page="trips"] .range-cal-btn {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 6px 14px;
+            border: 1px solid var(--hairline);
+            border-radius: var(--radius-full);
+            background: transparent;
+            color: var(--on-surface);
+            font: inherit;
+            font-size: var(--fs-caption);
+            font-weight: 600;
+            cursor: pointer;
+        }
+        body[data-page="trips"] .range-cal-btn:hover { background: var(--tile-raised); }
+        body[data-page="trips"] .range-cal-btn svg { width: 16px; height: 16px; margin-right: 6px; flex-shrink: 0; }
+        [dir="rtl"] body[data-page="trips"] .range-cal-btn svg { margin-right: 0; margin-left: 6px; }
+        body[data-page="trips"] .range-cal-card .range-cal-prompt {
+            margin: -8px 0 14px;
+            color: var(--on-surface-variant);
+            font-size: var(--fs-label);
+            line-height: 1.45;
+        }
+        body[data-page="trips"] .range-cal-card:focus { outline: none; }
+        body[data-page="trips"] .range-cal-readout { display: flex; align-items: baseline; justify-content: center; }
+        body[data-page="trips"] .range-cal-value {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--on-surface);
+            font-variant-numeric: tabular-nums;
+        }
+        body[data-page="trips"] .range-cal-unit { margin-left: 6px; font-size: 16px; color: var(--on-surface-variant); }
+        [dir="rtl"] body[data-page="trips"] .range-cal-unit { margin-left: 0; margin-right: 6px; }
+        body[data-page="trips"] .range-cal-rate {
+            margin-top: 2px;
+            text-align: center;
+            color: var(--on-surface-variant);
+            font-size: var(--fs-caption);
+            font-variant-numeric: tabular-nums;
+        }
+        /* A number line reads left to right in every language. */
+        body[data-page="trips"] .range-cal-slider-wrap { margin: 14px 0 4px; direction: ltr; }
+        body[data-page="trips"] .range-cal-track { position: relative; }
+        body[data-page="trips"] .range-cal-slider { position: relative; z-index: 1; display: block; width: 100%; }
+        body[data-page="trips"] .range-cal-tick {
+            position: absolute;
+            z-index: 0;
+            top: 50%;
+            width: 2px;
+            height: 18px;
+            margin: -9px 0 0 -1px;
+            border-radius: 1px;
+            background: var(--on-surface-variant);
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        body[data-page="trips"] .range-cal-ends {
+            display: flex;
+            justify-content: space-between;
+            color: var(--on-surface-variant);
+            font-size: var(--fs-caption);
+            font-variant-numeric: tabular-nums;
+        }
+        body[data-page="trips"] .range-cal-trips, body[data-page="trips"] .range-cal-note, body[data-page="trips"] .range-cal-explain, body[data-page="trips"] .range-cal-share {
+            margin: 8px 0 0;
+            font-size: var(--fs-caption);
+            line-height: 1.45;
+            color: var(--on-surface-variant);
+        }
+        body[data-page="trips"] .range-cal-trips { text-align: center; font-weight: 600; color: var(--on-surface); }
+        body[data-page="trips"] .range-cal-share { color: var(--primary); }
+        body[data-page="trips"] .range-cal-card .soh-modal-actions > .range-cal-remove { margin-right: auto; }
+        [dir="rtl"] body[data-page="trips"] .range-cal-card .soh-modal-actions > .range-cal-remove { margin-right: 4px; margin-left: auto; }
+        @media (max-width: 480px) {
+            body[data-page="trips"] .range-cal-card .soh-modal-actions > .range-cal-remove, [dir="rtl"] body[data-page="trips"] .range-cal-card .soh-modal-actions > .range-cal-remove { margin: 4px 0; }
+        }
+
+/* Ported from upstream d50b8996: previous / next trip pager. */
+        /* Previous / next trip, in the list's order; body[data-page="trips"] Export stays at the end. */
+        .detail-pager { display: flex; margin-left: auto; margin-right: 8px; }
+        [dir="rtl"] body[data-page="trips"] .detail-pager { margin-left: 8px; margin-right: auto; }
+        body[data-page="trips"] .detail-pager > * + * { margin-left: 8px; }
+        [dir="rtl"] body[data-page="trips"] .detail-pager > * + * { margin-left: 0; margin-right: 8px; }
+        body[data-page="trips"] .detail-pager-next svg { margin-right: 0; margin-left: 8px; }
+        [dir="rtl"] body[data-page="trips"] .detail-pager-next svg { margin-left: 0; margin-right: 8px; }
+        [dir="rtl"] body[data-page="trips"] .detail-pager-btn svg { -webkit-transform: scaleX(-1); transform: scaleX(-1); }
+        body[data-page="trips"] .detail-back-btn:disabled { opacity: 0.38; cursor: default; }
+        @media (hover: hover) {
+            body[data-page="trips"] .detail-back-btn:disabled:hover { background: var(--well); }
+        }

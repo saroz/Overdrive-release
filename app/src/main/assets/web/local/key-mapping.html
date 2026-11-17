@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=20"></script>
+    <script src="../shared/app-shell.js?v=23"></script>
     <!--
       Bottom-tab manifest — two task-based tabs:
         Bindings — the enable switch + list of current key bindings
@@ -199,6 +199,9 @@
                                 <span class="ui-hint" data-i18n="keymap.manual_keycode_help">Android KeyEvent code, e.g. 87 = next track, 88 = previous.</span>
                             </div>
                         </div>
+
+                        <!-- Buttons whose stock function the car runs itself (KM NATIVE_SIDE_EFFECT_CODES). -->
+                        <div class="ui-hint" id="kmNativeSideEffectWarn" role="note" style="display:none;margin:12px 0 4px;color:var(--warning);" data-i18n="keymap.native_side_effect_warn"></div>
 
                         <div class="ui-row" style="margin-top:8px;">
                             <div class="ui-row-copy">
@@ -395,8 +398,9 @@
 
     <script src="../shared/auth.js"></script>
     <script src="../shared/pwa-init.js?v=index1"></script>
-    <script src="../shared/core.js?v=24"></script>
-    <script src="../shared/key-mapping.js?v=38"></script>
+    <script src="../shared/core.js?v=27"></script>
+    <script src="../shared/update-flow.js?v=3"></script>
+    <script src="../shared/key-mapping.js?v=40"></script>
     <script src="../shared/cluster-projection.js?v=1"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {

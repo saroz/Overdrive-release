@@ -312,7 +312,23 @@ public class ChargingFrontendContractTest {
                 "'Energy estimated'"));
         assertTrue(charging.contains(
                 "this._t('charge.not_measured', 'Not measured')"));
-        assertTrue(html.contains("charging.js?v=47"));
+        assertTrue(html.contains("charging.js?v=50"));
+    }
+
+    @Test
+    public void sessionFiltersAndDetailNavStayStickyUnderSectionTabs()
+            throws IOException {
+        String html = readRepositoryFile(
+                "app/src/main/assets/web/local/charging.html");
+
+        assertTrue(html.contains("#sessionFilters"));
+        assertTrue(html.contains("position: -webkit-sticky"));
+        assertTrue(html.contains("position: sticky"));
+        assertTrue(html.contains(".ch-detail-nav"));
+        assertTrue(html.contains("background: var(--page)"));
+        assertTrue(html.contains(
+                "body.charging-page .main-content > .page-body"));
+        assertTrue(html.contains("overflow: visible"));
     }
 
     @Test

@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=20"></script>
+    <script src="../shared/app-shell.js?v=23"></script>
     <!--
       Per-page bottom-tab manifest. Tabs grouped by user task:
         General   — mode toggle + schedule + deterrent (when/how surveillance runs)
@@ -44,7 +44,7 @@
 <body class="ui-app" data-page="surveillance">
     <div class="app-layout">
         <!-- Sidebar -->
-        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=20) -->
+        <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=23) -->
         <div id="app-shell-mount"></div>
         <!-- Main Content -->
         <main class="main-content" aria-busy="true" inert style="pointer-events:none">
@@ -1084,6 +1084,42 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="ui-row" id="deterrentZoneRow" style="display:none;">
+                            <div class="ui-row-copy">
+                                <div class="ui-row-title" data-i18n="surveillance.deterrent_zone">Deterrent zone</div>
+                                <div class="ui-row-desc" data-i18n="surveillance.deterrent_zone_desc">Only flash or honk when motion is this close. Recording still uses the detection zone.</div>
+                            </div>
+                            <div class="ui-row-end">
+                                <select class="ui-select" id="deterrentZone" onchange="SurvSettings.updateDeterrentZone(this.value)">
+                                    <option value="follow" data-i18n="surveillance.deterrent_zone_follow">Same as detection zone</option>
+                                    <option value="close" data-i18n="surveillance.det_close">Close (~3m)</option>
+                                    <option value="normal" data-i18n="surveillance.det_normal">Normal (~6m)</option>
+                                    <option value="extended" data-i18n="surveillance.det_extended">Extended (full frame)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ui-row" id="deterrentScheduleRow" style="display:none;">
+                            <div class="ui-row-copy">
+                                <div class="ui-row-title" data-i18n="surveillance.deterrent_schedule">Only at set hours</div>
+                                <div class="ui-row-desc" data-i18n="surveillance.deterrent_schedule_desc">Outside these hours the lights and horn stay off. Recording and notifications continue. Hours can cross midnight.</div>
+                            </div>
+                            <div class="ui-row-end">
+                                <label class="ui-toggle">
+                                    <input type="checkbox" id="deterrentScheduleEnabled" onchange="SurvSettings.updateDeterrentSchedule()">
+                                    <span class="ui-toggle-track"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ui-row" id="deterrentScheduleTimesRow" style="display:none;">
+                            <div class="ui-row-copy">
+                                <div class="ui-row-title" data-i18n="surveillance.deterrent_schedule_hours">Active hours</div>
+                            </div>
+                            <div class="ui-row-end">
+                                <input type="time" class="ui-select" id="deterrentScheduleStart" value="20:00" aria-label="Start" onchange="SurvSettings.updateDeterrentSchedule()">
+                                <span aria-hidden="true" style="margin:0 6px">–</span>
+                                <input type="time" class="ui-select" id="deterrentScheduleEnd" value="06:00" aria-label="End" onchange="SurvSettings.updateDeterrentSchedule()">
+                            </div>
+                        </div>
                         <div class="ui-hint" data-i18n="surveillance.deterrent_hint_v2">Flash Lights and Horn + Lights use BYD's cloud API. BYD Cloud account setup required — set it up on the BYD Cloud page (sidebar → Integrations → BYD Cloud).</div>
                         <div id="deterrentWarning" class="ui-note surv-warn" style="display:none; margin-top:8px;">
                             <div class="surv-warn-row">
@@ -1116,11 +1152,11 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="ui-row-desc" style="margin: 0 0 12px 16px;">Impact detections currently send a notification only; they do not create a recording or an event clip.</div>
+                        <div class="ui-row-desc" style="margin: 0 0 12px 16px;" data-i18n="surveillance.impact_notify_only">Impact detections currently send a notification only; they do not create a recording or an event clip.</div>
                         <div class="ui-row" id="impactSensorStatusRow">
                             <div class="ui-row-copy">
-                                <div class="ui-row-title">Motion sensor status</div>
-                                <div class="ui-row-desc" id="impactSensorStatus" aria-live="polite">Waiting for sensor status…</div>
+                                <div class="ui-row-title" data-i18n="surveillance.impact_sensor_status">Motion sensor status</div>
+                                <div class="ui-row-desc" id="impactSensorStatus" aria-live="polite"></div>
                             </div>
                         </div>
                         <div class="ui-row" id="impactSensitivityRow" style="display:none;">
@@ -1211,7 +1247,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="preRecValue">5s</span>
-                                    <input type="range" class="ui-range" id="preRecSlider" min="2" max="15" value="5" oninput="SurvSettings.updatePreRec(this.value)">
+                                    <input type="range" class="ui-range" id="preRecSlider" min="2" max="30" value="5" oninput="SurvSettings.updatePreRec(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -1595,13 +1631,13 @@
 
     <script src="../shared/auth.js"></script>
     <script src="../shared/pwa-init.js?v=index1"></script>
-    <script src="../shared/core.js?v=24"></script>
+    <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/storage-budget.js?v=8"></script>
+    <script src="../shared/storage-budget.js?v=9"></script>
     <script src="../shared/settings-hydration.js?v=1"></script>
-    <script src="../shared/surveillance.js?v=survtoggle16"></script>
+    <script src="../shared/surveillance.js?v=survtoggle20"></script>
     <script src="../shared/safe-locations.js?v=6"></script>
-    <script src="../shared/roi-schedule.js?v=4"></script>
+    <script src="../shared/roi-schedule.js?v=5"></script>
     <script src="../shared/parking-settings.js?v=5"></script>
     <script>
         var unlockSettings = function () {
