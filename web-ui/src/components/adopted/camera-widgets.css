@@ -254,7 +254,7 @@
 }
 .mode-option input[type="radio"]:checked + .mode-card {
     border-color: var(--brand-primary);
-    background: rgba(0, 212, 170, 0.08);
+    background: var(--ui-accent-soft);
     box-shadow: 0 0 0 1px var(--brand-primary), var(--shadow-glow);
 }
 .mode-card::before {

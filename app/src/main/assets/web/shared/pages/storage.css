@@ -2,8 +2,8 @@
 /* storage.html — page-only styles, scoped to body[data-page="storage"] (moved from its inline
    <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
 body[data-page="storage"] .st-vol-name { display: flex; align-items: center; min-width: 0; }
-body[data-page="storage"] .st-vol-name > .sd-status-dot { margin-right: 8px; }
-body[data-page="storage"] [dir="rtl"] .st-vol-name > .sd-status-dot { margin-right: 0; margin-left: 8px; }
+body[data-page="storage"] .st-vol-name > .ui-dot { margin-right: 8px; }
+body[data-page="storage"] [dir="rtl"] .st-vol-name > .ui-dot { margin-right: 0; margin-left: 8px; }
 body[data-page="storage"] .st-vol-name > span + span { min-width: 0; overflow-wrap: break-word; }
 body[data-page="storage"] .st-vol-total { display: block; margin-top: 2px; color: var(--on-surface-variant); font-size: var(--fs-caption); }
 body[data-page="storage"] .st-vol-total:empty { display: none; }
@@ -11,7 +11,7 @@ body[data-page="storage"] .st-vol-bar { display: block; height: 6px; margin-top:
 body[data-page="storage"] .st-vol-fill { display: block; width: 0; height: 100%; border-radius: var(--radius-full); background-color: var(--primary); }
 body[data-page="storage"] .st-usage-row { padding-bottom: 8px; border-bottom: 0; }
 body[data-page="storage"] .st-limit-row { margin-top: 16px; border-bottom: 0; }
-body[data-page="storage"] .st-limit-row + .slider-range-labels { margin-bottom: 4px; }
+body[data-page="storage"] .st-limit-row + .ui-meter-labels { margin-bottom: 4px; }
 body[data-page="storage"] .st-banner { margin-top: 12px; }
 body[data-page="storage"] .st-dot-warn { background-color: var(--warning); }
 body[data-page="storage"] .st-recover-result { margin: 0 0 12px; }
@@ -21,5 +21,5 @@ body[data-page="storage"] [dir="rtl"] .st-range-under { margin-left: 0; margin-r
 body[data-page="storage"] .st-range-under { width: auto; margin-left: 82px; }
 body[data-page="storage"] [dir="rtl"] .st-range-under { margin-left: 0; margin-right: 82px; }
 }
-body[data-page="storage"] #cdrRecommendBanner > .info-icon { float: left; margin-right: 10px; }
-body[data-page="storage"] [dir="rtl"] #cdrRecommendBanner > .info-icon { float: right; margin-right: 0; margin-left: 10px; }
+body[data-page="storage"] #cdrRecommendBanner > .ui-note-icon { float: left; margin-right: 10px; }
+body[data-page="storage"] [dir="rtl"] #cdrRecommendBanner > .ui-note-icon { float: right; margin-right: 0; margin-left: 10px; }

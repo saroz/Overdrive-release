@@ -28,6 +28,8 @@
 
 @import "./components/adopted/skeleton.css";
 
+@import "./components/adopted/driving-widgets.css";
+
 @import "tailwindcss/utilities.css" source(none);
 
 @source "../../app/src/main/assets/web/local/*.html";

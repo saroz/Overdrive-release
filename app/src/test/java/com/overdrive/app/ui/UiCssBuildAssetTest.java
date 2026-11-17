@@ -58,7 +58,9 @@ public class UiCssBuildAssetTest {
 
     @Test
     public void noNetworkLoads() throws IOException {
-        assertFalse(css().matches("(?s).*https?://.*"));
+        // An SVG namespace inside an inline data: image is an identifier, not a request.
+        String withoutSvgNamespace = css().replaceAll("xmlns=(%27|%22|'|\\\\?\")http://www\\.w3\\.org/2000/svg", "");
+        assertFalse(withoutSvgNamespace.matches("(?s).*https?://.*"));
     }
 
     @Test

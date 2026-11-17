@@ -1406,8 +1406,7 @@ var CHARGING = {
                 // for in-progress) — the user wants kW visible regardless of state.
                 var powerChip = peakStr;
                 item.innerHTML = dayHead +
-                    '<article class="session-card session-card--' + kind
-                        + ' app-surface-card app-surface-card--interactive"'
+                    '<article class="session-card session-card--' + kind + ' app-surface-card app-surface-card--interactive"'
                         + ' role="button" tabindex="0" aria-label="'
                         + self._esc(typeLabel + ', ' + energy) + '">' +
                     '<div class="session-primary">' +

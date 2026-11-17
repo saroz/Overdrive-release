@@ -336,11 +336,12 @@ public class ChargingFrontendContractTest {
         assertTrue(html.contains("position: -webkit-sticky"));
         assertTrue(html.contains("position: sticky"));
         assertTrue(html.contains(".ch-detail-nav"));
-        assertTrue(html.contains("body.charging-detail-open .ch-detail-nav"));
+        // Page CSS is scoped to body[data-page="charging"] since the 2026-11-17 rebuild.
+        assertTrue(html.contains("body[data-page=\"charging\"].charging-detail-open .ch-detail-nav"));
         assertTrue(html.contains("background: var(--page)"));
         assertTrue(html.contains(
-                "body.charging-page .main-content > .page-body"));
-        assertTrue(html.contains("body.charging-page .app-layout"));
+                "body[data-page=\"charging\"].charging-page .main-content > .ui-page-body"));
+        assertTrue(html.contains("body[data-page=\"charging\"].charging-page .app-layout"));
         assertTrue(html.contains("overflow: visible"));
     }
 
@@ -393,11 +394,11 @@ public class ChargingFrontendContractTest {
         while (current != null) {
             Path candidate = current.resolve(relativePath);
             if (Files.isRegularFile(candidate)) {
-                return new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relativePath, new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8));
             }
             Path fromModule = current.resolve(relativePath.replaceFirst("^app/", ""));
             if (Files.isRegularFile(fromModule)) {
-                return new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("app/" + relativePath.replaceFirst("^app/", ""), new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8));
             }
             current = current.getParent();
         }

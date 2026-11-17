@@ -1,0 +1,36 @@
+/* road-sense.html — page-only styles, scoped to body[data-page="road-sense"] (moved from its inline
+   <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
+body[data-page="road-sense"] .bs-speed-range { display: flex; align-items: center; gap: 8px; }
+body[data-page="road-sense"] .bs-speed-num {
+            width: 76px; min-width: 0; height: 38px;
+            box-sizing: border-box;
+            padding: 0 8px;
+            text-align: center;
+            font-family: var(--ui-font);
+            font-size: 14px;
+            
+            -moz-appearance: textfield;
+        }
+body[data-page="road-sense"] .bs-speed-num::-webkit-outer-spin-button,
+body[data-page="road-sense"] .bs-speed-num::-webkit-inner-spin-button {
+            -webkit-appearance: none; margin: 0;
+        }
+body[data-page="road-sense"] .bs-speed-unit { color: var(--text-muted); font-size: 13px; white-space: nowrap; }
+body[data-page="road-sense"] .bs-speed-dash { color: var(--text-muted); }
+body[data-page="road-sense"] .bs-speed-hint { margin-top: 6px; }
+body[data-page="road-sense"] .bs-speed-hint.is-error { color: var(--error); }
+body[data-page="road-sense"] .bs-speed-row { border-bottom: none; padding-bottom: 8px; }
+body[data-page="road-sense"] .bs-apply-row {
+            justify-content: flex-end;
+            padding-top: 0;
+        }
+body[data-page="road-sense"] .bs-stitch-actions {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--hairline, var(--border-subtle));
+        }
+body[data-page="road-sense"] .rs-google-links { display: flex; flex-wrap: wrap; margin-top: 6px; }
+body[data-page="road-sense"] .rs-google-open { margin-left: 8px; }
+body[data-page="road-sense"] [dir="rtl"] .rs-google-open { margin-left: 0; margin-right: 8px; }

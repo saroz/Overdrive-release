@@ -372,13 +372,13 @@ body[data-page="parking"] .pk-field--num { width: 120px; font-variant-numeric: t
 :root[data-android-embed="1"] body[data-page="parking"] .load-more-btn,
 :root[data-android-embed="1"] body[data-page="parking"] .detail-back-btn,
 :root[data-android-embed="1"] body[data-page="parking"] .detail-delete-btn,
-:root[data-android-embed="1"] body[data-page="parking"] .empty-state .btn,
+:root[data-android-embed="1"] body[data-page="parking"] .ui-empty .ui-button,
 :root[data-android-embed="1"] body[data-page="parking"] .pk-field { min-height: 56px; font-size: var(--fs-body); }
 :root[data-android-embed="1"] body[data-page="parking"] .park-card { grid-template-columns: minmax(240px, 1.2fr) minmax(0, 3fr) 56px; min-height: 112px; }
 :root[data-android-embed="1"] body[data-page="parking"] .park-chip,
 :root[data-android-embed="1"] body[data-page="parking"] .park-live-tag { min-height: 28px; font-size: var(--fs-label); }
 :root[data-android-embed="1"] body[data-page="parking"] .park-metric-label,
-:root[data-android-embed="1"] body[data-page="parking"] .pk-hero .r-hero-stat-label,
+:root[data-android-embed="1"] body[data-page="parking"] .pk-hero .ui-data-label,
 :root[data-android-embed="1"] body[data-page="parking"] .pk-tag,
 :root[data-android-embed="1"] body[data-page="parking"] .detail-stat-label,
 :root[data-android-embed="1"] body[data-page="parking"] .pk-ev-sub,

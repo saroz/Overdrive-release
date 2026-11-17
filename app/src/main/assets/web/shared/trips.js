@@ -1257,7 +1257,7 @@ const TRIPS = {
         if (badge) {
             badge.textContent = this.cdrCleanupEnabled
                 ? BYD.i18n.t('status.on') : BYD.i18n.t('status.off');
-            badge.className = 'status-badge '
+            badge.className = 'ui-badge '
                 + (this.cdrCleanupEnabled ? 'active' : 'inactive');
         }
     },
@@ -3894,7 +3894,7 @@ const TRIPS = {
 
             // Compare on Map button
             if (stats.bestTripId > 0) {
-                html += '<button type="button" class="btn btn-secondary rc-map-btn" onclick="TRIPS.showRouteMapComparison(' + tripId + ',' + stats.bestTripId + ',' + (stats.worstTripId > 0 ? stats.worstTripId : -1) + ')">'
+                html += '<button type="button" class="ui-button rc-map-btn" onclick="TRIPS.showRouteMapComparison(' + tripId + ',' + stats.bestTripId + ',' + (stats.worstTripId > 0 ? stats.worstTripId : -1) + ')">'
                     + ico('<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><path d="M8 2v16M16 6v16"/>')
                     + '<span>' + esc(tr('trip.route_compare.compare_map', 'Compare on map')) + '</span></button>';
             }

@@ -147,6 +147,12 @@ function stylesOldVocabulary(selector) {
   return sels.every(sel => TOKENS.some(t => new RegExp(`\\.${ESC(t)}(?![\\w-])`).test(sel)));
 }
 
+/** Rename old shared classes inside a selector to their ui- names (last name when one maps to two). */
+function renameSelector(sel) {
+  return sel.replace(/\.(-?[_a-zA-Z][\w-]*)/g, (all, t) =>
+    Object.prototype.hasOwnProperty.call(MAP, t) && MAP[t] ? '.' + MAP[t].split(' ').pop() : all);
+}
+
 /** Prefix one selector with the page scope, keeping html/:root/body qualifiers in front.
  *  A leading class that sits on <body> (e.g. .live-view-page) is merged into the scope. */
 function scopeSelector(sel, scope, bodyClasses = []) {
@@ -177,7 +183,8 @@ function keepCss(css, scope, bodyClasses = []) {
     } else if (head.startsWith('@')) {
       kept.push(c);
     } else if (!stylesOldVocabulary(head)) {
-      const sel = head.split(',').map(x => scopeSelector(x, scope, bodyClasses)).join(',\n');
+      // Mixed lists are kept; their old shared class names are renamed so the rule still applies.
+      const sel = head.split(',').map(x => scopeSelector(renameSelector(x), scope, bodyClasses)).join(',\n');
       kept.push(`${sel} {${body}}`);
     }
   }

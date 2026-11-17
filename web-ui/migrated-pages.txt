@@ -5,3 +5,7 @@ surveillance.html
 parking.html
 events.html
 live-view.html
+trips.html
+charging.html
+performance.html
+road-sense.html

@@ -493,7 +493,7 @@ BYD.roadSense = {
         this._applyMasterGate(c.enabled);
 
         // Warn mode button group.
-        document.querySelectorAll('#rsWarnModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#rsWarnModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === c.warnMode));
 
         // Chime audio channel.
@@ -656,7 +656,7 @@ BYD.roadSense = {
      * with the RoadSense master off.
      */
     _applyMasterGate(masterOn) {
-        document.querySelectorAll('.card').forEach(card => {
+        document.querySelectorAll('.ui-panel').forEach(card => {
             // Leave the master switch's own card always interactive.
             if (card.querySelector('#rsEnabled')) return;
             // Blind Spot is independent of the RoadSense master gate.
@@ -670,7 +670,7 @@ BYD.roadSense = {
             // `select` included: the chime-channel dropdown is the first <select> in a
             // GATED card (the other two live in the exempt map/blindspot tabs), so
             // without it that control stayed live inside a dimmed card.
-            card.querySelectorAll('input, button, select, .btn-toggle').forEach(ctrl => {
+            card.querySelectorAll('input, button, select, .ui-segment').forEach(ctrl => {
                 if (!masterOn) {
                     ctrl.setAttribute('disabled', 'disabled');
                     ctrl.setAttribute('aria-disabled', 'true');
@@ -686,7 +686,7 @@ BYD.roadSense = {
         const badge = document.getElementById(id);
         if (!badge) return;
         badge.textContent = on ? BYD.i18n.t('status.on') : BYD.i18n.t('status.off');
-        badge.className = 'status-badge ' + (on ? 'active' : 'inactive');
+        badge.className = 'ui-badge ' + (on ? 'active' : 'inactive');
     },
 
     _setLeadLabel(seconds) {
@@ -885,12 +885,12 @@ BYD.roadSense = {
         if (mode !== 'visual' && mode !== 'audio' && mode !== 'both') return;
         const prev = this.config.warnMode;
         // Optimistic UI — reflect immediately, revert if the write fails.
-        document.querySelectorAll('#rsWarnModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#rsWarnModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === mode));
         const ok = await this._save({ warnMode: mode });
         if (ok) { this.config.warnMode = mode; this._toastSaved(); }
         else {
-            document.querySelectorAll('#rsWarnModeBtns .btn-toggle').forEach(btn =>
+            document.querySelectorAll('#rsWarnModeBtns .ui-segment').forEach(btn =>
                 btn.classList.toggle('active', btn.dataset.value === prev));
             this._toastFailed();
         }
@@ -1274,7 +1274,7 @@ BYD.roadSense = {
         const fallback = hasKey ? 'Routing key configured' : 'No routing key';
         const t = BYD.i18n.t(key);
         badge.textContent = (t && t !== key) ? t : fallback;
-        badge.className = 'status-badge ' + (hasKey ? 'active' : 'inactive');
+        badge.className = 'ui-badge ' + (hasKey ? 'active' : 'inactive');
     },
 
     async saveRouting() {
@@ -1597,7 +1597,7 @@ BYD.roadSense = {
         // Keep data-i18n on the shown key so a language switch re-translates the right text.
         badge.setAttribute('data-i18n', look[0]);
         badge.textContent = this._t(look[0], look[1]);
-        badge.className = 'status-badge ' + look[2];
+        badge.className = 'ui-badge ' + look[2];
     },
 
     _renderGoogleApis(apiState, apiReason) {
@@ -1996,7 +1996,7 @@ BYD.roadSense = {
         const fallback = projecting ? 'Projecting' : 'Off';
         const t = BYD.i18n.t(key);
         badge.textContent = (t && t !== key) ? t : fallback;
-        badge.className = 'status-badge ' + (projecting ? 'active' : 'inactive');
+        badge.className = 'ui-badge ' + (projecting ? 'active' : 'inactive');
     },
 
     async toggleClusterProject() {
@@ -2349,7 +2349,7 @@ BYD.roadSense = {
     _bsTrimDividers() {
         var body = document.getElementById('bsViewBody');
         if (!body) return;
-        var rows = body.querySelectorAll('.setting-row');
+        var rows = body.querySelectorAll('.ui-row');
         var last = null;
         for (var i = 0; i < rows.length; i++) {
             rows[i].classList.remove('bs-row-last');

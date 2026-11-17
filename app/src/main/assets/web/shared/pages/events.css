@@ -411,7 +411,7 @@ body[data-page="events"] .recordings-list {
             min-height: 0;
         }
 body[data-page="events"] .recordings-list > .loading,
-body[data-page="events"] .recordings-list > .empty-state,
+body[data-page="events"] .recordings-list > .ui-empty,
 body[data-page="events"] .recordings-list > .day-head { grid-column: 1 / -1; }
 @media (min-width: 1600px) {
 body[data-page="events"] .recordings-list { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
