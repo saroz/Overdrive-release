@@ -17,7 +17,7 @@ body[data-page="key-mapping"] .km-capture {
 body[data-page="key-mapping"] .km-capture > * + * { margin-top: 6px; }
 body[data-page="key-mapping"] .km-capture.armed { border-style: solid; border-color: var(--primary); background: var(--primary-soft); }
 body[data-page="key-mapping"] .km-capture .km-keycode {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--ui-font);
             font-size: 40px;
             font-weight: 700;
             color: var(--primary);
@@ -55,7 +55,7 @@ body[data-page="key-mapping"] .km-binding .km-key {
             border-radius: var(--radius-sm);
             background-color: var(--primary-soft);
             color: var(--primary);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--ui-font);
             font-size: var(--fs-body);
             font-weight: 700;
             font-variant-numeric: tabular-nums;

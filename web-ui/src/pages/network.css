@@ -1,0 +1,40 @@
+/* network.html — page-only styles, scoped to body[data-page="network"] (moved from its inline
+   <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
+body[data-page="network"] .hs-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+body[data-page="network"] .hs-stat { background: var(--bg-elevated); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+@media (max-width: 540px) {
+body[data-page="network"] .hs-stats { grid-template-columns: 1fr 1fr; }
+}
+body[data-page="network"] .hs-client { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border-subtle); }
+body[data-page="network"] .hs-client:last-child { border-bottom: none; }
+body[data-page="network"] .hs-client-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; background: var(--status-success); }
+body[data-page="network"] .hs-client-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+body[data-page="network"] .hs-client-name { font-weight: 600; font-size: 14px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body[data-page="network"] .hs-client-meta { font-size: 12px; color: var(--text-muted); font-family: var(--family-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body[data-page="network"] .hs-empty { font-size: 13px; color: var(--text-secondary); padding: 8px 0; }
+body[data-page="network"] .hs-field { display: flex; flex-direction: column; gap: 4px; margin-top: 14px; }
+body[data-page="network"] .hs-field label { font-size: 12px; color: var(--text-secondary); }
+body[data-page="network"] .hs-field input {
+            padding: 10px 14px; background: var(--bg-elevated); border: 1px solid var(--border-color);
+            border-radius: 8px; color: var(--text-primary); font-size: 14px;
+        }
+body[data-page="network"] .hs-field input:focus { outline: none; border-color: var(--brand-primary); }
+body[data-page="network"] .hs-readonly-row { display: flex; align-items: stretch; }
+body[data-page="network"] .hs-readonly-row > * + * { margin-left: 8px; }
+body[data-page="network"] .hs-readonly {
+            display: flex; align-items: center; flex: 1 1 auto; min-width: 0; min-height: 48px;
+            box-sizing: border-box; padding: 10px 14px; overflow-wrap: anywhere;
+            background: var(--bg-elevated); border: 1px solid var(--border-color);
+            border-radius: 8px; color: var(--text-primary); font: 14px var(--family-mono);
+            cursor: copy;
+        }
+body[data-page="network"] .hs-readonly:hover { border-color: var(--brand-primary); }
+body[data-page="network"] .hs-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+body[data-page="network"] .hs-note { font-size: 12px; color: var(--text-muted); margin-top: 8px; line-height: 1.5; }
+body[data-page="network"] .hs-warn {
+            background: var(--status-warning-container, var(--bg-elevated));
+            border: 1px solid var(--status-warning);
+            border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;
+            font-size: 13px; color: var(--text-primary); line-height: 1.5;
+        }
+body[data-page="network"] .hs-warn .hs-actions { margin-top: 10px; }

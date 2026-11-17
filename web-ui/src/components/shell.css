@@ -398,3 +398,9 @@ html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
   .ui-page-head { flex-direction: column; align-items: flex-start; gap: 12px; }
   .ui-page-head h1 { font-size: 26px; }
 }
+
+.ui-dot { display: inline-block; flex: none; }
+.ui-dot.live { background: var(--ui-green); }
+.ui-dot.connecting { background: var(--ui-accent); }
+.ui-dot.off { background: var(--ui-line); }
+.ui-dot.error, .ui-dot.disconnected { background: var(--ui-red); }

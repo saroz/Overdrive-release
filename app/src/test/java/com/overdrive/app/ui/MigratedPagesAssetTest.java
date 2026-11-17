@@ -140,7 +140,9 @@ public class MigratedPagesAssetTest {
             // Full-window workspaces (live video) have no page heading or settings panels.
             if (html.contains(" data-ui-workspace")) continue;
             assertTrue(page + " has no ui-page-head", html.contains("ui-page-head"));
-            assertTrue(page + " has no ui-panel", html.contains("ui-panel"));
+            // Panels may be built by the page's own script (e.g. module fault cards).
+            assertTrue(page + " has no ui-panel",
+                    html.contains("ui-panel") || scripts(page, html).contains("ui-panel"));
         }
     }
 

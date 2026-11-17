@@ -146,10 +146,10 @@ const MQTT = {
         const editIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
         const deleteIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
         const enabledHtml = conn.enabled
-            ? '<span class="status-dot connected"></span><span>' + BYD.i18n.t('common.enabled') + '</span>'
-            : '<span class="status-dot off"></span><span>' + BYD.i18n.t('common.disabled') + '</span>';
+            ? '<span class="ui-dot connected"></span><span>' + BYD.i18n.t('common.enabled') + '</span>'
+            : '<span class="ui-dot off"></span><span>' + BYD.i18n.t('common.disabled') + '</span>';
         return `
-        <div class="card conn-card" style="${!conn.enabled ? 'opacity:0.6;' : ''}">
+        <div class="ui-panel conn-card" style="${!conn.enabled ? 'opacity:0.6;' : ''}">
             <div class="conn-header" onclick="MQTT.toggleExpand('${conn.id}')">
                 <span class="conn-dot ${dotClass}"></span>
                 <div class="conn-info">
@@ -163,17 +163,17 @@ const MQTT = {
             </div>
             <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;gap:8px;" onclick="event.stopPropagation()">
                 <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);">${enabledHtml}</div>
-                <label class="toggle-switch">
+                <label class="ui-toggle">
                     <input type="checkbox" ${conn.enabled ? 'checked' : ''} onchange="MQTT.toggleEnabled('${conn.id}', this.checked)">
-                    <span class="toggle-slider"></span>
+                    <span class="ui-toggle-track"></span>
                 </label>
             </div>
             <div class="conn-detail ${isExpanded ? 'open' : ''}" id="detail-${conn.id}">
                 <div class="conn-stats">
-                    <div class="conn-stat"><div class="label">${BYD.i18n.t('mqtt.label_status')}</div><div class="value">${statusText}</div></div>
-                    <div class="conn-stat"><div class="label">${BYD.i18n.t('mqtt.label_last_publish')}</div><div class="value">${lastPub}</div></div>
-                    <div class="conn-stat"><div class="label">${BYD.i18n.t('mqtt.label_published')}</div><div class="value">${totalPub}</div></div>
-                    <div class="conn-stat"><div class="label">${BYD.i18n.t('mqtt.label_failed')}</div><div class="value" style="${failedPub > 0 ? 'color:var(--danger)' : ''}">${failedPub}</div></div>
+                    <div class="conn-stat"><div class="ui-detail-label">${BYD.i18n.t('mqtt.label_status')}</div><div class="ui-detail-value">${statusText}</div></div>
+                    <div class="conn-stat"><div class="ui-detail-label">${BYD.i18n.t('mqtt.label_last_publish')}</div><div class="ui-detail-value">${lastPub}</div></div>
+                    <div class="conn-stat"><div class="ui-detail-label">${BYD.i18n.t('mqtt.label_published')}</div><div class="ui-detail-value">${totalPub}</div></div>
+                    <div class="conn-stat"><div class="ui-detail-label">${BYD.i18n.t('mqtt.label_failed')}</div><div class="ui-detail-value" style="${failedPub > 0 ? 'color:var(--danger)' : ''}">${failedPub}</div></div>
                 </div>
                 ${lastErr ? `<div style="font-size:12px;color:var(--danger);padding:8px 0;">${this.esc(lastErr)}</div>` : ''}
                 <div style="font-size:12px;color:var(--text-muted);display:flex;gap:16px;flex-wrap:wrap;">

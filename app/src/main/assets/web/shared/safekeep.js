@@ -289,19 +289,19 @@ window.SK = (function () {
 
     function openModal(opts) {
         var backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop';
+        backdrop.className = 'ui-modal-backdrop';
         backdrop.style.display = 'flex';
         var card = document.createElement('div');
-        card.className = 'modal-card sk-modal-card';
+        card.className = 'ui-dialog sk-modal-card';
         card.setAttribute('role', 'dialog');
         card.setAttribute('aria-modal', 'true');
-        var html = '<h3 class="soh-modal-title">' + esc(opts.title || '') + '</h3>'
+        var html = '<h3 class="ui-dialog-title">' + esc(opts.title || '') + '</h3>'
             + '<div class="sk-modal-body">' + (opts.body || '') + '</div>'
-            + '<div class="soh-modal-actions"></div>';
+            + '<div class="ui-dialog-actions"></div>';
         card.innerHTML = html;
         backdrop.appendChild(card);
         document.body.appendChild(backdrop);
-        var actionsEl = card.querySelector('.soh-modal-actions');
+        var actionsEl = card.querySelector('.ui-dialog-actions');
         var closed = false;
         var m = {
             el: card,
@@ -317,7 +317,7 @@ window.SK = (function () {
                 actionsEl.innerHTML = '';
                 (list || []).forEach(function (a) {
                     var b = document.createElement('button');
-                    b.className = 'btn ' + (a.cls || 'btn-secondary');
+                    b.className = 'ui-button ' + (a.cls || 'btn-secondary');
                     b.textContent = a.label;
                     if (a.id) b.id = a.id;
                     b.onclick = function () { a.onClick(m, b); };
@@ -341,19 +341,19 @@ window.SK = (function () {
     }
 
     function field(id, label, value, type, extra) {
-        return '<div class="md-field sk-field"><div class="md-field-box">'
-            + '<input class="md-input" id="' + id + '" type="' + (type || 'text') + '" placeholder=" " value="' + esc(value || '') + '" ' + (extra || '') + '>'
-            + '<label class="md-label" for="' + id + '">' + esc(label) + '</label></div></div>';
+        return '<div class="ui-field sk-field"><div class="ui-field-box">'
+            + '<input class="ui-input" id="' + id + '" type="' + (type || 'text') + '" placeholder=" " value="' + esc(value || '') + '" ' + (extra || '') + '>'
+            + '<label class="ui-label" for="' + id + '">' + esc(label) + '</label></div></div>';
     }
 
     function textarea(id, label, value) {
-        return '<div class="md-field sk-field"><div class="md-field-box">'
-            + '<textarea class="md-input" id="' + id + '" rows="4" placeholder=" " style="font-family:JetBrains Mono,monospace;font-size:12px;">' + esc(value || '') + '</textarea>'
-            + '<label class="md-label" for="' + id + '">' + esc(label) + '</label></div></div>';
+        return '<div class="ui-field sk-field"><div class="ui-field-box">'
+            + '<textarea class="ui-input" id="' + id + '" rows="4" placeholder=" " style="font-family:JetBrains Mono,monospace;font-size:12px;">' + esc(value || '') + '</textarea>'
+            + '<label class="ui-label" for="' + id + '">' + esc(label) + '</label></div></div>';
     }
 
     function select(id, options, value) {
-        var h = '<select class="select-control" id="' + id + '">';
+        var h = '<select class="ui-select" id="' + id + '">';
         options.forEach(function (o) {
             h += '<option value="' + esc(o[0]) + '"' + (String(o[0]) === String(value) ? ' selected' : '') + '>' + esc(o[1]) + '</option>';
         });
@@ -361,14 +361,14 @@ window.SK = (function () {
     }
 
     function settingRow(name, desc, control) {
-        return '<div class="setting-row"><div class="setting-info"><div class="setting-name">' + esc(name) + '</div>'
-            + (desc ? '<div class="setting-desc">' + esc(desc) + '</div>' : '') + '</div>'
-            + '<div class="setting-control">' + control + '</div></div>';
+        return '<div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title">' + esc(name) + '</div>'
+            + (desc ? '<div class="ui-row-desc">' + esc(desc) + '</div>' : '') + '</div>'
+            + '<div class="ui-row-end">' + control + '</div></div>';
     }
 
     function toggle(id, checked, onchange) {
-        return '<label class="toggle-switch"><input type="checkbox" id="' + id + '"' + (checked ? ' checked' : '')
-            + (onchange ? ' onchange="' + onchange + '"' : '') + '><span class="toggle-slider"></span></label>';
+        return '<label class="ui-toggle"><input type="checkbox" id="' + id + '"' + (checked ? ' checked' : '')
+            + (onchange ? ' onchange="' + onchange + '"' : '') + '><span class="ui-toggle-track"></span></label>';
     }
 
     function val(id) {
@@ -500,7 +500,7 @@ window.SK = (function () {
         var anyBad = false;
         (s.destinations || []).forEach(function (d) { if (d.state === 'needs_auth' || d.state === 'quota_full') anyBad = true; });
         if (badge) {
-            badge.className = 'status-badge ' + (!on ? 'inactive' : (anyBad ? 'errored' : 'active'));
+            badge.className = 'ui-badge ' + (!on ? 'inactive' : (anyBad ? 'errored' : 'active'));
             badge.textContent = !on ? t('safekeep.badge_off', 'OFF') : (anyBad ? t('safekeep.badge_attention', 'CHECK') : t('safekeep.badge_on', 'ON'));
         }
         var hasDest = destinations().length > 0;
@@ -520,7 +520,7 @@ window.SK = (function () {
             dotCls = 'off';
         } else if (st === 'waiting') { label = t('safekeep.st_waiting', 'Waiting'); dotCls = 'off'; }
         else { label = t('safekeep.st_idle', 'Up to date'); dotCls = 'connected'; }
-        dot.className = 'status-dot ' + dotCls;
+        dot.className = 'ui-dot ' + dotCls;
         text.textContent = label;
         var r = s.reason ? reasonText(s.reason) : '';
         if (!r && s.lastOkAt) r = t('safekeep.last_upload', 'Last upload {ago}', { ago: fmtAgo(s.lastOkAt) });
@@ -535,7 +535,7 @@ window.SK = (function () {
             h += '<div class="sk-transfer"><div class="sk-transfer-top"><span class="sk-transfer-name">' + esc(c.name) + ' → ' + esc(dn) + '</span>'
                 + '<span class="sk-transfer-meta">' + fmtBytes(c.sent) + ' / ' + fmtBytes(c.size)
                 + (c.kbps ? ' · ' + (c.kbps >= 1000 ? (c.kbps / 1000).toFixed(1) + ' Mbps' : c.kbps + ' kbps') : '') + '</span></div>'
-                + '<div class="storage-bar"><div class="storage-fill" style="width:' + pct + '%"></div></div></div>';
+                + '<div class="ui-meter"><div class="ui-meter-fill" style="width:' + pct + '%"></div></div></div>';
         });
         $('skCurrent').innerHTML = h;
 
@@ -557,8 +557,8 @@ window.SK = (function () {
         if (cap > 0 || used > 0) {
             var pctm = cap > 0 ? Math.min(100, Math.round(used * 100 / cap)) : 0;
             mh = '<div class="sk-sub">' + esc(t('safekeep.mobile_month', 'Mobile data this month')) + '</div>'
-                + '<div class="storage-bar"><div class="storage-fill" style="width:' + pctm + '%"></div></div>'
-                + '<div class="storage-info"><span>' + esc(fmtBytes(used)) + '</span><span>'
+                + '<div class="ui-meter"><div class="ui-meter-fill" style="width:' + pctm + '%"></div></div>'
+                + '<div class="ui-meter-labels"><span>' + esc(fmtBytes(used)) + '</span><span>'
                 + esc(cap > 0 ? t('safekeep.of_cap_resets', 'of {cap} · resets {date}', { cap: fmtBytes(cap), date: mob.resetsOn || '' }) : t('safekeep.no_mobile', 'mobile data off')) + '</span></div>';
         }
         $('skMobile').innerHTML = mh;
@@ -649,7 +649,7 @@ window.SK = (function () {
                 + (st.lastError && !ok ? '<div class="sk-queue-err">' + esc(destErrorText(st.lastError)) + '</div>' : '') + '</div>'
                 + '<div class="safe-zone-actions">'
                 + (st.state === 'needs_auth' && (CONSUMER[d.type] || (d.params && d.params.mode === 'nextcloud'))
-                    ? '<button class="btn btn-primary" data-sk="reconnect" data-a="' + esc(d.id) + '">' + esc(t('safekeep.reconnect', 'Reconnect')) + '</button>' : '')
+                    ? '<button class="ui-button ui-button-primary" data-sk="reconnect" data-a="' + esc(d.id) + '">' + esc(t('safekeep.reconnect', 'Reconnect')) + '</button>' : '')
                 + '<button class="safe-zone-icon-btn" title="' + esc(t('safekeep.test', 'Test')) + '" data-sk="testDest" data-a="' + esc(d.id) + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></button>'
                 + '<button class="safe-zone-icon-btn" title="' + esc(t('safekeep.edit', 'Edit')) + '" data-sk="editDest" data-a="' + esc(d.id) + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></button>'
                 + '<button class="safe-zone-icon-btn is-danger" title="' + esc(t('safekeep.remove', 'Remove')) + '" data-sk="removeDest" data-a="' + esc(d.id) + '"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>'
@@ -736,7 +736,7 @@ window.SK = (function () {
         var configured = !!state.apps[type];
         // A reconnect reuses the app registration the storage was set up with.
         var needApp = !configured && !relinkId;
-        var body = '<p class="setting-desc">' + esc(type === 'dropbox'
+        var body = '<p class="ui-row-desc">' + esc(type === 'dropbox'
             ? t('safekeep.dropbox_intro', 'You\'ll sign in to Dropbox on your phone and paste back a short code. SafeKeep only gets its own app folder.')
             : t('safekeep.device_intro', 'You\'ll scan a QR code with your phone and enter a short code to approve SafeKeep. It can only see files it creates.')) + '</p>'
             + (type === 'gdrive' && needApp ? googleGuide() : '')
@@ -826,15 +826,15 @@ window.SK = (function () {
             var qr = '/api/safekeep/link/qr.png?id=' + encodeURIComponent(r.linkId) + '&t=' + Date.now();
             var h = '<div class="sk-qr"><img src="' + qr + '" alt="QR">';
             if (r.mode === 'device') {
-                h += '<div class="setting-desc">' + esc(t('safekeep.device_steps', 'Scan with your phone, or open the link and enter this code:')) + '</div>'
+                h += '<div class="ui-row-desc">' + esc(t('safekeep.device_steps', 'Scan with your phone, or open the link and enter this code:')) + '</div>'
                     + '<div class="sk-code">' + esc(r.userCode || '') + '</div>'
                     + '<a class="sk-link" href="' + esc(safeHref(r.verifyUrl)) + '" target="_blank" rel="noopener">' + esc(r.verifyUrl) + '</a>';
             } else if (r.mode === 'paste') {
-                h += '<div class="setting-desc">' + esc(t('safekeep.paste_steps', 'Scan with your phone (or open the link), allow SafeKeep, then paste the code here:')) + '</div>'
+                h += '<div class="ui-row-desc">' + esc(t('safekeep.paste_steps', 'Scan with your phone (or open the link), allow SafeKeep, then paste the code here:')) + '</div>'
                     + '<a class="sk-link" href="' + esc(safeHref(r.verifyUrl)) + '" target="_blank" rel="noopener">' + esc(t('safekeep.open_dropbox', 'Open Dropbox')) + '</a>'
                     + '<div style="width:100%;">' + field('skPasteCode', t('safekeep.code', 'Code'), '') + '</div>';
             } else {
-                h += '<div class="setting-desc">' + esc(t('safekeep.browser_steps', 'Scan with your phone (or open the link) and approve SafeKeep on your server:')) + '</div>'
+                h += '<div class="ui-row-desc">' + esc(t('safekeep.browser_steps', 'Scan with your phone (or open the link) and approve SafeKeep on your server:')) + '</div>'
                     + '<a class="sk-link" href="' + esc(safeHref(r.verifyUrl)) + '" target="_blank" rel="noopener">' + esc(t('safekeep.open_login', 'Open login page')) + '</a>';
             }
             h += '</div><div class="sk-wait" id="skLinkWait"' + (r.mode === 'paste' ? ' style="display:none"' : '') + '><span class="sk-spinner"></span><span>'
@@ -953,7 +953,7 @@ window.SK = (function () {
         m.body.innerHTML = '<div class="sk-wait"><span class="sk-spinner"></span><span>' + esc(t('safekeep.reading_cert', 'Reading the server certificate…')) + '</span></div>';
         api('POST', '/api/safekeep/dest/cert', { url: url, proxyMode: d.proxyMode || 'auto' }).then(function (c) {
             if (!c.success) { m.body.innerHTML = '<p class="sk-queue-err">' + esc(c.message || c.error) + '</p>'; return; }
-            m.body.innerHTML = '<p class="setting-desc">' + esc(t('safekeep.cert_untrusted', 'This server uses a certificate the car doesn\'t trust (common for a home NAS). Trust it only if this fingerprint matches your server:')) + '</p>'
+            m.body.innerHTML = '<p class="ui-row-desc">' + esc(t('safekeep.cert_untrusted', 'This server uses a certificate the car doesn\'t trust (common for a home NAS). Trust it only if this fingerprint matches your server:')) + '</p>'
                 + '<div class="sk-kit">' + esc(c.subject || '') + '<br>SHA-256 ' + esc(c.sha256) + '</div>';
             m.setActions([
                 { label: t('common.cancel', 'Cancel'), onClick: function (mm) { mm.close(); } },
@@ -972,7 +972,7 @@ window.SK = (function () {
     function trustHostKey(m, d, fp, blob, changed) {
         var intro = changed
             ? '<p class="sk-queue-err">' + esc(t('safekeep.hostkey_changed', 'This server\'s host key has CHANGED since you trusted it. That is expected only if the server was reinstalled or its keys were replaced; otherwise someone may be intercepting the connection. Trust the new key only if you know why it changed:')) + '</p>'
-            : '<p class="setting-desc">' + esc(t('safekeep.hostkey_confirm', 'First connection to this SFTP server. Trust it only if this host key matches your server:')) + '</p>';
+            : '<p class="ui-row-desc">' + esc(t('safekeep.hostkey_confirm', 'First connection to this SFTP server. Trust it only if this host key matches your server:')) + '</p>';
         m.body.innerHTML = intro + '<div class="sk-kit">' + esc(fp) + '</div>';
         m.setActions([
             { label: t('common.cancel', 'Cancel'), onClick: function (mm) { mm.close(); } },
@@ -1060,8 +1060,8 @@ window.SK = (function () {
                 + field('skS3Secret', t('safekeep.s3_secret', 'Secret access key'), '', 'password')
                 + settingRow(t('safekeep.s3_path', 'Path-style URLs'), '', toggle('skS3Path', true))
                 + settingRow(t('safekeep.s3_writeonly', 'Write-only key'), t('safekeep.s3_writeonly_desc', 'The key can add files but not read or delete them — evidence can\'t be erased from the car. Retention then needs a bucket lifecycle rule.'), toggle('skS3WriteOnly', false))
-                + '<div class="info-box-note" style="margin-top:8px;"><svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
-                + '<div class="info-note">' + esc(t('safekeep.s3_least_priv', 'Create a key limited to this one bucket. Then a key taken from the car can\'t touch anything else in your account.')) + '</div></div>'
+                + '<div class="ui-note" style="margin-top:8px;"><svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>'
+                + '<div class="ui-note-text">' + esc(t('safekeep.s3_least_priv', 'Create a key limited to this one bucket. Then a key taken from the car can\'t touch anything else in your account.')) + '</div></div>'
                 + settingRow(t('safekeep.proxy', 'Connection'), '', select('skS3Proxy', proxyOptions(), 'auto')),
             actions: [
                 { label: t('common.cancel', 'Cancel'), onClick: function (mm) { mm.close(); } },
@@ -1143,7 +1143,7 @@ window.SK = (function () {
             + settingRow(t('safekeep.encrypt_uploads', 'Encrypt uploads (age)'), t('safekeep.encrypt_desc', 'Only your secret key can open them; the car keeps just the public key. Encrypted videos can\'t be previewed in the storage app.'), toggle('skEdEncrypt', encOn))
             + '<div id="skEdEncBox" style="' + (encOn ? '' : 'display:none;') + '">'
             + field('skEdRecipient', t('safekeep.recipient', 'Public key (age1…)'), encOn ? enc.recipients[0] : '')
-            + '<div class="byd-action-row"><button class="btn btn-secondary" id="skEdGen">' + esc(t('safekeep.generate_key', 'Generate a new key')) + '</button></div></div>'
+            + '<div class="byd-action-row"><button class="ui-button" id="skEdGen">' + esc(t('safekeep.generate_key', 'Generate a new key')) + '</button></div></div>'
             + credentialFields(d);
         var m = openModal({
             title: t('safekeep.edit_x', 'Edit {name}', { name: d.name }),
@@ -1210,12 +1210,12 @@ window.SK = (function () {
     function generateKey(onRecipient) {
         api('POST', '/api/safekeep/keys/generate', {}).then(function (r) {
             if (!r.success) { toast(r.message || 'Error', 'error'); return; }
-            var body = '<p class="setting-desc">' + esc(t('safekeep.kit_intro', 'This is your secret key. It is shown once and is NOT kept on the car. Without it, encrypted backups can never be opened — save it in a password manager or print it.')) + '</p>'
+            var body = '<p class="ui-row-desc">' + esc(t('safekeep.kit_intro', 'This is your secret key. It is shown once and is NOT kept on the car. Without it, encrypted backups can never be opened — save it in a password manager or print it.')) + '</p>'
                 + '<div class="sk-kit" id="skKitId">' + esc(r.identity) + '</div>'
-                + '<div class="byd-action-row" style="margin:10px 0;"><button class="btn btn-secondary" id="skKitCopy">' + esc(t('safekeep.copy', 'Copy')) + '</button>'
-                + '<button class="btn btn-secondary" id="skKitSave">' + esc(t('safekeep.download_kit', 'Download recovery kit')) + '</button></div>'
+                + '<div class="byd-action-row" style="margin:10px 0;"><button class="ui-button" id="skKitCopy">' + esc(t('safekeep.copy', 'Copy')) + '</button>'
+                + '<button class="ui-button" id="skKitSave">' + esc(t('safekeep.download_kit', 'Download recovery kit')) + '</button></div>'
                 + '<div class="sk-muted">' + esc(t('safekeep.kit_public', 'Public key (stored on the car):')) + '</div><div class="sk-kit">' + esc(r.recipient) + '</div>'
-                + '<label class="sk-row-inline" style="margin-top:12px;"><input type="checkbox" id="skKitAck"> <span class="setting-desc">' + esc(t('safekeep.kit_ack', 'I have saved my secret key')) + '</span></label>';
+                + '<label class="sk-row-inline" style="margin-top:12px;"><input type="checkbox" id="skKitAck"> <span class="ui-row-desc">' + esc(t('safekeep.kit_ack', 'I have saved my secret key')) + '</span></label>';
             var m = openModal({
                 title: t('safekeep.kit_title', 'Your recovery kit'),
                 body: body,
@@ -1299,10 +1299,10 @@ window.SK = (function () {
             var on = !!r;
             var rule = (r && r.rule) || { preset: l.preset };
             var preset = rule.preset || l.preset;
-            h += '<div class="card" id="skLane_' + l.id + '"><div class="card-body">'
-                + '<div class="setting-row"><div class="setting-info"><div class="setting-name" style="font-size:15px;font-weight:700;">' + esc(laneTitle(l.id)) + '</div>'
-                + '<div class="setting-desc">' + esc(laneDesc(l.id)) + '</div></div>'
-                + '<div class="setting-control">' + toggle('skLaneOn_' + l.id, on, 'SK._laneToggle(\'' + l.id + '\', this.checked)') + '</div></div>';
+            h += '<div class="ui-panel" id="skLane_' + l.id + '"><div class="ui-panel-body">'
+                + '<div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" style="font-size:15px;font-weight:700;">' + esc(laneTitle(l.id)) + '</div>'
+                + '<div class="ui-row-desc">' + esc(laneDesc(l.id)) + '</div></div>'
+                + '<div class="ui-row-end">' + toggle('skLaneOn_' + l.id, on, 'SK._laneToggle(\'' + l.id + '\', this.checked)') + '</div></div>';
             if (on) {
                 h += '<div class="sk-sub">' + esc(t('safekeep.send_to', 'Send to')) + '</div><div class="sk-chip-row">';
                 destinations().forEach(function (d) {
@@ -1312,8 +1312,8 @@ window.SK = (function () {
                 if (!destinations().length) h += '<span class="sk-muted">' + esc(t('safekeep.no_storage', 'No storage connected yet')) + '</span>';
                 h += '</div>';
                 if (l.id === 'archive' && (r.dest || []).some(function (id) { var d = findDest(id); return d && CONSUMER[d.type]; })) {
-                    h += '<div class="info-box-warning" style="margin-top:10px;"><svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
-                        + '<div class="info-note">' + esc(t('safekeep.archive_warning', 'Dashcam footage is about 1.3 GB per hour — a free 15 GB account fills in a day or two of driving. A NAS or S3 bucket is a better home for it.')) + '</div></div>';
+                    h += '<div class="ui-note-warning" style="margin-top:10px;"><svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>'
+                        + '<div class="ui-note-text">' + esc(t('safekeep.archive_warning', 'Dashcam footage is about 1.3 GB per hour — a free 15 GB account fills in a day or two of driving. A NAS or S3 bucket is a better home for it.')) + '</div></div>';
                 }
                 if (l.id === 'evidence') {
                     h += '<div class="sk-sub">' + esc(t('safekeep.include', 'Include')) + '</div>'
@@ -1366,12 +1366,12 @@ window.SK = (function () {
             h += '<span class="sk-chip' + (days.length === 0 || days.indexOf(d) >= 0 ? ' active' : '') + '" data-day="' + d + '" onclick="this.classList.toggle(\'active\')">' + esc(t('safekeep.day_' + d, d.charAt(0).toUpperCase() + d.slice(1, 3))) + '</span>';
         });
         h += '</div></div>'
-            + settingRow(t('safekeep.max_mbps', 'Speed limit for this item (Mbps, 0 = none)'), '', '<input type="number" class="text-input" id="skCMbps_' + laneId + '" min="0" max="1000" step="0.5" value="' + esc(String(Number(rule.maxMbps) || 0)) + '" style="width:96px;min-width:96px;">')
+            + settingRow(t('safekeep.max_mbps', 'Speed limit for this item (Mbps, 0 = none)'), '', '<input type="number" class="ui-input" id="skCMbps_' + laneId + '" min="0" max="1000" step="0.5" value="' + esc(String(Number(rule.maxMbps) || 0)) + '" style="width:96px;min-width:96px;">')
             + '<div class="sk-sub">' + esc(t('safekeep.conditions', 'Extra conditions')) + '</div>'
-            + '<div class="setting-desc" style="margin-bottom:8px;">' + esc(t('safekeep.conditions_desc', 'The same signals automations use, e.g. location is Home and battery is above 30%.')) + '</div>'
+            + '<div class="ui-row-desc" style="margin-bottom:8px;">' + esc(t('safekeep.conditions_desc', 'The same signals automations use, e.g. location is Home and battery is above 30%.')) + '</div>'
             + settingRow(t('safekeep.match', 'Match'), '', select('skCLogic_' + laneId, [['AND', t('safekeep.match_all', 'All conditions')], ['OR', t('safekeep.match_any', 'Any condition')]], (rule.advanced && rule.advanced.logic) || 'AND'))
             + '<div id="skConds_' + laneId + '"></div>'
-            + '<div class="byd-action-row"><button class="btn btn-secondary" onclick="SK._addCond(\'' + laneId + '\')">' + esc(t('safekeep.add_condition', 'Add condition')) + '</button></div>';
+            + '<div class="byd-action-row"><button class="ui-button" onclick="SK._addCond(\'' + laneId + '\')">' + esc(t('safekeep.add_condition', 'Add condition')) + '</button></div>';
         return h;
     }
 
@@ -1411,9 +1411,9 @@ window.SK = (function () {
                 : [['eq', '='], ['neq', '≠'], ['gt', '>'], ['gte', '≥'], ['lt', '<'], ['lte', '≤']];
             var valHtml;
             if (def.kind === 'enum') valHtml = select('skCV_' + laneId + '_' + i, def.opts, c.value);
-            else if (def.kind === 'time') valHtml = '<input type="time" class="text-input" id="skCV_' + laneId + '_' + i + '" value="' + minToTime(c.value) + '">';
-            else if (def.kind === 'int') valHtml = '<input type="number" class="text-input" id="skCV_' + laneId + '_' + i + '" min="' + def.min + '" max="' + def.max + '" value="' + esc(c.value == null ? def.min : c.value) + '">';
-            else valHtml = '<input class="text-input" id="skCV_' + laneId + '_' + i + '" value="' + esc(c.value || '') + '">';
+            else if (def.kind === 'time') valHtml = '<input type="time" class="ui-input" id="skCV_' + laneId + '_' + i + '" value="' + minToTime(c.value) + '">';
+            else if (def.kind === 'int') valHtml = '<input type="number" class="ui-input" id="skCV_' + laneId + '_' + i + '" min="' + def.min + '" max="' + def.max + '" value="' + esc(c.value == null ? def.min : c.value) + '">';
+            else valHtml = '<input class="ui-input" id="skCV_' + laneId + '_' + i + '" value="' + esc(c.value || '') + '">';
             h += '<div class="sk-cond">'
                 + '<span class="sk-cond-type">' + select('skCT_' + laneId + '_' + i, typeOpts, c.type).replace('<select ', '<select onchange="SK._condType(\'' + laneId + '\',' + i + ', this.value)" ') + '</span>'
                 + '<span class="sk-cond-cmp">' + select('skCC_' + laneId + '_' + i, cmpOpts, c.comparator || 'eq') + '</span>'
@@ -1531,12 +1531,12 @@ window.SK = (function () {
     function setToggle(groupId, value) {
         var g = $(groupId);
         if (!g) return;
-        var btns = g.querySelectorAll('.btn-toggle');
+        var btns = g.querySelectorAll('.ui-segment');
         for (var i = 0; i < btns.length; i++) btns[i].classList.toggle('active', btns[i].getAttribute('data-value') === String(value));
     }
 
     function toggleValue(groupId) {
-        var a = document.querySelector('#' + groupId + ' .btn-toggle.active');
+        var a = document.querySelector('#' + groupId + ' .ui-segment.active');
         return a ? a.getAttribute('data-value') : null;
     }
 
@@ -1660,7 +1660,7 @@ window.SK = (function () {
                     + esc(meta.join(' · ')) + '</div>'
                     + (err ? '<div class="sk-queue-err">' + esc(err) + '</div>' : '') + '</div>'
                     + (it.state === 'FAILED' || it.state === 'PENDING'
-                        ? '<button class="btn btn-secondary" onclick="SK._retry(' + Number(it.id) + ')">' + esc(t('safekeep.retry', 'Retry')) + '</button>'
+                        ? '<button class="ui-button" onclick="SK._retry(' + Number(it.id) + ')">' + esc(t('safekeep.retry', 'Retry')) + '</button>'
                         + '<button class="safe-zone-icon-btn" onclick="SK._skip(' + Number(it.id) + ')" title="' + esc(t('safekeep.skip', 'Skip')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>'
                         : '') + '</div>';
             }).join('');

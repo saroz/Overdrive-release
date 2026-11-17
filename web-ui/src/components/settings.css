@@ -139,8 +139,11 @@
 .ui-detail-value { color: var(--ui-ink); font-weight: 600; text-align: end; overflow-wrap: anywhere; }
 
 .ui-field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
-.ui-field-box { position: relative; }
-.ui-field-trailing { position: absolute; inset-block: 0; inset-inline-end: 6px; display: flex; align-items: center; }
+/* Old floating-label fields: <div class="ui-field-box"><input><label></div>. Label goes above the input. */
+.ui-field-box { position: relative; display: flex; flex-direction: column; gap: 6px; }
+.ui-field-box > .ui-label { order: -1; }
+.ui-field-has-trailing .ui-input { padding-inline-end: 56px; }
+.ui-field-box > .md-trailing-btn { top: auto; bottom: 0; transform: none; }
 
 /* Inline stroke icons the older markup carries without a size get the mockup's icon size. */
 .ui-panel-title { display: flex; align-items: center; gap: 10px; }

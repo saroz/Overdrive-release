@@ -1,0 +1,66 @@
+/* mqtt.html — page-only styles, scoped to body[data-page="mqtt"] (moved from its inline
+   <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
+body[data-page="mqtt"] .conn-card { margin-bottom: 12px; }
+body[data-page="mqtt"] .conn-header { display: flex; align-items: center; gap: 12px; padding: 14px 16px; cursor: pointer; }
+body[data-page="mqtt"] .conn-header:hover { background: var(--bg-elevated); border-radius: 8px; }
+body[data-page="mqtt"] .conn-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+body[data-page="mqtt"] .conn-dot.connected { background: var(--status-success); box-shadow: 0 0 6px var(--status-success-container); }
+body[data-page="mqtt"] .conn-dot.disconnected { background: var(--status-danger); }
+body[data-page="mqtt"] .conn-dot.reconnecting { background: var(--status-warning); animation: pulse 1.5s infinite; }
+body[data-page="mqtt"] .conn-dot.stopped { background: var(--outline); }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+body[data-page="mqtt"] .conn-info {
+            flex: 1; min-width: 0;
+            display: flex; flex-direction: column;
+        }
+body[data-page="mqtt"] .conn-name { font-weight: 600; font-size: 14px; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body[data-page="mqtt"] .conn-broker { font-size: 12px; color: var(--text-muted); font-family: var(--family-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body[data-page="mqtt"] .conn-actions { display: flex; gap: 6px; flex-shrink: 0; }
+body[data-page="mqtt"] .conn-detail { padding: 0 16px 16px; display: none; }
+body[data-page="mqtt"] .conn-detail.open { display: block; }
+body[data-page="mqtt"] .conn-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+body[data-page="mqtt"] .conn-stat { background: var(--bg-elevated); border-radius: 8px; padding: 10px 12px; min-width: 0; }
+body[data-page="mqtt"] .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+body[data-page="mqtt"] .form-grid.full { grid-template-columns: 1fr; }
+@media (max-width: 540px) {
+body[data-page="mqtt"] .form-grid { grid-template-columns: 1fr; }
+body[data-page="mqtt"] .conn-stats { grid-template-columns: 1fr 1fr; gap: 6px; }
+body[data-page="mqtt"] .conn-stat { padding: 8px 10px; }
+body[data-page="mqtt"] .conn-header { gap: 10px; padding: 12px 14px; }
+body[data-page="mqtt"] .conn-detail { padding: 0 14px 14px; }
+body[data-page="mqtt"] .form-actions {
+                flex-direction: column-reverse;
+                gap: 10px;
+                margin: 16px 0 4px;
+                align-items: stretch;
+            }
+body[data-page="mqtt"] .conn-card > div[style*="padding:0 16px 12px"] { padding: 0 14px 12px !important; }
+}
+body[data-page="mqtt"] .form-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; }
+body[data-page="mqtt"] .telemetry-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+body[data-page="mqtt"] .telemetry-table td { padding: 8px 12px; border-bottom: 1px solid var(--border-subtle); font-size: 13px; }
+body[data-page="mqtt"] .telemetry-table tr:last-child td { border-bottom: none; }
+body[data-page="mqtt"] .telemetry-table td:first-child { color: var(--text-secondary); font-weight: 500; width: 42%; word-break: break-word; }
+body[data-page="mqtt"] .telemetry-table td:last-child { text-align: right; font-family: var(--ui-font); color: var(--text-primary); word-break: break-all; overflow-wrap: anywhere; }
+@media (max-width: 540px) {
+body[data-page="mqtt"] .telemetry-table td { padding: 8px 10px; font-size: 12px; }
+body[data-page="mqtt"] .telemetry-table td:first-child { width: 46%; }
+body[data-page="mqtt"] .telemetry-table td:last-child { font-size: 12px; }
+}
+body[data-page="mqtt"] .telemetry-scroll { max-height: 60vh; max-height: calc(var(--vh, 1vh) * 60); overflow-y: auto; }
+body[data-page="mqtt"] .telemetry-scroll::-webkit-scrollbar { width: 6px; }
+body[data-page="mqtt"] .telemetry-scroll::-webkit-scrollbar-track { background: transparent; }
+body[data-page="mqtt"] .telemetry-scroll::-webkit-scrollbar-thumb { background: var(--border-subtle); border-radius: 4px; }
+body[data-page="mqtt"] .telemetry-scroll::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+body[data-page="mqtt"] .badge-count { background: var(--brand-primary); color: var(--bg-base); font-size: 11px; font-weight: 600;
+            padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+body[data-page="mqtt"] .icon-btn {
+            background: none; border: 1px solid var(--border-color); border-radius: 6px; padding: 6px;
+            color: var(--text-secondary); cursor: pointer; font-size: 12px;
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px; flex-shrink: 0;
+        }
+body[data-page="mqtt"] .icon-btn svg { width: 16px; height: 16px; display: block; }
+body[data-page="mqtt"] .icon-btn:hover { background: var(--bg-elevated); color: var(--text-primary); }
+body[data-page="mqtt"] .icon-btn.danger { color: var(--danger); }
+body[data-page="mqtt"] .icon-btn.danger:hover { border-color: var(--danger); background: rgba(239,68,68,0.08); color: var(--danger); }

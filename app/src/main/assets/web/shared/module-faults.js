@@ -65,7 +65,7 @@ const ModuleFaultsPage = {
         const summaryNode = document.getElementById('mfSummary');
         if (summaryNode) {
             summaryNode.innerHTML = summaryItems.map(([field, label]) =>
-                '<div class="mf-summary-item"><div class="mf-summary-value">'
+                '<div class="ui-panel mf-summary-item"><div class="mf-summary-value">'
                 + Number(summary[field] || 0)
                 + '</div><div class="mf-summary-label">'
                 + this.escape(this.t(label, label))
@@ -120,7 +120,7 @@ const ModuleFaultsPage = {
                 + '</span></div><p>' + this.escape(reading.summary || '')
                 + '</p>' + metricHtml + '</div>';
         }).join('');
-        return '<article class="mf-card ' + this.escape(status) + '">'
+        return '<article class="ui-panel mf-card ' + this.escape(status) + '">'
             + '<div class="mf-card-head"><h2>' + this.escape(module.name || module.id || this.t('fallback_module_name', 'Module'))
             + '</h2><span class="mf-status ' + this.escape(status) + '">'
             + this.escape(statusText) + '</span></div>'

@@ -309,27 +309,21 @@ select.md-input ~ .md-label,
 .md-field-box select.md-input ~ .md-label { top: 16px; font-size: var(--fs-caption); background: transparent; }
 .md-input:focus ~ .md-label { color: var(--primary); }
 .md-supporting { margin-left: 16px; margin-right: 16px; color: var(--on-surface-variant); overflow-wrap: break-word; }
-.md-trailing-btn { color: var(--on-surface-variant); }
-.md-trailing-btn:hover { background-color: transparent; color: var(--on-surface-variant); }
 @media (hover: hover) {
     .md-input:hover, select.md-input:hover { border-color: var(--outline); }
-    .md-trailing-btn:hover { background-color: var(--well-2); color: var(--on-surface); }
 }
 @media (pointer: coarse) {
     .md-input { font-size: 16px; }
 }
 [dir="rtl"] .md-label { left: auto; right: 10px; }
 [dir="rtl"] .md-field-trailing .md-input { padding-right: 16px; padding-left: 56px; }
-[dir="rtl"] .md-trailing-btn { right: auto; left: 6px; }
 [dir="rtl"] select.md-input { padding-right: 16px; padding-left: 40px; background-position: left 14px center; }
 :root[data-android-embed="1"] .md-input { height: 64px; padding-top: 26px; font-size: var(--fs-body); }
 :root[data-android-embed="1"] .md-field-trailing .md-input { padding-right: 68px; }
 :root[data-android-embed="1"] .md-input:focus ~ .md-label,
 :root[data-android-embed="1"] .md-input:not(:placeholder-shown) ~ .md-label,
 :root[data-android-embed="1"] select.md-input ~ .md-label { top: 18px; }
-:root[data-android-embed="1"] .md-trailing-btn { right: 4px; width: 56px; height: 56px; }
 :root[data-android-embed="1"][dir="rtl"] .md-field-trailing .md-input { padding-right: 16px; padding-left: 68px; }
-:root[data-android-embed="1"][dir="rtl"] .md-trailing-btn { right: auto; left: 4px; }
 
 /* ── Settings components shared by several pages ──────────────────────── */
 /* Margin spacing instead of flex gap (Chrome 58 ignores it); engines with gap drop it so spacing is not doubled. */

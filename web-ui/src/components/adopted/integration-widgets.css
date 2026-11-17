@@ -1,0 +1,130 @@
+/* integration-widgets: feature widget styles moved from styles.css / revamp.css (adopt-rules.mjs). */
+.md-trailing-btn {
+    position: absolute;
+    right: 6px;
+    /* Center vertically inside the 56px box (height 40px → 8px margin). */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background-color 160ms ease-out, color 160ms ease-out;
+}
+.md-trailing-btn:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+.md-trailing-btn svg { width: 20px; height: 20px; }
+.md-input-pin {
+    text-align: center;
+    letter-spacing: 6px;
+    font-family: var(--ui-font);
+    font-size: 18px;
+    /* Slightly more top padding so the centered text doesn't crash into
+       the floated label on focus. */
+    padding-top: 22px;
+    padding-bottom: 6px;
+}
+.recommend-callout {
+    position: relative;
+    margin-bottom: 18px;
+    padding: 0;
+    background: var(--ui-accent-soft);
+    border: 1px solid var(--ui-accent);
+    border-radius: 14px;
+    overflow: hidden;
+}
+.recommend-callout::before {
+    /* Identity stripe — same primary→tertiary gradient used elsewhere. */
+    content: "";
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: transparent;
+}
+.recommend-callout-summary {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px 14px 22px;
+    cursor: pointer;
+    list-style: none;
+    -webkit-user-select: none;
+            user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    transition: background-color 160ms ease-out;
+}
+.recommend-callout-summary::-webkit-details-marker { display: none; }
+.recommend-callout-summary:hover { background: var(--ui-accent-soft); }
+.recommend-callout-icon {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--ui-accent-soft);
+    color: var(--brand-primary);
+}
+.recommend-callout-icon svg { width: 18px; height: 18px; }
+.recommend-callout-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.recommend-callout-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+.recommend-callout-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+.recommend-callout-chevron {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--text-muted);
+    transition: transform 240ms cubic-bezier(0.2, 0.8, 0.4, 1);
+}
+.recommend-callout-chevron svg { width: 16px; height: 16px; }
+.recommend-callout[open] .recommend-callout-chevron { transform: rotate(180deg); }
+.recommend-steps {
+    list-style: decimal;
+    margin: 0;
+    padding: 4px 22px 18px 50px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.55;
+}
+.recommend-steps li { padding: 4px 0; }
+.recommend-steps li::marker {
+    color: var(--brand-primary);
+    font-weight: 600;
+}
+.recommend-steps strong { color: var(--text-primary); font-weight: 600; }
+.md-trailing-btn { color: var(--on-surface-variant); }
+.md-trailing-btn:hover { background-color: transparent; color: var(--on-surface-variant); }
+@media (hover: hover) {
+  .md-trailing-btn:hover { background-color: var(--well-2); color: var(--on-surface); }
+}
+[dir="rtl"] .md-trailing-btn { right: auto; left: 6px; }
+:root[data-android-embed="1"] .md-trailing-btn { right: 4px; width: 56px; height: 56px; }
+:root[data-android-embed="1"][dir="rtl"] .md-trailing-btn { right: auto; left: 4px; }

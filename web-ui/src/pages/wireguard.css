@@ -1,0 +1,21 @@
+/* wireguard.html — page-only styles, scoped to body[data-page="wireguard"] (moved from its inline
+   <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
+body[data-page="wireguard"] .conn-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+body[data-page="wireguard"] .conn-dot.connected { background: var(--status-success); box-shadow: 0 0 6px var(--status-success-container); }
+body[data-page="wireguard"] .conn-dot.disconnected { background: var(--status-danger); }
+body[data-page="wireguard"] .conn-dot.reconnecting { background: var(--status-warning); animation: pulse 1.5s infinite; }
+body[data-page="wireguard"] .conn-dot.stopped { background: var(--outline); }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+body[data-page="wireguard"] .wg-status { display: flex; align-items: flex-start; gap: 12px; }
+body[data-page="wireguard"] .wg-status .conn-dot { margin-top: 5px; }
+body[data-page="wireguard"] .wg-status-text { flex: 1; min-width: 0; }
+body[data-page="wireguard"] .wg-state { font-weight: 600; font-size: 15px; color: var(--text-primary); word-break: break-word; }
+body[data-page="wireguard"] .wg-detail { font-size: 12px; color: var(--text-muted); font-family: var(--family-mono); white-space: pre-line; word-break: break-all; margin-top: 4px; }
+body[data-page="wireguard"] .wg-error { display: none; margin-top: 8px; padding: 10px 12px; border-radius: 8px; font-size: 13px;
+            color: var(--danger); background: rgba(239,68,68,0.08); border: 1px solid var(--danger); word-break: break-word; }
+body[data-page="wireguard"] .form-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; flex-wrap: wrap; }
+body[data-page="wireguard"] .file-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+body[data-page="wireguard"] .file-row input[type=file] { font-size: 13px; color: var(--text-secondary); max-width: 100%; }
+@media (max-width: 540px) {
+body[data-page="wireguard"] .form-actions { flex-direction: column-reverse; gap: 10px; align-items: stretch; }
+}

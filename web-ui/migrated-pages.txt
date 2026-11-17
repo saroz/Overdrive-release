@@ -16,3 +16,11 @@ remote-access.html
 automations.html
 widgets.html
 widget-builder.html
+telegram.html
+abrp.html
+mqtt.html
+byd-cloud.html
+safekeep.html
+network.html
+wireguard.html
+module-faults.html

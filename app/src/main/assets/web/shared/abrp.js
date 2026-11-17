@@ -191,7 +191,7 @@ const ABRP = {
                 if (statusEl) {
                     const cls = s.running ? 'connected' : 'off';
                     const label = s.running ? BYD.i18n.t('abrp.connected') : BYD.i18n.t('abrp.disconnected');
-                    statusEl.innerHTML = '<span class="status-dot ' + cls + '"></span> <span>' + label + '</span>';
+                    statusEl.innerHTML = '<span class="ui-dot ' + cls + '"></span> <span>' + label + '</span>';
                 }
 
                 // Last upload
