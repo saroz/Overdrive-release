@@ -61,6 +61,24 @@ public class UiComponentsAssetTest {
     }
 
     @Test
+    public void everyInteractiveComponentShowsKeyboardFocus() throws IOException {
+        // Web Interface Guidelines: a visible :focus-visible indicator on every control.
+        for (String sel : new String[]{".ui-segment:focus-visible", ".ui-check:focus-within",
+                ".ui-link-row:focus-visible", ".ui-bottom-link:focus-visible",
+                ".ui-nav-label.is-foldable:focus-visible", ".ui-dialog-close:focus-visible"}) {
+            assertRule(sel, "outline:3px solid var(--ui-accent)");
+        }
+    }
+
+    @Test
+    public void tapsAreImmediateOnTouchScreens() throws IOException {
+        // No double-tap zoom delay and no grey tap flash on the head unit's touch screen.
+        assertRule(".ui-button", "touch-action:manipulation", "-webkit-tap-highlight-color:transparent");
+        assertRule(".ui-row", "touch-action:manipulation");
+        assertRule(".ui-nav-link", "touch-action:manipulation");
+    }
+
+    @Test
     public void flatSurfacesNoBlur() throws IOException {
         assertFalse(UiCssBuildAssetTest.css().contains("backdrop-filter"));
         assertFalse(UiCssBuildAssetTest.css().contains("blur("));

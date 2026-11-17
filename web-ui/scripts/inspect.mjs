@@ -14,9 +14,9 @@ const edge = ['C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
 const browser = await chromium.launch({ executablePath: edge, headless: true });
 const ctx = await browser.newContext({ viewport: { width: Number(w), height: 900 } });
 await ctx.addInitScript(([t, r]) => {
-  try { localStorage.setItem('overdrive.theme', t); localStorage.setItem('byd-theme', t); } catch (e) {}
+  try { localStorage.setItem('overdrive.theme', t); localStorage.setItem('byd-theme', t); if (r) localStorage.setItem('overdrive_locale', 'he'); } catch (e) {}
   const root = document.documentElement;
-  if (root) { root.setAttribute('data-theme', t); if (r) root.setAttribute('dir', 'rtl'); }
+  if (root) { root.setAttribute('data-theme', t); if (r) { root.setAttribute('dir', 'rtl'); root.setAttribute('lang', 'he'); } }
 }, [theme, rtl]);
 const tab = await ctx.newPage();
 const errors = [];

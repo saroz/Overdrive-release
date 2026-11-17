@@ -70,7 +70,21 @@
 .ui-button:focus-visible, .ui-text-button:focus-visible, .ui-icon-button:focus-visible,
 .ui-nav-link:focus-visible, .ui-row:focus-visible, .ui-tab:focus-visible, .ui-select:focus-visible,
 .ui-input:focus-visible, .ui-switch:focus-visible, .ui-list-item:focus-visible,
-.ui-theme-switch button:focus-visible {
+.ui-theme-switch button:focus-visible, .ui-segment:focus-visible, .ui-check:focus-within,
+.ui-link-row:focus-visible, .ui-bottom-link:focus-visible, .ui-nav-label.is-foldable:focus-visible,
+.ui-dialog-close:focus-visible {
   outline: 3px solid var(--ui-accent);
   outline-offset: 4px;
+}
+
+/* Touch screens: no double-tap zoom wait and no grey flash on tap (hover/active states show it). */
+.ui-button, .ui-text-button, .ui-icon-button, .ui-nav-link, .ui-row, .ui-tab, .ui-segment, .ui-check,
+.ui-link-row, .ui-bottom-link, .ui-list-item, .ui-toggle, .ui-switch, .ui-dialog-close,
+.ui-theme-switch button, .ui-nav-label.is-foldable {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-nav-chevron, .ui-meter-fill, .car-icon-wrapper { transition: none; }
 }
