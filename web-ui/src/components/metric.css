@@ -1,0 +1,64 @@
+/* Mockup .metrics / .metric (usability refinement): plain numbers with dividers, no card.
+   Column count defaults to 3; a page may set --ui-metric-cols. */
+
+.ui-metrics {
+  display: grid;
+  grid-template-columns: repeat(var(--ui-metric-cols, 3), minmax(0, 1fr));
+  row-gap: 22px;
+  margin: 24px 0;
+  padding: 2px 0;
+}
+
+.ui-metric { min-width: 0; padding: 0 24px; border-inline-start: 1px solid var(--ui-line); }
+.ui-metric:first-child { padding-inline-start: 0; border-inline-start: 0; }
+
+.ui-metric-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+.ui-metric-label .ui-icon { width: 17px; height: 17px; }
+
+.ui-metric-value {
+  margin-top: 8px;
+  font-size: 29px;
+  font-weight: 600;
+  letter-spacing: -.8px;
+  line-height: 1.2;
+}
+
+.ui-metric-value small {
+  margin-inline-start: 4px;
+  color: var(--ui-muted);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.ui-metric p { margin-top: 6px; color: var(--ui-muted); font-size: 12px; }
+.ui-metric .ui-text-button { min-height: 28px; padding: 4px 0 0; font-size: 12px; font-weight: 550; }
+
+/* Metrics inside a panel get the panel's padding. */
+.ui-panel > .ui-metrics { margin: 20px 0; padding: 0 24px; }
+
+@media (max-width: 1150px) {
+  .ui-metric { padding: 0 20px; }
+}
+
+@media (max-width: 850px) {
+  .ui-metric-value { font-size: 27px; }
+  .ui-metric-value small { display: block; margin: 5px 0 0; }
+  .ui-metrics { --ui-metric-cols: 3; }
+}
+
+@media (max-width: 540px) {
+  .ui-metrics { grid-template-columns: 1fr 1fr; gap: 20px 0; }
+  .ui-metric:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
+  .ui-metric:nth-child(even) { padding-inline: 18px 0; }
+  .ui-panel > .ui-metrics { padding: 0 20px; }
+}

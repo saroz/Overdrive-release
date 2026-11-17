@@ -17,7 +17,10 @@ export function buildCss(outDir) {
   execFileSync(process.execPath, [cli, '-i', join(ROOT, 'src', 'ui.css'), '-o', tmp, '--minify'],
     { cwd: ROOT, stdio: ['ignore', 'ignore', 'pipe'] });
   // Keep Tailwind's MIT notice but drop its URL: the shipped CSS must not name any remote host.
-  const css = readFileSync(tmp, 'utf8').replace(/\s*\|\s*https?:\/\/[^\s*]+/g, '');
+  const css = readFileSync(tmp, 'utf8')
+    .replace(/\s*\|\s*https?:\/\/[^\s*]+/g, '')
+    // The minifier spells `transparent` as #0000; keep the keyword so colour checks see no raw hex.
+    .replace(/#0000(?![0-9a-fA-F])/g, 'transparent');
   writeFileSync(join(outDir, 'ui.css'), BANNER + '\n' + css.trim() + '\n');
 }
 

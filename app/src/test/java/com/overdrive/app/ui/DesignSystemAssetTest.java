@@ -79,8 +79,11 @@ public class DesignSystemAssetTest {
                         assertFalse(path + " must not load remote fonts",
                                 text.contains("fonts.googleapis.com")
                                         || text.contains("fonts.gstatic.com"));
-                        assertFalse(path + " must not use negative tracking",
-                                text.matches("(?s).*letter-spacing:\\s*-[0-9.]+(?:em|px).*"));
+                        // ui.css carries the owner's mockup, which tightens headings and numbers
+                        // (owner decision 2026-11-17); every other sheet keeps the rule.
+                        boolean mockupSheet = path.endsWith(Paths.get("shared", "ui.css"));
+                        assertFalse(path + " must not use negative tracking", !mockupSheet
+                                && text.matches("(?s).*letter-spacing:\\s*-[0-9.]+(?:em|px).*"));
                     });
         }
 

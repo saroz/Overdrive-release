@@ -1,0 +1,40 @@
+/* Mockup .filters / .filter as page and panel tabs: underline on the selected tab. */
+
+.ui-tabs {
+  display: flex;
+  gap: 20px;
+  border-bottom: 1px solid var(--ui-line);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ui-panel > .ui-tabs { margin: 0 24px; }
+
+.ui-tab {
+  flex: none;
+  min-height: 44px;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ui-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ui-tab:hover { color: var(--ui-ink); }
+
+.ui-tab[aria-selected=true],
+.ui-tab[aria-current=page] {
+  border-bottom-color: var(--ui-accent);
+  color: var(--ui-accent-text);
+  font-weight: 650;
+}
+
+@media (max-width: 540px) {
+  .ui-panel > .ui-tabs { margin: 0 20px; }
+}

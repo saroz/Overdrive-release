@@ -24,6 +24,11 @@
   --ui-shadow: 0 4px 20px #1a2c4210;
   --ui-scrim: #101b2a80;
   --ui-knob: #fff;
+  --ui-panel-line: var(--ui-line);
+  --ui-shadow-sm: 0 1px 4px #0000001a;
+  --ui-shadow-knob: 0 1px 3px #0003;
+  --ui-car-shadow: drop-shadow(0 12px 10px #17253014);
+  --ui-hero-bg: var(--ui-hero);
   --ui-sidebar-width: 240px;
   --ui-font: "Segoe UI Variable", "Segoe UI", "Inter", system-ui, sans-serif;
 }
@@ -46,6 +51,9 @@
   --ui-chart3: #626767;
   --ui-hero: #2b2e2f;
   --ui-shadow: 0 4px 20px #0002;
+  --ui-panel-line: #ffffff0b;
+  --ui-car-shadow: drop-shadow(0 16px 15px #0003);
+  --ui-hero-bg: radial-gradient(ellipse at 70% 55%, #383b3b 0%, var(--ui-hero) 65%);
   color-scheme: dark;
 }
 

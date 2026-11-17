@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ui components</title>
+<link rel="stylesheet" href="../../app/src/main/assets/web/shared/ui.css">
+<script src="../../app/src/main/assets/web/shared/ph-icons.js" onerror="window.phIcon=function(){return ''}"></script>
+</head>
+<body class="ui-app">
+<div class="ui-shell">
+  <aside class="ui-sidebar">
+    <a class="ui-brand" href="#"><span class="ui-brand-mark">O</span><span class="ui-brand-text">OverDrive</span></a>
+    <nav class="ui-nav" id="nav"></nav>
+    <div class="ui-sidebar-foot">Component gallery · dev only</div>
+  </aside>
+  <div class="ui-workspace">
+    <header class="ui-topbar">
+      <div class="ui-breadcrumb"><span>OverDrive</span><span>/</span><strong>Components</strong></div>
+      <div class="ui-topbar-actions">
+        <div class="ui-theme-switch" role="group" aria-label="Theme">
+          <button type="button" data-t="light" aria-pressed="true" aria-label="Light">L</button>
+          <button type="button" data-t="dark" aria-pressed="false" aria-label="Dark">D</button>
+        </div>
+      </div>
+    </header>
+    <main class="ui-main">
+      <div class="ui-page-head">
+        <div><h1>Vehicle overview</h1><p>Parked at home. Ready when you are.</p></div>
+        <div class="ui-page-actions"><button class="ui-button">Vehicle details</button><button class="ui-button ui-button-primary">Save</button></div>
+      </div>
+      <div class="ui-grid-main">
+        <section class="ui-panel">
+          <div class="ui-hero">
+            <div class="ui-hero-head"><div><h2 class="ui-hero-name">Dolphin</h2><p>BYD Dolphin · Electric</p></div><span class="ui-status">Online</span></div>
+            <div style="height:180px"></div>
+            <div class="ui-hero-badges"><span class="ui-status">Sentry active</span><span>Recording in the background</span></div>
+          </div>
+          <div class="ui-hero-foot">
+            <div><div class="ui-data-label">Battery level</div><div class="ui-reading-line"><div class="ui-reading">82<small>%</small></div><small>Unplugged</small></div><div class="ui-progress"><span style="width:82%"></span></div></div>
+            <div><div class="ui-data-label">Estimated range</div><div class="ui-reading">341 <small>km</small></div></div>
+          </div>
+        </section>
+        <section class="ui-panel">
+          <div class="ui-panel-head"><h2>Car controls</h2><span class="ui-status">Online</span></div>
+          <div class="ui-panel-body">
+            <button class="ui-row" aria-pressed="true"><span class="ui-row-copy"><strong>Doors locked</strong><small>Tap to unlock</small></span><span class="ui-switch" aria-hidden="true"></span></button>
+            <label class="ui-row"><span class="ui-row-copy"><strong>Sentry mode</strong><small>Records when someone comes close</small></span><input type="checkbox" class="ui-switch"></label>
+            <div class="ui-row"><span class="ui-row-copy"><strong>Recording quality</strong><small>Applies to new clips</small></span><select class="ui-select"><option>High</option></select></div>
+          </div>
+        </section>
+      </div>
+      <section class="ui-metrics">
+        <div class="ui-metric"><div class="ui-metric-label">Distance today</div><div class="ui-metric-value">48<small>km</small></div><p>12 km more than yesterday</p></div>
+        <div class="ui-metric"><div class="ui-metric-label">Average efficiency</div><div class="ui-metric-value">14.8<small>kWh/100 km</small></div><p>Across today's trips</p></div>
+        <div class="ui-metric"><div class="ui-metric-label">Recordings today</div><div class="ui-metric-value">17<small>clips</small></div><button class="ui-text-button">Review 2 events</button></div>
+      </section>
+      <div class="ui-grid-2">
+        <section class="ui-panel">
+          <div class="ui-panel-head"><div><h2>Recent activity</h2><p>Last 24 hours</p></div><select class="ui-select"><option>All activity</option></select></div>
+          <div class="ui-tabs" role="tablist" style="margin:12px 24px 0"><button class="ui-tab" role="tab" aria-selected="true">All</button><button class="ui-tab" role="tab" aria-selected="false">Sentry</button><button class="ui-tab" role="tab" aria-selected="false">Driving</button></div>
+          <div class="ui-list">
+            <button class="ui-list-item"><span class="ui-list-icon ui-list-icon-alert">!</span><span class="ui-list-text"><strong>Motion near the car</strong><span class="ui-list-desc">Front camera · 2 clips</span></span><span class="ui-list-end">09:41<span class="ui-attention">Review</span></span></button>
+            <button class="ui-list-item"><span class="ui-list-icon">~</span><span class="ui-list-text"><strong>Trip to work</strong><span class="ui-list-desc">18 km · 31 min</span></span><span class="ui-list-end">08:10<span>Done</span></span></button>
+          </div>
+        </section>
+        <section class="ui-panel">
+          <div class="ui-panel-head"><div><h2>Form</h2><p>Inputs and fields</p></div></div>
+          <div class="ui-panel-body">
+            <div class="ui-field"><label for="f1">Bot token</label><input id="f1" class="ui-input" placeholder="123456:ABC…"></div>
+            <div class="ui-field"><label for="f2">Notes</label><textarea id="f2" class="ui-input"></textarea><span class="ui-hint">Shown on the home page.</span></div>
+          </div>
+          <div class="ui-panel-foot"><button class="ui-button">Cancel</button><button class="ui-button ui-button-primary">Save</button></div>
+        </section>
+      </div>
+      <section class="ui-panel ui-strip" style="margin-top:20px"><span class="ui-strip-icon">⌖</span><div class="ui-strip-copy"><h2>Location</h2><p>Home · updated 1 min ago</p></div><button class="ui-button">Open map</button></section>
+      <footer class="ui-footer"><span>Updated 1 minute ago</span><span>Component gallery</span></footer>
+    </main>
+  </div>
+</div>
+<div class="ui-toast" role="status">Saved</div>
+<script>
+  var items = [['dashboard','Dashboard'],['live-view','Live View'],['recordings','Recordings'],['charging','Charging'],['trips','Trips'],['settings','Settings']];
+  document.getElementById('nav').innerHTML = items.map(function (it, i) {
+    return '<a class="ui-nav-link"' + (i === 0 ? ' aria-current="page"' : '') + ' href="#">' + window.phIcon(it[0]) + '<span class="ui-nav-text">' + it[1] + '</span></a>';
+  }).join('');
+  if (location.hash === '#dark') document.querySelector('[data-t="dark"]').setAttribute('data-start', '1');
+  document.querySelectorAll('[data-t]').forEach(function (b) {
+    b.onclick = function () {
+      document.documentElement.setAttribute('data-theme', b.dataset.t);
+      document.querySelectorAll('[data-t]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+    };
+    if (b.hasAttribute('data-start')) b.onclick();
+  });
+</script>
+</body>
+</html>

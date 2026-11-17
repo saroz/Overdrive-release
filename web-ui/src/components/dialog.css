@@ -1,0 +1,75 @@
+/* Mockup dialog and .toast. The scrim is solid (no blur) per the no-blur rule. */
+
+.ui-dialog {
+  width: min(520px, calc(100% - 32px));
+  box-sizing: border-box;
+  padding: 26px;
+  border: 1px solid var(--ui-line);
+  border-radius: 14px;
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  box-shadow: var(--ui-shadow);
+}
+
+.ui-dialog::backdrop { background: var(--ui-scrim); }
+
+.ui-dialog-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.ui-dialog-head h2 { font-size: 17px; font-weight: 650; }
+
+.ui-dialog-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--ui-soft);
+  color: var(--ui-ink);
+  font-size: 21px;
+  cursor: pointer;
+}
+
+.ui-dialog-body { color: var(--ui-muted); font-size: 13px; line-height: 1.6; }
+.ui-dialog-body p + p { margin-top: 12px; }
+
+.ui-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+
+.ui-detail-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--ui-line);
+}
+
+.ui-detail-row strong { color: var(--ui-ink); }
+
+.ui-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  z-index: 1000;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  box-sizing: border-box;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: var(--ui-ink);
+  color: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  font-size: 12px;
+  transform: translateX(-50%);
+}
+
+.ui-toast-error { background: var(--ui-red); color: var(--ui-on-accent); }
+
+@media (max-width: 540px) {
+  .ui-toast { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+}

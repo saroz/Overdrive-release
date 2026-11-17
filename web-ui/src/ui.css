@@ -2,13 +2,27 @@
  * Entry for app/src/main/assets/web/shared/ui.css.
  * Utilities are prefixed tw: (tw:flex) and components ui- so neither collides with the older CSS
  * on pages not yet moved. Preflight is left out until every page is moved (plan Task 13).
+ *
+ * Components and utilities are deliberately NOT in cascade layers: the older sheets are unlayered,
+ * and unlayered rules always beat layered ones, so layered components would lose to old element
+ * rules such as `button {}`. Order instead: tokens, components, then utilities (utilities win ties).
  */
-@layer theme, base, components, utilities;
-
 @import "tailwindcss/theme.css" layer(theme) prefix(tw);
-@import "tailwindcss/utilities.css" layer(utilities) source(none);
 
 @import "./tokens.css";
+
+@import "./components/shell.css";
+@import "./components/panel.css";
+@import "./components/button.css";
+@import "./components/row.css";
+@import "./components/metric.css";
+@import "./components/tabs.css";
+@import "./components/list.css";
+@import "./components/form.css";
+@import "./components/dialog.css";
+@import "./components/hero.css";
+
+@import "tailwindcss/utilities.css" source(none);
 
 @source "../../app/src/main/assets/web/local/*.html";
 @source "../../app/src/main/assets/web/shared/*.js";

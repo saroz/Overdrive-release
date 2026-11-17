@@ -1,0 +1,112 @@
+/* Mockup .control-row + .switch (usability refinement sizes). A row is a setting or a control:
+   icon, two-line copy, then a trailing switch, value or chevron. */
+
+.ui-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  min-height: 64px;
+  box-sizing: border-box;
+  padding: 10px 0 17px;
+  border: 0;
+  border-bottom: 1px solid var(--ui-line);
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  text-decoration: none;
+}
+
+.ui-row:last-child { border-bottom: 0; padding-bottom: 6px; }
+.ui-row > .ui-icon { width: 21px; height: 21px; color: var(--ui-muted); }
+
+.ui-row-copy { flex: 1; min-width: 0; }
+.ui-row-copy strong { display: block; font-size: 14px; font-weight: 600; }
+.ui-row-copy small { display: block; margin-top: 3px; color: var(--ui-muted); font-size: 12px; }
+
+.ui-row-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+:is(button, a).ui-row { cursor: pointer; }
+:is(button, a).ui-row:hover .ui-row-copy strong { color: var(--ui-accent-text); }
+
+.ui-switch {
+  flex: none;
+  width: 38px;
+  height: 24px;
+  box-sizing: border-box;
+  padding: 3px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--ui-line);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ui-switch::after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ui-knob);
+  box-shadow: var(--ui-shadow-knob);
+  transition: transform .15s ease;
+}
+
+.ui-switch[aria-checked=true],
+.ui-switch:checked,
+.ui-row[aria-pressed=true] .ui-switch { background: var(--ui-green); }
+
+.ui-switch[aria-checked=true]::after,
+.ui-switch:checked::after,
+.ui-row[aria-pressed=true] .ui-switch::after { transform: translateX(14px); }
+
+:dir(rtl) .ui-switch[aria-checked=true]::after,
+:dir(rtl) .ui-switch:checked::after,
+:dir(rtl) .ui-row[aria-pressed=true] .ui-switch::after { transform: translateX(-14px); }
+
+.ui-switch:disabled { opacity: .45; cursor: default; }
+
+.ui-progress {
+  height: 4px;
+  max-width: 250px;
+  margin-top: 10px;
+  border-radius: 3px;
+  background: var(--ui-line);
+  overflow: hidden;
+}
+
+.ui-progress > span { display: block; height: 100%; border-radius: 3px; background: var(--ui-green); }
+
+.ui-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ui-green);
+  font-size: 12px;
+  font-weight: 550;
+  white-space: nowrap;
+}
+
+.ui-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.ui-status-warn { color: var(--ui-accent-text); }
+.ui-status-bad { color: var(--ui-red); }
+.ui-status-off { color: var(--ui-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-switch::after { transition: none; }
+}
+
+@media (max-width: 540px) {
+  .ui-row { gap: 10px; padding: 4px 0 16px; }
+}
