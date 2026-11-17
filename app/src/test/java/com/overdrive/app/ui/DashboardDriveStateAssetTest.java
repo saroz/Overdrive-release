@@ -22,10 +22,11 @@ public class DashboardDriveStateAssetTest {
         assertTrue(page.contains("id=\"dashDriveMode\""));
         assertTrue(page.contains("id=\"dashDriveGear\""));
         assertTrue(page.contains("id=\"dashDriveSpeed\""));
-        assertTrue(page.contains("grid-template-columns: 54px minmax(0, 1fr) auto"));
-        assertTrue(page.contains("grid-template-columns: 50px minmax(0, 1fr)"));
-        assertTrue(page.contains("margin-left: 12px"));
-        assertTrue(page.contains("grid-template-columns: repeat(2, minmax(0, 1fr))"));
+        // Mockup hero (2026-11-17): gear and speed sit beside the vehicle name and wrap
+        // under it on phones instead of the old three-column readout grid.
+        assertTrue(page.contains("class=\"home-drive is-pending\" id=\"dashDriveState\""));
+        assertTrue(page.contains(".home-drive { display: flex; flex-wrap: wrap;"));
+        assertTrue(page.contains(".home-drive { justify-content: flex-start; }"));
     }
 
     @Test

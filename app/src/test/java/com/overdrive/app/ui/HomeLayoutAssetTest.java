@@ -18,7 +18,7 @@ public class HomeLayoutAssetTest {
     public void mockupSectionsInOrder() throws IOException {
         String page = WebThemeTokensAssetTest.read(PAGE);
         String[] order = {"homeHeading", "homeVehicle", "homeControls", "homeStats",
-                "homeEnergy", "homeLocationStrip"};
+                "homeEnergy", "homeActivity", "homeLocationStrip"};
         int last = -1;
         for (String id : order) {
             int at = page.indexOf("id=\"" + id + "\"");
@@ -65,8 +65,10 @@ public class HomeLayoutAssetTest {
     @Test
     public void layoutUsesTokensOnly() throws IOException {
         String page = WebThemeTokensAssetTest.read(PAGE);
-        int start = page.indexOf("HOME LAYOUT 2026-11-16");
+        // The page keeps one small <style> block (2026-11-17 rebuild on ui- components).
+        int start = page.indexOf("<style>");
         assertTrue("home layout styles missing", start >= 0);
+        assertTrue("only one style block", page.indexOf("<style>", start + 1) < 0);
         String css = page.substring(start, page.indexOf("</style>", start));
         Matcher hex = Pattern.compile("#[0-9a-fA-F]{3,8}\\b").matcher(css);
         assertFalse("raw colour in home layout: " + (hex.find() ? hex.group() : ""), hex.find(0));

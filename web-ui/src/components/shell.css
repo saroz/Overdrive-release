@@ -161,7 +161,11 @@ body.ui-app {
 .ui-sidebar-status dt { display: flex; align-items: center; gap: 6px; margin: 0; }
 .ui-sidebar-status dd { margin: 0; color: var(--ui-ink); font-weight: 550; text-align: end; }
 .ui-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ui-muted); }
-.ui-dot.connected, .ui-dot.online, .ui-dot.active { background: var(--ui-green); }
+.ui-dot.connected, .ui-dot.online, .ui-dot.active,
+.ui-dot.dot-active, .ui-dot.dot-good { background: var(--ui-green); }
+.ui-dot.dot-warn { background: var(--ui-accent); }
+.ui-dot.dot-idle { background: var(--ui-muted); }
+.ui-dot.dot-danger { background: var(--ui-red); }
 #networkIcon:empty { display: none; }
 #networkIcon svg { width: 12px; height: 12px; }
 
@@ -224,6 +228,10 @@ body.ui-app {
    new sidebar, keep the old --sidebar-width readers (fixed tab bars) in step, and
    retire the old phone header and drawer overlay. */
 :root:root:root { --sidebar-width: var(--ui-sidebar-width); }
+/* Rebuilt pages (body.ui-app) keep the .app-layout / .main-content frame app-shell.js mounts into,
+   as a plain block: the sidebar is fixed and .main-content is offset below. */
+body.ui-app .app-layout { display: block; min-height: 100vh; }
+body.ui-app .main-content { display: block; min-height: 100vh; padding: 0; }
 html.ui-shell-on body .main-content { margin-inline: var(--ui-sidebar-width) 0; }
 html.ui-shell-on body .mobile-header,
 html.ui-shell-on body .sidebar-overlay,

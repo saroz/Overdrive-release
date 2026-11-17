@@ -1,0 +1,62 @@
+/* Map markers drawn by shared/map.js (moved from styles.css so they survive its removal).
+   Class names stay as map.js writes them. */
+
+.car-map-marker, .user-map-marker, .distance-label { border: 0; background: none; }
+
+.car-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 50px;
+  transition: transform .5s ease;
+}
+
+.car-icon-img { z-index: 2; width: 24px; height: 50px; filter: var(--ui-marker-shadow); }
+
+.car-pulse {
+  position: absolute;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--ui-accent);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.car-pulse.active { opacity: 1; animation: ui-car-pulse 2s infinite; }
+.car-icon-wrapper.has-location .car-pulse.active { width: 52px; height: 52px; }
+
+.user-icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; }
+
+.user-dot {
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border: 3px solid var(--ui-knob);
+  border-radius: 50%;
+  background: var(--ui-ink);
+  box-shadow: var(--ui-shadow-knob);
+}
+
+.user-pulse { position: absolute; width: 24px; height: 24px; border-radius: 50%; background: var(--ui-line); animation: ui-user-pulse 2s infinite; }
+
+.distance-label-content {
+  padding: 4px 10px;
+  border: 1px solid var(--ui-line);
+  border-radius: 12px;
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  box-shadow: var(--ui-shadow-sm);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@keyframes ui-car-pulse { 0% { transform: scale(.5); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+@keyframes ui-user-pulse { 0% { transform: scale(.8); opacity: 1; } 100% { transform: scale(2); opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .car-pulse.active, .user-pulse { animation: none; }
+}

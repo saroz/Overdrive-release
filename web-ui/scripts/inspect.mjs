@@ -42,6 +42,6 @@ const report = await tab.evaluate(() => {
   wide.sort((a, b) => a.width - b.width);
   return { vw, sw, overflow: sw > vw, wide: wide.slice(0, 8) };
 });
-if (shot) await tab.screenshot({ path: shot, fullPage: false });
+if (shot) await tab.screenshot({ path: shot, fullPage: rest.includes('--full') });
 console.log(JSON.stringify({ page, w: Number(w), theme, errors, ...report }, null, 1));
 await browser.close();

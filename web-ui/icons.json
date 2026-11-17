@@ -73,5 +73,16 @@
   "clock": "clock",
   "map": "map-trifold",
   "filter": "funnel",
-  "external": "arrow-square-out"
+  "external": "arrow-square-out",
+  "headlights": "headlights",
+  "find": "binoculars",
+  "trunk-open": "arrow-line-up",
+  "trunk-close": "arrow-line-down",
+  "power-button": "power",
+  "sparkle": "sparkle",
+  "charging-station": "charging-station",
+  "gps": "crosshair",
+  "steering": "steering-wheel",
+  "chart": "chart-bar",
+  "car-side": "car-profile"
 }

@@ -1,5 +1,8 @@
 /* Mockup .panel / .panel-head, plus .ui-panel-body for ordinary content and .ui-strip (location strip). */
 
+/* The `hidden` attribute always wins over a component's display (the mockup's own rule). */
+[hidden] { display: none !important; }
+
 .ui-panel {
   min-width: 0;
   overflow: hidden;

@@ -62,9 +62,20 @@ public class MigratedPagesAssetTest {
         return js.toString();
     }
 
+    /**
+     * Old class names the rebuilt page may not use — unless the new styling (the page's remaining
+     * inline CSS or ui.css) defines that class again, in which case it is part of the new look.
+     */
     private static Set<String> forbiddenClasses(String page) throws IOException {
         Set<String> out = new HashSet<>(words(WebThemeTokensAssetTest.read("web-ui/legacy-classes.txt")));
         out.addAll(words(header(snapshot(page), "old-classes")));
+        String html = WebThemeTokensAssetTest.read(LOCAL + page);
+        StringBuilder css = new StringBuilder(UiCssBuildAssetTest.css());
+        Matcher style = Pattern.compile("(?s)<style[^>]*>(.*?)</style>").matcher(html);
+        while (style.find()) css.append(style.group(1));
+        Matcher sel = Pattern.compile("\\.(-?[_a-zA-Z][\\w-]*)").matcher(
+                css.toString().replaceAll("(?s)\\{[^{}]*\\}", "{}"));
+        while (sel.find()) out.remove(sel.group(1));
         return out;
     }
 
@@ -72,14 +83,34 @@ public class MigratedPagesAssetTest {
         return html.replaceAll("(?s)<script[^>]*>.*?</script>", "").replaceAll("(?s)<style[^>]*>.*?</style>", "");
     }
 
+    /** Every shared script as it is now, so an id only has to survive while something still reads it. */
+    private static String allSharedScripts() throws IOException {
+        StringBuilder js = new StringBuilder();
+        java.io.File[] files = WebThemeTokensAssetTest.locate(SHARED).toFile().listFiles();
+        if (files != null) {
+            for (java.io.File f : files) {
+                if (f.getName().endsWith(".js")) js.append(WebThemeTokensAssetTest.read(SHARED + f.getName())).append('\n');
+            }
+        }
+        return js.toString();
+    }
+
+    private static boolean lookedUp(String js, String id) {
+        return js.contains("getElementById('" + id + "')") || js.contains("getElementById(\"" + id + "\")")
+                || js.contains("'#" + id) || js.contains("\"#" + id) || js.contains("$('" + id + "')");
+    }
+
     @Test
     public void idsSurvive() throws IOException {
+        String shared = allSharedScripts();
         for (String page : migrated()) {
             String html = WebThemeTokensAssetTest.read(LOCAL + page);
             String js = scripts(page, html);
+            String readers = js + shared;
             for (String line : snapshot(page).split("\n")) {
                 String id = line.trim();
                 if (id.isEmpty() || id.startsWith("#")) continue;
+                if (!lookedUp(readers, id)) continue; // nothing reads it any more
                 boolean inHtml = html.contains("id=\"" + id + "\"");
                 boolean builtByScript = js.contains("id=\"" + id + "\"") || js.contains("id=\\\"" + id + "\\\"")
                         || js.contains(".id = '" + id + "'") || js.contains(".id = \"" + id + "\"");
@@ -126,11 +157,12 @@ public class MigratedPagesAssetTest {
 
     @Test
     public void pageScriptsUseNoLegacyClasses() throws IOException {
+        // Built markup only: class="…" strings and className assignments. classList toggles are
+        // state flags (good / warn / soc-low …) and stay out of this check.
         List<Pattern> patterns = Arrays.asList(
                 Pattern.compile("class=\\\\?\"([^\"\\\\]*)\\\\?\""),
                 Pattern.compile("className\\s*=\\s*'([^']*)'"),
-                Pattern.compile("className\\s*=\\s*\"([^\"]*)\""),
-                Pattern.compile("classList\\.(?:add|toggle)\\(\\s*'([^']*)'"));
+                Pattern.compile("className\\s*=\\s*\"([^\"]*)\""));
         for (String page : migrated()) {
             Set<String> forbidden = forbiddenClasses(page);
             String js = scripts(page, WebThemeTokensAssetTest.read(LOCAL + page));

@@ -38,6 +38,23 @@ public class HomeDataSlotsAssetTest {
     }
 
     @Test
+    public void bottomRowUsesRealDataWithEmptyStates() throws IOException {
+        String page = WebThemeTokensAssetTest.read(PAGE);
+        // Energy: charging sessions the app records; activity: its recordings.
+        assertTrue(page.contains("fetch('/api/charging?days=7&limit=200'"));
+        assertTrue(page.contains("fetch('/api/recordings?page=1&pageSize=4'"));
+        assertTrue(page.contains("id=\"homeEnergyEmpty\" hidden"));
+        assertTrue(page.contains("id=\"homeActivityEmpty\" hidden"));
+        // A failed request shows the empty state, never sample data.
+        assertTrue(page.contains(".catch(function() { self.renderEnergy([]); });"));
+        assertTrue(page.contains(".catch(function() { self.renderActivity([]); });"));
+        // User-visible text from a recording is set as text, never parsed as HTML.
+        String feeds = page.substring(page.indexOf("renderActivity: function"), page.indexOf("openDirections: function"));
+        assertFalse(feeds.contains("item.innerHTML"));
+        assertFalse(feeds.contains("desc.innerHTML"));
+    }
+
+    @Test
     public void noInventedValues() throws IOException {
         String markup = WebThemeTokensAssetTest.read(PAGE);
         markup = markup.substring(0, markup.indexOf("<style>"));

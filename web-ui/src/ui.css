@@ -21,6 +21,7 @@
 @import "./components/form.css";
 @import "./components/dialog.css";
 @import "./components/hero.css";
+@import "./components/map.css";
 
 @import "tailwindcss/utilities.css" source(none);
 

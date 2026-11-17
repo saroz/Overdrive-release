@@ -185,10 +185,11 @@ public class GenAiAssetContractTest {
         assertFalse(assistant.contains("id: 'insights'"));
         assertFalse(assistant.contains("data-tab=\"insights\""));
         assertTrue(webDashboard.contains("id=\"dashAiInsight\""));
+        // Mockup strip card (2026-11-17 rebuild): still a button that expands in place.
         assertTrue(webDashboard.contains(
-                "<button class=\"dash-ai-insight\""));
+                "<button class=\"ui-panel ui-strip home-insight\" id=\"dashAiInsight\" type=\"button\""));
         assertTrue(webDashboard.contains("aria-live=\"polite\""));
-        assertTrue(webDashboard.contains(".dash-ai-insight::before"));
+        assertTrue(webDashboard.contains(".home-insight.is-expanded .home-insight-text"));
         assertFalse(webDashboard.contains(
                 "id=\"dashAiInsight\" href=\"/assistant\""));
         assertTrue(webDashboard.contains("toggleAiInsight"));

@@ -21,7 +21,7 @@ public class ChargingFrontendContractTest {
         assertTrue(dashboard.contains("c.full ? 'charge.state_full'"));
         assertTrue(dashboard.indexOf("c.charging ? 'charge.state_charging'")
                 < dashboard.indexOf("c.full ? 'charge.state_full'"));
-        assertTrue(dashboard.contains("idleDot.className = 'ic_status_dot dot-idle'"));
+        assertTrue(dashboard.contains("idleDot.className = 'ui-dot dot-idle'"));
         assertTrue(dashboard.contains("setText('dashChargePower', '--')"));
         assertTrue(dashboard.contains(
                 "c.powerSource !== 'nominalPlaceholder'"));

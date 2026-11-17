@@ -65,7 +65,8 @@
 .ui-reading small { color: var(--ui-muted); font-size: 12px; font-weight: 400; letter-spacing: 0; }
 
 .ui-reading-line { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.ui-reading-line > small { color: var(--ui-muted); font-size: 12px; }
+.ui-reading-line > .ui-reading { flex: none; white-space: nowrap; }
+.ui-reading-line > small { min-width: 0; color: var(--ui-muted); font-size: 12px; text-align: end; }
 
 @media (min-width: 1500px) {
   .ui-hero { min-height: 260px; }
