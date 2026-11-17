@@ -549,7 +549,6 @@ var CommunicatePage = {
         var status = this.status || {};
         var availability = document.getElementById('availability');
         var availabilityText = document.getElementById('availabilityText');
-        var mobileDot = document.getElementById('mobileConnectionDot');
         var carState = status.carState
             || (status.reachable === false || !status.online
                 ? 'unreachable' : 'unknown');
@@ -577,12 +576,6 @@ var CommunicatePage = {
             availability.classList.toggle('is-offline', unreachable);
         }
         if (availabilityText) availabilityText.textContent = text;
-        if (mobileDot) {
-            mobileDot.classList.toggle('is-ready', ready);
-            mobileDot.classList.toggle('is-warning', warning);
-            mobileDot.classList.toggle('is-off', carOff);
-            mobileDot.classList.toggle('is-offline', unreachable);
-        }
 
         if (!this.live && !this.stopping && !this.pressing) {
             if (ready && !this.outputSaving) {

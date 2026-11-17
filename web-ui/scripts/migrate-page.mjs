@@ -197,10 +197,11 @@ export function migrate(page, scripts = [], dry = false) {
   const name = page.replace(/\.html$/, '');
 
   // Inline CSS -> web-ui/src/pages/<page>.css, scoped to this page.
-  const styles = [...html.matchAll(/[ \t]*<style[^>]*>([\s\S]*?)<\/style>\n?/g)];
+  // A real tag at the start of a line only: comments may mention "<style>" in passing.
+  const styles = [...html.matchAll(/^[ \t]*<style(?:\s[^>]*)?>([\s\S]*?)<\/style>\n?/gm)];
   const css = styles.map(m => m[1]).join('\n');
   for (const m of styles.reverse()) html = html.replace(m[0], '');
-  const bodyClasses = ((/<body[^>]*class="([^"]*)"/.exec(html) || [])[1] || "").split(/\s+/).filter(Boolean);
+  const bodyClasses = ((/^[ 	]*<body[^>]*class="([^"]*)"/m.exec(html) || [])[1] || "").split(/\s+/).filter(Boolean);
   const kept = keepCss(css, `body[data-page="${name}"]`, bodyClasses);
 
   html = mapClassAttrs(html);
@@ -221,11 +222,11 @@ export function migrate(page, scripts = [], dry = false) {
     html = html.replace(/(\n[ \t]*)<\/div>(\s*<\/main>)/, `$1    ${bar.text.trim()}$1</div>$2`);
   }
   html = html.replace(/ class=""/g, '');
-  html = html.replace(/<body([^>]*)>/, (all, attrs) => {
+  html = html.replace(/^([ 	]*)<body([^>]*)>/m, (all, ind, attrs) => {
     let a = attrs.replace(/\sdata-page="[^"]*"/, '');
     if (/class="/.test(a)) a = a.replace(/class="([^"]*)"/, (m, v) => `class="${[...new Set(['ui-app', ...v.split(/\s+/).filter(Boolean)])].join(' ')}"`);
     else a += ' class="ui-app"';
-    return `<body${a} data-page="${name}">`;
+    return `${ind}<body${a} data-page="${name}">`;
   });
   if (kept.trim() && !html.includes(`shared/pages/${name}.css`)) {
     html = html.replace(/([ \t]*)(<link rel="stylesheet" href="\.\.\/shared\/ui\.css[^"]*">)/,

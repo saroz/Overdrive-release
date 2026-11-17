@@ -324,7 +324,7 @@
             var s = this.status || {};
             var badge = document.getElementById('genAiBadge');
             if (badge) {
-                badge.className = 'status-badge ' + (s.enabled && s.configured ? 'active' : 'inactive');
+                badge.className = 'ui-badge ' + (s.enabled && s.configured ? 'active' : 'inactive');
                 badge.textContent = !s.enabled ? t('genai.off') : (s.configured ? t('genai.ready') : t('genai.setup'));
             }
 
@@ -1388,7 +1388,7 @@
             controls.className = 'ai-result-actions';
             var save = document.createElement('button');
             save.type = 'button';
-            save.className = 'btn btn-primary';
+            save.className = 'ui-button ui-button-primary';
             save.textContent = t('genai.routine_save_review');
             save.addEventListener('click', function () {
                 self.decideRoutine(suggestion.id, 'save');
@@ -1397,7 +1397,7 @@
 
             var snooze = document.createElement('button');
             snooze.type = 'button';
-            snooze.className = 'btn btn-secondary';
+            snooze.className = 'ui-button';
             snooze.textContent = t('genai.routine_snooze');
             snooze.addEventListener('click', function () {
                 self.decideRoutine(suggestion.id, 'snooze');
@@ -1406,7 +1406,7 @@
 
             var dismiss = document.createElement('button');
             dismiss.type = 'button';
-            dismiss.className = 'btn btn-secondary';
+            dismiss.className = 'ui-button';
             dismiss.textContent = t('genai.routine_not_useful');
             dismiss.addEventListener('click', function () {
                 self.decideRoutine(suggestion.id, 'dismiss');
@@ -1565,7 +1565,7 @@
                 controls.className = 'ai-result-actions';
                 var download = document.createElement('button');
                 download.type = 'button';
-                download.className = 'btn btn-secondary';
+                download.className = 'ui-button';
                 download.textContent = t('genai.pack_download');
                 (function (packId) {
                     download.addEventListener('click', function () {
@@ -1576,7 +1576,7 @@
                 controls.appendChild(download);
                 var remove = document.createElement('button');
                 remove.type = 'button';
-                remove.className = 'btn btn-secondary';
+                remove.className = 'ui-button';
                 remove.textContent = t('genai.pack_delete');
                 (function (packId) {
                     remove.addEventListener('click', function () {
@@ -2220,7 +2220,7 @@
                 controls.className = 'ai-result-actions';
                 var confirm = document.createElement('button');
                 confirm.type = 'button';
-                confirm.className = 'btn btn-primary';
+                confirm.className = 'ui-button ui-button-primary';
                 confirm.disabled = !!proposal.executing;
                 confirm.textContent = proposal.executing
                     ? t('genai.running') : t('genai.confirm_run');
@@ -2304,7 +2304,7 @@
                 controls.className = 'ai-result-actions';
                 var share = document.createElement('button');
                 share.type = 'button';
-                share.className = 'btn btn-primary';
+                share.className = 'ui-button ui-button-primary';
                 share.disabled = !!request.responding
                     || !this.voiceActive;
                 share.textContent = request.responding
@@ -2316,7 +2316,7 @@
 
                 var deny = document.createElement('button');
                 deny.type = 'button';
-                deny.className = 'btn btn-secondary';
+                deny.className = 'ui-button';
                 deny.disabled = !!request.responding
                     || !this.voiceActive;
                 deny.textContent = this.voiceActive
@@ -2393,7 +2393,7 @@
             if (!draft.saved) {
                 var save = document.createElement('button');
                 save.type = 'button';
-                save.className = 'btn btn-primary';
+                save.className = 'ui-button ui-button-primary';
                 save.textContent = t('genai.save_manual_draft');
                 save.addEventListener('click', function () {
                     self.saveAutomationDraft(draft, save);
@@ -2403,7 +2403,7 @@
 
             var open = document.createElement('button');
             open.type = 'button';
-            open.className = 'btn btn-secondary';
+            open.className = 'ui-button';
             open.textContent = t('genai.open_automations');
             open.addEventListener('click', function () {
                 window.location.href = '/automations';
@@ -2561,7 +2561,7 @@
                     controls.className = 'ai-result-actions';
                     var open = document.createElement('button');
                     open.type = 'button';
-                    open.className = 'btn btn-secondary';
+                    open.className = 'ui-button';
                     open.textContent = t('genai.history_open_details');
                     (function (target) {
                         open.addEventListener('click', function () {
@@ -2622,7 +2622,7 @@
                     controls.className = 'ai-result-actions';
                     var add = document.createElement('button');
                     add.type = 'button';
-                    add.className = 'btn btn-secondary';
+                    add.className = 'ui-button';
                     add.textContent = t('genai.add_disabled');
                     add.addEventListener('click', function () {
                         self.importCommunityAutomation(item, add);

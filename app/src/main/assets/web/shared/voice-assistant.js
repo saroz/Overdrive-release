@@ -447,7 +447,7 @@
                 });
                 var forget = document.createElement('button');
                 forget.type = 'button';
-                forget.className = 'btn btn-secondary';
+                forget.className = 'ui-button';
                 forget.textContent = t('enroll_voice_forget');
                 forget.disabled = disabled;
                 forget.addEventListener('click', function () {
@@ -617,7 +617,7 @@
             if (window.GenAI && typeof window.GenAI.openProvider === 'function') {
                 window.GenAI.openProvider();
             }
-            var card = target && target.closest ? target.closest('.card') : null;
+            var card = target && target.closest ? target.closest('.ui-panel') : null;
             if (card && card.scrollIntoView) card.scrollIntoView(true);
             if (target && typeof target.focus === 'function') {
                 try { target.focus(); } catch (e) {}

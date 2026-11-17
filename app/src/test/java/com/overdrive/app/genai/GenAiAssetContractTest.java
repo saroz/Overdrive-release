@@ -79,7 +79,7 @@ public class GenAiAssetContractTest {
         assertTrue(javascript.contains("confirm_context"));
         assertTrue(javascript.contains("t('genai.share_once')"));
         assertTrue(javascript.contains("t('genai.voice_request', {query: request.query})"));
-        assertTrue(html.contains("class=\"assistant-page\""));
+        assertTrue(html.contains("class=\"ui-app assistant-page\""));
         assertTrue(html.contains("class=\"ai-composer-dock\""));
         assertTrue(javascript.contains(
                 "this.renderRichText(bubble, content)"));
@@ -89,9 +89,9 @@ public class GenAiAssetContractTest {
         assertTrue(javascript.contains(
                 "t('genai.community_found', { count: resultCount })"));
         assertTrue(html.contains(
-                "<select class=\"md-input\" id=\"genAiModelPreset\""));
+                "<select class=\"ui-input\" id=\"genAiModelPreset\""));
         assertTrue(html.contains(
-                "<select class=\"md-input\" id=\"genAiRealtimeModelPreset\""));
+                "<select class=\"ui-input\" id=\"genAiRealtimeModelPreset\""));
         assertFalse(html.contains("<datalist"));
         assertFalse(html.contains("list=\"genAi"));
         assertTrue(javascript.contains("fillModelSelect"));
@@ -117,7 +117,7 @@ public class GenAiAssetContractTest {
         assertTrue(html.contains(".ai-insight-card {"));
         assertTrue(html.contains("margin: 0 !important;"));
         assertTrue(html.contains(
-                "class=\"card ai-insight-card\""));
+                "class=\"ui-panel ai-insight-card\""));
         assertTrue(html.contains("core.js?v=24"));
         assertTrue(html.contains("placeholder=\"Ask OverDrive…\""));
         assertTrue(html.contains(
@@ -260,6 +260,6 @@ public class GenAiAssetContractTest {
         if (!Files.exists(file)) {
             throw new AssertionError("Could not locate project file: " + relativePath);
         }
-        return new String(Files.readAllBytes(file), StandardCharsets.UTF_8);
+        return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("app/" + relativePath, new String(Files.readAllBytes(file), StandardCharsets.UTF_8));
     }
 }

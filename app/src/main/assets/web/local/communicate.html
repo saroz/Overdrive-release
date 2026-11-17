@@ -15,24 +15,14 @@
     <link rel="stylesheet" href="../shared/communicate.css?v=6">
     <link rel="stylesheet" href="../shared/ui.css?v=1">
 </head>
-<body class="communicate-page">
+<body class="ui-app communicate-page" data-page="communicate">
     <div class="app-layout">
         <div id="app-shell-mount"></div>
         <main class="main-content">
-            <div class="mobile-header">
-                <button class="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Open menu" data-i18n-attr="aria-label:genai.aria_open_menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <line x1="4" x2="20" y1="12" y2="12"/>
-                        <line x1="4" x2="20" y1="6" y2="6"/>
-                        <line x1="4" x2="20" y1="18" y2="18"/>
-                    </svg>
-                </button>
-                <span class="communicate-mobile-title" data-i18n="communicate.title">Communicate</span>
-                <div class="communicate-mobile-state" id="mobileConnectionDot" aria-hidden="true"></div>
-            </div>
+            <div class="ui-main">
 
-            <header class="page-header communicate-header">
-                <h1 class="page-title" data-i18n="communicate.title">Communicate</h1>
+            <header class="ui-page-head communicate-header">
+                <h1 data-i18n="communicate.title">Communicate</h1>
                 <div class="communicate-availability" id="availability" role="status" aria-live="polite">
                     <span class="communicate-availability-dot" id="availabilityDot"></span>
                     <span id="availabilityText">Checking car...</span>
@@ -55,9 +45,9 @@
                 </button>
             </div>
 
-            <div class="page-body communicate-body">
+            <div class="ui-page-body communicate-body">
                 <div class="communicate-grid">
-                    <section class="communicate-tool talk-tool is-mobile-active" id="talkPanel" aria-labelledby="talkHeading">
+                    <section class="ui-panel communicate-tool talk-tool is-mobile-active" id="talkPanel" aria-labelledby="talkHeading">
                         <div class="communicate-tool-header">
                             <h2 id="talkHeading" data-i18n="communicate.talk">Talk</h2>
                             <div class="talk-header-actions">
@@ -111,9 +101,9 @@
                             <div class="talk-output-control">
                                 <div class="talk-output-option">
                                     <label for="remoteOutputOverride" data-i18n="communicate.output_override">Use custom voice level</label>
-                                    <label class="toggle-switch talk-output-toggle">
+                                    <label class="ui-toggle talk-output-toggle">
                                         <input type="checkbox" id="remoteOutputOverride" aria-label="Use custom voice level" data-i18n-attr="aria-label:communicate.output_override" disabled>
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="talk-output-slider-row">
@@ -124,7 +114,7 @@
                                     </svg>
                                     <input
                                         type="range"
-                                        class="slider talk-output-slider"
+                                        class="ui-range talk-output-slider"
                                         id="remoteOutputLevel"
                                         min="0"
                                         max="100"
@@ -140,7 +130,7 @@
                         </div>
                     </section>
 
-                    <section class="communicate-tool message-tool" id="messagePanel" aria-labelledby="messageHeading">
+                    <section class="ui-panel communicate-tool message-tool" id="messagePanel" aria-labelledby="messageHeading">
                         <div class="communicate-tool-header">
                             <h2 id="messageHeading" data-i18n="communicate.message">Message</h2>
                             <div class="message-ack" id="messageAck" role="status" aria-live="polite"></div>
@@ -194,7 +184,7 @@
                             </div>
 
                             <div class="message-actions">
-                                <button type="submit" class="btn btn-primary message-send" id="messageSend" disabled>
+                                <button type="submit" class="ui-button ui-button-primary message-send" id="messageSend" disabled>
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                                         <path d="m22 2-7 20-4-9-9-4Z"/>
                                         <path d="M22 2 11 13"/>
@@ -206,23 +196,17 @@
                     </section>
                 </div>
             </div>
+            </div>
         </main>
     </div>
 
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-    <div id="toastContainer" class="toast-container"></div>
+    <div id="toastContainer" class="ui-toast-stack"></div>
 
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=24"></script>
     <script src="../shared/cabin-audio.js?v=1"></script>
     <script src="../shared/communicate.js?v=11"></script>
     <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            var overlay = document.getElementById('sidebarOverlay');
-            if (sidebar) sidebar.classList.toggle('open');
-            if (overlay) overlay.classList.toggle('show');
-        }
         BYD.i18n.init().then(function () {
             BYD.core.init();
             CommunicatePage.init();

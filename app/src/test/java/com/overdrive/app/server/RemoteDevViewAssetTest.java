@@ -170,7 +170,7 @@ public class RemoteDevViewAssetTest {
         assertTrue(html.contains(".head-unit-bezel::before"));
         assertTrue(html.contains(".head-unit-bezel::after"));
         assertTrue(html.contains("#viewerCard:fullscreen .head-unit-bezel"));
-        assertTrue(html.contains("body.dev-view-focus #viewerCard .head-unit-bezel"));
+        assertTrue(html.contains("body[data-page=\"remote-dev-view\"].dev-view-focus #viewerCard .head-unit-bezel"));
         assertTrue(html.contains(".head-unit-bezel::after { display: none; }"));
         assertTrue(html.contains("id=\"fullscreenButton\""));
         assertTrue(html.contains("id=\"fullscreenExitButton\""));
@@ -280,7 +280,8 @@ public class RemoteDevViewAssetTest {
     }
 
     private static String read(String moduleRelativePath) throws Exception {
-        return new String(Files.readAllBytes(locate(moduleRelativePath)), StandardCharsets.UTF_8);
+        return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("app/" + moduleRelativePath.replaceFirst("^app/", ""),
+                new String(Files.readAllBytes(locate(moduleRelativePath)), StandardCharsets.UTF_8));
     }
 
     private static int scriptIndex(String html, String asset) throws Exception {

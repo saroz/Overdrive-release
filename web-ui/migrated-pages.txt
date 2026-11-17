@@ -24,3 +24,9 @@ safekeep.html
 network.html
 wireguard.html
 module-faults.html
+notifications.html
+assistant.html
+communicate.html
+about.html
+login.html
+remote-dev-view.html
