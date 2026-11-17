@@ -237,3 +237,6 @@
 @media (prefers-reduced-motion: reduce) { .ui-spinner { animation-duration: 2s; } }
 .ui-summary > .ui-strip-icon { grid-column: 1; grid-row: 1 / span 2; }
 .ui-summary > .ui-panel-head, .ui-summary > .ui-summary-text, .ui-summary > .ui-row { grid-column: 2; }
+
+.ui-check-row { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 13px; }
+.ui-check-row input { width: 18px; height: 18px; margin: 0; accent-color: var(--ui-accent); }

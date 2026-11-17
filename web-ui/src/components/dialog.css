@@ -114,3 +114,5 @@
 }
 
 html[data-android-embed="1"] .ui-toast-stack { bottom: 24px; }
+
+.ui-dialog-title { margin: 0 0 14px; font-size: 17px; font-weight: 650; }

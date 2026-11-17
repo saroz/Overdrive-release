@@ -90,8 +90,8 @@ var RoiEditor = (function() {
 
     function selectCamera(q) {
         currentQuadrant = q;
-        var tabs = document.querySelectorAll('#roiCameraTabs .btn-toggle');
-        for (var i = 0; i < tabs.length; i++) tabs[i].className = 'btn-toggle' + (i === q ? ' active' : '');
+        var tabs = document.querySelectorAll('#roiCameraTabs .ui-segment');
+        for (var i = 0; i < tabs.length; i++) tabs[i].className = 'ui-segment' + (i === q ? ' active' : '');
         var cb = document.getElementById('roiEnabled');
         if (cb) cb.checked = roiEnabledFlags[q];
         var c = document.getElementById('roiDrawingContent');
@@ -203,7 +203,7 @@ var RoiEditor = (function() {
         }
         // Disable Save button while in flight so a double-tap can't fire two
         // POSTs (the second one would race against the loadConfig() refresh).
-        var saveBtn = document.querySelector('#roiDrawingContent .btn.btn-primary');
+        var saveBtn = document.querySelector('#roiDrawingContent .ui-button.btn-primary');
         if (saveBtn) saveBtn.disabled = true;
         fetch('/api/surveillance/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
             .then(function(r) {
@@ -297,7 +297,7 @@ var ScheduleEditor = (function() {
         var cb = document.getElementById('scheduleEnabled'), en = cb ? cb.checked : false;
         document.getElementById('scheduleContent').style.display = en ? 'block' : 'none';
         var badge = document.getElementById('scheduleBadge');
-        if (badge) { badge.textContent = en ? BYD.i18n.t('roi.editing') : BYD.i18n.t('status.off'); badge.className = 'status-badge '+(en?'active':'inactive'); }
+        if (badge) { badge.textContent = en ? BYD.i18n.t('roi.editing') : BYD.i18n.t('status.off'); badge.className = 'ui-badge '+(en?'active':'inactive'); }
         updateSaveBtn(); updateSummary();
     }
     function addRule() {
@@ -305,12 +305,12 @@ var ScheduleEditor = (function() {
         document.getElementById('scheduleContent').style.display = 'block';
         var cb = document.getElementById('scheduleEnabled'); if (cb) cb.checked = true;
         var badge = document.getElementById('scheduleBadge');
-        if (badge) { badge.textContent = BYD.i18n.t('roi.editing'); badge.className = 'status-badge active'; }
+        if (badge) { badge.textContent = BYD.i18n.t('roi.editing'); badge.className = 'ui-badge active'; }
         renderRules();
     }
     function removeRule(i) { rules.splice(i, 1); renderRules(); }
     function mkSel(vals, sel, ri, f, w) {
-        var s = document.createElement('select'); s.className = 'select-control roi-time-select';
+        var s = document.createElement('select'); s.className = 'ui-select roi-time-select';
         for (var i = 0; i < vals.length; i++) {
             var o = document.createElement('option'); o.value = vals[i]; o.textContent = pad(vals[i]);
             if (vals[i] === sel) o.selected = true; s.appendChild(o);
@@ -328,7 +328,7 @@ var ScheduleEditor = (function() {
             var hdr = document.createElement('div'); hdr.className = 'roi-rule-head';
             var lbl = document.createElement('span'); lbl.className = 'roi-rule-label'; lbl.textContent = BYD.i18n.t('roi.window_n', {n: r+1});
             hdr.appendChild(lbl);
-            var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'btn btn-danger-ghost roi-rule-remove'; rm.textContent = BYD.i18n.t('roi.remove');
+            var rm = document.createElement('button'); rm.type = 'button'; rm.className = 'ui-button ui-button-ghost ui-button-danger roi-rule-remove'; rm.textContent = BYD.i18n.t('roi.remove');
             (function(ri){ rm.onclick = function(){ removeRule(ri); }; })(r); hdr.appendChild(rm); div.appendChild(hdr);
             var dr = document.createElement('div'); dr.className = 'roi-days';
             for (var d = 0; d < 7; d++) {
@@ -393,7 +393,7 @@ var ScheduleEditor = (function() {
             }).then(function(){
                 msg(BYD.i18n.t('roi.schedule_saved'),'success');
                 var badge = document.getElementById('scheduleBadge');
-                if (badge) { badge.textContent = en ? BYD.i18n.t('roi.badge_on') : BYD.i18n.t('roi.badge_off'); badge.className = 'status-badge '+(en?'active':'inactive'); }
+                if (badge) { badge.textContent = en ? BYD.i18n.t('roi.badge_on') : BYD.i18n.t('roi.badge_off'); badge.className = 'ui-badge '+(en?'active':'inactive'); }
             }).catch(function(){ msg(BYD.i18n.t('roi.save_failed'),'error'); })
             .then(function(){ if (saveBtn) saveBtn.disabled = false; updateSaveBtn(); });
     }
@@ -406,7 +406,7 @@ var ScheduleEditor = (function() {
             var cb = document.getElementById('scheduleEnabled'); if (cb) cb.checked = en;
             document.getElementById('scheduleContent').style.display = (en || rules.length > 0) ? 'block' : 'none';
             var badge = document.getElementById('scheduleBadge');
-            if (badge) { badge.textContent = en ? BYD.i18n.t('roi.badge_on') : BYD.i18n.t('roi.badge_off'); badge.className = 'status-badge '+(en?'active':'inactive'); }
+            if (badge) { badge.textContent = en ? BYD.i18n.t('roi.badge_on') : BYD.i18n.t('roi.badge_off'); badge.className = 'ui-badge '+(en?'active':'inactive'); }
             renderRules();
         }).catch(function(){});
     }

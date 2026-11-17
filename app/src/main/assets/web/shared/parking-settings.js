@@ -26,7 +26,7 @@
         var badge = $('parkingBadge');
         if (badge) {
             badge.textContent = cfg.enabled ? t('status.on') : t('status.off');
-            badge.className = 'status-badge ' + (cfg.enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (cfg.enabled ? 'active' : 'inactive');
         }
         var note = $('parkingModelsNote');
         if (note && status) {
@@ -75,7 +75,7 @@
     // (same trick notifications.html uses for its Telegram toggles).
     function setChecked(id, want) {
         var el = $(id); if (!el) return;
-        var slider = el.parentNode && el.parentNode.querySelector('.toggle-slider');
+        var slider = el.parentNode && el.parentNode.querySelector('.ui-toggle-track');
         el.checked = !want;
         if (slider) { void slider.offsetHeight; }
         el.checked = want;

@@ -19,7 +19,7 @@ public class SafeLocationsUiAssetTest {
         String script = readRepositoryFile(
                 "app/src/main/assets/web/shared/safe-locations.js");
         String styles = readRepositoryFile(
-                "app/src/main/assets/web/shared/styles.css");
+                "web-ui/src/components/adopted/camera-widgets.css"); // moved from styles.css (2026-11-17)
         String html = readRepositoryFile(
                 "app/src/main/assets/web/local/surveillance.html");
         String english = readRepositoryFile(

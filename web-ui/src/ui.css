@@ -24,6 +24,8 @@
 @import "./components/map.css";
 @import "./components/settings.css";
 
+@import "./components/adopted/camera-widgets.css";
+
 @import "tailwindcss/utilities.css" source(none);
 
 @source "../../app/src/main/assets/web/local/*.html";

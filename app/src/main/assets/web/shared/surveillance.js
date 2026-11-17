@@ -551,7 +551,7 @@ BYD.surveillance = {
                 if (sdRefresh !== this.config.segmentDurationMinutes) {
                     this.config.segmentDurationMinutes = sdRefresh;
                     if (this.savedConfig) this.savedConfig.segmentDurationMinutes = sdRefresh;
-                    document.querySelectorAll('#survClipDurationBtns .btn-toggle').forEach(function (btn) {
+                    document.querySelectorAll('#survClipDurationBtns .ui-segment').forEach(function (btn) {
                         btn.classList.toggle('active', btn.dataset.value === String(sdRefresh));
                     });
                 }
@@ -571,7 +571,7 @@ BYD.surveillance = {
                 if (sqRefresh && sqRefresh !== this.config.surveillanceQuality) {
                     this.config.surveillanceQuality = sqRefresh;
                     if (this.savedConfig) this.savedConfig.surveillanceQuality = sqRefresh;
-                    document.querySelectorAll('#survQualityBtns .btn-toggle').forEach(function (btn) {
+                    document.querySelectorAll('#survQualityBtns .ui-segment').forEach(function (btn) {
                         btn.classList.toggle('active', btn.dataset.value === sqRefresh);
                     });
                     this.renderActiveEstimate();
@@ -587,7 +587,7 @@ BYD.surveillance = {
                 if (typeof sfRefresh === 'number' && sfRefresh !== this.config.surveillanceCameraFps) {
                     this.config.surveillanceCameraFps = sfRefresh;
                     if (this.savedConfig) this.savedConfig.surveillanceCameraFps = sfRefresh;
-                    document.querySelectorAll('#survFpsBtns .btn-toggle').forEach(function (btn) {
+                    document.querySelectorAll('#survFpsBtns .ui-segment').forEach(function (btn) {
                         btn.classList.toggle('active', btn.dataset.value === String(sfRefresh));
                     });
                     this.renderActiveEstimate();
@@ -795,7 +795,7 @@ BYD.surveillance = {
 
     setFps(fps) {
         this.config.surveillanceCameraFps = parseInt(fps, 10);
-        document.querySelectorAll('#survFpsBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survFpsBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(fps)));
         // FPS shifts the per-tier qualityEquivalent labels — re-render so
         // the user sees the change before pressing Apply. Persistence is
@@ -880,7 +880,7 @@ BYD.surveillance = {
     },
     
     updateStorageTypeUI() {
-        document.querySelectorAll('#survStorageTypeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survStorageTypeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.surveillanceStorageType));
 
         // SD/USB both ride the USB power rail; when "Keep USB powered" is OFF they're
@@ -911,7 +911,7 @@ BYD.surveillance = {
             const textEl = document.getElementById('survSdStatusText');
             const spaceEl = document.getElementById('survSdSpaceInfo');
             if (this.storageInfo.sdCardAvailable) {
-                if (dotEl) dotEl.className = 'sd-status-dot online';
+                if (dotEl) dotEl.className = 'ui-dot online';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.sd_card_available');
                 if (spaceEl) {
                     spaceEl.style.display = 'block';
@@ -921,7 +921,7 @@ BYD.surveillance = {
                     if (sdTotalEl) sdTotalEl.textContent = BYD.i18n.t('recording.size_total', {size: this.formatSize(this.storageInfo.sdCardTotalSpace)});
                 }
             } else {
-                if (dotEl) dotEl.className = 'sd-status-dot offline';
+                if (dotEl) dotEl.className = 'ui-dot offline';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.sd_card_not_detected');
                 if (spaceEl) spaceEl.style.display = 'none';
             }
@@ -935,7 +935,7 @@ BYD.surveillance = {
             const textEl = document.getElementById('survUsbStatusText');
             const spaceEl = document.getElementById('survUsbSpaceInfo');
             if (this.storageInfo.usbAvailable) {
-                if (dotEl) dotEl.className = 'sd-status-dot online';
+                if (dotEl) dotEl.className = 'ui-dot online';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.usb_available');
                 if (spaceEl) {
                     spaceEl.style.display = 'block';
@@ -945,7 +945,7 @@ BYD.surveillance = {
                     if (usbTotalEl) usbTotalEl.textContent = BYD.i18n.t('recording.size_total', {size: this.formatSize(this.storageInfo.usbTotalSpace)});
                 }
             } else {
-                if (dotEl) dotEl.className = 'sd-status-dot offline';
+                if (dotEl) dotEl.className = 'ui-dot offline';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.usb_not_detected');
                 if (spaceEl) spaceEl.style.display = 'none';
             }
@@ -1010,7 +1010,7 @@ BYD.surveillance = {
         }
 
         this.config.surveillanceStorageType = type;
-        document.querySelectorAll('#survStorageTypeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survStorageTypeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === type));
 
         // Re-clamp limit to the new volume's effective max so we don't
@@ -1108,7 +1108,7 @@ BYD.surveillance = {
         const badge = document.getElementById('cdrCleanupBadge');
         if (badge) {
             badge.textContent = this.cdrConfig.enabled ? BYD.i18n.t('status.on') : BYD.i18n.t('status.off');
-            badge.className = 'status-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
         }
         
         // Update sliders
@@ -1565,7 +1565,7 @@ BYD.surveillance = {
         const badge = document.getElementById('survStatusBadge');
         if (badge) {
             badge.textContent = this.config.enabled ? BYD.i18n.t('surveillance.badge_on') : BYD.i18n.t('surveillance.badge_off');
-            badge.className = 'status-badge ' + (this.config.enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (this.config.enabled ? 'active' : 'inactive');
         }
 
         const preRecSlider = document.getElementById('preRecSlider');
@@ -1588,17 +1588,17 @@ BYD.surveillance = {
 
         // Surveillance tier picker — bound to the ACC-off surveillanceQuality
         // key (independent of the dashcam page's recordingQuality picker).
-        document.querySelectorAll('#survQualityBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survQualityBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.surveillanceQuality));
-        document.querySelectorAll('#codecBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#codecBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.recordingCodec));
 
         // Surveillance camera FPS buttons — bound to surveillanceCameraFps.
-        document.querySelectorAll('#survFpsBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survFpsBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(this.config.surveillanceCameraFps || 15)));
 
         // Clip duration buttons (shared across recording + surveillance).
-        document.querySelectorAll('#survClipDurationBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survClipDurationBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(this.config.segmentDurationMinutes || 2)));
 
         // Lens-dewarp slider (shared across recording + surveillance).
@@ -1762,7 +1762,7 @@ BYD.surveillance = {
         var m = parseInt(minutes, 10);
         if (m !== 2 && m !== 5 && m !== 10) m = 2;
         this.config.segmentDurationMinutes = m;
-        document.querySelectorAll('#survClipDurationBtns .btn-toggle').forEach(function (btn) {
+        document.querySelectorAll('#survClipDurationBtns .ui-segment').forEach(function (btn) {
             btn.classList.toggle('active', btn.dataset.value === String(m));
         });
         this.markChanged();
@@ -1770,7 +1770,7 @@ BYD.surveillance = {
 
     setRecordingQuality(tier) {
         this.config.surveillanceQuality = tier;
-        document.querySelectorAll('#survQualityBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#survQualityBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === tier));
         this.renderActiveEstimate();
         this.markChanged();
@@ -1778,7 +1778,7 @@ BYD.surveillance = {
 
     setCodec(codec) {
         this.config.recordingCodec = codec;
-        document.querySelectorAll('#codecBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#codecBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === codec));
         this.renderActiveEstimate();
         this.markChanged();
@@ -1862,7 +1862,7 @@ BYD.surveillance = {
         this.config.accOffMode = mode;
         // Reflect button state immediately so the click feels responsive
         // before the network round-trip resolves.
-        document.querySelectorAll('#accOffModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#accOffModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === mode));
         this.applyAccOffModeUI();
 
@@ -1872,7 +1872,7 @@ BYD.surveillance = {
               if (self.savedConfig) self.savedConfig.accOffMode = mode;
               if (!self._isLatestImmediateWrite('accOffMode', writeVersion)) return;
               self.config.accOffMode = mode;
-              document.querySelectorAll('#accOffModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#accOffModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === mode));
               self.applyAccOffModeUI();
               self.markChanged();
@@ -1894,7 +1894,7 @@ BYD.surveillance = {
               const persisted = self.savedConfig && self.savedConfig.accOffMode
                   ? self.savedConfig.accOffMode : prev;
               self.config.accOffMode = persisted;
-              document.querySelectorAll('#accOffModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#accOffModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === persisted));
               self.applyAccOffModeUI();
               if (BYD.utils && BYD.utils.toast) {
@@ -1914,7 +1914,7 @@ BYD.surveillance = {
         this.config.armMode = mode;
         // Reflect button state immediately so the click feels responsive
         // before the network round-trip resolves.
-        document.querySelectorAll('#armModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#armModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === mode));
         this.applyArmModeUI();
 
@@ -1924,7 +1924,7 @@ BYD.surveillance = {
               if (self.savedConfig) self.savedConfig.armMode = mode;
               if (!self._isLatestImmediateWrite('armMode', writeVersion)) return;
               self.config.armMode = mode;
-              document.querySelectorAll('#armModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#armModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === mode));
               self.applyArmModeUI();
               self.markChanged();
@@ -1946,7 +1946,7 @@ BYD.surveillance = {
               const persisted = self.savedConfig && self.savedConfig.armMode
                   ? self.savedConfig.armMode : prev;
               self.config.armMode = persisted;
-              document.querySelectorAll('#armModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#armModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === persisted));
               self.applyArmModeUI();
               if (BYD.utils && BYD.utils.toast) {
@@ -1988,7 +1988,7 @@ BYD.surveillance = {
         const writeVersion = this._nextImmediateWrite('operatingMode');
 
         this.config.operatingMode = mode;
-        document.querySelectorAll('#operatingModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#operatingModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === mode));
         this.applyOperatingModeUI();
 
@@ -1998,7 +1998,7 @@ BYD.surveillance = {
               if (self.savedConfig) self.savedConfig.operatingMode = mode;
               if (!self._isLatestImmediateWrite('operatingMode', writeVersion)) return;
               self.config.operatingMode = mode;
-              document.querySelectorAll('#operatingModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#operatingModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === mode));
               self.applyOperatingModeUI();
               self.markChanged();
@@ -2018,7 +2018,7 @@ BYD.surveillance = {
               const persisted = self.savedConfig && self.savedConfig.operatingMode
                   ? self.savedConfig.operatingMode : prev;
               self.config.operatingMode = persisted;
-              document.querySelectorAll('#operatingModeBtns .btn-toggle').forEach(btn =>
+              document.querySelectorAll('#operatingModeBtns .ui-segment').forEach(btn =>
                   btn.classList.toggle('active', btn.dataset.value === persisted));
               self.applyOperatingModeUI();
               if (BYD.utils && BYD.utils.toast) {
@@ -2057,7 +2057,7 @@ BYD.surveillance = {
         const dimRow = function (controlId) {
             const el = document.getElementById(controlId);
             if (!el) return;
-            const row = el.closest ? el.closest('.setting-row') : null;
+            const row = el.closest ? el.closest('.ui-row') : null;
             if (row) {
                 row.style.opacity = inert ? '0.45' : '';
                 row.style.pointerEvents = inert ? 'none' : '';
@@ -2076,12 +2076,12 @@ BYD.surveillance = {
         ['armModeBtns', 'accOffModeBtns'].forEach(function (grpId) {
             const grp = document.getElementById(grpId);
             if (grp) {
-                const row = grp.closest ? grp.closest('.setting-row') : null;
+                const row = grp.closest ? grp.closest('.ui-row') : null;
                 if (row) {
                     row.style.opacity = inert ? '0.45' : '';
                     row.style.pointerEvents = inert ? 'none' : '';
                 }
-                const btns = grp.querySelectorAll('.btn-toggle');
+                const btns = grp.querySelectorAll('.ui-segment');
                 for (let i = 0; i < btns.length; i++) btns[i].disabled = inert;
             }
         });
@@ -2125,7 +2125,7 @@ BYD.surveillance = {
         // for continuous output. Safe Locations also stays live (the
         // gating still works) and we skip the mode-toggle card itself.
         const dim = (mode === 'continuous');
-        document.querySelectorAll('.card[data-tab="detection"]').forEach(card => {
+        document.querySelectorAll('.ui-panel[data-tab="detection"]').forEach(card => {
             if (card.querySelector('#safeLocEnabled')) return;
             if (card.querySelector('#accOffModeBtns')) return;
             card.style.opacity = dim ? '0.45' : '';
@@ -2227,7 +2227,7 @@ BYD.surveillance = {
     _applyInternalStorageForUsbOff() {
         const prevStorageType = this.config.surveillanceStorageType || 'INTERNAL';
         this.config.surveillanceStorageType = 'INTERNAL';
-        document.querySelectorAll('#survStorageTypeBtns .btn-toggle').forEach(function (btn) {
+        document.querySelectorAll('#survStorageTypeBtns .ui-segment').forEach(function (btn) {
             btn.classList.toggle('active', btn.dataset.value === 'INTERNAL');
         });
         const newMax = this.effectiveMaxLimitMb();
@@ -2324,7 +2324,7 @@ BYD.surveillance = {
               // back (state desync). Re-sync dependent UI + dirty markers.
               if (alsoStorage && self.config && prevStorageType) {
                   self.config.surveillanceStorageType = prevStorageType;
-                  document.querySelectorAll('#survStorageTypeBtns .btn-toggle').forEach(function (btn) {
+                  document.querySelectorAll('#survStorageTypeBtns .ui-segment').forEach(function (btn) {
                       btn.classList.toggle('active', btn.dataset.value === prevStorageType);
                   });
                   if (typeof self.updateStorageLimitUI === 'function') self.updateStorageLimitUI();
@@ -2867,7 +2867,7 @@ BYD.surveillance = {
             if (!toggle) return;
             toggle.checked = self._assistOffEnabled(control);
             toggle.disabled = !available;
-            const row = toggle.closest ? toggle.closest('.setting-row') : null;
+            const row = toggle.closest ? toggle.closest('.ui-row') : null;
             if (row) row.style.opacity = available ? '' : '0.6';
         });
         const hint = document.getElementById('survAssistOffUnavailableHint');
@@ -2890,7 +2890,7 @@ BYD.surveillance = {
 
     setEnvironmentPreset(preset) {
         this.config.environmentPreset = preset;
-        document.querySelectorAll('#envPresetBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#envPresetBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === preset));
         // Hide Custom button when a real preset is selected
         const customBtn = document.getElementById('envPresetCustom');
@@ -2925,7 +2925,7 @@ BYD.surveillance = {
             }
 
             // Update detection zone buttons + hint
-            document.querySelectorAll('#detectionZoneBtns .btn-toggle').forEach(btn =>
+            document.querySelectorAll('#detectionZoneBtns .ui-segment').forEach(btn =>
                 btn.classList.toggle('active', btn.dataset.value === p.detectionZone));
             var _dh = document.getElementById('detectionZoneHint');
             if (_dh) {
@@ -2967,7 +2967,7 @@ BYD.surveillance = {
 
     setDetectionZone(zone) {
         this.config.detectionZone = zone;
-        document.querySelectorAll('#detectionZoneBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#detectionZoneBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === zone));
         var _dh = document.getElementById('detectionZoneHint');
         if (_dh) {
@@ -3050,7 +3050,7 @@ BYD.surveillance = {
         if (matchedPreset) {
             // Values match a known preset — highlight it
             this.config.environmentPreset = matchedPreset;
-            document.querySelectorAll('#envPresetBtns .btn-toggle').forEach(btn =>
+            document.querySelectorAll('#envPresetBtns .ui-segment').forEach(btn =>
                 btn.classList.toggle('active', btn.dataset.value === matchedPreset));
             if (customBtn) customBtn.classList.remove('active');
             var _eh = document.getElementById('envPresetHint');
@@ -3060,7 +3060,7 @@ BYD.surveillance = {
             }
         } else {
             // No preset matches — show Custom
-            document.querySelectorAll('#envPresetBtns .btn-toggle').forEach(btn =>
+            document.querySelectorAll('#envPresetBtns .ui-segment').forEach(btn =>
                 btn.classList.remove('active'));
             if (customBtn) customBtn.classList.add('active');
             var _eh = document.getElementById('envPresetHint');
@@ -3105,7 +3105,7 @@ BYD.surveillance = {
         if (ctl) ctl.style.display = on ? '' : 'none';
         if (on) {
             const sens = parseInt(document.getElementById('sideCamSensSlider').value);
-            const activeZoneBtn = document.querySelector('#sideCamZoneBtns .btn-toggle.active');
+            const activeZoneBtn = document.querySelector('#sideCamZoneBtns .ui-segment.active');
             const zone = activeZoneBtn ? activeZoneBtn.dataset.value : 'extended';
             this._writeSideCamOverrides(sens, zone);
         } else {
@@ -3121,14 +3121,14 @@ BYD.surveillance = {
             valEl.setAttribute('data-i18n', 'surveillance.v2_sens_label.' + sens);
             valEl.textContent = this.v2SensLabel(sens) || sens;
         }
-        const activeZoneBtn = document.querySelector('#sideCamZoneBtns .btn-toggle.active');
+        const activeZoneBtn = document.querySelector('#sideCamZoneBtns .ui-segment.active');
         const zone = activeZoneBtn ? activeZoneBtn.dataset.value : 'extended';
         this._writeSideCamOverrides(sens, zone);
         this.markChanged();
     },
 
     setSideCamZone(zone) {
-        document.querySelectorAll('#sideCamZoneBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#sideCamZoneBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === zone));
         const sens = parseInt(document.getElementById('sideCamSensSlider').value);
         this._writeSideCamOverrides(sens, zone);
@@ -3206,7 +3206,7 @@ BYD.surveillance = {
                 // no-op on most engines and won't cause a re-paint, so
                 // flip-then-restore around a forced reflow on the slider
                 // sibling.
-                const slider = el.parentNode && el.parentNode.querySelector('.toggle-slider');
+                const slider = el.parentNode && el.parentNode.querySelector('.ui-toggle-track');
                 el.checked = !want;
                 if (slider) { void slider.offsetHeight; }
                 el.checked = want;
@@ -3279,7 +3279,7 @@ BYD.surveillance = {
         const setDisabled = (el, dis) => {
             if (!el) return;
             el.disabled = dis;
-            const row = el.closest('.setting-row');
+            const row = el.closest('.ui-row');
             if (row) {
                 row.style.opacity = dis ? '0.55' : '';
                 row.style.pointerEvents = dis ? 'none' : '';
@@ -3605,7 +3605,7 @@ BYD.surveillance = {
         // refresh the dim state of dependent cards. Default to 'smart' if
         // the server omitted the field (older daemon build).
         const accOffMode = this.config.accOffMode || 'smart';
-        document.querySelectorAll('#accOffModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#accOffModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === accOffMode));
         this.applyAccOffModeUI();
 
@@ -3613,7 +3613,7 @@ BYD.surveillance = {
         // its hint. Default to 'lock' if the server omitted the field (older
         // daemon build).
         const armMode = this.config.armMode || 'lock';
-        document.querySelectorAll('#armModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#armModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === armMode));
         this.applyArmModeUI();
 
@@ -3621,7 +3621,7 @@ BYD.surveillance = {
         // its hint. Default to 'onAndOff' if the server omitted the field (older daemon
         // build) so the switch shows the real out-of-box default.
         const operatingMode = this.config.operatingMode || 'onAndOff';
-        document.querySelectorAll('#operatingModeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#operatingModeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === operatingMode));
         this.applyOperatingModeUI();
 
@@ -3714,7 +3714,7 @@ BYD.surveillance = {
             );
         }
         
-        document.querySelectorAll('#envPresetBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#envPresetBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', presetMatches && btn.dataset.value === savedPreset));
         const customBtn = document.getElementById('envPresetCustom');
         if (!presetMatches) {
@@ -3748,7 +3748,7 @@ BYD.surveillance = {
         }
 
         // Detection zone
-        document.querySelectorAll('#detectionZoneBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#detectionZoneBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.detectionZone));
         var _dh = document.getElementById('detectionZoneHint');
         if (_dh) {
@@ -3814,7 +3814,7 @@ BYD.surveillance = {
             sValue.setAttribute('data-i18n', 'surveillance.v2_sens_label.' + sideSens);
             sValue.textContent = this.v2SensLabel(sideSens) || sideSens;
         }
-        document.querySelectorAll('#sideCamZoneBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#sideCamZoneBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === sideZone));
 
         // Developer toggles
@@ -3823,8 +3823,8 @@ BYD.surveillance = {
         const fd = document.getElementById('v2FilterDebugLog');
         if (fd) fd.checked = this.config.filterDebugLog;
 
-        // Paint a checkbox + force the adjacent .toggle-slider to re-evaluate
-        // its `:checked + .toggle-slider` style. Plain `el.checked = true`
+        // Paint a checkbox + force the adjacent .ui-toggle-track to re-evaluate
+        // its `:checked + .ui-toggle-track` style. Plain `el.checked = true`
         // sets the property correctly but Chrome 58 WebView may not
         // invalidate the sibling slider's style until the element is
         // interacted with — slider stays in OFF position even though the
@@ -3832,7 +3832,7 @@ BYD.surveillance = {
         // style recompute. Harmless on every other engine.
         const setToggle = (el, want) => {
             if (!el) return;
-            const slider = el.parentNode && el.parentNode.querySelector('.toggle-slider');
+            const slider = el.parentNode && el.parentNode.querySelector('.ui-toggle-track');
             el.checked = !want;
             if (slider) { void slider.offsetHeight; }
             el.checked = !!want;
@@ -3981,7 +3981,7 @@ BYD.surveillance = {
     async _applySettingsNow() {
         const btn = document.getElementById('btnApply');
         const origText = btn.innerHTML;
-        btn.innerHTML = '<span class="r-btn-spinner" aria-hidden="true"></span>' + BYD.i18n.t('surveillance.saving');
+        btn.innerHTML = '<span class="ui-spinner" aria-hidden="true"></span>' + BYD.i18n.t('surveillance.saving');
         btn.disabled = true;
 
         try {
@@ -4439,7 +4439,7 @@ BYD.surveillance = {
                 find_car: BYD.i18n.t('surveillance.deterrent_horn_badge')
             };
             badge.textContent = labels[action] || BYD.i18n.t('surveillance.deterrent_silent_badge');
-            badge.className = 'status-badge ' + (action === 'silent' ? 'inactive' : 'active');
+            badge.className = 'ui-badge ' + (action === 'silent' ? 'inactive' : 'active');
         }
 
         // Show warning if cloud action selected but not configured
@@ -4815,7 +4815,7 @@ BYD.surveillance = {
             badge.textContent = enabled
                 ? BYD.i18n.t('surveillance.screen_deterrent_on_badge')
                 : BYD.i18n.t('surveillance.screen_deterrent_off_badge');
-            badge.className = 'status-badge ' + (enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (enabled ? 'active' : 'inactive');
         }
 
         var clearBtn = document.getElementById('screenDeterrentClearBtn');
@@ -5433,16 +5433,16 @@ BYD.surveillance = {
             label.textContent = BYD.i18n.t('oem_dashcam.native_dvr_status_disabled');
             btn.setAttribute('data-i18n', 'oem_dashcam.native_dvr_enable');
             btn.textContent = BYD.i18n.t('oem_dashcam.native_dvr_enable');
-            btn.classList.remove('btn-danger');
-            btn.classList.add('btn-primary');
+            btn.classList.remove('ui-button-danger');
+            btn.classList.add('ui-button-primary');
             btn.dataset.action = 'enable';
         } else {
             label.setAttribute('data-i18n', 'oem_dashcam.native_dvr_status_enabled');
             label.textContent = BYD.i18n.t('oem_dashcam.native_dvr_status_enabled');
             btn.setAttribute('data-i18n', 'oem_dashcam.native_dvr_disable');
             btn.textContent = BYD.i18n.t('oem_dashcam.native_dvr_disable');
-            btn.classList.remove('btn-primary');
-            btn.classList.add('btn-danger');
+            btn.classList.remove('ui-button-primary');
+            btn.classList.add('ui-button-danger');
             btn.dataset.action = 'disable';
         }
     },
@@ -5530,7 +5530,7 @@ BYD.surveillance = {
     _applySurveillanceLayoutButtons(layout) {
         const group = document.getElementById('survLayoutBtns');
         if (!group) return;
-        group.querySelectorAll('.btn-toggle').forEach(btn =>
+        group.querySelectorAll('.ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === layout));
     },
 
@@ -5574,7 +5574,7 @@ BYD.surveillance = {
 
     async _saveSurveillanceLayout() {
         const group = document.getElementById('survLayoutBtns');
-        const active = group ? group.querySelector('.btn-toggle.active') : null;
+        const active = group ? group.querySelector('.ui-segment.active') : null;
         const layout = active ? active.dataset.value : 'standard';
 
         const wsToggle = document.getElementById('survUseWindshield');
@@ -5583,7 +5583,7 @@ BYD.surveillance = {
         this._layoutWriteVersion++;
         this._layoutWritePending = true;
         if (group) {
-            group.querySelectorAll('.btn-toggle').forEach(btn => { btn.disabled = true; });
+            group.querySelectorAll('.ui-segment').forEach(btn => { btn.disabled = true; });
         }
         if (wsToggle) wsToggle.disabled = true;
         try {
@@ -5611,7 +5611,7 @@ BYD.surveillance = {
         } finally {
             this._layoutWritePending = false;
             if (group) {
-                group.querySelectorAll('.btn-toggle').forEach(btn => { btn.disabled = false; });
+                group.querySelectorAll('.ui-segment').forEach(btn => { btn.disabled = false; });
             }
             if (wsToggle) {
                 wsToggle.disabled = !this._surveillanceWindshieldAvailable;
@@ -5693,7 +5693,7 @@ BYD.surveillance = {
         grid.innerHTML = '';
         this._telemetryCatalog.forEach(f => {
             const label = document.createElement('label');
-            label.className = 'checkbox-item' + (selected.has(f.key) ? ' active' : '');
+            label.className = 'ui-check' + (selected.has(f.key) ? ' active' : '');
             const cb = document.createElement('input');
             cb.type = 'checkbox';
             cb.id = 'telField_surveillance_' + f.key;
@@ -6072,7 +6072,7 @@ window.BydCloud = {
 
         if (status.verified) {
             this.isConfigured = true;
-            if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_connected'); badge.className = 'status-badge active'; }
+            if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_connected'); badge.className = 'ui-badge active'; }
             if (info) {
                 info.style.display = 'block';
                 document.getElementById('bydVinDisplay').textContent = status.vin || '\u2014';
@@ -6089,9 +6089,9 @@ window.BydCloud = {
         } else {
             this.isConfigured = status.configured || false;
             if (status.configured && !status.verified) {
-                if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_saved'); badge.className = 'status-badge inactive'; }
+                if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_saved'); badge.className = 'ui-badge inactive'; }
             } else {
-                if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_not_set'); badge.className = 'status-badge inactive'; }
+                if (badge) { badge.textContent = BYD.i18n.t('surveillance.byd_badge_not_set'); badge.className = 'ui-badge inactive'; }
             }
             if (info) info.style.display = 'none';
             if (clearSection) clearSection.style.display = 'none';
@@ -6127,19 +6127,19 @@ window.BydCloud = {
             if (pushBadge) {
                 if (cp.connected && cp.lastMessageAge >= 0 && cp.lastMessageAge < 120) {
                     pushBadge.textContent = BYD.i18n.t('surveillance.byd_badge_live');
-                    pushBadge.className = 'status-badge active';
+                    pushBadge.className = 'ui-badge active';
                 } else if (cp.connected && cp.lastMessageAge >= 0 && cp.lastMessageAge < 600) {
                     pushBadge.textContent = BYD.i18n.t('surveillance.byd_badge_ok');
-                    pushBadge.className = 'status-badge active';
+                    pushBadge.className = 'ui-badge active';
                 } else if (cp.connected && cp.lastMessageAge >= 600) {
                     pushBadge.textContent = BYD.i18n.t('surveillance.byd_badge_stale');
-                    pushBadge.className = 'status-badge inactive';
+                    pushBadge.className = 'ui-badge inactive';
                 } else if (cp.connected) {
                     pushBadge.textContent = BYD.i18n.t('surveillance.byd_badge_waiting');
-                    pushBadge.className = 'status-badge inactive';
+                    pushBadge.className = 'ui-badge inactive';
                 } else {
                     pushBadge.textContent = BYD.i18n.t('surveillance.byd_badge_offline');
-                    pushBadge.className = 'status-badge inactive';
+                    pushBadge.className = 'ui-badge inactive';
                 }
             }
 

@@ -104,7 +104,7 @@ window.SafeLocations = {
                 ? this.text('safe_loc.no_zones_yet', null, 'No zones yet')
                 : this.text('safe_loc.waiting_gps', null, 'Waiting for GPS...');
         }
-        el.className = 'value safe-loc-status ' + stateClass;
+        el.className = 'ui-detail-value safe-loc-status ' + stateClass;
 
         const gpsEl = document.getElementById('safeLocGps');
         if (gpsEl) {
@@ -140,7 +140,7 @@ window.SafeLocations = {
             badge.textContent = this.featureEnabled
                 ? this.text('status.on', null, 'ON')
                 : this.text('status.off', null, 'OFF');
-            badge.className = 'status-badge ' + (this.featureEnabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (this.featureEnabled ? 'active' : 'inactive');
         }
 
         const content = document.getElementById('safeLocContent');
@@ -317,7 +317,7 @@ window.SafeLocations = {
             actions.className = 'safe-zone-actions';
 
             const toggle = document.createElement('label');
-            toggle.className = 'toggle-switch safe-zone-toggle';
+            toggle.className = 'ui-toggle safe-zone-toggle';
             const toggleInput = document.createElement('input');
             toggleInput.type = 'checkbox';
             toggleInput.checked = z.enabled;
@@ -329,7 +329,7 @@ window.SafeLocations = {
             ));
             toggleInput.addEventListener('change', () => this.toggleZone(z.id, toggleInput.checked));
             const toggleSlider = document.createElement('span');
-            toggleSlider.className = 'toggle-slider';
+            toggleSlider.className = 'ui-toggle-track';
             toggle.appendChild(toggleInput);
             toggle.appendChild(toggleSlider);
 
@@ -372,30 +372,30 @@ window.SafeLocations = {
 
         return new Promise(resolve => {
             const backdrop = document.createElement('div');
-            backdrop.className = 'modal-backdrop';
+            backdrop.className = 'ui-modal-backdrop';
             backdrop.style.display = 'flex';
 
             const form = document.createElement('form');
-            form.className = 'modal-card safe-zone-dialog';
+            form.className = 'ui-dialog safe-zone-dialog';
             form.setAttribute('role', 'dialog');
             form.setAttribute('aria-modal', 'true');
             form.setAttribute('aria-labelledby', 'safeZoneDialogTitle');
 
             const title = document.createElement('h3');
             title.id = 'safeZoneDialogTitle';
-            title.className = 'soh-modal-title';
+            title.className = 'ui-dialog-title';
             title.textContent = isEdit
                 ? self.text('safe_loc.edit_title', null, 'Edit safe zone')
                 : self.text('safe_loc.add_title', null, 'Add safe zone');
 
             const nameLabel = document.createElement('label');
-            nameLabel.className = 'soh-modal-label';
+            nameLabel.className = 'ui-label';
             nameLabel.htmlFor = 'safeZoneNameInput';
             nameLabel.textContent = self.text('safe_loc.name_label', null, 'Zone name');
 
             const nameInput = document.createElement('input');
             nameInput.id = 'safeZoneNameInput';
-            nameInput.className = 'soh-modal-input';
+            nameInput.className = 'ui-input';
             nameInput.type = 'text';
             nameInput.maxLength = 80;
             nameInput.autocomplete = 'off';
@@ -404,7 +404,7 @@ window.SafeLocations = {
             const radiusHeader = document.createElement('div');
             radiusHeader.className = 'safe-zone-dialog-radius-header';
             const radiusLabel = document.createElement('label');
-            radiusLabel.className = 'soh-modal-label';
+            radiusLabel.className = 'ui-label';
             radiusLabel.htmlFor = 'safeZoneRadiusInput';
             radiusLabel.textContent = self.text('safe_loc.radius_label', null, 'Radius');
             const radiusValue = document.createElement('span');
@@ -415,7 +415,7 @@ window.SafeLocations = {
 
             const radiusInput = document.createElement('input');
             radiusInput.id = 'safeZoneRadiusInput';
-            radiusInput.className = 'slider safe-zone-dialog-slider';
+            radiusInput.className = 'ui-range safe-zone-dialog-slider';
             radiusInput.type = 'range';
             radiusInput.min = '15';
             radiusInput.max = '500';
@@ -440,14 +440,14 @@ window.SafeLocations = {
             error.style.display = 'none';
 
             const actions = document.createElement('div');
-            actions.className = 'soh-modal-actions';
+            actions.className = 'ui-dialog-actions';
             const cancelButton = document.createElement('button');
             cancelButton.type = 'button';
-            cancelButton.className = 'btn btn-secondary';
+            cancelButton.className = 'ui-button';
             cancelButton.textContent = self.text('common.cancel', null, 'Cancel');
             const saveButton = document.createElement('button');
             saveButton.type = 'submit';
-            saveButton.className = 'btn btn-primary';
+            saveButton.className = 'ui-button ui-button-primary';
             saveButton.textContent = isEdit
                 ? self.text('common.save', null, 'Save')
                 : self.text('safe_loc.add_action', null, 'Add zone');

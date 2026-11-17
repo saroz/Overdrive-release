@@ -338,11 +338,6 @@ select.md-input ~ .md-label,
     .byd-action-row { grid-template-columns: minmax(0, 1fr); }
 }
 
-/* Mode pickers mirror in RTL (the car app pins padding-right with !important). */
-[dir="rtl"] .mode-card { padding-right: 16px; padding-left: 44px; }
-[dir="rtl"] .mode-radio { right: auto; left: 14px; }
-:root[dir="rtl"][data-app-shell="1"] .mode-card { padding-right: 12px !important; padding-left: 44px !important; }
-
 /* ── Settings components shared by several pages ──────────────────────── */
 /* Margin spacing instead of flex gap (Chrome 58 ignores it); engines with gap drop it so spacing is not doubled. */
 @supports (gap: 0) {
@@ -383,25 +378,6 @@ select.md-input ~ .md-label,
 @media (hover: hover) {
     .checkbox-item:hover { background-color: var(--well-2); }
     .checkbox-item.active:hover { background-color: var(--secondary-container); }
-}
-
-/* Mode pickers: wells; the selected one gets a tonal fill and a 2px primary ring. Colours only (the car app sizes them). */
-.mode-card, .mode-card:hover { border-color: transparent; border-radius: var(--radius-md); background-color: var(--well); }
-@media (hover: hover) {
-    .mode-card:hover { background-color: var(--well-2); }
-}
-.mode-card::before { display: none; }
-.mode-option input[type="radio"]:checked + .mode-card { border-color: var(--primary); background-color: var(--primary-soft); box-shadow: 0 0 0 1px var(--primary); }
-.mode-icon { border-color: transparent; background-color: var(--well-2); color: var(--on-surface-variant); }
-.mode-card-default .mode-icon { color: var(--on-surface-variant); }
-.mode-option input[type="radio"]:checked + .mode-card .mode-icon { border-color: var(--primary); background-color: var(--primary); color: var(--on-primary); }
-.mode-name { color: var(--on-surface); }
-.mode-desc { color: var(--on-surface-variant); }
-.mode-radio { border-color: var(--outline); }
-.mode-radio::after { background: var(--primary); }
-.mode-option input[type="radio"]:checked + .mode-card .mode-radio { border-color: var(--primary); }
-@media (max-width: 599px) {
-    .mode-selector { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* Status badges. */
@@ -1097,40 +1073,6 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary-te
 .r-zone-ico .z-yellow { fill: var(--zone-medium); }
 .r-choice-cards > .btn-toggle.active .r-zone-ico { background: var(--well-2); color: var(--on-surface); }
 :root[data-android-embed="1"] .r-choice-desc { font-size: var(--fs-body); }
-
-/* Surveillance schedule editor (roi-schedule.js): window tiles, pill day toggles (aria-pressed + fill,
-   not colour alone), filled time selects, notes with icons instead of emoji. */
-.roi-rule { margin-bottom: 10px; padding: 14px; border-radius: var(--radius-md); background: var(--well); }
-.roi-rule-head { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; margin-bottom: 10px; }
-.roi-rule-label { color: var(--on-surface-variant); font-size: var(--fs-label); font-weight: 600; }
-.roi-days { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-gap: 6px; gap: 6px; margin-bottom: 12px; }
-.roi-day {
-    min-width: 0;
-    min-height: 40px;
-    padding: 0 2px;
-    border: 0;
-    border-radius: var(--radius-control);
-    background: var(--well-2);
-    color: var(--on-surface-variant);
-    font: inherit;
-    font-size: var(--fs-label);
-    font-weight: 600;
-    cursor: pointer;
-}
-.roi-day.is-on { background: var(--secondary-container); color: var(--on-secondary-container); box-shadow: inset 0 0 0 1px var(--primary); }
-.roi-times { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-items: center; align-items: center; }
-.roi-times > * { margin: 0 6px 6px 0; }
-[dir="rtl"] .roi-times > * { margin: 0 0 6px 6px; }
-.roi-time-label { color: var(--on-surface-variant); font-size: var(--fs-label); }
-.roi-time-colon { color: var(--on-surface-variant); font-weight: 700; }
-.roi-time-select { width: auto; min-width: 72px; min-height: 44px; }
-.roi-note { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; margin-top: 8px; font-size: var(--fs-label); }
-.roi-note svg { -webkit-flex: 0 0 auto; flex: 0 0 auto; width: 16px; height: 16px; margin-right: 6px; }
-[dir="rtl"] .roi-note svg { margin-right: 0; margin-left: 6px; }
-.roi-note.is-error { color: var(--danger); }
-.roi-note.is-info { color: var(--primary); }
-:root[data-android-embed="1"] .roi-day { min-height: 56px; font-size: var(--fs-body); }
-:root[data-android-embed="1"] .roi-time-select { min-height: 56px; }
 
 /* Inline glyph that sits in front of a status word (replaces emoji prefixes). */
 .r-inline-ico { display: inline-block; width: 1em; height: 1em; margin-right: 0.3em; vertical-align: -0.125em; flex-shrink: 0; }

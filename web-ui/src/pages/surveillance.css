@@ -1,0 +1,123 @@
+/* surveillance.html — page-only styles, scoped to body[data-page="surveillance"] (moved from its inline
+   <style>; rules for the old shared vocabulary dropped). Plain CSS for Chrome 58: no nesting. */
+body[data-page="surveillance"] .surv-camera-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-gap: 8px;
+            gap: 8px;
+            padding-bottom: 16px;
+        }
+@media (max-width: 599px) {
+body[data-page="surveillance"] .surv-camera-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 540px) {
+body[data-page="surveillance"] .byd-input { max-width: none !important; width: 100%; }
+body[data-page="surveillance"] .byd-pin-input { max-width: 100% !important; }
+}
+body[data-page="surveillance"] .surv-sub-row,
+body[data-page="surveillance"] .surv-sub-group {
+            padding-left: 16px;
+            box-shadow: inset 2px 0 0 var(--outline-variant);
+        }
+body[data-page="surveillance"] .surv-sub-group { padding-bottom: 16px; }
+body[data-page="surveillance"] .surv-sub-hint { margin-left: 16px; }
+body[data-page="surveillance"] [dir="rtl"] .surv-sub-row,
+body[data-page="surveillance"] [dir="rtl"] .surv-sub-group {
+            padding-left: 0;
+            padding-right: 16px;
+            box-shadow: inset -2px 0 0 var(--outline-variant);
+        }
+body[data-page="surveillance"] [dir="rtl"] .surv-sub-hint { margin-left: 0; margin-right: 16px; }
+body[data-page="surveillance"] .surv-stats {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-gap: 8px;
+            gap: 8px;
+            padding: 0;
+            background-color: transparent;
+        }
+body[data-page="surveillance"] .surv-stats .safe-loc-status { display: flex; justify-content: flex-start; max-width: none; text-align: left; }
+body[data-page="surveillance"] [dir="rtl"] .surv-stats .safe-loc-status { text-align: right; }
+body[data-page="surveillance"] .surv-info-sm { font-size: var(--fs-caption); }
+body[data-page="surveillance"] .surv-hero { grid-template-columns: auto minmax(0, 1fr) auto; grid-row-gap: 0; }
+body[data-page="surveillance"] .surv-stat-link { position: relative; transition: background-color var(--duration-fast) var(--easing-standard); }
+body[data-page="surveillance"] .surv-stat-link > .link-value::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; }
+@media (hover: hover) {
+body[data-page="surveillance"] .surv-stat-link:hover { background-color: var(--well-2); }
+}
+@media (max-width: 480px) {
+body[data-page="surveillance"] .surv-hero { grid-template-columns: auto minmax(0, 1fr) auto; }
+}
+body[data-page="surveillance"] .surv-warn {
+            padding: 12px 14px;
+            border: 0;
+            border-radius: var(--radius-md);
+            background-color: var(--warning-soft);
+            color: var(--warning);
+        }
+body[data-page="surveillance"] .surv-warn-row { display: flex; align-items: center; color: var(--warning); font-size: var(--fs-label); line-height: 1.45; }
+:root[data-android-embed="1"] body[data-page="surveillance"] .surv-warn-row { font-size: var(--fs-body); }
+body[data-page="surveillance"] .surv-warn-row > svg { flex-shrink: 0; margin-right: 10px; }
+body[data-page="surveillance"] [dir="rtl"] .surv-warn-row > svg { margin-right: 0; margin-left: 10px; }
+body[data-page="surveillance"] .surv-panel { margin-top: 8px; padding: 12px 16px; border-radius: var(--radius-md); background-color: var(--well); }
+body[data-page="surveillance"] .surv-panel > .surv-warn { margin-bottom: 12px; }
+body[data-page="surveillance"] .surv-panel-title { margin-bottom: 4px; color: var(--on-surface); font-size: var(--fs-body); font-weight: 600; }
+body[data-page="surveillance"] .surv-panel-help { margin-bottom: 12px; color: var(--on-surface-variant); font-size: var(--fs-label); line-height: 1.45; }
+body[data-page="surveillance"] .surv-or {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            color: var(--on-surface-variant);
+            font-size: var(--fs-caption);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+body[data-page="surveillance"] .surv-or > span { margin: 0 12px; }
+body[data-page="surveillance"] .surv-or-line { flex: 1 1 0; height: 1px; background-color: var(--outline-variant); }
+body[data-page="surveillance"] .surv-themes { margin-top: 12px; color: var(--on-surface); }
+body[data-page="surveillance"] .surv-themes-title { margin-bottom: 8px; font-weight: 600; }
+body[data-page="surveillance"] .surv-theme-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-gap: 8px;
+            gap: 8px;
+        }
+body[data-page="surveillance"] .surv-theme { min-width: 0; padding: 10px; border-radius: var(--radius-md); background-color: var(--well-2); text-align: center; }
+body[data-page="surveillance"] .surv-theme-name { margin-bottom: 8px; font-size: var(--fs-label); font-weight: 600; overflow-wrap: break-word; }
+body[data-page="surveillance"] .surv-asset { max-width: 100%; max-height: 180px; border-radius: var(--radius-md); background-color: var(--well-2); }
+body[data-page="surveillance"] .surv-caption { margin-top: 4px; color: var(--on-surface-variant); font-size: var(--fs-caption); }
+body[data-page="surveillance"] .surv-roi-bar { display: flex; align-items: center; margin-bottom: 12px; }
+body[data-page="surveillance"] .surv-roi-actions { display: flex; margin-top: 8px; }
+body[data-page="surveillance"] .surv-status-line { margin-top: 8px; color: var(--on-surface-variant); font-size: var(--fs-caption); }
+body[data-page="surveillance"] .safe-zone-range-labels { color: var(--on-surface-variant); font-size: var(--fs-caption); }
+body[data-page="surveillance"] .safe-zone-list { border-top: 0; }
+body[data-page="surveillance"] .safe-zone-row { border-bottom: 0; }
+body[data-page="surveillance"] .safe-zone-row + .safe-zone-row { border-top: 1px solid var(--hairline); }
+body[data-page="surveillance"] .safe-zone-empty {
+            margin-top: 4px;
+            padding: 16px;
+            border-bottom: 0;
+            border-radius: var(--radius-md);
+            background-color: var(--well);
+            color: var(--on-surface-variant);
+            text-align: center;
+        }
+body[data-page="surveillance"] .safe-zone-icon-btn { border-radius: var(--radius-full); }
+@media (hover: hover) {
+body[data-page="surveillance"] .safe-zone-icon-btn:hover { border-color: transparent; background-color: var(--well-2); color: var(--on-surface); }
+body[data-page="surveillance"] .safe-zone-icon-btn.is-danger:hover { background-color: var(--danger-soft); color: var(--danger); }
+}
+body[data-page="surveillance"] .surv-range-under { width: 120px; margin-left: auto; padding: 0; }
+body[data-page="surveillance"] [dir="rtl"] .surv-range-under { margin-left: 0; margin-right: auto; }
+@media (max-width: 768px) {
+body[data-page="surveillance"] .surv-range-under { width: auto; margin-left: 82px; }
+body[data-page="surveillance"] [dir="rtl"] .surv-range-under { margin-left: 0; margin-right: 82px; }
+}
+body[data-page="surveillance"] .timeline-visual { height: 40px; margin: 16px 0 0; border-radius: var(--radius-sm); background: none; }
+body[data-page="surveillance"] .timeline-segment { padding: 0 8px; font-size: var(--fs-caption); font-weight: 700; }
+body[data-page="surveillance"] .timeline-segment + .timeline-segment { margin-left: 2px; }
+body[data-page="surveillance"] [dir="rtl"] .timeline-segment + .timeline-segment { margin-left: 0; margin-right: 2px; }
+body[data-page="surveillance"] .timeline-pre { background-color: var(--tertiary-soft); color: var(--tertiary); }
+body[data-page="surveillance"] .timeline-event { background-color: var(--primary); color: var(--on-primary); }
+body[data-page="surveillance"] .timeline-post { background-color: var(--warning-soft); color: var(--warning); }
+body[data-page="surveillance"] .timeline-labels { color: var(--on-surface-variant); font-size: var(--fs-caption); }
