@@ -55,57 +55,57 @@
     var NAV_ITEMS = [
         // ===== Overview ===== — the "what's happening now" cluster.
         { divider: true, label: 'Overview', i18n: 'nav.overview_group' },
-        { href: 'index.html',           i18n: 'nav.dashboard',       label: 'Dashboard',       svg: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>' },
-        { href: 'assistant.html',       i18n: 'nav.assistant',       label: 'Assistant',       svg: '<rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 13h.01M15 13h.01M9.5 16.5h5"/>' },
-        { href: 'live-view.html',       i18n: 'nav.live_view',       label: 'Live View',       svg: '<path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6"/><path d="M2 12a9 9 0 0 1 8 8M2 16a5 5 0 0 1 4 4M2 20h.01"/>' },
-        { href: 'communicate.html',     i18n: 'nav.communicate',     label: 'Communicate',     svg: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"/>' },
-        { href: 'events.html',          i18n: 'nav.recordings',      label: 'Recordings',      svg: '<path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/>' },
+        { href: 'index.html',           i18n: 'nav.dashboard',       label: 'Dashboard',       icon: 'dashboard' },
+        { href: 'assistant.html',       i18n: 'nav.assistant',       label: 'Assistant',       icon: 'assistant' },
+        { href: 'live-view.html',       i18n: 'nav.live_view',       label: 'Live View',       icon: 'live-view' },
+        { href: 'communicate.html',     i18n: 'nav.communicate',     label: 'Communicate',     icon: 'communicate' },
+        { href: 'events.html',          i18n: 'nav.recordings',      label: 'Recordings',      icon: 'recordings' },
         // Parking Intelligence: sessions ("where did I park, what happened").
-        { href: 'parking.html',         i18n: 'nav.parking',         label: 'Parking',         svg: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/>' },
+        { href: 'parking.html',         i18n: 'nav.parking',         label: 'Parking',         icon: 'parking' },
 
         // ===== Vehicle ===== — control + trip history.
         { divider: true, label: 'Vehicle', i18n: 'nav.vehicle_group' },
-        { href: 'vehicle-control.html', i18n: 'nav.vehicle_control', label: 'Vehicle Control', svg: '<path d="M5 17H3v-5l2.2-5.1A2 2 0 0 1 7 5.7h10a2 2 0 0 1 1.8 1.2L21 12v5h-2M3 12h18M9.5 17h5"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/>' },
-        { href: 'remote-access.html',   i18n: 'nav.remote_access',   label: 'Proximity', svg: '<path d="M4.9 19.1a10 10 0 0 1 0-14.2M7.8 16.2a6 6 0 0 1 0-8.4M16.2 7.8a6 6 0 0 1 0 8.4M19.1 4.9a10 10 0 0 1 0 14.2"/><circle cx="12" cy="12" r="2"/>' },
-        { href: 'trips.html',           i18n: 'nav.trips',           label: 'Trips',           svg: '<circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/>' },
-        { href: 'charging.html',        i18n: 'nav.charging',        label: 'Charging',        svg: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>' },
-        { href: 'seat-positions.html',  i18n: 'nav.seat_positions',  label: 'Seat Positions',  svg: '<path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0zM5 18v2M19 18v2"/>' },
-        { href: 'automations.html',     i18n: 'nav.automations',     label: 'Automations',     svg: '<rect x="3" y="3" width="8" height="8" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect x="13" y="13" width="8" height="8" rx="2"/>' },
-        { href: 'key-mapping.html',     i18n: 'nav.key_mapping',     label: 'Key Mapping',     svg: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M7 13h.01M17 13h.01M10 15h4"/>' },
+        { href: 'vehicle-control.html', i18n: 'nav.vehicle_control', label: 'Vehicle Control', icon: 'vehicle' },
+        { href: 'remote-access.html',   i18n: 'nav.remote_access',   label: 'Proximity', icon: 'proximity' },
+        { href: 'trips.html',           i18n: 'nav.trips',           label: 'Trips',           icon: 'trips' },
+        { href: 'charging.html',        i18n: 'nav.charging',        label: 'Charging',        icon: 'charging' },
+        { href: 'seat-positions.html',  i18n: 'nav.seat_positions',  label: 'Seat Positions',  icon: 'seats' },
+        { href: 'automations.html',     i18n: 'nav.automations',     label: 'Automations',     icon: 'automations' },
+        { href: 'key-mapping.html',     i18n: 'nav.key_mapping',     label: 'Key Mapping',     icon: 'key-mapping' },
 
         // ===== Integrations group ===== — mirrors the native Integrations
         // sub-page (Telegram, ABRP, MQTT, BYD Cloud).
-        { divider: true, label: 'Integrations', i18n: 'nav.integrations_group', svg: '<path d="M12 22v-5M9 8V2M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/>' },
-        { href: 'telegram.html',                          i18n: 'nav.telegram',       label: 'Telegram',       svg: '<line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
-        { href: 'abrp.html',                              i18n: 'nav.abrp',           label: 'ABRP',           svg: '<path d="M9 18l6-6-6-6"/><circle cx="18" cy="12" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>' },
-        { href: 'mqtt.html',                              i18n: 'nav.mqtt',           label: 'MQTT',           svg: '<circle cx="12" cy="12" r="2"/><path d="M8.46 15.54A5 5 0 0 1 7 12a5 5 0 0 1 1.46-3.54"/><path d="M15.54 8.46A5 5 0 0 1 17 12a5 5 0 0 1-1.46 3.54"/><path d="M5.64 18.36A9 9 0 0 1 3 12a9 9 0 0 1 2.64-6.36"/><path d="M18.36 5.64A9 9 0 0 1 21 12a9 9 0 0 1-2.64 6.36"/>', svgExtra: 'stroke-linecap="round"' },
-        { href: 'byd-cloud.html',                         i18n: 'nav.byd_cloud',      label: 'BYD Cloud',      svg: '<path d="M17.5 19a4.5 4.5 0 1 0-2.83-7.97A6 6 0 0 0 4 12.45a3 3 0 0 0 .5 5.95"/><path d="M17.5 19h-12"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
-        { href: 'safekeep.html',                          i18n: 'nav.safekeep',       label: 'SafeKeep',       svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/><polyline points="9 14 11.5 16.5 16 12"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
+        { divider: true, label: 'Integrations', i18n: 'nav.integrations_group' },
+        { href: 'telegram.html',                          i18n: 'nav.telegram',       label: 'Telegram',       icon: 'telegram' },
+        { href: 'abrp.html',                              i18n: 'nav.abrp',           label: 'ABRP',           icon: 'abrp' },
+        { href: 'mqtt.html',                              i18n: 'nav.mqtt',           label: 'MQTT',           icon: 'mqtt' },
+        { href: 'byd-cloud.html',                         i18n: 'nav.byd_cloud',      label: 'BYD Cloud',      icon: 'byd-cloud' },
+        { href: 'safekeep.html',                          i18n: 'nav.safekeep',       label: 'SafeKeep',       icon: 'safekeep' },
 
         // ===== Diagnostics ===== — shared read-only vehicle warnings plus
         // head-unit performance diagnostics.
-        { divider: true, label: 'Diagnostics', i18n: 'nav.diagnostics_group', svg: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' },
-        { href: 'performance.html',                       i18n: 'nav.performance',    label: 'Performance',    svg: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>' },
-        { href: 'module-faults.html',                     i18n: 'nav.module_faults',  label: 'Module Faults',  svg: '<path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83m8.48 8.48 2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48 2.83-2.83"/><circle cx="12" cy="12" r="4"/>' },
-        { href: 'network.html',                           i18n: 'nav.network',        label: 'Network',        svg: '<path d="M12 20h.01"/><path d="M8.5 16.4a5 5 0 0 1 7 0"/><path d="M5 13a9 9 0 0 1 14 0"/><path d="M1.8 9.6a14 14 0 0 1 20.4 0"/>', svgExtra: 'stroke-linecap="round"' },
-        { href: 'remote-dev-view.html',                   i18n: 'nav.remote_dev_view', label: 'Remote Dev View',  svg: '<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m9 8 2 2-2 2M13 12h2"/>' },
+        { divider: true, label: 'Diagnostics', i18n: 'nav.diagnostics_group' },
+        { href: 'performance.html',                       i18n: 'nav.performance',    label: 'Performance',    icon: 'performance' },
+        { href: 'module-faults.html',                     i18n: 'nav.module_faults',  label: 'Module Faults',  icon: 'module-faults' },
+        { href: 'network.html',                           i18n: 'nav.network',        label: 'Network',        icon: 'network' },
+        { href: 'remote-dev-view.html',                   i18n: 'nav.remote_dev_view', label: 'Remote Dev View',  icon: 'remote-dev-view' },
 
         // ===== Settings ===== — surveillance + recording + notifications
         // are settings sub-destinations under SettingsFragment on native.
-        { divider: true, label: 'Settings', i18n: 'nav.settings_group', svg: '<path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/>' },
-        { href: 'surveillance.html',                      i18n: 'nav.surveillance',   label: 'Surveillance',   svg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' },
-        { href: 'recording.html',                         i18n: 'surveillance.tab_recording', label: 'Recording', svg: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>' },
-        { href: 'storage.html',                           i18n: 'recording.tab_storage', label: 'Storage', svg: '<path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/>' },
-        { href: 'road-sense.html',                        i18n: 'nav.road_sense',     label: 'RoadSense',      svg: '<path d="M3.2 20.2 L8.6 11 L15.4 11 L20.8 20.2 Z"/><path d="M12 12.4v1.3M12 15.7v1.6M12 18.7v1.1"/><path d="M12 3.2v2.4"/><path d="M12 7.6h.01"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
-        { href: 'widgets.html',                           i18n: 'nav.widgets',        label: 'Widgets',        svg: '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
-        { href: 'widget-builder.html', browserOnly: true, i18n: 'widgetBuilder.nav', label: 'Widget Builder', svg: '<rect x="3" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="8" height="8" rx="2"/><path d="M14 20.5l.6-2.9 5.2-5.2 2.3 2.3-5.2 5.2z"/><path d="M14 5h7M14 9h4"/>', svgExtra: 'stroke-linecap="round" stroke-linejoin="round"' },
-        { href: 'notifications.html',                     i18n: 'nav.notifications',  label: 'Notifications',  svg: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>' },
+        { divider: true, label: 'Settings', i18n: 'nav.settings_group' },
+        { href: 'surveillance.html',                      i18n: 'nav.surveillance',   label: 'Surveillance',   icon: 'surveillance' },
+        { href: 'recording.html',                         i18n: 'surveillance.tab_recording', label: 'Recording', icon: 'recording' },
+        { href: 'storage.html',                           i18n: 'recording.tab_storage', label: 'Storage', icon: 'storage' },
+        { href: 'road-sense.html',                        i18n: 'nav.road_sense',     label: 'RoadSense',      icon: 'road-sense' },
+        { href: 'widgets.html',                           i18n: 'nav.widgets',        label: 'Widgets',        icon: 'widgets' },
+        { href: 'widget-builder.html', browserOnly: true, i18n: 'widgetBuilder.nav', label: 'Widget Builder', icon: 'widget-builder' },
+        { href: 'notifications.html',                     i18n: 'nav.notifications',  label: 'Notifications',  icon: 'notifications' },
 
         // ===== About ===== — version, license, source, support links,
         // Check for Updates. Sits in its own group so the link isn't
         // dangling under "Settings".
         { divider: true, label: 'About', i18n: 'nav.about_group' },
-        { href: 'about.html',                             i18n: 'nav.about',          label: 'About',          svg: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>' }
+        { href: 'about.html',                             i18n: 'nav.about',          label: 'About',          icon: 'about' }
     ];
 
     function activeBasename() {
@@ -122,236 +122,82 @@
         var html = '';
         for (var i = 0; i < NAV_ITEMS.length; i++) {
             var item = NAV_ITEMS[i];
-            // Divider / group-header row. Renders as a hairline + optional
-            // small caps label, mirroring the native rail's "About" hairline.
-            // If the item only has `divider:true` (no label), render a bare
-            // hairline.
+            // Group label (mockup .nav-label) or a bare hairline. Foldable
+            // groups are wired by wireGroupCollapse() via data-nav-group.
             if (item.divider) {
-                // About stands on its own under a hairline (no group header).
                 if (item.label && item.i18n !== 'nav.about_group') {
-                    html += '<div class="nav-group-header">'
-                        +    (item.svg ? '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg>' : '')
-                        +    '<span class="nav-group-line"></span>'
-                        +    '<span class="nav-group-label"' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
+                    html += '<div class="ui-nav-label" data-nav-group>'
+                        +    '<span class="ui-nav-label-text"' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
                         +  '</div>';
                 } else {
-                    html += '<div class="nav-divider" role="separator"></div>';
+                    html += '<div class="ui-nav-divider" data-nav-divider role="separator"></div>';
                 }
                 continue;
             }
-            // Normal nav link.
             if (item.browserOnly && inCarApp()) continue;
             var isActive = item.href === current;
-            var aria = isActive ? ' aria-current="page"' : '';
-            var cls = 'nav-link' + (isActive ? ' active' : '');
-            var extra = item.svgExtra || '';
-            // aria-label doubles as the tooltip text in the collapsed-rail
-            // state (see app-shell.css `.nav-link:hover::after`).
-            html += '<a href="' + item.href + '" class="' + cls + '"' + aria
+            // aria-label doubles as the tooltip text on the 72px icon rail.
+            html += '<a href="' + item.href + '" class="ui-nav-link' + (isActive ? ' is-active' : '') + '" data-nav-link'
+                +     (isActive ? ' aria-current="page"' : '')
                 +     ' aria-label="' + item.label + '">'
-                +   '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ' + extra + '>'
-                +     item.svg
-                +   '</svg>'
-                +   '<span' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
+                +   navIcon(item.icon)
+                +   '<span class="ui-nav-text"' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
                 +  '</a>';
         }
         return html;
     }
 
+    // Phosphor sprite (ph-icons.js). Pages load it before this script; the
+    // empty fallback keeps the shell usable if it ever fails to load.
+    function navIcon(name, cls) {
+        return typeof window.phIcon === 'function' ? window.phIcon(name, cls) : '';
+    }
+
     function buildShellMarkup() {
-        // Sidebar header — brand becomes a clickable anchor (routes to the
-        // dashboard, the canonical "home"). The close-X stays for mobile.
+        // Brand (mockup .brand): the app glyph in the ink tile, then the name.
         var header = ''
-            + '<div class="sidebar-header">'
-            +   '<a href="index.html" class="brand brand-link" aria-label="OverDrive — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">'
-            +     '<div class="brand-logo">'
-            +       '<img src="../shared/app-icon-glyph-dark.webp" alt="OverDrive">'
-            +       '<span class="brand-online-pulse" aria-hidden="true"></span>'
-            +     '</div>'
-            +     '<div class="brand-text">'
-            +       '<span class="brand-name" data-i18n="app.name">OverDrive</span>'
-            +       '<span class="brand-tagline" data-i18n="app.tagline">Surveillance System</span>'
-            +       '<span class="brand-version" id="appVersion"></span>'
-            +     '</div>'
-            +   '</a>'
-            +   '<button class="sidebar-close" type="button" aria-label="Close menu">'
-            +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">'
-            +       '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
-            +     '</svg>'
-            +   '</button>'
-            + '</div>';
+            + '<a href="index.html" class="ui-brand" data-sidebar-brand aria-label="OverDrive — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">'
+            +   '<span class="ui-brand-mark"><span class="ui-brand-glyph"></span></span>'
+            +   '<span class="ui-brand-text" data-i18n="app.name">OverDrive</span>'
+            + '</a>';
 
-        var nav = '<nav class="sidebar-nav">' + buildNav() + '</nav>';
-        var search = buildSearchTrigger();
+        var nav = '<nav class="ui-nav" data-sidebar-nav aria-label="Main navigation">' + buildNav() + '</nav>';
 
-        // Footer = device status card + EV vehicle status card + fuel card (PHEV).
-        // Element IDs (deviceId, accValue, batteryValue, survStatus, networkValue,
-        // evCard, evPercentValue, evRange, evPower, evSohRow, evSohValue,
-        // evPersonalizedRow, evPersonalizedRange, fuelCard, fuelPercentValue,
-        // fuelBarFill) are read by core.js, vehicle-control.js, performance.js
-        // — must match the legacy DOM. Battery+charging state moved off the
-        // SVG bar onto the GLB body's emissive channel; core.js calls
-        // OverdriveAppShell.setSoc / setCharging instead of writing rect widths.
+        // Footer (mockup .sidebar-bottom / .garage): the vehicle row, a battery
+        // bar and a compact device status list. Every id below is written by
+        // core.js / vehicle-control.js / performance.js and must stay.
         var footer = ''
-            + '<div class="sidebar-footer">'
-            +   '<div class="status-card">'
-            +     '<div class="status-row">'
-            +       '<span class="status-label" data-i18n="status.device"><span class="status-dot" id="connDot"></span>Device</span>'
-            +       '<span class="status-value" id="deviceId">--</span>'
-            +     '</div>'
-            +     '<div class="status-row">'
-            +       '<span class="status-label" data-i18n="status.acc">ACC</span>'
-            +       '<span class="status-value" id="accValue">--</span>'
-            +     '</div>'
-            +     '<div class="status-row">'
-            +       '<span class="status-label" data-i18n="status.battery_12v">'
-            +         '<svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="6" y="7" width="12" height="10" rx="1"/><path d="M6 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2"/><path d="M18 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2"/></svg>12V'
-            +       '</span>'
-            +       '<span class="status-value" id="batteryValue">--</span>'
-            +     '</div>'
-            +     '<div class="status-row">'
-            +       '<span class="status-label" data-i18n="status.sentry">Surveillance</span>'
-            +       '<span class="status-value" id="survStatus" data-i18n="status.off">OFF</span>'
-            +     '</div>'
-            +     '<div class="status-row">'
-            +       '<span class="status-label" data-i18n="status.network">'
-            +         '<span id="networkIcon"><svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></span>Net'
-            +       '</span>'
-            +       '<span class="status-value" id="networkValue">--</span>'
-            +     '</div>'
+            + '<div class="ui-sidebar-foot">'
+            +   '<div class="ui-garage" id="evCard">'
+            +     '<span class="ui-garage-icon">' + navIcon('vehicle') + '</span>'
+            +     '<span class="ui-garage-copy">'
+            +       '<strong><span data-i18n="status.vehicle_status">Vehicle Status</span> <span id="evPercentValue">--%</span></strong>'
+            +       '<small><span id="evRange">-- km</span> · <span id="evPower">-- kW</span></small>'
+            +     '</span>'
             +   '</div>'
-            +   buildEvCard()
+            +   '<div class="ui-progress ui-garage-bar" id="evBatteryBar"><span id="evBatteryFill" style="width:0%"></span></div>'
+            +   '<dl class="ui-sidebar-status">'
+            +     '<div class="ui-sidebar-status-extra" id="evSohRow" style="display:none;"><dt>SOH</dt><dd id="evSohValue">--%</dd></div>'
+            +     '<div class="ui-sidebar-status-extra" id="evPersonalizedRow" style="display:none;"><dt data-i18n="vehicle.personalized_label">Personalized</dt><dd id="evPersonalizedRange">-- km</dd></div>'
+            +     '<div class="ui-sidebar-status-extra" id="evCombinedRow" style="display:none;"><dt data-i18n="vehicle.combined_label">Combined</dt><dd id="evCombinedRange">-- km</dd></div>'
+            +     '<div><dt><span class="ui-dot" id="connDot"></span><span data-i18n="status.device">Device</span></dt><dd id="deviceId">--</dd></div>'
+            +     '<div><dt data-i18n="status.acc">ACC</dt><dd id="accValue">--</dd></div>'
+            +     '<div><dt data-i18n="status.battery_12v">12V</dt><dd id="batteryValue">--</dd></div>'
+            +     '<div><dt data-i18n="status.sentry">Surveillance</dt><dd id="survStatus" data-i18n="status.off">OFF</dd></div>'
+            +     '<div><dt><span id="networkIcon"></span><span data-i18n="status.network">Net</span></dt><dd id="networkValue">--</dd></div>'
+            +   '</dl>'
             +   buildFuelCard()
+            +   '<span class="ui-sidebar-version" id="appVersion"></span>'
             + '</div>';
 
-        // Search pill sits between the brand header and the nav so it reads as
-        // "jump anywhere" above the page list.
-        return header + search + nav + footer;
-    }
-
-    // Unified-search trigger. Styled as a muted search field (see search.css);
-    // the whole button opens the palette (wired via the .od-search-open
-    // delegate below). The ⌘K / Ctrl K hint is hidden on the head unit and on
-    // phones via CSS. search.js itself is lazy-loaded on first use / on idle.
-    function buildSearchTrigger() {
-        var isMac = /Mac|iPhone|iPad/.test((navigator && navigator.platform) || '');
-        var kbd = isMac ? '⌘K' : 'Ctrl K';
-        return '<button type="button" class="sidebar-search od-search-open" aria-label="Search" data-i18n-attr="aria-label:common.search">'
-            +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>'
-            +   '<span class="sidebar-search-label" data-i18n="common.search">Search</span>'
-            +   '<span class="sidebar-search-kbd" aria-hidden="true">' + kbd + '</span>'
-            + '</button>';
-    }
-
-    function buildEvCard() {
-        // Vehicle status card.
-        //
-        //   #evCardCanvas         — three.js scene that renders the user's
-        //                            selected GLB tinted in their colour.
-        //                            Loaded lazily by ev-card-3d.js after
-        //                            page-content paint.
-        //   #svgChargeIcon        — bolt badge that pops in on .charging.
-        //   .ev-battery-body-*    — translucent battery overlay painted
-        //                            onto the lower body of the GLB; width
-        //                            tracks SOC, charging triggers the
-        //                            sweep loop.
-        //
-        // Preserved IDs (consumed by core.js):
-        //   evCard, evPercentValue, evRange, evPower, evSohRow, evSohValue,
-        //   evPersonalizedRow, evPersonalizedRange, evBatteryBar,
-        //   evBatteryFill, fuelCard, fuelPercentValue, fuelBarFill.
-        var s = '<div class="status-card ev-card" id="evCard">'
-            +   '<div class="ev-header-row">'
-            +     '<span class="ev-title" data-i18n="status.vehicle_status">Vehicle Status</span>'
-            +     '<span class="ev-percent-text" id="evPercentValue">--%</span>'
-            +   '</div>'
-            +   '<div class="ev-svg-container">'
-            +     '<canvas id="evCardCanvas" aria-hidden="true"></canvas>'
-            +     '<svg viewBox="0 0 320 130" class="ev-car-svg" id="evCarSvg">'
-            +       '<defs>'
-            // Radial gradient gives the disc a polished-jewel look:
-            // bright teal highlight in the upper-left quadrant fading
-            // to a near-black anchor at the rim. The off-centre
-            // <stop offset="0"> sits where the highlight lands; the
-            // <radialGradient cx="35%" cy="30%"> places that focus.
-            // No matrix transform needed — gradient inherits the
-            // shape's bbox via the default gradientUnits.
-            +         '<radialGradient id="evChargeBoltGrad" cx="35%" cy="30%" r="80%">'
-            +           '<stop offset="0%"   stop-color="#1AF0C2"/>'
-            +           '<stop offset="42%"  stop-color="#00B894"/>'
-            +           '<stop offset="78%"  stop-color="#016B55"/>'
-            +           '<stop offset="100%" stop-color="#021E18"/>'
-            +         '</radialGradient>'
-            // Subtle inner-glow filter so the bolt path reads with a
-            // soft halo against the dark gradient instead of looking
-            // pasted on. feGaussianBlur on the alpha + composite back
-            // over source — supported on Chrome 58 (BYD WebView).
-            +         '<filter id="evChargeBoltGlow" x="-30%" y="-30%" width="160%" height="160%">'
-            +           '<feGaussianBlur in="SourceAlpha" stdDeviation="0.6"/>'
-            +           '<feOffset dx="0" dy="0.5" result="offsetBlur"/>'
-            +           '<feMerge>'
-            +             '<feMergeNode in="offsetBlur"/>'
-            +             '<feMergeNode in="SourceGraphic"/>'
-            +           '</feMerge>'
-            +         '</filter>'
-            +       '</defs>'
-            +       '<g id="svgChargeIcon" transform="translate(160, 5) scale(0)" style="transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);">'
-            // Outer disc — gradient fill + thin teal-tinted rim
-            // instead of the flat white stroke. The rim catches the
-            // ambient and gives the disc the "shiny bezel" feel.
-            +         '<circle r="12" fill="url(#evChargeBoltGrad)" stroke="rgba(0,212,170,0.45)" stroke-width="1.2"/>'
-            // Specular highlight — a small bright crescent in the
-            // upper-left quadrant that sells the gloss. Painted as a
-            // semi-transparent white ellipse, no animation.
-            +         '<ellipse cx="-3.5" cy="-5" rx="5" ry="2.4" fill="rgba(255,255,255,0.35)"/>'
-            // The bolt itself — white with the subtle glow filter.
-            +         '<path d="M-2,-6 L-4,1 L0,1 L-2,7 L5,-1 L1,-1 Z" fill="#fff" filter="url(#evChargeBoltGlow)"/>'
-            +       '</g>'
-            +     '</svg>'
-            +     '<div class="ev-battery-body-overlay" id="evBatteryBar">'
-            +       '<div class="ev-battery-body-fill"   id="evBatteryFill"></div>'
-            +       '<div class="ev-battery-body-charge" id="evBatteryCharge"></div>'
-            +     '</div>'
-            +   '</div>'
-            +   '<div class="ev-info-row">'
-            +     '<div class="ev-range"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v20M2 12h20"/></svg><span id="evRange">-- km</span></div>'
-            +     '<div class="ev-power-status"><span class="ev-power-val" id="evPower">-- kW</span></div>'
-            +   '</div>'
-            +   '<div class="ev-soh-row" id="evSohRow" style="display:none;">'
-            +     '<span class="ev-soh-label">SOH</span>'
-            +     '<span class="ev-soh-val" id="evSohValue">--%</span>'
-            +   '</div>'
-            +   '<div class="ev-personalized-range" id="evPersonalizedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Personalized</span>'
-            +     '<span class="ev-personalized-val" id="evPersonalizedRange">-- km</span>'
-            +   '</div>'
-            +   '<div class="ev-personalized-range ev-personalized-combined" id="evCombinedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.combined_label"><span class="ev-label-ico-pair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg></span>Combined</span>'
-            +     '<span class="ev-personalized-val" id="evCombinedRange">-- km</span>'
-            +   '</div>'
-            + '</div>';
-        return s;
+        return header + nav + footer;
     }
 
     function buildFuelCard() {
-        return '<div class="status-card fuel-card" id="fuelCard" style="display:none;">'
-            +   '<div class="fuel-header">'
-            +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:18px;height:18px;color:var(--warning);">'
-            +       '<path d="M3 22V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/>'
-            +       '<path d="M3 22h10"/>'
-            +       '<path d="M13 10h2a2 2 0 0 1 2 2v3a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V9.83a2 2 0 0 0-.59-1.42L18 6"/>'
-            +       '<path d="M6 14v-3"/>'
-            +     '</svg>'
-            +     '<span class="fuel-title" data-i18n="vehicle.fuel">Fuel</span>'
-            +     '<span class="fuel-percent" id="fuelPercentValue">--%</span>'
-            +   '</div>'
-            +   '<div class="fuel-bar-track">'
-            +     '<div class="fuel-bar-fill" id="fuelBarFill" style="width:0%"></div>'
-            +   '</div>'
-            +   '<div class="ev-personalized-range fuel-personalized-row" id="fuelPersonalizedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg>Personalized</span>'
-            +     '<span class="ev-personalized-val" id="fuelPersonalizedRange">-- km</span>'
-            +   '</div>'
+        return '<div class="ui-sidebar-fuel" id="fuelCard" style="display:none;">'
+            +   '<div class="ui-sidebar-fuel-head"><span data-i18n="vehicle.fuel">Fuel</span><strong id="fuelPercentValue">--%</strong></div>'
+            +   '<div class="ui-progress"><span id="fuelBarFill" style="width:0%"></span></div>'
+            +   '<dl class="ui-sidebar-status"><div id="fuelPersonalizedRow" style="display:none;"><dt data-i18n="vehicle.personalized_label">Personalized</dt><dd id="fuelPersonalizedRange">-- km</dd></div></dl>'
             + '</div>';
     }
 
@@ -367,109 +213,48 @@
         return holder;
     }
 
+    // Phones (≤540px) get the mockup's bottom bar; "More" opens the full
+    // menu in a dialog. toggleSidebar() is kept for pages that call it.
     function ensureResponsiveShell(aside) {
-        var overlay = document.getElementById('sidebarOverlay');
-        var overlayCreated = false;
-        if (!overlay && document.body) {
-            overlay = document.createElement('div');
-            overlay.id = 'sidebarOverlay';
-            overlay.className = 'sidebar-overlay';
-            document.body.appendChild(overlay);
-            overlayCreated = true;
-        }
-
         if (typeof window.toggleSidebar !== 'function') {
             window.toggleSidebar = function (forceOpen) {
-                var open = typeof forceOpen === 'boolean'
-                    ? forceOpen
-                    : !aside.classList.contains('open');
-                if (open) {
-                    aside.classList.add('open');
-                    if (overlay) overlay.classList.add('show');
-                } else {
-                    aside.classList.remove('open');
-                    if (overlay) overlay.classList.remove('show');
-                }
-                var trigger = document.querySelector('.menu-toggle');
-                if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+                if (forceOpen === false) { closeMoreSheet(); return; }
+                openMoreSheet();
             };
         }
-
-        if (overlayCreated) {
-            overlay.addEventListener('click', function () {
-                window.toggleSidebar(false);
-            });
-        }
-
         if (embeddedInNativeApp) return;
-        // Most pages now ship their own static .mobile-header; inject the search
-        // icon into it rather than bailing (otherwise the mobile search trigger
-        // would be missing on those pages — phones have no keyboard shortcut).
-        var existingHeader = document.querySelector('.mobile-header');
-        if (existingHeader) {
-            addMobileSearchTrigger(existingHeader);
-            return;
-        }
-        if (document.querySelector('.vc-nav-btn')) return;
-
-        var main = document.querySelector('.main-content');
-        if (!main) return;
-        var source = document.querySelector('.page-title, .dev-view-header h1');
-        var title = source && source.textContent
-            ? source.textContent.replace(/^\s+|\s+$/g, '')
-            : (document.title || 'OverDrive');
-        if (source && source.parentNode &&
-            source.parentNode.classList.contains('dev-view-header')) {
-            source.parentNode.classList.add('mobile-title-source');
-        }
-
-        var header = document.createElement('div');
-        header.className = 'mobile-header';
-        header.setAttribute('data-auto-mobile-header', '1');
-        header.innerHTML =
-            '<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">' +
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">' +
-                '<line x1="4" x2="20" y1="12" y2="12"/>' +
-                '<line x1="4" x2="20" y1="6" y2="6"/>' +
-                '<line x1="4" x2="20" y1="18" y2="18"/>' +
-              '</svg>' +
-            '</button>' +
-            '<span style="font-weight:600;">' + title + '</span>' +
-            // Search icon takes the trailing slot (was a layout spacer); the
-            // .od-search-open delegate below opens the palette.
-            '<button class="od-search-mobtrigger od-search-open" type="button" aria-label="Search" data-i18n-attr="aria-label:common.search">' +
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>' +
-            '</button>';
-        header.querySelector('.menu-toggle').addEventListener('click', function () {
-            window.toggleSidebar();
-        });
-        main.insertBefore(header, main.firstChild);
+        document.documentElement.classList.add('ui-shell-on');
     }
 
-    // Add the unified-search icon to a mobile header (static page markup or the
-    // one we build). Replaces a trailing empty spacer <div> (static headers use
-    // one to balance the hamburger) so the 3-slot layout is preserved; else
-    // appends. Idempotent via the .od-search-mobtrigger guard. The document
-    // .od-search-open click delegate wires the tap.
-    function addMobileSearchTrigger(header) {
-        if (!header || header.querySelector('.od-search-mobtrigger')) return;
-        var btn = document.createElement('button');
-        btn.type = 'button';
-        btn.className = 'od-search-mobtrigger od-search-open';
-        btn.setAttribute('aria-label', 'Search');
-        btn.setAttribute('data-i18n-attr', 'aria-label:common.search');
-        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
-        var last = header.lastElementChild;
-        if (last && last.tagName === 'DIV' && !last.children.length &&
-            !(last.textContent && last.textContent.replace(/\s/g, ''))) {
-            header.replaceChild(btn, last);
+    var moreSheet = null;
+    function openMoreSheet() {
+        if (embeddedInNativeApp || !document.body) return;
+        if (!moreSheet) {
+            moreSheet = document.createElement('dialog');
+            moreSheet.className = 'ui-dialog ui-more-sheet';
+            moreSheet.setAttribute('aria-label', i18nText('common.more', 'More'));
+            moreSheet.innerHTML =
+                '<div class="ui-dialog-head"><h2 data-i18n="common.more">More</h2>'
+                + '<button type="button" class="ui-dialog-close" aria-label="Close" data-i18n-attr="aria-label:common.close">' + navIcon('close') + '</button></div>'
+                + '<nav class="ui-nav ui-more-nav">' + buildNav() + '</nav>';
+            moreSheet.querySelector('.ui-dialog-close').addEventListener('click', closeMoreSheet);
+            moreSheet.addEventListener('click', function (e) { if (e.target === moreSheet) closeMoreSheet(); });
+            document.body.appendChild(moreSheet);
+            try { if (window.BYD && BYD.i18n && BYD.i18n.applyAll) BYD.i18n.applyAll(); } catch (e) {}
+        }
+        if (typeof moreSheet.showModal === 'function') {
+            if (!moreSheet.open) moreSheet.showModal();
         } else {
-            header.appendChild(btn);
+            moreSheet.setAttribute('open', '');
         }
     }
+    function closeMoreSheet() {
+        if (!moreSheet) return;
+        if (typeof moreSheet.close === 'function' && moreSheet.open) moreSheet.close();
+        else moreSheet.removeAttribute('open');
+    }
 
-    // Phone bottom navigation (CSS shows it under 769px): four primary
-    // destinations plus More, which opens the full menu as a sheet.
+    // Phone bottom bar: four primary destinations plus More.
     var BOTTOM_NAV = ['index.html', 'live-view.html', 'events.html', 'trips.html'];
     var BOTTOM_NAV_SKIP = { 'vehicle-control.html': 1, 'remote-dev-view.html': 1 };
 
@@ -477,7 +262,7 @@
         if (embeddedInNativeApp || !document.body) return;
         // Pages are served both as /trips and /trips.html.
         var current = activeBasename().replace(/\.html$/, '') + '.html';
-        if (BOTTOM_NAV_SKIP[current] || document.querySelector('.app-bottom-nav')) return;
+        if (BOTTOM_NAV_SKIP[current] || document.querySelector('.ui-bottom-nav')) return;
         var html = '';
         var onPrimary = false;
         for (var i = 0; i < BOTTOM_NAV.length; i++) {
@@ -488,54 +273,23 @@
             if (!item) continue;
             var on = item.href === current;
             if (on) onPrimary = true;
-            html += '<a class="abn-item' + (on ? ' is-active' : '') + '" href="' + item.href + '"' + (on ? ' aria-current="page"' : '') + '>'
-                + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg></span>'
-                + '<span class="abn-label" data-i18n="' + item.i18n + '">' + item.label + '</span>'
+            html += '<a class="ui-bottom-link' + (on ? ' is-active' : '') + '" href="' + item.href + '"' + (on ? ' aria-current="page"' : '') + '>'
+                + navIcon(item.icon)
+                + '<span data-i18n="' + item.i18n + '">' + item.label + '</span>'
                 + '</a>';
         }
-        html += '<button type="button" class="abn-item abn-more' + (onPrimary ? '' : ' is-active') + '" aria-haspopup="true">'
-            + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>'
-            + '<span class="abn-label" data-i18n="common.more">More</span>'
+        html += '<button type="button" class="ui-bottom-link' + (onPrimary ? '' : ' is-active') + '" data-bottom-more aria-haspopup="dialog">'
+            + navIcon('more')
+            + '<span data-i18n="common.more">More</span>'
             + '</button>';
         var nav = document.createElement('nav');
-        nav.className = 'app-bottom-nav';
+        nav.className = 'ui-bottom-nav';
+        nav.setAttribute('aria-label', 'Primary');
         nav.innerHTML = html;
-        nav.querySelector('.abn-more').addEventListener('click', function () {
-            if (typeof window.toggleSidebar === 'function') window.toggleSidebar(true);
-        });
+        nav.querySelector('[data-bottom-more]').addEventListener('click', openMoreSheet);
         document.body.appendChild(nav);
+        // Page sheets (live-view, events) key bottom padding off this class.
         document.documentElement.classList.add('has-bottom-nav');
-        leadMobileHeader(onPrimary);
-    }
-
-    // The bottom bar's More opens the menu, so the header's menu button gives
-    // way to the app mark on the four primary pages and to Back elsewhere.
-    function leadMobileHeader(isPrimary) {
-        var header = document.querySelector('.mobile-header');
-        var toggle = header && header.querySelector('.menu-toggle');
-        if (!toggle || header.querySelector('.mh-lead')) return;
-        var lead = document.createElement('a');
-        lead.href = 'index.html';
-        if (isPrimary) {
-            lead.className = 'mh-lead mh-home';
-            lead.setAttribute('data-i18n-attr', 'aria-label:nav.brand_home');
-            lead.setAttribute('aria-label', i18nText('nav.brand_home', 'OverDrive — open Dashboard'));
-            lead.innerHTML = '<span class="brand-logo"><img src="../shared/app-icon-glyph-dark.webp" alt=""></span>';
-        } else {
-            lead.className = 'mh-lead mh-back';
-            lead.setAttribute('data-i18n-attr', 'aria-label:common.back');
-            lead.setAttribute('aria-label', i18nText('common.back', 'Back'));
-            lead.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
-            lead.addEventListener('click', function (e) {
-                var ref = document.referrer || '';
-                if (ref.indexOf(location.protocol + '//' + location.host + '/') === 0 && history.length > 1) {
-                    e.preventDefault();
-                    history.back();
-                }
-            });
-        }
-        toggle.parentNode.insertBefore(lead, toggle);
-        header.classList.add('has-lead');
     }
 
     // Rows whose only control is a switch keep it beside the text on phones
@@ -729,13 +483,13 @@
     function revealActiveNav(aside) {
         if (!aside || !aside.clientHeight) return;
         // The phone menu sheet opens at the top: vehicle status first, then the page grid.
-        if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches && !embeddedInNativeApp) {
+        if (window.matchMedia && window.matchMedia('(max-width: 540px)').matches && !embeddedInNativeApp) {
             aside.scrollTop = 0;
             return;
         }
-        var link = aside.querySelector('.nav-link.active, .nav-link[aria-current="page"]');
+        var link = aside.querySelector('[data-nav-link][aria-current="page"]');
         if (!link || link.hasAttribute('hidden')) return;
-        var header = aside.querySelector('.sidebar-header');
+        var header = aside.querySelector('[data-sidebar-brand]');
         var headerH = header ? header.offsetHeight : 0;
         var linkRect = link.getBoundingClientRect();
         var linkTop = linkRect.top - aside.getBoundingClientRect().top + aside.scrollTop;
@@ -768,31 +522,34 @@
         window.toggleSidebar = wrapped;
     }
 
-    // Browser-only top bar (approved mockup): breadcrumb on the left, a
-    // two-button day/night switch on the right. Inserted at the top of
-    // .main-content; phones hide it via CSS and keep their compact header.
+    // Browser-only top bar (mockup .toolbar): breadcrumb on the left; search
+    // and the day/night switch on the right; the brand on phones. Inserted at
+    // the top of .main-content.
     function renderTopbar(pageTitle) {
         var main = document.querySelector('.main-content');
-        if (!main || main.querySelector('.shell-topbar')) return;
+        if (!main || main.querySelector('.ui-topbar')) return;
         var esc = function (s) {
             return String(s).replace(/[&<>"]/g, function (c) {
                 return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
             });
         };
         var bar = document.createElement('header');
-        bar.className = 'shell-topbar';
+        bar.className = 'ui-topbar';
         bar.innerHTML =
-            '<nav class="shell-breadcrumb" aria-label="Breadcrumb">' +
+            '<nav class="ui-breadcrumb" aria-label="Breadcrumb">' +
               '<span data-i18n="app.name">OverDrive</span><span aria-hidden="true">/</span>' +
               '<strong>' + esc(pageTitle) + '</strong>' +
             '</nav>' +
-            '<div class="shell-theme-switch" role="group" aria-label="Colour theme" data-i18n-attr="aria-label:settings.theme">' +
-              '<button type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="false">' +
-                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>' +
-              '</button>' +
-              '<button type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false">' +
-                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 1 1 11 3.5a6.5 6.5 0 0 0 9.5 9.5z"/></svg>' +
-              '</button>' +
+            '<a class="ui-topbar-brand" href="index.html" aria-label="OverDrive — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">' +
+              '<span class="ui-brand-mark"><span class="ui-brand-glyph"></span></span>' +
+              '<span data-i18n="app.name">OverDrive</span>' +
+            '</a>' +
+            '<div class="ui-topbar-actions">' +
+              '<button type="button" class="ui-icon-button ui-topbar-search od-search-open" aria-label="Search" data-i18n-attr="aria-label:common.search">' + navIcon('search') + '</button>' +
+              '<div class="ui-theme-switch" role="group" aria-label="Colour theme" data-i18n-attr="aria-label:settings.theme">' +
+                '<button type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="false">' + navIcon('sun') + '</button>' +
+                '<button type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false">' + navIcon('moon') + '</button>' +
+              '</div>' +
             '</div>';
         var buttons = bar.querySelectorAll('[data-theme-choice]');
         var sync = function () {
@@ -827,11 +584,11 @@
     function mount() {
         var holder = findMount();
         if (!holder) return;
-        // Render shell into the mount point as <aside class="sidebar"> so all
-        // existing CSS selectors (.sidebar, .sidebar-nav, .sidebar-footer …)
-        // keep matching without changes.
+        // Render the shell as <aside class="ui-sidebar"> (mockup sidebar). Only
+        // ui- classes, so none of the older sidebar rules in styles.css /
+        // revamp.css / app-shell.css match it. id="sidebar" stays for scripts.
         var aside = document.createElement('aside');
-        aside.className = 'sidebar';
+        aside.className = 'ui-sidebar';
         aside.id = 'sidebar';
         aside.innerHTML = buildShellMarkup();
         // Replace the holder with the aside (lighter than nesting another wrapper).
@@ -858,21 +615,8 @@
         // Without this, light-theme users see the hardcoded dark fallback.
         try { if (window.BYD && window.BYD.theme && window.BYD.theme.applyIcons) window.BYD.theme.applyIcons(); } catch (e) {}
 
-        // Wire the close button. Pages already define toggleSidebar(); call it
-        // if present, otherwise fall back to a generic show/hide.
-        var closeBtn = aside.querySelector('.sidebar-close');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', function () {
-                if (typeof window.toggleSidebar === 'function') {
-                    window.toggleSidebar();
-                } else {
-                    aside.classList.toggle('open');
-                }
-            });
-        }
-
-        // Wire per-group collapse on the rendered nav. Each .nav-group-header
-        // becomes a tappable toggle that hides every .nav-link between it and
+        // Wire per-group collapse on the rendered nav. Each [data-nav-group]
+        // becomes a tappable toggle that hides every link between it and
         // the next group-header / divider. State persists per-group.
         wireGroupCollapse(aside);
 
@@ -1395,20 +1139,20 @@
     // Sidebar group collapse
     // ============================================================
     //
-    // Each .nav-group-header (Integrations / Diagnostics / Settings) becomes
-    // a tappable summary that toggles every .nav-link between it and the
+    // Each [data-nav-group] label (Integrations / Diagnostics / Settings) becomes
+    // a tappable summary that toggles every nav link between it and the
     // next group-header / nav-divider.
     //
-    // Implementation: walk the .sidebar-nav once, for each group-header
+    // Implementation: walk the [data-sidebar-nav] once, for each group label
     //  - inject a chevron at the trailing edge,
-    //  - record the .nav-link siblings up to the next break,
+    //  - record the link siblings up to the next break,
     //  - on click, toggle a `data-collapsed` attribute on the group-header
     //    and apply [hidden] to its children. Persist to localStorage.
     //
     // The persistence key uses the group's i18n slug (e.g. "integrations_group")
     // so it survives label translation.
     function wireGroupCollapse(aside) {
-        var nav = aside.querySelector('.sidebar-nav');
+        var nav = aside.querySelector('[data-sidebar-nav]');
         if (!nav) return;
         // Cache the nav so external callers (update-flow.js after it injects
         // its sidebar entry) can re-run wiring on the same DOM.
@@ -1419,18 +1163,18 @@
         var currentGroup = null;
         for (var i = 0; i < children.length; i++) {
             var el = children[i];
-            if (el.classList.contains('nav-group-header')) {
+            if (el.hasAttribute('data-nav-group')) {
                 if (currentGroup) groups.push(currentGroup);
-                var labelEl = el.querySelector('.nav-group-label');
+                var labelEl = el.querySelector('[data-i18n]');
                 var slug = labelEl && labelEl.getAttribute('data-i18n')
                     ? labelEl.getAttribute('data-i18n')
                     : (labelEl ? labelEl.textContent.trim().toLowerCase() : 'group-' + i);
                 currentGroup = { headerEl: el, slug: slug, members: [] };
-            } else if (el.classList.contains('nav-divider')) {
+            } else if (el.hasAttribute('data-nav-divider')) {
                 // Bare hairline closes the current group.
                 if (currentGroup) { groups.push(currentGroup); currentGroup = null; }
             } else if (currentGroup) {
-                // Anything else (.nav-link) between headers belongs to the group.
+                // Anything else (a [data-nav-link]) between labels belongs to the group.
                 currentGroup.members.push(el);
             }
         }
@@ -1456,15 +1200,11 @@
             (function (group) {
                 var header = group.headerEl;
                 if (PLAIN[group.slug]) {
-                    header.classList.add('nav-group-plain');
+                    header.classList.add('is-plain');
                     for (var p = 0; p < group.members.length; p++) group.members[p].removeAttribute('hidden');
                     return;
                 }
-                header.classList.add('nav-group-fold');
-                if (firstFold) { header.classList.add('nav-fold-start'); firstFold = false; }
-                for (var q = 0; q < group.members.length; q++) {
-                    if (group.members[q].classList.contains('nav-link')) group.members[q].classList.add('nav-link-sub');
-                }
+                header.classList.add('is-foldable');
 
                 // Determine whether this group is currently collapsed — we
                 // need to apply that state to ALL current members (including
@@ -1477,7 +1217,7 @@
                 } else {
                     var hasActive = false;
                     for (var k = 0; k < group.members.length; k++) {
-                        if (group.members[k].classList.contains('active') ||
+                        if (group.members[k].classList.contains('is-active') ||
                             group.members[k].getAttribute('aria-current') === 'page') {
                             hasActive = true; break;
                         }
@@ -1501,14 +1241,13 @@
                 header.setAttribute('data-group-wired', '1');
 
                 // Add chevron + interactive affordance.
-                header.classList.add('nav-group-header-collapsible');
                 header.setAttribute('role', 'button');
                 header.setAttribute('tabindex', '0');
-                if (!header.querySelector('.nav-group-chevron')) {
+                if (!header.querySelector('.ui-nav-chevron')) {
                     var chev = document.createElement('span');
-                    chev.className = 'nav-group-chevron';
+                    chev.className = 'ui-nav-chevron';
                     chev.setAttribute('aria-hidden', 'true');
-                    chev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+                    chev.innerHTML = navIcon('caret-down');
                     header.appendChild(chev);
                 }
 
@@ -1520,8 +1259,8 @@
                     // Walk siblings live each click — handles members injected
                     // after the initial wire (e.g. update-flow.js's link).
                     for (var s2 = header.nextElementSibling; s2; s2 = s2.nextElementSibling) {
-                        if (s2.classList.contains('nav-group-header') ||
-                            s2.classList.contains('nav-divider')) break;
+                        if (s2.hasAttribute('data-nav-group') ||
+                            s2.hasAttribute('data-nav-divider')) break;
                         if (nowCollapsed) s2.setAttribute('hidden', '');
                         else s2.removeAttribute('hidden');
                     }
@@ -1557,7 +1296,8 @@
                 href: it.href,
                 i18n: it.i18n || null,
                 label: it.label || '',
-                svg: it.svg || ''
+                icon: it.icon || '',
+                svg: ''
             });
         }
         return out;
@@ -1855,7 +1595,7 @@
     window.OverdriveAppShell.rewireNavGroups = function () {
         var aside = wireGroupCollapse._lastAside ||
                     document.getElementById('sidebar') ||
-                    document.querySelector('.sidebar');
+                    document.querySelector('.ui-sidebar');
         if (aside) wireGroupCollapse(aside);
     };
 

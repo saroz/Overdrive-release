@@ -21,7 +21,10 @@ createServer((req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     return res.end('{}');
   }
-  const file = normalize(join(REPO, decodeURIComponent(url.pathname)));
+  // The device serves the web root at /, so pages also ask for /shared/… and /local/….
+  let path = decodeURIComponent(url.pathname);
+  if (/^\/(shared|local|i18n)\//.test(path)) path = '/app/src/main/assets/web' + path;
+  const file = normalize(join(REPO, path));
   if (!file.startsWith(REPO + sep) || !existsSync(file) || !statSync(file).isFile()) {
     res.writeHead(404);
     return res.end('not found');

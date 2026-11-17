@@ -212,7 +212,7 @@
     function mount() {
         if (typeof window.AndroidBridge !== 'undefined') return;
         if (document.getElementById('langChip')) return;
-        var footer = document.querySelector('.sidebar-footer');
+        var footer = document.querySelector('.ui-sidebar-foot');
         if (!footer) return;
         var chip = buildChip();
         chip.id = 'langChip';

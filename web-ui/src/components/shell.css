@@ -108,6 +108,128 @@ body.ui-app {
   font-size: 11px;
 }
 
+/* Brand glyph: the app mark drawn in the surface colour on the ink tile, via a mask,
+   so it flips with the theme without swapping images. */
+.ui-brand-glyph {
+  width: 20px;
+  height: 20px;
+  background: var(--ui-surface);
+  -webkit-mask: url(app-icon-glyph-dark.webp) center / contain no-repeat;
+  mask: url(app-icon-glyph-dark.webp) center / contain no-repeat;
+}
+
+/* Foldable group labels (Integrations, Diagnostics, Settings). */
+.ui-nav-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ui-nav-label.is-foldable { min-height: 36px; border-radius: 7px; cursor: pointer; }
+.ui-nav-label.is-foldable:hover { color: var(--ui-ink); }
+.ui-nav-chevron { display: grid; transition: transform .15s ease; }
+.ui-nav-chevron .ui-icon { width: 14px; height: 14px; }
+.ui-nav-label[data-collapsed=true] .ui-nav-chevron { transform: rotate(-90deg); }
+:dir(rtl) .ui-nav-label[data-collapsed=true] .ui-nav-chevron { transform: rotate(90deg); }
+.ui-nav-divider { height: 1px; margin: 14px 14px 6px; background: var(--ui-line); }
+.ui-nav [hidden] { display: none !important; }
+
+/* Mockup .garage: vehicle row, battery bar and a compact status list. */
+.ui-garage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--ui-line);
+}
+
+.ui-garage-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--ui-line);
+  border-radius: 9px;
+  background: var(--ui-soft);
+  color: var(--ui-ink);
+}
+
+.ui-garage-copy { min-width: 0; }
+.ui-garage-copy strong { display: block; color: var(--ui-ink); font-size: 12px; font-weight: 600; }
+.ui-garage-copy small { display: block; margin-top: 2px; font-size: 11px; }
+.ui-garage-bar { max-width: none; margin-top: 12px; }
+.ui-evcard-charging .ui-garage-bar > span, .ui-garage.charging + .ui-garage-bar > span { background: var(--ui-accent); }
+
+.ui-sidebar-status { display: grid; gap: 4px; margin: 14px 0 0; }
+.ui-sidebar-status > div { display: flex; justify-content: space-between; gap: 8px; }
+.ui-sidebar-status dt { display: flex; align-items: center; gap: 6px; margin: 0; }
+.ui-sidebar-status dd { margin: 0; color: var(--ui-ink); font-weight: 550; text-align: end; }
+.ui-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ui-muted); }
+.ui-dot.connected, .ui-dot.online, .ui-dot.active { background: var(--ui-green); }
+#networkIcon:empty { display: none; }
+#networkIcon svg { width: 12px; height: 12px; }
+
+.ui-sidebar-fuel { margin-top: 14px; }
+.ui-sidebar-fuel-head { display: flex; justify-content: space-between; }
+.ui-sidebar-fuel-head strong { color: var(--ui-ink); }
+.ui-sidebar-fuel .ui-progress { max-width: none; }
+.ui-sidebar-version { display: block; margin-top: 14px; }
+.ui-sidebar-version:empty { display: none; }
+
+.ui-topbar-brand { display: none; align-items: center; gap: 7px; color: var(--ui-ink); font-size: 18px; font-weight: 700; letter-spacing: -.5px; text-decoration: none; }
+.ui-topbar-brand .ui-brand-mark { width: 24px; height: 25px; border-radius: 6px; }
+.ui-topbar-brand .ui-brand-glyph { width: 16px; height: 16px; }
+.ui-topbar-search { background: transparent; color: var(--ui-muted); }
+.ui-topbar-search:hover { background: var(--ui-soft); color: var(--ui-ink); }
+
+/* Phone bottom bar (≤540px): four destinations and More. */
+.ui-bottom-nav {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 400;
+  display: none;
+  justify-content: space-around;
+  height: calc(66px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  padding: 5px 8px env(safe-area-inset-bottom, 0px);
+  border-top: 1px solid var(--ui-line);
+  background: var(--ui-surface);
+}
+
+.ui-bottom-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+  min-height: 52px;
+  padding: 5px 2px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: var(--ui-muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 550;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ui-bottom-link span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ui-bottom-link.is-active { background: var(--ui-accent-soft); color: var(--ui-accent-text); }
+
+.ui-more-sheet { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.ui-more-nav { margin-top: 0; }
+
+/* Pages not yet moved keep their .app-layout/.main-content frame: offset it by the
+   new sidebar, keep the old --sidebar-width readers (fixed tab bars) in step, and
+   retire the old phone header and drawer overlay. */
+:root:root:root { --sidebar-width: var(--ui-sidebar-width); }
+html.ui-shell-on body .main-content { margin-inline: var(--ui-sidebar-width) 0; }
+html.ui-shell-on body .mobile-header,
+html.ui-shell-on body .sidebar-overlay,
+html.ui-shell-on body #bydThemePicker { display: none; }
+html.ui-shell-on body #sidebar.ui-sidebar { position: fixed; inset-block: 0; inset-inline-start: 0; z-index: 300; }
+
 .ui-workspace { min-width: 0; }
 
 .ui-topbar {
@@ -212,10 +334,12 @@ body.ui-app {
 
 .ui-stack { display: flex; flex-direction: column; gap: 20px; }
 
-/* Inside the native app the Android rail is the navigation: no web sidebar or top bar. */
+/* Inside the native app the Android rail is the navigation: no web sidebar, top bar or bottom bar. */
 html[data-android-embed="1"] .ui-sidebar,
-html[data-android-embed="1"] .ui-topbar { display: none; }
+html[data-android-embed="1"] .ui-topbar,
+html[data-android-embed="1"] .ui-bottom-nav { display: none !important; }
 html[data-android-embed="1"] .ui-shell { display: block; }
+html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
 
 @media (min-width: 1500px) {
   .ui-main { padding-top: 38px; }
@@ -239,28 +363,23 @@ html[data-android-embed="1"] .ui-shell { display: block; }
   .ui-grid-main { grid-template-columns: 1fr; }
 }
 
+@media (max-width: 850px) {
+  .ui-nav-divider { margin: 10px 8px; }
+  .ui-nav-label.is-foldable { display: none; }
+  .ui-nav [hidden] { display: flex !important; }
+}
+
 @media (max-width: 540px) {
   .ui-shell { display: block; }
-  .ui-sidebar {
-    position: fixed;
-    inset: auto 0 0;
-    z-index: 8;
-    width: 100%;
-    height: calc(66px + env(safe-area-inset-bottom, 0px));
-    flex-direction: row;
-    padding: 5px 8px env(safe-area-inset-bottom, 0px);
-    border-inline-end: 0;
-    border-top: 1px solid var(--ui-line);
-    overflow: hidden;
-  }
-  .ui-sidebar > .ui-brand { display: none; }
-  .ui-nav { flex-direction: row; flex: 1; gap: 0; margin: 0; justify-content: space-around; }
-  .ui-nav-link { flex: 1; min-width: 0; flex-direction: column; gap: 3px; min-height: 52px; padding: 5px 2px; }
-  .ui-nav-link .ui-nav-text { display: block; font-size: 11px; line-height: 1.2; }
-  .ui-nav-link[data-bottom="0"] { display: none; }
+  .ui-sidebar, html.ui-shell-on body #sidebar.ui-sidebar { display: none; }
+  .ui-bottom-nav { display: flex; }
+  html.ui-shell-on body .main-content { margin-inline-start: 0; padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }
+  .ui-more-nav .ui-nav-text, .ui-more-nav .ui-nav-label { display: block; }
+  .ui-more-nav .ui-nav-link { justify-content: flex-start; padding: 12px 14px; }
   .ui-topbar { padding: 0 16px; }
   .ui-topbar-actions { gap: 10px; }
   .ui-breadcrumb { display: none; }
+  .ui-topbar-brand { display: flex; }
   .ui-main { padding: 24px 16px 92px; }
   .ui-page-head h1 { font-size: 24px; }
   .ui-page-head p { font-size: 12px; }

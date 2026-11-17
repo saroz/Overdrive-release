@@ -426,7 +426,7 @@
     // Bars pinned to the bottom of the viewport (bars moved to the top are
     // ignored). Returns the one reaching highest, so the picker clears all.
     function lowestStickyBar() {
-        var els = document.querySelectorAll('.footer-bar, .mobile-nav, .tab-bar, .bottom-tabs, .app-bottom-nav');
+        var els = document.querySelectorAll('.footer-bar, .mobile-nav, .tab-bar, .bottom-tabs, .ui-bottom-nav');
         var vh = window.innerHeight || document.documentElement.clientHeight;
         var best = null, bestTop = vh;
         for (var i = 0; i < els.length; i++) {

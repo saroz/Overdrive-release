@@ -136,23 +136,20 @@
     // ─────────────────────── Sidebar entry ───────────────────────
 
     function injectSidebarEntry() {
-        var nav = document.querySelector('.sidebar-nav');
+        var nav = document.querySelector('[data-sidebar-nav]');
         if (!nav) return;
         // Don't double-inject
         if (nav.querySelector('.nav-link-update')) return;
 
         var a = document.createElement('a');
         a.href = '#';
-        a.className = 'nav-link nav-link-update';
+        a.className = 'ui-nav-link nav-link-update';
+        a.setAttribute('data-nav-link', '');
         a.id = 'navUpdateLink';
         // aria-label doubles as the tooltip text in collapsed-rail variants.
         a.setAttribute('aria-label', 'Check for Updates');
         a.innerHTML =
-            '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
-            '<polyline points="23 4 23 10 17 10"/>' +
-            '<polyline points="1 20 1 14 7 14"/>' +
-            '<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>' +
-            '</svg>' +
+            (typeof window.phIcon === 'function' ? window.phIcon('refresh') : '') +
             // Mark the span with data-i18n so the runtime re-translates it
             // once the catalog finishes loading. Without this attribute, the
             // initial t() call returns the literal key ("update.check_for_updates")
@@ -161,7 +158,7 @@
             // is still loading — guard with the English fallback so we never
             // render the literal "null" while the user waits for the first
             // hydrate() pass.
-            '<span data-i18n="update.check_for_updates">' + ((window.BYD && BYD.i18n && BYD.i18n.t('update.check_for_updates')) || 'Check for Updates') + '</span>';
+            '<span class="ui-nav-text" data-i18n="update.check_for_updates">' + ((window.BYD && BYD.i18n && BYD.i18n.t('update.check_for_updates')) || 'Check for Updates') + '</span>';
         a.addEventListener('click', function (e) {
             e.preventDefault();
             startCheckFlow();
@@ -171,7 +168,7 @@
         // group — "Check for Updates" is conceptually meta information about
         // the app, not a top-level destination. Falls back to appendChild
         // for pages that don't render an About link.
-        var aboutLink = nav.querySelector('.nav-link[href="about.html"]');
+        var aboutLink = nav.querySelector('[data-nav-link][href="about.html"]');
         if (aboutLink && aboutLink.parentNode) {
             // insertBefore(a, aboutLink.nextSibling) lands the new link
             // immediately after About, which is where the About group ends
