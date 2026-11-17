@@ -1,6 +1,6 @@
 /**
  * Parking Intelligence page — list + drill-in detail, in the charging.html
- * idiom: a "Parked now" tile (.r-hero), quick range filters (filter-tabs),
+ * idiom: a "Parked now" tile (.ui-summary), quick range filters (filter-tabs),
  * full-width session rows grouped by day-header, and a detail view with
  * detail-header / detail-summary / summary-cards.
  *
@@ -407,7 +407,7 @@
         fetch('/api/parking/sessions/' + encodeURIComponent(id), { cache: 'no-store' })
             .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
             .then(function (d) { state.detail = d; renderDetail(d); })
-            .catch(function () { view.innerHTML = detailHeader(null) + '<div class="empty-state"><div class="empty-title">' + esc(t('parking.no_sessions_title')) + '</div></div>'; hydrateImages(view); });
+            .catch(function () { view.innerHTML = detailHeader(null) + '<div class="ui-empty"><div class="empty-title">' + esc(t('parking.no_sessions_title')) + '</div></div>'; hydrateImages(view); });
         if (!state.status) {
             fetch('/api/parking/status', { cache: 'no-store' }).then(function (r) { return r.json(); })
                 .then(function (st) { state.status = st; renderHeader(); }).catch(function () { /* ignore */ });
@@ -464,7 +464,7 @@
     }
 
     function cardShell(title, icon, body, right) {
-        return '<div class="summary-card"><div class="pk-card-title"><div class="card-title">' + ICON[icon] + '<span>' + esc(title) + '</span></div>' +
+        return '<div class="summary-card"><div class="pk-card-title"><div class="ui-panel-title">' + ICON[icon] + '<span>' + esc(title) + '</span></div>' +
             (right || '') + '</div>' + body + '</div>';
     }
 

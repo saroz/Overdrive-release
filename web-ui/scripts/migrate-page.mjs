@@ -41,7 +41,7 @@ export const MAP = {
   'r-link-title': 'ui-row-title', 'r-link-desc': 'ui-row-desc', 'r-link-chev': 'ui-row-end',
   'r-choice-row': 'ui-row-stack', 'r-choice-cards': 'ui-choices', 'r-choice-ico': 'ui-choice-icon',
   'r-choice-desc': 'ui-choice-desc', 'r-choice-hint': 'ui-hint',
-  'header-actions': 'ui-page-actions', 'num': '',
+  'header-actions': 'ui-page-actions', 'num': '', 'spinner': 'ui-spinner',
   'modal-backdrop': 'ui-modal-backdrop', 'modal-card': 'ui-dialog', 'soh-modal-title': 'ui-dialog-title',
   'soh-modal-actions': 'ui-dialog-actions', 'soh-modal-input': 'ui-input', 'soh-modal-label': 'ui-label',
   'btn-danger-ghost': 'ui-button-ghost ui-button-danger', 'checkbox-row': 'ui-check-row', 'select-control': 'ui-select',
@@ -207,6 +207,7 @@ export function migrate(page, scripts = [], dry = false) {
     html = bar.rest;
     html = html.replace(/(\n[ \t]*)<\/div>(\s*<\/main>)/, `$1    ${bar.text.trim()}$1</div>$2`);
   }
+  html = html.replace(/ class=""/g, '');
   html = html.replace(/<body([^>]*)>/, (all, attrs) => {
     let a = attrs.replace(/\sdata-page="[^"]*"/, '');
     if (/class="/.test(a)) a = a.replace(/class="([^"]*)"/, (m, v) => `class="${[...new Set(['ui-app', ...v.split(/\s+/).filter(Boolean)])].join(' ')}"`);

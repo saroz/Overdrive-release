@@ -724,7 +724,7 @@ BYD.events = {
      * while the index is down shows the same honest state.
      */
     _indexDownCardHtml() {
-        return '<div class="empty-state"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div class="empty-title">' +
+        return '<div class="ui-empty"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div class="empty-title">' +
             BYD.i18n.t('events.empty_index_down_title') + '</div><div class="empty-text">' +
             BYD.i18n.t('events.empty_index_down_text') + '</div></div>';
     },
@@ -971,8 +971,7 @@ BYD.events = {
             const params = [];
             if (this.currentFilter !== 'all') params.push('type=' + this.currentFilter);
             if (this.selectedDate) params.push('date=' + this.selectedDate);
-            if (this.actorFilter && this.actorFilter.class)     params.push('class=' + encodeURIComponent(this.actorFilter.class));
-            if (this.actorFilter && this.actorFilter.severity)  params.push('severity=' + encodeURIComponent(this.actorFilter.severity));
+            if (this.actorFilter && this.actorFilter.class)     params.push('class=' + encodeURIComponent(this.actorFilter.class)); if (this.actorFilter && this.actorFilter.severity) params.push('severity=' + encodeURIComponent(this.actorFilter.severity));
             if (this.actorFilter && this.actorFilter.proximity) params.push('proximity=' + encodeURIComponent(this.actorFilter.proximity));
             if (this.placeContainsQuery)                        params.push('placeContains=' + encodeURIComponent(this.placeContainsQuery));
             if (this.storageFilter)                             params.push('storage=' + encodeURIComponent(this.storageFilter));
@@ -1335,7 +1334,7 @@ BYD.events = {
             banner = document.createElement('div');
             banner.id = 'recordingIndexWarming';
             banner.className = 'loading warming-banner';
-            banner.innerHTML = '<div class="spinner"></div><span class="warming-banner-text"></span>';
+            banner.innerHTML = '<div class="ui-spinner"></div><span class="warming-banner-text"></span>';
             list.parentNode.insertBefore(banner, list);
         }
         const textEl = banner.querySelector('.warming-banner-text');
@@ -1471,7 +1470,7 @@ BYD.events = {
 
     async loadRecordings() {
         const list = document.getElementById('recordingsList');
-        list.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+        list.innerHTML = '<div class="loading"><div class="ui-spinner"></div></div>';
 
         try {
             let url = '/api/recordings';
@@ -1481,8 +1480,7 @@ BYD.events = {
             // v3 actor filters (item 6) + place filter (item 7) — all
             // server-side now so pagination + totalCount stay honest
             // under any combination of narrowing chips.
-            if (this.actorFilter && this.actorFilter.class)     params.push('class=' + encodeURIComponent(this.actorFilter.class));
-            if (this.actorFilter && this.actorFilter.severity)  params.push('severity=' + encodeURIComponent(this.actorFilter.severity));
+            if (this.actorFilter && this.actorFilter.class)     params.push('class=' + encodeURIComponent(this.actorFilter.class)); if (this.actorFilter && this.actorFilter.severity) params.push('severity=' + encodeURIComponent(this.actorFilter.severity));
             if (this.actorFilter && this.actorFilter.proximity) params.push('proximity=' + encodeURIComponent(this.actorFilter.proximity));
             if (this.actorFilter && this.actorFilter.place)     params.push('place=' + encodeURIComponent(this.actorFilter.place));
             // Substring narrowing — stacks with the chip filter; SQL
@@ -1580,7 +1578,7 @@ BYD.events = {
             }
         } catch (e) {
             console.error('Failed to load recordings:', e);
-            list.innerHTML = '<div class="empty-state"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div class="empty-title">' + BYD.i18n.t('events.empty_failed_title') + '</div><div class="empty-text">' + BYD.i18n.t('events.empty_failed_text') + '</div></div>';
+            list.innerHTML = '<div class="ui-empty"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><div class="empty-title">' + BYD.i18n.t('events.empty_failed_title') + '</div><div class="empty-text">' + BYD.i18n.t('events.empty_failed_text') + '</div></div>';
         }
     },
     
@@ -1654,7 +1652,7 @@ BYD.events = {
                 // reinstating exactly the lie this fix removes.
                 list.innerHTML = this._indexDownCardHtml();
             } else {
-                list.innerHTML = '<div class="empty-state"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg><div class="empty-title">' + BYD.i18n.t('events.empty_none_title') + '</div><div class="empty-text">' + BYD.i18n.t('events.empty_none_text') + '</div></div>';
+                list.innerHTML = '<div class="ui-empty"><svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg><div class="empty-title">' + BYD.i18n.t('events.empty_none_title') + '</div><div class="empty-text">' + BYD.i18n.t('events.empty_none_text') + '</div></div>';
             }
             return;
         }

@@ -437,3 +437,18 @@
 .roi-note.is-info { color: var(--primary); }
 :root[data-android-embed="1"] .roi-day { min-height: 56px; font-size: var(--fs-body); }
 :root[data-android-embed="1"] .roi-time-select { min-height: 56px; }
+.empty-icon,
+.error-state .state-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 12px;
+    color: var(--outline);
+}
+.recording-badge.proximity {
+    background: var(--status-warning);
+    color: var(--fixed-white);
+    font-weight: 600;
+    box-shadow: 0 0 12px rgba(249, 115, 22, 0.3);
+}
+.r-inline-ico { display: inline-block; width: 1em; height: 1em; margin-right: 0.3em; vertical-align: -0.125em; flex-shrink: 0; }
+[dir="rtl"] .r-inline-ico { margin-right: 0; margin-left: 0.3em; }

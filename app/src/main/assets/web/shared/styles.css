@@ -152,14 +152,6 @@ textarea:focus,
     color: var(--on-surface-variant);
 }
 
-.empty-icon,
-.error-state .state-icon {
-    width: 40px;
-    height: 40px;
-    margin: 0 auto 12px;
-    color: var(--outline);
-}
-
 .empty-title,
 .state-title {
     color: var(--on-surface);
@@ -3861,15 +3853,6 @@ select.md-input ~ .md-label {
     background: var(--surface-container);
     color: var(--on-surface);
     padding: 8px;
-}
-
-/* ==================== PROXIMITY BADGE ==================== */
-
-.recording-badge.proximity {
-    background: var(--status-warning);
-    color: white;
-    font-weight: 600;
-    box-shadow: 0 0 12px rgba(249, 115, 22, 0.3);
 }
 
 /* === LANGUAGE PICKER === */

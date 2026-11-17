@@ -1074,10 +1074,6 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary-te
 .r-choice-cards > .btn-toggle.active .r-zone-ico { background: var(--well-2); color: var(--on-surface); }
 :root[data-android-embed="1"] .r-choice-desc { font-size: var(--fs-body); }
 
-/* Inline glyph that sits in front of a status word (replaces emoji prefixes). */
-.r-inline-ico { display: inline-block; width: 1em; height: 1em; margin-right: 0.3em; vertical-align: -0.125em; flex-shrink: 0; }
-[dir="rtl"] .r-inline-ico { margin-right: 0; margin-left: 0.3em; }
-
 /* Busy spinner inside a button label while a save is in flight. */
 .r-btn-spinner { display: inline-block; width: 14px; height: 14px; margin-right: 8px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; vertical-align: -2px; -webkit-animation: r-spin 0.8s linear infinite; animation: r-spin 0.8s linear infinite; }
 [dir="rtl"] .r-btn-spinner { margin-right: 0; margin-left: 8px; }

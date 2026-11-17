@@ -185,21 +185,21 @@ window.SafeKeepBadges = (function () {
             none: t('safekeep.s_none', 'Not backed up. This kind of clip isn\'t in your SafeKeep rules.')
         }[st.state] || '';
         var backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop';
+        backdrop.className = 'ui-modal-backdrop';
         backdrop.style.display = 'flex';
         var card = document.createElement('div');
-        card.className = 'modal-card';
+        card.className = 'ui-dialog';
         card.setAttribute('role', 'dialog');
         card.setAttribute('aria-modal', 'true');
-        card.innerHTML = '<h3 class="soh-modal-title">' + esc(file) + '</h3><p>' + esc(statusLine) + '</p>'
-            + '<div class="soh-modal-actions" style="flex-wrap:wrap;"></div>';
+        card.innerHTML = '<h3 class="ui-dialog-title">' + esc(file) + '</h3><p>' + esc(statusLine) + '</p>'
+            + '<div class="ui-dialog-actions" style="flex-wrap:wrap;"></div>';
         backdrop.appendChild(card);
         document.body.appendChild(backdrop);
-        var actions = card.querySelector('.soh-modal-actions');
+        var actions = card.querySelector('.ui-dialog-actions');
         function close() { if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop); }
         function add(labelText, cls, fn) {
             var b = document.createElement('button');
-            b.className = 'btn ' + (cls || 'btn-secondary');
+            b.className = 'ui-button ' + (cls || 'btn-secondary');
             b.textContent = labelText;
             b.onclick = function () { fn(b); };
             actions.appendChild(b);

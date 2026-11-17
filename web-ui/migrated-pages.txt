@@ -2,3 +2,5 @@ index.html
 storage.html
 recording.html
 surveillance.html
+parking.html
+events.html

@@ -79,3 +79,10 @@
   .ui-panel-foot { padding: 0 20px 20px; }
   .ui-strip { flex-wrap: wrap; gap: 10px; padding: 15px; }
 }
+
+/* Rich empty state: icon, title, a line of text and an action, centred. */
+.ui-empty { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.ui-empty > svg, .ui-empty > .empty-icon, .ui-empty .empty-icon svg { width: 40px; height: 40px; color: var(--ui-muted); }
+.ui-empty h2, .ui-empty h3, .ui-empty strong, .ui-empty .empty-title { margin: 0; color: var(--ui-ink); font-size: 16px; font-weight: 650; }
+.ui-empty p, .ui-empty .empty-text { max-width: 46ch; margin: 0; color: var(--ui-muted); font-size: 13px; }
+.ui-empty .ui-button { margin-top: 6px; }
