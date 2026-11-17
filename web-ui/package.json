@@ -9,6 +9,7 @@
     "serve": "node scripts/serve.mjs"
   },
   "devDependencies": {
+    "@phosphor-icons/core": "2.1.1",
     "@tailwindcss/cli": "4.3.5",
     "tailwindcss": "4.3.5"
   },

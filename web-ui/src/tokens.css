@@ -29,9 +29,11 @@
   --ui-shadow-knob: 0 1px 3px #0003;
   --ui-car-shadow: drop-shadow(0 12px 10px #17253014);
   --ui-hero-bg: var(--ui-hero);
-  --ui-sidebar-width: 240px;
   --ui-font: "Segoe UI Variable", "Segoe UI", "Inter", system-ui, sans-serif;
 }
+
+/* Layout sizes sit on plain :root so the breakpoints below can change them. */
+:root { --ui-sidebar-width: 240px; }
 
 :root:not([data-theme="light"]) {
   --ui-page: #191a1b;

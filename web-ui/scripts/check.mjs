@@ -5,7 +5,7 @@ import { join, relative } from 'node:path';
 import { buildAll, SHARED } from './build.mjs';
 
 const out = mkdtempSync(join(tmpdir(), 'webui-check-'));
-await buildAll(out);
+buildAll(out);
 
 function files(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap(d =>

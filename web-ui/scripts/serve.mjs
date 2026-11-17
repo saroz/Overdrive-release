@@ -5,7 +5,7 @@
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { join, extname, normalize, sep } from 'node:path';
-import { ROOT } from './build.mjs';
+import { ROOT } from './paths.mjs';
 
 const REPO = normalize(join(ROOT, '..'));
 const PORT = Number(process.env.PORT || 8097);

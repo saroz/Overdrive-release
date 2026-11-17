@@ -45,6 +45,18 @@ public class UiCssBuildAssetTest {
     }
 
     @Test
+    public void sidebarWidthIsNotPinnedByTheThemeSelector() throws IOException {
+        // A themed selector (:root[data-theme=light]) outranks the plain :root in the breakpoints,
+        // which kept the sidebar 240px wide on narrow screens.
+        String c = css();
+        int at = c.indexOf("--ui-sidebar-width:240px");
+        String selector = c.substring(c.lastIndexOf('}', at) + 1, c.lastIndexOf('{', at));
+        assertTrue("240px is set on '" + selector + "'", selector.equals(":root"));
+        assertTrue(c.contains("{:root{--ui-sidebar-width:200px}}"));
+        assertTrue(c.contains("{:root{--ui-sidebar-width:72px}}"));
+    }
+
+    @Test
     public void noNetworkLoads() throws IOException {
         assertFalse(css().matches("(?s).*https?://.*"));
     }
