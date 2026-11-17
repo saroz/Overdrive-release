@@ -21,12 +21,12 @@
             { id: 'add',      label: 'Add',      i18n: 'keymap.tab_add',      svg: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>', readOnly: true }
         ];
         window.OT_setActiveTab = function (id) {
-            var btn = document.querySelector('.bottom-tabs .bottom-tab[data-tab-target="' + id + '"]');
+            var btn = document.querySelector('[data-tab-target="' + id + '"]');
             if (btn) { btn.click(); return true; }
             return false;
         };
     </script>
-    <script src="../shared/app-tabs.js?v=3"></script>
+    <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=38">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
     <link rel="stylesheet" href="../shared/ui.css?v=1">

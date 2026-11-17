@@ -15,11 +15,11 @@
             { id: 'privacy', label: 'Privacy', i18n: 'genai.tab_privacy', svg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' }
         ];
         window.OT_setActiveTab = function (id) {
-            var button = document.querySelector('.bottom-tab[data-tab-target="' + id + '"]');
+            var button = document.querySelector('[data-tab-target="' + id + '"]');
             if (button) button.click();
         };
     </script>
-    <script src="../shared/app-tabs.js?v=3"></script>
+    <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=38">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
     <link rel="stylesheet" href="../shared/ui.css?v=1">

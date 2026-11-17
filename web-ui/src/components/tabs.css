@@ -35,6 +35,38 @@
   font-weight: 650;
 }
 
+/* Page-level tabs built by app-tabs.js: sticky strip with an optional action
+   (Apply / Add) at the end. */
+.ui-page-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 0 0 20px;
+  border-bottom: 1px solid var(--ui-line);
+  background: var(--ui-page);
+}
+
+.ui-page-tabs > .ui-tabs { flex: 1; min-width: 0; border-bottom: 0; }
+.ui-tabs-action { display: flex; flex: none; gap: 8px; padding: 6px 0; }
+.ui-tabs-action.is-hidden { display: none; }
+.ui-tabs-action.is-disabled .ui-button { opacity: .45; }
+
+.ui-stroke-icon {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+html[data-android-embed="1"] .ui-page-tabs { top: 0; }
+
 @media (max-width: 540px) {
   .ui-panel > .ui-tabs { margin: 0 20px; }
+  .ui-page-tabs { gap: 10px; }
 }

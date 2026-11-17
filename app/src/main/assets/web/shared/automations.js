@@ -2078,7 +2078,7 @@ BYD.automations = {
             // Tab switches don't fire visibilitychange, so also resume on any tap in the
             // bottom tab bar. Cheap: startStatePolling exits at once when no hint is visible.
             document.addEventListener('click', (ev) => {
-                if (ev.target && ev.target.closest && ev.target.closest('.bottom-tabs')) {
+                if (ev.target && ev.target.closest && ev.target.closest('.ui-page-tabs')) {
                     setTimeout(() => this.startStatePolling(), 0);
                 }
             });

@@ -1848,8 +1848,11 @@ BYD.core = {
             }
         }
 
+        // Mockup .toast: ink pill, stacked bottom-centre.
+        container.classList.add('ui-toast-stack');
         const toast = document.createElement('div');
-        toast.className = 'toast ' + type;
+        toast.className = 'ui-toast ui-toast-' + type;
+        toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
         toast.textContent = text;
         container.appendChild(toast);
 
@@ -1970,11 +1973,10 @@ BYD.utils.scrollToTop = function (anchor) {
 /**
  * Themed alert/confirm replacements. Native window.alert / window.confirm
  * paint the OS chrome (white panel + system font + "127.0.0.1 says…"
- * header inside the head-unit WebView), which breaks the dark Material
- * surface and leaks the loopback origin into the UI. These helpers reuse
- * the existing .modal-backdrop + .modal-card styling (see
- * shared/styles.css and the SOH capacity modal on performance.html) so
- * popups match the rest of the page.
+ * header inside the head-unit WebView), which breaks the app surface and
+ * leaks the loopback origin into the UI. These helpers render the mockup
+ * dialog (.ui-modal-backdrop + .ui-dialog in shared/ui.css) so popups match
+ * the rest of the page.
  *
  * Both helpers return a Promise:
  *   - alertDialog resolves once the user dismisses.
@@ -2004,32 +2006,29 @@ BYD.utils._showModal = function (opts) {
     return new Promise(function (resolve) {
         BYD.utils._ensureModalEscHandler();
 
+        // Mockup dialog on a solid scrim (no blur). A div pair rather than
+        // <dialog> keeps the Escape stack and promise flow unchanged.
         var backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop';
+        backdrop.className = 'ui-modal-backdrop';
         backdrop.setAttribute('role', 'presentation');
-        // .modal-backdrop's stylesheet rule already sets display:flex; we
-        // just need to make sure the inline display:none guard the SOH
-        // template uses isn't inherited here.
-        backdrop.style.display = 'flex';
 
         var card = document.createElement('div');
-        card.className = 'modal-card';
+        card.className = 'ui-dialog';
         card.setAttribute('role', 'dialog');
         card.setAttribute('aria-modal', 'true');
 
         // Title + body — text content only, never raw HTML.
         if (opts.title) {
-            var h = document.createElement('h3');
-            h.className = 'soh-modal-title';
+            var head = document.createElement('div');
+            head.className = 'ui-dialog-head';
+            var h = document.createElement('h2');
             h.textContent = opts.title;
-            card.appendChild(h);
+            head.appendChild(h);
+            card.appendChild(head);
         }
         if (opts.body) {
             var p = document.createElement('p');
-            p.style.margin = opts.prompt ? '0 0 12px 0' : '0 0 4px 0';
-            p.style.fontSize = '14px';
-            p.style.lineHeight = '1.5';
-            p.style.color = 'var(--text-secondary, var(--text-primary))';
+            p.className = 'ui-dialog-body';
             p.style.whiteSpace = 'pre-wrap';
             p.textContent = opts.body;
             card.appendChild(p);
@@ -2044,22 +2043,8 @@ BYD.utils._showModal = function (opts) {
             input.setAttribute('aria-label',
                 opts.promptLabel || opts.title || opts.body || 'Input');
             if (opts.inputMode) input.setAttribute('inputmode', opts.inputMode);
-            input.style.width = '100%';
-            input.style.boxSizing = 'border-box';
-            input.style.padding = '10px 12px';
-            input.style.marginBottom = '18px';
-            input.style.border = '1px solid var(--border-subtle, #ccc)';
-            input.style.borderRadius = 'var(--radius-md, 8px)';
-            input.style.background = 'var(--bg-surface, #fff)';
-            input.style.color = 'var(--text-primary, #000)';
-            input.style.fontSize = '15px';
-            input.style.outline = 'none';
-            input.addEventListener('focus', function () {
-                input.style.borderColor = 'var(--brand-primary, #007AFF)';
-            });
-            input.addEventListener('blur', function () {
-                input.style.borderColor = 'var(--border-subtle, #ccc)';
-            });
+            input.className = 'ui-input';
+            input.style.marginTop = '14px';
             input.addEventListener('keydown', function (ev) {
                 if (ev.key === 'Enter') {
                     ev.preventDefault();
@@ -2070,12 +2055,12 @@ BYD.utils._showModal = function (opts) {
         }
 
         var actions = document.createElement('div');
-        actions.className = 'soh-modal-actions';
+        actions.className = 'ui-dialog-actions';
 
         // Optional Cancel — confirm dialogs always have one; alerts skip it.
         if (opts.cancelLabel) {
             var cancelBtn = document.createElement('button');
-            cancelBtn.className = 'btn btn-secondary';
+            cancelBtn.className = 'ui-button';
             cancelBtn.type = 'button';
             cancelBtn.textContent = opts.cancelLabel;
             cancelBtn.addEventListener('click', function () { dismiss(false); });
@@ -2083,8 +2068,8 @@ BYD.utils._showModal = function (opts) {
         }
 
         var confirmBtn = document.createElement('button');
-        // btn-danger for destructive confirms, btn-primary for everything else.
-        var confirmClass = opts.danger ? 'btn btn-danger' : 'btn btn-primary';
+        // Danger outline for destructive confirms, primary for everything else.
+        var confirmClass = opts.danger ? 'ui-button ui-button-danger' : 'ui-button ui-button-primary';
         confirmBtn.className = confirmClass;
         confirmBtn.type = 'button';
         confirmBtn.textContent = opts.confirmLabel || 'OK';

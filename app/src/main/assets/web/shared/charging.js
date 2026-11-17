@@ -151,8 +151,8 @@ var CHARGING = {
         document.addEventListener('click', function (ev) {
             var tab = ev.target;
             while (tab && tab !== document
-                    && !(tab.classList
-                    && tab.classList.contains('bottom-tab'))) {
+                    && !(tab.getAttribute
+                    && tab.getAttribute('data-tab-target'))) {
                 tab = tab.parentNode;
             }
             if (tab && tab !== document) {
@@ -200,7 +200,7 @@ var CHARGING = {
     _syncTabPresentation: function (activeId) {
         var id = activeId;
         if (!id) {
-            var active = document.querySelector('.bottom-tab.is-active');
+            var active = document.querySelector('[data-tab-target].is-active');
             if (active) id = active.getAttribute('data-tab-target');
         }
         var title = this._t('charge.title', 'Charging');

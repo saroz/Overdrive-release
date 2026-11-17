@@ -87,24 +87,25 @@
 
     function buildBar(tabs, active) {
         var nav = document.createElement('nav');
-        nav.className = 'bottom-tabs';
-        nav.setAttribute('role', 'tablist');
+        nav.className = 'ui-page-tabs';
         var html = '';
         for (var i = 0; i < tabs.length; i++) {
             var t = tabs[i];
             var isActive = t.id === active;
+            // Mockup .filter: text tabs with an underline on the selected one.
             html += '<button type="button"'
-                + ' class="bottom-tab' + (isActive ? ' is-active' : '') + '"'
+                + ' class="ui-tab' + (isActive ? ' is-active' : '') + '"'
                 + ' role="tab"'
                 + ' aria-selected="' + (isActive ? 'true' : 'false') + '"'
                 + ' data-tab-target="' + t.id + '">'
-                +   '<svg class="bottom-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
-                +     (t.svg || '')
-                +   '</svg>'
-                +   '<span class="bottom-tab-label"' + (t.i18n ? ' data-i18n="' + t.i18n + '"' : '') + '>' + (t.label || t.id) + '</span>'
+                +   '<span' + (t.i18n ? ' data-i18n="' + t.i18n + '"' : '') + '>' + (t.label || t.id) + '</span>'
                 + '</button>';
         }
-        nav.innerHTML = html;
+        var track = document.createElement('div');
+        track.className = 'ui-tabs';
+        track.setAttribute('role', 'tablist');
+        track.innerHTML = html;
+        nav.appendChild(track);
         return nav;
     }
 
@@ -146,7 +147,7 @@
     }
 
     function bindClicks(nav, tabs, root, getActive, setActive, refreshApply) {
-        var btns = nav.querySelectorAll('.bottom-tab');
+        var btns = nav.querySelectorAll('[data-tab-target]');
         for (var i = 0; i < btns.length; i++) {
             btns[i].addEventListener('click', function (ev) {
                 var btn = ev.currentTarget;
@@ -223,14 +224,15 @@
      */
     function relocateApplyButton(nav, tabs) {
         var slot = document.createElement('div');
-        slot.className = 'bottom-tab-action';
+        slot.className = 'ui-tabs-action';
         nav.appendChild(slot);
-        document.body.classList.add('ot-tabs-with-action');
 
         // ===== Apply button relocation (optional) =====
         var origStrip = document.querySelector('.footer-bar');
         var origBtn = origStrip ? origStrip.querySelector('#btnApply') : null;
         if (origBtn) {
+            // Drop the old .btn classes so the mockup button style applies.
+            origBtn.className = 'ui-button ui-button-primary';
             slot.appendChild(origBtn);
             // Mirror the disabled state on the slot so CSS can dim it.
             if (typeof MutationObserver !== 'undefined') {
@@ -253,10 +255,10 @@
             if (!t || !t.action) continue;
             var btn = document.createElement('button');
             btn.type = 'button';
-            btn.className = 'btn btn-primary bottom-tab-action-btn';
+            btn.className = 'ui-button ui-button-primary';
             btn.setAttribute('data-tab-action', t.id);
             var iconHtml = t.action.svg
-                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px;">' + t.action.svg + '</svg>'
+                ? '<svg class="ui-stroke-icon" viewBox="0 0 24 24" aria-hidden="true">' + t.action.svg + '</svg>'
                 : '';
             var labelI18n = t.action.i18n ? ' data-i18n="' + t.action.i18n + '"' : '';
             btn.innerHTML = iconHtml + '<span' + labelI18n + '>' + (t.action.label || '') + '</span>';
@@ -317,23 +319,18 @@
         var active = readHashTab(tabs) || readSavedTab(tabs) || tabs[0].id;
         var nav = buildBar(tabs, active);
 
-        // In flow just above the page body (after the header and any summary
-        // tile); revamp.css makes it sticky. Pages without a body keep the
-        // old fixed bar at the end of <body>.
+        // In flow above the page body (after the header and any summary tile),
+        // sticky while the page scrolls. Pages without a body get it after
+        // their heading, or at the top of the page content.
         var pageBody = main.querySelector('.page-body');
+        var heading = main.querySelector('.ui-page-head, .page-header');
         if (pageBody && pageBody.parentNode) {
-            nav.className += ' is-inflow';
-            // The tabs scroll in their own track, so the action slot sits
-            // beside them rather than over the last tab.
-            var track = document.createElement('div');
-            track.className = 'bottom-tabs-track';
-            track.setAttribute('role', 'tablist');
-            nav.removeAttribute('role');
-            while (nav.firstChild) track.appendChild(nav.firstChild);
-            nav.appendChild(track);
             pageBody.parentNode.insertBefore(nav, pageBody);
+        } else if (heading && heading.parentNode) {
+            heading.parentNode.insertBefore(nav, heading.nextSibling);
         } else {
-            document.body.appendChild(nav);
+            var bar = main.querySelector('.ui-topbar');
+            main.insertBefore(nav, bar ? bar.nextSibling : main.firstChild);
         }
 
         applyActive(tabs, active, main);
@@ -345,7 +342,7 @@
         window.addEventListener('hashchange', function () {
             var target = readHashTab(tabs);
             if (!target || target === active) return;
-            var buttons = nav.querySelectorAll('.bottom-tab');
+            var buttons = nav.querySelectorAll('[data-tab-target]');
             for (var i = 0; i < buttons.length; i++) {
                 if (buttons[i].getAttribute('data-tab-target') === target) {
                     buttons[i].click();
@@ -361,10 +358,7 @@
             try { window.applyI18n(); } catch (e) {}
         }
 
-        // Add a class on <body> so CSS can give .main-content padding-bottom
-        // equal to the tab bar height.
-        document.body.classList.add('ot-tabs-on');
-        revealTab(nav, nav.querySelector('.bottom-tab.is-active'));
+        revealTab(nav, nav.querySelector('[data-tab-target].is-active'));
     }
 
     if (document.readyState === 'loading') {
