@@ -50,5 +50,7 @@ export function buildIcons(outDir) {
 `;
   writeFileSync(join(outDir, 'ph-icons.js'), js);
   mkdirSync(join(outDir, 'icons'), { recursive: true });
-  writeFileSync(join(outDir, 'icons', 'PHOSPHOR-LICENSE.txt'), readFileSync(join(PH, 'LICENSE'), 'utf8'));
+  // LF endings: the repo's .gitattributes normalises text to LF, so `npm run check` must compare LF.
+  const licence = readFileSync(join(PH, 'LICENSE'), 'utf8').replace(/\r\n/g, '\n');
+  writeFileSync(join(outDir, 'icons', 'PHOSPHOR-LICENSE.txt'), licence);
 }
