@@ -1,0 +1,17 @@
+# scripts: network.js
+# old-classes: hs-actions hs-client hs-client-dot hs-client-info hs-client-meta hs-client-name hs-empty hs-field hs-note hs-readonly hs-readonly-row hs-stat hs-stats hs-warn label value
+app-shell-mount
+currentTime
+hsCap
+hsClientTunnelDesc
+hsClients
+hsEnabled
+hsPasswordValue
+hsProxyClientsDesc
+hsRevealBtn
+hsSsidValue
+hsStateBadge
+hsStateDesc
+hsWarn
+sidebarOverlay
+toastContainer

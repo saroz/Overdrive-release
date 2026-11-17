@@ -1,0 +1,26 @@
+# scripts: 
+# old-classes: card card-body info-box info-box-note info-row label tg-bot-handle tg-bot-info tg-empty tg-pin-countdown tg-pin-display tg-status-msg value
+app-shell-mount
+sidebarOverlay
+tgAlwaysOnNote
+tgAutoStartAccOff
+tgBotHandle
+tgBotInfo
+tgBotName
+tgBotStatus
+tgClearTokenBtn
+tgConnectBtn
+tgGenPinBtn
+tgOwnerCard
+tgOwnerChatId
+tgOwnerHandle
+tgOwnerName
+tgPairEmptyCard
+tgPairStatus
+tgPinCard
+tgPinCountdown
+tgPinDisplay
+tgPinValue
+tgStatusBadge
+tgToken
+toastContainer

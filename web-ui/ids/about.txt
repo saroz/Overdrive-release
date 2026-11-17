@@ -1,0 +1,16 @@
+# scripts: 
+# old-classes: about-page-body about-section about-section-sub about-subhead credit-avatar credit-chev credit-count credit-medal credit-medal-pip credit-name credit-row credit-text credits-card credits-empty credits-legend credits-legend-item credits-legend-note kofi medal-bronze medal-diamond medal-gold medal-platinum medal-silver support-tier-list tier-card tier-chev tier-icon tier-text tier-title tier-value vehicle-info-card vehicle-info-label vehicle-info-privacy vehicle-info-row vehicle-info-status vehicle-info-value
+app-shell-mount
+backupMount
+contributorsList
+diagDaemonList
+diagSection
+sidebarOverlay
+supportersLegend
+supportersList
+tierKofi
+tierShare
+tierStar
+tierYoutube
+toastContainer
+vehicleInfoStatus

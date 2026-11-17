@@ -1,0 +1,36 @@
+# scripts: cabin-audio.js communicate.js
+# old-classes: 
+app-shell-mount
+availability
+availabilityText
+cabinListenerToggle
+elapsedTime
+liveBadge
+messageAck
+messageCounter
+messageForm
+messageKind
+messagePanel
+messageReadiness
+messageReadinessGuidance
+messageReadinessReason
+messageReadinessTitle
+messageSend
+messageTab
+messageText
+mobileConnectionDot
+pttButton
+remoteOutputLevel
+remoteOutputOverride
+remoteOutputStatus
+remoteOutputValue
+sidebarOverlay
+talkCountdown
+talkMeter
+talkMeterFill
+talkPanel
+talkStateGuidance
+talkStateReason
+talkStateTitle
+talkTab
+toastContainer

@@ -1,0 +1,26 @@
+# scripts: abrp.js
+# old-classes: slider status-text telemetry-table token-actions token-input-row token-masked
+abrpAppGrace
+abrpAppMode
+abrpAppPresence
+abrpChangeOnly
+abrpEnabled
+abrpGateOnApp
+abrpGateOptions
+abrpMaxInterval
+abrpMinInterval
+abrpTokenField
+app-shell-mount
+connectionStatus
+currentTime
+lastUpload
+maskedToken
+sidebarOverlay
+toastContainer
+tokenDisplay
+tokenInput
+tokenStatus
+uploadCount
+vehicleBatteryBar
+vehicleCharging
+vehicleStatus

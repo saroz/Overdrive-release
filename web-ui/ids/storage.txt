@@ -1,0 +1,7 @@
+# scripts: storage-budget.js storage.js
+# old-classes: btn footer-bar has-bottom-nav info-icon info-row label page-body r-hero-stats sd-status-dot setting-control slider-range-labels st-action-row st-banner st-dot-warn st-hero st-limit-row st-page st-range-under st-recover-result st-usage-row st-vol-bar st-vol-fill st-vol-name st-vol-total toast-container value
+app-shell-mount
+btnApply
+currentTime
+sidebarOverlay
+toastContainer

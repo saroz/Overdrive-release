@@ -1,0 +1,26 @@
+# scripts: remote-dev-view.js
+# old-classes: button-row compact dev-button dev-card dev-view-focus dev-view-grid dev-view-header dev-view-page frame-placeholder frame-shell frame-status fullscreen-toolbar head-unit-bezel keyboard-capture primary session-actions session-copy session-strip status-dot viewer-card viewer-footer
+activityState
+app-shell-mount
+backButton
+connectionState
+frameDimensions
+framePlaceholder
+fullscreenBackButton
+fullscreenButton
+fullscreenExitButton
+fullscreenKeyboardButton
+fullscreenRefreshButton
+fullscreenScreenshotButton
+fullscreenStopButton
+keyboardButton
+keyboardCapture
+liveDot
+message
+pixelCopyState
+refreshButton
+remoteFrame
+screenshotButton
+startButton
+stopButton
+viewerCard

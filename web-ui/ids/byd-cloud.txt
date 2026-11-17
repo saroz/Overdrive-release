@@ -1,0 +1,31 @@
+# scripts: surveillance.js
+# old-classes: 
+app-shell-mount
+bydAccountDisplay
+bydAdvancedEmpty
+bydClearCard
+bydClearSection
+bydCloudBadge
+bydCloudInfo
+bydCloudMergeSection
+bydCloudMergeToggle
+bydCloudPushSection
+bydCloudStatus
+bydCountryCode
+bydEmail
+bydPassword
+bydPasswordHint
+bydPin
+bydPinHint
+bydPushAge
+bydPushBadge
+bydPushCharging
+bydPushLock
+bydPushSoc
+bydRegion
+bydRegionDerived
+bydSaveBtn
+bydTestBtn
+bydVinDisplay
+sidebarOverlay
+toastContainer

@@ -1,0 +1,29 @@
+# scripts: safekeep.js
+# old-classes: mode-option safe-zone-meta select-control setting-info sk-actions sk-chip sk-chip-row sk-code sk-cond sk-cond-cmp sk-cond-type sk-cond-val sk-dot-sep sk-field sk-grid sk-hero sk-hero-icon sk-hero-text sk-hero-title sk-hidden sk-kit sk-lane-head sk-link sk-modal-body sk-modal-card sk-muted sk-net sk-ok sk-provider-grid sk-qr sk-queue-err sk-queue-info sk-queue-meta sk-queue-name sk-queue-row sk-reason sk-result sk-result-row sk-row-inline sk-spinner sk-stat sk-stat-label sk-stat-sub sk-stat-value sk-state-line sk-state-text sk-steps sk-sub sk-transfer sk-transfer-meta sk-transfer-name sk-transfer-top sk-wait sk-warn sk-x storage-bar text-input
+app-shell-mount
+sidebarOverlay
+skBacklog
+skBadge
+skCurrent
+skDestList
+skDryRun
+skEnabled
+skHomeSsids
+skLanes
+skMobile
+skNet
+skOnOnlyNote
+skPauseBtn
+skPauseFor
+skQueue
+skReason
+skResetDay
+skRestoreDest
+skRestoreResult
+skResumeBtn
+skSetupCard
+skStateDot
+skStateText
+skStatusCard
+skWebhooks
+toastContainer

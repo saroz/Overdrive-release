@@ -1,0 +1,31 @@
+# scripts: video-player.js safekeep-badges.js events.js
+# old-classes: action-btn actor-filter-rows actor-summary calendar-close calendar-day calendar-grid calendar-header calendar-nav calendar-panel calendar-popup calendar-title calendar-toggle calendar-weekday cancel clear-date-btn clip-line clip-time clip-type day-head delete empty-icon empty-state empty-text empty-title events-container events-top-bar filter-chip filter-row-label filter-tab filter-tabs filter-tabs-row2 has-bottom-nav has-date has-query has-recordings has-sentry inflight-badge inflight-dot main-content normal other-month pagination pagination-btn pagination-info pill place-search place-search-clear place-search-hits play-icon prox-CLOSE prox-VERY_CLOSE proximity recording-actions recording-badge recording-card recording-card-inflight recording-card-just-finalized recording-foot recording-info recording-meta recording-name recording-place recording-thumbnail recordings-count recordings-header recordings-list recordings-panel recordings-title replay select-action-btn select-actions select-checkbox select-checkbox-wrap select-mode-btn select-toolbar selected-count sentry sev-alert sev-critical sk-badge sk-failed sk-queued sk-saved sk-up sk-waiting storage-bar-mini storage-breakdown storage-chip storage-dot storage-fill storage-info storage-internal storage-item storage-sd storage-stats storage-usb storage-value thumb-meta thumb-placeholder today toolbar-end video-container watched
+app-shell-mount
+calendarBtnText
+calendarGrid
+calendarPopup
+calendarTitle
+calendarToggle
+nextPageBtn
+normalCount
+pagination
+paginationInfo
+placeFilterRow
+placeSearchClear
+placeSearchHits
+placeSearchInput
+placeSearchWrap
+prevPageBtn
+proximityCount
+recordingsCount
+recordingsList
+recordingsTitle
+replayCount
+selectModeBtn
+selectToolbar
+selectedCount
+sentryCount
+sidebarOverlay
+storageFill
+storageUsed
+toastContainer

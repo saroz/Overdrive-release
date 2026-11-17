@@ -1,0 +1,11 @@
+# scripts: module-faults.js
+# old-classes: clear mf-card mf-card-head mf-empty mf-error mf-footnote mf-grid mf-intro mf-reading mf-reading-head mf-reading-list mf-scope mf-source mf-status mf-summary mf-summary-item mf-summary-label mf-summary-text mf-summary-value mf-toolbar mf-updated not_scanned partial unavailable
+app-shell-mount
+mfCopy
+mfError
+mfModules
+mfRefresh
+mfSummary
+mfUpdated
+sidebarOverlay
+toastContainer

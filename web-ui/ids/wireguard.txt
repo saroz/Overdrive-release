@@ -1,0 +1,11 @@
+# scripts: wireguard.js
+# old-classes: btn conn-dot file-row form-actions form-group hint reconnecting stopped wg-detail wg-error wg-state wg-status wg-status-text
+app-shell-mount
+sidebarOverlay
+toastContainer
+wgConfig
+wgDeleteBtn
+wgDetail
+wgDot
+wgError
+wgState

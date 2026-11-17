@@ -1,0 +1,19 @@
+# scripts: widgets-settings.js
+# old-classes: card-body gw-item gw-list gw-note gw-order gw-seg setting-control setting-info setting-row
+app-shell-mount
+gwArrangedNote
+gwBlindSpot
+gwChargingAuto
+gwEnabled
+gwFloating
+gwList
+gwMotors
+gwPosition
+gwReduce
+gwResetArrange
+gwStatusBadge
+gwTerrain
+gwTheme
+gwUnitNow
+sidebarOverlay
+toastContainer

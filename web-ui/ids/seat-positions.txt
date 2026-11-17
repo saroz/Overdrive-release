@@ -1,0 +1,21 @@
+# scripts: seat-positions.js
+# old-classes: 
+app-shell-mount
+spBatch1
+spBatch2
+spBatches
+spCurrentAxes
+spCurrentGlyph
+spCurrentMatch
+spDialogBody
+spDialogCancel
+spDialogConfirm
+spDialogHtml
+spDialogInput
+spDialogTitle
+spList
+spSaveNew
+spScrim
+spStatus
+spStatusText
+toastContainer

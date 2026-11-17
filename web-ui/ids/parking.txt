@@ -1,0 +1,35 @@
+# scripts: video-player.js parking-settings.js events.js parking.js
+# old-classes: bad btn card-title current day-header detail-actions detail-back-btn detail-delete-btn detail-header detail-stat detail-stat-label detail-stat-value detail-subtitle detail-summary detail-summary-grid detail-title empty-state empty-text empty-title filter-tab filter-tabs good load-more-btn n park-actions park-card park-chevron park-chip park-chip--level park-chip--sentry park-duration park-kind-row park-live-tag park-main-row park-metric park-metric-copy park-metric-label park-metric-value park-metrics park-place park-primary pk-card-title pk-detail pk-ev-count pk-ev-main pk-ev-sub pk-ev-thumb pk-ev-title pk-event pk-field pk-field--num pk-frame pk-frames pk-hero pk-hero-kicker pk-hero-place pk-hero-stats pk-hero-thumb pk-lane pk-lane-title pk-lanes pk-level pk-lightbox pk-list-view pk-muted pk-neigh pk-neigh-head pk-neigh-kind pk-neigh-times pk-signage-evidence pk-signage-value pk-still pk-still-label pk-stills pk-tag pk-tile pk-tiles pk-top-bar r-hero-icon r-hero-stat-label r-hero-stat-value r-hero-stats skeleton skeleton-card small summary-card warn
+app-shell-mount
+parkingBadge
+parkingEnabled
+parkingEndTrigger
+parkingGeocodingEnabled
+parkingGeocodingNote
+parkingGeocodingOnline
+parkingModelsNote
+parkingRetentionDays
+parkingStorageCapMb
+parkingSubSettings
+pkDetailView
+pkEmptyState
+pkEmptyText
+pkEmptyTitle
+pkEnableFromEmpty
+pkHeaderBadge
+pkHeaderStatus
+pkHero
+pkHeroDuration
+pkHeroEvents
+pkHeroNeighbours
+pkHeroPlace
+pkHeroSub
+pkHeroTag
+pkHeroThumb
+pkLightbox
+pkLightboxImg
+pkListView
+pkMoreBtn
+pkSessions
+sidebarOverlay
+toastContainer

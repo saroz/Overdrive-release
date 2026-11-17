@@ -1,0 +1,35 @@
+# scripts: SotaPlayer.js Decoder.js YUVCanvas.js Player.js cabin-audio.js stream.js map.js surveillance.js
+# old-classes: btn-directions btn-map-float cabin-listen-btn cam-all cam-hotspot camera-label-overlay camera-selector-card camera-stage camera-top-bar car-image car-image-container car-image-fallback car-selector-bottom conn-dot connecting connection-status deterrent-btn deterrent-controls deterrent-label has-bottom-nav hotspot-label hotspot-pulse hotspot-ring idle-alert idle-glyph idle-icon idle-spinner idle-subtext idle-text is-app-webview is-busy is-connecting is-down is-live is-paused leaflet-container leaflet-control-container live-location-card live-tabs-view live-utility-rail live-view-page location-card-header location-close-button location-distance-chip location-distance-label location-expand-button location-freshness location-freshness-dot location-freshness-label location-map-frame map-container map-expanded map-overlay-actions quality-menu quality-menu__chevron quality-menu__list quality-menu__native quality-menu__option quality-menu__trigger quality-menu__value seamless-camera-view selector-card-header toast-container top-bar-btn top-bar-left top-bar-right vehicle-actions-trigger vehicle-lock-row vehicle-render-ready video-display-area video-idle-state
+app-shell-mount
+cabinListenButton
+cameraLabelOverlay
+connectionStatus
+currentCameraLabel
+deterrentControls
+deterrentFlashBtn
+deterrentHornBtn
+distanceToCar
+hw_player
+lastGpsUpdate
+liveCarCanvas
+locationExpandButton
+locationExpandLabel
+mapContainer
+panelCameras
+qualityMenu
+qualityMenuList
+qualityMenuTrigger
+qualityMenuValue
+qualitySelector
+sidebarOverlay
+sota_canvas
+sw_container
+toastContainer
+vehicleActionsTrigger
+vehicleLockBtn
+vehicleLockRow
+vehiclePowerOffBtn
+vehiclePowerOnBtn
+vehicleUnlockBtn
+videoDisplayArea
+videoIdleState

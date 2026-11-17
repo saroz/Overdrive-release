@@ -1,0 +1,9 @@
+# scripts: 
+# old-classes: brand-logo btn btn-primary device-info device-info-label device-info-value form-error form-group form-hint form-input form-label login-card login-container login-footer login-subtitle login-title spinner status-message
+deviceIdDisplay
+loginBtn
+loginBtnText
+loginSpinner
+statusMessage
+tokenError
+tokenInput

@@ -1,0 +1,35 @@
+# scripts: automations.js audio-library.js community-automations.js cluster-projection.js
+# old-classes: 
+app-shell-mount
+audioLibFile
+audioLibList
+autoAllowShell
+automationImportFile
+automationList
+automationSortRow
+automationSortSelect
+communityControls
+communityEmpty
+communityEmptyMsg
+communityList
+communityPagination
+currentTime
+emptyState
+formGrid
+formTitle
+groupEditor
+groupEmpty
+groupFormGrid
+groupImportFile
+groupList
+groupListSection
+groupSaveBtn
+headerActions
+listHead
+safetySettingsControls
+safetySettingsStatus
+safetySettingsStatusIcon
+safetySettingsStatusText
+saveBtn
+sidebarOverlay
+toastContainer
