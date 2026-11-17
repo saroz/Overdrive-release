@@ -28,7 +28,7 @@ public class RemoteAccessCloudFallbackAssetTest {
     @Test
     public void proximityPageHasTheSwitchInsideTheRulesCardBeforeTheKeyfobRule() throws IOException {
         String html = readRepositoryFile(PAGE);
-        int card = html.indexOf("<section class=\"card ra-rules-card\"");
+        int card = html.indexOf("<section class=\"ui-panel ra-rules-card\"");
         int hint = html.indexOf("id=\"raUnlockTriggerHint\"", card);
         int rule = html.indexOf("<label class=\"ra-rule ra-cloud-fallback-rule\">", hint);
         int keyfob = html.indexOf("<label class=\"ra-rule ra-keyfob-rule\">", rule);

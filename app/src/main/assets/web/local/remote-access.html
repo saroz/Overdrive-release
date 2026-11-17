@@ -13,33 +13,27 @@
     <link rel="stylesheet" href="../shared/remote-access.css?v=15">
     <link rel="stylesheet" href="../shared/ui.css?v=1">
 </head>
-<body>
+<body class="ui-app" data-page="remote-access">
     <div class="app-layout">
         <div id="app-shell-mount"></div>
         <main class="main-content ra-page" id="remoteAccessPage">
-            <div class="mobile-header">
-                <button class="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Open menu" data-i18n-attr="aria-label:remote_access.open_menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-                </button>
-                <span style="font-weight:600;" data-i18n="remote_access.page_title">Proximity</span>
-                <div style="width:40px;"></div>
-            </div>
-            <header class="page-header">
-                <h1 class="page-title" data-i18n="remote_access.page_title">Proximity</h1>
-                <div class="header-actions">
-                    <div id="raBluetoothStatus" class="header-badge ra-bluetooth-status" data-state="unknown" role="status" aria-live="polite" aria-label="Car Bluetooth: Unknown" data-i18n-attr="aria-label:remote_access.bluetooth_status_initial">
+            <div class="ui-main">
+            <header class="ui-page-head">
+                <h1 data-i18n="remote_access.page_title">Proximity</h1>
+                <div class="ui-page-actions">
+                    <div id="raBluetoothStatus" class="ui-badge ra-bluetooth-status" data-state="unknown" role="status" aria-live="polite" aria-label="Car Bluetooth: Unknown" data-i18n-attr="aria-label:remote_access.bluetooth_status_initial">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
                         <span data-i18n="remote_access.bluetooth_label">Bluetooth</span><strong id="raBluetoothState" data-i18n="remote_access.state_unknown">Unknown</strong>
                     </div>
-                    <div class="header-badge ra-clock-badge">
+                    <div class="ui-badge ra-clock-badge">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         <span id="currentTime">--:--</span>
                     </div>
                 </div>
             </header>
-            <div class="page-body ra-body">
+            <div class="ui-page-body ra-body">
                 <div id="raError" class="ra-error" role="alert" hidden></div>
-                <section class="ra-master card" aria-labelledby="raMasterTitle">
+                <section class="ra-master ui-panel" aria-labelledby="raMasterTitle">
                     <div class="ra-master-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3v9"/><path d="M7.1 5.5a8 8 0 1 0 9.8 0"/></svg>
                     </div>
@@ -58,7 +52,7 @@
                 </div>
 
                 <div class="ra-dashboard">
-                    <section class="ra-hero card" aria-labelledby="raSignalTitle">
+                    <section class="ra-hero ui-panel" aria-labelledby="raSignalTitle">
                         <div class="ra-panel-heading">
                             <div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_live">LIVE PROXIMITY</div><h2 id="raSignalTitle" data-i18n="remote_access.waiting_for_phone_title">Waiting for your phone</h2></div>
                             <span class="ra-stream-state" id="raStreamState"><span></span><span id="raStreamLabel" data-i18n="remote_access.keyfob_monitoring_off">Monitoring off</span></span>
@@ -93,7 +87,7 @@
                         </div>
                         <div class="ra-signal-filters ra-advanced" aria-live="polite"><span id="raArrivalDiagnostics" data-i18n="remote_access.diagnostics_unlock_initial">Unlock: waiting for fresh Near readings</span><span id="raDepartureDiagnostics" data-i18n="remote_access.diagnostics_lock_initial">Lock: waiting for signal</span></div>
                     </section>
-                    <section class="ra-phone-card card" aria-labelledby="raPhoneTitle">
+                    <section class="ra-phone-card ui-panel" aria-labelledby="raPhoneTitle">
                         <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_trusted">TRUSTED DEVICE</div><h2 id="raPhoneTitle" data-i18n="remote_access.phone_title">Choose your phone</h2></div>
                             <svg class="ra-panel-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m7 7 10 10-5 5V2l5 5L7 17"/></svg>
                         </div>
@@ -102,18 +96,18 @@
                         <div class="ra-phone-roster" id="raPhoneRoster"></div>
                         <div class="ra-add-phone">
                             <label class="ra-field"><span data-i18n="remote_access.add_paired_phone">Add a paired phone</span><select id="raAddPhoneSelect" disabled><option value="" data-i18n="remote_access.loading_paired_devices">Loading paired devices…</option></select></label>
-                            <button type="button" class="btn btn-secondary" id="raAddPhoneBtn" data-i18n="remote_access.add" disabled>Add</button>
+                            <button type="button" class="ui-button" id="raAddPhoneBtn" data-i18n="remote_access.add" disabled>Add</button>
                         </div>
                         <p class="ra-roster-hint" data-i18n="remote_access.roster_hint">Up to 8 approved phones. Each phone has its own saved signal thresholds.</p>
                         <div class="ra-radio-note" id="raRadioNote" data-i18n="remote_access.radio_note_initial">Pair phones in the car's Bluetooth settings first. Proximity can retry approved phones while parked and keeps existing active phone connections.</div>
                         <div class="ra-summary-line ra-advanced"><span data-i18n="remote_access.arrival_detection">Arrival detection</span><strong id="raArmedState" data-i18n="remote_access.disarmed">Disarmed</strong></div>
                         <div class="ra-summary-line"><span data-i18n="remote_access.last_lock_result">Last lock result</span><strong id="raLockState" data-i18n="remote_access.state_unknown">Unknown</strong></div>
                         <div class="ra-summary-line"><span data-i18n="remote_access.mode">Mode</span><strong id="raModeLabel" data-i18n="remote_access.mode_learning">Learning</strong></div>
-                        <button class="btn btn-secondary ra-refresh" type="button" id="raRefreshBtn" data-i18n="remote_access.refresh">Refresh status &amp; devices</button>
+                        <button class="ui-button ra-refresh" type="button" id="raRefreshBtn" data-i18n="remote_access.refresh">Refresh status &amp; devices</button>
                     </section>
                 </div>
 
-                <section class="card ra-chart-card ra-advanced" aria-labelledby="raChartTitle">
+                <section class="ui-panel ra-chart-card ra-advanced" aria-labelledby="raChartTitle">
                     <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_timeline">SIGNAL TIMELINE</div><h2 id="raChartTitle" data-i18n="remote_access.chart_title">See what your rules see</h2></div><div class="ra-chart-legend"><span data-i18n="remote_access.legend_raw"><i class="ra-legend-raw"></i>Raw</span><span data-i18n="remote_access.legend_filtered"><i class="ra-legend-filtered"></i>Filtered</span></div></div>
                     <div class="ra-chart-wrap">
                         <svg id="raSignalChart" viewBox="0 0 900 180" preserveAspectRatio="none" role="img" aria-labelledby="raChartTitle raChartDescription">
@@ -134,7 +128,7 @@
 
                 <form id="raSettingsForm" novalidate>
                     <div class="ra-settings-grid ra-advanced">
-                        <section class="card ra-calibration-card" aria-labelledby="raCalibrationTitle">
+                        <section class="ui-panel ra-calibration-card" aria-labelledby="raCalibrationTitle">
                             <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_calibration">CALIBRATION</div><h2 id="raCalibrationTitle" data-i18n="remote_access.calibration_title">Learn your signal</h2></div><span class="ra-step-tag">01</span></div>
                             <p class="ra-section-copy" data-i18n="remote_access.calibration_copy">Capture the selected phone beside the door, then farther away. Each approved phone keeps its own thresholds. Repeat with the phone in your pocket before enabling actions.</p>
                             <div class="ra-capture-grid">
@@ -149,7 +143,7 @@
                             </div>
                             <p id="raCalibrationDetail" class="ra-hint" data-i18n="remote_access.calibration_detail">Captures fill this phone's draft thresholds. Edit them as needed, then Save rules.</p>
                         </section>
-                        <section class="card" aria-labelledby="raThresholdTitle">
+                        <section class="ui-panel" aria-labelledby="raThresholdTitle">
                             <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_boundaries">SIGNAL BOUNDARIES</div><h2 id="raThresholdTitle" data-i18n="remote_access.threshold_title">Separate near and away</h2></div><span class="ra-step-tag">02</span></div>
                             <div class="ra-threshold-line"><label for="raNearThreshold"><span data-i18n="remote_access.near_threshold">Nearby threshold</span> <small data-i18n="remote_access.near_threshold_hint">Arrival at or above</small></label><div class="ra-number-wrap"><input type="number" id="raNearThreshold" min="-127" max="20" step="1" value="-12" required><span>RSSI</span></div></div>
                             <div class="ra-threshold-line"><label for="raAwayThreshold"><span data-i18n="remote_access.away_threshold">Away threshold</span> <small data-i18n="remote_access.away_threshold_hint">Departure at or below</small></label><div class="ra-number-wrap"><input type="number" id="raAwayThreshold" min="-127" max="20" step="1" value="-24" required><span>RSSI</span></div></div>
@@ -160,7 +154,7 @@
                                 <label class="ra-field"><span><span data-i18n="remote_access.unlock_confirmation">Unlock confirmation</span> <small data-i18n="remote_access.seconds_unit">seconds</small></span><input type="number" id="raNearDwellSeconds" min="1" max="30" step="1" value="1" required></label>
                             </div>
                             <div class="ra-fast-unlock">
-                                <button type="button" class="btn btn-secondary" id="raFastUnlockDefaults" data-i18n="remote_access.fast_unlock_defaults" disabled>Use fast unlock defaults</button>
+                                <button type="button" class="ui-button" id="raFastUnlockDefaults" data-i18n="remote_access.fast_unlock_defaults" disabled>Use fast unlock defaults</button>
                                 <p class="ra-hint" data-i18n="remote_access.unlock_confirmation_hint">Unlock requires at least two fresh Near readings inside the filter window for the confirmation time; a single reading never unlocks. Weak readings restart confirmation. This preset restores the default unlock timings (2 s window, 1 s confirmation); Save rules to apply.</p>
                             </div>
                             <div class="ra-fields-two">
@@ -176,7 +170,7 @@
                             <p class="ra-hint" data-i18n="remote_access.grace_quiet_hint">After a proximity unlock, an automatic lock waits until a door opens or the relock grace passes (3–30 s). After a confirmed proximity lock, a lone keyfob detection within the quiet period (3–30 s) is not an arrival. Normal mode uses 10 s for both.</p>
                         </section>
                     </div>
-                    <section class="card ra-rules-card" aria-labelledby="raRulesTitle">
+                    <section class="ui-panel ra-rules-card" aria-labelledby="raRulesTitle">
                         <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_actions">SAVED ACTIONS</div><h2 id="raRulesTitle" data-i18n="remote_access.rules_title">Choose what happens</h2></div><span class="ra-step-tag">03</span></div>
                         <label class="ra-rule ra-learning-rule">
                             <span class="ra-rule-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 19V5m0 14h16M7 15l4-4 4 2 5-8"/></svg></span>
@@ -309,30 +303,25 @@
                                 <span id="raSaveState" data-i18n="remote_access.settings_stored">Settings are stored on the vehicle.</span>
                                 <div id="raSaveError" role="alert" aria-live="assertive" aria-atomic="true" hidden></div>
                             </div>
-                            <button class="btn btn-primary" type="submit" id="raSaveBtn" data-i18n="remote_access.save_rules" disabled>Save rules</button>
+                            <button class="ui-button ui-button-primary" type="submit" id="raSaveBtn" data-i18n="remote_access.save_rules" disabled>Save rules</button>
                         </div>
                     </section>
                 </form>
 
-                <section class="card ra-history-card" aria-labelledby="raHistoryTitle">
+                <section class="ui-panel ra-history-card" aria-labelledby="raHistoryTitle">
                     <div class="ra-panel-heading"><div><div class="ra-eyebrow" data-i18n="remote_access.eyebrow_activity">ACTIVITY</div><h2 id="raHistoryTitle" data-i18n="remote_access.history_title">Every transition, explained</h2></div><span id="raEventCount" class="ra-badge" data-i18n="remote_access.event_count_zero">0 events</span></div>
                     <div id="raEventList" class="ra-event-list"><div class="ra-history-empty" data-i18n="remote_access.history_empty">Detected transitions and action results will appear here.</div></div>
                     <p class="ra-history-note" data-i18n="remote_access.history_note">Latest 40 events, newest first; no fixed time limit. Activity clears when the daemon restarts. Sent commands and confirmed lock changes are shown separately.</p>
                 </section>
             </div>
+            </div>
         </main>
     </div>
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-    <div id="toastContainer" class="toast-container"></div>
+    <div id="toastContainer" class="ui-toast-stack"></div>
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=24"></script>
     <script src="../shared/remote-access.js?v=28"></script>
     <script>
-        function toggleSidebar() {
-            var sidebar = document.getElementById('sidebar');
-            if (sidebar) sidebar.classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('show');
-        }
         BYD.i18n.init().then(function () {
             BYD.core.init();
             RemoteAccess.init();

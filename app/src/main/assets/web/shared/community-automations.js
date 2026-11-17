@@ -333,7 +333,7 @@ BYD.communityAutomations = {
         var t = this._t;
 
         var card = document.createElement('div');
-        card.className = 'card community-card' + (item.mine ? ' community-card-mine' : '');
+        card.className = 'ui-panel community-card' + (item.mine ? ' community-card-mine' : '');
         card.setAttribute('data-community-id', item.id);
 
         // Header: name + author + category badge.
@@ -401,13 +401,13 @@ BYD.communityAutomations = {
         actions.className = 'community-card-actions';
 
         var addBtn = document.createElement('button');
-        addBtn.className = 'btn btn-primary community-add-btn';
+        addBtn.className = 'ui-button ui-button-primary community-add-btn';
         addBtn.innerHTML = C_addIcon + '<span data-i18n="community.add">' + esc(t('community.add')) + '</span>';
         addBtn.addEventListener('click', function () { self.importAutomation(item.id, item.name); });
         actions.appendChild(addBtn);
 
         var viewBtn = document.createElement('button');
-        viewBtn.className = 'btn btn-secondary community-view-btn';
+        viewBtn.className = 'ui-button community-view-btn';
         viewBtn.setAttribute('data-i18n', 'community.view_details');
         viewBtn.textContent = t('community.view_details');
         viewBtn.addEventListener('click', function () { self.openDetail(item.id); });
@@ -471,14 +471,14 @@ BYD.communityAutomations = {
         var self = this;
         var t = this._t;
         var backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop';
+        backdrop.className = 'ui-modal-backdrop';
         backdrop.style.display = 'flex';
         var card = document.createElement('div');
-        card.className = 'modal-card community-detail-card';
+        card.className = 'ui-dialog community-detail-card';
         card.setAttribute('role', 'dialog');
 
         var h = document.createElement('h3');
-        h.className = 'soh-modal-title';
+        h.className = 'ui-dialog-title';
         h.textContent = a.name || '';
         card.appendChild(h);
 
@@ -535,7 +535,7 @@ BYD.communityAutomations = {
 
         // Actions: Add (import) / Report / Close.
         var actions = document.createElement('div');
-        actions.className = 'soh-modal-actions community-detail-actions';
+        actions.className = 'ui-dialog-actions community-detail-actions';
 
         // Remove-my-upload: shown ONLY on automations THIS install published. The server
         // sets `mine:true` by matching the stable publisher id against the row's (private)
@@ -551,7 +551,7 @@ BYD.communityAutomations = {
             // (name/description/category) can still be updated. Only shown on `mine` rows;
             // the Worker re-checks ownership regardless.
             var editBtn = document.createElement('button');
-            editBtn.className = 'btn btn-secondary community-edit-btn';
+            editBtn.className = 'ui-button community-edit-btn';
             editBtn.innerHTML = C_publishIcon + '<span data-i18n="community.edit">' + BYD.core._esc(t('community.edit')) + '</span>';
             editBtn.addEventListener('click', function () {
                 var localId = self._matchLocalId(a);
@@ -568,27 +568,27 @@ BYD.communityAutomations = {
             actions.appendChild(editBtn);
 
             var delBtn = document.createElement('button');
-            delBtn.className = 'btn btn-danger community-unpublish-btn';
+            delBtn.className = 'ui-button ui-button-danger community-unpublish-btn';
             delBtn.innerHTML = C_trashIcon + '<span data-i18n="community.unpublish">' + BYD.core._esc(t('community.unpublish')) + '</span>';
             delBtn.addEventListener('click', function () { self.unpublish(a.id, a.name, dismiss); });
             actions.appendChild(delBtn);
         }
 
         var reportBtn = document.createElement('button');
-        reportBtn.className = 'btn btn-secondary community-report-btn';
+        reportBtn.className = 'ui-button community-report-btn';
         reportBtn.innerHTML = C_flagIcon + '<span data-i18n="community.report">' + BYD.core._esc(t('community.report')) + '</span>';
         reportBtn.addEventListener('click', function () { self.reportAutomation(a.id); });
         actions.appendChild(reportBtn);
 
         var closeBtn = document.createElement('button');
-        closeBtn.className = 'btn btn-secondary';
+        closeBtn.className = 'ui-button';
         closeBtn.setAttribute('data-i18n', 'common.close');
         closeBtn.textContent = t('common.close');
         closeBtn.addEventListener('click', function () { dismiss(); });
         actions.appendChild(closeBtn);
 
         var addBtn = document.createElement('button');
-        addBtn.className = 'btn btn-primary';
+        addBtn.className = 'ui-button ui-button-primary';
         addBtn.innerHTML = C_addIcon + '<span data-i18n="community.add">' + BYD.core._esc(t('community.add')) + '</span>';
         addBtn.addEventListener('click', function () { dismiss(); self.importAutomation(a.id, a.name); });
         actions.appendChild(addBtn);
@@ -706,14 +706,14 @@ BYD.communityAutomations = {
         }
 
         var backdrop = document.createElement('div');
-        backdrop.className = 'modal-backdrop';
+        backdrop.className = 'ui-modal-backdrop';
         backdrop.style.display = 'flex';
         var card = document.createElement('div');
-        card.className = 'modal-card community-publish-card';
+        card.className = 'ui-dialog community-publish-card';
         card.setAttribute('role', 'dialog');
 
         var h = document.createElement('h3');
-        h.className = 'soh-modal-title';
+        h.className = 'ui-dialog-title';
         // Edit mode gets its own title; publish keeps the original.
         h.setAttribute('data-i18n', isEdit ? 'community.update_title' : 'community.publish_title');
         h.textContent = t(isEdit ? 'community.update_title' : 'community.publish_title');
@@ -744,7 +744,7 @@ BYD.communityAutomations = {
         var catWrap = document.createElement('div');
         catWrap.className = 'community-publish-row';
         var catLabel = document.createElement('label');
-        catLabel.className = 'label';
+        catLabel.className = 'ui-detail-label';
         catLabel.setAttribute('data-i18n', 'community.field_category');
         catLabel.textContent = t('community.field_category');
         catWrap.appendChild(catLabel);
@@ -781,16 +781,16 @@ BYD.communityAutomations = {
         card.appendChild(form);
 
         var actions = document.createElement('div');
-        actions.className = 'soh-modal-actions';
+        actions.className = 'ui-dialog-actions';
         var cancelBtn = document.createElement('button');
-        cancelBtn.className = 'btn btn-secondary';
+        cancelBtn.className = 'ui-button';
         cancelBtn.setAttribute('data-i18n', 'common.cancel');
         cancelBtn.textContent = t('common.cancel');
         cancelBtn.addEventListener('click', function () { dismiss(); });
         actions.appendChild(cancelBtn);
 
         var pubBtn = document.createElement('button');
-        pubBtn.className = 'btn btn-primary';
+        pubBtn.className = 'ui-button ui-button-primary';
         var pubLabelKey = isEdit ? 'community.update' : 'community.publish';
         pubBtn.innerHTML = C_publishIcon + '<span data-i18n="' + pubLabelKey + '">' + BYD.core._esc(t(pubLabelKey)) + '</span>';
         pubBtn.addEventListener('click', function () {
@@ -1110,7 +1110,7 @@ BYD.communityAutomations = {
         var row = document.createElement('div');
         row.className = 'community-publish-row';
         var label = document.createElement('label');
-        label.className = 'label';
+        label.className = 'ui-detail-label';
         label.setAttribute('data-i18n', i18nKey);
         label.textContent = this._t(i18nKey);
         row.appendChild(label);

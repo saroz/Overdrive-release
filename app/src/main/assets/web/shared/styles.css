@@ -1484,15 +1484,6 @@ select.md-input ~ .md-label {
 }
 .recommend-steps strong { color: var(--text-primary); font-weight: 600; }
 
-/* Action row — used below an .md-field stack to host primary + secondary buttons. */
-.byd-action-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 18px;
-    flex-wrap: wrap;
-}
-.byd-action-row .btn { flex: 1 1 160px; }
-
 /* Secondary button modifier — outlined variant, used for "Test Connection"
    when the primary "Save" is teal-filled. Lives here so any tabbed page
    can reuse it. */
@@ -1510,10 +1501,6 @@ select.md-input ~ .md-label {
     border-color: var(--brand-primary);
     color: var(--brand-primary);
     font-weight: 600;
-}
-
-@media (max-width: 540px) {
-    .byd-action-row .btn { flex: 1 1 100%; }
 }
 
 /* === INFO BOX === */

@@ -48,7 +48,7 @@ window.AudioLibrary = (function () {
         list.innerHTML = '';
         if (!sounds.length) {
             var empty = document.createElement('div');
-            empty.className = 'setting-desc';
+            empty.className = 'ui-row-desc';
             empty.style.padding = '8px 0';
             empty.textContent = tr('automation.audio_library_empty', 'No sounds uploaded yet.');
             list.appendChild(empty);
@@ -57,34 +57,34 @@ window.AudioLibrary = (function () {
         for (var i = 0; i < sounds.length; i++) {
             (function (s) {
                 var row = document.createElement('div');
-                row.className = 'setting-row';
+                row.className = 'ui-row';
                 row.style.borderBottom = 'none';
 
                 var info = document.createElement('div');
-                info.className = 'setting-info';
+                info.className = 'ui-row-copy';
                 var name = document.createElement('div');
-                name.className = 'setting-name';
+                name.className = 'ui-row-title';
                 name.textContent = s.name;
                 var size = document.createElement('div');
-                size.className = 'setting-desc';
+                size.className = 'ui-row-desc';
                 size.textContent = formatSize(s.size);
                 info.appendChild(name);
                 info.appendChild(size);
                 row.appendChild(info);
 
                 var ctl = document.createElement('div');
-                ctl.className = 'setting-control';
+                ctl.className = 'ui-row-end';
                 ctl.style.display = 'flex';
                 ctl.style.gap = '8px';
 
                 var play = document.createElement('button');
-                play.className = 'btn btn-secondary';
+                play.className = 'ui-button';
                 play.textContent = tr('automation.audio_preview', 'Preview');
                 play.onclick = function () { preview(s.name); };
                 ctl.appendChild(play);
 
                 var del = document.createElement('button');
-                del.className = 'btn btn-danger-ghost';
+                del.className = 'ui-button ui-button-ghost ui-button-danger';
                 del.textContent = tr('automation.audio_delete', 'Delete');
                 del.onclick = function () { remove(s.name); };
                 ctl.appendChild(del);

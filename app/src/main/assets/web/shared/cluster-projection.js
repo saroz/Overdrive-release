@@ -26,17 +26,17 @@ window.ClusterProjection = (function () {
     var host = document.getElementById(containerId);
     if (!host) return;
     var row = document.createElement('div');
-    row.className = 'setting-row';
+    row.className = 'ui-row';
     row.style.borderBottom = 'none';
     row.innerHTML =
       // Reuse the road_sense.* label + description keys (present in every locale) so
       // this shared selector needs no new translations.
-      '<div class="setting-info">' +
-        '<div class="setting-name" data-i18n="road_sense.map_cluster_layout">Cluster size</div>' +
-        '<div class="setting-desc" data-i18n="road_sense.map_cluster_layout_desc">Match this to your instrument cluster. Shared with the blind-spot cluster view. If the projection looks stretched or cropped, try another option.</div>' +
+      '<div class="ui-row-copy">' +
+        '<div class="ui-row-title" data-i18n="road_sense.map_cluster_layout">Cluster size</div>' +
+        '<div class="ui-row-desc" data-i18n="road_sense.map_cluster_layout_desc">Match this to your instrument cluster. Shared with the blind-spot cluster view. If the projection looks stretched or cropped, try another option.</div>' +
       '</div>' +
-      '<div class="setting-control">' +
-        '<select id="' + selectId + '" class="select-control">' +
+      '<div class="ui-row-end">' +
+        '<select id="' + selectId + '" class="ui-select">' +
           '<option value="31" data-i18n="road_sense.bs_layout_1025">10.25&quot; cluster</option>' +
           '<option value="30" data-i18n="road_sense.bs_layout_123">12.3&quot; cluster</option>' +
           '<option value="29" data-i18n="road_sense.bs_layout_88">8.8&quot; cluster</option>' +

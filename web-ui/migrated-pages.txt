@@ -9,3 +9,10 @@ trips.html
 charging.html
 performance.html
 road-sense.html
+vehicle-control.html
+seat-positions.html
+key-mapping.html
+remote-access.html
+automations.html
+widgets.html
+widget-builder.html

@@ -41,7 +41,7 @@ export const MAP = {
   'r-link-title': 'ui-row-title', 'r-link-desc': 'ui-row-desc', 'r-link-chev': 'ui-row-end',
   'r-choice-row': 'ui-row-stack', 'r-choice-cards': 'ui-choices', 'r-choice-ico': 'ui-choice-icon',
   'r-choice-desc': 'ui-choice-desc', 'r-choice-hint': 'ui-hint',
-  'header-actions': 'ui-page-actions', 'num': '', 'spinner': 'ui-spinner',
+  'header-actions': 'ui-page-actions', 'num': '', 'empty-state-hint': 'ui-hint', 'md-supporting': 'ui-hint', 'spinner': 'ui-spinner',
   'modal-backdrop': 'ui-modal-backdrop', 'modal-card': 'ui-dialog', 'soh-modal-title': 'ui-dialog-title',
   'soh-modal-actions': 'ui-dialog-actions', 'soh-modal-input': 'ui-input', 'soh-modal-label': 'ui-label',
   'btn-danger-ghost': 'ui-button-ghost ui-button-danger', 'checkbox-row': 'ui-check-row', 'select-control': 'ui-select',

@@ -37,13 +37,14 @@
     <link rel="stylesheet" href="../shared/vehicle-control.css?v=51">
     <link rel="stylesheet" href="../shared/ui.css?v=1">
 </head>
-<body>
+<body class="ui-app" data-page="vehicle-control" data-ui-workspace>
     <div class="app-layout">
         <!-- Sidebar (hidden by WebViewFragment injection, but kept for standalone browser access) -->
         <!-- App shell sidebar (rendered by ../shared/app-shell.js?v=20) -->
         <div id="app-shell-mount"></div>
         <!-- Main Content -->
         <main class="main-content">
+            <div class="ui-main">
             <div class="vc-container">
 
                 <!-- 3D Viewport -->
@@ -158,7 +159,7 @@
 
                 <!-- Bottom Control Bar — Tabbed Expandable -->
                 <div class="vc-bar">
-                    <div id="toastContainer" class="toast-container"></div>
+                    <div id="toastContainer" class="ui-toast-stack"></div>
 
                     <!-- Tyre pressure, one cell per corner. -->
                     <div class="vc-tyre-strip" id="vcTyreOverlay">
@@ -617,9 +618,9 @@
                                         <span class="vc-safety-name" id="vcSafetyDoorLocksName" data-i18n="automation.safety_door_locks">Door lock and unlock</span>
                                         <span class="vc-safety-desc" id="vcSafetyDoorLocksDesc" data-i18n="automation.safety_door_locks_desc">Block locking or unlocking the doors unless the car is safely parked.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="doorLocks" checked aria-labelledby="vcSafetyDoorLocksName" aria-describedby="vcSafetyDoorLocksDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -627,9 +628,9 @@
                                         <span class="vc-safety-name" id="vcSafetyHornLightsName" data-i18n="automation.safety_horn_lights">Horn and light flash</span>
                                         <span class="vc-safety-desc" id="vcSafetyHornLightsDesc" data-i18n="automation.safety_horn_lights_desc">Block sounding the horn or flashing the lights (Find car, Flash) unless the car is safely parked.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="hornLights" checked aria-labelledby="vcSafetyHornLightsName" aria-describedby="vcSafetyHornLightsDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -637,9 +638,9 @@
                                         <span class="vc-safety-name" id="vcSafetyTrunkName" data-i18n="automation.safety_trunk">Trunk movement</span>
                                         <span class="vc-safety-desc" id="vcSafetyTrunkDesc" data-i18n="automation.safety_trunk_desc">Block opening or closing the tailgate. Stop remains available.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="trunk" checked aria-labelledby="vcSafetyTrunkName" aria-describedby="vcSafetyTrunkDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -647,9 +648,9 @@
                                         <span class="vc-safety-name" id="vcSafetyMirrorFoldName" data-i18n="automation.safety_mirror_fold">Fold mirrors</span>
                                         <span class="vc-safety-desc" id="vcSafetyMirrorFoldDesc" data-i18n="automation.safety_mirror_fold_desc">Block folding the exterior mirrors. Unfolding remains available.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="mirrorFold" checked aria-labelledby="vcSafetyMirrorFoldName" aria-describedby="vcSafetyMirrorFoldDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -657,9 +658,9 @@
                                         <span class="vc-safety-name" id="vcSafetyPositioningName" data-i18n="automation.safety_positioning">Seat, steering and mirror positioning</span>
                                         <span class="vc-safety-desc" id="vcSafetyPositioningDesc" data-i18n="automation.safety_positioning_desc">Block seat-memory recall and saved-position movement. The vehicle may still require Park itself.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="positioning" checked aria-labelledby="vcSafetyPositioningName" aria-describedby="vcSafetyPositioningDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -667,9 +668,9 @@
                                         <span class="vc-safety-name" id="vcSafetyHeadlightOffName" data-i18n="automation.safety_headlight_off">Turn headlights off</span>
                                         <span class="vc-safety-desc" id="vcSafetyHeadlightOffDesc" data-i18n="automation.safety_headlight_off_desc">Block selecting headlight Off. Auto, parking lights and low beam remain available.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="headlightOff" checked aria-labelledby="vcSafetyHeadlightOffName" aria-describedby="vcSafetyHeadlightOffDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -677,9 +678,9 @@
                                         <span class="vc-safety-name" id="vcSafetyDisplayBrightnessName" data-i18n="automation.safety_display_brightness">Display brightness</span>
                                         <span class="vc-safety-desc" id="vcSafetyDisplayBrightnessDesc" data-i18n="automation.safety_display_brightness_desc">Block changes to infotainment, driver-cluster and HUD brightness.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="displayBrightness" checked aria-labelledby="vcSafetyDisplayBrightnessName" aria-describedby="vcSafetyDisplayBrightnessDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -687,9 +688,9 @@
                                         <span class="vc-safety-name" id="vcSafetyDisplayPowerName" data-i18n="automation.safety_display_power">Display power</span>
                                         <span class="vc-safety-desc" id="vcSafetyDisplayPowerDesc" data-i18n="automation.safety_display_power_desc">Block screen power changes and turning the HUD off. Turning the HUD on remains available.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="displayPower" checked aria-labelledby="vcSafetyDisplayPowerName" aria-describedby="vcSafetyDisplayPowerDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-row">
@@ -697,9 +698,9 @@
                                         <span class="vc-safety-name" id="vcSafetyScreenMediaName" data-i18n="automation.safety_screen_media">Full-screen media</span>
                                         <span class="vc-safety-desc" id="vcSafetyScreenMediaDesc" data-i18n="automation.safety_screen_media_desc">Block full-screen playback. Speaker-only audio remains available.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" data-vc-safety-key="screenMedia" checked aria-labelledby="vcSafetyScreenMediaName" aria-describedby="vcSafetyScreenMediaDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-safety-fixed" data-i18n="automation.safety_always_on">Vehicle power on/off and IVI reboot always require the car to be parked. These guards cannot be turned off.</div>
@@ -724,9 +725,9 @@
                                         <span class="vc-safety-name" id="vcRkdiagGateName" data-i18n="vehicle.rkdiag_gate">MCU readiness gate before lock, unlock and power</span>
                                         <span class="vc-safety-desc" id="vcRkdiagGateDesc" data-i18n="vehicle.rkdiag_gate_desc">Wake the vehicle controller and wait briefly before a door or power frame. On by default; recommended.</span>
                                     </div>
-                                    <label class="toggle-switch">
+                                    <label class="ui-toggle">
                                         <input type="checkbox" role="switch" id="vcRkdiagGate" checked aria-labelledby="vcRkdiagGateName" aria-describedby="vcRkdiagGateDesc">
-                                        <span class="toggle-slider"></span>
+                                        <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
                                 <div class="vc-rkdiag-status-grid">
@@ -814,10 +815,10 @@
                 </div>
 
             </div>
+            </div>
         </main>
     </div>
 
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
     <!--
         Three.js r147 (last with examples/js/ UMD), Draco decoder, GSAP 3.12
@@ -865,10 +866,6 @@
         })();
     </script>
     <script>
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.getElementById('sidebarOverlay').classList.toggle('show');
-        }
         // Kick off sidebar status polling. core.js doesn't auto-init (other
         // pages call BYD.core.init() from their own bootstrap blocks).
         if (window.BYD && BYD.core && typeof BYD.core.init === 'function') {

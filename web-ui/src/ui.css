@@ -30,6 +30,8 @@
 
 @import "./components/adopted/driving-widgets.css";
 
+@import "./components/adopted/car-widgets.css";
+
 @import "tailwindcss/utilities.css" source(none);
 
 @source "../../app/src/main/assets/web/local/*.html";

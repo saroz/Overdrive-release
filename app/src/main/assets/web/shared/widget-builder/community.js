@@ -99,7 +99,7 @@
     C.status = el('div', 'wb-cm-status', host);
     C.status.setAttribute('role', 'status');
     C.grid = el('div', 'wb-cm-grid', host);
-    C.more = btn('btn btn-secondary wb-cm-more', host, esc(tr('cm_more')), () => load(false));
+    C.more = btn('ui-button wb-cm-more', host, esc(tr('cm_more')), () => load(false));
     C.more.hidden = true;
     load(true);
   }
@@ -163,11 +163,11 @@
     if (item.mine) el('span', 'status-badge active wb-badge-plain wb-cm-mine', meta).textContent = tr('cm_mine');
     if (item.description) { const d = el('p', 'wb-cm-desc', body); d.textContent = item.description; d.setAttribute('dir', 'auto'); }
     const acts = el('div', 'wb-cm-acts', c);
-    const add = btn('btn btn-secondary wb-cm-add', acts, esc(tr('cm_add')), () => addToCar(item, add));
+    const add = btn('ui-button wb-cm-add', acts, esc(tr('cm_add')), () => addToCar(item, add));
     if (!item.widget) add.disabled = true;
-    const copy = btn('btn btn-secondary wb-cm-copy', acts, esc(tr('cm_copy')), () => editCopy(item));
+    const copy = btn('ui-button wb-cm-copy', acts, esc(tr('cm_copy')), () => editCopy(item));
     if (!item.widget) copy.disabled = true;
-    btn('btn btn-secondary wb-cm-details', acts, esc(tr('cm_details')), () => details(item));
+    btn('ui-button wb-cm-details', acts, esc(tr('cm_details')), () => details(item));
     return c;
   }
 
@@ -288,17 +288,17 @@
         b.setAttribute('aria-label', tr('cm_rate_n', { n }));
       }
       const acts = el('div', 'soh-modal-actions wb-cm-detail-acts', cardEl);
-      btn('btn btn-secondary', acts, esc(tr('cm_report')), () => report(item));
+      btn('ui-button', acts, esc(tr('cm_report')), () => report(item));
       if (item.mine) {
-        btn('btn btn-secondary', acts, esc(tr('cm_edit_details')), () => { close(); editDetails(item); });
+        btn('ui-button', acts, esc(tr('cm_edit_details')), () => { close(); editDetails(item); });
         const local = localFor(item);
-        if (local) btn('btn btn-secondary', acts, esc(tr('cm_push')), () => { close(); pushLatest(item, local); });
-        btn('btn btn-danger', acts, esc(tr('cm_remove')), () => { close(); removeItem(item); });
+        if (local) btn('ui-button', acts, esc(tr('cm_push')), () => { close(); pushLatest(item, local); });
+        btn('ui-button ui-button-danger', acts, esc(tr('cm_remove')), () => { close(); removeItem(item); });
       }
-      btn('btn btn-secondary', acts, esc(tr('close')), close).setAttribute('data-autofocus', '');
+      btn('ui-button', acts, esc(tr('close')), close).setAttribute('data-autofocus', '');
       if (item.widget) {
-        btn('btn btn-secondary', acts, esc(tr('cm_copy')), () => { close(); editCopy(item); });
-        btn('btn btn-primary', acts, esc(tr('cm_add')), () => { close(); addToCar(item); });
+        btn('ui-button', acts, esc(tr('cm_copy')), () => { close(); editCopy(item); });
+        btn('ui-button ui-button-primary', acts, esc(tr('cm_add')), () => { close(); addToCar(item); });
       }
     });
   }
@@ -329,7 +329,7 @@
 
   // ── sharing ───────────────────────────────────────────────────────────────
   function shareButton(host) {
-    return btn('btn btn-secondary wb-cm-share', host, U.icon('upload') + '<span>' + esc(tr('cm_share_btn')) + '</span>', () => openSharePicker());
+    return btn('ui-button wb-cm-share', host, U.icon('upload') + '<span>' + esc(tr('cm_share_btn')) + '</span>', () => openSharePicker());
   }
 
   /** Picks one of your saved widgets to share; with none saved, points to Design. */
@@ -343,8 +343,8 @@
           el('h3', 'soh-modal-title', cardEl).textContent = tr('cm_pick_none_title');
           el('p', 'wb-note', cardEl).textContent = tr('cm_pick_none_body');
           const acts = el('div', 'soh-modal-actions', cardEl);
-          btn('btn btn-secondary', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
-          btn('btn btn-primary', acts, esc(tr('mine_design')), () => { close(); WB.setMode('design'); });
+          btn('ui-button', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
+          btn('ui-button ui-button-primary', acts, esc(tr('mine_design')), () => { close(); WB.setMode('design'); });
         }, 'wb-modal-form');
         return;
       }
@@ -364,7 +364,7 @@
           requestAnimationFrame(() => ODW.renderStill(cv, w.doc, { theme: WB.theme(), units: WB.units(), pad: 6 }));
         });
         const acts = el('div', 'soh-modal-actions', cardEl);
-        btn('btn btn-secondary', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
+        btn('ui-button', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
       }, 'wb-modal-form');
     });
   }
@@ -436,8 +436,8 @@
       const desc = field(form, tr('cm_field_desc'), 'textarea', MAX_DESC, prefill.about);
       const cat = categoryField(form, prefill.category);
       const acts = el('div', 'soh-modal-actions', cardEl);
-      btn('btn btn-secondary', acts, esc(tr('cancel')), close);
-      const go = btn('btn btn-primary', acts, esc(tr(update ? 'cm_publish_update' : 'cm_publish')), () => {
+      btn('ui-button', acts, esc(tr('cancel')), close);
+      const go = btn('ui-button ui-button-primary', acts, esc(tr(update ? 'cm_publish_update' : 'cm_publish')), () => {
         const a = author.value.trim(), n = name.value.trim(), d = desc.value.trim();
         if (!a) { U.toast(tr('cm_err_author'), 'error'); author.focus(); return; }
         if (!n) { U.toast(tr('cm_err_name'), 'error'); name.focus(); return; }
@@ -465,8 +465,8 @@
       const desc = field(form, tr('cm_field_desc'), 'textarea', MAX_DESC, item.description);
       const cat = categoryField(form, item.category);
       const acts = el('div', 'soh-modal-actions', cardEl);
-      btn('btn btn-secondary', acts, esc(tr('cancel')), close);
-      const go = btn('btn btn-primary', acts, esc(tr('save_changes')), () => {
+      btn('ui-button', acts, esc(tr('cancel')), close);
+      const go = btn('ui-button ui-button-primary', acts, esc(tr('save_changes')), () => {
         const n = name.value.trim(), d = desc.value.trim();
         if (!n) { U.toast(tr('cm_err_name'), 'error'); name.focus(); return; }
         if ([n, d].some(ODW.hasLink)) { U.toast(tr('cap_link'), 'error'); return; }

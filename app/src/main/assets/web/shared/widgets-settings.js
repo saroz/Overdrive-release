@@ -278,11 +278,11 @@ const WidgetsSettings = {
             const row = document.createElement('div');
             row.className = 'gw-item';
             row.innerHTML =
-                '<label class="toggle-switch"><input type="checkbox"' + (on ? ' checked' : '') + '><span class="toggle-slider"></span></label>' +
-                '<div class="setting-info"><div class="setting-name"></div><div class="setting-desc"></div></div>' +
+                '<label class="ui-toggle"><input type="checkbox"' + (on ? ' checked' : '') + '><span class="ui-toggle-track"></span></label>' +
+                '<div class="ui-row-copy"><div class="ui-row-title"></div><div class="ui-row-desc"></div></div>' +
                 '<div class="gw-order"><button type="button" aria-label="Move up">&#8593;</button><button type="button" aria-label="Move down">&#8595;</button></div>';
-            row.querySelector('.setting-name').textContent = this._t(w.key, w.name);
-            row.querySelector('.setting-desc').textContent = this._t(w.desc, w.descFb);
+            row.querySelector('.ui-row-title').textContent = this._t(w.key, w.name);
+            row.querySelector('.ui-row-desc').textContent = this._t(w.desc, w.descFb);
             row.querySelector('input').addEventListener('change', (e) => this.toggleWidget(w.id, e.target.checked));
             const [up, down] = row.querySelectorAll('.gw-order button');
             up.disabled = !on || idx === 0;

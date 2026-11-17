@@ -415,12 +415,12 @@ const SeatPositions = {
                 '<div class="sp-row-axes">' + this.axesHtml(p.axes, p.id) + '</div>' +
             '</div>' +
             '<div class="sp-row-actions">' +
-                (isUser ? '<button class="btn btn-secondary" data-act="saveHere"' + (this.acc ? '' : ' disabled') + '>' +
+                (isUser ? '<button class="ui-button" data-act="saveHere"' + (this.acc ? '' : ' disabled') + '>' +
                     this.esc(this.t('seatpos.save_here', 'Save here')) + '</button>' : '') +
-                '<button class="btn btn-primary" data-act="apply"' + ((this.acc && !this.positioningBlocked) ? '' : ' disabled') + '>' +
+                '<button class="ui-button ui-button-primary" data-act="apply"' + ((this.acc && !this.positioningBlocked) ? '' : ' disabled') + '>' +
                     this.esc(this.t('seatpos.apply', 'Apply')) + '</button>' +
                 '<div class="sp-menu-wrap">' +
-                    '<button class="btn sp-icon-btn" data-act="menu" aria-haspopup="true" aria-expanded="false" aria-label="' + this.esc(this.t('common.more', 'More')) + '">' +
+                    '<button class="ui-button sp-icon-btn" data-act="menu" aria-haspopup="true" aria-expanded="false" aria-label="' + this.esc(this.t('common.more', 'More')) + '">' +
                         this.ICONS.dots + '</button>' +
                     '<div class="sp-menu">' +
                         '<button data-act="useInAutomation">' + this.ICONS.link +
@@ -840,9 +840,9 @@ const SeatPositions = {
             input.value = opts.value || '';
             const confirmBtn = document.getElementById('spDialogConfirm');
             confirmBtn.textContent = opts.confirmLabel;
-            confirmBtn.className = 'btn ' + (opts.danger ? 'btn-danger' : 'btn-primary');
+            confirmBtn.className = 'ui-button ' + (opts.danger ? 'btn-danger' : 'btn-primary');
 
-            // .modal-backdrop is display:flex in styles.css and pages toggle it inline
+            // .ui-modal-backdrop is display:flex in styles.css and pages toggle it inline
             // (see performance.html's SOH modal) — there is no .show class for it.
             const done = (value) => {
                 scrim.style.display = 'none';

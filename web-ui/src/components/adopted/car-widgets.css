@@ -1,0 +1,16 @@
+/* car-widgets: feature widget styles moved from styles.css / revamp.css (adopt-rules.mjs). */
+.byd-action-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+.byd-action-row .btn { flex: 1 1 160px; }
+@media (max-width: 540px) {
+  .byd-action-row .btn { flex: 1 1 100%; }
+}
+.byd-action-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); grid-gap: 10px; gap: 10px; }
+.byd-action-row .btn { min-width: 0; }
+@media (max-width: 540px) {
+  .byd-action-row { grid-template-columns: minmax(0, 1fr); }
+}

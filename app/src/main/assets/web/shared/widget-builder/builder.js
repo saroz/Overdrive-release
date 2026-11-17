@@ -797,7 +797,7 @@
       row.tabIndex = 0;
       const bound = L && Object.keys(L.props).some(k => L.props[k].bound);
       const errs = L && (L.error || Object.keys(L.errors).length);
-      const actBtn = (a, key, ic, cls) => '<button type="button" class="btn btn-icon' + (cls || '') + '" data-a="' + a + '" title="' + esc(tr(key)) + '" aria-label="' + esc(tr(key)) + '">' + icon(ic) + '</button>';
+      const actBtn = (a, key, ic, cls) => '<button type="button" class="ui-button ui-button-icon' + (cls || '') + '" data-a="' + a + '" title="' + esc(tr(key)) + '" aria-label="' + esc(tr(key)) + '">' + icon(ic) + '</button>';
       row.innerHTML = '<span class="wb-ic">' + typeIcon(src.type) + '</span><span class="wb-nm">' + esc(src.name || typeLabel(src.type)) + '</span><span class="wb-tags">' +
         (errs ? '<span class="wb-tag err" title="' + esc(tr('tag_error')) + '">!</span>' : '') +
         (L && L.loop ? '<span class="wb-tag loop" title="' + esc(tr('tag_loop')) + '">⟳</span>' : '') +
@@ -907,7 +907,7 @@
       const box = el('div', 'empty-state', el('div', 'card-body', el('div', 'card wb-mine-empty', host)));
       box.innerHTML = '<svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICONS.widget + '</svg>';
       el('p', 'empty-text', box, esc(tr('mine_empty')));
-      btn('btn btn-secondary', box, icon('plus') + '<span>' + esc(tr('mine_design')) + '</span>', () => setMode('design'));
+      btn('ui-button', box, icon('plus') + '<span>' + esc(tr('mine_design')) + '</span>', () => setMode('design'));
       return;
     }
     const list = S.mine.slice().sort((x, y) => nz(y.updatedMs) - nz(x.updatedMs));
@@ -931,11 +931,11 @@
       if (w.source === 'community') el('span', 'status-badge inactive', badges, esc(tr('mine_from_community')));
       if (w.id === S.docId) el('span', 'status-badge inactive', badges, esc(tr('mine_editing')));
       const acts = el('div', 'wb-item-acts', row);
-      const act = (cls, ic, label, fn) => { const x = btn('btn btn-icon ' + cls, acts, icon(ic), fn); x.title = label; x.setAttribute('aria-label', label); return x; };
+      const act = (cls, ic, label, fn) => { const x = btn('ui-button ui-button-icon ' + cls, acts, icon(ic), fn); x.title = label; x.setAttribute('aria-label', label); return x; };
       if (w.source !== 'community') act('wb-item-share', 'upload', tr(shared ? 'share_update_named' : 'share_named', { name }), () => share(w));
       act('wb-item-edit', 'pencil', tr('edit_named', { name }), () => openMine(w.id));
       act('wb-item-dup', 'copy', tr('dup_named', { name }), () => openCopy(w.doc, name));
-      act('btn-danger-ghost wb-btn-icon', 'trash', tr('delete_named', { name }), () => removeMine(w));
+      act('ui-button-ghost ui-button-danger wb-btn-icon', 'trash', tr('delete_named', { name }), () => removeMine(w));
       const foot = el('div', 'wb-item-foot', item);
       el('span', 'wb-item-state', foot, '<i></i>' + esc(tr(w.shown ? 'mine_on_screen' : 'mine_off_screen')));
       const sw = el('label', 'toggle-switch wb-switch', el('div', 'wb-showsw', foot));
@@ -1020,8 +1020,8 @@
         el('div', 'setting-name', el('div', 'setting-info', row)).textContent = tr('delete_also_community');
         const cb = toggle(el('div', 'setting-control', row), false, tr('delete_also_community'));
         const acts = el('div', 'soh-modal-actions', card);
-        btn('btn btn-secondary', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
-        btn('btn btn-danger', acts, esc(tr('delete')), () => { answer = { ok: true, community: cb.checked }; close(); });
+        btn('ui-button', acts, esc(tr('cancel')), close).setAttribute('data-autofocus', '');
+        btn('ui-button ui-button-danger', acts, esc(tr('delete')), () => { answer = { ok: true, community: cb.checked }; close(); });
       }, 'wb-modal-form', () => resolve(answer));
     });
   }
@@ -1402,7 +1402,7 @@
     });
     const pre = el('div', 'wb-row wb-wrap', p);
     PART_PRESETS.forEach(ps => {
-      btn('btn btn-secondary', pre, esc(tr(ps[0])), () => { src.parts = ps[1]; src.scale = ps[2]; changed(); renderInspector(); });
+      btn('ui-button', pre, esc(tr(ps[0])), () => { src.parts = ps[1]; src.scale = ps[2]; changed(); renderInspector(); });
     });
     el('div', 'wb-note', p, esc(tr('parts_note')));
   }
@@ -1938,9 +1938,9 @@
     const head = el('div', 'wb-filehead', host);
     el('span', '', head, esc(tr('file_intro')));
     const acts = el('div', 'wb-fileacts', host);
-    btn('btn btn-secondary', acts, esc(tr('file_copy')), () => copyText(json));
-    btn('btn btn-secondary', acts, esc(tr('file_download')), () => download(json, doc.name));
-    btn('btn btn-secondary', acts, esc(tr('file_open')), () => openFile());
+    btn('ui-button', acts, esc(tr('file_copy')), () => copyText(json));
+    btn('ui-button', acts, esc(tr('file_download')), () => download(json, doc.name));
+    btn('ui-button', acts, esc(tr('file_open')), () => openFile());
     const kb = ODW.carBytes(doc) / 1024;
     el('span', 'wb-hint wb-filesize', acts, esc(tr('file_size', { kb: kb.toFixed(1), max: Math.round(S.limits.maxBytes / 1024) })));
     const pre = el('pre', 'wb-file', host);
@@ -2279,7 +2279,7 @@
       if (e.key === 'Escape') closeAddMenu();
       if (S.mode !== 'design' || S.sel < 0 || !S.doc || !/^Arrow/.test(e.key)) return;
       const tag = (e.target && e.target.tagName) || '';
-      if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag) || (e.target && e.target.isContentEditable) || document.querySelector('.modal-backdrop')) return;
+      if (/^(INPUT|TEXTAREA|SELECT)$/.test(tag) || (e.target && e.target.isContentEditable) || document.querySelector('.ui-modal-backdrop')) return;
       const src = S.doc.layers[S.sel];
       if (!src || !TYPES[src.type]) return;
       const keys = TYPES[src.type].props.cx ? ['cx', 'cy'] : ['x', 'y'];

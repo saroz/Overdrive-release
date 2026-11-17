@@ -37,7 +37,7 @@ public class RemoteAccessSnappyProximityAssetTest {
         assertTrue(html.contains("id=\"raPostLockQuietSeconds\" min=\"3\" max=\"30\" step=\"1\" value=\"10\" required"));
         // All of them sit in the Advanced-only settings grid.
         int grid = html.indexOf("<div class=\"ra-settings-grid ra-advanced\">");
-        int rules = html.indexOf("<section class=\"card ra-rules-card\"", grid);
+        int rules = html.indexOf("<section class=\"ui-panel ra-rules-card\"", grid);
         assertTrue(grid > 0 && rules > grid);
         for (String id : new String[] {"raNearWindowSeconds", "raNearDwellSeconds", "raMedianSeconds", "raDwellSeconds",
                 "raCooldownSeconds", "raRelockGraceSeconds", "raPostLockQuietSeconds"}) {
@@ -56,7 +56,7 @@ public class RemoteAccessSnappyProximityAssetTest {
     @Test
     public void confirmationSwitchIsAnAdvancedRuleBeforeTheCloudFallbackRule() throws IOException {
         String html = readRepositoryFile(PAGE);
-        int card = html.indexOf("<section class=\"card ra-rules-card\"");
+        int card = html.indexOf("<section class=\"ui-panel ra-rules-card\"");
         int hint = html.indexOf("id=\"raUnlockTriggerHint\"", card);
         int confirm = html.indexOf("<label class=\"ra-rule ra-confirm-vehicle-rule ra-advanced\">", hint);
         int cloud = html.indexOf("<label class=\"ra-rule ra-cloud-fallback-rule\">", confirm);

@@ -190,7 +190,7 @@ BYD.automations = {
         if (controls) controls.hidden = true;
         if (status) {
             status.hidden = false;
-            status.className = 'info-box-note';
+            status.className = 'ui-note';
             status.setAttribute('role', 'status');
         }
         if (statusIcon) statusIcon.hidden = true;
@@ -234,7 +234,7 @@ BYD.automations = {
             if (controls) controls.hidden = true;
             if (status) {
                 status.hidden = false;
-                status.className = 'info-box-warning';
+                status.className = 'ui-note-warning';
                 status.setAttribute('role', 'alert');
             }
             if (statusIcon) statusIcon.hidden = false;
@@ -731,8 +731,7 @@ BYD.automations = {
         if (!sections.length) return BYD.i18n.t('automation.failed_to_load_schema');
 
         const recipe = !!(opts && opts.recipe);
-        const chip = (text, hue, iconKey, extraClass) => '<span class="recipe-chip' + (extraClass ? ' ' + extraClass : '')
-            + '" data-step-cat="' + hue + '">' + autoIconSvg(iconKey || hue) + '<span class="recipe-text">' + text + '</span></span>';
+        const chip = (text, hue, iconKey, extraClass) => '<span class="recipe-chip' + (extraClass ? ' ' + extraClass : '') + '" data-step-cat="' + hue + '">' + autoIconSvg(iconKey || hue) + '<span class="recipe-text">' + text + '</span></span>';
         const mark = (text, sectionId) => {
             if (!recipe) return text;
             const hue = autoSectionHue(sectionId);
@@ -1023,7 +1022,7 @@ BYD.automations = {
         section.append(label);
 
         const select = document.createElement('select');
-        select.classList.add('select-control', 'automation-form-mode-select');
+        select.classList.add('ui-select', 'automation-form-mode-select');
         for (const mode of ['automatic', 'manual', 'disabled']) {
             const option = document.createElement('option');
             option.value = mode;
@@ -1152,7 +1151,7 @@ BYD.automations = {
                 sectionDiv.append(this.createRowElement(section));
             }
             const addBtn = document.createElement('button');
-            addBtn.classList.add('btn', 'btn-secondary', token + '-add-button', 'add-button');
+            addBtn.classList.add('ui-button', 'btn-secondary', token + '-add-button', 'add-button');
             addBtn.innerHTML = BYD.i18n.t('automation.add_row') + ' +';
             addBtn.addEventListener('click', () => {
                 this.formData[section.id].push({});
@@ -1204,7 +1203,7 @@ BYD.automations = {
             }
         }
         const addGroup = document.createElement('button');
-        addGroup.classList.add('btn', 'btn-secondary', 'add-group-button');
+        addGroup.classList.add('ui-button', 'btn-secondary', 'add-group-button');
         addGroup.innerHTML = BYD.i18n.t('automation.add_group') + ' +';
         addGroup.addEventListener('click', () => {
             ensureGroups().push({ logic: 'AND', conditions: [{}], groups: [] });
@@ -1223,7 +1222,7 @@ BYD.automations = {
         const header = document.createElement('div');
         header.classList.add('condition-group-header', 'row');
         const title = document.createElement('span');
-        title.classList.add('label');
+        title.classList.add('ui-detail-label');
         title.textContent = BYD.i18n.t('automation.condition_group') + ' ' + (gi + 1);
         header.append(title);
         const del = document.createElement('button');
@@ -1267,7 +1266,7 @@ BYD.automations = {
             card.append(this.createGroupConditionRow(section, group, ci));
         }
         const addCond = document.createElement('button');
-        addCond.classList.add('btn', 'btn-secondary', 'add-button');
+        addCond.classList.add('ui-button', 'btn-secondary', 'add-button');
         addCond.innerHTML = BYD.i18n.t('automation.add_row') + ' +';
         addCond.addEventListener('click', () => {
             group.conditions.push({});
@@ -1391,7 +1390,7 @@ BYD.automations = {
             box.append(this.createNestedActionRow(options, arr, i, rr, d));
         }
         const add = document.createElement('button');
-        add.classList.add('btn', 'btn-secondary', 'add-button');
+        add.classList.add('ui-button', 'btn-secondary', 'add-button');
         add.innerHTML = BYD.i18n.t('automation.add_row') + ' +';
         add.addEventListener('click', () => {
             arr.push({});
@@ -1798,7 +1797,7 @@ BYD.automations = {
             err.classList.add('zone-error');
             const save = document.createElement('button');
             save.type = 'button';
-            save.classList.add('btn');
+            save.classList.add('ui-button');
             save.textContent = BYD.i18n.t('automation.zone_save');
             form.append(err, save);
 
@@ -2965,7 +2964,7 @@ BYD.automations = {
     // its value and fires the same 'change' a user pick would.
     createLogicSegments(selector) {
         const seg = document.createElement('div');
-        seg.classList.add('btn-group', 'logic-seg');
+        seg.classList.add('ui-segmented', 'logic-seg');
         seg.setAttribute('role', 'group');
         const buttons = [];
         const sync = () => {
@@ -2979,7 +2978,7 @@ BYD.automations = {
             if (opt.disabled || opt.hidden) continue;
             const b = document.createElement('button');
             b.type = 'button';
-            b.classList.add('btn-toggle', 'logic-seg-btn');
+            b.classList.add('ui-segment', 'logic-seg-btn');
             b.setAttribute('data-value', opt.value);
             b.textContent = opt.textContent;
             b.addEventListener('click', () => {
@@ -3332,7 +3331,7 @@ BYD.automations = {
         // Optional cautionary note (e.g. the shell-command action). When present
         // we wrap the input + an amber warning box, matching the key-mapping
         // shell field. The wrapper still carries the input classes the caller
-        // adds (variable-input etc.), and .value/.addEventListener are proxied so
+        // adds (variable-input etc.), and .ui-detail-value/.addEventListener are proxied so
         // the caller's eventListener + form serialization keep working unchanged.
         if (data.warning) {
             const wrap = document.createElement('div');
@@ -3927,7 +3926,7 @@ BYD.automations = {
     },
 
     async triggerAutomation(key, btn) {
-        const card = btn && btn.closest ? btn.closest('.card') : null;
+        const card = btn && btn.closest ? btn.closest('.ui-panel') : null;
         if (btn) {
             if (btn.classList.contains('is-running')) return;
             this._setRunState(btn, card, 'running');
@@ -4133,7 +4132,7 @@ BYD.automations = {
         if (empty) empty.style.display = 'none';
         for (const g of this._groups) {
             const card = document.createElement('div');
-            card.classList.add('card', 'group-card');
+            card.classList.add('ui-panel', 'group-card');
             const body = document.createElement('div');
             body.classList.add('group-card-body');
             const info = document.createElement('div');
@@ -4148,7 +4147,7 @@ BYD.automations = {
             const actions = document.createElement('div');
             actions.classList.add('group-card-actions');
             const edit = document.createElement('button');
-            edit.classList.add('btn', 'btn-secondary');
+            edit.classList.add('ui-button', 'btn-secondary');
             edit.textContent = BYD.i18n.t('common.edit');
             edit.addEventListener('click', () => this.showGroupForm(g));
             const del = document.createElement('button');
@@ -4204,7 +4203,7 @@ BYD.automations = {
         const nameRow = document.createElement('div');
         nameRow.classList.add('name-row', 'row');
         const nameLabel = document.createElement('span');
-        nameLabel.classList.add('label');
+        nameLabel.classList.add('ui-detail-label');
         nameLabel.textContent = BYD.i18n.t('automation.group_name');
         const nameInput = document.createElement('input');
         nameInput.type = 'text';

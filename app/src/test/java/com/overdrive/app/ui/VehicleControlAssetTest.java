@@ -317,7 +317,7 @@ public class VehicleControlAssetTest {
 
         assertFalse(html.contains("id=\"vcToast\""));
         assertFalse(css.contains(".vc-toast"));
-        assertTrue(html.contains("<div id=\"toastContainer\" class=\"toast-container\"></div>"));
+        assertTrue(html.contains("<div id=\"toastContainer\" class=\"ui-toast-stack\"></div>"));
         assertTrue(script.contains("BYD.core.toast(message, type || 'info', 2500)"));
         // Static inside the bottom bar's flex column, so it clears the dock in
         // every panel state without tracking the panel height.

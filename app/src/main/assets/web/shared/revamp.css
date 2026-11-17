@@ -331,13 +331,6 @@ select.md-input ~ .md-label,
 :root[data-android-embed="1"][dir="rtl"] .md-field-trailing .md-input { padding-right: 16px; padding-left: 68px; }
 :root[data-android-embed="1"][dir="rtl"] .md-trailing-btn { right: auto; left: 4px; }
 
-/* Action rows: grid-gap holds on Chrome 58 (no flex gap); pills stack when two do not fit. */
-.byd-action-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); grid-gap: 10px; gap: 10px; }
-.byd-action-row .btn { min-width: 0; }
-@media (max-width: 540px) {
-    .byd-action-row { grid-template-columns: minmax(0, 1fr); }
-}
-
 /* ── Settings components shared by several pages ──────────────────────── */
 /* Margin spacing instead of flex gap (Chrome 58 ignores it); engines with gap drop it so spacing is not doubled. */
 @supports (gap: 0) {

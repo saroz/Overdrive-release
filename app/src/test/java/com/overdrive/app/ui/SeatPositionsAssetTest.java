@@ -33,8 +33,8 @@ public class SeatPositionsAssetTest {
 
         assertTrue(html.contains("seat-positions.css?v=9"));
         assertTrue(html.contains("seat-positions.js?v=9"));
-        assertTrue(html.contains("class=\"modal-card sp-dialog\""));
-        assertTrue(html.contains("class=\"btn sp-dialog-cancel\""));
+        assertTrue(html.contains("class=\"ui-dialog sp-dialog\""));
+        assertTrue(html.contains("class=\"ui-button sp-dialog-cancel\""));
 
         assertFalse(html.contains("info-box-note"));
         assertFalse(html.contains("rgba(255,179,0"));
@@ -84,7 +84,7 @@ public class SeatPositionsAssetTest {
         String css = readRepositoryFile("app/src/main/assets/web/shared/seat-positions.css");
         String script = readRepositoryFile("app/src/main/assets/web/shared/seat-positions.js");
 
-        assertTrue(html.contains("class=\"card-body sp-now-body\""));
+        assertTrue(html.contains("class=\"ui-panel-body sp-now-body\""));
         assertTrue(css.contains(".sp-now-art:empty { display: none; }"));
         assertTrue(script.contains("glyphEl.innerHTML = this.current ? this.glyph(this.current) : '';"));
         assertFalse(css.contains(".sp-metric"));
@@ -202,7 +202,7 @@ public class SeatPositionsAssetTest {
         String html = readRepositoryFile("app/src/main/assets/web/local/seat-positions.html");
         String css = readRepositoryFile("app/src/main/assets/web/shared/seat-positions.css");
 
-        int card = html.indexOf("class=\"card sp-now\"");
+        int card = html.indexOf("class=\"ui-panel sp-now\"");
         int status = html.indexOf("id=\"spStatus\"");
         int list = html.indexOf("id=\"spList\"");
         assertTrue(card >= 0 && status > card && status < list);

@@ -849,11 +849,11 @@ window.KM = (function () {
         if (state.enabled) {
             badge.setAttribute('data-i18n', 'keymap.badge_on');
             badge.textContent = tr('keymap.badge_on');
-            badge.className = 'status-badge active';
+            badge.className = 'ui-badge active';
         } else {
             badge.setAttribute('data-i18n', 'keymap.badge_off');
             badge.textContent = tr('keymap.badge_off');
-            badge.className = 'status-badge inactive';
+            badge.className = 'ui-badge inactive';
         }
     }
 
@@ -916,7 +916,7 @@ window.KM = (function () {
         // Enable/disable toggle — lets the user temporarily disable a binding
         // without deleting it. The dispatcher already skips bindings with enabled:false.
         var toggle = document.createElement('label');
-        toggle.className = 'toggle-switch toggle-switch-sm';
+        toggle.className = 'ui-toggle toggle-switch-sm';
         var cb = document.createElement('input');
         cb.type = 'checkbox';
         cb.checked = b.enabled !== false;
@@ -924,21 +924,21 @@ window.KM = (function () {
             return function () { toggleBinding(idx, this.checked); };
         })(index);
         var slider = document.createElement('span');
-        slider.className = 'toggle-slider';
+        slider.className = 'ui-toggle-track';
         toggle.appendChild(cb);
         toggle.appendChild(slider);
         row.appendChild(toggle);
 
         // Edit — pre-fill the Add form from this binding and switch to the Add tab.
         var edit = document.createElement('button');
-        edit.className = 'btn btn-icon';
+        edit.className = 'ui-button ui-button-icon';
         edit.setAttribute('aria-label', tr('keymap.edit'));
         edit.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>';
         edit.onclick = function () { editBinding(index); };
         row.appendChild(edit);
 
         var del = document.createElement('button');
-        del.className = 'btn btn-icon btn-danger-ghost';
+        del.className = 'ui-button ui-button-icon ui-button-ghost ui-button-danger';
         del.setAttribute('aria-label', tr('keymap.delete'));
         del.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>';
         del.onclick = function () { removeBinding(index); };
@@ -1879,7 +1879,7 @@ window.KM = (function () {
             label.textContent = (b.label || b.id) + ' — ' + describeAction(b.action);
             row.appendChild(label);
             var del = document.createElement('button');
-            del.className = 'btn btn-danger btn-sm';
+            del.className = 'ui-button ui-button-danger ui-button-sm';
             del.type = 'button';
             del.textContent = tr('keymap.qc_delete');
             // Address by stable id, never by render-time index: the list re-renders only
