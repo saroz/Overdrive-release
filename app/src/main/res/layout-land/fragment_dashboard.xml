@@ -28,7 +28,8 @@
             android:layout_marginBottom="@dimen/dashboard_modern_gap"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardCornerRadius="@dimen/dashboard_modern_radius"
-            app:cardElevation="0dp">
+            app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <!-- Ribbon backdrop. Declared before the content, with the
                      render, so metricVehicle's ripple still covers the whole
@@ -362,7 +363,8 @@
                 android:visibility="gone"
                 app:cardBackgroundColor="?attr/colorPrimaryContainer"
                 app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -483,7 +485,8 @@
                 android:layout_marginBottom="@dimen/dashboard_modern_gap"
                 app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -518,7 +521,8 @@
                             android:minHeight="@dimen/dashboard_modern_action_min_height"
                             app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
                             app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                            app:cardElevation="0dp">
+                            app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -559,7 +563,8 @@
                             android:minHeight="@dimen/dashboard_modern_action_min_height"
                             app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
                             app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                            app:cardElevation="0dp">
+                            app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -626,7 +631,8 @@
                             android:minHeight="@dimen/dashboard_modern_action_min_height"
                             app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
                             app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                            app:cardElevation="0dp">
+                            app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -667,7 +673,8 @@
                             android:minHeight="@dimen/dashboard_modern_action_min_height"
                             app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
                             app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                            app:cardElevation="0dp">
+                            app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -709,7 +716,8 @@
                 android:minHeight="@dimen/dashboard_modern_touch_target"
                 app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -944,7 +952,8 @@
                 android:minHeight="@dimen/dashboard_modern_action_min_height"
                 app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -1040,7 +1049,8 @@
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="?attr/colorSurfaceContainer"
                 app:cardCornerRadius="@dimen/dashboard_modern_radius"
-                app:cardElevation="0dp">
+                app:cardElevation="0dp"
+            app:strokeWidth="1dp" app:strokeColor="?attr/colorOutlineVariant">
 
                 <LinearLayout
                     android:layout_width="match_parent"

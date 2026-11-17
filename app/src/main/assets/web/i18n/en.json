@@ -3908,7 +3908,18 @@
     "metric_bluetooth": "Bluetooth",
     "bluetooth_detail_initial": "Vehicle radio",
     "bluetooth_aria": "Vehicle Bluetooth: {state}",
-    "bluetooth_title": "Vehicle Bluetooth: {state}. {detail}"
+    "bluetooth_title": "Vehicle Bluetooth: {state}. {detail}",
+    "home_vehicle_title": "Your vehicle",
+    "home_waiting_detail": "Live readings will appear when your vehicle connects.",
+    "home_vehicle_image": "BYD Dolphin vehicle illustration",
+    "home_estimated_range": "Estimated range",
+    "home_sensor_details": "Tyre and door details",
+    "cmd_lock_hint": "Secure all doors",
+    "cmd_unlock_hint": "Unlock the doors",
+    "cmd_flash_hint": "Flash the lights",
+    "cmd_find_hint": "Locate your vehicle",
+    "cmd_trunk_open_hint": "Open the boot",
+    "cmd_trunk_close_hint": "Close the boot"
   },
   "oem_dashcam": {
     "title": "OEM Dashcam",

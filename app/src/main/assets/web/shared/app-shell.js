@@ -130,7 +130,7 @@
                 // About stands on its own under a hairline (no group header).
                 if (item.label && item.i18n !== 'nav.about_group') {
                     html += '<div class="nav-group-header">'
-                        +    (item.svg ? '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg>' : '')
+                        +    (item.svg ? '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg>' : '')
                         +    '<span class="nav-group-line"></span>'
                         +    '<span class="nav-group-label"' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
                         +  '</div>';
@@ -149,7 +149,7 @@
             // state (see app-shell.css `.nav-link:hover::after`).
             html += '<a href="' + item.href + '" class="' + cls + '"' + aria
                 +     ' aria-label="' + item.label + '">'
-                +   '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ' + extra + '>'
+                +   '<svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" ' + extra + '>'
                 +     item.svg
                 +   '</svg>'
                 +   '<span' + (item.i18n ? ' data-i18n="' + item.i18n + '"' : '') + '>' + item.label + '</span>'
@@ -175,7 +175,7 @@
             +     '</div>'
             +   '</a>'
             +   '<button class="sidebar-close" type="button" aria-label="Close menu">'
-            +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">'
+            +     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">'
             +       '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'
             +     '</svg>'
             +   '</button>'
@@ -205,7 +205,7 @@
             +     '</div>'
             +     '<div class="status-row">'
             +       '<span class="status-label" data-i18n="status.battery_12v">'
-            +         '<svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="7" width="12" height="10" rx="1"/><path d="M6 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2"/><path d="M18 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2"/></svg>12V'
+            +         '<svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="6" y="7" width="12" height="10" rx="1"/><path d="M6 10H4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2"/><path d="M18 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2"/></svg>12V'
             +       '</span>'
             +       '<span class="status-value" id="batteryValue">--</span>'
             +     '</div>'
@@ -215,7 +215,7 @@
             +     '</div>'
             +     '<div class="status-row">'
             +       '<span class="status-label" data-i18n="status.network">'
-            +         '<span id="networkIcon"><svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></span>Net'
+            +         '<span id="networkIcon"><svg class="status-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></span>Net'
             +       '</span>'
             +       '<span class="status-value" id="networkValue">--</span>'
             +     '</div>'
@@ -237,7 +237,7 @@
         var isMac = /Mac|iPhone|iPad/.test((navigator && navigator.platform) || '');
         var kbd = isMac ? '⌘K' : 'Ctrl K';
         return '<button type="button" class="sidebar-search od-search-open" aria-label="Search" data-i18n-attr="aria-label:common.search">'
-            +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>'
+            +   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>'
             +   '<span class="sidebar-search-label" data-i18n="common.search">Search</span>'
             +   '<span class="sidebar-search-kbd" aria-hidden="true">' + kbd + '</span>'
             + '</button>';
@@ -314,7 +314,7 @@
             +     '</div>'
             +   '</div>'
             +   '<div class="ev-info-row">'
-            +     '<div class="ev-range"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span id="evRange">-- km</span></div>'
+            +     '<div class="ev-range"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 2v20M2 12h20"/></svg><span id="evRange">-- km</span></div>'
             +     '<div class="ev-power-status"><span class="ev-power-val" id="evPower">-- kW</span></div>'
             +   '</div>'
             +   '<div class="ev-soh-row" id="evSohRow" style="display:none;">'
@@ -322,11 +322,11 @@
             +     '<span class="ev-soh-val" id="evSohValue">--%</span>'
             +   '</div>'
             +   '<div class="ev-personalized-range" id="evPersonalizedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Personalized</span>'
+            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Personalized</span>'
             +     '<span class="ev-personalized-val" id="evPersonalizedRange">-- km</span>'
             +   '</div>'
             +   '<div class="ev-personalized-range ev-personalized-combined" id="evCombinedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.combined_label"><span class="ev-label-ico-pair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg></span>Combined</span>'
+            +     '<span class="ev-personalized-label" data-i18n="vehicle.combined_label"><span class="ev-label-ico-pair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg></span>Combined</span>'
             +     '<span class="ev-personalized-val" id="evCombinedRange">-- km</span>'
             +   '</div>'
             + '</div>';
@@ -349,7 +349,7 @@
             +     '<div class="fuel-bar-fill" id="fuelBarFill" style="width:0%"></div>'
             +   '</div>'
             +   '<div class="ev-personalized-range fuel-personalized-row" id="fuelPersonalizedRow" style="display:none;">'
-            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg>Personalized</span>'
+            +     '<span class="ev-personalized-label" data-i18n="vehicle.personalized_label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22h12M4 22V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v17M4 10h10"/><path d="M14 13h2a2 2 0 0 1 2 2v2a2 2 0 0 0 4 0V9l-3-3"/></svg>Personalized</span>'
             +     '<span class="ev-personalized-val" id="fuelPersonalizedRange">-- km</span>'
             +   '</div>'
             + '</div>';
@@ -428,7 +428,7 @@
         header.setAttribute('data-auto-mobile-header', '1');
         header.innerHTML =
             '<button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false">' +
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">' +
                 '<line x1="4" x2="20" y1="12" y2="12"/>' +
                 '<line x1="4" x2="20" y1="6" y2="6"/>' +
                 '<line x1="4" x2="20" y1="18" y2="18"/>' +
@@ -438,7 +438,7 @@
             // Search icon takes the trailing slot (was a layout spacer); the
             // .od-search-open delegate below opens the palette.
             '<button class="od-search-mobtrigger od-search-open" type="button" aria-label="Search" data-i18n-attr="aria-label:common.search">' +
-              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>' +
+              '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>' +
             '</button>';
         header.querySelector('.menu-toggle').addEventListener('click', function () {
             window.toggleSidebar();
@@ -458,7 +458,7 @@
         btn.className = 'od-search-mobtrigger od-search-open';
         btn.setAttribute('aria-label', 'Search');
         btn.setAttribute('data-i18n-attr', 'aria-label:common.search');
-        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>';
         var last = header.lastElementChild;
         if (last && last.tagName === 'DIV' && !last.children.length &&
             !(last.textContent && last.textContent.replace(/\s/g, ''))) {
@@ -489,12 +489,12 @@
             var on = item.href === current;
             if (on) onPrimary = true;
             html += '<a class="abn-item' + (on ? ' is-active' : '') + '" href="' + item.href + '"' + (on ? ' aria-current="page"' : '') + '>'
-                + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg></span>'
+                + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + item.svg + '</svg></span>'
                 + '<span class="abn-label" data-i18n="' + item.i18n + '">' + item.label + '</span>'
                 + '</a>';
         }
         html += '<button type="button" class="abn-item abn-more' + (onPrimary ? '' : ' is-active') + '" aria-haspopup="true">'
-            + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>'
+            + '<span class="abn-ind"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>'
             + '<span class="abn-label" data-i18n="common.more">More</span>'
             + '</button>';
         var nav = document.createElement('nav');
@@ -525,7 +525,7 @@
             lead.className = 'mh-lead mh-back';
             lead.setAttribute('data-i18n-attr', 'aria-label:common.back');
             lead.setAttribute('aria-label', i18nText('common.back', 'Back'));
-            lead.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
+            lead.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>';
             lead.addEventListener('click', function (e) {
                 var ref = document.referrer || '';
                 if (ref.indexOf(location.protocol + '//' + location.host + '/') === 0 && history.length > 1) {
@@ -788,10 +788,10 @@
             '</nav>' +
             '<div class="shell-theme-switch" role="group" aria-label="Colour theme" data-i18n-attr="aria-label:settings.theme">' +
               '<button type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="false">' +
-                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M2.5 12h2M19.5 12h2M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg>' +
               '</button>' +
               '<button type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false">' +
-                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 1 1 11 3.5a6.5 6.5 0 0 0 9.5 9.5z"/></svg>' +
+                '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 13A8.5 8.5 0 1 1 11 3.5a6.5 6.5 0 0 0 9.5 9.5z"/></svg>' +
               '</button>' +
             '</div>';
         var buttons = bar.querySelectorAll('[data-theme-choice]');
@@ -1508,7 +1508,7 @@
                     var chev = document.createElement('span');
                     chev.className = 'nav-group-chevron';
                     chev.setAttribute('aria-hidden', 'true');
-                    chev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
+                    chev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>';
                     header.appendChild(chev);
                 }
 

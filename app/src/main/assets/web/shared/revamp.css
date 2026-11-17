@@ -30,7 +30,7 @@ html { scroll-padding-top: 144px; }
 .card {
     background-color: var(--tile);
     background-image: linear-gradient(180deg, var(--sheen) 0%, rgba(255, 255, 255, 0) 140px);
-    border-color: transparent;
+    border-color: var(--outline-variant);
     border-radius: var(--radius-tile);
     box-shadow: var(--tile-shadow);
 }
@@ -86,7 +86,7 @@ html { scroll-padding-top: 144px; }
     justify-content: center;
     width: 60px;
     height: 60px;
-    border-radius: 20px;
+    border-radius: var(--radius-panel);
     background: var(--primary);
     color: var(--on-primary);
 }
@@ -188,7 +188,7 @@ html { scroll-padding-top: 144px; }
     overflow-wrap: break-word;
 }
 .setting-hint strong, .setting-hint code { color: var(--on-surface); }
-.setting-badge { padding: 2px 8px; border-radius: var(--radius-full); background-color: var(--well-2); font-size: var(--fs-caption); font-weight: 600; text-transform: none; letter-spacing: 0; }
+.setting-badge { padding: 2px 8px; border-radius: var(--radius-control); background-color: var(--well); font-size: var(--fs-caption); font-weight: 600; text-transform: none; letter-spacing: 0; }
 
 /* Rows whose control is a switch keep it beside the text on phones. */
 @media (max-width: 768px) {
@@ -231,8 +231,8 @@ html { scroll-padding-top: 144px; }
 [dir="rtl"] .toggle-switch input:checked + .toggle-slider::before { left: auto; right: 4px; }
 
 /* ── Segmented buttons ────────────────────────────────────────────────── */
-.btn-group { background-color: var(--well); border-radius: 24px; }
-.btn-toggle { border-radius: 20px; font-weight: 600; color: var(--on-surface-variant); }
+.btn-group { background-color: var(--well); border-radius: var(--radius-control); }
+.btn-toggle { border-radius: var(--radius-panel); font-weight: 600; color: var(--on-surface-variant); }
 .btn-toggle:hover { color: var(--on-surface); }
 .btn-toggle.active { background-color: var(--secondary-container); color: var(--on-secondary-container); }
 /* Selected segment carries a check (mock), so state is not colour-only. */
@@ -256,17 +256,17 @@ html { scroll-padding-top: 144px; }
 
 /* ── Buttons ──────────────────────────────────────────────────────────── */
 .btn {
-    border-color: transparent;
-    border-radius: var(--radius-full);
-    background-color: var(--well-2);
+    border-color: var(--outline-variant);
+    border-radius: var(--radius-control);
+    background-color: var(--surface-container);
     color: var(--on-surface);
     font-weight: 600;
 }
-.btn:hover { background-color: var(--well-2); border-color: transparent; }
+.btn:hover { background-color: var(--well); border-color: var(--outline-variant); }
 .btn:active { background-image: linear-gradient(var(--state-press), var(--state-press)); }
 .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-.btn-primary { background-color: var(--primary); color: var(--on-primary); }
-.btn-primary:hover { background-color: var(--primary); filter: none; }
+.btn-primary { background-color: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.btn-primary:hover { background-color: var(--primary); border-color: var(--primary); filter: brightness(.94); }
 .btn-secondary { background-color: var(--secondary-container); color: var(--on-secondary-container); }
 .btn-secondary:hover { background-color: var(--secondary-container); color: var(--on-secondary-container); border-color: transparent; }
 .btn-secondary.active, .btn-secondary.active:hover { background-color: var(--primary-soft); border-color: var(--primary); color: var(--primary); }
@@ -276,7 +276,7 @@ html { scroll-padding-top: 144px; }
 .btn-ghost { background-color: transparent; color: var(--on-surface-variant); }
 .btn-ghost:hover { background-color: transparent; border-color: transparent; color: var(--on-surface); }
 /* Icon buttons inside page content: round tonal (the bare .btn-icon over video keeps its dark glass). */
-.btn.btn-icon { width: 40px; height: 40px; min-height: 40px; padding: 0; border-color: transparent; border-radius: var(--radius-full); background-color: var(--well-2); color: var(--on-surface-variant); }
+.btn.btn-icon { width: 40px; height: 40px; min-height: 40px; padding: 0; border-color: transparent; border-radius: var(--radius-control); background-color: var(--well); color: var(--on-surface-variant); }
 .btn.btn-icon:hover { background-color: var(--well-2); border-color: transparent; color: var(--on-surface); }
 .btn.btn-icon.btn-danger-ghost, .btn.btn-icon.btn-danger-ghost:hover { background-color: var(--danger-soft); color: var(--danger); }
 @media (pointer: coarse) {
@@ -360,7 +360,7 @@ select.md-input ~ .md-label,
     min-height: 44px;
     padding: 0 16px;
     border-color: transparent;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background-color: var(--well);
     color: var(--on-surface-variant);
     font-size: var(--fs-label);
@@ -490,8 +490,8 @@ select.md-input ~ .md-label,
     transition: background-color var(--duration-med) var(--easing-standard), box-shadow var(--duration-med) var(--easing-standard);
 }
 html.is-scrolled .page-header { background: var(--bar); box-shadow: 0 1px 0 var(--hairline); }
-.page-title { font-size: 30px; font-weight: 700; line-height: 1.15; overflow-wrap: break-word; }
-.header-actions > .header-badge, .page-header .header-badge { border-radius: var(--radius-full); }
+.page-title { font-size: 28px; font-weight: 650; line-height: 1.15; overflow-wrap: break-word; }
+.header-actions > .header-badge, .page-header .header-badge { border-radius: var(--radius-control); }
 .mobile-header {
     justify-content: flex-start;
     border-bottom-color: transparent;
@@ -512,7 +512,7 @@ html.has-bottom-nav .mobile-header.has-lead .mh-lead {
     width: 44px;
     height: 44px;
     margin: 0 4px 0 -6px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     color: var(--on-surface);
     text-decoration: none;
 }
@@ -555,7 +555,7 @@ html.has-bottom-nav[dir="rtl"] .mobile-header.has-lead .mh-home { margin-left: 4
     .sidebar::before { display: none; }
 }
 .nav-link .nav-icon { color: var(--on-surface-variant); }
-.nav-link { border-radius: var(--radius-full); }
+.nav-link { border-radius: var(--radius-control); }
 .sidebar-nav .nav-link.active,
 .sidebar-nav .nav-link[aria-current="page"] { background-color: var(--secondary-container); color: var(--on-secondary-container); }
 .sidebar-nav .nav-link.active::before,
@@ -573,7 +573,7 @@ html.has-bottom-nav[dir="rtl"] .mobile-header.has-lead .mh-home { margin-left: 4
     min-height: 44px;
     margin: 2px 0 0;
     padding: 8px 14px !important;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     color: var(--on-surface);
 }
 .sidebar .nav-group-header.nav-group-fold .nav-icon { display: block; width: 20px; height: 20px; margin-right: 12px; color: var(--on-surface-variant); flex-shrink: 0; }
@@ -686,9 +686,10 @@ body.ot-tabs-on .bottom-tabs.is-inflow {
     margin: 16px var(--page-pad-x) 0;
     padding: 4px;
     border-top: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--bar);
-    box-shadow: 0 0 0 1px var(--hairline), 0 6px 18px rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+    border: 1px solid var(--outline-variant);
 }
 body.ot-tabs-on .bottom-tabs::before { display: none; }
 body.ot-tabs-on .bottom-tab {
@@ -697,7 +698,7 @@ body.ot-tabs-on .bottom-tab {
     min-width: 0;
     min-height: 40px;
     padding: 0 16px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     font-size: var(--fs-label);
     font-weight: 600;
     letter-spacing: 0;
@@ -714,13 +715,13 @@ body.ot-tabs-on .bottom-tab-action {
     margin-left: auto;
     padding-left: 8px;
     border-left-color: transparent;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--bar);
 }
 [dir="rtl"] body.ot-tabs-on .bottom-tab-action { right: auto; left: 0; margin-left: 0; margin-right: auto; padding-left: 0; padding-right: 8px; border-right-color: transparent; }
 body.ot-tabs-on .bottom-tab-action .btn,
 body.ot-tabs-on .bottom-tab-action #btnApply,
-body.ot-tabs-on .bottom-tab-action .bottom-tab-action-btn { height: 40px; min-height: 40px; padding: 0 18px; border-radius: var(--radius-full); }
+body.ot-tabs-on .bottom-tab-action .bottom-tab-action-btn { height: 40px; min-height: 40px; padding: 0 18px; border-radius: var(--radius-control); }
 /* Apply buttons whose label is a bare text node (no span) still get icon spacing. */
 body.ot-tabs-on .bottom-tab-action #btnApply > svg:first-child { margin-right: 8px; }
 [dir="rtl"] body.ot-tabs-on .bottom-tab-action #btnApply > svg:first-child { margin-right: 0; margin-left: 8px; }
@@ -741,7 +742,7 @@ body.ot-tabs-on .bottom-tabs.is-inflow { overflow: visible; }
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
 }
 .bottom-tabs-track::-webkit-scrollbar { display: none; }
 body.ot-tabs-on .bottom-tabs.is-inflow .bottom-tab-action {
@@ -953,17 +954,9 @@ html .leaflet-container .leaflet-control-attribution {
     background: var(--bar);
     color: var(--on-surface-variant);
 }
-html .leaflet-container .leaflet-control-attribution a { color: var(--primary); }
+html .leaflet-container .leaflet-control-attribution a { color: var(--primary-text); }
 
-/* Contrast (ui-ux-pro-max 4.5:1): muted text in light mode, the purple SoH ink in dark mode. */
-:root[data-theme="light"] {
-    --text-muted: #5C6662;
-    --primary: #006B56;
-    --status-success: #1A6B37;
-    --status-warning: #8A4F10;
-    --status-danger: #A31616;
-}
-:root:not([data-theme="light"]) { --chart-soh: #C59CFA; }
+/* Palette and contrast roles are owned by design-tokens.css. */
 /* Summary-tile links (e.g. "21 →") keep a 24px target. */
 .r-hero-stat-value a, .r-hero-stat a { display: inline-block; min-height: 24px; line-height: 24px; }
 
@@ -972,7 +965,7 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary); 
     min-height: 40px;
     padding: 0 16px;
     border: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background-color: var(--danger-soft);
     color: var(--danger);
     font-weight: 600;
@@ -1006,7 +999,7 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary); 
     min-height: 44px;
     margin: 0 0 0 8px;
     padding: 0 20px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     font-weight: 600;
 }
 [dir="rtl"] .soh-modal-actions { margin: 20px 0 0 -4px; }
@@ -1116,7 +1109,7 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary); 
     min-height: 40px;
     padding: 0 2px;
     border: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--well-2);
     color: var(--on-surface-variant);
     font: inherit;
@@ -1149,3 +1142,35 @@ html .leaflet-container .leaflet-control-attribution a { color: var(--primary); 
 @-webkit-keyframes r-spin { to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
 @keyframes r-spin { to { -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .r-btn-spinner { -webkit-animation-duration: 2.4s; animation-duration: 2.4s; } }
+
+/* Reference finish: preserve the existing page grids and touch-target sizes. */
+body { background-image: none; }
+.card, .r-hero, .r-hero.is-off, [dir="rtl"] .r-hero, [dir="rtl"] .r-hero.is-off {
+    background-image: none;
+    border: 1px solid var(--outline-variant);
+    box-shadow: none;
+}
+.card-title { font-weight: 650; }
+.card-title > svg:first-child { border-radius: var(--radius-control); stroke-width: 1.75; }
+.btn, .btn:hover, .btn:active { background-image: none; box-shadow: none; }
+.text-input, .select-control { border-radius: var(--radius-control); background-color: var(--surface-container); }
+.toggle-slider { background: var(--outline-variant); }
+.toggle-switch input:checked + .toggle-slider { background: var(--status-success); }
+.sidebar .nav-group-label { font-size: 11px; font-weight: 500; }
+body[data-app-shell="1"] .sidebar-nav .nav-link.active .nav-icon,
+body[data-app-shell="1"] .sidebar-nav .nav-link[aria-current="page"] .nav-icon { color: var(--primary-text); }
+
+/* Switch paint follows the reference; the existing input hit area is unchanged. */
+.toggle-slider { box-shadow: none; }
+.toggle-slider::before { background: var(--switch-thumb); }
+.toggle-switch input:checked + .toggle-slider::before,
+:root[data-theme="light"] .toggle-switch input:checked + .toggle-slider::before {
+    background: var(--switch-thumb);
+}
+body.ot-tabs-on .bottom-tab.is-active { color: var(--primary-text); background: var(--primary-container); }
+
+/* Keep the app mark in the reference's monochrome brand treatment. */
+.brand-logo, :root[data-theme="dark"] .brand-logo { background: var(--on-surface); box-shadow: none; }
+.brand-logo img { filter: brightness(0) invert(1); }
+:root[data-theme="dark"] .brand-logo img { filter: brightness(0); }
+.sidebar-search { border-radius: var(--radius-control); }

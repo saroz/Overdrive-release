@@ -101,7 +101,7 @@
     --target-lg: 48px;
 
     /* Type */
-    --family-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --family-sans: 'Segoe UI Variable', 'Segoe UI', 'Inter', system-ui, sans-serif;
     --family-mono: ui-monospace, 'SF Mono', 'Roboto Mono', monospace;
     --tracking-display: 0;
     --tracking-headline: 0;
@@ -141,8 +141,8 @@
     --tile-shadow: none;
     --bar: var(--background);
     --bar-blur: var(--background);
-    --state-hover: rgba(245, 243, 240, 0.06);
-    --state-press: rgba(245, 243, 240, 0.12);
+    --state-hover: #2D2F30;
+    --state-press: #3C3E40;
     --primary-soft: var(--primary-container);
     --primary-glow: transparent;
     --tertiary-soft: var(--surface-container-high);
@@ -241,8 +241,8 @@
     --tile-shadow: none;
     --bar: #F4F6F8;
     --bar-blur: #F4F6F8;
-    --state-hover: rgba(24, 36, 49, 0.05);
-    --state-press: rgba(24, 36, 49, 0.10);
+    --state-hover: #F7F8FA;
+    --state-press: #E5E9EF;
     --primary-soft: #FFF0E9;
     --primary-glow: transparent;
     --tertiary-soft: #F7F8FA;

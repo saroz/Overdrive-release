@@ -9,7 +9,7 @@
     <link rel="apple-touch-icon" href="../shared/app-icon-dark.webp">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#00876C">
+    <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/theme.js?v=11"></script>
     <script src="../shared/app-shell.js?v=19"></script>
     <link rel="stylesheet" href="../shared/leaflet.css">
@@ -67,24 +67,13 @@
                     </svg>
                 </button>
                 <div class="home-overview">
-                <section class="home-panel home-vehicle" id="homeVehicle">
-                <section class="dash-hero">
-                    <!--
-                      Vehicle glance panel. Replaces the decorative hero GLB
-                      (the sidebar EV-card still renders the 3D model) with
-                      live state: a top-down schematic annotated with per-door
-                      lock pills + per-corner tyre pressure and temperature from /api/vehicle/state
-                      (polled every 6s by refreshVehicleState), an SoC ring +
-                      range fed by /api/status, and glance rows for climate /
-                      windows / tyres. When a charge session is live the panel
-                      gains a charging strip (power · time-to-full · kWh) —
-                      the "what matters right now" takeover. The drive state
-                      and status chips live here too, so the schematic sits
-                      beside them in one grid.
-                    -->
-                    <div class="dash-glance" id="dashGlance">
-                    <div class="dash-hero-main">
-                        <div class="dash-drive-state is-pending" id="dashDriveState"
+                <section class="home-panel home-vehicle" id="homeVehicle" aria-labelledby="homeVehicleTitle">
+                    <div id="dashGlance" class="dash-glance home-vehicle-content">
+                        <div class="home-vehicle-stage">
+                            <div class="home-vehicle-heading">
+                                <h2 id="homeVehicleTitle" data-i18n="dashboard.home_vehicle_title">Your vehicle</h2>
+                            </div>
+                            <div class="dash-drive-state is-pending" id="dashDriveState"
                              role="status" aria-live="polite" aria-atomic="true">
                             <div class="dash-drive-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -98,7 +87,7 @@
                                       data-i18n="dashboard.drive_power_pending">Vehicle --</span>
                                 <strong id="dashDriveMode"
                                         data-i18n="dashboard.drive_state_waiting">Waiting for status</strong>
-                                <small id="dashDriveDetail">--</small>
+                                <small id="dashDriveDetail" data-i18n="dashboard.home_waiting_detail">Live readings will appear when your vehicle connects.</small>
                             </div>
                             <div class="dash-drive-readouts">
                                 <div class="dash-drive-readout dash-drive-gear">
@@ -114,8 +103,90 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                        <div class="dash-glance-car" id="dashGlanceCar" aria-hidden="true">
+                            <div class="home-vehicle-art">
+                                <img src="../shared/dashboard-vehicle-reference.webp" width="600" height="338"
+                                     alt="BYD Dolphin vehicle illustration" data-i18n-attr="alt:dashboard.home_vehicle_image"
+                                     decoding="async" fetchpriority="high">
+                            </div>
+                            <div class="dash-hero-status">
+                            <a class="dash-chip" id="dashSurvChip" href="surveillance.html" data-ico="shield"><span class="dash-chip-text" data-i18n="dashboard.chip_surveillance_pending">Surveillance --</span></a>
+                            <a class="dash-chip alert is-live" id="dashRecChip" href="events.html" hidden><span class="dash-chip-text" data-i18n="dashboard.chip_recording">Recording</span></a>
+                            <span class="dash-chip" id="dashGpsChip" data-ico="nav"><span class="dash-chip-text" data-i18n="dashboard.chip_gps_pending">GPS --</span></span>
+                            <a class="dash-chip" id="dashConnChip" href="network.html" data-ico="wifi"><span class="dash-chip-text" data-i18n="dashboard.chip_network_pending">Network --</span></a>
+                        </div>
+                        </div>
+                        <div class="home-vehicle-footer">
+                            <div class="home-battery">
+                                <span class="home-reading-label" data-i18n="dashboard.metric_battery">Battery</span>
+                                <div class="home-reading" id="dashSocRing" aria-live="polite">
+                                    <strong id="dashHeroSoc">--</strong>
+                                    <svg hidden aria-hidden="true" viewBox="0 0 96 96"><circle id="dashRingFill" cx="48" cy="48" r="41"/></svg>
+                                </div>
+                                <div class="dash-soc-bar" aria-hidden="true"><i id="dashSocBarFill"></i></div>
+                            </div>
+                            <div class="home-range">
+                                <span class="home-reading-label" data-i18n="dashboard.home_estimated_range">Estimated range</span>
+                                <strong class="home-reading" id="dashHeroRange">--</strong>
+                            </div>
+                        </div>
+                        <div class="home-vehicle-extra"><div class="dash-range-intel" id="dashRangeIntel" hidden aria-live="polite">
+                                <div class="dash-range-values">
+                                    <div class="dash-range-value dash-range-value--personalized">
+                                        <span data-i18n="trip.card.personalized_range">Personalized Range</span>
+                                        <strong id="dashPersonalizedRange">--</strong>
+                                    </div>
+                                    <div class="dash-range-value dash-range-value--vehicle">
+                                        <span data-i18n="dashboard.kicker_vehicle">Vehicle</span>
+                                        <strong id="dashVehicleRange">--</strong>
+                                    </div>
+                                </div>
+                                <div class="dash-range-tracks" aria-hidden="true">
+                                    <div><i id="dashPersonalizedTrack"></i></div>
+                                    <div><i id="dashVehicleTrack"></i></div>
+                                </div>
+                                <div class="dash-range-meta">
+                                    <span id="dashRangeConfidence"></span>
+                                    <span id="dashRangeSamples"></span>
+                                    <span id="dashRangeLegs"></span>
+                                </div>
+                            </div><div class="dash-glance-fuel" id="dashGlanceFuel" hidden>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 22V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M2 22h12"/><path d="M13 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/><path d="M5 8h6"/></svg>
+                                <div class="dash-fuel-bar"><i id="dashFuelBarFill"></i></div>
+                                <span id="dashGlanceFuelText">--</span>
+                            </div><div class="dash-glance-charge" id="dashGlanceCharge" hidden>
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7z"/></svg>
+                            <span id="dashGlanceChargeText">--</span>
+                        </div></div>
+                        <div class="dash-glance-rows">
+                            <div class="dash-glance-row">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                                <span data-i18n="dashboard.metric_lock">Lock</span>
+                                <strong id="glLockText">--</strong>
+                            </div>
+                            <div class="dash-glance-row">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M4.2 6l15.6 12M4.2 18 19.8 6"/></svg>
+                                <span data-i18n="dashboard.glance_climate">Climate</span>
+                                <strong id="glClimateText">--</strong>
+                            </div>
+                            <div class="dash-glance-row">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg>
+                                <span data-i18n="dashboard.glance_windows">Windows</span>
+                                <strong id="glWindowsText">--</strong>
+                            </div>
+                            <div class="dash-glance-row">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
+                                <span data-i18n="dashboard.glance_tyres">Tyres</span>
+                                <strong id="glTyresText">--</strong>
+                            </div>
+                            <div class="dash-glance-row">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
+                                <span data-i18n="dashboard.glance_sentry">Sentry</span>
+                                <strong id="glSentryText">--</strong>
+                            </div>
+                        </div>
+                        <details class="home-vehicle-details">
+                            <summary data-i18n="dashboard.home_sensor_details">Tyre and door details</summary>
+                            <div class="dash-glance-car" id="dashGlanceCar">
                             <span class="dash-car-ripple"></span><span class="dash-car-ripple r2"></span>
                             <svg class="dash-car-svg" viewBox="0 0 150 260" preserveAspectRatio="xMidYMid meet">
                                 <defs>
@@ -163,87 +234,8 @@
                                 </g>
                             </svg>
                         </div>
-                        <div class="dash-glance-side">
-                            <div class="dash-soc-ring" id="dashSocRing" role="img" aria-live="polite">
-                                <svg viewBox="0 0 96 96" aria-hidden="true">
-                                    <circle class="dash-ring-track" cx="48" cy="48" r="41"/>
-                                    <circle class="dash-ring-fill" id="dashRingFill" cx="48" cy="48" r="41"/>
-                                </svg>
-                                <div class="dash-ring-text">
-                                    <strong id="dashHeroSoc">--</strong>
-                                    <span id="dashHeroRange">--</span>
-                                </div>
-                            </div>
-                            <div class="dash-soc-bar" aria-hidden="true"><i id="dashSocBarFill"></i></div>
-                            <div class="dash-range-intel" id="dashRangeIntel" hidden aria-live="polite">
-                                <div class="dash-range-values">
-                                    <div class="dash-range-value dash-range-value--personalized">
-                                        <span data-i18n="trip.card.personalized_range">Personalized Range</span>
-                                        <strong id="dashPersonalizedRange">--</strong>
-                                    </div>
-                                    <div class="dash-range-value dash-range-value--vehicle">
-                                        <span data-i18n="dashboard.kicker_vehicle">Vehicle</span>
-                                        <strong id="dashVehicleRange">--</strong>
-                                    </div>
-                                </div>
-                                <div class="dash-range-tracks" aria-hidden="true">
-                                    <div><i id="dashPersonalizedTrack"></i></div>
-                                    <div><i id="dashVehicleTrack"></i></div>
-                                </div>
-                                <div class="dash-range-meta">
-                                    <span id="dashRangeConfidence"></span>
-                                    <span id="dashRangeSamples"></span>
-                                    <span id="dashRangeLegs"></span>
-                                </div>
-                            </div>
-                            <!-- PHEV-only fuel gauge — hidden unless /api/status
-                                 emits range.fuelPercent (the server gates that
-                                 field on nominal capacity, so BEVs never see it). -->
-                            <div class="dash-glance-fuel" id="dashGlanceFuel" hidden>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 22V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16"/><path d="M2 22h12"/><path d="M13 10h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V9l-3-3"/><path d="M5 8h6"/></svg>
-                                <div class="dash-fuel-bar"><i id="dashFuelBarFill"></i></div>
-                                <span id="dashGlanceFuelText">--</span>
-                            </div>
-                        </div>
-                        <div class="dash-hero-status">
-                            <a class="dash-chip" id="dashSurvChip" href="surveillance.html" data-ico="shield"><span class="dash-chip-text" data-i18n="dashboard.chip_surveillance_pending">Surveillance --</span></a>
-                            <a class="dash-chip alert is-live" id="dashRecChip" href="events.html" hidden><span class="dash-chip-text" data-i18n="dashboard.chip_recording">Recording</span></a>
-                            <span class="dash-chip" id="dashGpsChip" data-ico="nav"><span class="dash-chip-text" data-i18n="dashboard.chip_gps_pending">GPS --</span></span>
-                            <a class="dash-chip" id="dashConnChip" href="network.html" data-ico="wifi"><span class="dash-chip-text" data-i18n="dashboard.chip_network_pending">Network --</span></a>
-                        </div>
-                        <div class="dash-glance-rows">
-                            <div class="dash-glance-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                                <span data-i18n="dashboard.metric_lock">Lock</span>
-                                <strong id="glLockText">--</strong>
-                            </div>
-                            <div class="dash-glance-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M4.2 6l15.6 12M4.2 18 19.8 6"/></svg>
-                                <span data-i18n="dashboard.glance_climate">Climate</span>
-                                <strong id="glClimateText">--</strong>
-                            </div>
-                            <div class="dash-glance-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 12h18"/></svg>
-                                <span data-i18n="dashboard.glance_windows">Windows</span>
-                                <strong id="glWindowsText">--</strong>
-                            </div>
-                            <div class="dash-glance-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/></svg>
-                                <span data-i18n="dashboard.glance_tyres">Tyres</span>
-                                <strong id="glTyresText">--</strong>
-                            </div>
-                            <div class="dash-glance-row">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3z"/></svg>
-                                <span data-i18n="dashboard.glance_sentry">Sentry</span>
-                                <strong id="glSentryText">--</strong>
-                            </div>
-                        </div>
-                        <div class="dash-glance-charge" id="dashGlanceCharge" hidden>
-                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 11-13h-7l1-7z"/></svg>
-                            <span id="dashGlanceChargeText">--</span>
-                        </div>
+                        </details>
                     </div>
-                </section>
                 </section>
                 <section class="home-panel home-controls" id="homeControls">
                     <article class="dash-card dash-actions-card" data-card-id="commands">
@@ -256,27 +248,27 @@
                         <div class="dash-command-grid dash-command-grid-main">
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/lock')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                                <span data-i18n="dashboard.cmd_lock">Lock</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_lock">Lock</span><small data-i18n="dashboard.cmd_lock_hint">Secure all doors</small></span>
                             </button>
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/unlock')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/></svg>
-                                <span data-i18n="dashboard.cmd_unlock">Unlock</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_unlock">Unlock</span><small data-i18n="dashboard.cmd_unlock_hint">Unlock the doors</small></span>
                             </button>
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/flash')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h8l-1 8 11-13h-8l1-7z"/></svg>
-                                <span data-i18n="dashboard.cmd_flash">Flash</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_flash">Flash</span><small data-i18n="dashboard.cmd_flash_hint">Flash the lights</small></span>
                             </button>
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/find-car')">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v3l2 2"/></svg>
-                                <span data-i18n="dashboard.cmd_find">Find</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_find">Find</span><small data-i18n="dashboard.cmd_find_hint">Locate your vehicle</small></span>
                             </button>
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'open'})">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><polyline points="12 11 12 6"/><polyline points="9 8 12 5 15 8"/></svg>
-                                <span data-i18n="dashboard.cmd_trunk_open">Open trunk</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_trunk_open">Open trunk</span><small data-i18n="dashboard.cmd_trunk_open_hint">Open the boot</small></span>
                             </button>
                             <button class="dash-command" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'close'})">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2z"/><polyline points="12 9 12 14"/><polyline points="9 12 12 15 15 12"/></svg>
-                                <span data-i18n="dashboard.cmd_trunk_close">Close trunk</span>
+                                <span class="home-command-copy"><span data-i18n="dashboard.cmd_trunk_close">Close trunk</span><small data-i18n="dashboard.cmd_trunk_close_hint">Close the boot</small></span>
                             </button>
                         </div>
                         <div class="dash-pills" id="dashPills">
@@ -855,7 +847,7 @@
             min-height: 32px;
             margin-bottom: 14px;
             padding: 6px 12px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             background: var(--well);
             font-size: var(--fs-label);
             font-weight: 600;
@@ -899,7 +891,7 @@
             min-height: 32px;
             margin: 0 8px 8px 0;
             padding: 6px 12px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             background: var(--well);
             color: var(--on-surface-variant);
             font-size: var(--fs-label);
@@ -1175,7 +1167,7 @@
             flex: 1 1 auto;
             height: 6px;
             margin-right: 8px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             background: var(--well-2);
             overflow: hidden;
             min-width: 30px;
@@ -1242,7 +1234,7 @@
         .dash-range-tracks > div {
             height: 6px;
             overflow: hidden;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             background: var(--well-2);
         }
         .dash-range-tracks i {
@@ -1367,7 +1359,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
         }
 
         .dash-icon-btn svg { width: 20px; height: 20px; }
@@ -1381,7 +1373,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             font-weight: 600;
             font-size: var(--fs-body);
             line-height: 1.25;
@@ -1411,7 +1403,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             font-weight: 600;
             font-size: var(--fs-label);
         }
@@ -2495,7 +2487,7 @@
             min-height: 48px;
             margin: 0 8px 8px 0;
             padding: 6px 16px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             font-size: var(--fs-label);
         }
         [dir="rtl"] .dash-command-grid-power .dash-command,
@@ -2548,7 +2540,7 @@
             margin: 0 8px 8px 0;
             padding: 0 18px;
             border: 0;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             background: var(--secondary-container);
             color: var(--on-secondary-container);
             font: inherit;
@@ -2571,7 +2563,7 @@
             min-height: 48px;
             margin: 0 8px 8px 0;
             padding: 6px 16px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             font-size: var(--fs-label);
         }
         [dir="rtl"] .dash-pills .dash-command { margin: 0 0 8px 8px; }
@@ -2596,7 +2588,7 @@
             min-height: 48px;
             margin: 0 8px 8px 0;
             padding: 6px 16px 6px 6px;
-            border-radius: var(--radius-full);
+            border-radius: var(--radius-control);
             font-size: var(--fs-label);
         }
         [dir="rtl"] .dash-command-grid-media .dash-command { margin: 0 0 8px 8px; padding: 6px 6px 6px 16px; }
@@ -2807,6 +2799,108 @@
             .home-heading h1 { font-size: 24px; }
             .home-stats .dash-metric-grid { grid-template-columns: 1fr 1fr; row-gap: 20px; }
         }
+        /* Reference finish; retain all dashboard slots and their layout. */
+        .dash-card-head h2, .dash-card-title { font-weight: 650; }
+        .dash-command, .dash-primary-btn, .dash-chip { border-radius: var(--radius-control); box-shadow: none; }
+        .dash-command { background: var(--surface-container-high); border-color: var(--outline-variant); }
+        .dash-command svg, .dash-glance-row > svg { stroke-width: 1.75; }
+        .dash-soc-bar i, [dir="rtl"] .dash-soc-bar i { background: var(--status-success); }
+        .dash-ring-fill { stroke: var(--status-success); }
+        .dash-chip.is-live::before { animation: none; box-shadow: none; }
+        .dash-car-ripple { visibility: hidden; }
+
+        .home-vehicle .dash-glance.home-vehicle-content { display: block; padding: 0; background: none; }
+        .home-vehicle #dashSocRing > svg { display: none; }
+        .home-vehicle .dash-drive-copy > small::before { display: none; }
+        .home-vehicle .dash-drive-copy > small { margin: 0; padding: 0; }
+        /* Reference vehicle presentation: full-width artwork, clear readings and quiet status. */
+        .home-overview { align-items: start; gap: 24px; }
+        .home-details { gap: 24px; }
+        .home-vehicle-stage { padding: 26px 28px 20px; background: var(--hero); }
+        .home-vehicle-heading h2 { font-size: 28px; line-height: 1.2; font-weight: 650; }
+        .home-vehicle .dash-drive-state { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin: 12px 0 0; padding: 0; background: none; border: 0; box-shadow: none; min-height: 0; }
+        .home-vehicle .dash-drive-icon { display: none; }
+        .home-vehicle .dash-drive-copy { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .home-vehicle .dash-drive-copy strong { order: -1; font-size: 13px; font-weight: 550; color: var(--on-surface-variant); line-height: 1.4; }
+        .home-vehicle .dash-drive-copy > span { font-size: 12px; color: var(--on-surface-variant); }
+        .home-vehicle .dash-drive-copy small { display: block; font-size: 12px; line-height: 1.5; color: var(--on-surface-variant); }
+        .home-vehicle .dash-drive-state.is-pending .dash-drive-copy > span,
+        .home-vehicle .dash-drive-state.is-pending .dash-drive-readouts { display: none; }
+        .home-vehicle .dash-drive-readouts { display: flex; flex: none; gap: 14px; margin: 0; padding: 0; border: 0; }
+        .home-vehicle .dash-drive-readout { padding: 0; min-width: 42px; background: none; border: 0; }
+        .home-vehicle .dash-drive-readout strong { font-size: 18px; }
+        :root .home-vehicle .dash-drive-readout.dash-drive-gear { position: static; width: auto; height: auto; margin: 0; padding: 0; gap: 5px; align-items: flex-start; }
+        .home-vehicle .dash-drive-gear > span { position: static; width: auto; height: auto; clip: auto; overflow: visible; }
+        .home-vehicle .dash-glance-row:nth-child(n) { grid-column: auto; }
+        .home-vehicle-art { display: flex; justify-content: flex-end; align-items: center; min-height: 182px; margin-top: -10px; pointer-events: none; }
+        .home-vehicle-art img { display: block; width: 80%; max-width: 460px; height: 212px; object-fit: contain; }
+        .home-vehicle .dash-hero-status { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+        .home-vehicle .dash-chip { margin: 0; min-height: 28px; padding: 5px 9px; font-size: 11px; }
+        .home-vehicle-footer { display: grid; grid-template-columns: 1fr 1fr; padding: 22px 28px; gap: 28px; }
+        .home-range { border-inline-start: 1px solid var(--outline-variant); padding-inline-start: 28px; }
+        .home-reading-label { color: var(--on-surface-variant); font-size: 12px; }
+        .home-reading { display: block; margin-top: 6px; font-size: 29px; font-weight: 650; line-height: 1.25; }
+        .home-reading strong { font-size: inherit; font-weight: inherit; }
+        .home-reading .dash-fig-unit { font-size: 13px; font-weight: 400; color: var(--on-surface-variant); margin-inline-start: 3px; }
+        .home-battery .dash-soc-bar { display: block; height: 4px; margin-top: 12px; border-radius: 3px; background: var(--outline-variant); }
+        .home-battery .dash-soc-bar i { height: 100%; background: var(--status-success); }
+        .home-battery .soc-mid + .dash-soc-bar i { background: var(--status-warning); }
+        .home-battery .soc-low + .dash-soc-bar i { background: var(--status-danger); }
+        .home-vehicle-extra > :not([hidden]) { margin: 0 28px 18px; }
+        .home-vehicle .dash-glance-rows { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-gap: 12px; margin: 0 28px; padding: 18px 0; border-top: 1px solid var(--outline-variant); }
+        .home-vehicle .dash-glance-row { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 0; min-height: 0; border: 0; border-radius: 0; background: none; }
+        .home-vehicle .dash-glance-row > svg { width: 18px; height: 18px; margin: 0; }
+        .home-vehicle .dash-glance-row > span { font-size: 11px; }
+        .home-vehicle .dash-glance-row strong { font-size: 12px; margin: 0; }
+        .home-vehicle-details { border-top: 1px solid var(--outline-variant); margin: 0 28px; }
+        .home-vehicle-details summary { padding: 14px 0; min-height: 44px; font-size: 12px; color: var(--on-surface-variant); cursor: pointer; }
+        .home-vehicle-details summary:hover { color: var(--primary-text); }
+        .home-vehicle-details .dash-glance-car { width: 100%; max-width: 300px; height: 300px; margin: 0 auto 20px; padding: 12px; }
+        .home-vehicle-details .dash-car-svg { width: 160px; height: 276px; }
+        .home-vehicle-details .dash-car-glow, .home-vehicle-details .dash-car-ripple { display: none; }
+        .home-controls > .dash-actions-card { padding: 26px; }
+        .home-controls .dash-card-head { margin-bottom: 22px; }
+        .home-controls .dash-card-head h2 { font-size: 17px; font-weight: 650; }
+        .home-controls .dash-card-kicker { display: none; }
+        .home-controls .dash-command-grid.dash-command-grid-main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: none; grid-gap: 12px; }
+        .home-controls .dash-command-grid-main > .dash-command:nth-child(n) { grid-area: auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; min-height: 108px; gap: 12px; padding: 16px; margin: 0; background: var(--surface-container-high); border: 1px solid var(--outline-variant); border-radius: 12px; color: var(--on-surface); }
+        .home-controls .dash-command-grid-main > .dash-command:first-child { background: var(--primary-container); border-color: var(--primary-container); }
+        .home-controls .dash-command-grid-main > .dash-command:nth-child(n) svg { width: 21px; height: 21px; padding: 0; margin: 0; border-radius: 0; background: none; color: var(--on-surface-variant); stroke-width: 1.75; }
+        .home-controls .dash-command-grid-main > .dash-command:first-child svg { color: var(--primary-text); }
+        .home-controls .dash-command-grid-main > .dash-command:nth-child(n) span { font-size: 13px; line-height: 1.4; font-weight: 550; }
+        .home-command-copy { display: flex; flex-direction: column; gap: 4px; }
+        .home-command-copy small { font-size: 11px; line-height: 1.4; font-weight: 400; color: var(--on-surface-variant); }
+        .home-controls .dash-command-grid-main > .dash-command:hover { border-color: var(--primary); background: var(--primary-container); }
+        .home-controls .dash-command-grid-main > .dash-command:focus { outline-offset: 3px; }
+        .home-controls .dash-pills { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--outline-variant); }
+        .home-controls .dash-pills .dash-command { background: none; border: 1px solid var(--outline-variant); }
+        .home-controls .dash-pills .dash-command svg { background: none; }
+        .home-stats { margin: 28px 0; padding: 8px 0; }
+        .home-stats .dash-metric { min-height: 92px; }
+        .home-details .dash-card { padding: 26px; }
+        .home-details .dash-card-head { margin-bottom: 20px; }
+        @media (min-width: 1151px) { .dashboard-page-body { padding-inline: 32px; } }
+        @media (max-width: 540px) {
+            .home-overview, .home-details { gap: 20px; }
+            .home-vehicle-stage { padding: 22px 20px 18px; }
+            .home-vehicle-heading h2 { font-size: 25px; }
+            .home-vehicle-art { margin-top: 4px; min-height: 160px; }
+            .home-vehicle-art img { width: 100%; height: 174px; }
+            .home-vehicle-footer { padding: 20px; gap: 18px; }
+            .home-range { padding-inline-start: 18px; }
+            .home-reading { font-size: 25px; }
+            .home-vehicle .dash-glance-rows { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-gap: 18px; margin-inline: 20px; }
+            .home-vehicle-details { margin-inline: 20px; }
+            .home-controls > .dash-actions-card, .home-details .dash-card { padding: 22px 20px; }
+            .home-controls .dash-command-grid-main > .dash-command:nth-child(n) { padding: 14px; }
+            .home-vehicle .dash-drive-readouts { gap: 8px; }
+        }
+        .home-controls .dash-pills.is-collapsed { max-height: 65px; padding-right: 80px; }
+        [dir="rtl"] .home-controls .dash-pills.is-collapsed { padding-right: 0; padding-left: 80px; }
+        .home-controls .dash-pills.is-collapsed .dash-pills-more { top: 16px; padding-inline: 12px; }
+        .home-controls .dash-pills .dash-command { flex: 0 0 auto; padding-inline: 10px; }
+        :root .home-controls .dash-command-grid-main > .dash-command:nth-child(n) svg { background: none; }
+        .home-stats #dashInfoGrid > .dash-metric:nth-child(-n+2) { display: none; }
     </style>
 
     <script src="../shared/auth.js"></script>

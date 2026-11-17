@@ -30,10 +30,10 @@
     <dimen name="card_gap_horizontal_half">6dp</dimen>   <!-- per-side margin in horizontal grids -->
 
     <!-- Card radii -->
-    <dimen name="card_radius_standard">8dp</dimen>      <!-- Operational cards and grouped surfaces -->
-    <dimen name="card_radius_hero">8dp</dimen>          <!-- Large content surfaces remain restrained -->
-    <dimen name="card_radius_dialog">8dp</dimen>        <!-- Matches the cards and the rail pill -->
-    <dimen name="card_radius_accent">8dp</dimen>        <!-- buttons and segmented controls -->
+    <dimen name="card_radius_standard">16dp</dimen>      <!-- Operational cards and grouped surfaces -->
+    <dimen name="card_radius_hero">16dp</dimen>          <!-- Reference panel corners -->
+    <dimen name="card_radius_dialog">14dp</dimen>        <!-- Reference dialog corners -->
+    <dimen name="card_radius_accent">7dp</dimen>        <!-- buttons and segmented controls -->
 
     <!-- Horizontal inset on each dialog action button. The alert dialog's
          button bar spacing is fixed, so the gap between filled actions comes
@@ -61,7 +61,7 @@
          content inside it. -->
     <dimen name="rail_item_pill_inset_horizontal">12dp</dimen>
     <dimen name="rail_item_pill_inset_vertical">4dp</dimen>
-    <dimen name="rail_item_pill_radius">8dp</dimen>
+    <dimen name="rail_item_pill_radius">7dp</dimen>
     <dimen name="rail_item_pill_content_inset">16dp</dimen>   <!-- M3 navigation-drawer item spec -->
 
     <!-- Category header label inset. Equals the plate's horizontal inset plus

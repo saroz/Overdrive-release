@@ -43,7 +43,7 @@
             android:id="@+id/navigationRailContainer"
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:background="?attr/colorSurfaceContainerLow"
+            android:background="?attr/colorSurfaceContainer"
             android:orientation="vertical">
 
             <!-- Wordmark. Auto-sizes so it reads at both rail widths;

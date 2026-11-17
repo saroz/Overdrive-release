@@ -81,7 +81,7 @@ class DashboardLayoutContractTest {
         val insightsIndex = onResume.indexOf("rebuildInsightsAsync()")
 
         assertTrue(resources.contains(
-            "<dimen name=\"dashboard_modern_radius\">8dp</dimen>"
+            "<dimen name=\"dashboard_modern_radius\">16dp</dimen>"
         ))
         assertTrue(statusIndex >= 0)
         assertTrue(metricsIndex >= 0)

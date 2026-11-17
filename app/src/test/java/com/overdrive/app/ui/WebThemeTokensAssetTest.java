@@ -53,7 +53,7 @@ public class WebThemeTokensAssetTest {
     @Test
     public void interIsBundledAndLocal() throws IOException {
         String tokens = read(TOKENS);
-        assertTrue(tokens.contains("--family-sans: 'Inter', system-ui"));
+        assertTrue(tokens.contains("--family-sans: 'Segoe UI Variable', 'Segoe UI', 'Inter', system-ui"));
         assertTrue(tokens.contains("src: url(\"fonts/InterVariable.woff2\") format(\"woff2\")"));
         assertTrue(Files.isRegularFile(locate("app/src/main/assets/web/shared/fonts/InterVariable.woff2")));
         assertTrue(Files.isRegularFile(locate("app/src/main/assets/web/shared/fonts/OFL.txt")));

@@ -108,6 +108,8 @@
         <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
         <item name="cardCornerRadius">@dimen/card_radius_standard</item>
         <item name="cardElevation">0dp</item>
+        <item name="strokeColor">?attr/colorOutlineVariant</item>
+        <item name="strokeWidth">1dp</item>
     </style>
 
     <style name="Widget.Overdrive.M3.CardView.Outlined" parent="Widget.Material3.CardView.Outlined">
@@ -116,7 +118,7 @@
         <item name="strokeWidth">1dp</item>
     </style>
 
-    <!-- Buttons share the 8dp component radius and a 48dp touch target. -->
+    <!-- Buttons share the 7dp component radius and a 48dp touch target. -->
     <style name="Widget.Overdrive.M3.Button" parent="Widget.Material3.Button">
         <item name="cornerRadius">@dimen/card_radius_accent</item>
         <item name="android:minHeight">48dp</item>

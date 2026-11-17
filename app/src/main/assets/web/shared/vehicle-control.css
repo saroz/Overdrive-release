@@ -64,7 +64,7 @@
     -webkit-align-items: center; align-items: center;
     -webkit-justify-content: center; justify-content: center;
     width: 48px; height: 48px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: none;
     background: var(--vc-pill-bg);
     box-shadow: var(--tile-shadow);
@@ -123,7 +123,7 @@
     height: 48px;
     background: var(--vc-pill-bg); border: 1px solid transparent;
     box-shadow: var(--tile-shadow);
-    border-radius: var(--radius-full); padding: 0 16px; font-size: var(--fs-label); font-weight: 600; color: var(--vc-text-primary);
+    border-radius: var(--radius-control); padding: 0 16px; font-size: var(--fs-label); font-weight: 600; color: var(--vc-text-primary);
     white-space: nowrap; -webkit-flex-shrink: 0; flex-shrink: 0;
 }
 .vc-pill .dot { width: 8px; height: 8px; border-radius: 50%; }
@@ -143,7 +143,7 @@
     height: 48px;
     background: var(--vc-pill-bg); border: 1px solid transparent;
     box-shadow: var(--tile-shadow);
-    border-radius: var(--radius-full); padding: 0 10px;
+    border-radius: var(--radius-control); padding: 0 10px;
 }
 .vc-swatch {
     width: 32px; height: 32px;
@@ -185,7 +185,7 @@
     height: 48px;
     max-width: 160px;
     padding: 0 14px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 1px solid transparent;
     background: var(--vc-pill-bg);
     box-shadow: var(--tile-shadow);
@@ -263,7 +263,7 @@
     margin-top: 14px;
     min-height: 48px;
     padding: 8px 22px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: none;
     background: var(--primary);
     color: var(--on-primary);
@@ -293,7 +293,7 @@
     padding: 0 14px;
     -webkit-flex-shrink: 0; flex-shrink: 0;
     -webkit-flex-grow: 0; flex-grow: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 1px solid transparent;
     background: var(--vc-pill-bg);
     box-shadow: var(--tile-shadow);
@@ -454,7 +454,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
 .vc-tyre-cell[data-state="muted"]   .vc-tyre-state   { color: var(--vc-text-muted); }
 
 /* First-load placeholders for the status pills and the tyre corners. */
-.vc-sk-pill { border-radius: var(--radius-full); }
+.vc-sk-pill { border-radius: var(--radius-control); }
 .vc-sk-tyre-fill { border-radius: var(--radius-md); }
 
 /* Hidden only under Surround view; tyre data is independent of the GLB, so
@@ -613,7 +613,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     display: -webkit-flex; display: flex;
     -webkit-align-items: center; align-items: center;
     padding: 2px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--vc-chip-bg);
 }
 .vc-window-row-wide .vc-window-presets { display: -webkit-inline-flex; display: inline-flex; }
@@ -627,7 +627,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     -webkit-justify-content: center; justify-content: center;
     min-width: 44px; min-height: 44px;
     padding: 0 6px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 1px solid transparent;
     background: transparent;
     color: var(--vc-text-soft);
@@ -708,7 +708,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     width: 20px; height: 20px;
     padding: 6px 18px;
     margin-bottom: 2px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     -webkit-flex-shrink: 0; flex-shrink: 0;
     transition: background-color var(--duration-med) var(--easing-standard), color var(--duration-med) var(--easing-standard);
 }
@@ -878,7 +878,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     -webkit-justify-content: center; justify-content: center;
     width: 48px; height: 48px;
     min-width: 48px; min-height: 48px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 0;
     background: var(--vc-tile-bg);
     color: var(--vc-text-primary); cursor: pointer;
@@ -936,7 +936,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     width: 44px; height: 24px;
     padding: 10px 0;
     margin-top: -10px; margin-bottom: -10px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 0;
     -webkit-background-clip: content-box;
     background-clip: content-box;
@@ -977,7 +977,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     height: 44px;
     padding: 12px 0;
     margin: -12px 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--vc-chip-bg);
     -webkit-background-clip: content-box;
     background-clip: content-box;
@@ -1128,7 +1128,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     height: 48px;
     padding: 0;
     border: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--vc-tile-bg);
 }
 .vc-stepper > .vc-readout { height: auto; }
@@ -1138,7 +1138,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     margin: 0;
     border: none;
     background: transparent;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
 }
 
 .vc-block-head .vc-readout {
@@ -1156,7 +1156,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     min-width: 64px; min-height: 44px;
     margin-left: 8px;
     padding: 0 16px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 1px solid transparent;
     background: var(--vc-chip-bg);
     color: var(--vc-text-primary);
@@ -1175,7 +1175,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     -webkit-box-sizing: border-box; box-sizing: border-box;
     height: 48px;
     padding: 0 20px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: 1px solid transparent;
     background: var(--vc-chip-bg);
     color: var(--vc-text-primary);
@@ -1310,7 +1310,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     min-height: 48px;
     background: var(--vc-tile-bg);
     border: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     padding: 2px;
 }
 .vc-seg {
@@ -1319,7 +1319,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     -webkit-justify-content: center; justify-content: center;
     min-height: 44px;
     padding: 0 14px;
-    border: none; border-radius: var(--radius-full);
+    border: none; border-radius: var(--radius-control);
     background: transparent;
     color: var(--vc-text-secondary);
     font-size: var(--fs-label); font-weight: 600;
@@ -1401,7 +1401,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     max-width: none;
     height: 48px;
     margin: 0;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
 }
 .vc-climate-actions > * + * { margin-left: 6px; }
 [dir="rtl"] .vc-climate-actions > * + * { margin-left: 0; margin-right: 6px; }
@@ -1425,7 +1425,7 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     min-height: 44px; min-width: 48px;
     padding: 0 12px;
     border: 1px solid transparent;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     background: var(--vc-tile-bg);
     color: var(--vc-text-primary);
     font-size: var(--fs-label); font-weight: 600;
@@ -1782,7 +1782,7 @@ button.vc-pill:active { -webkit-transform: scale(.95); transform: scale(.95); }
     -webkit-justify-content: center; justify-content: center;
     padding: 0 22px;
     min-height: 48px;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-control);
     border: none;
     background: var(--well-2);
     color: var(--vc-text-primary);

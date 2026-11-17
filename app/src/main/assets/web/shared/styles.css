@@ -13,48 +13,48 @@
 @import url("app-collapse.css");
 
 :root {
-    --brand-gradient: linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%);
+    --brand-gradient: var(--primary);
     --bg-glass: var(--surface-container);
 
     /* Chart palette — accents used by data visualizations / legends.
        Mid-luminance hues that read OK on either theme; the light-theme
        overlay below tweaks them for AA contrast on light surfaces. */
-    --chart-line-1: var(--primary); /* original brand teal kept as data-viz accent */
-    --chart-line-2: #0EA5E9;
-    --chart-warning: #fbbf24;
-    --chart-soh: #a855f7;
-    --chart-batt-1: #2dd4bf;
-    --chart-batt-2: #06b6d4;
-    --chart-batt-3: #3b82f6;
+    --chart-line-1: var(--primary); /* Reference accent */
+    --chart-line-2: var(--chart-2);
+    --chart-warning: var(--status-warning);
+    --chart-soh: var(--status-success);
+    --chart-batt-1: var(--primary);
+    --chart-batt-2: var(--chart-2);
+    --chart-batt-3: var(--chart-3);
 
     /* Chart canvas labels — read by performance.js via getComputedStyle. */
-    --chart-text: rgba(255, 255, 255, 0.55);
-    --chart-text-strong: #FFFFFF;
-    --chart-grid: rgba(255, 255, 255, 0.06);
-    --chart-crosshair: rgba(255, 255, 255, 0.3);
-    --chart-tooltip-bg: rgba(20, 20, 30, 0.95);
-    --chart-tooltip-border: rgba(255, 255, 255, 0.1);
-    --chart-tooltip-text: #FFFFFF;
+    --chart-text: var(--on-surface-variant);
+    --chart-text-strong: var(--on-surface);
+    --chart-grid: var(--outline-variant);
+    --chart-crosshair: var(--outline);
+    --chart-tooltip-bg: var(--surface-container);
+    --chart-tooltip-border: var(--outline-variant);
+    --chart-tooltip-text: var(--on-surface);
 
     /* Borders & glow */
-    --border-subtle: rgba(255, 255, 255, 0.06);
-    --border-default: rgba(255, 255, 255, 0.1);
+    --border-subtle: var(--outline-variant);
+    --border-default: var(--outline-variant);
     /* Backward-compatible names still used by a few page-local styles. */
     --border-color: var(--border-default);
     --card-border: var(--border-subtle);
     --bg-secondary: var(--bg-elevated);
     --accent: var(--brand-primary);
     --accent-hover: var(--primary);
-    --shadow-glow: 0 0 20px rgba(0, 212, 170, 0.15);
+    --shadow-glow: none;
 
     /* Translucent overlay surfaces (toasts, modals, cards over maps). */
-    --panel-overlay-bg: rgba(10, 10, 15, 0.96);
-    --panel-overlay-bg-strong: rgba(15, 15, 20, 0.95);
-    --panel-overlay-bg-soft: rgba(0, 0, 0, 0.4);
-    --panel-overlay-bg-faint: rgba(0, 0, 0, 0.2);
-    --panel-overlay-bg-deep: rgba(0, 0, 0, 0.6);
+    --panel-overlay-bg: var(--surface-container);
+    --panel-overlay-bg-strong: var(--surface-container);
+    --panel-overlay-bg-soft: var(--surface-container-high);
+    --panel-overlay-bg-faint: var(--surface-container-high);
+    --panel-overlay-bg-deep: var(--surface-container-highest);
     --modal-backdrop: rgba(0, 0, 0, 0.75);
-    --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.5);
+    --shadow-overlay: var(--shadow-lg);
 
     /* Layout */
     --sidebar-width: 260px;
@@ -71,33 +71,33 @@
 :root[data-theme="light"] {
     --bg-glass: var(--surface-container);
 
-    --chart-line-1: #007A62;
-    --chart-line-2: #00658F;
-    --chart-warning: #B45309;
-    --chart-soh: #7C3AED;
-    --chart-batt-1: #0F766E;
-    --chart-batt-2: #0369A1;
-    --chart-batt-3: #1D4ED8;
+    --chart-line-1: var(--primary);
+    --chart-line-2: var(--chart-2);
+    --chart-warning: var(--status-warning);
+    --chart-soh: var(--status-success);
+    --chart-batt-1: var(--primary);
+    --chart-batt-2: var(--chart-2);
+    --chart-batt-3: var(--chart-3);
 
-    --chart-text: rgba(24, 28, 26, 0.70);
-    --chart-text-strong: #181C1A;
-    --chart-grid: rgba(24, 28, 26, 0.10);
-    --chart-crosshair: rgba(24, 28, 26, 0.40);
-    --chart-tooltip-bg: rgba(247, 250, 247, 0.97);
-    --chart-tooltip-border: rgba(24, 28, 26, 0.15);
-    --chart-tooltip-text: #181C1A;
+    --chart-text: var(--on-surface-variant);
+    --chart-text-strong: var(--on-surface);
+    --chart-grid: var(--outline-variant);
+    --chart-crosshair: var(--outline);
+    --chart-tooltip-bg: var(--surface-container);
+    --chart-tooltip-border: var(--outline-variant);
+    --chart-tooltip-text: var(--on-surface);
 
-    --border-subtle: rgba(0, 0, 0, 0.06);
-    --border-default: rgba(0, 0, 0, 0.10);
-    --shadow-glow: 0 0 20px rgba(0, 135, 108, 0.16);
+    --border-subtle: var(--outline-variant);
+    --border-default: var(--outline-variant);
+    --shadow-glow: none;
 
-    --panel-overlay-bg: rgba(247, 250, 247, 0.96);
-    --panel-overlay-bg-strong: rgba(247, 250, 247, 0.92);
-    --panel-overlay-bg-soft: rgba(24, 28, 26, 0.10);
-    --panel-overlay-bg-faint: rgba(24, 28, 26, 0.05);
-    --panel-overlay-bg-deep: rgba(24, 28, 26, 0.18);
+    --panel-overlay-bg: var(--surface-container);
+    --panel-overlay-bg-strong: var(--surface-container);
+    --panel-overlay-bg-soft: var(--surface-container-high);
+    --panel-overlay-bg-faint: var(--surface-container-high);
+    --panel-overlay-bg-deep: var(--surface-container-highest);
     --modal-backdrop: rgba(24, 28, 26, 0.45);
-    --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.14);
+    --shadow-overlay: var(--shadow-lg);
 }
 
 /* No prefers-color-scheme fallback — pages default to DARK in Chrome / any
@@ -113,6 +113,7 @@
 html { font-size: 16px; -webkit-text-size-adjust: 100%; }
 body {
     font-family: var(--family-sans);
+    font-variant-numeric: tabular-nums;
     background: var(--bg-base);
     color: var(--text-primary);
     line-height: 1.5;
@@ -3117,7 +3118,7 @@ select.md-input ~ .md-label {
     outline: none;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300D4AA' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23667180' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 12px center;
     transition: all 0.2s ease;

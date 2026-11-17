@@ -1,27 +1,4 @@
-/*
- * Overdrive — App-shell visual identity layer.
- *
- * The base sidebar / nav-link / status-card rules live in styles.css and are
- * already applied to the dynamically-rendered <aside class="sidebar"> emitted
- * by app-shell.js. This file adds:
- *
- *   1. The Overdrive accent stripe — a 3px linear gradient that runs across
- *      the top of every page's sidebar, mirroring the toolbar accent stripe
- *      on the native side. Same gradient on both layers = same identity.
- *   2. A glass-style top app bar styling for pages that mount one
- *      (currently optional; pages opt in by adding <header class="app-bar">).
- *   3. M3 Expressive active-link affordance: a 3px leading inset stripe in
- *      colorPrimary on the active sidebar link. Replaces the previous
- *      "background: rgba(0, 212, 170, 0.1)" tint that read off-brand under
- *      light theme.
- *   4. A no-flash bootstrap rule (html.shell-ready -> visibility:visible)
- *      paired with app-shell.js's mount() event. Pages that opt in by adding
- *      `<style>html{visibility:hidden}</style>` to <head> will hide content
- *      until the shell mounts; we toggle .shell-ready on <html> after mount.
- *
- *  Tokens come from design-tokens.css (imported by styles.css), so this file
- *  is theme-agnostic and contains no raw hex values.
- */
+/* Shared browser shell; visual tokens follow the YourDrive reference. */
 
 /* === BRAND CLUSTER — clickable home affordance ====================
  * The header brand reads as "go home" (Dashboard). Hover lifts it onto a
@@ -160,18 +137,7 @@ body.dashboard-page .sidebar .brand-link:hover {
     border-bottom: 1px solid var(--outline-variant);
 }
 
-.app-bar::after {
-    /* The same 3px accent stripe under the app bar, so a page that mounts
-       its own app bar still carries the brand identity. */
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -3px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary) 0%, var(--tertiary) 100%);
-    pointer-events: none;
-}
+.app-bar::after { display: none; }
 
 .app-bar-title {
     font-size: 22px;
@@ -663,3 +629,15 @@ body[data-app-shell="1"] .sidebar .fuel-card {
 @media (min-width: 769px) {
     body[data-app-shell="1"] #bydThemePicker { display: none !important; }
 }
+
+/* Flat reference treatment for retained shell widgets. */
+body[data-app-shell="1"] .sidebar-nav .nav-link.active:hover { background: var(--primary-container); color: var(--primary-text); }
+body[data-app-shell="1"] .sidebar .brand-name { color: var(--on-surface); font-weight: 750; }
+body[data-app-shell="1"] .sidebar .brand-logo { background: var(--on-surface); color: var(--surface-container); }
+.sidebar .nav-icon { stroke-width: 1.75; }
+.ev-battery-body-overlay { background: var(--outline-variant); box-shadow: none; }
+:root[data-theme="light"] .ev-battery-body-overlay { background: var(--outline-variant); box-shadow: none; }
+.ev-battery-body-fill { background: var(--status-success); box-shadow: none; }
+.ev-battery-body-overlay[data-soc-state="warning"] .ev-battery-body-fill { background: var(--status-warning); box-shadow: none; }
+.ev-battery-body-overlay[data-soc-state="critical"] .ev-battery-body-fill { background: var(--status-danger); box-shadow: none; }
+.ev-battery-body-charge { background: var(--status-success); box-shadow: none; }

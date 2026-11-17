@@ -2,7 +2,7 @@
 <resources>
     <dimen name="dashboard_modern_gap">12dp</dimen>
     <dimen name="dashboard_modern_card_padding">16dp</dimen>
-    <dimen name="dashboard_modern_radius">8dp</dimen>
+    <dimen name="dashboard_modern_radius">16dp</dimen>
     <dimen name="dashboard_modern_touch_target">48dp</dimen>
     <dimen name="dashboard_modern_action_min_height">72dp</dimen>
     <dimen name="dashboard_modern_metric_gap">12dp</dimen>
@@ -30,9 +30,8 @@
          card. Any value under the card's ~216dp content height works. -->
     <dimen name="dashboard_hero_backdrop_measure_cap">40dp</dimen>
 
-    <!-- Ribbon opacity. Dark line work has to sit well back on the light
-         surface; values-night runs it at full strength. -->
-    <item name="dashboard_hero_ribbon_alpha" format="float" type="dimen">0.3</item>
+    <!-- Retain the artwork slot without decorative ribbon paint. -->
+    <item name="dashboard_hero_ribbon_alpha" format="float" type="dimen">0</item>
 
     <string name="dashboard_modern_vehicle_status">Vehicle status</string>
     <string name="dashboard_modern_updating">Updating vehicle status</string>

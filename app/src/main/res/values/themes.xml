@@ -8,7 +8,7 @@
 
     <!-- Shape Appearances — referenced by Widget.Overdrive.M3.* in themes_overdrive.xml. -->
     <style name="ShapeAppearance.Overdrive.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
-        <item name="cornerSize">8dp</item>
+        <item name="cornerSize">7dp</item>
     </style>
 
     <style name="ShapeAppearance.Overdrive.LargeComponent" parent="ShapeAppearance.Material3.LargeComponent">

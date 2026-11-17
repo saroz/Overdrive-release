@@ -39,7 +39,7 @@ public class DesignSystemAssetTest {
     @Test
     public void lightPrimaryMeetsNormalTextContrast() throws IOException {
         String colors = readRepositoryFile("app/src/main/res/values/colors_m3.xml");
-        String primary = colorValue(colors, "md_sys_color_primary_light");
+        String primary = colorValue(colors, "theme_primary_text");
         String background = colorValue(colors, "md_sys_color_background_light");
 
         assertTrue("light primary contrast must be at least 4.5:1",
@@ -54,10 +54,10 @@ public class DesignSystemAssetTest {
                 readRepositoryFile("app/src/main/res/values/themes_overdrive.xml");
 
         assertTrue(dimensions.contains(
-                "<dimen name=\"card_radius_standard\">8dp</dimen>"));
-        assertTrue(dimensions.contains("<dimen name=\"card_radius_hero\">8dp</dimen>"));
+                "<dimen name=\"card_radius_standard\">16dp</dimen>"));
+        assertTrue(dimensions.contains("<dimen name=\"card_radius_hero\">16dp</dimen>"));
         assertTrue(dimensions.contains(
-                "<dimen name=\"card_radius_accent\">8dp</dimen>"));
+                "<dimen name=\"card_radius_accent\">7dp</dimen>"));
         assertFalse(typography.contains("android:letterSpacing\">-"));
         assertTrue(typography.contains("<item name=\"android:minHeight\">48dp</item>"));
     }
@@ -89,7 +89,7 @@ public class DesignSystemAssetTest {
         String styles = readRepositoryFile("app/src/main/assets/web/shared/styles.css");
         String tabs = readRepositoryFile("app/src/main/assets/web/shared/app-tabs.css");
         String themePicker = readRepositoryFile("app/src/main/assets/web/shared/theme.js");
-        assertTrue(tokens.contains("--family-sans: 'Inter', system-ui"));
+        assertTrue(tokens.contains("--family-sans: 'Segoe UI Variable', 'Segoe UI', 'Inter', system-ui"));
         assertTrue(styles.contains("button:focus,"));
         assertTrue(styles.contains("min-height: 48px"));
         assertTrue(tabs.contains("height: 48px"));
