@@ -313,7 +313,7 @@ BYD.recording = {
                     if (sdRefresh !== this.config.segmentDurationMinutes) {
                         this.config.segmentDurationMinutes = sdRefresh;
                         if (this.savedConfig) this.savedConfig.segmentDurationMinutes = sdRefresh;
-                        document.querySelectorAll('#clipDurationBtns .btn-toggle').forEach(function (btn) {
+                        document.querySelectorAll('#clipDurationBtns .ui-segment').forEach(function (btn) {
                             btn.classList.toggle('active', btn.dataset.value === String(sdRefresh));
                         });
                     }
@@ -725,7 +725,7 @@ BYD.recording = {
     
     updateStorageTypeUI() {
         // Update storage type buttons
-        document.querySelectorAll('#recStorageTypeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#recStorageTypeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.recordingsStorageType));
 
         // Storage fallback banner: configured an external volume but it's
@@ -778,7 +778,7 @@ BYD.recording = {
             const textEl = document.getElementById('recSdStatusText');
             const spaceEl = document.getElementById('recSdSpaceInfo');
             if (this.storageInfo.sdCardAvailable) {
-                if (dotEl) dotEl.className = 'sd-status-dot online';
+                if (dotEl) dotEl.className = 'ui-dot online';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.sd_card_available');
                 if (spaceEl) {
                     spaceEl.style.display = 'block';
@@ -786,7 +786,7 @@ BYD.recording = {
                     document.getElementById('recSdTotal').textContent = BYD.i18n.t('recording.size_total', {size: this.formatSize(this.storageInfo.sdCardTotalSpace)});
                 }
             } else {
-                if (dotEl) dotEl.className = 'sd-status-dot offline';
+                if (dotEl) dotEl.className = 'ui-dot offline';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.sd_card_not_detected');
                 if (spaceEl) spaceEl.style.display = 'none';
             }
@@ -800,7 +800,7 @@ BYD.recording = {
             const textEl = document.getElementById('recUsbStatusText');
             const spaceEl = document.getElementById('recUsbSpaceInfo');
             if (this.storageInfo.usbAvailable) {
-                if (dotEl) dotEl.className = 'sd-status-dot online';
+                if (dotEl) dotEl.className = 'ui-dot online';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.usb_available');
                 if (spaceEl) {
                     spaceEl.style.display = 'block';
@@ -808,7 +808,7 @@ BYD.recording = {
                     document.getElementById('recUsbTotal').textContent = BYD.i18n.t('recording.size_total', {size: this.formatSize(this.storageInfo.usbTotalSpace)});
                 }
             } else {
-                if (dotEl) dotEl.className = 'sd-status-dot offline';
+                if (dotEl) dotEl.className = 'ui-dot offline';
                 if (textEl) textEl.textContent = BYD.i18n.t('recording.usb_not_detected');
                 if (spaceEl) spaceEl.style.display = 'none';
             }
@@ -840,7 +840,7 @@ BYD.recording = {
         }
 
         this.config.recordingsStorageType = type;
-        document.querySelectorAll('#recStorageTypeBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#recStorageTypeBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === type));
 
         // Re-clamp slider value to the new volume's effective max so we don't
@@ -947,7 +947,7 @@ BYD.recording = {
         const badge = document.getElementById('cdrCleanupBadge');
         if (badge) {
             badge.textContent = this.cdrConfig.enabled ? BYD.i18n.t('status.on') : BYD.i18n.t('status.off');
-            badge.className = 'status-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
         }
         
         // Update sliders
@@ -1354,22 +1354,22 @@ BYD.recording = {
             ? [BYD.i18n.t('recording.select_mode_desc')]
             : [
                 label('input[name="recordingMode"][value="' + c.recordingMode + '"] + .mode-card .mode-name'),
-                label('#recQualityBtns .btn-toggle[data-value="' + c.recordingQuality + '"]'),
-                label('#codecBtns .btn-toggle[data-value="' + c.recordingCodec + '"]'),
-                label('#clipDurationBtns .btn-toggle[data-value="' + c.segmentDurationMinutes + '"]')
+                label('#recQualityBtns .ui-segment[data-value="' + c.recordingQuality + '"]'),
+                label('#codecBtns .ui-segment[data-value="' + c.recordingCodec + '"]'),
+                label('#clipDurationBtns .ui-segment[data-value="' + c.segmentDurationMinutes + '"]')
             ];
         sub.textContent = parts.filter(Boolean).join(' · ');
     },
 
     updateUI() {
         // Single recording quality tier (replaces parallel recordingQuality + recordingBitrate).
-        document.querySelectorAll('#recQualityBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#recQualityBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.recordingQuality));
-        document.querySelectorAll('#codecBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#codecBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === this.config.recordingCodec));
-        document.querySelectorAll('#fpsBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#fpsBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(this.config.cameraFps)));
-        document.querySelectorAll('#clipDurationBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#clipDurationBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(this.config.segmentDurationMinutes)));
 
         // Tier metadata (Mbps, GB/hr, qualityEquivalent) comes from the
@@ -1505,7 +1505,7 @@ BYD.recording = {
 
     setRecordingQuality(tier) {
         this.config.recordingQuality = tier;
-        document.querySelectorAll('#recQualityBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#recQualityBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === tier));
         this.renderActiveEstimate();
         this.markChanged();
@@ -1513,7 +1513,7 @@ BYD.recording = {
 
     setCodec(codec) {
         this.config.recordingCodec = codec;
-        document.querySelectorAll('#codecBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#codecBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === codec));
         // Codec changes the bitrate→quality math; refresh tier subtitles +
         // active estimate so the UI labels track the new codec.
@@ -1523,7 +1523,7 @@ BYD.recording = {
 
     setFps(fps) {
         this.config.cameraFps = parseInt(fps, 10);
-        document.querySelectorAll('#fpsBtns .btn-toggle').forEach(btn =>
+        document.querySelectorAll('#fpsBtns .ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === String(fps)));
         // FPS shifts the qualityEquivalent labels (bits-per-pixel-frame).
         // Re-render the per-tier subtitle locally so the user sees the
@@ -1539,7 +1539,7 @@ BYD.recording = {
         var m = parseInt(minutes, 10);
         if (m !== 2 && m !== 5 && m !== 10) m = 2;
         this.config.segmentDurationMinutes = m;
-        document.querySelectorAll('#clipDurationBtns .btn-toggle').forEach(function (btn) {
+        document.querySelectorAll('#clipDurationBtns .ui-segment').forEach(function (btn) {
             btn.classList.toggle('active', btn.dataset.value === String(m));
         });
         this.markChanged();
@@ -1661,7 +1661,7 @@ BYD.recording = {
             ? JSON.parse(JSON.stringify(this.savedConfig)) : null;
         if (btn) {
             btn.disabled = true;
-            btn.innerHTML = '<span class="r-btn-spinner" aria-hidden="true"></span>' + (BYD.i18n.t('common.saving') || 'Saving…');
+            btn.innerHTML = '<span class="ui-spinner" aria-hidden="true"></span>' + (BYD.i18n.t('common.saving') || 'Saving…');
         }
         try {
             const activeTab = this._activeTabId();
@@ -1973,7 +1973,7 @@ BYD.recording = {
     },
 
     // Build the chip grid for a flow from the cached catalog + selection.
-    // Reuses the .checkbox-item chip look (hidden input + .active state).
+    // Reuses the .ui-check chip look (hidden input + .active state).
     renderTelemetryFields(flow, gridId) {
         const grid = document.getElementById(gridId);
         if (!grid || !this._telemetryCatalog) return;
@@ -1984,7 +1984,7 @@ BYD.recording = {
         this._telemetryCatalog.forEach(f => {
             const id = 'telField_' + flow + '_' + f.key;
             const label = document.createElement('label');
-            label.className = 'checkbox-item' + (selected.has(f.key) ? ' active' : '');
+            label.className = 'ui-check' + (selected.has(f.key) ? ' active' : '');
             const cb = document.createElement('input');
             cb.type = 'checkbox';
             cb.id = id;
@@ -2294,8 +2294,8 @@ BYD.recording = {
                 ? BYD.i18n.t('oem_dashcam.native_dvr_enable')
                 : 'Re-enable native DVR';
             // Re-enable is a benign action — keep the primary visual treatment.
-            btn.classList.remove('btn-danger');
-            btn.classList.add('btn-primary');
+            btn.classList.remove('ui-button-danger');
+            btn.classList.add('ui-button-primary');
             btn.dataset.action = 'enable';
         } else {
             // 'enabled' (default)
@@ -2307,8 +2307,8 @@ BYD.recording = {
             btn.textContent = (BYD.i18n && BYD.i18n.t)
                 ? BYD.i18n.t('oem_dashcam.native_dvr_disable')
                 : 'Disable native DVR';
-            btn.classList.remove('btn-primary');
-            btn.classList.add('btn-danger');
+            btn.classList.remove('ui-button-primary');
+            btn.classList.add('ui-button-danger');
             btn.dataset.action = 'disable';
         }
     },
@@ -2797,7 +2797,7 @@ BYD.recording = {
     _applyRecordingLayoutButtons(layout) {
         const group = document.getElementById('recLayoutBtns');
         if (!group) return;
-        group.querySelectorAll('.btn-toggle').forEach(btn =>
+        group.querySelectorAll('.ui-segment').forEach(btn =>
             btn.classList.toggle('active', btn.dataset.value === layout));
     },
 
@@ -2815,7 +2815,7 @@ BYD.recording = {
 
     async _saveRecordingLayout() {
         const group = document.getElementById('recLayoutBtns');
-        const active = group ? group.querySelector('.btn-toggle.active') : null;
+        const active = group ? group.querySelector('.ui-segment.active') : null;
         const layout = active ? active.dataset.value : 'standard';
 
         const wsToggle = document.getElementById('dashcamUseWindshield');
@@ -2824,7 +2824,7 @@ BYD.recording = {
         this._layoutWriteVersion++;
         this._layoutWritePending = true;
         if (group) {
-            group.querySelectorAll('.btn-toggle').forEach(btn => { btn.disabled = true; });
+            group.querySelectorAll('.ui-segment').forEach(btn => { btn.disabled = true; });
         }
         if (wsToggle) wsToggle.disabled = true;
         try {
@@ -2860,7 +2860,7 @@ BYD.recording = {
         } finally {
             this._layoutWritePending = false;
             if (group) {
-                group.querySelectorAll('.btn-toggle').forEach(btn => { btn.disabled = false; });
+                group.querySelectorAll('.ui-segment').forEach(btn => { btn.disabled = false; });
             }
             if (wsToggle) wsToggle.disabled = !this._windshieldAvailable;
         }

@@ -49,19 +49,19 @@
                 </div>
                 <div class="ui-summary-stats">
                     <div class="ui-summary-stat">
-                        <span class="ui-data-label st-vol-name"><span class="sd-status-dot offline" id="stVolIntDot" aria-hidden="true"></span><span data-i18n="events.storage_internal">Internal</span></span>
+                        <span class="ui-data-label st-vol-name"><span class="ui-dot offline" id="stVolIntDot" aria-hidden="true"></span><span data-i18n="events.storage_internal">Internal</span></span>
                         <span class="ui-summary-value" id="stVolIntFree">--</span>
                         <span class="st-vol-total" id="stVolIntTotal"></span>
                         <span class="st-vol-bar" id="stVolIntBar" style="display:none;" aria-hidden="true"><span class="st-vol-fill" id="stVolIntFill"></span></span>
                     </div>
                     <div class="ui-summary-stat">
-                        <span class="ui-data-label st-vol-name"><span class="sd-status-dot offline" id="stVolSdDot" aria-hidden="true"></span><span id="stVolSdText" data-i18n="recording.sd_checking">SD Card: Checking...</span></span>
+                        <span class="ui-data-label st-vol-name"><span class="ui-dot offline" id="stVolSdDot" aria-hidden="true"></span><span id="stVolSdText" data-i18n="recording.sd_checking">SD Card: Checking...</span></span>
                         <span class="ui-summary-value" id="stVolSdFree">--</span>
                         <span class="st-vol-total" id="stVolSdTotal"></span>
                         <span class="st-vol-bar" id="stVolSdBar" style="display:none;" aria-hidden="true"><span class="st-vol-fill" id="stVolSdFill"></span></span>
                     </div>
                     <div class="ui-summary-stat">
-                        <span class="ui-data-label st-vol-name"><span class="sd-status-dot offline" id="stVolUsbDot" aria-hidden="true"></span><span id="stVolUsbText" data-i18n="recording.usb_checking">USB: Checking...</span></span>
+                        <span class="ui-data-label st-vol-name"><span class="ui-dot offline" id="stVolUsbDot" aria-hidden="true"></span><span id="stVolUsbText" data-i18n="recording.usb_checking">USB: Checking...</span></span>
                         <span class="ui-summary-value" id="stVolUsbFree">--</span>
                         <span class="st-vol-total" id="stVolUsbTotal"></span>
                         <span class="st-vol-bar" id="stVolUsbBar" style="display:none;" aria-hidden="true"><span class="st-vol-fill" id="stVolUsbFill"></span></span>
@@ -121,13 +121,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-range-labels st-range-under">
+                        <div class="ui-meter-labels st-range-under">
                             <span id="survLimitMin" data-i18n="surveillance.limit_min_default">100 MB</span>
                             <span id="survLimitMax" data-i18n="surveillance.limit_max_default">100 GB</span>
                         </div>
                         <!-- Combined-limit advisory (shared/storage-budget.js). -->
                         <div class="ui-note ui-note-warning st-banner" id="survBudgetBanner" style="display:none;" role="status" aria-live="polite">
-                            <span class="sd-status-dot st-dot-warn"></span>
+                            <span class="ui-dot st-dot-warn"></span>
                             <span data-budget-text></span>
                         </div>
                     </div>
@@ -158,7 +158,7 @@
                         </div>
                         <!-- The saved SD/USB is unavailable or full, so recordings land on internal. -->
                         <div class="ui-note ui-note-warning st-banner" id="recStorageFallbackBanner" style="display:none;" role="status" aria-live="polite">
-                            <span class="sd-status-dot st-dot-warn"></span>
+                            <span class="ui-dot st-dot-warn"></span>
                             <span id="recStorageFallbackText" data-i18n="recording.storage_fallback_internal">SD/USB unavailable — saving to internal storage</span>
                         </div>
                         <div class="ui-row st-usage-row">
@@ -186,12 +186,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-range-labels st-range-under">
+                        <div class="ui-meter-labels st-range-under">
                             <span id="recLimitMin">100 MB</span>
                             <span id="recLimitMax">100 GB</span>
                         </div>
                         <div class="ui-note ui-note-warning st-banner" id="recBudgetBanner" style="display:none;" role="status" aria-live="polite">
-                            <span class="sd-status-dot st-dot-warn"></span>
+                            <span class="ui-dot st-dot-warn"></span>
                             <span data-budget-text></span>
                         </div>
                     </div>
@@ -245,12 +245,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="slider-range-labels st-range-under">
+                        <div class="ui-meter-labels st-range-under">
                             <span id="tripLimitMin">100 MB</span>
                             <span id="tripLimitMax">100 GB</span>
                         </div>
                         <div class="ui-note ui-note-warning st-banner" id="tripBudgetBanner" style="display:none;" role="status" aria-live="polite">
-                            <span class="sd-status-dot st-dot-warn"></span>
+                            <span class="ui-dot st-dot-warn"></span>
                             <span data-budget-text></span>
                         </div>
                     </div>
@@ -284,7 +284,7 @@
                         </div>
                         <!-- Recommend banner (shown only when the API says recommendAutoCleanup). -->
                         <div class="ui-note-warning" id="cdrRecommendBanner" style="display:none;">
-                            <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                             <div class="ui-detail-row" style="color:var(--warning);">
                                 <span class="ui-detail-label" data-i18n="recording.cdr_recommend_label_v2">Recommended</span>
                                 <span class="ui-detail-value" data-i18n="recording.cdr_recommend_text">Overdrive uses SD — enable cleanup to keep space free</span>

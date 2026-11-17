@@ -474,7 +474,7 @@ BYD.storagePage = {
 
     _paintVolume(name, known, available, free, total, textKey) {
         const dot = this._el('stVol' + name + 'Dot');
-        if (dot) dot.className = 'sd-status-dot ' + (known && available ? 'online' : 'offline');
+        if (dot) dot.className = 'ui-dot ' + (known && available ? 'online' : 'offline');
         if (textKey) this._setText('stVol' + name + 'Text', this._tr(textKey));
         const show = !!(known && available && total > 0);
         const freeEl = this._el('stVol' + name + 'Free');
