@@ -19,8 +19,8 @@
 }
 
 .ui-list-item:last-child { border-bottom: 0; }
-:is(button, a).ui-list-item { cursor: pointer; }
-:is(button, a).ui-list-item:hover .ui-list-text strong { color: var(--ui-accent-text); }
+button.ui-list-item, a.ui-list-item { cursor: pointer; }
+button.ui-list-item:hover .ui-list-text strong, a.ui-list-item:hover .ui-list-text strong { color: var(--ui-accent-text); }
 
 .ui-list-icon {
   display: grid;

@@ -494,7 +494,7 @@ BYD.storagePage = {
     _paintTypeGroup(groupId, type, loaded, sdId, usbId, blockedTitle) {
         const group = this._el(groupId);
         if (group) {
-            const btns = group.querySelectorAll('.btn-toggle');
+            const btns = group.querySelectorAll('.ui-segment');
             for (let i = 0; i < btns.length; i++) {
                 const val = btns[i].getAttribute('data-value');
                 btns[i].classList.toggle('active', val === type);
@@ -1048,7 +1048,7 @@ BYD.storagePage = {
         const badge = this._el('cdrCleanupBadge');
         if (badge) {
             badge.textContent = this.cdrConfig.enabled ? this._tr('status.on') : this._tr('status.off');
-            badge.className = 'status-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
+            badge.className = 'ui-badge ' + (this.cdrConfig.enabled ? 'active' : 'inactive');
         }
 
         const slidersLocked = !this._cdrReady || this._cdrCleanupPending

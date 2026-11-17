@@ -107,7 +107,7 @@
   background: var(--ui-scrim);
 }
 
-.ui-modal-backdrop > .ui-dialog { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.ui-modal-backdrop > .ui-dialog { max-height: calc(100vh - 32px); overflow-y: auto; }
 
 @media (max-width: 540px) {
   .ui-toast, .ui-toast-stack { bottom: calc(80px + env(safe-area-inset-bottom, 0px)); }

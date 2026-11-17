@@ -11,7 +11,7 @@ body.ui-app {
   font-variant-numeric: tabular-nums;
 }
 
-.ui-app :where(h1, h2, h3, p) { margin: 0; }
+.ui-app h1, .ui-app h2, .ui-app h3, .ui-app p { margin: 0; }
 
 .ui-shell {
   display: grid;
@@ -23,7 +23,7 @@ body.ui-app {
   position: sticky;
   top: 0;
   width: var(--ui-sidebar-width);
-  height: 100dvh;
+  height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -221,7 +221,7 @@ body.ui-app {
 .ui-bottom-link span { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ui-bottom-link.is-active { background: var(--ui-accent-soft); color: var(--ui-accent-text); }
 
-.ui-more-sheet { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.ui-more-sheet { max-height: calc(100vh - 32px); overflow-y: auto; }
 .ui-more-nav { margin-top: 0; }
 
 /* Pages not yet moved keep their .app-layout/.main-content frame: offset it by the
@@ -232,7 +232,7 @@ body.ui-app {
    as a plain block: the sidebar is fixed and .main-content is offset below. */
 body.ui-app .app-layout { display: block; min-height: 100vh; }
 body.ui-app .main-content { display: block; min-height: 100vh; padding: 0; }
-html.ui-shell-on body .main-content { margin-inline: var(--ui-sidebar-width) 0; }
+html.ui-shell-on body .main-content { margin-inline-start: var(--ui-sidebar-width); margin-inline-end: 0; }
 html.ui-shell-on body .mobile-header,
 html.ui-shell-on body .sidebar-overlay,
 html.ui-shell-on body #bydThemePicker { display: none; }

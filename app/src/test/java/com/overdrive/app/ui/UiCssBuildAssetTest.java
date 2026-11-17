@@ -69,6 +69,21 @@ public class UiCssBuildAssetTest {
     }
 
     @Test
+    public void readableByTheHeadUnitsChrome58() throws IOException {
+        // app-shell.js documents a Chrome 58 / Android 7.1 head-unit floor. Rules using these are
+        // dropped whole by that engine, so the build lowers or avoids every one of them.
+        String c = css();
+        for (String modern : new String[]{":where(", ":has(", "@layer", "inset-inline", "margin-inline",
+                "padding-inline", "border-inline", ":dir(", "dvh"}) {
+            assertFalse("ui.css still uses " + modern, c.contains(modern));
+        }
+        // :is() only appears with its -webkit-any() twin, which Chrome 58 understands.
+        int is = c.split(":is\\(", -1).length - 1;
+        int any = c.split(":-webkit-any\\(", -1).length - 1;
+        assertTrue(":is() without -webkit-any() fallback", is <= any);
+    }
+
+    @Test
     public void noPreflightWhileMigrating() throws IOException {
         assertFalse(css().contains("::file-selector-button"));
     }

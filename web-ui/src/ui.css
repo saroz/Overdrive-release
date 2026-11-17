@@ -7,7 +7,7 @@
  * and unlayered rules always beat layered ones, so layered components would lose to old element
  * rules such as `button {}`. Order instead: tokens, components, then utilities (utilities win ties).
  */
-@import "tailwindcss/theme.css" layer(theme) prefix(tw);
+@import "tailwindcss/theme.css" prefix(tw);
 
 @import "./tokens.css";
 
@@ -22,6 +22,7 @@
 @import "./components/dialog.css";
 @import "./components/hero.css";
 @import "./components/map.css";
+@import "./components/settings.css";
 
 @import "tailwindcss/utilities.css" source(none);
 

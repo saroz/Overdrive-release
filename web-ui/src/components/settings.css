@@ -1,0 +1,204 @@
+/* Settings vocabulary in the mockup's style: the pieces the older pages are built from
+   (rows, toggles, segmented choices, badges, summary tiles, link rows), mapped by
+   scripts/migrate-page.mjs. */
+
+.ui-page-body { display: flex; flex-direction: column; gap: 20px; }
+
+.ui-panel-title { margin: 0; font-size: 17px; font-weight: 650; letter-spacing: -.25px; }
+.ui-panel-sub { margin-top: 3px; color: var(--ui-muted); font-size: 12px; }
+.ui-panel-head > :first-child:not(:only-child) { min-width: 0; }
+
+/* Rows placed straight inside a panel (no body wrapper) get the panel padding. */
+.ui-panel > .ui-row { width: auto; margin-inline-start: 24px; margin-inline-end: 24px; }
+.ui-panel > .ui-panel-head + .ui-row { margin-top: 14px; }
+.ui-panel > .ui-row:last-child { margin-bottom: 14px; }
+
+.ui-row-title { display: block; font-size: 14px; font-weight: 600; }
+.ui-row-desc { display: block; margin-top: 3px; color: var(--ui-muted); font-size: 12px; }
+.ui-row-stack { flex-wrap: wrap; }
+.ui-row-stack > .ui-row-end { flex-basis: 100%; }
+
+/* Checkbox switch: <label class="ui-toggle"><input type="checkbox"><span class="ui-toggle-track"></span></label> */
+.ui-toggle { position: relative; display: inline-flex; flex: none; cursor: pointer; }
+.ui-toggle > input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: inherit; }
+.ui-toggle-track {
+  display: block;
+  width: 38px;
+  height: 24px;
+  box-sizing: border-box;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--ui-line);
+  transition: background .15s ease;
+}
+.ui-toggle-track::after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ui-knob);
+  box-shadow: var(--ui-shadow-knob);
+  transition: transform .15s ease;
+}
+.ui-toggle > input:checked + .ui-toggle-track { background: var(--ui-green); }
+.ui-toggle > input:checked + .ui-toggle-track::after { transform: translateX(14px); }
+:dir(rtl) .ui-toggle > input:checked + .ui-toggle-track::after { transform: translateX(-14px); }
+.ui-toggle > input:focus-visible + .ui-toggle-track { outline: 3px solid var(--ui-accent); outline-offset: 3px; }
+.ui-toggle > input:disabled + .ui-toggle-track { opacity: .45; }
+
+.ui-button-sm { min-height: 36px; padding: 6px 12px; font-size: 12px; }
+.ui-button-block { display: flex; width: 100%; }
+.ui-button-icon { width: 44px; padding: 0; }
+.ui-button-ghost { border-color: transparent; background: transparent; }
+
+/* Segmented choice (mockup theme switch look). */
+.ui-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--ui-line);
+  border-radius: 7px;
+  background: var(--ui-soft);
+}
+.ui-segment {
+  min-height: 38px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ui-muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 550;
+  cursor: pointer;
+}
+.ui-segment:hover { color: var(--ui-ink); }
+.ui-segment.active, .ui-segment.is-active, .ui-segment[aria-pressed=true], .ui-segment.selected {
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-sm);
+  color: var(--ui-ink);
+}
+
+/* Choice cards (Smart / Continuous …). */
+.ui-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; width: 100%; padding: 0; border: 0; background: none; }
+.ui-choices > .ui-segment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-height: 0;
+  padding: 14px;
+  border: 1px solid var(--ui-line);
+  border-radius: 12px;
+  background: var(--ui-surface);
+  text-align: start;
+}
+.ui-choices > .ui-segment.active, .ui-choices > .ui-segment.is-active, .ui-choices > .ui-segment[aria-pressed=true] {
+  border-color: var(--ui-accent);
+  background: var(--ui-accent-soft);
+  box-shadow: none;
+}
+.ui-choice-icon { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--ui-soft); color: var(--ui-muted); }
+.ui-choice-icon svg { width: 18px; height: 18px; }
+.ui-choice-desc { color: var(--ui-muted); font-size: 12px; font-weight: 400; }
+
+.ui-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 2px 9px;
+  border-radius: 12px;
+  background: var(--ui-soft);
+  color: var(--ui-muted);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ui-badge.active, .ui-badge.success, .ui-badge.on, .ui-badge.online, .ui-badge.connected { background: var(--ui-green-soft); color: var(--ui-green); }
+.ui-badge.warning, .ui-badge.pending { background: var(--ui-accent-soft); color: var(--ui-accent-text); }
+.ui-badge.danger, .ui-badge.error { background: var(--ui-accent-soft); color: var(--ui-red); }
+
+/* Summary tile at the top of a settings page (icon, title + badge, master switch, readouts). */
+.ui-summary { margin-bottom: 20px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; column-gap: 16px; padding: 20px 24px; }
+.ui-summary > .ui-strip-icon { grid-row: span 2; }
+.ui-summary > .ui-panel-head { padding: 0; }
+.ui-summary > .ui-row { grid-column: 2; margin: 0; padding: 8px 0 0; border: 0; min-height: 0; }
+.ui-summary-text { min-width: 0; }
+.ui-summary-stats { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+.ui-summary-stat { padding: 12px 14px; border-radius: 10px; background: var(--ui-soft); }
+.ui-summary-value { display: block; margin-top: 4px; color: var(--ui-ink); font-size: 18px; font-weight: 600; }
+
+/* Link row: a whole panel that opens another page. */
+.ui-link-row { display: flex; align-items: center; gap: 14px; padding: 16px 20px; color: inherit; text-decoration: none; }
+.ui-link-row:hover .ui-row-title { color: var(--ui-accent-text); }
+.ui-link-row > .ui-row-end svg { width: 18px; height: 18px; }
+
+.ui-detail-label { color: var(--ui-muted); }
+.ui-detail-value { color: var(--ui-ink); font-weight: 600; text-align: end; overflow-wrap: anywhere; }
+
+.ui-field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.ui-field-box { position: relative; }
+.ui-field-trailing { position: absolute; inset-block: 0; inset-inline-end: 6px; display: flex; align-items: center; }
+
+/* Inline stroke icons the older markup carries without a size get the mockup's icon size. */
+.ui-panel-title { display: flex; align-items: center; gap: 10px; }
+.ui-panel-title > svg:not(.ui-icon), .ui-panel-head > svg:not(.ui-icon), .ui-row > svg:not(.ui-icon),
+.ui-row-end > svg:not(.ui-icon), .ui-button > svg:not(.ui-icon), .ui-link-row > svg:not(.ui-icon),
+.ui-strip-icon > svg:not(.ui-icon), .ui-summary-text > svg:not(.ui-icon), .ui-choice-icon > svg:not(.ui-icon),
+.ui-segment > svg:not(.ui-icon), .ui-badge > svg:not(.ui-icon), .ui-detail-row > svg:not(.ui-icon) {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.ui-panel-title > svg:not(.ui-icon) { color: var(--ui-muted); }
+.ui-button > svg:not(.ui-icon), .ui-segment > svg:not(.ui-icon) { width: 16px; height: 16px; }
+
+/* Unsaved-changes marker beside a title. */
+.ui-unsaved { display: none; margin-inline-start: 8px; color: var(--ui-accent-text); font-size: 12px; font-weight: 700; }
+.ui-unsaved.show { display: inline; }
+
+/* Apply bar: the page's Save/Apply button, floating at the end of the content. */
+.ui-savebar {
+  position: sticky;
+  bottom: 16px;
+  z-index: 20;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+  pointer-events: none;
+}
+.ui-savebar > * { pointer-events: auto; box-shadow: var(--ui-shadow); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-toggle-track, .ui-toggle-track::after { transition: none; }
+}
+
+@media (max-width: 540px) {
+  .ui-panel > .ui-row { margin-inline-start: 20px; margin-inline-end: 20px; }
+  .ui-summary { padding: 18px 20px; }
+  .ui-row { flex-wrap: wrap; }
+  .ui-row > .ui-row-copy { flex-basis: 60%; }
+}
+
+/* Inline warning line under a row (e.g. storage fell back to internal). */
+.ui-warning-text { margin-top: 4px; color: var(--ui-accent-text); font-weight: 600; }
+
+/* Callout box (old .info-box). */
+.ui-note { padding: 12px 16px; border-radius: 10px; background: var(--ui-soft); color: var(--ui-muted); font-size: 13px; line-height: 1.5; }
+.ui-note-warning { background: var(--ui-accent-soft); color: var(--ui-accent-text); }
+.ui-note > svg { width: 16px; height: 16px; vertical-align: -3px; margin-inline-end: 6px; }
+
+/* Slider with its value (old .slider-control). */
+.ui-slider { display: flex; align-items: center; gap: 12px; min-width: 200px; }
+.ui-slider > .ui-range { flex: 1; }
+.ui-slider-value { min-width: 64px; color: var(--ui-accent-text); font-weight: 600; text-align: end; }
+
+/* Usage meter (old .storage-bar). */
+.ui-meter { height: 8px; margin: 12px 0 6px; overflow: hidden; border-radius: 4px; background: var(--ui-line); }
+.ui-meter-fill { height: 100%; border-radius: 4px; background: var(--ui-green); transition: width .3s ease; }
+.ui-meter-fill.warning { background: var(--ui-accent); }
+.ui-meter-fill.danger, .ui-meter-fill.critical { background: var(--ui-red); }
+.ui-meter-labels { display: flex; justify-content: space-between; gap: 12px; color: var(--ui-muted); font-size: 12px; }

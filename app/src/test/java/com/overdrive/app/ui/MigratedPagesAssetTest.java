@@ -67,16 +67,30 @@ public class MigratedPagesAssetTest {
      * inline CSS or ui.css) defines that class again, in which case it is part of the new look.
      */
     private static Set<String> forbiddenClasses(String page) throws IOException {
+        // Only the old global sheets still carry old styling; a page's own old classes lost theirs
+        // when its inline CSS was rewritten, so on their own they are plain script hooks.
         Set<String> out = new HashSet<>(words(WebThemeTokensAssetTest.read("web-ui/legacy-classes.txt")));
-        out.addAll(words(header(snapshot(page), "old-classes")));
         String html = WebThemeTokensAssetTest.read(LOCAL + page);
         StringBuilder css = new StringBuilder(UiCssBuildAssetTest.css());
+        String pageCss = SHARED + "pages/" + page.replace(".html", ".css");
+        if (pageCssExists(pageCss)) {
+            css.append(WebThemeTokensAssetTest.read(pageCss));
+        }
         Matcher style = Pattern.compile("(?s)<style[^>]*>(.*?)</style>").matcher(html);
         while (style.find()) css.append(style.group(1));
         Matcher sel = Pattern.compile("\\.(-?[_a-zA-Z][\\w-]*)").matcher(
                 css.toString().replaceAll("(?s)\\{[^{}]*\\}", "{}"));
         while (sel.find()) out.remove(sel.group(1));
         return out;
+    }
+
+    private static boolean pageCssExists(String path) {
+        try {
+            WebThemeTokensAssetTest.locate(path);
+            return true;
+        } catch (AssertionError missing) {
+            return false;
+        }
     }
 
     private static String withoutScripts(String html) {

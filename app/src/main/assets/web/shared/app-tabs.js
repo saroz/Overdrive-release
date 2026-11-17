@@ -228,7 +228,7 @@
         nav.appendChild(slot);
 
         // ===== Apply button relocation (optional) =====
-        var origStrip = document.querySelector('.footer-bar');
+        var origStrip = document.querySelector('.footer-bar, .ui-savebar');
         var origBtn = origStrip ? origStrip.querySelector('#btnApply') : null;
         if (origBtn) {
             // Drop the old .btn classes so the mockup button style applies.

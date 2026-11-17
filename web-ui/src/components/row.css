@@ -34,8 +34,9 @@
   font-size: 13px;
 }
 
-:is(button, a).ui-row { cursor: pointer; }
-:is(button, a).ui-row:hover .ui-row-copy strong { color: var(--ui-accent-text); }
+button.ui-row, a.ui-row { cursor: pointer; }
+button.ui-row:hover .ui-row-copy strong, a.ui-row:hover .ui-row-copy strong,
+button.ui-row:hover .ui-row-title, a.ui-row:hover .ui-row-title { color: var(--ui-accent-text); }
 
 .ui-switch {
   flex: none;

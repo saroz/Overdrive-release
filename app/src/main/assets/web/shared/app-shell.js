@@ -315,7 +315,7 @@
     // The device already shows the time; no page header carries a clock badge.
     function hideHeaderClock() {
         var clock = document.getElementById('currentTime');
-        var badge = clock && clock.closest ? clock.closest('.header-badge') : null;
+        var badge = clock && clock.closest ? clock.closest('.header-badge, .ui-badge') : null;
         if (badge) badge.style.display = 'none';
     }
 

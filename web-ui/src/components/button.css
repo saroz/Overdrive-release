@@ -65,10 +65,12 @@
   cursor: pointer;
 }
 
-:where(.ui-button, .ui-text-button, .ui-icon-button):disabled { opacity: .45; cursor: default; filter: none; }
+.ui-button:disabled, .ui-text-button:disabled, .ui-icon-button:disabled { opacity: .45; cursor: default; filter: none; }
 
-:where(.ui-button, .ui-text-button, .ui-icon-button, .ui-nav-link, .ui-row, .ui-tab, .ui-select,
-  .ui-input, .ui-switch, .ui-list-item, .ui-theme-switch button):focus-visible {
+.ui-button:focus-visible, .ui-text-button:focus-visible, .ui-icon-button:focus-visible,
+.ui-nav-link:focus-visible, .ui-row:focus-visible, .ui-tab:focus-visible, .ui-select:focus-visible,
+.ui-input:focus-visible, .ui-switch:focus-visible, .ui-list-item:focus-visible,
+.ui-theme-switch button:focus-visible {
   outline: 3px solid var(--ui-accent);
   outline-offset: 4px;
 }

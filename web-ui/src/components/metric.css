@@ -59,6 +59,6 @@
 @media (max-width: 540px) {
   .ui-metrics { grid-template-columns: 1fr 1fr; gap: 20px 0; }
   .ui-metric:nth-child(odd) { padding-inline-start: 0; border-inline-start: 0; }
-  .ui-metric:nth-child(even) { padding-inline: 18px 0; }
+  .ui-metric:nth-child(even) { padding-inline-start: 18px; padding-inline-end: 0; }
   .ui-panel > .ui-metrics { padding: 0 20px; }
 }
