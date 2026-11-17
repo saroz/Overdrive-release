@@ -452,3 +452,21 @@
 }
 .r-inline-ico { display: inline-block; width: 1em; height: 1em; margin-right: 0.3em; vertical-align: -0.125em; flex-shrink: 0; }
 [dir="rtl"] .r-inline-ico { margin-right: 0; margin-left: 0.3em; }
+.tab-content {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+.tab-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+}
+.tab-panel.active {
+    display: flex;
+}

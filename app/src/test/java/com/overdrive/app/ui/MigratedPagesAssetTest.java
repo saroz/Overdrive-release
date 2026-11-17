@@ -137,6 +137,8 @@ public class MigratedPagesAssetTest {
     public void usesTheUiPageLayout() throws IOException {
         for (String page : migrated()) {
             String html = WebThemeTokensAssetTest.read(LOCAL + page);
+            // Full-window workspaces (live video) have no page heading or settings panels.
+            if (html.contains(" data-ui-workspace")) continue;
             assertTrue(page + " has no ui-page-head", html.contains("ui-page-head"));
             assertTrue(page + " has no ui-panel", html.contains("ui-panel"));
         }

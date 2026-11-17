@@ -1207,7 +1207,7 @@ BYD.stream = {
                 const selector = document.getElementById('qualitySelector');
                 if (selector) {
                     selector.value = data.current;
-                    // Assigning .value fires no event, so mirrored menus
+                    // Assigning .ui-detail-value fires no event, so mirrored menus
                     // need an explicit sync.
                     if (BYD.qualityMenu) BYD.qualityMenu.sync();
                     console.log('[Stream] Loaded saved quality:', data.current);

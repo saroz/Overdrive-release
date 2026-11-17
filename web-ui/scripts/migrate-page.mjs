@@ -147,32 +147,37 @@ function stylesOldVocabulary(selector) {
   return sels.every(sel => TOKENS.some(t => new RegExp(`\\.${ESC(t)}(?![\\w-])`).test(sel)));
 }
 
-/** Prefix one selector with the page scope, keeping html/:root/body qualifiers in front. */
-function scopeSelector(sel, scope) {
-  const s = sel.trim();
+/** Prefix one selector with the page scope, keeping html/:root/body qualifiers in front.
+ *  A leading class that sits on <body> (e.g. .live-view-page) is merged into the scope. */
+function scopeSelector(sel, scope, bodyClasses = []) {
+  let s = sel.trim();
   if (!s) return s;
+  const lead = /^\.([\w-]+)((?:\.[\w-]+)*)(?=[\s>+~:[]|$)/.exec(s);
+  if (lead && bodyClasses.includes(lead[1])) return scope + lead[0] + s.slice(lead[0].length);
   if (/^(:root|html)\b/.test(s)) {
     const m = /^((?::root|html)(?:\[[^\]]*\]|\.[\w-]+|:[\w-]+(?:\([^)]*\))?)*)(.*)$/.exec(s);
     const rest = m[2].trim();
     if (/^body\b/.test(rest)) return m[1] + ' ' + rest.replace(/^body/, scope);
+    const bodyLead = /^\.([\w-]+)((?:\.[\w-]+)*)(?=[\s>+~:[]|$)/.exec(rest);
+    if (bodyLead && bodyClasses.includes(bodyLead[1])) return `${m[1]} ${scope}${bodyLead[0]}${rest.slice(bodyLead[0].length)}`;
     return rest ? `${m[1]} ${scope} ${rest}` : scope;
   }
   if (/^body\b/.test(s)) return s.replace(/^body/, scope);
   return `${scope} ${s}`;
 }
 
-function keepCss(css, scope) {
+function keepCss(css, scope, bodyClasses = []) {
   const kept = [];
   for (const c of chunks(css.replace(/\/\*[\s\S]*?\*\//g, ''))) {
     const head = c.slice(0, c.indexOf('{')).trim();
     const body = c.slice(c.indexOf('{') + 1, c.lastIndexOf('}'));
     if (head.startsWith('@media') || head.startsWith('@supports') || head.startsWith('@container')) {
-      const inner = keepCss(body, scope);
+      const inner = keepCss(body, scope, bodyClasses);
       if (inner.trim()) kept.push(`${head} {\n${inner}\n}`);
     } else if (head.startsWith('@')) {
       kept.push(c);
     } else if (!stylesOldVocabulary(head)) {
-      const sel = head.split(',').map(x => scopeSelector(x, scope)).join(',\n');
+      const sel = head.split(',').map(x => scopeSelector(x, scope, bodyClasses)).join(',\n');
       kept.push(`${sel} {${body}}`);
     }
   }
@@ -188,7 +193,8 @@ export function migrate(page, scripts = [], dry = false) {
   const styles = [...html.matchAll(/[ \t]*<style[^>]*>([\s\S]*?)<\/style>\n?/g)];
   const css = styles.map(m => m[1]).join('\n');
   for (const m of styles.reverse()) html = html.replace(m[0], '');
-  const kept = keepCss(css, `body[data-page="${name}"]`);
+  const bodyClasses = ((/<body[^>]*class="([^"]*)"/.exec(html) || [])[1] || "").split(/\s+/).filter(Boolean);
+  const kept = keepCss(css, `body[data-page="${name}"]`, bodyClasses);
 
   html = mapClassAttrs(html);
   // Inline scripts get the same renaming as shared scripts.

@@ -68,6 +68,22 @@ for (const sheet of SHEETS) {
   writeFileSync(path, css);
 }
 
+// Keyframes the moved rules animate with travel along (copied; the old sheet keeps its own).
+const names = new Set([...adopted.matchAll(/animation(?:-name)?\s*:\s*([\w-]+)/g)].map(m => m[1]));
+for (const sheet of SHEETS) {
+  const css = readFileSync(join(SHARED, sheet), 'utf8');
+  for (const n of names) {
+    const at = css.indexOf(`@keyframes ${n}`);
+    if (at < 0 || adopted.includes(`@keyframes ${n}`)) continue;
+    let depth = 0, i = css.indexOf('{', at);
+    for (; i < css.length; i++) {
+      if (css[i] === '{') depth++;
+      else if (css[i] === '}' && --depth === 0) break;
+    }
+    adopted += css.slice(at, i + 1) + '\n';
+  }
+}
+
 const dir = join(ROOT, 'src', 'components', 'adopted');
 mkdirSync(dir, { recursive: true });
 const file = join(dir, name + '.css');

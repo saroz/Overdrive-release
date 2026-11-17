@@ -4,3 +4,4 @@ recording.html
 surveillance.html
 parking.html
 events.html
+live-view.html

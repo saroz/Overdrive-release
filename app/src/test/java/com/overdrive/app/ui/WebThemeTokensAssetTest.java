@@ -138,6 +138,34 @@ public class WebThemeTokensAssetTest {
         return n <= 0.04045 ? n / 12.92 : Math.pow((n + 0.055) / 1.055, 2.4);
     }
 
+    /**
+     * CSS moved during the 2026-11-17 rebuild still belongs to where it came from: a page's inline
+     * styles now live in shared/pages/<page>.css, and feature-widget rules from styles.css /
+     * revamp.css in web-ui/src/components/adopted/. Appends them so content checks keep their intent.
+     */
+    public static String withMovedCss(String relativePath, String text) throws IOException {
+        String p = relativePath.replace('\\', '/');
+        StringBuilder out = new StringBuilder(text);
+        java.util.regex.Matcher page = Pattern.compile("web/local/([\\w-]+)\\.html$").matcher(p);
+        if (page.find()) {
+            String css = "app/src/main/assets/web/shared/pages/" + page.group(1) + ".css";
+            try {
+                out.append('\n').append(new String(Files.readAllBytes(locate(css)), StandardCharsets.UTF_8));
+            } catch (AssertionError none) {
+                // page has no moved CSS
+            }
+        }
+        if (p.endsWith("web/shared/styles.css") || p.endsWith("web/shared/revamp.css")) {
+            Path dir = locate("web-ui/src/components/adopted");
+            try (java.util.stream.Stream<Path> files = Files.list(dir)) {
+                for (Path f : (Iterable<Path>) files.sorted()::iterator) {
+                    out.append('\n').append(new String(Files.readAllBytes(f), StandardCharsets.UTF_8));
+                }
+            }
+        }
+        return out.toString();
+    }
+
     static String read(String relativePath) throws IOException {
         return new String(Files.readAllBytes(locate(relativePath)), StandardCharsets.UTF_8);
     }

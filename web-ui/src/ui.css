@@ -26,6 +26,8 @@
 
 @import "./components/adopted/camera-widgets.css";
 
+@import "./components/adopted/skeleton.css";
+
 @import "tailwindcss/utilities.css" source(none);
 
 @source "../../app/src/main/assets/web/local/*.html";

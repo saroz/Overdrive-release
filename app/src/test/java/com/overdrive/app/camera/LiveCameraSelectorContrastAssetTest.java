@@ -32,8 +32,8 @@ public class LiveCameraSelectorContrastAssetTest {
         // Light theme must not replace the paint-independent ring tokens.
         String lightTheme = between(
             liveView,
-            ":root[data-theme=\"light\"] .live-view-page {",
-            "/* SOTA Seamless Camera View */");
+            ":root[data-theme=\"light\"] body[data-page=\"live-view\"].live-view-page {",
+            "}"); // comments no longer travel with the moved page CSS (2026-11-17)
         assertFalse(lightTheme.contains("--lv-hotspot-ring-border"));
         assertFalse(lightTheme.contains("--lv-hotspot-ring-bg"));
     }
@@ -87,7 +87,7 @@ public class LiveCameraSelectorContrastAssetTest {
         for (int i = 0; i < 6 && current != null; i++) {
             Path candidate = current.resolve(relativePath);
             if (Files.isRegularFile(candidate)) {
-                return new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relativePath, new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8));
             }
             current = current.getParent();
         }

@@ -90,7 +90,7 @@ public class CabinAudioAssetContractTest {
 
         assertTrue(live.contains("id=\"cabinListenButton\""));
         assertTrue(live.contains("shared/cabin-audio.js"));
-        assertTrue(live.contains("html.is-app-webview .cabin-listen-btn"));
+        assertTrue(live.contains("html.is-app-webview body[data-page=\"live-view\"] .cabin-listen-btn"));
         assertTrue(live.contains(
                 "document.documentElement.classList.add('is-app-webview')"));
         assertTrue(live.contains("width: 124px"));
@@ -148,14 +148,12 @@ public class CabinAudioAssetContractTest {
         while (current != null) {
             Path candidate = current.resolve(relative);
             if (Files.isRegularFile(candidate)) {
-                return new String(
-                        Files.readAllBytes(candidate), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relative, new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8));
             }
             Path fromModule =
                     current.resolve(relative.replaceFirst("^app/", ""));
             if (Files.isRegularFile(fromModule)) {
-                return new String(
-                        Files.readAllBytes(fromModule), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("app/" + relative.replaceFirst("^app/", ""), new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8));
             }
             current = current.getParent();
         }
