@@ -89,7 +89,6 @@ html[data-app-shell="1"] .bottom-tabs {
     right: 0;
 }
 
-
 .bottom-tab {
     display: flex;
     flex-direction: column;
@@ -128,18 +127,6 @@ html[data-app-shell="1"] .bottom-tabs {
     background: var(--secondary-container);
 }
 
-.bottom-tab.is-active .bottom-tab-icon {
-    color: var(--primary);
-}
-
-.bottom-tab-icon {
-    width: 22px;
-    height: 22px;
-    margin-bottom: 2px;
-    color: var(--on-surface-variant);
-    transition: color 160ms ease-out;
-}
-
 .bottom-tab-label {
     line-height: 1.15;
     text-align: center;
@@ -148,19 +135,6 @@ html[data-app-shell="1"] .bottom-tabs {
     max-width: 100%;
     max-height: 2.3em;
 }
-
-/* Reserve the fixed bar once, on the actual scroll container. Applying the
-   same padding to both .main-content and its nested .page-body doubled the
-   empty strip below short pages. */
-body.ot-tabs-on .main-content .page-body {
-    padding-bottom: 96px;
-}
-
-/* Lift any floating action / picture-in-picture overlay above the bottom
-   tab bar so it never blocks the Apply pill. */
-body.ot-tabs-on .pip-toggle-btn { bottom: 96px; }
-body.ot-tabs-on .pip-container  { bottom: 96px; }
-body.ot-tabs-on .toast-container { bottom: 96px; }
 
 /* Ensure the tab bar always wins over leaflet, modals, and other overlays. */
 .bottom-tabs { z-index: 400; }
@@ -268,7 +242,6 @@ body.ot-tabs-on .toast-container { bottom: 96px; }
     }
     .bottom-tab { min-width: 56px; padding: 6px 6px; }
     .bottom-tab-label { font-size: 10px; }
-    .bottom-tab-icon { width: 20px; height: 20px; }
 }
 
 /* When a tab pane is hidden by the tabs script, animate the swap so the

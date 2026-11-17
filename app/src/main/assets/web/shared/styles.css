@@ -169,13 +169,6 @@ textarea:focus,
     font-size: 13px;
 }
 
-.error-state {
-    color: var(--status-danger);
-    background: var(--status-danger-container);
-    border: 1px solid var(--status-danger);
-    border-radius: var(--radius-md);
-}
-
 .loading-state .spinner,
 .loading > .spinner {
     border-color: var(--outline-variant);
@@ -247,48 +240,6 @@ textarea:focus,
     background: var(--text-muted);
 }
 
-.sidebar-header {
-    padding: 20px;
-    border-bottom: 1px solid var(--border-subtle);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-    position: sticky;
-    top: 0;
-    background: var(--bg-surface);
-    z-index: 1;
-    /* Pad past the iOS notch / Android cutout so the text isn't
-       visually clipped or cut off by the system status bar. The
-       viewport-fit=cover meta tag on each page makes safe-area-inset-top
-       non-zero on devices with a notch. */
-    padding-top: calc(12px + env(safe-area-inset-top, 0px));
-}
-
-
-.sidebar-close {
-    display: none;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-sm);
-    background: var(--bg-elevated);
-    color: var(--text-secondary);
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    flex-shrink: 0;
-}
-
-.sidebar-close svg {
-    width: 20px;
-    height: 20px;
-}
-
-.sidebar-close:hover {
-    background: var(--danger);
-    color: white;
-}
-
 .brand {
     display: flex;
     align-items: center;
@@ -324,42 +275,6 @@ textarea:focus,
     width: 78%;
     height: 78%;
     object-fit: contain;
-}
-
-.brand-text {
-    display: flex;
-    flex-direction: column;
-    min-width: 0; /* allow children to ellipsis instead of overflowing the sidebar */
-    flex: 1;
-}
-
-.brand-name {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.brand-tagline {
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    line-height: 1.2;
-    /* Allow up to 2 wrapped lines for longer locales (e.g. French "Système Sentinelle")
-       so the tagline never clips below the brand name. */
-    word-break: break-word;
-    overflow-wrap: anywhere;
-}
-
-.brand-version {
-    font-size: 10px;
-    color: var(--brand-primary);
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    opacity: 0.8;
 }
 
 /* === SIDEBAR NAV === */
@@ -406,18 +321,6 @@ textarea:focus,
     color: var(--brand-primary);
 }
 
-.nav-link.active .nav-icon { color: var(--brand-primary); }
-
-.nav-icon {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    color: var(--text-muted);
-    transition: color 0.2s;
-}
-
-.nav-link:hover .nav-icon { color: var(--text-secondary); }
-
 /* === SIDEBAR FOOTER === */
 .sidebar-footer {
     padding: 16px;
@@ -435,12 +338,6 @@ textarea:focus,
     }
 }
 
-.status-card {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-md);
-    padding: 14px;
-}
-
 .status-row {
     display: flex;
     justify-content: space-between;
@@ -450,19 +347,6 @@ textarea:focus,
 }
 
 .status-row + .status-row { margin-top: 10px; }
-
-.status-label {
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    min-width: 0; /* allow flex item to shrink so long labels don't push value off-screen */
-    flex: 1 1 auto;
-    /* Long status labels in French / German wrap gracefully rather than overflow */
-    line-height: 1.25;
-    word-break: break-word;
-    overflow-wrap: anywhere;
-}
 
 .status-value {
     font-weight: 600;
@@ -758,17 +642,6 @@ select.text-input option {
     gap: 8px;
 }
 
-.setting-badge {
-    font-size: 10px;
-    font-weight: 500;
-    padding: 2px 6px;
-    border-radius: 4px;
-    background: var(--bg-elevated);
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-}
-
 .setting-desc {
     font-size: 13px;
     color: var(--text-muted);
@@ -850,39 +723,6 @@ select.text-input option {
 
 [dir="rtl"] .toggle-switch input:checked + .toggle-slider::before {
     transform: translateX(-20px);
-}
-
-/* === BUTTON GROUPS === */
-.btn-group {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-    background: var(--bg-elevated);
-    border-radius: var(--radius-md);
-    padding: 4px;
-}
-
-.btn-group > * + * {
-    margin-left: 4px;
-}
-
-[dir="rtl"] .btn-group > * + * {
-    margin-left: 0;
-    margin-right: 4px;
-}
-
-.btn-group-vertical {
-    flex-direction: column;
-    width: 100%;
-}
-
-.btn-group-vertical > * + * {
-    margin-left: 0;
-    margin-top: 4px;
-}
-
-.btn-group-vertical .btn-toggle {
-    width: 100%;
 }
 
 .btn-toggle {
@@ -977,18 +817,6 @@ select.text-input option {
 
 .btn-danger:hover { background: rgba(239, 68, 68, 0.25); }
 .btn-danger.on { background: var(--danger); color: white; }
-
-.btn-ghost {
-    color: var(--text-secondary);
-    background: transparent;
-    border-color: transparent;
-}
-
-.btn-ghost:hover {
-    color: var(--text-primary);
-    background: var(--bg-hover);
-    border-color: var(--border-default);
-}
 
 /* === SLIDERS === */
 .slider-control {
@@ -1148,192 +976,6 @@ select.text-input option {
     outline-offset: 2px;
 }
 
-/* === TELEMETRY OVERLAY FIELD PICKER ===========================
- * Chip grid for choosing which telemetry fields burn into recordings.
- * Reuses the .checkbox-item chip look (active = brand-teal fill). The
- * wrapper indents slightly under its parent toggle row and animates in
- * when the overlay is enabled. Purely additive — no other page uses it. */
-.telemetry-fields {
-    padding: 4px 0 12px;
-    border-bottom: none;
-}
-.telemetry-fields-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding-top: 4px;
-}
-.telemetry-fields-grid .checkbox-item {
-    padding: 8px 14px;
-    font-size: 12px;
-    user-select: none;
-}
-
-/* === M3 OUTLINED TEXT FIELD ====================================
- * SOTA input pattern used by BYD Cloud and any future credential / data-entry
- * form. Pure CSS — no JS — leans on the "placeholder-shown" trick so the
- * floating label sits inside the box when empty, then floats to the border
- * when the input is focused or filled.
- *
- * Markup contract:
- *   <div class="md-field [md-field-trailing]">
- *     <input class="md-input" id="x" placeholder=" "> <!-- single space placeholder -->
- *     <label class="md-label" for="x">Label</label>
- *     <button class="md-trailing-btn">…</button>     <!-- optional, with md-field-trailing -->
- *     <span class="md-supporting">Helper text</span> <!-- optional -->
- *   </div>
- *
- * The placeholder MUST be exactly " " (a single space) — not empty — so the
- * :placeholder-shown selector flips at the right time. Real placeholder text
- * would defeat the floating-label affordance.
- *
- * The supporting-text lives BELOW the input box, outside the border — its
- * height is part of the .md-field's reserved space so the next field's
- * margin-top doesn't have to know whether helper text is present.
- *
- * Theme-aware via design tokens; no raw hex.
- */
-.md-field {
-    position: relative;
-    margin-bottom: 14px;
-    /* Reserve room above for the floated label so it never collides with the
-       previous field's supporting-text. */
-    padding-top: 6px;
-}
-.md-field:first-of-type { margin-top: 4px; }
-
-/* The actual input wrapper — gives a single hit-area for the bordered box,
-   independent of the supporting-text below it. */
-.md-field-box {
-    position: relative;
-}
-
-.md-input {
-    width: 100%;
-    box-sizing: border-box;
-    height: 56px;
-    /* Top padding clears the floated label; bottom is uniform. */
-    padding: 20px 14px 8px;
-    background: transparent;
-    border: 1px solid var(--border-default);
-    border-radius: 12px;
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 15px;
-    line-height: 1.4;
-    outline: none;
-    transition: border-color 160ms ease-out,
-                box-shadow 160ms ease-out,
-                background-color 160ms ease-out;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-/* Selects render to match the rest of the site's `.select-control` chip:
- * elevated bg, M3 radius, muted chevron asset, native option list with the
- * surface palette. Floating-label still works because the label sibling
- * floats whenever the select carries a value (selects always do). */
-select.md-input {
-    padding-right: 40px;
-    cursor: pointer;
-    background-color: var(--bg-elevated);
-    border-color: var(--border-subtle);
-    border-radius: var(--radius-md);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-    background-size: 12px;
-}
-
-:root[data-theme="light"] select.md-input {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23586068' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-}
-
-select.md-input:hover {
-    border-color: var(--border-default);
-}
-
-/* The native <option> list is rendered by the OS — browsers expose only
-   `background` and `color` for theming. Match the rest of the site by
-   using the surface token + primary text token, with the OS picking its
-   own selection / hover highlight. */
-select.md-input option {
-    background: var(--bg-surface);
-    color: var(--text-primary);
-    padding: 8px;
-}
-
-/* When the select is the floating-label variant, the label needs a matching
-   background swatch behind it so the cut-through of the border reads clean
-   against the elevated select chip (not the surrounding bg-surface). */
-.md-field-box select.md-input ~ .md-label {
-    background: var(--bg-elevated);
-}
-
-.md-input:hover {
-    border-color: var(--text-muted);
-}
-
-.md-input:focus {
-    border-color: var(--brand-primary);
-    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.15);
-}
-
-.md-input::placeholder { color: transparent; }
-
-.md-label {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 6px;
-    pointer-events: none;
-    font-size: 15px;
-    line-height: 1;
-    color: var(--text-muted);
-    background: transparent;
-    /* Use a transition curve that lands the label cleanly on the border
-       without overshoot, regardless of input height. */
-    transition: top 160ms ease-out,
-                transform 160ms ease-out,
-                font-size 160ms ease-out,
-                color 160ms ease-out,
-                background-color 160ms ease-out;
-    max-width: calc(100% - 24px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* Float the label when the field is focused OR has a value, OR is a select
-   (selects always have a value, so the label always floats). */
-.md-input:focus ~ .md-label,
-.md-input:not(:placeholder-shown) ~ .md-label,
-select.md-input ~ .md-label {
-    top: 0;
-    transform: translateY(-50%) scale(1);
-    font-size: 12px;
-    color: var(--text-secondary);
-    background: var(--bg-surface);
-}
-
-.md-input:focus ~ .md-label {
-    color: var(--brand-primary);
-}
-
-.md-supporting {
-    display: block;
-    margin: 6px 14px 0;
-    font-size: 12px;
-    color: var(--text-muted);
-    line-height: 1.4;
-}
-
-/* Trailing icon button (eye, clear, etc.) sits inside the field bounds.
-   Pinned to the .md-field-box so its position is independent of the
-   supporting-text length. */
-.md-field-trailing .md-input { padding-right: 52px; }
-
 /* Secondary button modifier — outlined variant, used for "Test Connection"
    when the primary "Save" is teal-filled. Lives here so any tabbed page
    can reuse it. */
@@ -1353,107 +995,9 @@ select.md-input ~ .md-label {
     font-weight: 600;
 }
 
-/* === INFO BOX === */
-.info-box {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    margin-top: 16px;
-}
-
-/* Variants — note (neutral) and warning. Each gets a small leading icon
-   beside the text via flex layout. Both variants are stand-alone (don't
-   combine with `.info-box`).
-   The note variant is INTENTIONALLY chrome-less — no background, no
-   border, no radius — so it sits as a flat, leading-icon hint inside an
-   already-elevated `.card-body` surface without reading as a nested box.
-   The warning variant keeps a tinted surface because its job is to draw
-   attention. */
-.info-box-note,
-.info-box-warning {
-    display: flex;
-    align-items: flex-start;
-    margin-top: 12px;
-}
-
-.info-box-note[hidden],
-.info-box-warning[hidden] {
-    display: none;
-}
-
-.info-box-note {
-    padding: 4px 0 0;
-    background: transparent;
-    border: 0;
-}
-
 .info-box-framed {
     padding: 12px 14px;
     border-radius: var(--radius-md);
-}
-.info-box-warning {
-    padding: 12px 14px;
-    border-radius: var(--radius-md);
-    background: rgba(245, 158, 11, 0.08);
-    border: 1px solid rgba(245, 158, 11, 0.30);
-}
-.info-box-note > .info-icon,
-.info-box-warning > .info-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    margin-right: 10px;
-    /* Nudge to optical-center with the first line of body text — body sits
-       at the box's flex baseline, the icon glyph reads slightly low at its
-       SVG bounding box. 2px lift lines them up. */
-    margin-top: 1px;
-}
-.info-box-note > .info-icon { color: var(--brand-primary); }
-
-.info-box-note > *:not(.info-icon),
-.info-box-warning > *:not(.info-icon) {
-    flex: 1;
-    min-width: 0;
-}
-
-.info-box-warning > .info-icon { color: var(--warning); }
-
-/* When the body of an info-box-note is just a `.info-note` text line
-   (no info-row table inside), it must read as a plain flat line beside the
-   icon. The standalone `.info-note` rule (used elsewhere as a boxed callout)
-   carries padding/background/border-left; reset those here so the text sits
-   flush against the flex-start icon instead of as an offset padded box —
-   otherwise a multi-line note renders visibly misaligned. */
-.info-box-note .info-note,
-.info-box-warning .info-note {
-    font-size: 13px;
-    line-height: 1.55;
-    padding: 0;
-    background: none;
-    border: 0;
-    border-radius: 0;
-}
-.info-box-note .info-note { color: var(--text-secondary); }
-.info-box-warning .info-note { color: var(--warning); }
-
-.info-row {
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-}
-
-.info-row + .info-row { margin-top: 10px; }
-.info-row .label { color: var(--text-muted); }
-.info-row .value { font-weight: 500; }
-.info-row .link-value {
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    transition: color 0.2s, opacity 0.2s;
-}
-.info-row .link-value:hover {
-    color: var(--accent-hover);
-    opacity: 0.85;
 }
 
 /* === STATUS BADGES === */
@@ -1534,97 +1078,6 @@ select.md-input ~ .md-label {
     margin-top: 8px;
 }
 
-/* === STORAGE BAR === */
-.storage-bar {
-    height: 8px;
-    background: var(--bg-hover);
-    border-radius: var(--radius-full);
-    overflow: hidden;
-    margin: 12px 0;
-}
-
-.storage-fill {
-    height: 100%;
-    background: var(--brand-gradient);
-    border-radius: var(--radius-full);
-    transition: width 0.3s;
-}
-
-.storage-info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: var(--text-muted);
-}
-
-/* === SD CARD STATUS === */
-.sd-card-status {
-    background: var(--bg-elevated);
-    border-radius: var(--radius-md);
-    padding: 10px 12px;
-    margin: 8px 0 16px 0;
-}
-
-/* Storage fallback banner — recordings configured for SD/USB but landing on
-   internal because the external volume is unavailable/full. Amber-tinted so it
-   reads as a warning, not an error. */
-.storage-fallback-banner {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(240, 160, 32, 0.12);
-    border: 1px solid rgba(240, 160, 32, 0.35);
-    border-radius: var(--radius-md);
-    padding: 10px 12px;
-    margin: 8px 0 16px 0;
-    font-size: 12px;
-    color: var(--text-primary);
-}
-
-.sd-status-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.sd-status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    flex-shrink: 0;
-}
-
-.sd-status-dot.online {
-    background: var(--success);
-    box-shadow: 0 0 6px var(--success);
-}
-
-.sd-status-dot.offline {
-    background: var(--text-muted);
-}
-
-.sd-status-text {
-    font-size: 12px;
-    color: var(--text-secondary);
-}
-
-.sd-space-info {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 4px;
-    padding-left: 16px;
-}
-
-/* Slider range labels */
-.slider-range-labels {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: -4px;
-    padding: 0 4px;
-}
-
 /* === FLOATING PIP CAMERA === */
 .pip-container {
     position: fixed;
@@ -1666,14 +1119,6 @@ select.md-input ~ .md-label {
     display: flex;
     align-items: center;
     gap: 8px;
-}
-
-.pip-title .live-dot {
-    width: 8px;
-    height: 8px;
-    background: var(--danger);
-    border-radius: 50%;
-    animation: pulse 1.5s infinite;
 }
 
 .pip-controls {
@@ -1880,17 +1325,6 @@ select.md-input ~ .md-label {
     }
 }
 
-/* On wider viewports the mobile-header is hidden anyway (display:none
-   above 768px), so nothing to do — the map already fills the panel. */
-
-/* === SPLIT VIEW LAYOUT === */
-.live-split-view {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
 /* === TAB-BASED LAYOUT (Tesla Style) === */
 .live-tabs-view {
     flex: 1;
@@ -1910,40 +1344,6 @@ select.md-input ~ .md-label {
     background: var(--bg-surface);
     border-bottom: 1px solid var(--border-subtle);
     flex-shrink: 0;
-}
-
-.tab-btn {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 16px;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.tab-btn svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-}
-
-.tab-btn:hover {
-    color: var(--text-secondary);
-    background: var(--bg-hover);
-}
-
-.tab-btn.active {
-    color: var(--brand-primary);
-    background: rgba(0, 212, 170, 0.1);
-    border-color: rgba(0, 212, 170, 0.3);
 }
 
 /* Map Panel */
@@ -1973,13 +1373,6 @@ select.md-input ~ .md-label {
     flex-direction: column;
     gap: 8px;
     z-index: 1000;
-}
-
-/* Map info bar at bottom */
-#panelMap .map-info-bar {
-    flex-shrink: 0;
-    z-index: 1000;
-    position: relative;
 }
 
 /* Ensure Leaflet map fills container */
@@ -2067,36 +1460,6 @@ select.md-input ~ .md-label {
     pointer-events: none;
 }
 
-/* Bottom info strip on the Live View map tab (distance + last-GPS-update).
-   Backdrop, text colour, and the brand-tinted accents flip with theme so
-   the strip doesn't read as a black slab on a light cabin display. */
-.map-info-bar {
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    padding: 14px 20px;
-    padding-bottom: 14px;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-    background: var(--bg-glass, rgba(10, 20, 20, 0.9));
-    border-top: 1px solid var(--lv-pill-border, rgba(255, 255, 255, 0.10));
-}
-
-.map-info-bar .map-info-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--lv-overlay-text, rgba(255, 255, 255, 0.85));
-}
-
-.map-info-bar .map-info-item svg {
-    width: 16px;
-    height: 16px;
-    color: var(--brand-primary);
-    filter: drop-shadow(0 0 4px rgba(0, 212, 170, 0.40));
-}
-
 /* Cameras Panel — outer background flips with theme. The inner
    .seamless-camera-view paints its own light/dark gradient via
    --lv-panel-bg in index.html, but a hardcoded #000 here used to leak
@@ -2106,11 +1469,6 @@ select.md-input ~ .md-label {
 #panelCameras {
     background: var(--bg-base);
     z-index: 1;
-}
-
-#panelCameras .stream-container {
-    flex: 1;
-    position: relative;
 }
 
 /* Floating Mini Preview */
@@ -2163,32 +1521,6 @@ select.md-input ~ .md-label {
                 bottom 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
                 transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1),
                 box-shadow 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-
-.mini-preview-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 212, 170, 0.08);
-    color: var(--brand-primary);
-}
-
-.mini-preview-content svg {
-    width: 28px;
-    height: 28px;
-    stroke: var(--brand-primary);
-}
-
-.mini-preview-label {
-    padding: 4px;
-    font-size: 9px;
-    font-weight: 700;
-    text-align: center;
-    color: var(--brand-primary);
-    background: rgba(0, 212, 170, 0.12);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
 }
 
 /* Map container (used in tab panel) */
@@ -2341,145 +1673,9 @@ select.md-input ~ .md-label {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Camera Section (legacy - now in tab panel) */
-.camera-section {
-    flex: 1;
-    position: relative;
-    min-height: 0;
-    overflow: hidden;
-}
-
-/* Stream container — matches the theme-aware --lv-video-bg used by the
-   newer .video-display-area in index.html so the camera view doesn't read
-   as a black slab on light theme. Dark theme still resolves to #000 (the
-   classic letterbox look); light theme falls back to the page surface. */
-.stream-container {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--lv-video-bg, var(--bg-base, #000));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.stream-container video, .stream-container canvas {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* === STREAM CONTROLS (Mini Car Selector) === */
-.stream-controls {
-    position: absolute;
-    bottom: calc(24px + var(--safe-bottom));
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 6px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
-}
-
-.cam-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    padding: 10px 16px;
-    min-width: 60px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--text-muted);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.cam-btn svg { 
-    width: 32px; 
-    height: 32px;
-    transition: all 0.2s ease;
-}
-
-.cam-btn span {
-    transition: color 0.2s ease;
-}
-
-.cam-btn:hover { 
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--text-secondary);
-}
-
-.cam-btn:hover svg {
-    transform: scale(1.05);
-}
-
-.cam-btn.active {
-    background: rgba(0, 212, 170, 0.12);
-    color: var(--brand-primary);
-    border-color: rgba(0, 212, 170, 0.3);
-}
-
-.cam-btn.active svg {
-    filter: drop-shadow(0 0 6px rgba(0, 212, 170, 0.5));
-}
-
-/* Loading state */
-.cam-btn.loading {
-    pointer-events: none;
-}
-
-.cam-btn.loading::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    animation: shimmer 1s infinite;
-}
-
 @keyframes shimmer {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
-}
-
-/* === STREAM PLACEHOLDER & CAR SELECTOR === */
-.stream-placeholder {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    padding: 30px 20px;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(ellipse at center, rgba(0, 212, 170, 0.03) 0%, transparent 70%);
-}
-
-.stream-hint {
-    font-size: 13px;
-    color: var(--text-muted);
-    text-align: center;
-}
-
-/* Car Selector Visual */
-.car-selector-visual {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.car-diagram {
-    width: 180px;
-    height: 306px;
-    filter: drop-shadow(0 0 40px rgba(0, 212, 170, 0.08));
 }
 
 /* Camera Areas (clickable) */
@@ -2495,21 +1691,6 @@ select.md-input ~ .md-label {
     filter: drop-shadow(0 0 12px rgba(0, 212, 170, 0.6));
 }
 
-.cam-area:hover .cam-line {
-    stroke: var(--brand-primary);
-    opacity: 1;
-}
-
-/* Car section highlight on hover */
-.cam-area.hover-front ~ .car-body-front,
-.cam-area:hover[id="camFrontArea"] ~ * .car-front-section {
-    fill: rgba(0, 212, 170, 0.1);
-}
-
-.cam-hitbox {
-    cursor: pointer;
-}
-
 /* Camera Indicators */
 .cam-indicator {
     fill: rgba(255, 255, 255, 0.08);
@@ -2522,21 +1703,6 @@ select.md-input ~ .md-label {
     fill: var(--brand-primary);
     stroke: var(--brand-primary);
     filter: drop-shadow(0 0 16px rgba(0, 212, 170, 0.9));
-}
-
-.cam-line {
-    stroke: rgba(255, 255, 255, 0.15);
-    transition: all 0.2s ease;
-}
-
-/* Camera Labels */
-.cam-labels {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .cam-label {
@@ -2608,147 +1774,6 @@ select.md-input ~ .md-label {
     transform: translateY(-50%) scale(1.05);
 }
 
-/* Upfront Quality Selector */
-.quality-selector-upfront {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.quality-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
-.quality-select-large {
-    padding: 10px 40px 10px 16px;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23667180' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    transition: all 0.2s ease;
-}
-
-.quality-select-large:hover {
-    border-color: var(--brand-primary);
-    background-color: rgba(0, 212, 170, 0.05);
-}
-
-.quality-select-large:focus {
-    border-color: var(--brand-primary);
-    box-shadow: 0 0 0 3px rgba(0, 212, 170, 0.1);
-}
-
-.quality-select-large option {
-    background: var(--bg-surface);
-    color: var(--text-primary);
-    padding: 8px;
-}
-
-/* Stream Actions */
-.stream-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-}
-
-.btn-stream-all {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--fixed-black);
-    background: var(--brand-gradient);
-    border: none;
-    border-radius: var(--radius-full);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 20px rgba(0, 212, 170, 0.3);
-}
-
-.btn-stream-all:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 28px rgba(0, 212, 170, 0.4);
-}
-
-.btn-stream-all:active {
-    transform: translateY(0);
-}
-
-.btn-stream-all svg {
-    width: 18px;
-    height: 18px;
-}
-
-/* === STREAM OVERLAY (when streaming) === */
-.stream-overlay {
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    pointer-events: none;
-}
-
-.stream-overlay > * {
-    pointer-events: auto;
-}
-
-.stream-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 16px 20px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
-}
-
-.stream-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.stream-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.stream-badge.live {
-    background: rgba(34, 197, 94, 0.2);
-    border-color: rgba(34, 197, 94, 0.4);
-    color: var(--status-success);
-}
-
-.stream-badge.connecting {
-    background: rgba(245, 158, 11, 0.25);
-    border-color: rgba(245, 158, 11, 0.5);
-    color: var(--status-warning);
-}
-
 .status-dot {
     width: 8px;
     height: 8px;
@@ -2764,82 +1789,6 @@ select.md-input ~ .md-label {
 .status-dot.connecting {
     background: var(--status-warning);
     animation: pulse 0.8s infinite;
-}
-
-/* Stream Actions Bar */
-.stream-actions-bar {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.quality-select {
-    padding: 8px 12px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--text-primary);
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    padding-right: 28px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-}
-
-.quality-select:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.quality-select option {
-    background: var(--bg-surface);
-    color: var(--text-primary);
-}
-
-.btn-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-md);
-    color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.btn-icon:hover {
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-primary);
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
-.btn-icon svg {
-    width: 18px;
-    height: 18px;
-}
-
-.btn-icon.btn-stop:hover {
-    background: rgba(239, 68, 68, 0.2);
-    border-color: rgba(239, 68, 68, 0.4);
-    color: var(--danger);
-}
-
-/* Fullscreen mode */
-.stream-container.fullscreen {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    z-index: 1000;
-}
-
-.stream-container.fullscreen .stream-controls {
-    bottom: 40px;
 }
 
 /* === TOAST ===
@@ -2917,9 +1866,6 @@ select.md-input ~ .md-label {
        (set in app-tabs.css) so we sit above it; the overlay sits between. */
     .sidebar.open { transform: translateX(0); z-index: 500; }
     [dir="rtl"] .sidebar.open { transform: translateX(0); }
-    .sidebar-close {
-        display: flex;
-    }
     .main-content { margin-left: 0; }
     /* The desktop RTL rule sets margin-right to --sidebar-width, and this
        breakpoint redefines that variable as 100%. Without this reset the
@@ -2943,22 +1889,6 @@ select.md-input ~ .md-label {
         background: var(--bg-glass);
         border-bottom: 1px solid var(--border-subtle);
     }
-    .mobile-title-source {
-        display: none;
-    }
-    .menu-toggle {
-        width: 48px;
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: var(--radius-md);
-        color: var(--text-primary);
-        background: transparent;
-        transition: background 0.2s;
-    }
-    .menu-toggle:hover { background: var(--bg-hover); }
-    .menu-toggle svg { width: 22px; height: 22px; }
     .page-header { display: none; }
     .page-body { 
         padding: 16px;
@@ -2994,7 +1924,6 @@ select.md-input ~ .md-label {
     .setting-control > .select-control,
     .setting-control > select,
     .setting-control > .text-input { width: 100%; box-sizing: border-box; }
-    .setting-control > .btn-group { width: 100%; }
     /* Let the label text wrap rather than force the row wider than the card. */
     .setting-row > .setting-info { min-width: 0; max-width: 100%; }
     .pip-container {
@@ -3002,14 +1931,6 @@ select.md-input ~ .md-label {
         right: 16px;
         left: auto;
         width: 200px;
-    }
-    /* Car Selector Mobile - no extra padding needed since header is visible */
-    .stream-placeholder {
-        padding-top: 20px;
-    }
-    .car-diagram {
-        width: 140px;
-        height: 238px;
     }
     .cam-label {
         font-size: 9px;
@@ -3019,80 +1940,10 @@ select.md-input ~ .md-label {
     .cam-label.rear { bottom: -16px; }
     .cam-label.left { left: -48px; }
     .cam-label.right { right: -48px; }
-    .quality-selector-upfront {
-        margin-top: 8px;
-    }
-    .quality-select-large {
-        padding: 8px 32px 8px 12px;
-        font-size: 13px;
-    }
-    .btn-stream-all {
-        padding: 10px 20px;
-        font-size: 13px;
-    }
-    .stream-hint {
-        font-size: 12px;
-    }
-    /* Stream Controls Mobile - above mobile nav */
-    .stream-controls {
-        bottom: calc(80px + var(--safe-bottom));
-        left: 12px;
-        right: 12px;
-        transform: none;
-        justify-content: center;
-        gap: 3px;
-        padding: 6px;
-    }
-    .cam-btn { 
-        padding: 6px 8px;
-        min-width: 44px;
-    }
-    .cam-btn svg {
-        width: 22px;
-        height: 22px;
-    }
-    .cam-btn span {
-        font-size: 8px;
-    }
-    /* Stream Header Mobile */
-    .stream-header {
-        padding: 12px 16px;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-    .stream-info {
-        gap: 6px;
-    }
-    .stream-badge {
-        padding: 5px 8px;
-        font-size: 10px;
-    }
-    .stream-actions-bar {
-        gap: 6px;
-    }
-    .quality-select {
-        padding: 6px 10px;
-        padding-right: 24px;
-        font-size: 11px;
-    }
-    /* Map Section Mobile */
-    .map-section {
-        flex: 1;
-        min-height: 200px;
-    }
     /* Tab Bar Mobile */
     .tab-bar {
         padding: 8px 12px;
         gap: 6px;
-    }
-    .tab-btn {
-        padding: 10px 12px;
-        font-size: 12px;
-        gap: 6px;
-    }
-    .tab-btn svg {
-        width: 16px;
-        height: 16px;
     }
     /* Map Overlay Mobile */
     .map-overlay-actions {
@@ -3114,37 +1965,12 @@ select.md-input ~ .md-label {
         width: 20px;
         height: 20px;
     }
-    .map-info-bar {
-        padding: 10px 16px;
-        padding-bottom: 10px;
-        padding-bottom: calc(10px + var(--safe-bottom, 0px));
-        gap: 20px;
-    }
-    .map-info-bar .map-info-item {
-        font-size: 12px;
-    }
     /* Mini Preview Mobile */
     .mini-preview {
         top: 70px;
         left: 16px;
         width: 64px;
         height: 64px;
-    }
-    .mini-preview-content svg {
-        width: 22px;
-        height: 22px;
-    }
-    .mini-preview-label {
-        font-size: 8px;
-        padding: 3px;
-    }
-    .btn-icon {
-        width: 34px;
-        height: 34px;
-    }
-    .btn-icon svg {
-        width: 16px;
-        height: 16px;
     }
     /* Mobile bottom nav */
     .mobile-nav {
@@ -3158,49 +1984,12 @@ select.md-input ~ .md-label {
         padding: 8px 16px calc(8px + var(--safe-bottom));
         z-index: 100;
     }
-    .mobile-nav-item {
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-        padding: 8px;
-        color: var(--text-muted);
-        font-size: 11px;
-        font-weight: 500;
-    }
-    .mobile-nav-item svg { width: 22px; height: 22px; }
-    .mobile-nav-item.active { color: var(--brand-primary); }
 }
 
 @media (min-width: 769px) {
     .mobile-header { display: none; }
     .mobile-nav { display: none; }
 }
-
-/* === OVERLAY === */
-.sidebar-overlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
-}
-
-/* Overlay sits between the bottom-tabs (z=400) and the open sidebar (z=500)
-   so a tap on the dimmed area dismisses the menu without leaking the click
-   to the tab bar underneath. */
-.sidebar-overlay.show { display: block; z-index: 450; }
-
-/* === UNSAVED INDICATOR === */
-.unsaved-indicator {
-    display: none;
-    color: var(--warning);
-    font-size: 11px;
-    margin-left: 8px;
-}
-
-.unsaved-indicator.show { display: inline; }
 
 /* === FOOTER BAR === */
 .footer-bar {
@@ -3224,209 +2013,6 @@ select.md-input ~ .md-label {
         padding: 12px 16px;
         padding-bottom: calc(12px + 40px + var(--safe-bottom));
     }
-}
-
-
-/* === SOTA WHITE RIMS & FLOW === */
-.ev-card {
-    /* Theme-aware gradient — dark slate in dark mode, soft tinted-white in
-       light mode. Was previously hardcoded `#1e293b → #0f172a` which left
-       the bottom card on the sidebar visibly black under light theme.
-       Spacing from the .status-card above it is provided by
-       .sidebar-footer's flex `gap` — no per-card margin needed. */
-    background: linear-gradient(180deg, var(--bg-elevated) 0%, var(--bg-surface) 100%);
-    border: 1px solid var(--border-default);
-    border-radius: 16px;
-    padding: 16px;
-    box-shadow: var(--shadow-md);
-}
-
-.ev-header-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 8px;
-}
-
-.ev-title {
-    font-size: 11px;
-    color: var(--text-muted);
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-.ev-percent-text {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.ev-svg-container {
-    width: 100%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 8px 0;
-    filter: drop-shadow(0 25px 20px rgba(0,0,0,0.5));
-}
-
-.ev-car-svg {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
-}
-
-/* Battery + charging viz used to be a separate <rect> bar with a
-   moving-stripe pattern. That layer is gone; the GLB body's emissive
-   channel now carries SOC-tinted glow and the slow charging pulse (see
-   ev-card-3d.js setSocPercent / setCharging). The bolt icon below
-   stays as the only overlay badge — it pops in on .charging. */
-
-.ev-card.charging #svgChargeIcon {
-    transform: translate(160px, 5px) scale(1.2);
-}
-
-/* Footer */
-.ev-info-row {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 10px;
-    border-top: 1px solid var(--border-subtle);
-    font-size: 12px;
-}
-
-.ev-range {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--text-secondary);
-}
-
-.ev-range svg {
-    width: 14px;
-    height: 14px;
-    opacity: 0.7;
-}
-
-.ev-power-status {
-    display: flex;
-    align-items: center;
-}
-
-.ev-power-val {
-    font-weight: 600;
-    color: var(--text-primary);
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.ev-card.charging .ev-power-val {
-    color: var(--brand-primary);
-}
-
-/* Personalized Range Row */
-.ev-personalized-range {
-    margin-top: 8px;
-    padding: 8px 10px;
-    background: rgba(0, 212, 170, 0.08);
-    border: 1px solid rgba(0, 212, 170, 0.15);
-    border-radius: var(--radius-sm);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ev-personalized-label {
-    font-size: 11px;
-    color: var(--brand-primary);
-    font-weight: 500;
-}
-
-.ev-personalized-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--brand-primary);
-}
-
-/* SOH Row */
-.ev-soh-row {
-    margin-top: 8px;
-    padding: 6px 10px;
-    background: rgba(168, 85, 247, 0.08);
-    border: 1px solid rgba(168, 85, 247, 0.15);
-    border-radius: var(--radius-sm);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.ev-soh-label {
-    font-size: 11px;
-    color: var(--chart-2);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-}
-
-.ev-soh-val {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    font-weight: 700;
-    color: var(--status-success);
-}
-
-/* === FUEL CARD (PHEV only) === */
-.fuel-card {
-    background: linear-gradient(180deg, rgba(245,158,11,0.08) 0%, rgba(245,158,11,0.02) 100%);
-    border: 1px solid rgba(245,158,11,0.15);
-    border-radius: var(--radius-lg);
-    padding: 14px 16px;
-    margin-top: 12px;
-}
-.fuel-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-.fuel-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    flex: 1;
-}
-.fuel-percent {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--status-warning);
-}
-.fuel-bar-track {
-    height: 6px;
-    background: rgba(245,158,11,0.1);
-    border-radius: 3px;
-    overflow: hidden;
-}
-.fuel-bar-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--status-warning), var(--status-warning));
-    border-radius: 3px;
-    transition: width 0.6s ease;
-}
-.fuel-info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 8px;
-}
-.fuel-range {
-    font-size: 12px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 4px;
 }
 
 /* Status icon in label */
@@ -3483,46 +2069,6 @@ select.md-input ~ .md-label {
     color: var(--on-surface);
     text-transform: uppercase;
     letter-spacing: 0.5px;
-}
-
-.info-note {
-    font-size: 13px;
-    color: var(--on-surface-variant);
-    line-height: 1.5;
-    padding: 12px;
-    background: rgba(59, 130, 246, 0.05);
-    border-radius: 8px;
-    border-left: 3px solid var(--status-info);
-}
-
-.select-input {
-    padding: 10px 14px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid rgba(148, 163, 184, 0.2);
-    border-radius: 8px;
-    color: var(--on-surface);
-    font-size: 14px;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-width: 200px;
-}
-
-.select-input:hover {
-    border-color: rgba(148, 163, 184, 0.4);
-    background: rgba(15, 23, 42, 0.8);
-}
-
-.select-input:focus {
-    outline: none;
-    border-color: var(--status-info);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-}
-
-.select-input option {
-    background: var(--surface-container);
-    color: var(--on-surface);
-    padding: 8px;
 }
 
 /* === LANGUAGE PICKER === */
@@ -3750,39 +2296,6 @@ select.md-input ~ .md-label {
     letter-spacing: 0;
     color: var(--text-primary);
 }
-.soh-modal-label {
-    display: block;
-    font-size: 11px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin: 14px 0 6px;
-    font-weight: 600;
-}
-.soh-modal-label:first-of-type { margin-top: 0; }
-
-.soh-modal-input {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 10px 12px;
-    background: var(--bg-elevated);
-    border: 1px solid var(--border-default);
-    border-radius: 10px;
-    color: var(--text-primary);
-    font-family: inherit;
-    font-size: 14px;
-    line-height: 1.4;
-    outline: none;
-    transition: border-color 160ms ease-out, box-shadow 160ms ease-out;
-    -webkit-appearance: none;
-    appearance: none;
-}
-.soh-modal-input::placeholder { color: var(--text-muted); }
-.soh-modal-input:hover { border-color: var(--text-muted); }
-.soh-modal-input:focus {
-    border-color: var(--brand-primary);
-    box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.15);
-}
 
 /* A WRAPPING button row: the community detail modal can show five buttons
    (Edit / Unpublish / Report / Close / Add). flex `gap` is Chrome 84+ and is
@@ -3814,20 +2327,4 @@ select.md-input ~ .md-label {
 
 #sohCapacityRow:hover {
     background: var(--bg-hover);
-}
-.soh-row-source {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin-top: 2px;
-}
-
-/* Storage fallback warning — shown under the storage-usage line when the
-   configured external volume (SD/USB) isn't the one we're actually writing
-   to (unmounted because USB power is off and the SD rides that rail, or the
-   volume is full), so clips silently land on internal storage. Tinted with
-   the warning token to draw the eye without alarming red. */
-.storage-fallback-warning {
-    color: var(--warning);
-    font-weight: 600;
-    margin-top: 4px;
 }

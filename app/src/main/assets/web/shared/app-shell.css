@@ -1,36 +1,4 @@
-/* Shared browser shell; visual tokens follow the YourDrive reference. */
 
-/* === BRAND CLUSTER — clickable home affordance ====================
- * The header brand reads as "go home" (Dashboard). Hover lifts it onto a
- * tonal-primary surface; press scales it down — same interaction language
- * as the active sidebar nav link.
- */
-.sidebar .brand-link {
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-    border-radius: var(--radius-md, 14px);
-    margin: -8px -8px -4px;
-    padding: 8px;
-    /* Re-establish the brand cluster's flex layout (was on .brand). */
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-    flex: 1;
-    transition: background-color 200ms ease-out, transform 120ms ease-out;
-    -webkit-tap-highlight-color: transparent;
-}
-.sidebar .brand-link:hover {
-    background: var(--bg-hover, var(--surface-container-high));
-}
-.sidebar .brand-link:active {
-    transform: scale(0.98);
-}
-.sidebar .brand-link:focus-visible {
-    outline: 2px solid var(--brand-primary, var(--primary));
-    outline-offset: 2px;
-}
 
 /* Pin the logo cluster so the online pulse can dock to a corner of the
    round avatar. */
@@ -38,35 +6,10 @@
     position: relative;
     flex-shrink: 0;
 }
-
-/* Online pulse — small steady-green dot anchored to the avatar's bottom-
-   right corner. Implies "system is alive" without binding to live status
-   state (the status-card below the nav already does that). */
-.sidebar .brand-online-pulse {
-    position: absolute;
-    right: 0;
-    bottom: 2px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--status-success, var(--brand-primary));
-    border: 2px solid var(--bg-surface);
-    box-shadow: 0 0 0 0 rgba(91, 211, 130, 0.50);
-    animation: brand-online-pulse 2.4s ease-out infinite;
-}
 @keyframes brand-online-pulse {
     0%   { box-shadow: 0 0 0 0 rgba(91, 211, 130, 0.50); }
     70%  { box-shadow: 0 0 0 8px rgba(91, 211, 130, 0); }
     100% { box-shadow: 0 0 0 0 rgba(91, 211, 130, 0); }
-}
-@media (prefers-reduced-motion: reduce) {
-    .sidebar .brand-online-pulse { animation: none; }
-}
-
-/* When the user is already on Dashboard, dim the brand-link's hover bg
-   so the active page doesn't re-trigger the affordance every time. */
-body.dashboard-page .sidebar .brand-link:hover {
-    background: transparent;
 }
 
 /* === ACTIVE LINK INSET STRIPE =================================== */
@@ -81,89 +24,11 @@ body.dashboard-page .sidebar .brand-link:hover {
     color: var(--primary-text);
 }
 
-.sidebar-nav .nav-link.active .nav-icon,
-.sidebar-nav .nav-link[aria-current="page"] .nav-icon {
-    color: var(--primary-text);
-}
-
-/* === SIDEBAR NAV: GROUP HEADERS + HAIRLINES =================== */
-/*
- * Mirrors the native rail's hairline-before-About pattern. Groups in the
- * web sidebar (Integrations, Diagnostics, About) get a small overline
- * label flanked by a hairline so the destinations cluster the same way
- * users learn them in the native shell.
- */
-.sidebar .nav-group-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 14px 16px 6px;
-    color: var(--outline);
-}
-
-.sidebar .nav-group-line {
-    display: none;
-}
-
-/* Sentence-case group labels, small and muted (mockup "Security"). */
-.sidebar .nav-group-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0;
-    text-transform: none;
-    color: var(--on-surface-variant);
-}
-
 .sidebar .nav-divider {
     margin: 8px 16px;
     height: 1px;
     background: var(--outline-variant);
 }
-
-/* === GLASS TOP APP BAR (opt-in) ================================ */
-/* Pages that want a Material 3 expressive top app bar add
-   <header class="app-bar">…</header> as the first child of .main-content.
-   The header sticks to the top of the scroll area with a translucent blur
-   so content scrolls "behind" it. */
-.app-bar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    height: var(--app-bar-height, 64px);
-    display: flex;
-    align-items: center;
-    padding: 0 24px;
-    background: var(--bg-glass);
-    border-bottom: 1px solid var(--outline-variant);
-}
-
-.app-bar::after { display: none; }
-
-.app-bar-title {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: var(--tracking-headline, -0.015em);
-    color: var(--on-surface);
-    margin: 0;
-}
-
-.app-bar-spacer {
-    flex: 1;
-}
-
-.app-bar-actions {
-    display: flex;
-    align-items: center;
-}
-
-.app-bar-actions > * + * {
-    /* gap: replaced with margin so it works on Chrome 58 where flex `gap`
-       was not supported. */
-    margin-left: 8px;
-}
-
-/* === NO-FLASH BOOTSTRAP ======================================== */
-html.shell-ready { visibility: visible; }
 
 /* === RESPONSIVE: COMPACT ICON-RAIL UNDER 1280px ================ */
 @media (max-width: 1279px) {
@@ -173,14 +38,6 @@ html.shell-ready { visibility: visible; }
     .sidebar.compact .brand-text,
     .sidebar.compact .nav-link span,
     .sidebar.compact .sidebar-footer { display: none; }
-
-    /* Group headers ("Overview", "Vehicle", "Integrations", …) and the
-       trailing chevrons read as broken at 80px wide — the labels overflow
-       and the chevron floats in empty rail space. The rail's icons cluster
-       cleanly without group titles, mirroring the native NavigationRail
-       behaviour. The bare hairline (.nav-divider) is kept as the only
-       inter-group affordance. */
-    .sidebar.compact .nav-group-header { display: none; }
 
     /* Tighten the rail's own horizontal padding so 24x24 icons sit
        optically centred in the 80px column. The default 12px each side
@@ -206,68 +63,6 @@ html.shell-ready { visibility: visible; }
     }
 }
 
-/* === COLLAPSIBLE NAV GROUPS ====================================
- * Each .nav-group-header (Integrations / Diagnostics / Settings) is a
- * tappable summary; clicking it hides every .nav-link between it and the
- * next group / divider. State persists per-group in localStorage so the
- * user's open/closed picks survive across pages.
- *
- * The chevron at the trailing edge is injected by app-shell.js at runtime
- * and rotates with the data-collapsed attribute.
- */
-.nav-group-header-collapsible {
-    cursor: pointer;
-    -webkit-user-select: none;
-            user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-    transition: color 160ms ease-out, background-color 160ms ease-out;
-    border-radius: var(--radius-md, 14px);
-    /* Match the nav-link hover box: same horizontal padding (16px) and
-       vertically symmetric padding so the grey hover rectangle has the
-       same proportions as the destinations beneath it. The base
-       .nav-group-header rule above defaults to `padding: 14px 16px 6px`
-       (asymmetric — extra space above for the group separation) but the
-       collapsible variant gets a square box so the hover affordance reads
-       cleanly. The 14px above + 6px below baseline rhythm is preserved
-       via top/bottom margin on the header itself. */
-    padding: 10px 16px !important;
-    margin: 6px 0 0;
-}
-/* The first group header doesn't need the separator margin — it sits at
-   the very top of the nav so the 16px sidebar-nav padding already gives
-   the right offset. */
-.sidebar-nav > .nav-group-header-collapsible:first-child { margin-top: 0; }
-.nav-group-header-collapsible:hover {
-    color: var(--text-primary, var(--on-surface));
-    background: var(--bg-hover, var(--surface-container-high));
-}
-.nav-group-header-collapsible:focus-visible {
-    outline: 2px solid var(--brand-primary, var(--primary));
-    outline-offset: -2px;
-}
-
-.nav-group-chevron {
-    margin-left: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    color: var(--text-muted, var(--on-surface-variant));
-    /* Sync with the member-collapse curve so the chevron and the slide land
-       on the same beat. Slightly different curve for the chevron to give it
-       the "expressive" rebound that M3 uses on toggles. */
-    transition: transform var(--duration-med, 240ms) cubic-bezier(0.2, 0.8, 0.4, 1.05),
-                color 160ms ease-out;
-}
-.nav-group-chevron svg { width: 14px; height: 14px; }
-
-/* Default = expanded. Chevron points UP (matches the M3 "tap to close" affordance). */
-.nav-group-header-collapsible:not([data-collapsed="true"]) .nav-group-chevron {
-    transform: rotate(180deg);
-}
-
 /* Honour user reduced-motion preference — replace the slide animation
    with a snap so the collapse isn't a slow visual disorientation. */
 @media (prefers-reduced-motion: reduce) {
@@ -278,34 +73,11 @@ html.shell-ready { visibility: visible; }
     }
 }
 
-/* Hide the trailing hairline ".nav-group-line" — it was a decorative
-   line-after-the-label divider; with the chevron + tap-target it now
-   competes for space and reads as visual noise. */
-.nav-group-header-collapsible .nav-group-line { display: none; }
-
 /* Hidden members must leave the flex layout entirely. Keeping them as
    zero-height flex items still reserves their min-height and column gaps. */
 .sidebar-nav [hidden] {
     display: none !important;
 }
-
-/* === EV CARD: GLB-rendered three.js scene ======================= */
-/*
- * #evCardCanvas hosts a tiny three.js scene (see shared/ev-card-3d.js)
- * showing the user's selected GLB tinted live in their chosen paint
- * colour. Side profile, front to the LEFT, no rotation. Loaded LAZILY
- * after page-content paint.
- *
- * Layer order inside .ev-svg-container (bottom → top):
- *   z=0  #evCardCanvas              — GLB body
- *   z=1  .ev-battery-body-overlay   — translucent battery strip painted
- *                                      onto the body's lower portion
- *   z=1  #evCarSvg                  — bolt-icon badge (pops in on .charging)
- *
- * If vendor JS fails (offline, blocked) the canvas stays empty; the
- * battery overlay still tracks SOC over the empty area.
- */
-.ev-svg-container { position: relative; }
 
 #evCardCanvas {
     position: absolute;
@@ -369,90 +141,11 @@ html.shell-ready { visibility: visible; }
         inset 0 0 0 1px rgba(24, 28, 26, 0.20),
         inset 0 1px 1px rgba(24, 28, 26, 0.10);
 }
-
-.ev-battery-body-fill,
-.ev-battery-body-charge {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 0%;
-    border-radius: inherit;
-    /* Drop screen-blend — it was pre-multiplying the fill against the
-       3D body underneath, which on the metallic paint colours pulled
-       the fill back into the body and made the bar look camouflaged.
-       Plain alpha-composite + opaque-ish fill keeps the band crisp. */
-    transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1),
-                background 240ms ease-out,
-                box-shadow 240ms ease-out;
-}
-
-/* SOC fill. Vertical light→dark gradient + inset top highlight =
-   glossy 3D capsule. Healthy / warning / critical bands swapped via
-   data-soc-state. */
-.ev-battery-body-fill {
-    background: linear-gradient(180deg,
-                rgba(187, 247, 208, 0.95) 0%,
-                rgba(34,  197, 94,  0.95) 50%,
-                rgba(21,  128, 61,  0.90) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.65),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-        0 0 10px rgba(34, 197, 94, 0.70);
-}
-.ev-battery-body-overlay[data-soc-state="warning"] .ev-battery-body-fill {
-    background: linear-gradient(180deg,
-                rgba(253, 230, 138, 0.95) 0%,
-                rgba(245, 158, 11,  0.95) 50%,
-                rgba(180, 83,  9,   0.90) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.65),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-        0 0 10px rgba(245, 158, 11, 0.70);
-}
-.ev-battery-body-overlay[data-soc-state="critical"] .ev-battery-body-fill {
-    background: linear-gradient(180deg,
-                rgba(254, 202, 202, 0.95) 0%,
-                rgba(239, 68,  68,  0.95) 50%,
-                rgba(153, 27,  27,  0.90) 100%);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.65),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.25),
-        0 0 10px rgba(239, 68, 68, 0.75);
-}
-
-/* Charging highlight — translucent white band sweeps left→right over
-   the static fill. Screen blend keeps SOC colour visible. */
-.ev-battery-body-charge {
-    background: linear-gradient(90deg,
-                rgba(255, 255, 255, 0.0) 0%,
-                rgba(255, 255, 255, 0.45) 70%,
-                rgba(255, 255, 255, 0.85) 100%);
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
-    opacity: 0;
-}
-.ev-card.charging .ev-battery-body-charge {
-    /* Duration is set per-card by app-shell.js setCharging() based on
-       charging power (kW). Faster kW = shorter cycle, so DC fast charge
-       visibly snaps and AC trickle crawls. Falls back to 2.4s when
-       core.js calls setCharging() without a power value. */
-    animation: ev-battery-body-fillup
-               var(--ev-charge-fillup-duration, 2.4s)
-               cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
 @keyframes ev-battery-body-fillup {
     0%   { width: 0%;   opacity: 0; }
     15%  { opacity: 0.85; }
     85%  { opacity: 0.85; }
     100% { width: 100%; opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .ev-card.charging .ev-battery-body-charge {
-        animation: none;
-        opacity: 0.5;
-        width: 100%;
-    }
 }
 
 /* The SVG sits above the canvas so battery + charge + bolt overlays
@@ -461,19 +154,6 @@ html.shell-ready { visibility: visible; }
     position: relative;
     z-index: 1;
     pointer-events: none;
-}
-
-/* === MOTION VOCABULARY: PAGE FADE ============================== */
-/* Web counterpart of native's MaterialFadeThrough. Pages opt in by adding
-   class="page-enter" to .main-content; the next animation frame promotes
-   it to .page-enter-active for the fade-in. */
-.page-enter {
-    opacity: 0;
-}
-
-.page-enter-active {
-    opacity: 1;
-    transition: opacity var(--duration-med, 240ms) var(--easing-decel, cubic-bezier(0.0, 0.0, 0.2, 1.0));
 }
 
 /* === ICON-TEXT SPACING: SHELL OVERRIDES ========================
@@ -485,8 +165,6 @@ html.shell-ready { visibility: visible; }
  */
 [data-app-shell="1"] .card-title { gap: 12px !important; }
 [data-app-shell="1"] .card-title > svg { margin-right: 6px !important; }
-[data-app-shell="1"] .info-box-note > .info-icon,
-[data-app-shell="1"] .info-box-warning > .info-icon { margin-right: 12px !important; }
 [data-app-shell="1"] .tier-card { gap: 16px !important; }
 [data-app-shell="1"] .tier-card > .tier-icon { margin-right: 8px !important; }
 [data-app-shell="1"] .credit-row { gap: 16px !important; }
@@ -512,21 +190,9 @@ body[data-app-shell="1"] .sidebar {
     border-inline-end: 1px solid var(--outline-variant);
     box-shadow: none;
 }
-body[data-app-shell="1"] .sidebar-header {
-    background: var(--surface-container);
-    border-bottom: 0;
-}
 body[data-app-shell="1"] .sidebar .brand-logo {
     border-radius: 9px;
     box-shadow: none;
-}
-body[data-app-shell="1"] .sidebar .brand-name {
-    font-weight: 700;
-    color: var(--on-surface);
-}
-body[data-app-shell="1"] .sidebar .brand-tagline,
-body[data-app-shell="1"] .sidebar .brand-online-pulse {
-    display: none;
 }
 body[data-app-shell="1"] .sidebar-nav .nav-link {
     min-height: 44px;
@@ -544,72 +210,6 @@ body[data-app-shell="1"] .sidebar-nav .nav-link.active,
 body[data-app-shell="1"] .sidebar-nav .nav-link[aria-current="page"] {
     background: var(--primary-container);
     color: var(--primary-text);
-}
-body[data-app-shell="1"] .sidebar .status-card,
-body[data-app-shell="1"] .sidebar .ev-card,
-body[data-app-shell="1"] .sidebar .fuel-card {
-    background: var(--surface-container-high);
-    border: 1px solid var(--outline-variant);
-    border-radius: var(--radius-panel);
-    box-shadow: none;
-}
-
-/* Top bar: breadcrumb + day/night switch, 72px, same colour as the page. */
-.shell-topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    height: 72px;
-    padding: 0 var(--page-pad-x);
-    background: var(--background);
-}
-.shell-breadcrumb {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-    font-size: 12px;
-    color: var(--on-surface-variant);
-}
-.shell-breadcrumb strong {
-    color: var(--on-surface);
-    font-weight: 550;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.shell-theme-switch {
-    display: flex;
-    gap: 2px;
-    padding: 3px;
-    background: var(--surface-container-high);
-    border: 1px solid var(--outline-variant);
-    border-radius: var(--radius-control);
-}
-.shell-theme-switch button {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 38px;
-    border: 0;
-    border-radius: 4px;
-    background: transparent;
-    color: var(--on-surface-variant);
-    cursor: pointer;
-}
-.shell-theme-switch button[aria-pressed="true"] {
-    background: var(--surface-container);
-    color: var(--on-surface);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
-}
-.shell-theme-switch svg {
-    width: 16px;
-    height: 16px;
-}
-@media (max-width: 768px) {
-    /* Phones keep their own compact header and bottom navigation. */
-    .shell-topbar { display: none; }
 }
 
 /* 769–850px: icon-only rail, labels in tooltips (aria-label). */
@@ -632,12 +232,6 @@ body[data-app-shell="1"] .sidebar .fuel-card {
 
 /* Flat reference treatment for retained shell widgets. */
 body[data-app-shell="1"] .sidebar-nav .nav-link.active:hover { background: var(--primary-container); color: var(--primary-text); }
-body[data-app-shell="1"] .sidebar .brand-name { color: var(--on-surface); font-weight: 750; }
 body[data-app-shell="1"] .sidebar .brand-logo { background: var(--on-surface); color: var(--surface-container); }
-.sidebar .nav-icon { stroke-width: 1.75; }
 .ev-battery-body-overlay { background: var(--outline-variant); box-shadow: none; }
 :root[data-theme="light"] .ev-battery-body-overlay { background: var(--outline-variant); box-shadow: none; }
-.ev-battery-body-fill { background: var(--status-success); box-shadow: none; }
-.ev-battery-body-overlay[data-soc-state="warning"] .ev-battery-body-fill { background: var(--status-warning); box-shadow: none; }
-.ev-battery-body-overlay[data-soc-state="critical"] .ev-battery-body-fill { background: var(--status-danger); box-shadow: none; }
-.ev-battery-body-charge { background: var(--status-success); box-shadow: none; }
