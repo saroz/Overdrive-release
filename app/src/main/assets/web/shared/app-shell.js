@@ -1039,6 +1039,20 @@
         // on the initial applyVehicleSelection — listeners only care
         // about user-driven changes, not the first hydration.
         var hadPrior = (prevModel !== null) || (prevColor !== null);
+        try {
+            var resolvedEv;
+            if (typeof CustomEvent === 'function') {
+                resolvedEv = new CustomEvent('overdrive:vehicle-resolved', {
+                    detail: { modelId: modelId, color: hexColor }
+                });
+            } else {
+                resolvedEv = document.createEvent('CustomEvent');
+                resolvedEv.initCustomEvent('overdrive:vehicle-resolved', true, true, {
+                    modelId: modelId, color: hexColor
+                });
+            }
+            document.dispatchEvent(resolvedEv);
+        } catch (e) {}
         if (hadPrior && (prevModel !== modelId || prevColor !== hexColor)) {
             try {
                 var ev;
@@ -1105,9 +1119,15 @@
     }
 
 
+    var vehicleSelectionRequested = false;
+
     function applyVehicleSelection() {
-        // No-op if the EV card isn't mounted (login.html, dev-only pages).
-        if (!document.getElementById('evCardCanvas')) return;
+        // Skip only when no vehicle visualization surface or waiter exists on this page.
+        if (!document.getElementById('evCardCanvas')
+            && !auxEv3dInstances.length
+            && !vehicleSelectionWaiters.length
+            && !document.querySelector('.ui-hero-image')) return;
+        vehicleSelectionRequested = true;
         function applyFallbackAppearance() {
             setEvCardAppearance(FALLBACK_MODEL_ID, FALLBACK_MODEL_COLOR);
         }
@@ -1283,6 +1303,9 @@
     // after they save a new model/colour to /api/models/selected.
     window.OverdriveAppShell = window.OverdriveAppShell || {};
     window.OverdriveAppShell.refreshVehicle = applyVehicleSelection;
+    window.OverdriveAppShell.getSelectedVehicle = function () {
+        return lastEv3dModel ? { modelId: lastEv3dModel, color: lastEv3dColor } : null;
+    };
 
     // Expose the page registry (non-divider nav items) to the unified-search
     // palette (search.js). Returns fresh objects so callers can't mutate
@@ -1537,6 +1560,7 @@
             mountResolvedSelection();
         } else {
             vehicleSelectionWaiters.push(mountResolvedSelection);
+            if (!vehicleSelectionRequested) applyVehicleSelection();
         }
 
         return handle;

@@ -24,7 +24,7 @@ window.BYD = window.BYD || {};
 BYD.i18n = (function () {
     var SUPPORTED = [
         'en', 'zh-CN', 'zh-TW', 'pt-BR', 'es', 'de', 'fr', 'it',
-        'nb', 'nl', 'ja', 'ko', 'th', 'vi', 'hi', 'tr', 'ru', 'ar', 'cs', 'he'
+        'nb', 'nl', 'ja', 'ko', 'th', 'vi', 'hi', 'tr', 'ru', 'ar', 'cs', 'he', 'ne'
     ];
     var DEFAULT_LANG = 'en';
     var STORAGE_KEY = 'overdrive_locale';
@@ -53,7 +53,8 @@ BYD.i18n = (function () {
         'ru':    'Русский',
         'ar':    'العربية',
         'cs':    'Čeština',
-        'he':    'עברית'
+        'he':    'עברית',
+        'ne':    'नेपाली'
     };
 
     // CLDR plural rules condensed to two-form (one/other) and language-specific quirks.

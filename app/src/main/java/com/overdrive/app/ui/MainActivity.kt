@@ -1843,7 +1843,7 @@ open class MainActivity : AppCompatActivity() {
                     R.id.settingsSecurityFragment,
                 )),
             RailItem(RAIL_KEY_ABOUT, R.id.railDestAbout, R.id.settingsAboutFragment,
-                R.drawable.ic_update, R.string.settings_section_about)
+                R.drawable.ic_about, R.string.settings_section_about)
         )
         railItems = items
 

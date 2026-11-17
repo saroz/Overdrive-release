@@ -363,7 +363,7 @@
       "uploading": "⏳ Uploaden van de *{0}* log…",
       "service_unreachable": "⚠️ Kon de logservice niet bereiken. De camera daemon is mogelijk niet actief. Probeer `/daemon camera start`.",
       "upload_failed": "⚠️ Log uploaden mislukt: {0}",
-      "upload_success": "✅ *{0}* log geüpload\n\nDeel deze code met ons en voeg een notitie toe met een beschrijving van wat er fout is gegaan:\n`{1}`\n\nRapporteer het op:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Secrets zijn verwijderd voor het uploaden. Het logboek verloopt automatisch._"
+      "upload_success": "✅ *{0}* log geüpload\n\nDeel deze code met ons en voeg een notitie toe met een beschrijving van wat er fout is gegaan:\n`{1}`\n\nRapporteer het op:\n• GitHub: {2}\n\n_Secrets zijn verwijderd voor het uploaden. Het logboek verloopt automatisch._"
     },
     "greeting": {
       "online": "🤖 *Surveillance Bot Online*\n\nBot daemon is begonnen en gereed.\nGebruik /help voor beschikbare commando's."

@@ -809,7 +809,7 @@
     <string name="settings_about_support_section">あなたのような人々によって動かす</string>
     <string name="settings_about_support_share_title">他のオーナーにも伝えよう</string>
     <string name="settings_about_support_share_value">共有されたリンクは 他のBYDのオーナーがOverdriveを発見するのに役立ちます</string>
-    <string name="settings_about_support_share_message">BYDのOverdrive オープンソース監視とダッシュカメラをチェックしてください: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">BYDのOverdrive オープンソース監視とダッシュカメラをチェックしてください: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Overdrive を共有</string>
     <string name="settings_about_youtube_title">YouTube でチャンネル登録</string>
     <string name="settings_about_youtube_value">高評価・チャンネル登録・共有をお願いします。視聴のひとつひとつが Overdrive の力になります。</string>
@@ -820,7 +820,7 @@
     <string name="settings_about_license_title">ライセンス</string>
     <string name="settings_about_license_value">MIT オープンソース. 完全テキストを表示するにはタップします.</string>
     <string name="settings_about_source_title">ソースコード</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">を GitHub に 落とす</string>
     <string name="settings_about_star_value">ちょっと待って 沢山の意味がある</string>
     <string name="settings_about_thanks_title">ありがとう</string>

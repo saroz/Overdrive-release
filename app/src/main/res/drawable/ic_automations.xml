@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Rounded outline vocabulary shared with the web navigation. -->
+<!-- Phosphor Icons (regular): flow-arrow — matches desktop web UI (#ph-automations). -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="24dp" android:height="24dp"
-    android:viewportWidth="24" android:viewportHeight="24"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="256"
+    android:viewportHeight="256"
     android:tint="?attr/colorOnSurfaceVariant">
-    <path android:fillColor="@android:color/transparent"
-        android:strokeColor="@android:color/white" android:strokeWidth="1.75"
-        android:strokeLineCap="round" android:strokeLineJoin="round"
-        android:pathData="M5,3H9Q11,3 11,5V9Q11,11 9,11H5Q3,11 3,9V5Q3,3 5,3Z" />
-    <path android:fillColor="@android:color/transparent"
-        android:strokeColor="@android:color/white" android:strokeWidth="1.75"
-        android:strokeLineCap="round" android:strokeLineJoin="round"
-        android:pathData="M7 11v4a2 2 0 0 0 2 2h4" />
-    <path android:fillColor="@android:color/transparent"
-        android:strokeColor="@android:color/white" android:strokeWidth="1.75"
-        android:strokeLineCap="round" android:strokeLineJoin="round"
-        android:pathData="M15,13H19Q21,13 21,15V19Q21,21 19,21H15Q13,21 13,19V15Q13,13 15,13Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M245.66,74.34l-32-32a8,8,0,0,0-11.32,11.32L220.69,72H208c-49.33,0-61.05,28.12-71.38,52.92-9.38,22.51-16.92,40.59-49.48,42.84a40,40,0,1,0,.1,16c43.26-2.65,54.34-29.15,64.14-52.69C161.41,107,169.33,88,208,88h12.69l-18.35,18.34a8,8,0,0,0,11.32,11.32l32-32A8,8,0,0,0,245.66,74.34ZM48,200a24,24,0,1,1,24-24A24,24,0,0,1,48,200Z" />
 </vector>

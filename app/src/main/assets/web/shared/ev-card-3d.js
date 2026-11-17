@@ -273,10 +273,11 @@
                 if (xhr.status >= 200 && xhr.status < 300) {
                     try { manifestCache = JSON.parse(xhr.responseText); }
                     catch (e) { manifestCache = null; }
-                    if (manifestCache) {
+                    if (manifestCache && manifestCache.models && manifestCache.models.length) {
                         resolve(manifestCache);
                         return;
                     }
+                    manifestCache = null;
                 }
                 fetchBundledManifest();
             };

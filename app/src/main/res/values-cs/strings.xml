@@ -543,7 +543,7 @@
     <string name="settings_about_support_section">Tvořeno lidmi jako vy</string>
     <string name="settings_about_support_share_title">Doporučte to ostatním majitelům</string>
     <string name="settings_about_support_share_value">Každý sdílený odkaz pomáhá jinému majiteli BYD objevit Overdrive.</string>
-    <string name="settings_about_support_share_message">Podívejte se na Overdrive — open-source sledování &amp; dashcam pro BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Podívejte se na Overdrive — open-source sledování &amp; dashcam pro BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Sdílet OverDrive</string>
     <string name="settings_about_youtube_title">Odebírejte nás na YouTube</string>
     <string name="settings_about_youtube_value">Dejte like, odebírejte a sdílejte — každé zhlédnutí pomáhá Overdrive růst.</string>
@@ -554,7 +554,7 @@
     <string name="settings_about_license_title">Licence</string>
     <string name="settings_about_license_value">MIT — open source. Klepnutím zobrazíte celý text.</string>
     <string name="settings_about_source_title">Zdrojový kód</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Ohodnoťte nás hvězdičkou na GitHubu</string>
     <string name="settings_about_star_value">Zabere vteřinu. Znamená hodně.</string>
     <string name="settings_about_thanks_title">Děkujeme</string>
@@ -1120,9 +1120,9 @@
     <string name="daemons_wifi_auto_enable_title">Wi&#8209;Fi</string>
     <string name="daemons_wifi_auto_enable_subtitle">Nyní zapne nebo vypne Wi&#8209;Fi. Když je vypnuto, sledovací služby OverDrive ho už zpátky nezapnou.</string>
     <string name="daemons_wifi_auto_enable_save_failed">Nepodařilo se změnit stav Wi&#8209;Fi.</string>
-    <string name="community_discord_url">https://discord.gg/PZutk9fg4h</string>
-    <string name="community_github_issues_url">https://github.com/yash-srivastava/Overdrive-release/issues</string>
-    <string name="community_whatsapp_url">https://chat.whatsapp.com/HChmriCWgr9KwAtE6OEkiM</string>
+    <string name="community_discord_url"></string>
+    <string name="community_github_issues_url">https://github.com/saroz/Overdrive-release/issues</string>
+    <string name="community_whatsapp_url"></string>
     <string name="toast_traffic_monitor_persist_failed">Použito, ale předvolbu se nepodařilo uložit – nepřežije aktualizaci firmwaru.</string>
     <string name="dashboard_tunnel_failed">Chyba tunelu</string>
     <string name="dashboard_tunnel_stopping">Zastavuji tunel…</string>
@@ -1240,10 +1240,10 @@
     <string name="settings_backup_trips_prompt">Zahrnout historii jízd (vzdálenost, energie, náklady, skóre, počáteční/koncová místa)? Podrobná telemetrie jednotlivých jízd zahrnuta není. Soubor bude obsahovat historii vašich poloh – uchovávejte ho v soukromí.</string>
     <string name="settings_backup_settings_only">Jen nastavení</string>
     <string name="settings_backup_with_trips">Včetně jízd</string>
-    <string name="settings_about_support_kofi_url">https://ko-fi.com/E1E71XALHX</string>
-    <string name="settings_about_license_url">https://github.com/yash-srivastava/Overdrive-release/blob/main/LICENSE</string>
-    <string name="settings_about_source_url">https://github.com/yash-srivastava/Overdrive-release</string>
-    <string name="settings_about_star_url">https://github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_support_kofi_url"></string>
+    <string name="settings_about_license_url">https://github.com/saroz/Overdrive-release/blob/main/LICENSE</string>
+    <string name="settings_about_source_url">https://github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_star_url">https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_tier_diamond">Diamant</string>
     <string name="settings_about_tier_platinum">Platina</string>
     <string name="settings_about_tier_gold">Zlato</string>

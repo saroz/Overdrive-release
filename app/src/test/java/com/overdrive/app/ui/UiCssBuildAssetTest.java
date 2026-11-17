@@ -5,6 +5,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.junit.Test;
 
 /** Contract for the Tailwind-built stylesheet (docs/superpowers/specs/2026-11-17-web-tailwind-rebuild-design.md). */
@@ -83,6 +85,29 @@ public class UiCssBuildAssetTest {
         int is = c.split(":is\\(", -1).length - 1;
         int any = c.split(":-webkit-any\\(", -1).length - 1;
         assertTrue(":is() without -webkit-any() fallback", is <= any);
+    }
+
+    @Test
+    public void gapsSurviveChrome58() throws IOException {
+        String c = css();
+        // Grid: Chrome 58 only reads grid-gap. Every grid rule that sets gap also sets grid-gap.
+        Matcher rule = Pattern.compile("([^{}]+)\\{([^{}]*)\\}").matcher(c);
+        while (rule.find()) {
+            String body = rule.group(2);
+            if (body.contains("display:grid") && body.matches("(?s).*(^|;)gap:.*")) {
+                assertTrue(rule.group(1) + " has gap without grid-gap", body.contains("grid-gap:"));
+            }
+        }
+        // Flex: no gap before Chromium 84; ph-icons.js detects it and the margins take over.
+        assertTrue(c.contains("html.ui-no-flex-gap .ui-button>*+*"));
+        assertTrue(WebThemeTokensAssetTest.read("app/src/main/assets/web/shared/ph-icons.js")
+                .contains("ui-no-flex-gap"));
+    }
+
+    @Test
+    public void dialogsKeepTheirWidthOnChrome58() throws IOException {
+        // min() is Chromium 79+; a plain width + max-width comes first.
+        UiComponentsAssetTest.assertRule(".ui-dialog", "width:520px", "max-width:calc(100% - 32px)");
     }
 
     @Test

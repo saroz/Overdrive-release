@@ -1,0 +1,1788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OverDrive</string>
+
+    <!-- Accessibility Service -->
+    <string name="accessibility_service_description">पृष्ठभूमिमा Overdrive गाडी अनुगमन सक्रिय राख्छ। यो सेवाले स्क्रिनको सामग्री पढ्दैन वा अन्तरक्रिया गर्दैन।</string>
+
+    <!-- Common buttons / labels -->
+    <string name="action_cancel">रद्द गर्नुहोस्</string>
+    <string name="action_clear_plain">खाली गर्नुहोस्</string>
+    <string name="action_select_all">सबै छान्नुहोस्</string>
+    <string name="action_select_all_short">सबै</string>
+    <string name="action_delete">मेटाउनुहोस्</string>
+    <string name="action_share">सेयर गर्नुहोस्</string>
+    <string name="action_create_evidence_pack">प्रमाण प्याक बनाउनुहोस्</string>
+    <string name="action_share_evidence_pack">प्रमाण प्याक सेयर गर्नुहोस्</string>
+    <string name="action_done">सकियो</string>
+    <string name="action_remind_me_later">पछि सम्झाउनुहोस्</string>
+    <string name="action_retry">पुनः प्रयास</string>
+    <string name="action_run">चलाउनुहोस्</string>
+    <string name="action_clear_output">आउटपुट खाली गर्नुहोस्</string>
+
+    <!-- Common content descriptions -->
+    <string name="cd_camera">क्यामेरा</string>
+    <string name="cd_qr">QR</string>
+    <string name="cd_qr_code">QR कोड</string>
+    <string name="cd_show_hide_token">टोकन देखाउनुहोस्/लुकाउनुहोस्</string>
+    <string name="cd_copy_token">टोकन कपी गर्नुहोस्</string>
+    <string name="cd_copy_url">URL कपी गर्नुहोस्</string>
+    <string name="cd_clear_logs">लग खाली गर्नुहोस्</string>
+    <string name="cd_expand_collapse">फैलाउनुहोस्/खुम्च्याउनुहोस्</string>
+    <string name="cd_recording_status">रेकर्डिङ स्थिति</string>
+    <string name="cd_trip_tracking_status">यात्रा ट्र्याकिङ स्थिति</string>
+    <string name="cd_mic_status">माइक्रोफोन क्याप्चर स्थिति</string>
+    <string name="cd_replay_status">तत्काल रिप्ले स्थिति</string>
+    <string name="cd_video_thumbnail">भिडियो थम्बनेल</string>
+    <string name="cd_play">प्ले गर्नुहोस्</string>
+    <string name="cd_back">पछाडि</string>
+    <string name="cd_play_pause">प्ले/पज</string>
+    <string name="cd_player_prev">अघिल्लो रेकर्डिङ</string>
+    <string name="cd_player_next">अर्को रेकर्डिङ</string>
+    <string name="cd_player_maximize">प्लेयर ठूलो बनाउनुहोस्</string>
+    <string name="cd_player_minimize">पूर्ण स्क्रिनबाट बाहिरिनुहोस्</string>
+    <string name="cd_player_mute">अडियो टगल गर्नुहोस्</string>
+    <string name="cd_player_quadrant_all">सबै क्यामेरा देखाउनुहोस्</string>
+    <string name="cd_player_quadrant_front">अगाडिको क्यामेरा देखाउनुहोस्</string>
+    <string name="cd_player_quadrant_right">दायाँ क्यामेरा देखाउनुहोस्</string>
+    <string name="cd_player_quadrant_rear">पछाडिको क्यामेरा देखाउनुहोस्</string>
+    <string name="cd_player_quadrant_left">बायाँ क्यामेरा देखाउनुहोस्</string>
+    <string name="cd_delete">मेटाउनुहोस्</string>
+    <string name="cd_share">सेयर गर्नुहोस्</string>
+    <string name="cd_expand">फैलाउनुहोस्</string>
+    <string name="cd_configure">कन्फिगर गर्नुहोस्</string>
+    <string name="cd_download_log">लग डाउनलोड गर्नुहोस्</string>
+    <string name="cd_reset">रिसेट गर्नुहोस्</string>
+    <string name="cd_battery">ब्याट्री</string>
+    <string name="cd_step_completed">चरण पूरा भयो</string>
+    <string name="cd_permission_granted">अनुमति प्रदान गरियो</string>
+
+    <!-- overlay_status -->
+    <string name="overlay_rec_inactive_label">REC</string>
+    <string name="overlay_trip_inactive_label">TRIP</string>
+    <string name="overlay_mic_inactive_label">MIC</string>
+    <string name="overlay_mode_off_cd">रेकर्डिङ रोक्नुहोस्</string>
+    <string name="overlay_mode_continuous_cd">निरन्तर रेकर्डिङ</string>
+    <string name="overlay_mode_drive_cd">ड्राइभ-मोड रेकर्डिङ</string>
+    <string name="overlay_mode_proximity_cd">निकटता-रक्षक रेकर्डिङ</string>
+    <string name="overlay_recording_mode_failed">रेकर्डिङ मोड परिवर्तन असफल भयो</string>
+    <string name="overlay_recording_mode_failed_fmt">रेकर्डिङ मोड परिवर्तन असफल भयो: %1$s</string>
+
+    <!-- item_log_entry placeholders -->
+    <string name="log_entry_default_timestamp">12:34:56</string>
+    <string name="log_entry_default_tag">[TAG]</string>
+    <string name="log_entry_default_message">लग सन्देश यहाँ</string>
+
+    <!-- item_daemon_card -->
+    <string name="daemon_card_default_name">डेमन नाम</string>
+    <string name="daemon_card_default_status">स्थिति सन्देश</string>
+    <string name="daemon_card_subprocesses">उप-प्रक्रियाहरू</string>
+
+    <!-- fragment_logs_panel -->
+    <string name="logs_panel_title">लगहरू</string>
+
+    <!-- activity_main_new / activity_main-land -->
+    <string name="url_connecting">जडान हुँदैछ…</string>
+    <string name="url_copied_no_browser">ब्राउजर फेला परेन। लिङ्क कपी गरियो: %1$s</string>
+
+    <!-- dialog_tailscale_settings -->
+    <string name="tailscale_generate_login_url">लगइन URL सिर्जना गर्नुहोस्</string>
+    <string name="tailscale_scan_to_login">लगइन गर्न स्क्यान गर्नुहोस्</string>
+    <string name="tailscale_qr_waiting">लगइन URL पर्खिँदैछ…</string>
+    <string name="tailscale_enable_proxy">Tailscale प्रोक्सी सक्षम गर्नुहोस्</string>
+    <string name="tailscale_proxy_explainer">पोर्ट फर्वार्डिङ बिना नै तपाईंको tailnet मा रहेको निजी ब्रोकरमा पुग्न Tailscale मार्फत MQTT रुट गर्छ।</string>
+    <string name="tailscale_enable_https">HTTPS मार्फत वेब UI सेवा गर्नुहोस्</string>
+    <string name="tailscale_https_explainer">तपाईंको tailnet मा मात्र विश्वसनीय https://…ts.net ठेगानामा ड्यासबोर्ड प्रकाशित गर्छ। MagicDNS र HTTPS प्रमाणपत्र Tailscale एडमिन कन्सोलमा पहिले नै सक्षम हुनुपर्छ।</string>
+    <string name="toast_tailscale_https_enabled">Tailnet HTTPS सक्षम गरियो</string>
+    <string name="toast_tailscale_https_disabled">Tailnet HTTPS अक्षम गरियो</string>
+    <string name="toast_tailscale_https_save_failed">HTTPS परिवर्तन गर्न सकिएन। Tailscale सुरु गरी लगइन गर्नुहोस्, MagicDNS र HTTPS प्रमाणपत्र सक्षम गर्नुहोस्, र पोर्ट 443 खाली रहेको सुनिश्चित गर्नुहोस्।</string>
+    <string name="tailscale_enable_adb">Tailscale मार्फत रिमोट ADB अनुमति दिनुहोस्</string>
+    <string name="tailscale_adb_explainer">ADB का लागि tailnet पहुँच थप्छ (सार्वजनिक इन्टरनेट होइन)। अधिकृत ADB कुञ्जी भएको कुनै पनि tailnet उपकरणले पूर्ण शेल पहुँच पाउँछ।</string>
+    <string name="tailscale_adb_endpoint">adb connect %1$s</string>
+    <string name="tailscale_adb_endpoint_copied">एन्डपोइन्ट कपी गरियो</string>
+    <string name="toast_tailscale_adb_enabled">tailnet मा रिमोट ADB सक्षम गरियो</string>
+    <string name="toast_tailscale_adb_disabled">रिमोट ADB अक्षम गरियो</string>
+    <string name="toast_tailscale_adb_save_failed">रिमोट ADB सेटिङ परिवर्तन गर्न असफल भयो</string>
+    <string name="tailscale_proxy_warning">सक्षम हुँदा सार्वजनिक ब्रोकरहरू (HiveMQ, AWS IoT आदि) मा MQTT असफल हुनेछ — Tailscale ले तपाईंको tailnet मा मात्र रुट गर्छ। सेभ गर्दा डेमन रिस्टार्ट हुनेछ।</string>
+
+    <!-- Camera ingestion mode selector -->
+    <string name="camera_mode_title">इन्जेसन मोड</string>
+    <string name="camera_mode_subtitle">तपाईंको हेड युनिटसँग मिल्ने मार्ग छान्नुहोस्। Default पुराना पानोरामिक क्यामेराका लागि; DiLink 4 AVM SurfaceTexture का लागि; DiLink 5 SA8155P ब्रिजका लागि।</string>
+    <string name="camera_mode_option_default">Default — Seal, Atto, Dolphin (अधिकांश गाडीमा काम गर्छ)</string>
+    <string name="camera_mode_option_dilink4">DiLink 4 — नयाँ Han / Tang संस्करणहरू</string>
+    <string name="camera_mode_option_dilink5">DiLink 5 — Sealion 7 / SA8155P</string>
+    <string name="camera_mode_current_default">हालको: Default</string>
+    <string name="camera_mode_current_dilink4">हालको: DiLink 4</string>
+    <string name="camera_mode_current_dilink5">हालको: DiLink 5</string>
+    <string name="camera_mode_option_camera2">Camera2 360 — Atto 3 EVO / DiLink 100</string>
+    <string name="camera_mode_current_camera2">हालको: Camera2 360</string>
+    <string name="camera_mode_save">लागू र रिस्टार्ट गर्नुहोस्</string>
+    <string name="camera_mode_hint">मोड परिवर्तन गर्दा क्यामेरा डेमन रिस्टार्ट हुन्छ। भिडियो गलत देखिएमा अर्को मोड प्रयास गर्नुहोस्।</string>
+
+    <!-- DiLink 5 native camera order -->
+    <string name="camera_dilink5_mapping_title">DiLink 5 क्यामेरा क्रम</string>
+    <string name="camera_dilink5_mapping_subtitle">भौतिक क्यामेरा ID हरू अगाडि, दायाँ, पछाडि, बायाँ क्रममा छन्। अर्को क्रम प्रमाणित नभएसम्म Auto राख्नुहोस्।</string>
+    <string name="camera_dilink5_mapping_current_auto">हालको: Auto / मोडेल पूर्वनिर्धारित</string>
+    <string name="camera_dilink5_mapping_current_format">हालको: %1$s</string>
+    <string name="camera_dilink5_mapping_auto">Auto — मोडेल पूर्वनिर्धारित</string>
+    <string name="camera_dilink5_mapping_standard">Standard — 0,1,2,3</string>
+    <string name="camera_dilink5_mapping_opposite">अगाडि/पछाडि + बायाँ/दायाँ साट्नुहोस् — 2,3,0,1</string>
+    <string name="camera_dilink5_mapping_shark">Shark / DMO — 8,9,5,4</string>
+    <string name="camera_dilink5_mapping_hint">लागू गर्नुअघि चारै पूर्वावलोकन जाँच गर्नुहोस्। सेभ गर्दा क्यामेरा डेमन रिस्टार्ट हुन्छ।</string>
+    <string name="camera_dilink5_mapping_unchanged">क्यामेरा क्रम पहिले नै चयन गरिएको छ।</string>
+    <string name="camera2_order_title">360 क्यामेरा क्रम</string>
+    <string name="camera2_order_subtitle">360 क्यामेरा तस्वीरमा चार दृश्यको क्रम। दृश्यहरू गलत ठाउँमा नदेखिएसम्म Auto राख्नुहोस्।</string>
+    <string name="camera2_order_current_auto">हालको: Auto / क्यामेरा पूर्वनिर्धारित</string>
+    <string name="camera2_order_current_format">हालको: %1$s</string>
+    <string name="camera2_order_auto">Auto — क्यामेरा पूर्वनिर्धारित</string>
+    <string name="camera2_order_standard">Standard — अगाडि, दायाँ, बायाँ, पछाडि</string>
+    <string name="camera2_order_opposite">अगाडि/पछाडि + बायाँ/दायाँ साट्नुहोस् — पछाडि, बायाँ, दायाँ, अगाडि</string>
+    <string name="camera2_order_hint">रेकर्डिङ, लाइभ दृश्य, पहिचान र चेतावनीमा लागू हुन्छ। सेभ गर्दा क्यामेरा डेमन रिस्टार्ट हुन्छ।</string>
+
+    <!-- DiLink 4 compatibility options -->
+    <string name="camera_dilink4_tweaks_title">DiLink 4 अनुकूलता</string>
+    <string name="camera_dilink4_tweaks_subtitle">DiLink 4 मार्गका लागि प्रति-गाडी समायोजन। माथि DiLink 4 मोड छान्दा मात्र प्रभावकारी हुन्छ।</string>
+    <string name="camera_dilink4_save">लागू गर्नुहोस्</string>
+    <string name="camera_dilink4_hint">यस गाडीलाई चाहिने अनुकूलता विकल्प मात्र सक्षम गर्नुहोस्। डेमन रिस्टार्टले परिवर्तन लागू गर्छ।</string>
+    <string name="camera_dilink4_passive_apa_label">निष्क्रिय APA पोर्ट 0 प्रयोग गर्नुहोस्</string>
+    <string name="camera_dilink4_passive_apa_subtitle">OEM पानोरामा आउटपुट नछोई पोर्ट 0 रेकर्ड गर्छ। जबरजस्ती नियन्त्रणले रातो क्यालिब्रेसन स्क्रिन खोल्दा प्रयोग गर्नुहोस्।</string>
+    <string name="camera_dilink4_red_mask_label">रातो क्यालिब्रेसन ओभरले दबाउनुहोस् (GL)</string>
+    <string name="camera_dilink4_red_mask_subtitle">चम्किलो-रातो HAL "calibration failed" पिक्सेल पत्ता लगाई छिमेकी नमूनाले प्रतिस्थापन गर्ने शेडर पास थप्छ।</string>
+
+    <!-- dialog_camera_selection -->
+    <string name="camera_selection_title">क्यामेरा चयन</string>
+    <string name="camera_selection_subtitle">पानोरामिक क्यामेरा स्रोत छान्नुहोस्</string>
+    <string name="camera_current_auto">हालको: Auto</string>
+    <string name="camera_option_auto">Auto (सुरु हुँदा पत्ता लगाउने)</string>
+    <string name="camera_option_0">क्यामेरा 0 — Atto ट्रिमहरू</string>
+    <string name="camera_option_1">क्यामेरा 1 — Seal (पूर्वनिर्धारित)</string>
+    <string name="camera_option_2">क्यामेरा 2</string>
+    <string name="camera_option_3">क्यामेरा 3</string>
+    <string name="camera_option_4">क्यामेरा 4</string>
+    <string name="camera_option_5">क्यामेरा 5</string>
+    <string name="camera_selection_hint">Auto ले हरेक बुटमा तपाईंको ट्रिमका लागि सही क्यामेरा छान्छ। क्यामेरा 1 = BYD Seal, क्यामेरा 0 = Atto ट्रिमहरू। परिवर्तन लागू गर्न डेमन रिस्टार्ट गर्नुहोस्।</string>
+
+    <!-- OEM Dashcam camera ID picker -->
+    <string name="camera_oem_dashcam_title">OEM ड्यासक्याम क्यामेरा ID</string>
+    <string name="camera_oem_dashcam_hint">अगाडिको ड्यासक्याम सेन्सरमा जाने AVMCamera ID छान्नुहोस्। ड्यासक्याम पानोको विपरीत हुन्छ: Seal/Han पानो = 1 → ड्यासक्याम = 0; Atto/Tang पानो = 0 → ड्यासक्याम = 1।</string>
+    <string name="camera_oem_dashcam_auto_resolved">Auto — id %1$d प्रयोग हुँदैछ (पानो id %2$d हो)</string>
+    <string name="camera_oem_dashcam_auto_unavailable">Auto — पानो id %1$d हो, ड्यासक्याम अनुमान गर्न सकिएन</string>
+    <string name="camera_oem_dashcam_save">सेभ गर्नुहोस्</string>
+    <string name="camera_concurrent_probe_label">अर्को बुटमा दोहोरो-क्यामेरा समर्थन जाँच गर्नुहोस्</string>
+    <string name="camera_concurrent_probe_subtitle">पार्क भएको बेला अर्को रिस्टार्टमा दुवै क्यामेरा एकैसाथ खोल्ने एक-पटकको जाँच। रेकर्डिङ गलत नदेखिएसम्म OFF राख्नुहोस्।</string>
+    <string name="camera_decoupled_lane_label">डिकपल्ड इन्कोडर पाइपलाइन (रिभर्स-क्यामेरा सुधार)</string>
+    <string name="camera_decoupled_lane_subtitle">इन्कोडिङ अघि प्रत्येक क्यामेरा फ्रेम कपी गर्छ ताकि गाडीको रिभर्स-क्यामेरा कहिल्यै नरोकियोस्।</string>
+
+    <string name="camera_oem_option_0">क्यामेरा 0 — Seal / Han (पूर्वनिर्धारित)</string>
+    <string name="camera_oem_option_1">क्यामेरा 1 — Atto / Tang</string>
+
+    <!-- Camera pairing card -->
+    <string name="camera_pair_title">कुन क्यामेरा कुन हो?</string>
+    <string name="camera_pair_pano_label">360 वरपर</string>
+    <string name="camera_pair_dashcam_label">अगाडिको ड्यासक्याम</string>
+    <string name="camera_pair_swap">साट्नुहोस्</string>
+    <string name="camera_pair_value_manual">क्यामेरा %1$d · म्यानुअल</string>
+    <string name="camera_pair_value_auto">Auto · क्यामेरा %1$d</string>
+    <string name="camera_pair_hint">पूर्वावलोकनहरूले ID चयन पछ्याउँछन्। यदि दुई फिड उल्टो देखिएमा साट्नुहोस् ट्याप गर्नुहोस् — यसले दुवै ID उल्टाएर तुरुन्त सेभ गर्छ।</string>
+    <string name="cd_camera_pair_swap">360 र ड्यासक्याम क्यामेरा ID साट्नुहोस्</string>
+    <string name="camera_advanced_ids_toggle">म्यानुअल क्यामेरा ID हरू — उन्नत</string>
+
+    <!-- Camera wizard coach -->
+    <string name="onboarding_camera_pair_title">क्यामेरा जोडी जाँच गर्नुहोस्</string>
+    <string name="onboarding_camera_pair_body">यी टाइलहरूले 360 दृश्य र अगाडिको ड्यासक्याम कुन क्यामेराले दिन्छ भनेर देखाउँछन्। यदि दुई पूर्वावलोकन साटिएको देखिएमा साट्नुहोस् ट्याप गर्नुहोस्।</string>
+    <string name="onboarding_camera_pair_primary">ठीक देखिन्छ — सेभ र रिस्टार्ट गर्नुहोस्</string>
+    <string name="onboarding_camera_pair_secondary">ID म्यानुअल रूपमा छान्नुहोस्</string>
+
+    <string name="camera_section_slice_calibration">भूमिका र 360 स्लाइस क्यालिब्रेसन — उन्नत</string>
+    <string name="camera_ids_pano_title">360 वरपर स्रोत</string>
+    <string name="camera_ids_pano_caption">360 पाइपलाइनले खोल्ने क्यामेरा — रेकर्डिङ (cam_*.mp4), निगरानी र लाइभ दृश्यका लागि 2×2 मोजेक चलाउँछ।</string>
+    <string name="camera_ids_oem_title">अगाडिको ड्यासक्याम स्रोत</string>
+    <string name="camera_ids_oem_caption">OEM ड्यासक्याम रेकर्डरले dvr_*.mp4 क्लिपहरूका लागि खोल्ने क्यामेरा।</string>
+
+    <string name="camera_role_explainer_slice">स्लाइस क्यालिब्रेसन: 360 मोजेकको कुन स्लाइसले यो दिशा देखाउँछ भनेर छान्छ। कुन क्यामेरा खुल्छ भन्ने परिवर्तन गर्दैन।</string>
+    <string name="camera_role_explainer_windshield">विन्डशिल्ड भूमिका: ड्यासक्याम रेकर्डिङ लेआउटको माथिल्लो दृश्य र विन्डशिल्ड स्ट्रिमिङका लागि प्रयोग हुने फिड।</string>
+    <string name="camera_role_explainer_cabin">क्याबिन भूमिका: लेआउट र स्ट्रिमिङका लागि वैकल्पिक भित्री फिड।</string>
+
+    <!-- Camera mapping dialog -->
+    <string name="camera_mapping_title">क्यामेरा म्यापिङ</string>
+    <string name="camera_role_label">भूमिका म्यापिङ</string>
+    <string name="camera_candidate_previous">अघिल्लो</string>
+    <string name="camera_candidate_next">अर्को</string>
+    <string name="camera_preview_unavailable">पूर्वावलोकन अझै उपलब्ध छैन। अर्को विकल्प प्रयास गर्नुहोस् वा डेमन रिस्टार्ट भएपछि संवाद पुन: खोल्नुहोस्।</string>
+    <string name="camera_mapping_save">सेभ गर्नुहोस्</string>
+    <string name="camera_mapping_clear">भूमिका खाली गर्नुहोस्</string>
+    <string name="camera_mapping_saved">क्यामेरा म्यापिङ सेभ भयो।</string>
+    <string name="camera_mapping_cleared">क्यामेरा भूमिका म्यापिङ खाली भयो।</string>
+    <string name="camera_mapping_summary_format">पानोरामिक स्ट्रिम: क्यामेरा %1$d · %2$dx%3$d</string>
+    <string name="camera_mapping_summary_probing">पानोरामिक स्ट्रिम: पुरानो स्वत:-पहिचान / जाँच</string>
+    <string name="camera_mapping_current_format">हालको म्यापिङ: %1$s</string>
+    <string name="camera_mapping_current_none">हालको म्यापिङ: Auto / पूर्वनिर्धारित</string>
+    <string name="camera_mapping_hint">तार्किक 360 भूमिकाहरूलाई तपाईंको गाडीमा वास्तविक अगाडि/दायाँ/पछाडि/बायाँ देखाउने स्लाइससँग जोड्नुहोस्।</string>
+
+    <!-- fragment_dashboard -->
+    <string name="dashboard_scan_to_connect">जडान गर्न स्क्यान गर्नुहोस्</string>
+    <string name="dashboard_qr_waiting">टनेल पर्खिँदैछ…</string>
+    <string name="dashboard_daemons_running_default">0/5 चलिरहेको</string>
+    <string name="dashboard_device_id_loading">…</string>
+    <string name="dashboard_access_code">पहुँच कोड</string>
+    <string name="dashboard_token_masked">••••••••</string>
+    <string name="dashboard_regenerate_token">टोकन पुन: सिर्जना गर्नुहोस्</string>
+
+    <!-- dialog_setup_guide -->
+    <string name="setup_guide_title">सुरुवात गर्दै</string>
+    <string name="setup_guide_subtitle">उत्कृष्ट अनुभवका लागि तीन छिटो चरणहरू:</string>
+    <string name="setup_step_one_label">१</string>
+    <string name="setup_step_two_label">२</string>
+    <string name="setup_step_three_label">३</string>
+    <string name="setup_language_title">आफ्नो भाषा छान्नुहोस्</string>
+    <string name="setup_language_body">तपाईंको हेड युनिटको भाषामा पूर्वनिर्धारित हुन्छ। OverDrive एप र वेब टनेलका लागि अर्को भाषा छान्न ट्याप गर्नुहोस्।</string>
+    <string name="setup_language_button">भाषा छान्नुहोस्</string>
+    <string name="setup_autostart_title">स्वत:-सुरु प्रतिबन्ध असक्षम पार्नुहोस्</string>
+    <string name="setup_autostart_body">BYD Auto-Start खोल्न तल ट्याप गर्नुहोस्। सूचीमा OverDrive खोजेर बाकस अनचेक गर्नुहोस्। BYD ले हरेक स्थापनामा यो मेट्छ — अपडेट पछि फेरि गर्नुपर्छ।</string>
+    <string name="setup_autostart_button">BYD Auto-Start खोल्नुहोस्</string>
+    <string name="setup_autostart_enabling">स्वत:-सुरु सक्षम गरिँदैछ…</string>
+    <string name="setup_autostart_enabled">स्वत:-सुरु सक्षम भयो ✓</string>
+    <string name="setup_autostart_failed">स्वत:-सुरु स्वतः सक्षम गर्न सकिएन — म्यानुअल रूपमा गर्न BYD Auto-Start खोलिँदैछ।</string>
+    <string name="setup_overlay_title">अन्य एपमाथि प्रदर्शन अनुमति दिनुहोस्</string>
+    <string name="setup_overlay_body">अन्य एपमाथि रेकर्डिङ र यात्रा ट्र्याकिङको तैरने स्थिति सूचक देखाउन यो सक्षम गर्नुहोस्।</string>
+    <string name="setup_overlay_button">ओभरले सेटिङ खोल्नुहोस्</string>
+
+    <!-- Onboarding guide -->
+    <string name="onboarding_next">अर्को</string>
+    <string name="onboarding_back">पछाडि</string>
+    <string name="onboarding_skip">छोड्नुहोस्</string>
+    <string name="onboarding_later">यो पछि गर्नुहोस्</string>
+    <string name="onboarding_dismiss">हटाउनुहोस्</string>
+    <string name="onboarding_exit">भ्रमण बाहिरिनुहोस्</string>
+    <string name="onboarding_done_short">बुझेँ</string>
+
+    <string name="onboarding_authorize_title">Overdrive जगाउनुहोस्</string>
+    <string name="onboarding_authorize_body">Overdrive ले सानो अन-डिभाइस सहायकमार्फत क्यामेरा चलाउँछ। Android ले एक पटक USB डिबगिङ अनुमति माग्नेछ — <b>Allow</b> ट्याप गरी <b>Always allow from this device</b> मा टिक लगाउनुहोस्।</string>
+    <string name="onboarding_authorize_button">पहुँच अनुमति दिनुहोस्</string>
+    <string name="onboarding_authorize_waiting_title">अनुमतिको प्रतीक्षा गरिँदैछ…</string>
+    <string name="onboarding_authorize_waiting_body">Android पपअप स्वीकार गर्नुहोस्। यदि देख्नुभएन भने, पहिले नै प्रदान भइसकेको हुन सक्छ।</string>
+    <string name="onboarding_authorize_retry_title">अझै जडान भएको छैन</string>
+    <string name="onboarding_authorize_retry_body">सहायक अझै चलिरहेको छैन। फेरि प्रयास गर्नुहोस् र <b>Always allow</b> जाँच गर्न नबिर्सनुहोस्।</string>
+    <string name="onboarding_authorize_retry_button">फेरि प्रयास गर्नुहोस्</string>
+
+    <string name="onboarding_mode_title">Overdrive कहिले चल्नुपर्छ?</string>
+    <string name="onboarding_mode_body">तपाईंले गाडी बन्द गरेपछि Overdrive ले कसरी व्यवहार गर्ने छान्नुहोस्।\n\n<b>On &amp; Off</b> ले पार्क भएको बेला पनि निगरानी र पृष्ठभूमि अनुगमन सक्रिय राख्छ।\n\n<b>On Only</b> ले तपाईं निस्केपछि Overdrive पूर्ण रूपमा बन्द गर्छ, तर ड्राइभ गर्दा ड्यासक्याम र यात्रा चल्छ।</string>
+    <string name="onboarding_mode_on_off_button">On &amp; Off</string>
+    <string name="onboarding_mode_on_only_button">On Only</string>
+
+    <string name="onboarding_camera_step_label">क्यामेरा · चरण %1$d / %2$d</string>
+    <string name="onboarding_camera_intro_title">आफ्नो क्यामेरा सेटअप गर्नुहोस्</string>
+    <string name="onboarding_camera_intro_body">कुन क्यामेरा तपाईंको 360 दृश्य हो र कुन ड्यासक्याम हो भनेर Overdrive लाई बताऔं।</string>
+    <string name="onboarding_camera_intro_primary">सुरु गर्नुहोस्</string>
+    <string name="onboarding_camera_opening_title">क्यामेरा सेटअप खोलिँदैछ…</string>
+    <string name="onboarding_camera_opening_body">तपाईंका क्यामेराबाट लाइभ पूर्वावलोकन लोड हुँदैछ।</string>
+    <string name="onboarding_camera_pano_title">यो तपाईंको 360 दृश्य हो</string>
+    <string name="onboarding_camera_pano_body">४-इन-१ तस्वीर फेला पार्न तीरहरू प्रयोग गर्नुहोस्।</string>
+    <string name="onboarding_camera_dashcam_title">अब अगाडिको सडक क्यामेरा खोज्नुहोस्</string>
+    <string name="onboarding_camera_dashcam_body">विन्डशिल्ड / अगाडिको दृश्य देखाउने क्यामेरामा रोकिनुहोस् र यसको नम्बर टिप्नुहोस्।</string>
+    <string name="onboarding_camera_pick_title">आफ्नो 360 क्यामेरा छान्नुहोस्</string>
+    <string name="onboarding_camera_pick_body">माथिल्लो कार्डमा 360 क्यामेराको नम्बर छान्नुहोस्, वा AUTO मा छोड्नुहोस्।</string>
+    <string name="onboarding_camera_pick_primary">अर्को</string>
+    <string name="onboarding_camera_pick_dash_title">आफ्नो ड्यासक्याम क्यामेरा छान्नुहोस्</string>
+    <string name="onboarding_camera_pick_dash_body">यस कार्डमा ड्यासक्याम नम्बर छान्नुहोस् — वा AUTO मा छोड्नुहोस्।</string>
+    <string name="onboarding_camera_save_primary">सेभ र रिस्टार्ट गर्नुहोस्</string>
+    <string name="onboarding_camera_applying_title">लागू हुँदैछ — क्यामेरा रिस्टार्ट हुँदैछ</string>
+    <string name="onboarding_camera_applying_body">फिड करिब १० सेकेन्ड अँध्यारो र झिम्किनेछ। यो सामान्य हो।</string>
+    <string name="onboarding_camera_verify_title">द्रुत जाँच</string>
+    <string name="onboarding_camera_verify_body">के 360 दृश्य र ड्यासक्याम ठीक देखिन्छन्? गलत भए पुन: छान्नुहोस् ट्याप गर्नुहोस्।</string>
+    <string name="onboarding_camera_verify_ok">ठीक देखिन्छ</string>
+    <string name="onboarding_camera_verify_repick">पुन: छान्नुहोस्</string>
+    <string name="onboarding_camera_windshield_title">रेकर्डिङमा अगाडिको सडक पट्टी राख्ने? (वैकल्पिक)</string>
+    <string name="onboarding_camera_windshield_body">OEM ड्यासक्याम लेआउटका लागि भूमिका मेनुमा Windshield छानी सेभ गर्नुहोस्। अधिकांश प्रयोगकर्ताले यो छोड्न सक्छन्।</string>
+    <string name="onboarding_camera_windshield_primary">मलाई देखाउनुहोस्</string>
+    <string name="onboarding_camera_windshield_skip">पर्दैन, धन्यवाद</string>
+
+    <string name="onboarding_vehicle_title">Overdrive लाई आफ्नो ब्याट्री बताउनुहोस्</string>
+    <string name="onboarding_vehicle_body">आफ्नो मोडेल छान्नुहोस् वा kWh (5–120) आफैँ टाइप गर्नुहोस्। यसले रेन्ज र चार्जिङ अनुमान सटीक बनाउँछ।</string>
+    <string name="onboarding_vehicle_primary">ब्याट्री सेट गर्नुहोस्</string>
+
+    <string name="onboarding_dash_tiles_title">एक झलकमा तपाईंको ककपिट</string>
+    <string name="onboarding_dash_tiles_body">यी कार्डहरू बटन हुन् — लाइभ क्यामेरा, रेकर्डिङ, सेवा वा गाडी खोल्न ट्याप गर्नुहोस्।</string>
+    <string name="onboarding_dash_chips_title">यिनले केवल स्थिति देखाउँछन्</string>
+    <string name="onboarding_dash_chips_body">माथिका चिप्सले रेकर्डिङ, सेवा र रिमोट लिङ्क देखाउँछन्। यी बटन होइनन्।</string>
+    <string name="onboarding_dash_chips_body_land">तपाईंको लाइभ स्थिति — रेकर्डिङ, सेवा र रिमोट लिङ्क — यहाँ देखिन्छ।</string>
+
+    <string name="onboarding_done_title">ककपिट तयार छ</string>
+    <string name="onboarding_done_body">क्यामेरा म्याप गरियो र ब्याट्री सेट भयो। फिड हेर्न लाइभ ट्याप गर्नुहोस्।</string>
+    <string name="onboarding_done_primary">सकियो</string>
+    <string name="onboarding_done_secondary">सेटअप अन्वेषण गर्नुहोस्</string>
+
+    <!-- Expert track -->
+    <string name="onboarding_help_cd">निर्देशित भ्रमण</string>
+    <string name="onboarding_reset_toast">अनबोर्डिङ रिसेट भयो — गाइड पुन: चल्दैछ</string>
+    <string name="onboarding_expert_chapter_label">अध्याय %1$d / %2$d</string>
+    <string name="onboarding_expert_finish">समाप्त गर्नुहोस्</string>
+
+    <string name="onboarding_expert_menu_title">निर्देशित भ्रमण</string>
+    <string name="onboarding_expert_menu_body">गहिरो सेटअपको द्रुत परिचय — गाडी प्रोफाइल, एकीकरण, निगरानी, निदान, सेवा र सुरक्षा।</string>
+    <string name="onboarding_expert_menu_start">भ्रमण सुरु गर्नुहोस्</string>
+
+    <string name="onboarding_expert_vehicle_title">गाडी प्रोफाइल</string>
+    <string name="onboarding_expert_vehicle_body">आफ्नो ब्याट्री आकार र मोडेल सेट गर्न गाडी टाइलमा ट्याप गर्नुहोस्।</string>
+
+    <string name="onboarding_expert_recordings_title">तपाईंका रेकर्डिङहरू</string>
+    <string name="onboarding_expert_recordings_body">यस टगलबाट ड्यासक्याम र निगरानी क्लिपहरू बीच स्विच गर्नुहोस्। प्ले गर्न क्लिपमा ट्याप गर्नुहोस्।</string>
+
+    <string name="onboarding_expert_live_title">लाइभ क्यामेरा</string>
+    <string name="onboarding_expert_live_body">सबै क्यामेरा वास्तविक समयमा हेर्न यहाँबाट लाइभ खोल्नुहोस्।</string>
+
+    <string name="onboarding_expert_trips_title">यात्रा इतिहास</string>
+    <string name="onboarding_expert_trips_body">Trips ले हरेक ड्राइभको मार्ग, दूरी, अवधि र ऊर्जा खपत लग गर्छ।</string>
+
+    <string name="onboarding_expert_roadsense_title">RoadSense</string>
+    <string name="onboarding_expert_roadsense_body">RoadSense ले सडकका खाल्डाखुल्डी र स्पीड ब्रेकर पत्ता लगाई अग्रिम चेतावनी दिन्छ।</string>
+
+    <string name="onboarding_expert_blindspot_title">ब्लाइन्ड स्पट</string>
+    <string name="onboarding_expert_blindspot_body">ब्लाइन्ड स्पट सक्षम गर्दा टर्न सिग्नल दिएपछि साइड-क्यामेरा दृश्य स्वतः स्क्रिनमा आउँछ।</string>
+
+    <string name="onboarding_expert_maps_title">नेभिगेसन</string>
+    <string name="onboarding_expert_maps_body">गन्तव्य खोज्न, मार्ग पाउन र सडक खतराहरू हेर्न नक्सा खोल्नुहोस्।</string>
+
+    <string name="onboarding_expert_integrations_title">एकीकरणहरू</string>
+    <string name="onboarding_expert_integrations_body">Telegram चेतावनी, ABRP, MQTT वा BYD Cloud जोड्नुहोस्।</string>
+    <string name="onboarding_expert_bydcloud_title">BYD Cloud ले रिमोट नियन्त्रण खोल्छ</string>
+    <string name="onboarding_expert_bydcloud_body">यहाँ BYD खाता जोड्दा फोनबाट लक, फ्ल्यास र हर्न चलाउन सकिन्छ। खाता विवरण गोप्य राख्नुहोस्।</string>
+
+    <string name="onboarding_expert_surveillance_title">निगरानी र रेकर्डिङ</string>
+    <string name="onboarding_expert_surveillance_body">यहाँ पहिचान, गुणस्तर र भण्डारण मिलाउनुहोस्।</string>
+
+    <string name="onboarding_expert_camprobe_title">क्यामेरा प्रोब — सावधानीपूर्वक</string>
+    <string name="onboarding_expert_camprobe_body">यसले कुन भौतिक क्यामेराले कुन भूमिका दिन्छ भन्ने पुन: म्याप गरी क्यामेरा रिस्टार्ट गर्छ।</string>
+    <string name="onboarding_expert_traffic_title">ट्राफिक मोनिटर — रिमोट पहुँचका लागि आवश्यक</string>
+    <string name="onboarding_expert_traffic_body">BYD को ट्राफिक मोनिटरले अन्य एपलाई गाडीको SIM प्रयोग गर्न रोक्छ। रिमोट पहुँचका लागि यहाँबाट अक्षम गर्नुहोस् र हेड युनिट रिबुट गर्नुहोस्।</string>
+
+    <string name="onboarding_expert_daemons_title">सेवाहरू — सावधानीपूर्वक चलाउनुहोस्</string>
+    <string name="onboarding_expert_daemons_body">यी स्विचहरूले पृष्ठभूमि सेवाहरू सुरु र बन्द गर्छन्। Camera वा Surveillance बन्द गर्दा रेकर्डिङ रोकिन्छ।</string>
+
+    <string name="onboarding_expert_security_title">PIN बाट लक गर्नुहोस्</string>
+    <string name="onboarding_expert_security_body">साझा गाडीहरूमा एप सुरक्षित राख्न PIN सेट गर्नुहोस्। एप लक हुँदा पनि निगरानी र रेकर्डिङ चलिरहन्छ।</string>
+    <string name="onboarding_expert_reset_title">डेटा रिसेट — स्थायी</string>
+    <string name="onboarding_expert_reset_body">यसले रेकर्डिङ, घटना र सेटिङहरू मेटाउँछ र पूर्ववत गर्न सकिँदैन।</string>
+
+    <string name="onboarding_expert_done_title">भ्रमण पूरा भयो</string>
+    <string name="onboarding_expert_done_body">तपाईंले गहिरो सेटिङहरू हेर्नुभयो। मद्दत बटनबाट यो गाइड जुनसुकै बेला खोल्न सक्नुहुन्छ।</string>
+
+    <!-- Language picker -->
+    <string name="cd_close">बन्द गर्नुहोस्</string>
+    <string name="language_picker_title">भाषा</string>
+    <string name="language_picker_subtitle_fmt">%1$d भाषाहरू उपलब्ध छन्</string>
+    <string name="language_picker_subtitle_pending">भाषा छान्नुहोस्</string>
+    <string name="language_auto_title">स्वत: (Auto)</string>
+    <string name="language_auto_subtitle">प्रणाली अनुसार · %1$s</string>
+    <string name="language_label_auto_fmt">%1$s · स्वत:</string>
+
+    <!-- fragment_adb_console -->
+    <string name="adb_prompt">$</string>
+    <string name="adb_command_hint">आदेश प्रविष्ट गर्नुहोस्…</string>
+    <string name="adb_preset_commands_header">पूर्व-सेट आदेशहरू</string>
+    <string name="adb_output_header">आउटपुट</string>
+    <string name="adb_output_ready">$ आदेशहरूका लागि तयार…</string>
+    <string name="adb_console_hero_title">ADB कन्सोल</string>
+    <string name="adb_console_hero_subtitle">उपकरणमा शेल आदेशहरू चलाउनुहोस्</string>
+
+    <!-- fragment_webview -->
+    <string name="webview_loading">लोड हुँदैछ…</string>
+    <string name="webview_camera_daemon_not_running">क्यामेरा डेमन चलिरहेको छैन</string>
+    <string name="webview_start_camera_daemon">यो पृष्ठ खोल्न Daemons स्क्रिनबाट Camera Daemon सुरु गर्नुहोस्।</string>
+
+    <!-- dialog_zrok_token -->
+    <string name="zrok_enable_token_hint">सक्षम टोकन</string>
+    <string name="zrok_token_storage_note">टोकन सुरक्षित रूपमा भण्डारण गरिन्छ र एप तथा डेमन प्रक्रियाहरू बीच साझा हुन्छ।</string>
+    <string name="zrok_reset_environment">Zrok वातावरण रिसेट गर्नुहोस्</string>
+    <string name="zrok_reset_environment_desc">वातावरण र टोकन हटाउँछ। तपाईंले आफ्नो टोकनबाट फेरि सक्षम गर्नुपर्नेछ।</string>
+
+    <!-- dialog_reset_data -->
+    <string name="reset_title">डेटा रिसेट</string>
+    <string name="reset_subtitle">श्रेणी अनुसार सञ्चित डेटा मेटाउनुहोस्</string>
+    <string name="reset_warning">यो पूर्ववत गर्न सकिँदैन। रेकर्डिङ, यात्रा र ब्याट्री इतिहास स्थायी रूपमा मेटिनेछन्।</string>
+    <string name="reset_cat_trips">यात्राहरू</string>
+    <string name="reset_cat_trips_desc">यात्रा इतिहास, मार्ग, साप्ताहिक/मासिक सारांश</string>
+    <string name="reset_cat_soc_history">SoC र 12V इतिहास</string>
+    <string name="reset_cat_soc_history_desc">SoC नमूना, चार्जिङ सत्र, भोल्टेज लगहरू</string>
+    <string name="reset_cat_soh">SoH क्यालिब्रेसन</string>
+    <string name="reset_cat_soh_desc">नाममात्र क्षमता पुन: पत्ता लगाउँछ, BMS बाट अनुमान पुन: सेट गर्छ</string>
+    <string name="reset_cat_abrp_token">ABRP टोकन</string>
+    <string name="reset_cat_abrp_token_desc">पुन: जोडी नबनाएसम्म ABRP टेलिमेट्री अक्षम गर्छ</string>
+    <string name="reset_cat_byd_cloud">BYD Cloud प्रमाणपत्रहरू</string>
+    <string name="reset_cat_byd_cloud_desc">प्रयोगकर्ता नाम, लगइन कुञ्जी, VIN — पुन: लगइन आवश्यक</string>
+    <string name="reset_cat_recordings">रेकर्डिङहरू (भिडियो)</string>
+    <string name="reset_cat_recordings_desc">रेकर्डिङ फोल्डरमा रहेका सबै MP4 हरू</string>
+    <string name="reset_cat_sentry_events">निगरानी घटनाहरू</string>
+    <string name="reset_cat_sentry_events_desc">निगरानी घटना क्लिप र JSON साइडकारहरू</string>
+    <string name="reset_cat_proximity">निकटता रेकर्डिङहरू</string>
+    <string name="reset_cat_proximity_desc">राडार-ट्रिगर घटना MP4 हरू</string>
+    <string name="reset_cat_trip_files">यात्रा टेलिमेट्री फाइलहरू</string>
+    <string name="reset_cat_trip_files_desc">डिस्कमा प्रति-यात्रा JSON टेलिमेट्री</string>
+
+    <!-- fragment_recording_library -->
+    <string name="recording_lib_chip_any">कुनै पनि</string>
+    <string name="recording_lib_chip_person">व्यक्ति</string>
+    <string name="recording_lib_chip_vehicle">गाडी</string>
+    <string name="recording_lib_chip_bike">बाइक</string>
+    <string name="recording_lib_chip_animal">जनावर</string>
+    <string name="recording_lib_chip_alert">चेतावनी</string>
+    <string name="recording_lib_chip_critical">गम्भीर</string>
+    <string name="recording_lib_selected_count_zero">0 चयनित</string>
+    <string name="recording_lib_no_recordings">कुनै रेकर्डिङ छैन</string>
+
+    <string name="recording_lib_filter_button">फिल्टर</string>
+    <string name="recording_lib_filter_button_active">फिल्टर · %1$d</string>
+    <string name="recording_lib_filter_sheet_title">रेकर्डिङ फिल्टर गर्नुहोस्</string>
+    <string name="recording_lib_filter_apply">लागू गर्नुहोस्</string>
+    <string name="recording_lib_filter_reset">रिसेट गर्नुहोस्</string>
+    <string name="recording_lib_chip_parking_session">यो पार्क</string>
+    <string name="recording_lib_chip_parking_session_at">पार्क %1$s</string>
+    <string name="recording_lib_filter_section_what">के</string>
+    <string name="recording_lib_filter_section_severity">गम्भीरता</string>
+    <string name="recording_lib_filter_section_type">प्रकार</string>
+    <string name="recording_lib_filter_section_place">स्थान</string>
+    <string name="recording_lib_filter_section_storage">भण्डारण</string>
+    <string name="recording_lib_storage_filter_internal">आन्तरिक</string>
+    <string name="recording_lib_storage_filter_sd">SD कार्ड</string>
+    <string name="recording_lib_storage_filter_usb">USB</string>
+    <string name="recording_lib_place_search_hint">स्थान खोज्नुहोस्…</string>
+    <string name="recording_lib_chip_type_normal">सामान्य</string>
+    <string name="recording_lib_chip_type_proximity">निकटता</string>
+    <string name="recording_lib_date_today">आज</string>
+    <string name="recording_lib_date_yesterday">हिजो</string>
+    <string name="recording_lib_clip_count">%1$d क्लिपहरू</string>
+    <string name="recording_lib_clip_count_one">%1$d क्लिप</string>
+    <string name="recording_lib_pick_date">मिति छान्नुहोस्</string>
+    <string name="recording_lib_date_all_days">सबै दिन</string>
+    <string name="cd_clear_date_filter">सबै दिन देखाउनुहोस्</string>
+    <string name="recording_lib_section_morning">बिहान</string>
+    <string name="recording_lib_section_afternoon">दिउँसो</string>
+    <string name="recording_lib_section_evening">साँझ</string>
+    <string name="recording_lib_section_night">रात</string>
+    <string name="cd_previous_day">अघिल्लो दिन</string>
+    <string name="cd_next_day">अर्को दिन</string>
+    <string name="cd_open_filters">फिल्टर खोल्नुहोस्</string>
+    <string name="cd_clear_filter">फिल्टर खाली गर्नुहोस्</string>
+
+    <string name="recording_lib_empty_title">कुनै रेकर्डिङ मेल खाएन</string>
+    <string name="recording_lib_empty_body">मिति दायरा वा चिप फिल्टर समायोजन गरी हेर्नुहोस्।</string>
+    <string name="recording_lib_empty_clear_filters">फिल्टर खाली गर्नुहोस्</string>
+    <string name="recording_lib_empty_disk_title">अहिलेसम्म केही रेकर्ड भएको छैन</string>
+    <string name="recording_lib_empty_disk_body">ड्यासक्याम वा निगरानीले क्लिप लेख्नेबित्तिकै यहाँ देखिनेछन्।</string>
+    <string name="recording_lib_building_index_title">पुस्तकालय अनुक्रमणिका बन्दैछ</string>
+    <string name="recording_lib_building_index_body">डेमनले रेकर्डिङ स्क्यान गर्दा एक क्षण पर्खनुहोस्।</string>
+    <string name="recording_lib_building_index_progress">%2$d मध्ये %1$d क्लिप अनुक्रमणिका गरियो…</string>
+    <string name="recording_lib_index_down_title">रेकर्डिङ अनुक्रमणिका उपलब्ध छैन</string>
+    <string name="recording_lib_index_down_body">तपाईंका रेकर्डिङहरू डिस्कमा सुरक्षित छन्, तर अनुक्रमणिका बन्द छ। स्वतः पुन: प्रयास हुँदैछ…</string>
+    <string name="recording_lib_type_normal">CAM</string>
+    <string name="recording_lib_type_event">EVENT</string>
+    <string name="recording_lib_type_proximity">PROX</string>
+    <string name="recording_lib_type_oem">OEM</string>
+    <string name="recording_lib_type_replay">REPLAY</string>
+    <string name="recording_lib_storage_sd">SD</string>
+    <string name="recording_lib_storage_usb">USB</string>
+    <string name="recording_lib_storage_internal">INT</string>
+    <string name="recording_safekeep_saved">सेभ भयो</string>
+    <string name="recording_safekeep_queued">लाममा</string>
+    <string name="recording_safekeep_waiting">प्रतीक्षारत</string>
+    <string name="recording_safekeep_failed">असफल</string>
+    <string name="recording_safekeep_uploading">अपलोड हुँदै %1$d%%</string>
+    <string name="recording_safekeep_locked">लक गरिएको</string>
+    <string name="cd_recording_safekeep_state">SafeKeep: %1$s</string>
+    <string name="action_safekeep_upload_now">अहिले अपलोड गर्नुहोस्</string>
+    <string name="action_safekeep_lock">लक गर्नुहोस्</string>
+    <string name="action_safekeep_unlock">अनलक गर्नुहोस्</string>
+    <string name="action_safekeep_open_cloud">क्लाउडमा खोल्नुहोस्</string>
+    <string name="toast_safekeep_upload_queued">सकेसम्म छिटो अपलोड हुँदैछ</string>
+    <string name="toast_safekeep_no_storage">अहिलेसम्म कुनै भण्डारण जोडिएको छैन</string>
+    <string name="toast_safekeep_locked">लक गरियो — गाडीमा राखिनेछ र पहिले अपलोड हुनेछ</string>
+    <string name="toast_safekeep_unlocked">अनलक गरियो</string>
+    <string name="toast_safekeep_lock_full">लक गरिएका क्लिपको स्थान भरियो — SafeKeep मा सीमा बढाउनुहोस् वा केही अनलक गर्नुहोस्।</string>
+    <string name="toast_safekeep_action_failed">SafeKeep ले त्यो गर्न सकेन: %1$s</string>
+    <string name="toast_safekeep_open_failed">यो लिङ्क खोल्ने कुनै एप छैन</string>
+    <string name="toast_share_recordings">%1$d रेकर्डिङहरू सेयर गरिँदैछ</string>
+
+    <!-- fragment_video_player -->
+    <string name="player_title_recording">रेकर्डिङ</string>
+    <string name="player_time_zero">0:00</string>
+    <string name="player_time_separator"> / </string>
+
+    <!-- fragment_daemons -->
+    <string name="daemons_hero_title">पृष्ठभूमि सेवाहरू</string>
+    <string name="daemons_count_pending">सेवाहरू लोड हुँदैछन्…</string>
+    <string name="daemons_count_fmt">%2$d मध्ये %1$d चलिरहेको</string>
+    <string name="daemons_wifi_auto_enable_title">Wi&#8209;Fi</string>
+    <string name="daemons_wifi_auto_enable_subtitle">अहिले Wi&#8209;Fi अन वा अफ गर्छ। अफ हुँदा OverDrive को सेन्ट्री डेमनले यसलाई पुन: अन गर्दैन।</string>
+    <string name="daemons_wifi_auto_enable_save_failed">Wi&#8209;Fi स्थिति परिवर्तन गर्न सकिएन।</string>
+
+    <!-- dialog_update_progress -->
+    <string name="update_preparing">अपडेट तयारी हुँदैछ…</string>
+    <string name="update_percent_zero">0%</string>
+
+    <!-- dialog_battery_health -->
+    <string name="battery_health_title">ब्याट्री स्वास्थ्य</string>
+    <string name="battery_health_subtitle">स्वास्थ्य स्थिति (SOH)</string>
+    <string name="battery_health_dashes">--</string>
+    <string name="battery_health_waiting">डेटाको प्रतीक्षा गरिँदैछ…</string>
+    <string name="battery_health_source">स्रोत</string>
+    <string name="battery_health_method">विधि</string>
+    <string name="battery_health_capacity">क्षमता</string>
+    <string name="battery_health_samples">नमूनाहरू</string>
+    <string name="battery_health_last_updated">अन्तिम अद्यावधिक</string>
+    <string name="battery_health_reset">SOH अनुमान रिसेट गर्नुहोस्</string>
+    <string name="battery_health_reset_desc">सबै डेटा खाली गरी सुरुदेखि पुन: अनुमान गर्छ।</string>
+    <string name="soh_dialog_model_label">मोडेल</string>
+    <string name="soh_dialog_pack_capacity_label">प्याक क्षमता</string>
+    <string name="soh_dialog_estimated_capacity_label">प्रभावकारी क्षमता</string>
+    <string name="soh_dialog_calibration_anchor_label">अन्तिम क्यालिब्रेसन</string>
+    <string name="soh_dialog_source_user">प्रयोगकर्ता-सेट</string>
+    <string name="soh_dialog_source_auto">स्वत:-पहिचान</string>
+    <string name="soh_dialog_model_not_selected">चयन गरिएको छैन</string>
+    <string name="soh_dialog_capacity_not_detected">पत्ता लागेन</string>
+    <string name="soh_dialog_calibration_format">%2$s मा %1$.1f%%</string>
+    <string name="soh_dialog_frame_anchor_label">अवलोकित पूर्ण-चार्ज</string>
+    <string name="soh_dialog_frame_anchor_format">पूर्णमा %1$.2f kWh अवलोकन (%2$d/%3$d नमूना)</string>
+    <string name="soh_dialog_frame_anchor_pending_format">पूर्णमा %1$.2f kWh अवलोकन (%2$d/%3$d नमूना संकलन)</string>
+    <string name="soh_dialog_frame_mismatch_title">प्याक-क्षमता फ्रेम बेमेल</string>
+    <string name="soh_dialog_frame_mismatch_format">गाडीले पूर्ण चार्जमा %1$.1f kWh देखाउँछ तर प्याक क्षमता %2$.1f kWh सेट गरिएको छ। वास्तविक गिरावट नभई एकाइ बेमेल हुन सक्छ। %1$.1f kWh प्रविष्ट गर्नुहोस्।</string>
+    <string name="soh_dialog_use_observed_value">अवलोकित मान प्रयोग गर्नुहोस्</string>
+    <string name="soh_dialog_use_observed_value_pending">सेभ हुँदैछ…</string>
+    <string name="toast_soh_observed_value_saved">प्याक क्षमता %1$.1f kWh मा अपडेट भयो।</string>
+    <string name="toast_soh_observed_value_failed">प्याक क्षमता अपडेट गर्न सकिएन (%1$s)।</string>
+    <string name="diagnostics_battery_needs_review">समीक्षा आवश्यक</string>
+
+    <string name="dialog_ok">ठीक छ</string>
+
+    <plurals name="recordings_deleted_count">
+        <item quantity="one">%d रेकर्डिङ मेटाइयो</item>
+        <item quantity="other">%d रेकर्डिङहरू मेटाइयो</item>
+    </plurals>
+    <plurals name="delete_recordings_title">
+        <item quantity="one">%d रेकर्डिङ मेटाउनुहोस्</item>
+        <item quantity="other">%d रेकर्डिङहरू मेटाउनुहोस्</item>
+    </plurals>
+    <plurals name="delete_recordings_message">
+        <item quantity="one">यसले %d रेकर्डिङ स्थायी रूपमा मेटाउनेछ। यो पूर्ववत गर्न सकिँदैन।</item>
+        <item quantity="other">यसले %d रेकर्डिङहरू स्थायी रूपमा मेटाउनेछ। यो पूर्ववत गर्न सकिँदैन।</item>
+    </plurals>
+
+    <!-- MainActivity / updates -->
+    <string name="toast_updated_to">%1$s मा अपडेट भयो</string>
+    <string name="toast_update_install_failed">अपडेट स्थापना असफल भयो: %1$s</string>
+    <string name="toast_checking_for_updates">अपडेटहरू जाँच गरिँदैछ…</string>
+    <string name="toast_app_up_to_date">एप अद्यावधिक छ (%1$s)</string>
+    <string name="toast_update_check_failed">अपडेट जाँच असफल भयो: %1$s</string>
+
+    <string name="update_dialog_available_title">अपडेट उपलब्ध छ</string>
+    <string name="update_dialog_subtitle">नयाँ बिल्ड स्थापना गर्न तयार छ</string>
+    <string name="update_dialog_current">हालको: v%1$s</string>
+    <string name="update_dialog_new">नयाँ: v%1$s</string>
+    <string name="update_dialog_current_label">स्थापित</string>
+    <string name="update_dialog_new_label">नयाँ संस्करण</string>
+    <string name="update_dialog_whats_new">नयाँ के छ</string>
+    <string name="update_dialog_install_now">अहिले स्थापना गर्नुहोस्</string>
+    <string name="update_dialog_later">पछि</string>
+    <string name="update_picker_title">संस्करण छान्नुहोस्</string>
+    <string name="update_picker_subtitle">प्रकाशित कुनै पनि बिल्ड स्थापना गर्नुहोस् — नयाँ वा पुरानो</string>
+    <string name="update_picker_empty">अहिलेसम्म कुनै संस्करण प्रकाशित भएको छैन।</string>
+    <string name="update_picker_current_suffix">%1$s (स्थापित)</string>
+    <string name="update_picker_older_suffix">%1$s (पुरानो)</string>
+    <string name="update_progress_title">Overdrive अपडेट हुँदैछ</string>
+    <string name="update_step_downloading">अपडेट डाउनलोड हुँदैछ…</string>
+    <string name="update_step_verifying">डाउनलोड प्रमाणित हुँदैछ…</string>
+    <string name="update_step_stopping">डेमनहरू रोकिँदैछन्…</string>
+    <string name="update_step_installing">अपडेट स्थापना हुँदैछ…</string>
+    <string name="update_step_installed">अपडेट स्थापना भयो</string>
+    <string name="update_step_restarting">एप रिस्टार्ट हुँदैछ…</string>
+    <string name="update_step_queued">अपडेट सुरु हुँदैछ…</string>
+    <string name="update_error_title">अपडेट असफल भयो</string>
+    <string name="update_error_daemon_down">क्यामेरा डेमन चलिरहेको छैन। Daemons स्क्रिनबाट सुरु गरी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="update_error_start_failed">अपडेट सुरु गर्न सकिएन: %1$s</string>
+    <string name="update_error_lost_headunit">स्थापना पूरा हुनुअघि हेड युनिटसँगको सम्पर्क टुट्यो। टनेलमा हुनुहुन्छ? नयाँ URL का लागि Telegram हेर्नुहोस्।</string>
+    <string name="update_hide">लुकाउनुहोस्</string>
+
+    <string name="settings_update_channel_title">अपडेट च्यानल</string>
+    <string name="settings_update_channel_alpha">Alpha</string>
+    <string name="settings_update_channel_braveheart">Braveheart</string>
+    <string name="settings_update_channel_alpha_desc">स्थिर रिलिज। हरेक प्रकाशित संस्करण राखिन्छ — कुनै पनि छान्नुहोस् (डाउनग्रेड अनुमति छ)।</string>
+    <string name="settings_update_channel_braveheart_desc">नवीनतम बिल्डहरू प्रकाशित हुनेबित्तिकै प्राप्त हुन्छन्। केही बिग्रिएमा Daemons स्क्रिनबाट लग पठाई GitHub Issues मा रिपोर्ट गर्नुहोस्।</string>
+    <string name="settings_update_channel_save_failed">अपडेट च्यानल सेभ गर्न सकिएन</string>
+    <string name="settings_update_channel_braveheart_toast">Braveheart मा स्विच गरियो। बिल्डहरू अस्थिर हुन सक्छन् — केही बिग्रिएमा डेमन लग पठाएर GitHub Issues मा रिपोर्ट गर्नुहोस्।</string>
+
+    <string name="toast_storage_permission_required">रेकर्डिङका लागि भण्डारण अनुमति आवश्यक छ</string>
+    <string name="toast_url_copied_short">URL कपी गरियो!</string>
+    <string name="toast_camera_set_to_auto">क्यामेरा Auto मा सेट गरियो</string>
+    <string name="toast_failed_to_save_short">सेभ गर्न असफल भयो</string>
+    <string name="toast_failed_with_message">असफल: %1$s</string>
+    <string name="toast_camera_id_set">क्यामेरा %1$d सेट गरियो — अर्को ACC चक्रमा</string>
+    <string name="toast_clearing_camera_config">क्यामेरा कन्फिग खाली गरिँदैछ…</string>
+    <string name="toast_restarting_camera_daemon">क्यामेरा डेमन रिस्टार्ट हुँदैछ…</string>
+    <string name="toast_camera_daemon_restarting">पूर्ण जाँचसहित क्यामेरा डेमन रिस्टार्ट हुँदैछ</string>
+    <string name="toast_camera_restart_failed">कन्फिग खाली भयो तर डेमन रिस्टार्ट असफल भयो। कृपया म्यानुअल रूपमा रिस्टार्ट गर्नुहोस्।</string>
+    <string name="toast_camera_settings_saved_restarting">क्यामेरा सेटिङ सेभ भयो — क्यामेरा डेमन रिस्टार्ट हुँदैछ…</string>
+    <string name="toast_camera_settings_restart_failed">क्यामेरा सेटिङ सेभ भयो, तर डेमन रिस्टार्ट असफल भयो। कृपया म्यानुअल रूपमा रिस्टार्ट गर्नुहोस्।</string>
+    <string name="toast_failed_with_message_x">असफल: %1$s</string>
+    <string name="toast_soh_reset_success">SOH अनुमान रिसेट भयो — अर्को डेटाबाट पुन: गणना हुनेछ</string>
+    <string name="toast_soh_reset_failed_no_daemon">रिसेट असफल भयो — डेमनले जवाफ दिएन र फाइल लेख्न योग्य छैन</string>
+    <string name="toast_soh_reset_failed_with_message">रिसेट असफल भयो: %1$s</string>
+    <string name="toast_select_at_least_one_category">कम्तीमा एउटा श्रेणी छान्नुहोस्</string>
+    <string name="toast_reset_failed_with_error">रिसेट असफल भयो: %1$s</string>
+    <string name="toast_traffic_monitor_enabling">ट्राफिक मोनिटर सक्षम गरिँदैछ…</string>
+    <string name="toast_traffic_monitor_disabling">ट्राफिक मोनिटर अक्षम गरिँदैछ…</string>
+    <string name="toast_traffic_monitor_persist_failed">लागू भयो, तर प्राथमिकता सेभ गर्न सकिएन।</string>
+
+    <string name="dialog_close">बन्द गर्नुहोस्</string>
+    <string name="dialog_reset">रिसेट गर्नुहोस्</string>
+    <string name="dialog_delete">मेटाउनुहोस्</string>
+    <string name="dialog_save">सेभ गर्नुहोस्</string>
+    <string name="dialog_enable">सक्षम गर्नुहोस्</string>
+    <string name="dialog_disable">अक्षम गर्नुहोस्</string>
+    <string name="dialog_keep_enabled">सक्षम राख्नुहोस्</string>
+    <string name="dialog_keep_disabled">अक्षम राख्नुहोस्</string>
+    <string name="dialog_regenerate">पुन: सिर्जना गर्नुहोस्</string>
+    <string name="dialog_reset_selected">छानिएको रिसेट गर्नुहोस्</string>
+
+    <string name="dialog_reset_soh_title">SOH अनुमान रिसेट गर्ने हो?</string>
+    <string name="dialog_reset_soh_message">यसले सबै SOH डेटा खाली गरी सुरुदेखि पुन: अनुमान गर्न बाध्य पार्नेछ।</string>
+    <string name="dialog_reset_following_title">निम्न रिसेट गर्ने हो?</string>
+    <string name="dialog_reset_following_message">यो पूर्ववत गर्न सकिँदैन।\n\n%1$s</string>
+    <string name="dialog_reset_complete_title">रिसेट पूरा भयो</string>
+
+    <string name="dialog_traffic_cannot_check_title">स्थिति जाँच गर्न सकिएन</string>
+    <string name="dialog_traffic_cannot_check_message">ADB जडान अझै तयार छैन। विकासकर्ता विकल्पमा USB डिबगिङ सक्षम र अधिकृत भएको सुनिश्चित गर्नुहोस्।</string>
+
+    <string name="dialog_traffic_disable_title">BYD ट्राफिक मोनिटर अक्षम गर्ने हो?</string>
+    <string name="dialog_traffic_disable_message">BYD ट्राफिक मोनिटर (com.byd.trafficmonitor) ले OverDrive लगायत तेस्रो-पक्ष एपलाई गाडीको SIM बाट इन्टरनेट प्रयोग गर्न रोक्छ। अक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ (केन्द्र कन्सोल बटन ५ सेकेन्ड थिचिराख्नुहोस्)।</string>
+
+    <string name="dialog_traffic_enable_title">BYD ट्राफिक मोनिटर पुन: सक्षम गर्ने हो?</string>
+    <string name="dialog_traffic_enable_message">पुन: सक्षम गर्दा OverDrive लाई गाडीको SIM प्रयोग गर्न पुन: रोकिन्छ। सक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ।</string>
+
+    <string name="dialog_traffic_status_enabled">ट्राफिक मोनिटर सक्षम छ</string>
+    <string name="dialog_traffic_status_disabled">ट्राफिक मोनिटर अक्षम छ</string>
+    <string name="dialog_traffic_reboot_message">परिवर्तन लागू भयो।\n\nकृपया अब हार्ड रिबुट गर्नुहोस्:\nकेन्द्रीय कन्सोल बटन ५ सेकेन्ड थिचिराख्नुहोस्।</string>
+
+    <string name="traffic_monitor_loading">ट्राफिक मोनिटर: जाँच हुँदैछ…</string>
+    <string name="traffic_monitor_tap_to_check">ट्राफिक मोनिटर (जाँच गर्न ट्याप गर्नुहोस्)</string>
+
+    <!-- Reset categories -->
+    <string name="reset_label_trips">यात्राहरू</string>
+    <string name="reset_label_soc_history">SoC + 12V इतिहास</string>
+    <string name="reset_label_soh">SoH क्यालिब्रेसन</string>
+    <string name="reset_label_abrp_token">ABRP टोकन</string>
+    <string name="reset_label_byd_cloud">BYD Cloud प्रमाणपत्रहरू</string>
+    <string name="reset_label_recordings">रेकर्डिङहरू</string>
+    <string name="reset_label_sentry_events">निगरानी घटनाहरू</string>
+    <string name="reset_label_proximity">निकटता रेकर्डिङहरू</string>
+    <string name="reset_label_trip_files">यात्रा टेलिमेट्री फाइलहरू</string>
+
+    <!-- Dashboard -->
+    <string name="toast_access_code_copied">पहुँच कोड कपी गरियो</string>
+    <string name="dialog_regenerate_token_title">टोकन पुन: सिर्जना गर्नुहोस्</string>
+    <string name="dialog_regenerate_token_message">यसले हालको टोकन अमान्य गर्नेछ र सबै सक्रिय सत्रहरू लगआउट हुनेछन्। जारी राख्ने हो?</string>
+    <string name="toast_token_regenerated_logged_out">नयाँ टोकन सिर्जना भयो। सबै सत्रहरू लगआउट भए।</string>
+    <string name="toast_token_regenerated_restart">टोकन पुन: सिर्जना भयो। लागू गर्न डेमन रिस्टार्ट चाहिन सक्छ।</string>
+    <string name="toast_token_regenerated_no_notify">टोकन पुन: सिर्जना भयो। डेमनलाई सूचित गर्न सकिएन।</string>
+    <string name="toast_token_regenerated">टोकन पुन: सिर्जना भयो</string>
+    <string name="dashboard_no_tunnel">कुनै टनेल चलिरहेको छैन</string>
+    <string name="dashboard_starting_zrok">Zrok टनेल सुरु हुँदैछ…</string>
+    <string name="dashboard_starting_cloudflared">Cloudflared टनेल सुरु हुँदैछ…</string>
+    <string name="dashboard_starting_tailscale">Tailscale टनेल सुरु हुँदैछ…</string>
+    <string name="dashboard_waiting_url">टनेल URL पर्खिँदैछ…</string>
+    <string name="dashboard_tunnel_failed">टनेल त्रुटि</string>
+    <string name="dashboard_tunnel_stopping">टनेल रोकिँदैछ…</string>
+    <string name="dashboard_daemons_running">%1$d/%2$d चलिरहेको</string>
+    <string name="tunnel_label_cloudflared">Cloudflared</string>
+    <string name="tunnel_label_zrok">Zrok</string>
+    <string name="tunnel_label_tailscale">Tailscale</string>
+
+    <!-- Daemon names -->
+    <string name="daemon_name_camera">क्यामेरा डेमन</string>
+    <string name="daemon_name_surveillance">निगरानी डेमन</string>
+    <string name="daemon_name_acc_surveillance">ACC निगरानी</string>
+    <string name="daemon_name_singbox">Sing-box प्रोक्सी</string>
+    <string name="daemon_name_cloudflared">Cloudflared टनेल</string>
+    <string name="daemon_name_zrok">Zrok टनेल</string>
+    <string name="daemon_name_tailscale">Tailscale टनेल</string>
+    <string name="daemon_name_telegram">Telegram बोट</string>
+    <string name="daemon_status_running">चलिरहेको</string>
+    <string name="daemon_status_proxy_on">%1$s • प्रोक्सी: अन</string>
+    <string name="daemon_status_running_uptime">चलिरहेको • अपटाइम: %1$s</string>
+    <string name="daemon_status_stopped">रोकिएको</string>
+    <string name="daemon_status_starting">सुरु हुँदैछ…</string>
+    <string name="daemon_status_stopping">रोकिँदैछ…</string>
+    <string name="daemon_status_error">त्रुटि</string>
+    <string name="daemon_status_needs_config">कन्फिगरेसन आवश्यक छ</string>
+    <string name="daemon_config_no_token">कुनै टोकन कन्फिगर गरिएको छैन। सेटअप गर्न ट्याप गर्नुहोस्।</string>
+    <string name="daemon_config_paid_token">सशुल्क संस्करणलाई टोकन चाहिन्छ। सेटअप गर्न ट्याप गर्नुहोस्।</string>
+    <string name="daemon_config_not_logged_in">लगइन गरिएको छैन। सेटअप गर्न ट्याप गर्नुहोस्।</string>
+    <string name="daemon_status_stop_failed">रोक्न असफल भयो: %1$s</string>
+    <string name="daemon_status_connect_failed">जडान गर्न सकिएन</string>
+    <string name="daemon_status_retry_in">%1$s • %2$d मिनेटमा पुन: प्रयास हुँदैछ</string>
+    <string name="cloudflared_no_output">cloudflared ले कुनै आउटपुट दिएन</string>
+    <string name="cloudflared_start_cancelled">Cloudflared सुरु हुनुअघि नै रोकियो</string>
+    <string name="daemon_status_prepare_failed">डेमन सुरुवात तयारी गर्न सकिएन: %1$s</string>
+    <string name="cloudflared_error_paid_token">सशुल्क संस्करणका लागि टोकन आवश्यक छ</string>
+    <string name="zrok_error_no_token">❌ Zrok टोकन कन्फिगर गरिएको छैन। कन्फिगर गर्न ट्याप गर्नुहोस्।</string>
+    <string name="singbox_status_running">Sing-box प्रोक्सी पोर्ट 8119 मा चलिरहेको छ</string>
+    <string name="cloudflared_error_launch_timeout">Cloudflared सुरुवात समय समाप्त भयो</string>
+    <string name="cloudflared_error_launch_failed">Cloudflared सुरुवात असफल भयो: %1$s</string>
+    <string name="cloudflared_error_binary_missing">libcloudflared.so फेला परेन। jniLibs/arm64-v8a/ मा थप्नुहोस्</string>
+    <string name="cloudflared_error_install_failed">cloudflared स्थापना गर्न असफल भयो</string>
+    <string name="cloudflared_error_install_failed_detail">cloudflared स्थापना गर्न असफल भयो: %1$s</string>
+    <string name="cloudflared_error_spawn_failed">सुरुवात असफल भयो: %1$s</string>
+    <string name="cloudflared_error_no_url">URL प्राप्त गर्न असफल भयो। लग:\n%1$s</string>
+    <string name="cloudflared_error_url_timeout">टनेल URL पर्खने समय समाप्त भयो</string>
+    <string name="cloudflared_error_proxy">प्रोक्सी त्रुटि: के पोर्ट 8119 मा sing-box चलिरहेको छ?\n%1$s</string>
+    <string name="cloudflared_error_connection">Cloudflared जडान त्रुटि: %1$s</string>
+    <string name="daemon_uptime_fmt">अपटाइम: %1$s</string>
+    <string name="daemon_subprocess_pid">%1$s (PID: %2$d)</string>
+    <string name="toast_cloudflared_encrypt_failed">Cloudflared टोकन सुरक्षित गर्न सकिएन।</string>
+    <string name="toast_cloudflared_save_failed">Cloudflared सेटिङ सेभ गर्न सकिएन। Camera Daemon चलिरहेको छ कि छैन जाँच गर्नुहोस्।</string>
+    <string name="projection_temporarily_unavailable">प्रक्षेपण अस्थायी रूपमा उपलब्ध छैन। कृपया एप पुन: खोल्नुहोस्।</string>
+    <string name="clip_label_access_code">पहुँच कोड</string>
+    <string name="clip_label_url">URL</string>
+
+    <!-- Daemons fragment -->
+    <string name="toast_no_config_needed">%1$s का लागि कन्फिगरेसन आवश्यक छैन</string>
+    <string name="dialog_zrok_token_title">Zrok टनेल टोकन</string>
+    <string name="dialog_zrok_token_message">आफ्नो Zrok सक्षम टोकन प्रविष्ट गर्नुहोस्।\nzrok.io बाट प्राप्त गर्नुहोस्</string>
+    <string name="toast_token_cannot_be_empty">टोकन खाली हुन सक्दैन</string>
+    <string name="dialog_tailscale_settings_title">Tailscale टनेल सेटिङ</string>
+    <string name="dialog_tailscale_settings_message">Tailscale कन्फिगर गर्नुहोस्</string>
+    <string name="tailscale_failed_login_url">लगइन URL सिर्जना गर्न असफल भयो</string>
+    <string name="tailscale_logged_in_relogin">लगइन भयो। अर्को खातामा लगइन गर्न क्लिक गर्नुहोस्</string>
+    <string name="dialog_tailscale_adb_enable_title">रिमोट ADB अनुमति दिने हो?</string>
+    <string name="dialog_tailscale_adb_enable_message">यसले ADB (पोर्ट 5555) का लागि tailnet पहुँच थप्छ। तपाईंले नियन्त्रण गर्ने tailnet मा मात्र सक्षम गर्नुहोस्।</string>
+    <string name="dialog_tailscale_proxy_enable_title">Tailscale प्रोक्सी सक्षम गर्ने हो?</string>
+    <string name="dialog_tailscale_proxy_enable_message">यसले Tailscale मार्फत MQTT रुट गर्छ। सक्षम हुँदा सार्वजनिक ब्रोकरमा जडान असफल हुनेछ।</string>
+    <string name="dialog_zrok_reset_title">Zrok वातावरण रिसेट गर्नुहोस्</string>
+    <string name="dialog_zrok_reset_message">यसले zrok टनेल रोक्नेछ र सुरक्षित टोकन मेटाउनेछ। के तपाईं निश्चित हुनुहुन्छ?</string>
+    <string name="dialog_tunnel_conflict_title">अर्को टनेल चलिरहेको छ</string>
+    <string name="dialog_tunnel_conflict_message">%1$s पहिले नै चलिरहेको छ। %2$s मा स्विच गर्ने वा दुवै टनेल सँगसँगै चलाउने?</string>
+    <string name="dialog_tunnel_conflict_switch">स्विच गर्नुहोस्</string>
+    <string name="dialog_tunnel_conflict_run_both">दुवै चलाउनुहोस्</string>
+    <string name="toast_resetting_zrok">zrok वातावरण रिसेट गरिँदैछ…</string>
+    <string name="toast_zrok_reset_success">Zrok वातावरण रिसेट भयो। पुन: सेटअप गर्न नयाँ टोकन प्रविष्ट गर्नुहोस्।</string>
+    <string name="toast_zrok_reset_partial">वातावरण रिसेट भयो (टोकन फाइल म्यानुअल सफाई चाहिन सक्छ)</string>
+    <string name="toast_zrok_reset_warnings">वातावरण रिसेट भयो (चेतावनीसहित: %1$s)</string>
+    <string name="zrok_no_token_configured">कुनै टोकन कन्फिगर गरिएको छैन। सेटअप गर्न ट्याप गर्नुहोस्।</string>
+    <string name="dialog_tailscale_reset_title">Tailscale वातावरण रिसेट गर्नुहोस्</string>
+    <string name="dialog_tailscale_reset_message">यसले tailscale टनेल रोक्नेछ र यस उपकरणबाट वातावरण हटाउनेछ। के तपाईं निश्चित हुनुहुन्छ?</string>
+    <string name="toast_resetting_tailscale">tailscale वातावरण रिसेट गरिँदैछ…</string>
+    <string name="toast_tailscale_reset_success">Tailscale वातावरण रिसेट भयो। पुन: सेटअप गर्न लगइन गर्नुहोस्।</string>
+    <string name="toast_tailscale_reset_warnings">Tailscale वातावरण रिसेट भयो (चेतावनीसहित: %1$s)</string>
+    <string name="toast_tailscale_proxy_enabled">Tailscale प्रोक्सी सक्षम भयो</string>
+    <string name="toast_tailscale_proxy_disabled">Tailscale प्रोक्सी अक्षम भयो</string>
+    <string name="toast_tailscale_proxy_save_failed">प्रोक्सी सेटिङ सेभ गर्न असफल भयो</string>
+    <string name="toast_zrok_token_saved">टोकन सेभ भयो</string>
+    <string name="toast_zrok_token_save_failed">टोकन सेभ गर्न असफल भयो</string>
+    <string name="toast_zrok_token_deleted">टोकन मेटाइयो</string>
+    <string name="toast_zrok_token_delete_failed">टोकन मेटाउन असफल भयो</string>
+    <string name="toast_fetching_log">%1$s लग ल्याइँदैछ…</string>
+    <string name="toast_log_empty_or_missing">लग फाइल खाली छ वा फेला परेन</string>
+    <string name="toast_log_empty">लग फाइल खाली छ</string>
+    <string name="toast_daemon_manager_unavailable">डेमन प्रबन्धक तयार छैन, एक क्षणमा फेरि प्रयास गर्नुहोस्</string>
+    <string name="toast_log_save_failed">लग सेभ गर्न असफल भयो: %1$s</string>
+    <string name="toast_log_not_found">लग फाइल फेला परेन वा पढ्न सकिएन</string>
+    <string name="log_share_title">%1$s लग - %2$s</string>
+    <string name="log_share_chooser">%1$s लग सेयर गर्नुहोस्</string>
+    <string name="log_header_title">=== %1$s लग ===</string>
+    <string name="log_header_source">स्रोत: %1$s</string>
+    <string name="log_header_exported">निर्यात गरिएको: %1$s</string>
+    <string name="log_header_truncated">नोट: लग अन्तिम 10000 लाइनमा छोट्याइयो (कुल: %1$d लाइन)</string>
+
+    <!-- Braveheart log send -->
+    <string name="logs_send_title">%1$s लग पठाउनुहोस्</string>
+    <string name="logs_send_title_plain">डेमन लग पठाउनुहोस्</string>
+    <string name="logs_send_subtitle">%1$s · पठाउने तरिका छान्नुहोस्</string>
+    <string name="logs_send_upload">अपलोड गरी कोड लिनुहोस्</string>
+    <string name="logs_send_upload_desc">लग अपलोड गरी छोटो कोड दिन्छ। सहायताका लागि सबैभन्दा सजिलो।</string>
+    <string name="logs_send_share">फाइल सेयर गर्नुहोस्…</string>
+    <string name="logs_send_share_desc">सेयर पानामार्फत लग आफैँ सेभ वा पठाउनुहोस्।</string>
+    <string name="logs_uploading_title">लग अपलोड हुँदैछ…</string>
+    <string name="logs_uploading_subtitle">गोप्य जानकारी हटाएर सुरक्षित पठाइँदैछ</string>
+    <string name="logs_uploaded_title">लग अपलोड भयो</string>
+    <string name="logs_uploaded_instructions">के बिग्रियो भन्ने टिप्पणीसहित यो कोड GitHub Issues मा सेयर गर्नुहोस् — लिङ्क बारेमा स्क्रिनमा छ।</string>
+    <string name="logs_uploaded_privacy">गोप्य जानकारी हटाइएको · लग स्वतः म्याद सकिन्छ</string>
+    <string name="logs_copy_code">कोड कपी गर्नुहोस्</string>
+    <string name="logs_done">सकियो</string>
+    <string name="placeholder_dash">—</string>
+    <string name="errors_network">नेटवर्क त्रुटि</string>
+
+    <!-- Recording library -->
+    <string name="toast_cannot_play_video">भिडियो प्ले गर्न सकिएन: %1$s</string>
+    <string name="dialog_delete_recording_title">रेकर्डिङ मेटाउनुहोस्</string>
+    <string name="dialog_delete_recording_message">%1$s मेटाउने हो?\nयो पूर्ववत गर्न सकिँदैन।</string>
+    <string name="dialog_create_evidence_pack_title">प्रमाण प्याक बनाउने हो?</string>
+    <string name="dialog_create_evidence_pack_message">OverDrive ले फिल्टर गरिएको घटना मेटाडेटा मात्र पठाउँछ। भिडियो स्थानीय रूपमै रहन्छ।</string>
+    <string name="toast_evidence_pack_creating">प्रमाण प्याक बन्दैछ…</string>
+    <string name="toast_evidence_pack_ready">प्रमाण प्याक तयार छ</string>
+    <string name="toast_evidence_pack_unavailable">यो रेकर्डिङ अझै अनुक्रमणिका भएको छैन</string>
+    <string name="toast_evidence_pack_failed">प्रमाण प्याक बनाउन सकिएन: %1$s</string>
+    <string name="error_unknown">अज्ञात त्रुटि</string>
+    <string name="toast_recording_deleted">रेकर्डिङ मेटाइयो</string>
+    <string name="toast_recording_delete_failed">रेकर्डिङ मेटाउन असफल भयो</string>
+    <string name="toast_batch_delete_partial">%1$d मेटाइयो, %2$d असफल भयो</string>
+    <string name="play_with_chooser">यसबाट प्ले गर्नुहोस्</string>
+
+    <!-- Setup guide -->
+    <string name="setup_version_banner">%1$s मा अपडेट भयो — स्वत:-सुरु पुन: पुष्टि गर्नुहोस्, BYD ले हरेक स्थापनामा मेट्छ</string>
+    <string name="setup_overlay_already_granted">पहिले नै अनुमति छ</string>
+    <string name="setup_tips_header">सुझाव र समस्या निवारण</string>
+    <string name="setup_traffic_title">BYD ट्राफिक मोनिटर अक्षम गर्नुहोस्</string>
+    <string name="setup_traffic_body">BYD ट्राफिक मोनिटरले तेस्रो-पक्ष एपहरूलाई इन्टरनेटमा जान रोक्छ। यसलाई अक्षम गर्दा OverDrive ले नेटवर्क प्रयोग गर्न सक्छ। त्यसपछि हार्ड रिबुट आवश्यक छ।</string>
+    <string name="setup_traffic_button">ट्राफिक मोनिटर खोल्नुहोस्</string>
+    <string name="setup_camera_fix_title">क्यामेरा फिड कालो वा गलत छ?</string>
+    <string name="setup_camera_fix_body">क्यामेरा प्रोबमा Camera ID 0 सेट गरी Save ट्याप गर्नुहोस्, अनि क्यामेरा डेमन रिस्टार्ट गर्नुहोस्। अझै गलत भए Camera ID 1 प्रयास गर्नुहोस्।</string>
+
+    <!-- MainActivity status -->
+    <string name="camera_current_manual">हालको: क्यामेरा %1$d (म्यानुअल)</string>
+    <string name="camera_current_auto_label">हालको: Auto</string>
+    <string name="soh_estimation_active">अनुमान सक्रिय छ</string>
+    <string name="soh_no_estimate_yet">अहिलेसम्म अनुमान छैन — डेटाको प्रतीक्षा हुँदैछ</string>
+
+    <!-- Misc -->
+    <string name="recording_lib_selected_count">%1$d चयनित</string>
+    <string name="video_player_playback_error">प्लेब्याक त्रुटि</string>
+    <string name="video_player_no_events">कुनै घटना छैन</string>
+    <string name="daemon_configuration_required">कन्फिगरेसन आवश्यक छ</string>
+    <string name="daemon_configuration_message">%1$s</string>
+
+    <!-- Navigation graph fragment labels -->
+    <string name="nav_page_video_player">भिडियो प्लेयर</string>
+    <string name="nav_page_telegram">Telegram</string>
+    <string name="nav_page_abrp">ABRP</string>
+    <string name="nav_page_mqtt">MQTT</string>
+    <string name="nav_page_byd_cloud">BYD Cloud</string>
+    <string name="nav_page_remote_access">निकटता</string>
+    <string name="nav_page_assistant">सहायक</string>
+
+    <!-- Persistent notifications -->
+    <string name="status_overlay_notif_title">OverDrive स्थिति</string>
+    <string name="status_overlay_notif_text">स्थिति ओभरले सक्रिय छ</string>
+    <string name="daemon_keepalive_notif_title">Overdrive सक्रिय छ</string>
+    <string name="daemon_keepalive_notif_text">गाडी प्रणालीहरू अनुगमन हुँदैछ</string>
+    <string name="overdrive_status_summary_title">Overdrive</string>
+    <string name="overdrive_status_summary_text">पृष्ठभूमि सेवाहरू चलिरहेका छन्</string>
+
+    <!-- Navigation rail -->
+    <string name="rail_dashboard">ड्यासबोर्ड</string>
+    <string name="rail_assistant">सहायक</string>
+    <string name="rail_live">लाइभ</string>
+    <string name="rail_recordings">रेकर्डिङहरू</string>
+    <string name="rail_vehicle">गाडी</string>
+    <string name="rail_projection">प्रक्षेपण</string>
+    <string name="rail_trips">यात्राहरू</string>
+    <string name="rail_parking">पार्किङ</string>
+    <string name="rail_charging">चार्जिङ</string>
+    <string name="rail_automations">स्वचालन</string>
+    <string name="rail_key_mapping">कुञ्जी म्यापिङ</string>
+    <string name="rail_seat_positions">सिट स्थितिहरू</string>
+    <string name="rail_integrations">एकीकरणहरू</string>
+    <string name="rail_diagnostics">निदान</string>
+    <string name="rail_settings">सेटिङहरू</string>
+    <string name="rail_expand">नेभिगेसन लेबल देखाउनुहोस्</string>
+    <string name="rail_collapse">नेभिगेसन लेबल लुकाउनुहोस्</string>
+
+    <!-- Settings sub-rail -->
+    <string name="settings_section_appearance">स्वरूप</string>
+    <string name="settings_section_recording">रेकर्डिङ</string>
+    <string name="settings_section_surveillance">निगरानी</string>
+    <string name="settings_section_daemons">डेमनहरू</string>
+    <string name="settings_section_privacy">गोपनीयता र डेटा</string>
+    <string name="settings_section_overlay">स्थिति ओभरले</string>
+    <string name="settings_section_security">सुरक्षा</string>
+    <string name="settings_overlay_subtitle">कुन तैरने स्थिति सूचकहरू देखिने राख्ने छान्नुहोस्।</string>
+    <string name="settings_overlay_camera_title">क्यामेरा सूचक</string>
+    <string name="settings_overlay_camera_subtitle">रेकर्डिङ सक्रिय हुँदा REC / PROX ब्याज देखाउनुहोस्।</string>
+    <string name="settings_overlay_trip_title">यात्रा सूचक</string>
+    <string name="settings_overlay_trip_subtitle">यात्रा पहिचान चलिरहँदा TRIP ब्याज देखाउनुहोस्।</string>
+    <string name="settings_overlay_replay_title">तत्काल रिप्ले सूचक</string>
+    <string name="settings_overlay_replay_subtitle">CLIP ब्याज देखाउनुहोस्: रिप्ले रेकर्ड हुँदा हरियो, सेभ भएपछि नीलो, असफल हुँदा रातो।</string>
+    <string name="settings_overlay_roadsense_title">RoadSense ओभरले</string>
+    <string name="settings_overlay_roadsense_subtitle">RoadSense सक्षम हुँदा तैरने RoadSense पिल र खतरा कार्ड देखाउनुहोस्।</string>
+    <string name="settings_overlay_chip_opacity">चिप दृश्यता</string>
+    <string name="settings_overlay_chip_opacity_subtitle">उच्च = बढी स्पष्ट। दायरा १० देखि १०० (प्रतिशत दायाँतिर देखाइएको)।</string>
+    <string name="settings_overlay_chip_opacity_value">%1$d%%</string>
+    <string name="settings_overlay_icon_opacity">आइकन पारदर्शिता</string>
+    <string name="settings_overlay_icon_opacity_value">%1$d%%</string>
+    <string name="settings_overlay_icon_size">आइकन आकार</string>
+    <string name="settings_overlay_icon_size_value">%1$d</string>
+    <string name="remote_voice_overlay_title">रिमोट आवाज</string>
+    <string name="remote_voice_mute">रिमोट आवाज म्युट गर्नुहोस्</string>
+    <string name="remote_voice_unmute">रिमोट आवाज अनम्युट गर्नुहोस्</string>
+    <string name="remote_voice_notification_title">रिमोट आवाज सक्रिय छ</string>
+    <string name="remote_voice_notification_text">प्रमाणित OverDrive सत्रबाट लाइभ अडियो प्राप्त हुँदैछ</string>
+    <string name="settings_remote_communication_title">रिमोट सञ्चार</string>
+    <string name="settings_remote_communication_subtitle">वेब कन्सोलबाट आवाज, क्याबिन सुन्ने सुविधा र सन्देशहरू सक्षम गर्नुहोस्।</string>
+    <string name="settings_remote_voice_title">रिमोट आवाज सक्षम गर्नुहोस्</string>
+    <string name="settings_remote_listener_title">क्याबिन श्रोता सक्षम गर्नुहोस्</string>
+    <string name="settings_remote_listener_subtitle">गाडी अन हुँदा प्रमाणित लाइभ दृश्य र सञ्चार सत्रहरूलाई क्याबिन माइक्रोफोन सुन्न अनुमति दिनुहोस्।</string>
+    <string name="settings_remote_audio_channel_title">आवाज अनुकूलता</string>
+    <string name="settings_remote_audio_channel_subtitle">Media ले अवस्थित स्पिकर र माइक्रोफोन मार्ग राख्छ। Navigation ले Di+ रुटिङ र 8 kHz क्याप्चर मिलाउँछ।</string>
+    <string name="settings_remote_audio_channel_media">मिडिया</string>
+    <string name="settings_remote_audio_channel_navigation">नेभिगेसन</string>
+    <string name="settings_remote_output_override_title">अनुकूल आवाज स्तर प्रयोग गर्नुहोस्</string>
+    <string name="settings_remote_output_override_subtitle">अफ राख्दा छानिएको अडियो च्यानलको गाडी भोल्युम पछ्याउँछ।</string>
+    <string name="settings_remote_output_level">अनुकूल आवाज स्तर</string>
+    <string name="settings_remote_output_car_volume">गाडीको भोल्युम</string>
+    <string name="settings_remote_output_default">70%</string>
+    <string name="settings_remote_output_value">%1$d%%</string>
+    <string name="settings_remote_messages_title">रिमोट सन्देशहरू सक्षम गर्नुहोस्</string>
+    <string name="settings_remote_overlay_permission">ओभरले अनुमति</string>
+    <string name="settings_remote_overlay_checking">जाँच हुँदैछ</string>
+    <string name="settings_remote_overlay_allowed">अनुमति प्राप्त</string>
+    <string name="settings_remote_overlay_required">अनुमति आवश्यक छ</string>
+    <string name="settings_remote_test_speaker">स्पिकर परीक्षण</string>
+    <string name="settings_remote_test_message">सन्देश परीक्षण</string>
+    <string name="settings_remote_test_message_body">रिमोट सन्देशहरू तयार छन्।</string>
+    <string name="settings_remote_speaker_started">स्पिकर परीक्षण सुरु भयो</string>
+    <string name="settings_remote_emergency_title">आपतकालीन असक्षम</string>
+    <string name="settings_remote_emergency_subtitle">रिमोट आवाज, क्याबिन सुन्ने र सन्देशहरू तुरुन्त रोकी अवरुद्ध गर्नुहोस्।</string>
+    <string name="settings_remote_save_failed">रिमोट सञ्चार सेटिङ सेभ गर्न सकिएन</string>
+    <string name="cabin_audio_notification_channel">क्याबिन श्रोता</string>
+    <string name="cabin_audio_notification_title">क्याबिन श्रोता सक्रिय छ</string>
+    <string name="cabin_audio_notification_text">वेब कन्सोलले क्याबिन माइक्रोफोन अडियो प्राप्त गरिरहेको छ।</string>
+    <string name="settings_section_about">बारेमा</string>
+
+    <string name="settings_subrail_overline">सेटिङहरू</string>
+    <string name="cd_settings_subrail">सेटिङ उप-रेल</string>
+
+    <string name="settings_privacy_title">गोपनीयता र डेटा</string>
+    <string name="settings_privacy_body">रिसेटले रेकर्डिङ अनुक्रमणिका, क्यास गरिएका प्रमाणपत्र, डेमन स्थिति र उपकरणका प्राथमिकताहरू खाली गर्छ। यो पूर्ववत गर्न सकिँदैन।</string>
+
+    <!-- Settings → About -->
+    <string name="settings_about_title">OverDrive बारे</string>
+    <string name="settings_about_version_label">संस्करण</string>
+    <string name="settings_about_package_label">बिल्ड</string>
+    <string name="settings_about_vehicle_title">गाडी र हेड युनिट</string>
+    <string name="settings_about_vehicle_subtitle">यो BYD हेड युनिटले रिपोर्ट गरेको संस्करण विवरण।</string>
+    <string name="settings_about_vehicle_firmware_label">फर्मवेयर</string>
+    <string name="settings_about_vehicle_dsp_label">DSP</string>
+    <string name="settings_about_vehicle_mcu_label">MCU</string>
+    <string name="settings_about_vehicle_android_label">Android</string>
+    <string name="settings_about_vehicle_security_patch_label">Android सुरक्षा प्याच</string>
+    <string name="settings_about_vehicle_head_unit_label">हेड युनिट</string>
+    <string name="settings_about_vehicle_vin_label">VIN</string>
+    <string name="settings_about_vehicle_vin_hint">संवेदनशील पहिचानकर्ता; पूर्वनिर्धारित रूपमा लुकाइएको।</string>
+    <string name="settings_about_vehicle_vin_show">देखाउनुहोस्</string>
+    <string name="settings_about_vehicle_vin_hide">लुकाउनुहोस्</string>
+    <string name="settings_about_vehicle_vin_show_a11y">VIN देखाउनुहोस्</string>
+    <string name="settings_about_vehicle_vin_hide_a11y">VIN लुकाउनुहोस्</string>
+    <string name="settings_about_vehicle_vin_hidden_a11y">VIN लुकाइएको</string>
+    <string name="settings_about_vehicle_loading">लोड हुँदैछ&#8230;</string>
+    <string name="settings_about_vehicle_unavailable">उपलब्ध छैन</string>
+    <string name="settings_about_check_update_value">नवीनतम GitHub रिलिज जाँच गर्नुहोस् र नयाँ भए स्थापना गर्नुहोस्।</string>
+    <string name="settings_backup_export_title">सेटिङ निर्यात गर्नुहोस्</string>
+    <string name="settings_backup_export_value">तपाईंको हालको सेटिङको ब्याकअप फाइल सेभ गर्नुहोस्। गोप्य राख्नुहोस् — यसमा प्रमाणपत्रहरू हुन्छन्।</string>
+    <string name="settings_backup_import_title">सेटिङ पुनर्स्थापना गर्नुहोस्</string>
+    <string name="settings_backup_import_value">यही हेड युनिटमा बनाइएको ब्याकअप फाइल लोड गर्नुहोस्।</string>
+    <string name="settings_backup_default_filename">overdrive-backup.json</string>
+    <string name="settings_backup_exporting">ब्याकअप बन्दैछ…</string>
+    <string name="settings_backup_export_failed">ब्याकअप निर्यात असफल भयो</string>
+    <string name="settings_backup_saved">ब्याकअप सेभ भयो</string>
+    <string name="settings_backup_saved_to">ब्याकअप %1$s मा सेभ भयो</string>
+    <string name="settings_backup_save_failed">ब्याकअप फाइल सेभ गर्न सकिएन</string>
+    <string name="settings_backup_pick_file">पुनर्स्थापना गर्न ब्याकअप छान्नुहोस्</string>
+    <string name="settings_backup_no_files">कुनै ब्याकअप फाइल फेला परेन। पहिले निर्यात गर्नुहोस् वा %1$s मा .json फाइल कपी गर्नुहोस्।</string>
+    <string name="settings_backup_read_failed">फाइल पढ्न सकिएन</string>
+    <string name="settings_backup_invalid_file">त्यो फाइल मान्य Overdrive ब्याकअप होइन</string>
+    <string name="settings_backup_restoring">पुनर्स्थापना हुँदैछ…</string>
+    <string name="settings_backup_restored">सेटिङ पुनर्स्थापित भयो</string>
+    <string name="settings_backup_restore_failed">पुनर्स्थापना असफल भयो</string>
+    <string name="settings_backup_daemon_down">ब्याकअप वा पुनर्स्थापना गर्न क्यामेरा सेवा चलिरहेको हुनुपर्छ। Daemons बाट सुरु गर्नुहोस्।</string>
+    <string name="settings_backup_restore_confirm_title">सेटिङ पुनर्स्थापना गर्ने हो?</string>
+    <string name="settings_backup_restore_confirm_msg">यसले हालको Overdrive सेटिङलाई ब्याकअपले बदल्छ र सेवाहरू पुन: लोड गर्छ।</string>
+    <string name="settings_backup_restore_confirm_btn">पुनर्स्थापना</string>
+    <string name="settings_backup_restart_hint">सेटिङ पुनर्स्थापित भयो। सबै सेटिङ लागू भएको सुनिश्चित गर्न क्यामेरा डेमन रिस्टार्ट गर्नुहोस्।</string>
+    <string name="settings_backup_trips_prompt">यात्रा इतिहास (दूरी, ऊर्जा, लागत, स्कोर, स्थान) समावेश गर्ने हो? फाइलमा स्थान इतिहास रहनेछ — गोप्य राख्नुहोस्।</string>
+    <string name="settings_backup_settings_only">सेटिङ मात्र</string>
+    <string name="settings_backup_with_trips">यात्राहरू समावेश गर्नुहोस्</string>
+
+    <string name="settings_about_support_section">तपाईं जस्तै समुदायद्वारा सञ्चालित</string>
+    <string name="settings_about_support_share_title">अरू मालिकलाई बताउनुहोस्</string>
+    <string name="settings_about_support_share_value">सेयर गरिएको हरेक लिङ्कले अर्को BYD मालिकलाई Overdrive पत्ता लगाउन मद्दत गर्छ।</string>
+    <string name="settings_about_support_share_message">Overdrive हेर्नुहोस् — BYD का लागि खुला-स्रोत निगरानी र ड्यासक्याम: https://github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_support_share_chooser">Overdrive सेयर गर्नुहोस्</string>
+    <string name="settings_about_youtube_title">YouTube मा सब्सक्राइब गर्नुहोस्</string>
+    <string name="settings_about_youtube_value">लाइक, सब्सक्राइब र सेयर गर्नुहोस् — हरेक भ्युले Overdrive लाई बढ्न मद्दत गर्छ।</string>
+    <string name="settings_about_open_link_failed">लिङ्क खोल्न सकिएन।</string>
+    <string name="settings_about_open_link_copied">ब्राउजर फेला परेन। URL कपी गरियो: %1$s</string>
+    <string name="settings_about_support_kofi_title">अर्को रिलिजमा सहयोग</string>
+    <string name="settings_about_support_kofi_value">समर्थनले निरन्तर विकासमा मद्दत गर्छ।</string>
+    <string name="settings_about_license_title">इजाजतपत्र (License)</string>
+    <string name="settings_about_license_value">MIT — खुला-स्रोत। पूरा पाठ हेर्न ट्याप गर्नुहोस्।</string>
+    <string name="settings_about_source_title">स्रोत कोड</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_star_title">GitHub मा तारा (Star) दिनुहोस्</string>
+    <string name="settings_about_star_value">एक सेकेन्ड लाग्छ। धेरै अर्थ राख्छ।</string>
+
+    <string name="settings_about_thanks_title">धन्यवाद</string>
+    <string name="settings_about_thanks_subtitle">योगदानकर्ता र समर्थकहरूको सहयोगमा निर्मित।</string>
+    <string name="settings_about_contributors_title">योगदानकर्ताहरू</string>
+    <string name="settings_about_supporters_title">समर्थकहरू</string>
+    <string name="settings_about_thanks_empty">मानिसहरूले योगदान गरेपछि सूची भरिनेछ।</string>
+    <string name="settings_about_tier_diamond">डायमण्ड</string>
+    <string name="settings_about_tier_platinum">प्लेटिनम</string>
+    <string name="settings_about_tier_gold">गोल्ड</string>
+    <string name="settings_about_tier_silver">सिल्भर</string>
+    <string name="settings_about_tier_bronze">ब्रोन्ज</string>
+    <string name="settings_about_support_count">%1$d पटक सहयोग गर्नुभएको</string>
+    <string name="settings_about_tiers_explainer">डायमण्ड, प्लेटिनम, गोल्ड, सिल्भर र ब्रोन्जले समग्र योगदान स्तर देखाउँछ; \u00d7N ले कति पटक सहयोग गरियो भन्ने देखाउँछ।</string>
+
+    <!-- Settings → General -->
+    <string name="settings_theme_label">थिम</string>
+    <string name="settings_theme_auto">स्वत: (प्रणाली अनुसार)</string>
+    <string name="settings_theme_light">उज्यालो (Light)</string>
+    <string name="settings_theme_dark">अँध्यारो (Dark)</string>
+    <string name="settings_language_label">भाषा</string>
+
+    <!-- Recordings page -->
+    <string name="recordings_title">रेकर्डिङहरू</string>
+    <string name="recordings_segment_all">सबै</string>
+    <string name="recordings_segment_dashcam">ड्यासक्याम</string>
+    <string name="recordings_segment_replays">रिप्लेहरू</string>
+    <string name="recordings_segment_surveillance">निगरानी</string>
+    <string name="recordings_action_settings">सेटिङहरू</string>
+    <string name="recordings_summary_format">आज %1$d · जम्मा %2$d · %3$s</string>
+    <string name="recordings_summary_index_down">गणना उपलब्ध छैन — रेकर्डिङ अनुक्रमणिका बन्द छ</string>
+    <string name="recordings_segment_dashcam_count">ड्यासक्याम · %d</string>
+    <string name="recordings_segment_replays_count">रिप्ले · %d</string>
+    <string name="recordings_segment_surveillance_count">निगरानी · %d</string>
+    <string name="recordings_segment_all_count">सबै · %d</string>
+    <string name="recordings_summary_pending">—</string>
+    <string name="recordings_preview_placeholder_title">रेकर्डिङ छान्नुहोस्</string>
+    <string name="recordings_preview_placeholder_body">प्ले गर्न बायाँपट्टिको कुनै पनि वस्तुमा ट्याप गर्नुहोस्।</string>
+    <string name="recording_preview_detected">पहिचान भयो</string>
+    <string name="recording_preview_no_detection">कुनै पहिचान छैन</string>
+    <string name="recording_preview_not_available">—</string>
+    <string name="recording_preview_distance">दूरी</string>
+    <string name="recording_preview_recorded">रेकर्ड गरिएको</string>
+    <string name="recording_preview_duration">अवधि</string>
+    <string name="recording_preview_storage">भण्डारण</string>
+    <string name="recording_preview_file_size">फाइल आकार</string>
+    <string name="recording_preview_storage_internal">आन्तरिक</string>
+    <string name="recording_preview_storage_sd">SD कार्ड</string>
+    <string name="recording_preview_storage_usb">USB</string>
+    <string name="recording_preview_storage_unknown">अज्ञात</string>
+    <string name="recording_headline_activity">गतिविधि देखियो</string>
+    <string name="recording_headline_motion">चाल देखियो</string>
+    <string name="recording_headline_dashcam">ड्यासक्याम रेकर्डिङ</string>
+    <string name="recording_headline_forward_camera">अगाडिको क्यामेरा रेकर्डिङ</string>
+    <string name="recording_headline_replay">तत्काल रिप्ले</string>
+    <plurals name="recording_headline_person">
+        <item quantity="one">व्यक्ति देखियो</item>
+        <item quantity="other">%1$d व्यक्तिहरू देखिए</item>
+    </plurals>
+    <plurals name="recording_headline_vehicle">
+        <item quantity="one">गाडी देखियो</item>
+        <item quantity="other">%1$d गाडीहरू देखिए</item>
+    </plurals>
+    <plurals name="recording_headline_bike">
+        <item quantity="one">बाइक देखियो</item>
+        <item quantity="other">%1$d बाइकहरू देखिए</item>
+    </plurals>
+    <plurals name="recording_headline_animal">
+        <item quantity="one">जनावर देखियो</item>
+        <item quantity="other">%1$d जनावरहरू देखिए</item>
+    </plurals>
+    <plurals name="recording_actor_person">
+        <item quantity="one">%1$d व्यक्ति</item>
+        <item quantity="other">%1$d व्यक्तिहरू</item>
+    </plurals>
+    <plurals name="recording_actor_vehicle">
+        <item quantity="one">%1$d गाडी</item>
+        <item quantity="other">%1$d गाडीहरू</item>
+    </plurals>
+    <plurals name="recording_actor_bike">
+        <item quantity="one">%1$d बाइक</item>
+        <item quantity="other">%1$d बाइकहरू</item>
+    </plurals>
+    <plurals name="recording_actor_animal">
+        <item quantity="one">%1$d जनावर</item>
+        <item quantity="other">%1$d जनावरहरू</item>
+    </plurals>
+    <string name="recording_distance_very_close">धेरै नजिक</string>
+    <string name="recording_distance_close">नजिक</string>
+    <string name="recording_distance_mid">मध्यम दूरी</string>
+    <string name="recording_distance_far">टाढा</string>
+    <string name="cd_recording_more_actions">थप रेकर्डिङ कार्यहरू</string>
+
+    <!-- Diagnostics page -->
+    <string name="diagnostics_section_adb_console">ADB कन्सोल</string>
+    <string name="diagnostics_section_traffic">ट्राफिक मोनिटर</string>
+    <string name="diagnostics_section_camera_probe">क्यामेरा प्रोब</string>
+    <string name="diagnostics_section_battery">ब्याट्री स्वास्थ्य</string>
+    <string name="diagnostics_section_module_faults">मोड्युल त्रुटिहरू</string>
+    <string name="diagnostics_module_faults_summary">उपलब्ध गाडी-रिपोर्ट गरिएका चेतावनीहरू हेर्नुहोस्</string>
+    <string name="diagnostics_section_daemon_storage">डेमन भण्डारण</string>
+
+    <!-- Vehicle setup -->
+    <string name="vehicle_setup_title">गाडी सेटअप</string>
+    <string name="vehicle_setup_checking">जाँच हुँदैछ…</string>
+    <string name="vehicle_setup_detected">पत्ता लागेको: %1$s</string>
+    <string name="vehicle_setup_configured">कन्फिगर गरिएको: %1$s</string>
+    <string name="vehicle_setup_platform_dilink100">DiLink 100 हेड युनिट</string>
+    <string name="vehicle_setup_platform_dilink5">DiLink 5 हेड युनिट</string>
+    <string name="vehicle_setup_platform_legacy">DiLink 3/4 हेड युनिट</string>
+    <string name="vehicle_setup_platform_unknown">चिनिएन</string>
+    <string name="vehicle_setup_unconfirmed">%1$s (अप्रमाणित)</string>
+    <string name="vehicle_setup_shared_firmware">%1$s · Shark 6 वा अर्को मोडेल</string>
+    <string name="vehicle_setup_running">%1$s (चलिरहेको: %2$s)</string>
+    <string name="vehicle_setup_no_model">कुनै मोडेल सेट छैन</string>
+    <string name="vehicle_setup_storage_standard">मानक भण्डारण</string>
+    <string name="vehicle_setup_storage_alternate">वैकल्पिक भण्डारण</string>
+    <string name="vehicle_setup_storage_mismatch">भण्डारण बेमेल</string>
+    <string name="vehicle_setup_storage_split">क्यामेरा सेवा र एप फरक भण्डारण फोल्डरमा चलिरहेका छन्</string>
+    <string name="vehicle_setup_match">यो हेड युनिटसँग मेल खान्छ</string>
+    <string name="vehicle_setup_differs">यो हेड युनिटका लागि सुझाव: %1$s</string>
+    <string name="vehicle_setup_service_offline">क्यामेरा सेवा चलिरहेको छैन</string>
+    <string name="vehicle_setup_pending_hint">सेटअप पूरा भएको छैन। यो कार्ड खोलेर गाडी सेटअप चलाउनुहोस् ट्याप गर्नुहोस्।</string>
+    <string name="vehicle_setup_shark_storage_hint">Shark 6 मात्र: यदि क्यामेरा सेवा कहिल्यै सुरु हुँदैन भने डेमन भण्डारणमा वैकल्पिक भण्डारण अन गर्नुहोस्</string>
+    <string name="vehicle_setup_details_title">गाडी सेटअप विवरण</string>
+    <string name="vehicle_setup_copy">कपी गर्नुहोस्</string>
+    <string name="vehicle_setup_copied">कपी गरियो</string>
+    <string name="vehicle_setup_mode_default">पूर्वनिर्धारित</string>
+    <string name="vehicle_setup_run">गाडी सेटअप चलाउनुहोस्</string>
+    <string name="vehicle_setup_pick_title">आफ्नो गाडी छान्नुहोस्</string>
+    <string name="vehicle_setup_pick_checking">यो हेड युनिट जाँच हुँदैछ…</string>
+    <string name="vehicle_setup_pick_subtitle">OverDrive ले यसका लागि भण्डारण, क्यामेरा प्रणाली र ब्याट्री सेटअप गर्छ।</string>
+    <string name="vehicle_setup_detected_badge">पत्ता लागेको</string>
+    <string name="vehicle_setup_not_listed">मेरो गाडी सूचीमा छैन</string>
+    <string name="vehicle_setup_not_listed_badge">पूर्वनिर्धारित सेटिङ</string>
+    <string name="vehicle_setup_row_not_listed">पूर्वनिर्धारित सेटिङ। कुनै गाडी मोडेल सेट छैन।</string>
+    <string name="vehicle_setup_row_not_listed_kept">पूर्वनिर्धारित सेटिङ। तपाईंको सेभ गरिएको गाडी (%1$s) चयनमै रहन्छ।</string>
+    <string name="vehicle_setup_next">अर्को</string>
+    <string name="vehicle_setup_back">पछाडि</string>
+    <string name="vehicle_setup_apply">लागू गर्नुहोस्</string>
+    <string name="vehicle_setup_retry">पुनः प्रयास</string>
+    <string name="vehicle_setup_done">सकियो</string>
+    <string name="vehicle_setup_change">परिवर्तन गर्नुहोस्</string>
+    <string name="vehicle_setup_review_title">सेटअप समीक्षा गर्नुहोस्</string>
+    <string name="vehicle_setup_review_subtitle">तपाईंले लागू गर्नुहोस् नथिचेसम्म केही परिवर्तन हुँदैन।</string>
+    <string name="vehicle_setup_row_unchanged">पहिले नै सेट छ</string>
+    <string name="vehicle_setup_row_kwh">%1$s kWh ब्याट्री</string>
+    <string name="vehicle_setup_row_camera">क्यामेरा प्रणाली: %1$s</string>
+    <string name="vehicle_setup_row_camera_detected">यो हेड युनिटमा पत्ता लागेको</string>
+    <string name="vehicle_setup_row_camera_model">यो गाडीका लागि सिफारिस गरिएको</string>
+    <string name="vehicle_setup_row_camera_chosen">तपाईंले छान्नुभएको</string>
+    <string name="vehicle_setup_row_camera_restart">क्यामेरा सेवा रिस्टार्ट गर्छ (करिब एक मिनेट)</string>
+    <string name="vehicle_setup_row_order">Shark क्यामेरा क्रम</string>
+    <string name="vehicle_setup_row_order_auto">स्वचालित (8·9·5·4)</string>
+    <string name="vehicle_setup_row_order_kept">तपाईंको सेभ गरिएको क्रम राखिएको छ: %1$s</string>
+    <string name="vehicle_setup_row_camera_unsupported">यो हेड युनिटमा DiLink 5 उपलब्ध छैन</string>
+    <string name="vehicle_setup_row_storage_check">पहिले जाँच गरिन्छ। यदि मानक फोल्डर लक छ (Shark 6) भने वैकल्पिक भण्डारण अन गरी एप एक पटक रिस्टार्ट हुन्छ।</string>
+    <string name="vehicle_setup_row_storage_repair">पहिले जाँच गरिन्छ। आवश्यक परे एप क्यामेरा सेवाले प्रयोग गर्ने फोल्डरमा सर्छ।</string>
+    <string name="vehicle_setup_row_storage_split">एप र क्यामेरा सेवाले फरक फोल्डर प्रयोग गर्छन्। निदान → डेमन भण्डारणमा मिलाउनुहोस्।</string>
+    <string name="vehicle_setup_resume_title">गाडी सेटअप पूरा गर्ने हो?</string>
+    <string name="vehicle_setup_resume_subtitle">%1$s · %2$s</string>
+    <string name="vehicle_setup_discard">त्याग्नुहोस्</string>
+    <string name="vehicle_setup_continue">जारी राख्नुहोस्</string>
+    <string name="vehicle_setup_step_storage_check">डेमन भण्डारण जाँच गर्नुहोस्</string>
+    <string name="vehicle_setup_storage_not_needed">यो हेड युनिटमा आवश्यक छैन</string>
+    <string name="vehicle_setup_storage_repair_skipped">परिवर्तन गरिएन: मानक फोल्डर यहाँ काम गर्छ।</string>
+    <string name="vehicle_setup_fail_restart_unverifiable">ADB जडित नभएकाले क्यामेरा सेवा रिस्टार्ट पुष्टि गर्न सकिएन। तपाईंका छनोटहरू सेभ भएका छन्।</string>
+    <string name="vehicle_setup_storage_switched">वैकल्पिक भण्डारणमा स्विच गरियो</string>
+    <string name="vehicle_setup_storage_busy">अर्को भण्डारण स्विच अझै चलिरहेको छ</string>
+    <string name="vehicle_setup_row_camera_current">तपाईंको हालको छनोट</string>
+    <string name="vehicle_setup_row_camera_default">सूचीमा नभएका गाडीका लागि पूर्वनिर्धारित</string>
+    <string name="vehicle_setup_fail_storage_check">ADB मार्फत डेमन भण्डारण जाँच गर्न सकिएन।</string>
+    <string name="vehicle_setup_camera_choice_title">क्यामेरा प्रणाली</string>
+    <string name="vehicle_setup_apply_title">तपाईंको गाडी सेटअप गरिँदैछ</string>
+    <string name="vehicle_setup_apply_subtitle">गाडी पार्क राख्नुहोस्। यसमा केही मिनेट लाग्न सक्छ।</string>
+    <string name="vehicle_setup_step_storage">वैकल्पिक डेमन भण्डारणमा स्विच गर्नुहोस्</string>
+    <string name="vehicle_setup_step_service">क्यामेरा सेवाको प्रतीक्षा गर्नुहोस्</string>
+    <string name="vehicle_setup_step_model">गाडी %1$s मा सेट गर्नुहोस्</string>
+    <string name="vehicle_setup_step_camera">क्यामेरा प्रणाली %1$s मा स्विच गर्नुहोस्</string>
+    <string name="vehicle_setup_step_verify">क्यामेरा सेवा जाँच गर्नुहोस्</string>
+    <string name="vehicle_setup_start_service">अहिले क्यामेरा सेवा सुरु गर्नुहोस्</string>
+    <string name="vehicle_setup_fail_storage">भण्डारण स्विच असफल भयो: %1$s</string>
+    <string name="vehicle_setup_fail_storage_kept">रिस्टार्ट पछि पनि एप मानक फोल्डरमै छ</string>
+    <string name="vehicle_setup_fail_service">क्यामेरा सेवा सुरु भएन।</string>
+    <string name="vehicle_setup_fail_model">गाडी सेभ गर्न सकिएन।</string>
+    <string name="vehicle_setup_fail_model_reason">गाडी सेभ गर्न सकिएन: %1$s</string>
+    <string name="vehicle_setup_fail_camera_save">क्यामेरा प्रणाली सेभ गर्न सकिएन।</string>
+    <string name="vehicle_setup_fail_camera_switch">नयाँ क्यामेरा प्रणालीसहित क्यामेरा सेवा फर्किएन।</string>
+    <string name="vehicle_setup_fail_restart">क्यामेरा सेवा रिस्टार्ट भएन। तपाईंका छनोटहरू सेभ भएका छन्।</string>
+    <string name="vehicle_setup_done_title">सबै तयार भयो</string>
+    <string name="vehicle_setup_done_subtitle">क्यामेरा जाँच गर्न लाइभ दृश्य खोल्नुहोस्।</string>
+
+    <!-- Daemon storage -->
+    <string name="scratch_root_dialog_title">डेमन भण्डारण</string>
+    <string name="scratch_root_dialog_intro">OverDrive ले एप र पृष्ठभूमि डेमनहरू बीच सेटिङ र लगहरू ADB शेलको फोल्डरमार्फत साझा गर्छ। केही हेड युनिट (Shark 6 / DiLink 5.0) मा फर्मवेयरले मानक फोल्डर लक गर्छ।</string>
+    <string name="scratch_root_current_folder">हालको फोल्डर: %1$s</string>
+    <string name="scratch_root_switch_label">वैकल्पिक डेमन भण्डारण</string>
+    <string name="scratch_root_switch_summary">यो हेड युनिटमा डेमन सुरु हुन नसकेको खण्डमा मात्र अन गर्नुहोस्। परिवर्तन गर्दा सबै डेमन रोकिन्छन् र OverDrive रिस्टार्ट हुन्छ।</string>
+    <string name="scratch_root_paths">मानक: %1$s\nवैकल्पिक: %2$s</string>
+    <string name="scratch_root_confirm_title">OverDrive रिस्टार्ट गर्ने हो?</string>
+    <string name="scratch_root_confirm_enable">सबै डेमन रोकिनेछन्, भण्डारण वैकल्पिक फोल्डरमा स्विच हुनेछ र OverDrive रिस्टार्ट हुनेछ।</string>
+    <string name="scratch_root_confirm_disable">सबै डेमन रोकिनेछन्, भण्डारण मानक फोल्डरमा फर्कनेछ र OverDrive रिस्टार्ट हुनेछ।</string>
+    <string name="scratch_root_working">डेमन भण्डारण स्विच हुँदैछ…</string>
+    <string name="scratch_root_failed">डेमन भण्डारण स्विच गर्न सकिएन: %1$s</string>
+    <string name="scratch_root_failed_adb">ADB शेल पहुँचयोग्य छैन। USB/वायरलेस डिबगिङ सक्षम गरी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="scratch_root_restart">अहिले रिस्टार्ट गर्नुहोस्</string>
+
+    <!-- SOTA Diagnostics dashboard -->
+    <string name="diagnostics_hero_title">प्रणाली निदान</string>
+    <string name="diagnostics_hero_subtitle">उपकरणको लाइभ स्वास्थ्य, लग र प्रोबहरू।</string>
+    <string name="diagnostics_health_clear">सबै ठीक छ</string>
+    <string name="diagnostics_health_section">स्वास्थ्य</string>
+    <string name="diagnostics_health_network">नेटवर्क</string>
+    <string name="diagnostics_health_storage">भण्डारण</string>
+    <string name="diagnostics_health_camera">क्यामेरा</string>
+    <string name="diagnostics_health_battery">ब्याट्री</string>
+    <string name="diagnostics_metric_pending">—</string>
+    <string name="diagnostics_metric_online">अनलाइन</string>
+    <string name="diagnostics_network_tunnel_label">टनेल · %1$s</string>
+    <string name="diagnostics_tunnel_state_online">अनलाइन</string>
+    <string name="diagnostics_tunnel_state_offline">अफलाइन</string>
+    <string name="diagnostics_tunnel_state_connecting">जडान हुँदैछ</string>
+    <string name="diagnostics_network_mobile">मोबाइल</string>
+    <string name="diagnostics_network_ethernet">इथरनेट</string>
+    <string name="diagnostics_network_offline">अफलाइन</string>
+    <string name="diagnostics_storage_used_line">%1$d क्लिप · %2$s प्रयोग</string>
+    <string name="diagnostics_storage_free_line">%1$s खाली</string>
+    <string name="diagnostics_logs_card_title">लाइभ घटना लग</string>
+    <string name="diagnostics_logs_card_subtitle">चलिरहेका सेवाहरूबाट स्ट्रिमिङ आउटपुट।</string>
+    <string name="diagnostics_tools_section">उपकरणहरू</string>
+    <string name="diagnostics_traffic_subtitle">लाइभ नेटवर्क थ्रुपुट हेर्नुहोस्।</string>
+    <string name="diagnostics_camera_probe_subtitle">जडित क्यामेरा स्ट्रिमहरू जाँच गर्नुहोस्।</string>
+    <string name="diagnostics_adb_subtitle">उपकरण भित्रको टर्मिनल खोल्नुहोस्।</string>
+    <string name="diagnostics_battery_subtitle">सेल SOH र प्याक तथ्याङ्क जाँच गर्नुहोस्।</string>
+    <string name="diagnostics_settings_subtitle">एप प्राथमिकता, थिम र भाषा।</string>
+
+    <!-- SOTA Integrations page -->
+    <string name="integrations_hero_title">एकीकरणहरू</string>
+    <string name="integrations_hero_subtitle">Overdrive लाई आफ्ना सेवाहरूसँग जोड्नुहोस्।</string>
+    <string name="integrations_status_unknown">कन्फिगर गर्न ट्याप गर्नुहोस्</string>
+    <string name="integrations_status_configured">कन्फिगर गरिएको</string>
+    <string name="integrations_status_not_set_up">सेटअप गरिएको छैन</string>
+    <string name="integrations_telegram_desc">तपाईंको निजी Telegram बोटमा ड्राइभ सारांश, चाल चेतावनी र SOS सूचना पठाउनुहोस्।</string>
+    <string name="integrations_abrp_desc">चार्जिङ पूर्वानुमानका लागि A Better Routeplanner मा लाइभ ब्याट्री र मार्ग डेटा पठाउनुहोस्।</string>
+    <string name="integrations_mqtt_desc">Home Assistant वा कुनै पनि MQTT ब्रोकरमा गाडी टेलिमेट्री प्रकाशित गर्नुहोस्।</string>
+    <string name="integrations_byd_cloud_desc">ढोका लक, बत्ती झिम्काउने र हर्न जस्ता रिमोट आदेशहरू सक्षम गर्न BYD खाता जोड्नुहोस्।</string>
+    <string name="nav_page_safekeep">SafeKeep</string>
+    <string name="integrations_safekeep_desc">सेन्ट्री क्लिप, ड्यासक्याम रेकर्डिङ र यात्राहरूको सुरक्षित प्रतिलिपि Google Drive, OneDrive, NAS वा S3 मा राख्नुहोस्।</string>
+    <string name="integrations_configure_button">कन्फिगर गर्नुहोस्</string>
+
+    <!-- Settings → About / Privacy actions -->
+    <string name="settings_action_check_update">अपडेटहरू जाँच गर्नुहोस्</string>
+    <string name="settings_action_reset_data">डेटा रिसेट गर्नुहोस्…</string>
+    <string name="cd_brand_logo">OverDrive</string>
+
+    <!-- Dashboard SOTA revamp -->
+    <string name="dashboard_hero_headline">निगरानीमा</string>
+    <string name="dashboard_subtitle_all_systems">सबै प्रणाली अनलाइन</string>
+    <string name="dashboard_subtitle_some_offline">%2$d मध्ये %1$d सेवा अनलाइन</string>
+    <string name="dashboard_subtitle_no_tunnel">रिमोट पहुँच अफलाइन</string>
+    <string name="dashboard_metric_recordings">आजका रेकर्डिङ</string>
+    <string name="dashboard_metric_storage">प्रयोग गरिएको भण्डारण</string>
+    <string name="dashboard_metric_tunnel">रिमोट पहुँच</string>
+    <string name="dashboard_metric_services">पृष्ठभूमि सेवाहरू</string>
+    <string name="dashboard_metric_value_pending">—</string>
+    <string name="dashboard_metric_vehicle">गाडी</string>
+    <string name="dashboard_chip_recording_active">रेकर्ड हुँदैछ</string>
+    <string name="dashboard_chip_recording_idle">निष्क्रिय</string>
+    <string name="dashboard_vehicle_tap_to_set">सेट गर्न ट्याप गर्नुहोस्</string>
+    <string name="dashboard_vehicle_summary">%1$.1f kWh · %2$s</string>
+    <string name="vehicle_dialog_title">ब्याट्री क्षमता सेट गर्नुहोस्</string>
+    <string name="vehicle_dialog_capacity_label">क्षमता</string>
+    <string name="vehicle_dialog_capacity_suffix">kWh</string>
+    <string name="vehicle_dialog_capacity_helper">5 देखि 120 kWh। 15 भन्दा कम मानका लागि PHEV चाहिन्छ।</string>
+    <string name="vehicle_dialog_model_label">मोडेल</string>
+    <string name="vehicle_model_seagull">BYD Seagull</string>
+    <string name="vehicle_dialog_save">सेभ गर्नुहोस्</string>
+    <string name="vehicle_dialog_reset">स्वत:-पहिचानमा रिसेट गर्नुहोस्</string>
+    <string name="vehicle_dialog_invalid_capacity">क्षमता 5 - 120 kWh बीचमा हुनुपर्छ</string>
+    <string name="vehicle_dialog_summary_effective">प्रभावकारी: %1$.1f kWh</string>
+    <string name="vehicle_dialog_summary_calibration">अन्तिम क्यालिब्रेसन: %2$s मा %1$.1f%%</string>
+    <string name="vehicle_dialog_soh_unavailable">उपलब्ध छैन</string>
+    <string name="dashboard_metric_storage_chip">%1$s प्रयोग · %2$s खाली</string>
+    <string name="dashboard_metric_storage_chip_pending">भण्डारण —</string>
+    <string name="dashboard_tunnel_offline">अफलाइन</string>
+    <string name="dashboard_tunnel_online">अनलाइन</string>
+    <string name="dashboard_tunnel_connecting">जडान हुँदैछ…</string>
+    <string name="dashboard_tunnel_tile_failed">त्रुटि</string>
+    <string name="dashboard_tunnel_tile_stopping">रोकिँदैछ…</string>
+
+    <string name="dashboard_action_live">लाइभ</string>
+    <string name="dashboard_action_live_subtitle">क्यामेरा दृश्य खोल्नुहोस्</string>
+    <string name="dashboard_action_recordings">रेकर्डिङहरू</string>
+    <string name="dashboard_action_settings">सेटिङहरू</string>
+    <string name="dashboard_action_settings_subtitle">प्राथमिकता र बारेमा</string>
+    <string name="dashboard_action_trips">यात्राहरू</string>
+    <string name="dashboard_action_vehicle_control">नियन्त्रणहरू</string>
+
+    <!-- Settings hub -->
+    <string name="settings_hero_title">सेटिङहरू</string>
+    <string name="settings_hero_overline">OVERDRIVE</string>
+    <string name="settings_hero_subtitle">स्वरूप, रेकर्डिङ, निगरानी र उपकरण डेटा मिलाउनुहोस्।</string>
+    <string name="settings_overline_preferences">प्राथमिकताहरू</string>
+    <string name="settings_overline_about_data">डेटा</string>
+    <string name="settings_quick_theme_label">थिम</string>
+    <string name="settings_quick_language_label">भाषा</string>
+    <string name="settings_section_recording_subtitle">अग्र/पश्च बफर, कोडेक, भण्डारण सीमा।</string>
+    <string name="settings_section_surveillance_subtitle">पहिचान क्षेत्र, तालिका, चाल संवेदनशीलता।</string>
+    <string name="settings_section_storage_subtitle">रेकर्डिङ कहाँ जाने, स्थान सीमा, BYD ड्यासक्याम सफाइ।</string>
+    <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT रनरहरू।</string>
+    <string name="settings_about_row_title">OverDrive बारे</string>
+    <string name="settings_about_row_subtitle">संस्करण, इजाजतपत्र, विकास सहायता।</string>
+    <string name="settings_reset_row_subtitle">रेकर्डिङ, घटना वा सबै क्यास खाली गर्नुहोस्।</string>
+    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+
+    <!-- Appearance pane -->
+    <string name="settings_appearance_subtitle">थिम, भाषा र दृश्य प्राथमिकताहरू।</string>
+    <string name="settings_theme_active_auto_caption">स्वत: ले प्रणाली थिम पछ्याउँछ।</string>
+    <string name="settings_theme_active_light_caption">उज्यालो थिम सधैँ अन छ।</string>
+    <string name="settings_theme_active_dark_caption">अँध्यारो थिम सधैँ अन छ।</string>
+    <string name="settings_language_count_format">%2$d मध्ये %1$d भाषा उपलब्ध</string>
+    <string name="settings_language_card_title">प्रदर्शन भाषा</string>
+
+    <!-- Privacy pane -->
+    <string name="settings_privacy_stance_title">पूर्वनिर्धारित रूपमा उपकरणमै</string>
+    <string name="settings_privacy_stance_body">OverDrive पूर्ण रूपमा हेड युनिटमै चल्छ। तपाईंले स्पष्ट रूपमा कन्फिगर गरेका टनेल र एकीकरणबाहेक कुनै टेलिमेट्री बाहिर जाँदैन।</string>
+    <string name="settings_privacy_overline_storage">स्थानीय भण्डारण</string>
+    <string name="settings_privacy_overline_reset">डेटा रिसेट</string>
+    <string name="settings_privacy_storage_clips_label">डिस्कमा क्लिप</string>
+    <string name="settings_privacy_storage_size_label">कुल आकार</string>
+    <string name="settings_privacy_storage_unavailable">उपलब्ध छैन</string>
+    <string name="settings_privacy_storage_count_format">%1$d क्लिप</string>
+    <string name="settings_privacy_storage_count_format_plural">%1$d क्लिपहरू</string>
+    <string name="settings_privacy_reset_subtitle">श्रेणी छान्नुहोस्: रेकर्डिङ, घटना, डेमन कन्फिग…</string>
+    <string name="settings_privacy_overline_diagnostics">निदान</string>
+    <string name="settings_privacy_log_level_label">लग विवरण</string>
+    <string name="settings_privacy_log_level_debug">डिबग</string>
+    <string name="settings_privacy_log_level_info">जानकारी</string>
+    <string name="settings_privacy_log_level_warn">चेतावनी</string>
+    <string name="settings_privacy_log_level_error">त्रुटि</string>
+    <string name="settings_privacy_log_level_debug_desc">हरेक ADB आदेश र डेमन जाँच ट्रेस गर्छ। समस्या निदान गर्दा प्रयोग गर्नुहोस्।</string>
+    <string name="settings_privacy_log_level_info_desc">सामान्य सञ्चालन। एप र डेमनहरूले के गरिरहेका छन् भन्ने रेकर्ड गर्छ।</string>
+    <string name="settings_privacy_log_level_warn_desc">समस्या र असफलताहरू मात्र रेकर्ड हुन्छन्।</string>
+    <string name="settings_privacy_log_level_error_desc">असफलताहरू मात्र रेकर्ड हुन्छन्।</string>
+    <string name="settings_privacy_log_level_note_verbose">विस्तृत लगिङ अन छ — पुराना लग चाँडै मेटिनेछन्।</string>
+    <string name="settings_privacy_log_level_note_quiet">धेरैजसो लगिङ रोकिएको छ — पछिको त्रुटि पत्ता लगाउन कठिन हुनेछ।</string>
+    <string name="settings_privacy_overline_developer_tools">डेभलपर उपकरणहरू</string>
+    <string name="settings_screenshot_privacy_title">स्क्रिनसट गोपनीयता मोड</string>
+    <string name="settings_screenshot_privacy_body">IP ठेगाना, URL, निर्देशाङ्क, स्थान, QR कोड र क्यामेरा पूर्वावलोकनमा धमिलो आवरण थप्छ।</string>
+    <string name="settings_screenshot_privacy_save_failed">स्क्रिनसट गोपनीयता मोड सेभ गर्न सकिएन।</string>
+
+    <!-- Security pane + PIN lock -->
+    <string name="settings_security_title">सुरक्षा</string>
+    <string name="settings_security_subtitle">तपाईंको PIN बिना अरूले OverDrive एप खोल्न नसक्ने गरी लक गर्नुहोस्।</string>
+    <string name="settings_security_stance_title">UI लक मात्र</string>
+    <string name="settings_security_stance_body">एप लक हुँदा पनि निगरानी, रेकर्डिङ, चेतावनी र पृष्ठभूमि सेवाहरू चलिरहन्छन्।</string>
+    <string name="settings_security_overline_lock">एप लक</string>
+    <string name="settings_security_overline_recovery">PIN बिर्सनुभएमा</string>
+    <string name="settings_security_toggle_title">PIN आवश्यक पार्नुहोस्</string>
+    <string name="settings_security_toggle_subtitle_off">अफ — जो कोहीले OverDrive खोल्न सक्छ।</string>
+    <string name="settings_security_toggle_subtitle_on">अन — OverDrive खोल्न PIN चाहिन्छ।</string>
+    <string name="settings_security_change_title">PIN परिवर्तन गर्नुहोस्</string>
+    <string name="settings_security_change_subtitle">हालको PIN पुष्टि गरी नयाँ सेट गर्नुहोस्।</string>
+    <string name="settings_security_autolock_title">स्वत:-लक</string>
+    <string name="settings_security_autolock_immediate">तुरुन्तै लक गर्नुहोस्</string>
+    <string name="settings_security_autolock_1min">१ मिनेटपछि</string>
+    <string name="settings_security_autolock_5min">५ मिनेटपछि</string>
+    <string name="settings_security_autolock_15min">१५ मिनेटपछि</string>
+    <string name="settings_security_autolock_never">समय अनुसार कहिल्यै स्वत:-लक नगर्नुहोस्</string>
+    <string name="settings_security_recovery_title">ADB पुनर्प्राप्ति</string>
+    <string name="settings_security_recovery_body">फ्याक्ट्री रिसेट बिना USB डिबगिङमार्फत कम्प्युटरबाट बिर्सिएको PIN हटाउन सकिन्छ। यो आदेश चलाएर एप पुन: खोल्नुहोस्।</string>
+    <string name="settings_security_dialog_set_title">PIN सेट गर्नुहोस्</string>
+    <string name="settings_security_dialog_set_body">४–८ अंकको PIN छान्नुहोस्।</string>
+    <string name="settings_security_dialog_disable_title">PIN लक बन्द गर्ने हो?</string>
+    <string name="settings_security_dialog_disable_body">एप लक बन्द गर्न हालको PIN पुष्टि गर्नुहोस्।</string>
+    <string name="settings_security_dialog_change_step1_title">हालको PIN पुष्टि गर्नुहोस्</string>
+    <string name="settings_security_dialog_change_step1_body">हालको PIN प्रविष्ट गर्नुहोस्, त्यसपछि नयाँ सेट गर्नुहुनेछ।</string>
+    <string name="settings_security_action_set">PIN सेट गर्नुहोस्</string>
+    <string name="settings_security_action_disable">लक बन्द गर्नुहोस्</string>
+    <string name="settings_security_action_continue">जारी राख्नुहोस्</string>
+    <string name="settings_security_pin_hint">PIN</string>
+    <string name="settings_security_pin_confirm_hint">PIN पुष्टि गर्नुहोस्</string>
+    <string name="settings_security_error_length">PIN ४ देखि ८ अंकको हुनुपर्छ</string>
+    <string name="settings_security_error_numeric">अंकहरू मात्र</string>
+    <string name="settings_security_error_mismatch">PIN हरू मेल खाएनन्</string>
+    <string name="settings_security_error_wrong">गलत PIN</string>
+    <string name="settings_security_error_locked_out">धेरै प्रयासहरू। एक क्षणपछि फेरि प्रयास गर्नुहोस्।</string>
+    <string name="settings_security_error_persist">PIN सेभ गर्न सकिएन। फेरि प्रयास गर्नुहोस्।</string>
+    <string name="settings_security_toast_set_ok">PIN सेट भयो। एप लक अन छ।</string>
+    <string name="settings_security_toast_disable_ok">एप लक बन्द गरियो।</string>
+
+    <string name="pin_lock_title">PIN प्रविष्ट गर्नुहोस्</string>
+    <string name="pin_lock_title_unlocked">अनलक भयो</string>
+    <string name="pin_lock_subtitle_default">जारी राख्न OverDrive अनलक गर्नुहोस्।</string>
+    <string name="pin_lock_subtitle_wrong">गलत PIN। फेरि प्रयास गर्नुहोस्।</string>
+    <string name="pin_lock_subtitle_locked_out">धेरै प्रयासहरू। केही बेरमा फेरि प्रयास गर्नुहोस्।</string>
+    <string name="pin_lock_subtitle_locked_out_countdown">लक गरियो। %1$s मा फेरि प्रयास गर्नुहोस्।</string>
+    <string name="pin_lock_lockout_seconds">%1$ds</string>
+    <string name="pin_lock_lockout_minutes">%1$d:%2$02d</string>
+    <string name="pin_lock_recovery_hint_prefix">PIN बिर्सनुभयो? जडित कम्प्युटरबाट चलाउनुहोस्:\n%1$s</string>
+    <string name="pin_lock_backspace_cd">ब्याकस्पेस</string>
+    <plurals name="pin_lock_dot_a11y">
+        <item quantity="zero">कुनै अंक प्रविष्ट गरिएको छैन</item>
+        <item quantity="one">%1$d अंक प्रविष्ट गरियो</item>
+        <item quantity="other">%1$d अंकहरू प्रविष्ट गरिए</item>
+    </plurals>
+
+    <string name="recording_unknown_location">स्थान छैन</string>
+
+    <!-- Diagnostics health tiles -->
+    <string name="diagnostics_camera_value_camera_n">क्यामेरा %1$d</string>
+    <string name="diagnostics_camera_value_camera_n_manual">क्यामेरा %1$d (म्यानुअल)</string>
+    <string name="diagnostics_camera_value_probing">जाँच हुँदैछ…</string>
+    <string name="diagnostics_camera_value_offline">अफलाइन</string>
+    <string name="diagnostics_battery_value_soh">%1$.0f%%</string>
+    <string name="diagnostics_battery_value_pending">डेटा पर्खिँदै</string>
+    <string name="dashboard_recordings_value_live">● %1$d</string>
+
+    <!-- Dashboard hero insights -->
+    <string name="dashboard_insight_welcome">स्वागत छ — Overdrive अब तपाईंको दोस्रो जोडी आँखा हो।</string>
+    <string name="dashboard_insight_parked_charged_kwh">पार्क हुँदा %1$s (≈%2$s) थपियो</string>
+    <string name="dashboard_insight_parked_charged">पार्क हुँदा %1$s थपियो</string>
+    <string name="dashboard_insight_parked_drained_kwh">पार्क गरेपछि %1$s (≈%2$s) प्रयोग भयो</string>
+    <string name="dashboard_insight_parked_drained">पार्क गरेपछि %1$s प्रयोग भयो</string>
+    <string name="dashboard_insight_last_alert">अन्तिम निगरानी चेतावनी: %1$s</string>
+    <string name="dashboard_insight_last_charge">अन्तिम चार्ज: %2$s मा +%1$s</string>
+    <string name="dashboard_insight_storage_milestone">%1$d क्लिप · %2$s रेकर्ड गरियो</string>
+    <string name="dashboard_insight_kwh_format">%1$.1f kWh</string>
+    <string name="dashboard_insight_percent_format">%1$.1f%%</string>
+    <string name="dashboard_insight_hours_minutes">%1$d घं. %2$d मि.</string>
+
+    <plurals name="dashboard_insight_today_clips">
+        <item quantity="one">आज %1$d क्लिप रेकर्ड गरियो</item>
+        <item quantity="other">आज %1$d क्लिपहरू रेकर्ड गरिए</item>
+    </plurals>
+    <plurals name="dashboard_insight_uptime_days_hours">
+        <item quantity="one">Overdrive %1$d दिन, %2$d घण्टादेखि अनलाइन छ</item>
+        <item quantity="other">Overdrive %1$d दिन, %2$d घण्टादेखि अनलाइन छ</item>
+    </plurals>
+    <plurals name="dashboard_insight_uptime_hours">
+        <item quantity="one">Overdrive %1$d घण्टादेखि अनलाइन छ</item>
+        <item quantity="other">Overdrive %1$d घण्टादेखि अनलाइन छ</item>
+    </plurals>
+
+    <string name="unit_minute">मि.</string>
+    <string name="unit_minute_compact">m</string>
+    <string name="unit_hour_compact">h</string>
+    <string name="unit_second_compact">s</string>
+    <plurals name="dashboard_insight_minutes">
+        <item quantity="one">%1$d मि.</item>
+        <item quantity="other">%1$d मि.</item>
+    </plurals>
+    <plurals name="dashboard_insight_hours">
+        <item quantity="one">%1$d घं.</item>
+        <item quantity="other">%1$d घं.</item>
+    </plurals>
+
+    <!-- RoadSense -->
+    <string name="rail_roadsense">RoadSense</string>
+    <string name="rail_widgets">विजेटहरू</string>
+    <string name="widget_builder_open_elsewhere">आफ्नो फोन वा कम्प्युटरमा विजेट बिल्डर खोल्नुहोस्</string>
+    <string name="rail_hazard_map">नक्सा</string>
+    <string name="roadsense_title">RoadSense</string>
+    <string name="roadsense_pill_scanning">स्क्यान हुँदैछ</string>
+    <string name="roadsense_pill_idle">RoadSense</string>
+    <string name="roadsense_status_idle">निष्क्रिय</string>
+    <string name="roadsense_cal_learning">तपाईंको गाडी सिक्दैछ</string>
+    <string name="roadsense_cal_ready">गाडी क्यालिब्रेट भयो</string>
+    <string name="roadsense_cal_partial">क्यालिब्रेसन सुध्रिँदैछ</string>
+    <string name="roadsense_clear_ahead">अगाडि सफा छ</string>
+    <string name="roadsense_road_mapped">सडक म्याप गरियो · सफा</string>
+    <string name="roadsense_road_new">नयाँ सडक · सिक्दैछ</string>
+    <string name="roadsense_unit_meters">मि.</string>
+    <string name="roadsense_dash_distance">—</string>
+    <string name="roadsense_warn_label">चेतावनी</string>
+    <string name="roadsense_toggle_audio">अडियो</string>
+    <string name="roadsense_toggle_visual">दृश्य</string>
+    <string name="roadsense_sev_minor">सामान्य</string>
+    <string name="roadsense_sev_moderate">मध्यम</string>
+    <string name="roadsense_sev_severe">गम्भीर</string>
+    <string name="roadsense_type_breaker">स्पीड ब्रेकर</string>
+    <string name="roadsense_type_pothole">खाल्डो</string>
+    <string name="roadsense_type_hazard">खतरा</string>
+    <string name="roadsense_type_rough">खराब खण्ड</string>
+    <string name="roadsense_hazard_format">%1$s · %2$s</string>
+    <string name="roadsense_zone_count">अगाडि %1$d बम्पहरू</string>
+    <string name="roadsense_zone_rough">खराब खण्ड · %1$d मि.</string>
+    <string name="roadsense_confirm_prompt">के यो खतरा थियो?</string>
+    <string name="roadsense_confirm_reject">खतरा होइन</string>
+    <string name="roadsense_confirm_accept">पुष्टि गर्नुहोस्</string>
+    <string name="roadsense_cd_cal_level">गाडी क्यालिब्रेसन स्तर</string>
+    <string name="roadsense_cd_direction">अर्को खतराको दिशा</string>
+
+    <string name="blindspot_overlay_left">बायाँ</string>
+    <string name="blindspot_overlay_right">दायाँ</string>
+
+    <!-- RoadSense Map -->
+    <string name="roadsense_map_title">नक्सा</string>
+    <string name="roadsense_map_route_clear">सफा</string>
+    <string name="roadsense_map_route_unmapped">अझै म्याप गरिएको छैन</string>
+    <string name="roadsense_map_back">पछाडि</string>
+    <string name="roadsense_map_recenter">मेरो स्थानमा पुन: केन्द्रित गर्नुहोस्</string>
+    <string name="roadsense_map_severity_label">गम्भीरता</string>
+    <string name="roadsense_map_type_label">प्रकार</string>
+    <string name="roadsense_map_type_unknown">अज्ञात</string>
+    <string name="roadsense_map_confirm">पुष्टि गर्नुहोस्</string>
+    <string name="roadsense_map_delete">मेटाउनुहोस्</string>
+    <string name="roadsense_map_status_candidate">उम्मेदवार</string>
+    <string name="roadsense_map_status_local">उपकरणमा</string>
+    <string name="roadsense_map_status_cloud">साझा</string>
+    <string name="roadsense_map_meta_format">%1$s · %2$d%% विश्वास · %3$s</string>
+    <plurals name="roadsense_map_reports">
+        <item quantity="one">%1$d रिपोर्ट</item>
+        <item quantity="other">%1$d रिपोर्टहरू</item>
+    </plurals>
+    <string name="roadsense_map_confirmed_toast">खतरा पुष्टि भयो</string>
+    <string name="roadsense_map_deleted_toast">खतरा हटाइयो</string>
+    <string name="roadsense_map_action_failed">RoadSense मा पुग्न सकिएन। फेरि प्रयास गर्नुहोस्।</string>
+    <string name="roadsense_map_no_location">GPS फिक्स पर्खिँदैछ…</string>
+    <string name="roadsense_map_search_hint">गन्तव्य खोज्नुहोस्</string>
+    <string name="roadsense_map_search_action">खोज्नुहोस्</string>
+    <string name="roadsense_map_searching">खोजिँदैछ…</string>
+    <string name="roadsense_map_no_results">कुनै स्थान भेटिएन</string>
+    <string name="roadsense_map_search_network">खोज सेवामा पुग्न सकिएन। जडान जाँच गरी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="roadsense_map_pick_destination">गन्तव्य छान्नुहोस्</string>
+    <string name="roadsense_map_routing">मार्ग खोजिँदैछ…</string>
+    <string name="roadsense_map_route_failed">मार्ग फेला पार्न सकिएन। फेरि प्रयास गर्नुहोस्।</string>
+    <string name="roadsense_map_need_key">नेभिगेट गर्न RoadSense सेटिङमा रुटिङ कुञ्जी थप्नुहोस्।</string>
+    <string name="roadsense_map_route_key_rejected">रुटिङ कुञ्जी अस्वीकृत भयो। RoadSense सेटिङ जाँच गर्नुहोस्।</string>
+    <string name="roadsense_map_route_network">मार्ग खोज्न नेटवर्क धेरै सुस्त छ। जडान जाँच गरी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="roadsense_map_route_http">रुटिङ सेवा त्रुटि (%1$d)। केही बेरमा फेरि प्रयास गर्नुहोस्।</string>
+    <string name="roadsense_map_rerouting">मार्ग बाहिर — पुन: गणना हुँदैछ…</string>
+    <string name="roadsense_map_arrived">तपाईं पुग्नुभयो।</string>
+    <string name="roadsense_map_nav_started">%1$s तर्फ नेभिगेसन सुरु भयो</string>
+    <string name="roadsense_map_nav_ended">नेभिगेसन समाप्त भयो</string>
+    <string name="roadsense_map_end_nav">नेभिगेसन अन्त्य गर्नुहोस्</string>
+    <string name="roadsense_map_zoom_in">जूम इन</string>
+    <string name="roadsense_map_zoom_out">जूम आउट</string>
+    <string name="roadsense_map_hazards_filter">खतरा दृश्यता</string>
+    <string name="roadsense_map_hazards_all">सबै खतरा देखाउनुहोस्</string>
+    <string name="roadsense_map_hazards_moderate">मध्यम र गम्भीर</string>
+    <string name="roadsense_map_hazards_severe">गम्भीर मात्र</string>
+    <string name="roadsense_map_hazards_hidden">खतरा लुकाउनुहोस्</string>
+    <string name="roadsense_map_poi_toggle">चार्जिङ र इन्धन</string>
+    <string name="roadsense_map_dimension_toggle">2D / 3D भवनहरू</string>
+    <string name="roadsense_map_3d_on">3D भवनहरू अन</string>
+    <string name="roadsense_map_3d_off">3D भवनहरू अफ</string>
+    <string name="roadsense_map_poi_loading">चार्जिङ र इन्धन स्टेसन खोजिँदैछ…</string>
+    <string name="roadsense_map_poi_none">नजिकै कुनै स्टेसन भेटिएन</string>
+    <string name="roadsense_map_poi_need_route">पहिले गन्तव्य छान्नुहोस्</string>
+    <string name="roadsense_map_stop_added">रोकिने स्थान थपियो</string>
+    <string name="roadsense_map_remove_stop_action">रोकिने स्थान हटाउनुहोस्</string>
+    <string name="roadsense_map_poi_navigate">यहाँ नेभिगेट गर्नुहोस्</string>
+    <string name="roadsense_map_poi_kind_charging">चार्जिङ स्टेसन</string>
+    <string name="roadsense_map_poi_kind_fuel">इन्धन स्टेसन</string>
+    <string name="roadsense_map_poi_charging_generic">चार्जिङ स्टेसन</string>
+    <string name="roadsense_map_poi_fuel_generic">इन्धन स्टेसन</string>
+    <string name="roadsense_map_route_switched">मार्ग बदलियो</string>
+    <string name="roadsense_map_then">त्यसपछि</string>
+    <string name="roadsense_map_exit_n">निकास %1$d</string>
+    <string name="roadsense_map_pill_severe">%1$d गम्भीर</string>
+    <string name="roadsense_map_pill_moderate">%1$d मध्यम</string>
+    <string name="roadsense_map_pill_minor">%1$d सामान्य</string>
+    <string name="roadsense_map_offline">अफलाइनमा नक्सा डेटा उपलब्ध छैन</string>
+    <string name="roadsense_map_clear_search">खोज खाली गर्नुहोस्</string>
+    <string name="roadsense_map_routes_title">मार्ग छान्नुहोस्</string>
+    <string name="roadsense_map_routes_to">%1$s का लागि मार्गहरू</string>
+    <string name="roadsense_map_routes_cancel">रद्द गर्नुहोस्</string>
+    <string name="roadsense_map_route_option">मार्ग %1$d</string>
+    <string name="roadsense_map_fastest">सबैभन्दा छिटो</string>
+    <string name="roadsense_map_start">सुरु</string>
+    <string name="roadsense_map_your_location">तपाईंको स्थान</string>
+    <string name="roadsense_map_add_stop">रोकिने स्थान थप्नुहोस्</string>
+    <string name="roadsense_map_add_stop_hint">थप्नका लागि स्थान खोज्नुहोस्</string>
+    <string name="roadsense_map_stop_removed">रोकिने स्थान हटाइयो</string>
+    <string name="roadsense_map_remove_stop">रोकिने स्थान हटाउनुहोस्</string>
+    <string name="roadsense_map_move_stop_up">माथि सार्नुहोस्</string>
+    <string name="roadsense_map_move_stop_down">तल सार्नुहोस्</string>
+    <string name="roadsense_map_max_stops">अधिकतम %1$d रोकिने स्थानहरू मात्र अनुमत छ</string>
+    <string name="roadsense_map_theme_toggle">नक्सा थिम</string>
+    <string name="roadsense_map_theme_auto">नक्सा थिम: स्वत:</string>
+    <string name="roadsense_map_theme_light">नक्सा थिम: उज्यालो</string>
+    <string name="roadsense_map_theme_dark">नक्सा थिम: अँध्यारो</string>
+    <string name="roadsense_map_saved_home">घर</string>
+    <string name="roadsense_map_saved_work">कार्यस्थल</string>
+    <string name="roadsense_map_saved_set_home">घर सेट गर्नुहोस्</string>
+    <string name="roadsense_map_saved_set_work">कार्यस्थल सेट गर्नुहोस्</string>
+    <string name="roadsense_map_saved_favourite">मनपर्ने</string>
+    <string name="roadsense_map_save_place">स्थान सेभ गर्नुहोस्</string>
+    <string name="roadsense_map_save_as_home">घरका रूपमा सेभ गर्नुहोस्</string>
+    <string name="roadsense_map_save_as_work">कार्यस्थलका रूपमा सेभ गर्नुहोस्</string>
+    <string name="roadsense_map_save_as_custom">मनपर्नेका रूपमा सेभ गर्नुहोस्…</string>
+    <string name="roadsense_map_saved_added">सेभ गरियो</string>
+    <string name="roadsense_map_saved_removed">सेभ गरिएकोबाट हटाइयो</string>
+    <string name="roadsense_map_saved_remove">हटाउनुहोस्</string>
+    <string name="roadsense_map_recent_remove">हालैकोबाट हटाउनुहोस्</string>
+    <string name="roadsense_map_recent_removed">हालैकोबाट हटाइयो</string>
+    <string name="roadsense_map_custom_label_hint">लेबल (जस्तै जिम, घर)</string>
+    <string name="roadsense_map_custom_label_title">यो स्थानको नाम राख्नुहोस्</string>
+    <string name="roadsense_map_save">सेभ गर्नुहोस्</string>
+    <string name="roadsense_map_cancel">रद्द गर्नुहोस्</string>
+    <string name="roadsense_map_dropped_pin">ड्रप गरिएको पिन</string>
+    <string name="roadsense_map_navigate_here">यहाँ नेभिगेट गर्नुहोस्</string>
+    <string name="carnav_section_header">गाडी नेभिगेसनमा पठाउनुहोस्</string>
+    <string name="carnav_navigate">नेभिगेट गर्नुहोस्</string>
+    <string name="carnav_menu_navigate_here">यहाँ नेभिगेट गर्नुहोस् (मार्ग बदल्नुहोस्)</string>
+    <string name="carnav_menu_add_stop">रोकिने स्थानका रूपमा थप्नुहोस्</string>
+    <string name="carnav_deferred_prompt_title">नेभिगेसन प्रस्तावित</string>
+    <string name="carnav_deferred_yes">स्वीकार गर्नुहोस्</string>
+    <string name="carnav_deferred_cancel">अस्वीकार गर्नुहोस्</string>
+    <string name="carnav_save_favourite">मनपर्नेमा सेभ गर्नुहोस्</string>
+    <string name="carnav_sending">गाडी नेभिगेसनमा पठाइँदैछ…</string>
+    <string name="carnav_navigate_ok">नेभिगेसन सुरु भयो</string>
+    <string name="carnav_navigate_fail">गाडी नेभिगेसनले अनुरोध अस्वीकार गर्‍यो</string>
+    <string name="carnav_saved_ok">मनपर्नेमा सेभ गरियो</string>
+    <string name="carnav_failed">गाडी नेभिगेसनमा पुग्न सकिएन: %1$s</string>
+    <string name="roadsense_map_search_to_save">%1$s का रूपमा सेट गर्न स्थान खोज्नुहोस्</string>
+    <string name="roadsense_map_trip_restored">यात्रा पुनर्स्थापित भयो</string>
+
+    <!-- Cloudflared settings -->
+    <string name="cloudflared_token_storage_note">टोकन इन्क्रिप्ट गरी भण्डारण गरिन्छ र एप तथा डेमन प्रक्रियाहरू बीच साझा हुन्छ।</string>
+    <string name="cloudflared_token_hint">cloudflared टोकन प्रविष्ट गर्नुहोस्</string>
+    <string name="cloudflare_paid_version">Cloudflare सशुल्क संस्करण</string>
+    <string name="dialog_cloudflared_settings_title">Cloudflared सेटिङ</string>
+    <string name="dialog_cloudflared_settings_message">तपाईं सशुल्क Cloudflare वा trycloudflare प्रयोग गर्दै हुनुहुन्छ छान्नुहोस्। सशुल्क भए टनेल टोकन प्रविष्ट गर्नुहोस्।</string>
+    <string name="toast_cloudflared_token_cannot_be_empty">सशुल्क संस्करण सेट गरेमा टोकन खाली हुन सक्दैन</string>
+    <string name="toast_cloudflared_token_invalid">अमान्य टोकन: अक्षर, अंक र . _ - = मात्र प्रयोग गर्नुहोस्</string>
+    <string name="toast_cloudflared_saved_settings">Cloudflared सेटिङ सेभ भयो</string>
+
+    <!-- Projection screen -->
+    <string name="projection_hero_title">प्रक्षेपण</string>
+    <string name="projection_hero_subtitle">चालक क्लस्टरमा एप कास्ट गरी यहाँ मिरर गर्नुहोस्।</string>
+    <string name="projection_pick_app">प्रक्षेपण गर्न एप छान्नुहोस्</string>
+    <string name="projection_cast">क्लस्टरमा कास्ट गर्नुहोस्</string>
+    <string name="projection_stop">रोक्नुहोस्</string>
+    <string name="projection_cast_failed">त्यो एप क्लस्टरमा कास्ट गर्न सकिएन।</string>
+    <string name="projection_resize_not_applied">क्लस्टरले त्यो विन्डो आकार स्वीकार गरेन।</string>
+    <string name="projection_dilink5_mode_required">निदानमा गाडी मोड DiLink 5 सेट गरी क्यामेरा सेवा रिस्टार्ट गर्नुहोस्।</string>
+    <string name="projection_status_idle">प्रक्षेपण भइरहेको छैन।</string>
+    <string name="projection_status_live">लाइभ मिरर — नियन्त्रण गर्न ट्याप र स्वाइप गर्नुहोस्।</string>
+    <string name="projection_status_preview">पूर्वावलोकन मोड (यस गाडीमा कम फ्रेम दर)।</string>
+    <string name="projection_status_none">अहिलेसम्म केही प्रक्षेपण गरिएको छैन — एप छानी कास्ट गर्नुहोस्।</string>
+    <string name="projection_status_unsupported">यस गाडीमा लाइभ मिरर समर्थित छैन। एप अझै क्लस्टरमा प्रक्षेपित छ।</string>
+    <string name="projection_status_service_down">मिरर सेवा तयार छैन — एप वा क्यामेरा डेमन रिस्टार्ट गरी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="projection_status_connecting">क्लस्टरमा जडान हुँदैछ…</string>
+    <string name="projection_status_mirror_unavailable">मिरर उपलब्ध छैन</string>
+    <string name="projection_fullscreen_enter">पूर्ण स्क्रिन</string>
+    <string name="projection_fullscreen_exit">पूर्ण स्क्रिन बाहिरिनुहोस्</string>
+    <string name="projection_note_single_app">एक पटकमा क्लस्टरमा एउटा मात्र एप प्रक्षेपण गर्न सकिन्छ।</string>
+    <string name="projection_adjust_bounds">आकार बदल्नुहोस्</string>
+    <string name="projection_done_adjusting">सकियो</string>
+    <string name="projection_bounds_hint_idle">मिरर पूर्वावलोकन</string>
+    <string name="projection_status_adjust">सार्न फ्रेम तान्नुहोस् · पूर्वावलोकन आकार बदल्न ह्यान्डल तान्नुहोस्।</string>
+    <string name="projection_window_title">क्लस्टर विन्डो</string>
+    <string name="projection_window_desc">चालक क्लस्टरमा कास्ट एपको स्थान मिलाउनुहोस्।</string>
+    <string name="projection_preset_full">पूर्ण</string>
+    <string name="projection_preset_left">बायाँ आधा</string>
+    <string name="projection_preset_right">दायाँ आधा</string>
+    <string name="projection_preset_center">केन्द्र</string>
+    <string name="projection_lock_aspect">क्लस्टर अनुपात राख्नुहोस्</string>
+    <string name="projection_scale_title">मिरर स्केलिङ</string>
+    <string name="projection_scale_desc">यस स्क्रिनमा क्लस्टर मिरर कसरी भरिन्छ।</string>
+    <string name="projection_scale_fit">फिट</string>
+    <string name="projection_scale_fill">तन्काउनुहोस्</string>
+    <string name="projection_scale_zoom">जूम</string>
+    <string name="projection_autostart_title">पावर-अनमा स्वत:-सुरु</string>
+    <string name="projection_autostart_desc">गाडी अन हुँदा हरेक पटक अन्तिम प्रयोग गरिएको एप स्वत: क्लस्टरमा कास्ट गर्नुहोस्।</string>
+    <string name="projection_autostart_need_app">पहिले एउटा एप कास्ट गर्नुहोस्, अनि यो अन गर्नुहोस्।</string>
+    <string name="projection_autostart_conflict_title">RoadSense ले क्लस्टर प्रयोग गरिरहेको छ</string>
+    <string name="projection_autostart_conflict_body">सुरुवातमा क्लस्टरमा नक्सा स्वत:-प्रक्षेपण सेट गरिएको छ। त्यो बन्द गरी यो एप स्वत:-सुरु गर्ने हो?</string>
+    <string name="projection_autostart_conflict_confirm">यो एप प्रयोग गर्नुहोस्</string>
+    <string name="projection_app_uninstalled">त्यो एप अब स्थापित छैन।</string>
+    <string name="projection_transport_title">क्लस्टर ट्रान्सपोर्ट</string>
+    <string name="projection_transport_desc">क्लस्टर कुन OEM प्रोटोकलले चलाउँछ। कास्टिङ असफल भए मात्र परिवर्तन गर्नुहोस्।</string>
+    <string name="projection_transport_auto">स्वत: (Auto)</string>
+    <string name="projection_transport_legacy">पुरानो (Legacy)</string>
+    <string name="projection_transport_dilink5">DiLink 5</string>
+    <string name="projection_transport_active">सक्रिय: %1$s (%2$s)</string>
+    <string name="projection_transport_restart_required">सेभ भयो। लागू गर्न क्यामेरा सेवा रिस्टार्ट गर्नुहोस्।</string>
+    <string name="projection_transport_save_failed">ट्रान्सपोर्ट सेटिङ सेभ गर्न सकिएन।</string>
+    <string name="projection_oem_cluster_takeover">गाडीको आफ्नै क्लस्टर एपले क्लस्टर फिर्ता लिइरहेको छ। गाडी सेटिङमा SR दृश्य वा नेभिगेसन प्रक्षेपण बन्द गरी फेरि प्रयास गर्नुहोस्।</string>
+
+    <!-- Network & Hotspot -->
+    <string name="rail_network">नेटवर्क</string>
+    <string name="network_title">नेटवर्क र हटस्पट</string>
+    <string name="network_subtitle">गाडीको अन्तर्निहित मोबाइल डेटा आफ्नो फोन, ट्याब्लेट वा ल्यापटपसँग साझा गर्नुहोस्।</string>
+    <string name="network_hotspot_title">WiFi हटस्पट</string>
+    <string name="network_state_on">अन — मोबाइल डेटा साझा हुँदैछ</string>
+    <string name="network_state_off">अफ</string>
+    <string name="network_state_starting">सुरु हुँदैछ…</string>
+    <string name="network_state_stopping">रोकिँदैछ…</string>
+    <string name="network_ssid_hint">नेटवर्क नाम</string>
+    <string name="network_password_hint">पासवर्ड (८–६३ अक्षर)</string>
+    <string name="network_ssid_label">नेटवर्क नाम</string>
+    <string name="network_password_label">पासवर्ड</string>
+    <string name="network_reveal">देखाउनुहोस्</string>
+    <string name="network_hide">लुकाउनुहोस्</string>
+    <string name="network_copied">कपी गरियो</string>
+    <string name="network_credentials_note">गाडीले हटस्पट नाम र पासवर्ड सेट गर्छ, त्यसैले यहाँ परिवर्तन गर्न सकिँदैन। कपी गर्न ट्याप गर्नुहोस्।</string>
+    <string name="network_save">सेभ गर्नुहोस्</string>
+    <string name="network_saved">सेभ गरियो</string>
+    <string name="network_saved_next_start">सेभ गरियो — अर्को हटस्पट सुरु हुँदा लागू हुनेछ</string>
+    <string name="network_password_invalid">पासवर्ड ८–६३ अक्षरको हुनुपर्छ।</string>
+    <string name="network_ssid_invalid">नेटवर्क नाम ३२ अक्षरमा सीमित छ।</string>
+    <string name="network_limit_invalid">मेगाबाइटको पूर्ण संख्या प्रविष्ट गर्नुहोस्।</string>
+    <string name="network_value_placeholder">--</string>
+    <string name="network_session_section">यो सत्र</string>
+    <string name="network_uptime_label">अपटाइम</string>
+    <string name="network_rx_label">प्राप्त</string>
+    <string name="network_tx_label">पठाइएको</string>
+    <string name="network_clients_section">जडित उपकरणहरू</string>
+    <string name="network_clients_empty">कुनै उपकरण जडित छैन।</string>
+    <string name="network_client_meta_fmt">%1$s · %2$s</string>
+    <string name="network_limit_section">डेटा सीमा</string>
+    <string name="network_limit_hint">डेटा सीमा (MB)</string>
+    <string name="network_limit_desc">यति डेटा पार भएपछि हटस्पट आफैँ बन्द हुन्छ। सीमा नराख्न खाली छोड्नुहोस्।</string>
+    <string name="network_reset_usage">गणना रिसेट गर्नुहोस्</string>
+    <string name="network_usage_reset">डेटा गणना रिसेट भयो</string>
+    <string name="network_usage_fmt">%2$s मध्ये %1$s प्रयोग</string>
+    <string name="network_usage_nolimit_fmt">%1$s प्रयोग — कुनै सीमा सेट छैन</string>
+    <string name="network_behaviour_section">व्यवहार</string>
+    <string name="network_keepalive_title">हटस्पट चालू राख्नुहोस्</string>
+    <string name="network_keepalive_desc">पहुँच बिन्दु आफैँ बन्द भएमा पुन: सुरु गर्नुहोस्।</string>
+    <string name="network_autostart_title">गाडी अन हुँदा सुरु गर्नुहोस्</string>
+    <string name="network_autostart_desc">हरेक पावर-अपमा एक पटक हटस्पट अन गर्नुहोस्।</string>
+    <string name="network_proxy_section">प्रोक्सी</string>
+    <string name="network_proxy_system_title">यस गाडीको ट्राफिक प्रोक्सीमार्फत पठाउनुहोस्</string>
+    <string name="network_proxy_system_desc">हेड युनिटका एपहरूले इन्क्रिप्टेड टनेल प्रयोग गर्ने गरी प्रणाली-व्यापी HTTP प्रोक्सी सेट गर्छ।</string>
+    <string name="network_proxy_clients_title">जडित उपकरणलाई इन्टरनेट दिनुहोस् (प्रोक्सी)</string>
+    <string name="network_proxy_clients_desc">हटस्पटबाट प्रोक्सी पहुँचयोग्य बनाउँछ। प्रत्येक उपकरणले आफैँ प्रोक्सी सेट गर्नुपर्छ।</string>
+    <string name="network_proxy_clients_desc_fmt">हटस्पटमा जडान भएपछि प्रत्येक उपकरणमा म्यानुअल प्रोक्सी सेट गर्नुहोस्:\n१. Wi‑Fi सेटिङ खोल्नुहोस्\n२. प्रोक्सीलाई Manual मा सेट गर्नुहोस्\n३. होस्टनाम %1$s, पोर्ट %2$d\n४. सेभ गर्नुहोस्।</string>
+    <string name="network_client_tunnel_title">जडित उपकरणको ट्राफिक पनि इन्क्रिप्ट गर्नुहोस्</string>
+    <string name="network_client_tunnel_desc_fmt">गाडीको SIM बाट निस्कनुअघि इन्क्रिप्टेड टनेलमार्फत ट्राफिक पठाउँछ। पोर्ट %2$d को सट्टा %1$d प्रयोग गर्नुहोस्।</string>
+    <string name="network_warn_title">गाडीले WiFi छोड्नेछ</string>
+    <string name="network_warn_body">यस हेड युनिटमा एउटै WiFi रेडियो छ, त्यसैले एकैसाथ हटस्पट र WiFi नेटवर्कमा रहन सक्दैन। हटस्पट अन हुँदा गाडीको SIM मोबाइल डेटा प्रयोग हुन्छ।</string>
+    <string name="network_warn_continue">हटस्पट अन गर्नुहोस्</string>
+    <string name="network_warn_cancel">रद्द गर्नुहोस्</string>
+
+    <string name="toast_share_failed">सेयर असफल भयो</string>
+    <string name="rail_collapse_label">खुम्च्याउनुहोस्</string>
+    <string name="rail_section_cameras">क्यामेराहरू</string>
+    <string name="rail_section_controls">नियन्त्रणहरू</string>
+    <string name="rail_section_driving">ड्राइभिङ</string>
+    <string name="rail_section_automation">स्वचालन</string>
+    <string name="rail_section_system">प्रणाली</string>
+    <string name="vehicle_dialog_detection">पहिचान: %1$s</string>
+    <string name="vehicle_dialog_detection_auto">स्वचालित</string>
+    <string name="vehicle_dialog_detection_manual">म्यानुअल</string>
+    <string name="vehicle_dialog_value_pending">—</string>
+
+    <string name="roi_tap_to_add_points">बिन्दुहरू थप्न ट्याप गर्नुहोस् (%1$d-%2$d)</string>
+
+    <!-- Voice assistant overlay -->
+    <string name="voice_overlay_listening">सुन्दैछ…</string>
+    <string name="voice_overlay_thinking">सोच्दैछ…</string>
+    <string name="voice_overlay_speaking">बोल्दैछ…</string>
+    <string name="voice_overlay_done">सकियो</string>
+    <string name="voice_overlay_cancelled">रद्द गरियो</string>
+    <string name="voice_overlay_not_understood">माफ गर्नुहोस्, मैले बुझ्न सकिनँ</string>
+    <string name="voice_overlay_offline">AI सहायक उपलब्ध छैन</string>
+    <string name="voice_overlay_busy">सहायक पहिले नै प्रयोगमा छ</string>
+    <string name="voice_overlay_blocked_moving">गाडी चलिरहँदा यो उपलब्ध छैन</string>
+    <string name="voice_overlay_refused">आवाजबाट त्यो गर्न सकिँदैन</string>
+    <string name="voice_overlay_failed">त्यो पूरा गर्न सकिएन</string>
+    <string name="voice_enroll_start">बिचमा रोक्दै ४ पटक “OverDrive” भन्नुहोस् (%1$d / %2$d)</string>
+    <string name="voice_enroll_next">बुझियो — फेरि (%1$d / %2$d)</string>
+    <string name="voice_enroll_say">“OverDrive” भन्नुहोस् (%1$d / %2$d)</string>
+    <string name="voice_enroll_learning">तपाईंको आवाज सिक्दैछ…</string>
+    <string name="voice_enroll_done">बुझियो — OverDrive ले अब तपाईंको आवाज चिन्छ</string>
+    <string name="voice_enroll_failed">तपाईंको आवाज सिक्न सकिएन। शान्त गाडीमा फेरि प्रयास गर्नुहोस्</string>
+</resources>

@@ -17,7 +17,7 @@ We recommend always running the latest release. Older versions will not receive 
 
 If you discover a security vulnerability, please report it responsibly:
 
-1. **Discord/Telegram**: Send a detailed report to **@irshsay**
+1. **GitHub Security Advisories**: Open a private security advisory on [saroz/Overdrive-release](https://github.com/saroz/Overdrive-release/security/advisories/new)
 2. **Include**:
    - A description of the vulnerability
    - Steps to reproduce the issue

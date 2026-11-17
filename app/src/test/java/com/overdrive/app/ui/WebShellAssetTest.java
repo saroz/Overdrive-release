@@ -90,6 +90,22 @@ public class WebShellAssetTest {
     }
 
     @Test
+    public void embeddedHidesThePageHeadingTheNativeBarAlreadyShows() throws IOException {
+        // WebViewFragment hid .page-header ("kills the duplicate title"); the heading is ui-page-head now.
+        UiComponentsAssetTest.assertRule("html[data-android-embed=\"1\"] .ui-page-head", "display:none!important");
+    }
+
+    @Test
+    public void shellHelpersTargetTheNewVocabulary() throws IOException {
+        String js = js();
+        assertTrue("switch names", js.contains("root.querySelectorAll('.ui-toggle input')"));
+        assertFalse(js.contains("querySelectorAll('.toggle-switch input')"));
+        String tabs = WebThemeTokensAssetTest.read("app/src/main/assets/web/shared/app-tabs.js");
+        assertTrue("tabs sit above the page body, under the summary tile",
+                tabs.contains("main.querySelector('.ui-page-body, .page-body')"));
+    }
+
+    @Test
     public void collapsedGroupsLeaveTheLayout() throws IOException {
         UiComponentsAssetTest.assertRule(".ui-nav [hidden]", "display:none!important");
     }

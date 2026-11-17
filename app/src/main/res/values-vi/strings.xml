@@ -714,7 +714,7 @@
     <string name="settings_about_support_section">Được hỗ trợ bởi những người như bạn</string>
     <string name="settings_about_support_share_title">Hãy nói với chủ xe khác</string>
     <string name="settings_about_support_share_value">Mỗi liên kết được chia sẻ giúp một chủ sở hữu BYD khác khám phá Overdrive.</string>
-    <string name="settings_about_support_share_message">Khám phá Overdrive — giám sát &amp; camera hành trình mã nguồn mở cho BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Khám phá Overdrive — giám sát &amp; camera hành trình mã nguồn mở cho BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Chia sẻ Overdrive</string>
     <string name="settings_about_youtube_title">Đăng ký kênh YouTube</string>
     <string name="settings_about_youtube_value">Thích, đăng ký và chia sẻ — mỗi lượt xem đều giúp Overdrive phát triển.</string>
@@ -725,7 +725,7 @@
     <string name="settings_about_license_title">Giấy phép</string>
     <string name="settings_about_license_value">MIT — mã nguồn mở. Nhấn để xem toàn văn.</string>
     <string name="settings_about_source_title">Mã nguồn</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Gắn sao cho chúng tôi trên GitHub</string>
     <string name="settings_about_star_value">Chỉ mất một giây. Ý nghĩa rất nhiều.</string>
     <string name="settings_about_thanks_title">Cảm ơn</string>

@@ -1161,6 +1161,45 @@ body[data-page="trips"] .detail-stat-value {
             overflow-wrap: break-word;
         }
 body[data-page="trips"] .detail-stat-label { font-size: var(--fs-caption); color: var(--on-surface-variant); overflow-wrap: break-word; }
+body[data-page="trips"] .detail-tyre-section {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid var(--hairline);
+        }
+body[data-page="trips"] .detail-tyre-title {
+            margin-bottom: 8px;
+            font-size: var(--fs-caption);
+            font-weight: 600;
+            color: var(--on-surface-variant);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+body[data-page="trips"] .detail-tyre-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            grid-gap: 8px;
+            gap: 8px;
+        }
+body[data-page="trips"] .detail-tyre-cell {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-width: 0;
+            padding: 10px 12px;
+            border-radius: var(--radius-md);
+            background: var(--well);
+        }
+body[data-page="trips"] .detail-tyre-corner {
+            font-size: var(--fs-caption);
+            color: var(--on-surface-variant);
+        }
+body[data-page="trips"] .detail-tyre-val {
+            font-size: var(--fs-label);
+            font-weight: 700;
+            color: var(--on-surface);
+            font-variant-numeric: tabular-nums;
+            text-align: end;
+        }
 body[data-page="trips"] .map-card { overflow: hidden; }
 body[data-page="trips"] #tripMap {
             width: 100%;

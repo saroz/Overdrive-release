@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="wgsetup_title">WireGuard सेटअप</string>
+    <string name="wgsetup_explainer">गाडीलाई WireGuard मार्फत तपाईंको घरको नेटवर्कमा जोड्छ। AllowedIPs मा रहेका ठेगानाहरू (जस्तै तपाईंको Home Assistant ब्रोकर) टनेलमार्फत पुग्छन्; अरू सबै सामान्य मार्गबाट नै जान्छन्। तपाईंको राउटरले निर्यात गरेको peer (client) कन्फिग प्रयोग गर्नुहोस् (जस्तै OPNsense, Fritz!Box वा wg-easy बाट)।</string>
+
+    <string name="wgsetup_status_loading">स्थिति जाँच हुँदैछ…</string>
+    <string name="wgsetup_status_none">अहिलेसम्म कुनै कन्फिगरेसन छैन</string>
+    <string name="wgsetup_status_stopped">कन्फिगर गरिएको छ, टनेल चलिरहेको छैन। Daemons सूचीबाट यसलाई अन गर्नुहोस्।</string>
+    <string name="wgsetup_status_connected">%1$s मा जडान भयो</string>
+    <string name="wgsetup_status_connecting">%1$s मा जडान हुँदैछ…</string>
+    <string name="wgsetup_status_reloading">नयाँ कन्फिगरेसन लागू हुँदैछ…</string>
+    <string name="wgsetup_status_error">त्रुटि: %1$s</string>
+    <string name="wgsetup_status_unavailable">स्थिति उपलब्ध छैन, डेमन सम्पर्कमा छैन</string>
+    <string name="wgsetup_handshake_seconds">अन्तिम ह्यान्डशेक %1$ds अघि</string>
+    <string name="wgsetup_handshake_minutes">अन्तिम ह्यान्डशेक %1$dm अघि</string>
+    <string name="wgsetup_handshake_hours">अन्तिम ह्यान्डशेक %1$dh अघि</string>
+    <string name="wgsetup_handshake_none">अहिलेसम्म ह्यान्डशेक भएको छैन</string>
+    <string name="wgsetup_detail_address">टनेल ठेगाना: %1$s</string>
+    <string name="wgsetup_detail_routes">मार्गहरू: %1$s</string>
+
+    <string name="wgsetup_expose">WireGuard बाट ड्यासबोर्ड पहुँचयोग्य</string>
+    <string name="wgsetup_expose_warning">गाडीको टनेल ठेगानामा पुग्न सक्ने हरेक peer ले लगइन पृष्ठ खोल्न सक्छ। WireGuard सर्भरमा पहुँच सीमित गर्नुहोस्।</string>
+    <string name="wgsetup_expose_url">ड्यासबोर्ड: %1$s</string>
+    <string name="wgsetup_expose_failed">ड्यासबोर्ड सेटिङ परिवर्तन गर्न सकिएन</string>
+
+    <string name="wgsetup_config_hint">आफ्नो WireGuard कन्फिग यहाँ टाँस्नुहोस् ([Interface] … [Peer] …)</string>
+    <string name="wgsetup_key_note">निजी कुञ्जी (private key) गाडीमै सुरक्षित रहन्छ र फेरि कहिल्यै देखाइँदैन। नयाँ कन्फिग सेभ गर्दा पुरानो हट्छ।</string>
+
+    <string name="wgsetup_paste">टाँस्नुहोस्</string>
+    <string name="wgsetup_import">फाइल आयात गर्नुहोस्</string>
+    <string name="wgsetup_phone">फोनबाट सेटअप गर्नुहोस्</string>
+    <string name="wgsetup_delete">कन्फिग मेटाउनुहोस्</string>
+
+    <string name="wgsetup_clipboard_empty">क्लिपबोर्ड खाली छ</string>
+    <string name="wgsetup_import_failed">त्यो फाइल पढ्न सकिएन</string>
+    <string name="wgsetup_import_too_large">त्यो फाइल धेरै ठूलो छ</string>
+    <string name="wgsetup_import_no_qr">त्यस तस्वीरमा कुनै QR कोड फेला परेन</string>
+    <string name="wgsetup_imported">आयात भयो। पाठ जाँच गरेर सेभ थिच्नुहोस्।</string>
+
+    <string name="wgsetup_phone_title">आफ्नो फोनमा यो खोल्नुहोस्</string>
+    <string name="wgsetup_phone_steps">कोड स्क्यान गर्नुहोस्, साइन इन गर्नुहोस्, अनि राउटरबाट निर्यात गरेको कन्फिग अपलोड वा पेस्ट गर्नुहोस्। फोन गाडीसँग एउटै नेटवर्कमा हुनुपर्छ (एउटै Wi-Fi/हटस्पट वा सक्रिय टनेलमार्फत)।</string>
+    <string name="wgsetup_phone_lan_note">यसलाई आफ्नो Wi-Fi वा गाडीको हटस्पटमा मात्र खोल्नुहोस्।</string>
+    <string name="wgsetup_phone_no_url">कुनै ठेगाना उपलब्ध छैन। पहिले गाडीलाई Wi-Fi मा जोड्नुहोस्, हटस्पट अन गर्नुहोस् वा टनेल सुरु गर्नुहोस्।</string>
+
+    <string name="wgsetup_empty">पहिले कन्फिग पेस्ट वा आयात गर्नुहोस्</string>
+    <string name="wgsetup_saved">WireGuard कन्फिग सेभ भयो</string>
+    <string name="wgsetup_delete_title">WireGuard कन्फिग मेटाउने हो?</string>
+    <string name="wgsetup_delete_message">सेभ गरिएको कन्फिग र यसको निजी कुञ्जी हटाइन्छ अनि टनेल रोकिन्छ।</string>
+    <string name="wgsetup_deleted">WireGuard कन्फिग मेटाइयो</string>
+    <string name="wgsetup_delete_failed">कन्फिग मेटाउन सकिएन</string>
+</resources>

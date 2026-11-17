@@ -1,5 +1,6 @@
 package com.overdrive.app.community.config
 
+import com.overdrive.app.BuildConfig
 import com.overdrive.app.config.UnifiedConfigManager
 import com.overdrive.app.roadsense.sync.DeviceId
 import org.json.JSONObject
@@ -32,19 +33,12 @@ object CommunityConfig {
     private const val SECTION = "community"
 
     /**
-     * Project-run SHARED community backend (mirrors RoadSenseConfig.DEFAULT_WORKER_URL,
-     * D-026): the out-of-box default so all users' published automations pool into ONE
-     * D1 instance and the browse catalog is shared fleet-wide. A fork can override this
-     * on the Automations settings page to run its own pool.
-     *
-     * NOTE: this URL follows the same account/subdomain convention as roadsense-edge
-     * but the `community-edge/` Worker must be DEPLOYED before it responds (see
-     * community-edge/README.md). Until then the provider fails gracefully (browse shows
-     * an empty/"couldn't load" state; publish reports an error) — the feature is inert,
-     * never crashy. The field stays editable so a self-host can point elsewhere; a user
-     * who blanks it disables community sync entirely.
+     * Build-time default community backend (injected from `.env` / Gradle properties;
+     * empty when unset). A user can override this on the Automations settings page
+     * or blank it to disable community sync entirely.
      */
-    const val DEFAULT_WORKER_URL = "https://community-edge.yash321sri.workers.dev"
+    val DEFAULT_WORKER_URL: String
+        get() = BuildConfig.COMMUNITY_WORKER_URL
 
     // Keys (also the JSON field names the web settings page reads/writes).
     private const val K_WORKER_URL = "workerUrl"     // user-configurable community-edge URL
@@ -79,8 +73,8 @@ object CommunityConfig {
             // baseUrl() returns null → provider fails closed. Diverges deliberately
             // from RoadSenseConfig.kt (which coalesces blank→default, but is benign
             // there because RoadSense has separate enable/crowd gates).
-            workerUrl = if (s.has(K_WORKER_URL)) s.optString(K_WORKER_URL, "").ifEmpty { null }
-                        else DEFAULT_WORKER_URL,
+            workerUrl = (if (s.has(K_WORKER_URL)) s.optString(K_WORKER_URL, "")
+                        else DEFAULT_WORKER_URL).trim().ifEmpty { null },
             authorName = s.optString(K_AUTHOR_NAME, "").ifEmpty { null },
         )
     }

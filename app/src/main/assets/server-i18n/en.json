@@ -456,7 +456,7 @@
       "uploading": "⏳ Uploading the *{0}* log…",
       "service_unreachable": "⚠️ Could not reach the log service. The camera daemon may not be running. Try `/daemon camera start`.",
       "upload_failed": "⚠️ Log upload failed: {0}",
-      "upload_success": "✅ *{0}* log uploaded.\n\nShare this code with us and include a note describing what went wrong:\n`{1}`\n\nReport it on:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Secrets were removed before upload. The log expires automatically._"
+      "upload_success": "✅ *{0}* log uploaded.\n\nShare this code with us and include a note describing what went wrong:\n`{1}`\n\nReport it on:\n• GitHub: {2}\n\n_Secrets were removed before upload. The log expires automatically._"
     },
     "greeting": {
       "online": "🤖 *Surveillance Bot Online*\n\nBot daemon started and ready.\nUse /help for available commands."

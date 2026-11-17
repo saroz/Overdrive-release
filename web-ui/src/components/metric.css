@@ -62,3 +62,22 @@
   .ui-metric:nth-child(even) { padding-inline-start: 18px; padding-inline-end: 0; }
   .ui-panel > .ui-metrics { padding: 0 20px; }
 }
+
+/* Home multi-row metric strip: keeps padding on every cell so -25px left offset hides only the leading border without clipping "Battery". */
+.home-metrics { display: block; overflow: hidden; }
+.home-metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 22px; margin-inline-start: -25px; }
+#homeStats .home-metric-grid .ui-metric,
+#homeStats .home-metric-grid .ui-metric:first-child { padding-inline: 24px; border-inline-start: 1px solid var(--ui-line); }
+.home-metric-text { font-size: 20px; overflow-wrap: anywhere; }
+
+@media (max-width: 1150px) {
+  .home-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 540px) {
+  .home-metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-inline-start: -19px; }
+  #homeStats .home-metric-grid .ui-metric,
+  #homeStats .home-metric-grid .ui-metric:first-child,
+  #homeStats .home-metric-grid .ui-metric:nth-child(odd),
+  #homeStats .home-metric-grid .ui-metric:nth-child(even) { padding-inline: 18px; border-inline-start: 1px solid var(--ui-line); }
+}

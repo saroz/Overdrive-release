@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_navigation_title">नेभिगेसन</string>
+    <string name="settings_navigation_subtitle">बायाँ नेभिगेसनमा कुन वैकल्पिक पृष्ठहरू पिन गरिरहने भनेर छान्नुहोस्।</string>
+    <string name="settings_navigation_fixed_hint">ड्यासबोर्ड, सेटिङहरू र बारेमा सधैँ उपलब्ध रहन्छन्।</string>
+    <string name="settings_navigation_reset">पूर्वनिर्धारितमा रिसेट गर्नुहोस्</string>
+    <string name="settings_navigation_reset_done">नेभिगेसन पुनर्स्थापित भयो</string>
+    <string name="settings_navigation_shown">देखाइएको</string>
+    <string name="settings_navigation_hidden">लुकाइएको</string>
+    <string name="settings_navigation_option_state">%1$s, नेभिगेसनमा %2$s</string>
+</resources>

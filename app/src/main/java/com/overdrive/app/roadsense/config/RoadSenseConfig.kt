@@ -1,5 +1,6 @@
 package com.overdrive.app.roadsense.config
 
+import com.overdrive.app.BuildConfig
 import com.overdrive.app.config.UnifiedConfigManager
 import org.json.JSONObject
 
@@ -25,17 +26,12 @@ object RoadSenseConfig {
     private const val SECTION = "roadSense"
 
     /**
-     * Project-run SHARED crowdsource backend (D-009 + user decision 2026-06-05):
-     * the out-of-box default so all users' confirmed hazards pool into ONE D1
-     * instance and consensus works across the whole fleet. A fork can override
-     * this on road-sense.html to run its own pool.
-     *
-     * DEPLOYED 2026-06-05: live Cloudflare Worker + D1 (region APAC), verified with
-     * a full report→consensus→tiles round-trip against remote D1. Crowdsource is
-     * still opt-in AND default-OFF (R-CRD-6) — this URL only matters once a user
-     * enables upload/download.
+     * Build-time default crowdsource backend (injected from `.env` / Gradle properties;
+     * empty when unset). Crowdsource is opt-in AND default-OFF (R-CRD-6), and users
+     * can also override `syncWorkerUrl` on the RoadSense settings page.
      */
-    const val DEFAULT_WORKER_URL = "https://roadsense-edge.yash321sri.workers.dev"
+    val DEFAULT_WORKER_URL: String
+        get() = BuildConfig.ROADSENSE_WORKER_URL
 
     // Keys (also the JSON field names the web settings page reads/writes).
     private const val K_ENABLED = "enabled"
@@ -200,12 +196,9 @@ object RoadSenseConfig {
             crowdDownload = s.optBoolean(K_DOWNLOAD, false),
             uploadConfidenceThreshold = s.optDouble(K_UPLOAD_CONF, 0.7).toFloat(),
             deviceId = s.optString(K_DEVICE_ID, "").ifEmpty { null },
-            // Default to the project-run SHARED instance so every user's data
-            // pools into ONE backend out of the box (crowdsourcing only works if
-            // everyone reports to the same place). The field stays editable so a
-            // fork can self-host its own pool (D-009). Empty/unset → use the
-            // shared default; a user who blanks it disables sync.
-            syncWorkerUrl = s.optString(K_WORKER_URL, "").ifEmpty { DEFAULT_WORKER_URL },
+            syncWorkerUrl = s.optString(K_WORKER_URL, "").trim()
+                .ifEmpty { DEFAULT_WORKER_URL.trim() }
+                .ifEmpty { null },
             rawRecord = s.optBoolean(K_RAW_RECORD, false),
             // Default true: a missing key (existing installs, pre-upgrade configs) keeps
             // the overlay visible exactly as before — the toggle only ever HIDES on an

@@ -64,7 +64,7 @@ available from the upstream projects linked above.
 **Written offer:** for three years from the date of distribution, the maintainer will,
 on request, provide the complete corresponding source code for the GPL-3.0 and AGPL-3.0
 components as bundled in any given OverDrive release. Contact the maintainer via the
-channels in [SECURITY.md](SECURITY.md) or the [Discord server](https://discord.gg/PZutk9fg4h).
+channels in [SECURITY.md](SECURITY.md) or [GitHub Issues](https://github.com/saroz/Overdrive-release/issues).
 
 The full text of each license (GPL-3.0, AGPL-3.0, Apache-2.0, BSD-2-Clause,
 BSD-3-Clause) is available from the respective upstream repositories.

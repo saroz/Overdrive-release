@@ -11,7 +11,7 @@ import java.util.Locale;
  * {@code '} (or end of string) is emitted verbatim — including any {@code {0}}
  * inside it, which is then never substituted.
  *
- * <p>That is a poor fit for a Crowdin-fed catalog. Elision is ordinary in many
+ * <p>That is a poor fit for a community-translated catalog. Elision is ordinary in many
  * of the languages we ship: French {@code l'}, {@code d'}, {@code n'};
  * Ukrainian {@code з'}; Dutch {@code {0}'s}; Turkish {@code {0}'de}. Translators
  * write these naturally and cannot reasonably be asked to type {@code ''}, so

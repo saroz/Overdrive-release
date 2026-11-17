@@ -666,7 +666,7 @@
     <string name="settings_about_support_section">Sizin gibi insanlar sayesinde</string>
     <string name="settings_about_support_share_title">Başka bir araç sahibine bahset</string>
     <string name="settings_about_support_share_value">Paylaşılan her bağlantı başka bir BYD sahibinin Overdrive\'ı keşfetmesine yardımcı olur.</string>
-    <string name="settings_about_support_share_message">Overdrive\'a göz atın — BYD için açık kaynaklı gözetim &amp; dashcam uygulaması: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Overdrive\'a göz atın — BYD için açık kaynaklı gözetim &amp; dashcam uygulaması: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Overdrive\'ı Paylaş</string>
     <string name="settings_about_youtube_title">YouTube\'da abone ol</string>
     <string name="settings_about_youtube_value">Beğen, abone ol ve paylaş — her izlenme Overdrive\'ın büyümesine yardım eder.</string>
@@ -677,7 +677,7 @@
     <string name="settings_about_license_title">Lisans</string>
     <string name="settings_about_license_value">MIT — açık kaynak. Tam metni görüntülemek için dokunun.</string>
     <string name="settings_about_source_title">Kaynak kodu</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">GitHub\'da yıldız verin</string>
     <string name="settings_about_star_value">Bir saniye sürer, çok şey ifade eder.</string>
     <string name="settings_about_thanks_title">Teşekkürler</string>

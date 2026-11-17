@@ -29,7 +29,7 @@
   --ui-shadow-knob: 0 1px 3px #0003;
   --ui-car-shadow: drop-shadow(0 12px 10px #17253014);
   --ui-marker-shadow: drop-shadow(0 2px 6px #0009);
-  --ui-hero-bg: var(--ui-hero);
+  --ui-hero-bg: radial-gradient(ellipse at 68% 48%, #fff 0%, var(--ui-hero) 74%);
   --ui-font: "Segoe UI Variable", "Segoe UI", "Inter", system-ui, sans-serif;
 }
 

@@ -818,7 +818,7 @@
     <string name="settings_about_support_section">Поддерживаются такими людьми, как ты.</string>
     <string name="settings_about_support_share_title">Расскажите другому владельцу</string>
     <string name="settings_about_support_share_value">Каждый общий ссылка помогает другому владельцу BYD обнаружить Overdrive.</string>
-    <string name="settings_about_support_share_message">Проверьте Overdrive  открытый код наблюдения и дашкамы для BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Проверьте Overdrive  открытый код наблюдения и дашкамы для BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Поделиться Overdrive</string>
     <string name="settings_about_youtube_title">Подпишитесь на YouTube</string>
     <string name="settings_about_youtube_value">Ставьте лайки, подписывайтесь и делитесь — каждый просмотр помогает Overdrive расти.</string>
@@ -829,7 +829,7 @@
     <string name="settings_about_license_title">Лицензия</string>
     <string name="settings_about_license_value">MIT  открытый код. Нажмите, чтобы просмотреть полный текст.</string>
     <string name="settings_about_source_title">Исходный код</string>
-    <string name="settings_about_source_value">Github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Отпустить на GitHub</string>
     <string name="settings_about_star_value">Это много значит.</string>
     <string name="settings_about_thanks_title">Спасибо</string>

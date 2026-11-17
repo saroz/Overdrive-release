@@ -363,7 +363,7 @@
       "uploading": "⏳ Caricamento del log *{0}*…",
       "service_unreachable": "⚠️ Impossibile raggiungere il servizio log. Il demone della fotocamera potrebbe non essere in esecuzione. Prova `/daemon camera start`.",
       "upload_failed": "⚠️ Caricamento log fallito: {0}",
-      "upload_success": "✅ Log *{0}* caricato.\n\nCondividi questo codice con noi e includi una nota che descrive cosa è andato storto:\n`{1}`\n\nSegnalalo su:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_I dati sensibili e le credenziali sono stati rimossi prima del caricamento. Il file scade automaticamente._"
+      "upload_success": "✅ Log *{0}* caricato.\n\nCondividi questo codice con noi e includi una nota che descrive cosa è andato storto:\n`{1}`\n\nSegnalalo su:\n• GitHub: {2}\n\n_I dati sensibili e le credenziali sono stati rimossi prima del caricamento. Il file scade automaticamente._"
     },
     "greeting": {
       "online": "🤖 *Surveillance Bot Online*\n\nIl demone Bot è stato avviato e pronto.\nUsa /help per i comandi disponibili."

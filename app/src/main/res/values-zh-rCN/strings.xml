@@ -809,7 +809,7 @@
     <string name="settings_about_support_section">由像你这样的人来推动</string>
     <string name="settings_about_support_share_title">告诉另一位车主</string>
     <string name="settings_about_support_share_value">每个共享的链接都能帮助另一个BYD的所有者发现Overdrive.</string>
-    <string name="settings_about_support_share_message">查看 Overdrive — 面向 BYD 的开源监控和仪表摄像头: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">查看 Overdrive — 面向 BYD 的开源监控和仪表摄像头: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">分享 Overdrive</string>
     <string name="settings_about_youtube_title">在 YouTube 上订阅</string>
     <string name="settings_about_youtube_value">点赞、订阅、分享——每一次观看都在帮助 Overdrive 成长。</string>
@@ -820,7 +820,7 @@
     <string name="settings_about_license_title">许可证</string>
     <string name="settings_about_license_value">开源. 点击查看全文.</string>
     <string name="settings_about_source_title">源代码</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">在 GitHub 上放一个</string>
     <string name="settings_about_star_value">需要一秒钟,这意味着很多.</string>
     <string name="settings_about_thanks_title">致谢</string>

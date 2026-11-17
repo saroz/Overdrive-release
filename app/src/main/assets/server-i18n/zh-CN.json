@@ -363,7 +363,7 @@
       "uploading": "⏳ 正在上传 *{0}* 日志…",
       "service_unreachable": "⚠️ 无法到达日志服务。摄像头守护进程可能无法运行。请试试 `/daemon 摄像头启动'。",
       "upload_failed": "⚠️ 日志上传失败: {0}",
-      "upload_success": ":check_mark_buton: *{0}* 日志已上传。\n\n与我们分享这个代码，并包含一个说明错误的注释：\n{1}\n\n报告它：\n• Discord： {2}\n• GitHub： {3}\n• WhatsApp： {4}\n\n_秘密在上传之前被移除。 日志自动过期._"
+      "upload_success": ":check_mark_buton: *{0}* 日志已上传。\n\n与我们分享这个代码，并包含一个说明错误的注释：\n{1}\n\n报告它：\n• GitHub： {2}\n\n_秘密在上传之前被移除。 日志自动过期._"
     },
     "greeting": {
       "online": "🤖 *监控机器人已上线*\n\n机器人守护进程已启动并就绪。\n可用命令请使用 /help 查看。"

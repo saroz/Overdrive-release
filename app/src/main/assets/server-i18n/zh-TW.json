@@ -363,7 +363,7 @@
       "uploading": "⏳ 正在上傳 *{0}* 日誌…",
       "service_unreachable": "⚠️ 無法連線日誌服務。相機守護程式可能未在執行。請嘗試 `/daemon camera start`。",
       "upload_failed": "⚠️ 日誌上傳失敗：{0}",
-      "upload_success": "✅ *{0}* 日誌已上傳。\n\n請把這組代碼提供給我們，並附上問題說明：\n`{1}`\n\n回報管道：\n• Discord：{2}\n• GitHub：{3}\n• WhatsApp：{4}\n\n_上傳前已移除機密資訊。日誌會自動到期。_"
+      "upload_success": "✅ *{0}* 日誌已上傳。\n\n請把這組代碼提供給我們，並附上問題說明：\n`{1}`\n\n回報管道：\n• GitHub：{2}\n\n_上傳前已移除機密資訊。日誌會自動到期。_"
     },
     "greeting": {
       "online": "🤖 *監控機器人已上線*\n\n機器人守護程式已啟動並就緒。\n可用指令請使用 /help 查看。"

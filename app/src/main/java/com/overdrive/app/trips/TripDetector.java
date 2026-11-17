@@ -57,7 +57,12 @@ public class TripDetector {
     // active trip. Used by the cost-breakdown UI to label the trip's HEV
     // mode share. Idle on BEVs (sampler is started only when isPhev=true).
     private volatile ScheduledFuture<?> iceSamplerTask;
+    // One-shot backfill for TPMS start pressures: BYD TPMS sensors often stay
+    // UNAVAILABLE at ignition P->D until wheels roll for a few seconds.
+    private volatile ScheduledFuture<?> startTyreBackfillTask;
     private static final int ICE_RPM_THRESHOLD = 600;
+    private static final long TYRE_START_BACKFILL_DELAY_SEC = 20L;
+    private static final int MAX_VALID_TYRE_KPA = 600;
 
     public TripDetector() {
         this.scheduler = Executors.newSingleThreadScheduledExecutor(r -> {
@@ -335,6 +340,14 @@ public class TripDetector {
             }
         }
 
+        // Snapshot per-tyre pressures (kPa). If TPMS sensors aren't awake yet
+        // right at ignition P->D, schedule one delayed retry ~20s into ACTIVE.
+        cancelStartTyreBackfill();
+        snapshotTyrePressures(activeTrip, true);
+        if (!activeTrip.hasTyreStart()) {
+            scheduleStartTyreBackfill();
+        }
+
         state = State.ACTIVE;
         logger.info("Trip started at " + now + " (SoC=" + activeTrip.socStart
                 + "%, GPS=" + activeTrip.startLat + "," + activeTrip.startLon + ")");
@@ -359,6 +372,7 @@ public class TripDetector {
         }
 
         cancelParkDebounceTimer();
+        cancelStartTyreBackfill();
         stopIceSampler();
 
         long now = System.currentTimeMillis();
@@ -431,6 +445,9 @@ public class TripDetector {
         } catch (Exception e) {
             logger.warn("Failed to read PHEV end state: " + e.getMessage());
         }
+
+        // Snapshot end-of-trip tyre pressures (kPa).
+        snapshotTyrePressures(activeTrip, false);
 
         // Read end GPS
         try {
@@ -592,6 +609,7 @@ public class TripDetector {
      * Discard a trip that doesn't meet minimum thresholds.
      */
     private void discardTrip(String reason) {
+        cancelStartTyreBackfill();
         TripRecord discardedTrip = activeTrip;
         activeTrip = null;
         startOdometerKm = -1;
@@ -604,6 +622,57 @@ public class TripDetector {
             } catch (Exception e) {
                 logger.error("Listener.onTripDiscarded failed: " + e.getMessage());
             }
+        }
+    }
+
+    private static int validTyreKpa(int raw) {
+        return (raw > 0 && raw <= MAX_VALID_TYRE_KPA) ? raw : -1;
+    }
+
+    private static void snapshotTyrePressures(TripRecord trip, boolean isStart) {
+        if (trip == null) return;
+        try {
+            com.overdrive.app.byd.BydVehicleData vd =
+                    VehicleDataMonitor.getInstance().getVd();
+            if (vd == null || vd.tyrePressure == null || vd.tyrePressure.length < 4) {
+                return;
+            }
+            int fl = validTyreKpa(vd.tyrePressure[0]);
+            int fr = validTyreKpa(vd.tyrePressure[1]);
+            int rl = validTyreKpa(vd.tyrePressure[2]);
+            int rr = validTyreKpa(vd.tyrePressure[3]);
+            if (isStart) {
+                trip.tyreFlStart = fl;
+                trip.tyreFrStart = fr;
+                trip.tyreRlStart = rl;
+                trip.tyreRrStart = rr;
+            } else {
+                trip.tyreFlEnd = fl;
+                trip.tyreFrEnd = fr;
+                trip.tyreRlEnd = rl;
+                trip.tyreRrEnd = rr;
+            }
+        } catch (Exception e) {
+            logger.debug("Failed to snapshot " + (isStart ? "start" : "end")
+                    + " tyre pressures: " + e.getMessage());
+        }
+    }
+
+    private void scheduleStartTyreBackfill() {
+        cancelStartTyreBackfill();
+        startTyreBackfillTask = scheduler.schedule(() -> {
+            synchronized (TripDetector.this) {
+                if (state == State.ACTIVE && activeTrip != null && !activeTrip.hasTyreStart()) {
+                    snapshotTyrePressures(activeTrip, true);
+                }
+            }
+        }, TYRE_START_BACKFILL_DELAY_SEC, TimeUnit.SECONDS);
+    }
+
+    private void cancelStartTyreBackfill() {
+        if (startTyreBackfillTask != null && !startTyreBackfillTask.isDone()) {
+            startTyreBackfillTask.cancel(false);
+            startTyreBackfillTask = null;
         }
     }
 

@@ -13,7 +13,7 @@
     RECOVERY    : Subtle outlined card explaining the ADB reset path.
 
   All values via ?attr/* tokens; flips light/dark with the app theme.
-  Strings localized via Crowdin pipeline.
+  Strings localized via Android resource qualifiers.
 -->
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"

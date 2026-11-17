@@ -83,7 +83,7 @@ public final class HomeAssistantDiscovery {
             JSONObject origin = new JSONObject();
             origin.put("name", "OverDrive");
             if (swVersion != null && !swVersion.isEmpty()) origin.put("sw", swVersion);
-            origin.put("url", "https://www.overdrive.qd.je");
+            origin.put("url", "https://github.com/saroz/Overdrive-release");
             bundle.put("o", origin);
 
             // ----- link availability (the LWT) -----

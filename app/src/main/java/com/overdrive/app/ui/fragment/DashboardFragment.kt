@@ -1494,21 +1494,28 @@ class DashboardFragment : Fragment() {
                 conn.disconnect()
             } catch (_: Throwable) {}
 
+            if (!nominalKnown || modelId == null) {
+                try {
+                    val vehicle = com.overdrive.app.config.UnifiedConfigManager.getVehicle()
+                    if (!nominalKnown && vehicle.has("nominalKwh") && !vehicle.isNull("nominalKwh")) {
+                        val storedKwh = vehicle.optDouble("nominalKwh", 0.0)
+                        if (storedKwh.isFinite() && storedKwh > 0.0) {
+                            nominalKwh = storedKwh
+                        }
+                    }
+                    if (modelId == null &&
+                        vehicle.optString("modelSource", "unset") != "unset"
+                    ) {
+                        val storedModel = vehicle.optString("modelId", "")
+                        if (storedModel.isNotEmpty()) modelId = storedModel
+                    }
+                } catch (_: Throwable) {}
+            }
+
             mainHandler.post {
                 if (!isAdded || view == null || generation != viewGeneration) return@post
                 val tile = metricVehicleValue ?: return@post
                 mainHandler.removeCallbacks(vehicleTileRefreshRunnable)
-                if (!nominalKnown && dashboardResumed &&
-                    vehicleTileRetryCount < MAX_VEHICLE_TILE_RETRIES
-                ) {
-                    vehicleTileRetryCount += 1
-                    mainHandler.postDelayed(
-                        vehicleTileRefreshRunnable,
-                        VEHICLE_TILE_RETRY_MS * vehicleTileRetryCount,
-                    )
-                    return@post
-                }
-                vehicleTileRetryCount = 0
                 if (nominalKwh > 0) {
                     tile.text = if (modelId != null) {
                         getString(R.string.dashboard_vehicle_summary, nominalKwh, modelDisplayName(modelId))
@@ -1521,6 +1528,17 @@ class DashboardFragment : Fragment() {
                 // Follows the model, not nominalKwh — a model can be selected
                 // before a capacity is entered.
                 vehicleArt?.setImageResource(VehicleArt.drawableFor(modelId))
+                if (!nominalKnown && dashboardResumed &&
+                    vehicleTileRetryCount < MAX_VEHICLE_TILE_RETRIES
+                ) {
+                    vehicleTileRetryCount += 1
+                    mainHandler.postDelayed(
+                        vehicleTileRefreshRunnable,
+                        VEHICLE_TILE_RETRY_MS * vehicleTileRetryCount,
+                    )
+                    return@post
+                }
+                vehicleTileRetryCount = 0
             }
         }
     }
@@ -1653,47 +1671,48 @@ class DashboardFragment : Fragment() {
                 }
                 conn.disconnect()
             } catch (_: Throwable) {}
+            fun appendManifestModels(jsonText: String) {
+                val json = org.json.JSONObject(jsonText)
+                val arr = json.optJSONArray("models") ?: return
+                for (i in 0 until arr.length()) {
+                    val m = arr.getJSONObject(i)
+                    val id = m.optString("id", "")
+                    val canonicalTitle = when {
+                        m.optString("name", "").isNotEmpty() -> m.optString("name")
+                        m.optString("title", "").isNotEmpty() -> m.optString("title")
+                        else -> id
+                    }
+                    val title = if (id.equals("seagull", ignoreCase = true)) {
+                        ctx.getString(R.string.vehicle_model_seagull)
+                    } else {
+                        canonicalTitle
+                    }
+                    val kwh = m.optDouble("nominalKwh", 0.0)
+                    if (id.isNotEmpty()) modelIds.add(ModelEntry(id, title, kwh))
+                }
+            }
             try {
                 val conn = com.overdrive.app.util.DaemonHttpClient.open(
                     "/api/models/manifest", "GET", 2000, 3000)
                 if (conn.responseCode == 200) {
                     val body = conn.inputStream.bufferedReader().use { it.readText() }
-                    val json = org.json.JSONObject(body)
-                    val arr = json.optJSONArray("models")
-                    if (arr != null) {
-                        for (i in 0 until arr.length()) {
-                            val m = arr.getJSONObject(i)
-                            val id = m.optString("id", "")
-                            // Manifest uses "name" for the canonical user-facing
-                            // string ("BYD Seal", etc.) and falls back to the id.
-                            // The previous version read "title" first which never
-                            // existed in our manifest, so models showed as the
-                            // id text. Ordering: name → title → id.
-                            val canonicalTitle = when {
-                                m.optString("name", "").isNotEmpty() -> m.optString("name")
-                                m.optString("title", "").isNotEmpty() -> m.optString("title")
-                                else -> id
-                            }
-                            val title = if (id.equals("seagull", ignoreCase = true)) {
-                                ctx.getString(R.string.vehicle_model_seagull)
-                            } else {
-                                canonicalTitle
-                            }
-                            // nominalKwh is the manifest's canonical pack
-                            // capacity for this model. 0 means the manifest
-                            // doesn't carry a value for it; the dropdown
-                            // listener treats 0 as "don't touch the input".
-                            val kwh = m.optDouble("nominalKwh", 0.0)
-                            if (id.isNotEmpty()) modelIds.add(ModelEntry(id, title, kwh))
-                        }
-                    }
+                    appendManifestModels(body)
                 }
                 conn.disconnect()
             } catch (_: Throwable) {}
+            if (modelIds.isEmpty()) {
+                try {
+                    val assetJson = ctx.assets.open("web/shared/models/manifest.json")
+                        .bufferedReader().use { it.readText() }
+                    appendManifestModels(assetJson)
+                } catch (_: Throwable) {}
+            }
+            var selectedModelFetched = false
             try {
                 val conn = com.overdrive.app.util.DaemonHttpClient.open(
                     "/api/models/selected", "GET", 2000, 3000)
                 if (conn.responseCode == 200) {
+                    selectedModelFetched = true
                     val body = conn.inputStream.bufferedReader().use { it.readText() }
                     val json = org.json.JSONObject(body)
                     val m = when {
@@ -1707,6 +1726,26 @@ class DashboardFragment : Fragment() {
                 }
                 conn.disconnect()
             } catch (_: Throwable) {}
+            if (!selectedModelFetched || initialKwh <= 0.0) {
+                try {
+                    val vehicle = com.overdrive.app.config.UnifiedConfigManager.getVehicle()
+                    if (!selectedModelFetched &&
+                        vehicle.optString("modelSource", "unset") != "unset"
+                    ) {
+                        val m = vehicle.optString("modelId", "")
+                        if (m.isNotEmpty()) initialModelId = m
+                    }
+                    if (initialKwh <= 0.0 &&
+                        vehicle.has("nominalKwh") && !vehicle.isNull("nominalKwh")
+                    ) {
+                        val kwh = vehicle.optDouble("nominalKwh", 0.0)
+                        if (kwh.isFinite() && kwh > 0.0) {
+                            initialKwh = kwh
+                            if (nominalKwh <= 0.0) nominalKwh = kwh
+                        }
+                    }
+                } catch (_: Throwable) {}
+            }
 
             val finalNominalKwh = nominalKwh
             val finalNominalSource = nominalSource
@@ -2007,6 +2046,9 @@ class DashboardFragment : Fragment() {
             "sealion7" -> "BYD Sealion 7"
             "shark" -> "BYD Shark"
             "sealu", "seal-u" -> "BYD Seal U"
+            "seal-u-dmi" -> "BYD Seal U DM-i"
+            "destroyer" -> "BYD Destroyer 05"
+            "m6" -> "BYD M6"
             else -> modelId.replaceFirstChar { it.uppercase() }
         }
     }

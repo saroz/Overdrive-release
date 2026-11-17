@@ -666,7 +666,7 @@
     <string name="settings_about_support_section">आप जैसे लोगों द्वारा संचालित</string>
     <string name="settings_about_support_share_title">किसी और मालिक को बताएं</string>
     <string name="settings_about_support_share_value">प्रत्येक साझा किया गया लिंक किसी अन्य BYD मालिक को Overdrive खोजने में मदद करता है।</string>
-    <string name="settings_about_support_share_message">BYD के लिए Overdrive ओपन सोर्स निगरानी और डैशकैम देखेंः https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">BYD के लिए Overdrive ओपन सोर्स निगरानी और डैशकैम देखेंः https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Overdrive साझा करें</string>
     <string name="settings_about_youtube_title">YouTube पर सब्सक्राइब करें</string>
     <string name="settings_about_youtube_value">लाइक, सब्सक्राइब और शेयर करें — हर व्यू Overdrive को आगे बढ़ने में मदद करता है।</string>
@@ -677,7 +677,7 @@
     <string name="settings_about_license_title">लाइसेंस</string>
     <string name="settings_about_license_value">MIT  ओपन सोर्स. पूर्ण पाठ देखने के लिए टैप करें.</string>
     <string name="settings_about_source_title">स्रोत कोड</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">GitHub पर छोड़ें</string>
     <string name="settings_about_star_value">यह एक सेकंड लेता है. यह बहुत मायने रखता है.</string>
     <string name="settings_about_thanks_title">धन्यवाद</string>

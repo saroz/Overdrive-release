@@ -21,11 +21,8 @@ import java.util.Locale;
 public class SendLogCommandHandler implements TelegramCommandHandler {
 
     private static final int CAMERA_IPC_PORT = 19877;
-    private static final String DISCORD_URL = "https://discord.gg/PZutk9fg4h";
     private static final String GITHUB_URL =
-            "https://github.com/yash-srivastava/Overdrive-release/issues";
-    private static final String WHATSAPP_URL =
-            "https://chat.whatsapp.com/HChmriCWgr9KwAtE6OEkiM";
+            "https://github.com/saroz/Overdrive-release/issues";
     // Upload is network-bound (read log → POST to CF). 35s sits above
     // LogUploader's bounded worst case (proxy 12s + direct-retry 12s = 24s,
     // via its callTimeout) so the IPC read never races a still-running upload.
@@ -77,7 +74,6 @@ public class SendLogCommandHandler implements TelegramCommandHandler {
         }
 
         String code = resp.optString("code", "");
-        ctx.sendMessage(chatId, ctx.tr("sendlog.upload_success", daemon, code,
-                DISCORD_URL, GITHUB_URL, WHATSAPP_URL));
+        ctx.sendMessage(chatId, ctx.tr("sendlog.upload_success", daemon, code, GITHUB_URL));
     }
 }

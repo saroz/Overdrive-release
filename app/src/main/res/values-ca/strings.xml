@@ -665,7 +665,7 @@
     <string name="settings_about_support_section">Potenciat per persones com vós</string>
     <string name="settings_about_support_share_title">Digueu-ho a un altre propietari</string>
     <string name="settings_about_support_share_value">Cada enllaç compartit ajuda a un altre propietari de BYD a descobrir OverDrive.</string>
-    <string name="settings_about_support_share_message">Feu una ullada a OverDrive — vigilància i càmdera de davantal de codi obert per a BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Feu una ullada a OverDrive — vigilància i càmdera de davantal de codi obert per a BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Comparteix OverDrive</string>
     <string name="settings_about_youtube_title">Subscriu-te a YouTube</string>
     <string name="settings_about_youtube_value">Fes m\'agrada, subscriu-te i comparteix: cada visualització ajuda Overdrive a créixer.</string>
@@ -676,7 +676,7 @@
     <string name="settings_about_license_title">Llicència</string>
     <string name="settings_about_license_value">MIT — codi obert. Toqueu per a veure el text complet.</string>
     <string name="settings_about_source_title">Codi font</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Marqueu-nos a GitHub</string>
     <string name="settings_about_star_value">Només és un segon. Significa molt.</string>
     <string name="settings_about_thanks_title">Gràcies</string>

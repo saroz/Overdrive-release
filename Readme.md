@@ -5,18 +5,11 @@
 <h1 align="center">OverDrive</h1>
 <p align="center">Advanced Sentry Mode for BYD Vehicles</p>
 <p align="center">
-  <a href="https://github.com/yash-srivastava/Overdrive-release/releases/tag/alpha">Download Alpha</a> •
-  <a href="https://www.overdrive.qd.je">Website</a> •
-  <a href="https://discord.gg/PZutk9fg4h">Discord</a> •
+  <a href="https://github.com/saroz/Overdrive-release/releases/tag/alpha">Download Alpha</a> •
   <a href="#features">Features</a> •
   <a href="#quick-start-use-pre-built-apk">Setup Guide</a> •
   <a href="#home-assistant-integration">Home Assistant</a> •
   <a href="#translations">Translate</a>
-</p>
-<p align="center">
-  <a href="https://crowdin.com/project/overdrive">
-    <img src="https://badges.crowdin.net/overdrive/localized.svg" alt="Crowdin localization status">
-  </a>
 </p>
 
 Free, open-source dashcam and sentry mode app built specifically for BYD vehicles with DiLink v3. All data stays on your device — no cloud, no accounts, no subscriptions.
@@ -24,11 +17,7 @@ Free, open-source dashcam and sentry mode app built specifically for BYD vehicle
 ---
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=MSgcZPENKfs">
-    <img src=".github/assets/overdrive-demo.gif" alt="Click to Watch OverDrive Demo" width="100%">
-  </a>
-  <br>
-  <sub>▶ Click to watch the full video on YouTube</sub>
+  <img src=".github/assets/overdrive-demo.gif" alt="OverDrive Demo" width="100%">
 </p>
 
 ---
@@ -36,7 +25,7 @@ Free, open-source dashcam and sentry mode app built specifically for BYD vehicle
 
 ## Quick Start (Use Pre-built APK)
 
-Download the latest APK from [GitHub Releases](https://github.com/yash-srivastava/Overdrive-release/releases/tag/alpha) and install it directly on your BYD head unit.
+Download the latest APK from [GitHub Releases](https://github.com/saroz/Overdrive-release/releases/tag/alpha) and install it directly on your BYD head unit.
 
 ### 1. Prerequisites
 - Ensure **Wireless ADB** is enabled on your device before launching the app.
@@ -312,7 +301,7 @@ Full list of controllable entities and their accepted payloads:
 ## Building from Source
 
 ```bash
-git clone https://github.com/yash-srivastava/Overdrive-release.git
+git clone https://github.com/saroz/Overdrive-release.git
 ```
 
 Set up signing by exporting these environment variables before building:
@@ -388,27 +377,20 @@ If you want to use Zrok tunneling for remote access, you need your own Zrok invi
 
 ## Translations
 
-OverDrive's UI is translated through [Crowdin](https://crowdin.com/project/overdrive). The app currently ships in **16 languages** (English, German, Spanish, French, Hindi, Italian, Japanese, Korean, Dutch, Norwegian Bokmål, Brazilian Portuguese, Russian, Thai, Turkish, Vietnamese, Simplified Chinese, Traditional Chinese), with another ~14 languages open for community translation (Polish, Czech, Romanian, Catalan, Swedish, Finnish, Danish, Greek, Hungarian, Hebrew, Arabic, Serbian, Ukrainian, Afrikaans).
+OverDrive's UI, server messages, and Telegram bot support multiple languages (including English, Nepali, German, Spanish, French, Hindi, Italian, Japanese, Korean, Dutch, Norwegian Bokmål, Brazilian Portuguese, Russian, Thai, Turkish, Vietnamese, Simplified Chinese, Traditional Chinese, and more).
 
 ### How to help
 
-1. Sign up at [crowdin.com](https://crowdin.com) (free).
-2. Visit the [OverDrive project](https://crowdin.com/project/overdrive) and click **Join**.
-3. Pick a language and translate strings directly in Crowdin's web editor — **no GitHub or coding required**.
-
-New strings get auto-pre-translated by AI; translators just need to review and correct rather than start from scratch. Brand names (BYD, OverDrive, Tailscale, etc.) are protected — Crowdin's glossary marks them "do not translate".
-
-When you save translations they enter as suggestions. Once enough community translators agree, or a proofreader approves, they land in the next release via an automated pull request.
-
-### Want proofreader access?
-
-If you've contributed substantial translations for a language, open an issue or DM the maintainer for **Proofreader** role — that lets you approve translations directly without waiting for review.
+1. Fork [saroz/Overdrive-release](https://github.com/saroz/Overdrive-release) on GitHub.
+2. Update or add locale files in:
+   - `app/src/main/res/values-<lang>/strings.xml` (Android UI)
+   - `app/src/main/assets/web/i18n/<lang>.json` (Web UI)
+   - `app/src/main/assets/server-i18n/<lang>.json` (Server & Telegram bot)
+3. Open a pull request against the repository.
 
 ## Community
 
-- [Discord Server](https://discord.gg/PZutk9fg4h)
-- [Report Issues](https://github.com/yash-srivastava/Overdrive-release/issues)
-- [Translate on Crowdin](https://crowdin.com/project/overdrive)
+- [Report Issues](https://github.com/saroz/Overdrive-release/issues)
 
 ## Acknowledgments
 

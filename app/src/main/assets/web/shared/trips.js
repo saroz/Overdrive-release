@@ -3220,12 +3220,13 @@ const TRIPS = {
             'detailEfficiency2', 'detailAvgSpeed', 'detailMaxSpeed',
             'detailSocStart', 'detailSocEnd', 'detailOdoStart', 'detailOdoEnd',
             'detailFuelStart', 'detailFuelEnd', 'detailLitresUsed', 'detailTemp',
-            'detailCost', 'detailElevGain', 'detailElevLoss'
+            'detailCost', 'detailElevGain', 'detailElevLoss',
+            'detailTyreFL', 'detailTyreFR', 'detailTyreRL', 'detailTyreRR'
         ].forEach((id) => this.setEl(id, '--'));
 
         [
             'detailOdoStartTile', 'detailOdoEndTile', 'detailFuelStartTile',
-            'detailFuelEndTile', 'detailLitresUsedTile'
+            'detailFuelEndTile', 'detailLitresUsedTile', 'detailTyreSection'
         ].forEach(function(id) {
             const el = document.getElementById(id);
             if (el) el.style.display = 'none';
@@ -3444,6 +3445,42 @@ const TRIPS = {
             const elevLoss = trip.elevationLossM || trip.elevation_loss_m || 0;
             this.setEl('detailElevGain', elevGain > 0 ? '+' + Math.round(elevGain) + 'm' : '--');
             this.setEl('detailElevLoss', elevLoss > 0 ? '-' + Math.round(elevLoss) + 'm' : '--');
+
+            // Per-tyre pressure (start → end) — unit-aware, hidden when unrecorded.
+            const tyreSection = document.getElementById('detailTyreSection');
+            const tStart = trip.tyreStart || {};
+            const tEnd = trip.tyreEnd || {};
+            const hasUnits = window.BYD && BYD.units && BYD.units.pressureVal && BYD.units.pressureLabel;
+            const fmtP = (kpa) => hasUnits ? BYD.units.pressureVal(kpa) : (kpa * 0.1450377377).toFixed(1);
+            const pUnit = hasUnits ? BYD.units.pressureLabel() : 'PSI';
+            let anyTyre = false;
+            [
+                ['fl', 'detailTyreFL'],
+                ['fr', 'detailTyreFR'],
+                ['rl', 'detailTyreRL'],
+                ['rr', 'detailTyreRR']
+            ].forEach(([corner, elId]) => {
+                const sv = Number(tStart[corner]);
+                const ev = Number(tEnd[corner]);
+                const sOk = isFinite(sv) && sv > 0;
+                const eOk = isFinite(ev) && ev > 0;
+                let txt = '--';
+                if (sOk && eOk) {
+                    txt = fmtP(sv) + ' → ' + fmtP(ev) + ' ' + pUnit;
+                    anyTyre = true;
+                } else if (sOk) {
+                    txt = fmtP(sv) + ' ' + pUnit + ' → --';
+                    anyTyre = true;
+                } else if (eOk) {
+                    txt = '-- → ' + fmtP(ev) + ' ' + pUnit;
+                    anyTyre = true;
+                }
+                this.setEl(elId, txt);
+            });
+            if (tyreSection) {
+                tyreSection.style.display = (!recovered && anyTyre) ? '' : 'none';
+            }
+
             // Gradient profile pill
             const gradProfile = trip.gradientProfile || trip.gradient_profile || '';
             const gradEl = document.getElementById('detailGradientPill');

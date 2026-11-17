@@ -312,7 +312,15 @@ public class TripDatabase {
                 // metered kWh drawn, the only electric-energy source with enough
                 // resolution to measure a short trip. -1 = not captured.
                 "elec_con_start REAL DEFAULT -1," +
-                "elec_con_end REAL DEFAULT -1" +
+                "elec_con_end REAL DEFAULT -1," +
+                "tyre_fl_start INTEGER DEFAULT -1," +
+                "tyre_fr_start INTEGER DEFAULT -1," +
+                "tyre_rl_start INTEGER DEFAULT -1," +
+                "tyre_rr_start INTEGER DEFAULT -1," +
+                "tyre_fl_end INTEGER DEFAULT -1," +
+                "tyre_fr_end INTEGER DEFAULT -1," +
+                "tyre_rl_end INTEGER DEFAULT -1," +
+                "tyre_rr_end INTEGER DEFAULT -1" +
                 ")"
             );
 
@@ -395,6 +403,21 @@ public class TripDatabase {
                 stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS rate_label VARCHAR(64) DEFAULT ''");
             } catch (Exception e) {
                 logger.debug("trips rate-source column migration: " + e.getMessage());
+            }
+
+            // Migration: per-tyre pressure snapshots (kPa) at trip start/end.
+            // Old rows read these as -1 (sentinel "unavailable").
+            try {
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_fl_start INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_fr_start INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_rl_start INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_rr_start INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_fl_end INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_fr_end INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_rl_end INTEGER DEFAULT -1");
+                stmt.execute("ALTER TABLE trips ADD COLUMN IF NOT EXISTS tyre_rr_end INTEGER DEFAULT -1");
+            } catch (Exception e) {
+                logger.debug("trips tyre pressure column migration: " + e.getMessage());
             }
 
             // Routes table for O(1) similar-trip lookups
@@ -541,8 +564,10 @@ public class TripDatabase {
                 "is_phev, fuel_pct_start, fuel_pct_end, litres_used, fuel_price_per_l, fuel_cost, " +
                 "electric_cost, ice_seconds, fuel_con_start, fuel_con_end, size_bytes, sidecar_size_bytes, " +
                 "odometer_start_km, odometer_end_km, rate_source, rate_label, " +
-                "elec_con_start, elec_con_end) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "elec_con_start, elec_con_end, " +
+                "tyre_fl_start, tyre_fr_start, tyre_rl_start, tyre_rr_start, " +
+                "tyre_fl_end, tyre_fr_end, tyre_rl_end, tyre_rr_end) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             setTripParams(pstmt, trip);
@@ -556,6 +581,7 @@ public class TripDatabase {
             pstmt.setString(49, trip.rateLabel != null ? trip.rateLabel : "");
             pstmt.setDouble(50, trip.elecConStart);
             pstmt.setDouble(51, trip.elecConEnd);
+            setTripTyreParams(pstmt, trip, 52);
             pstmt.executeUpdate();
 
             try (ResultSet keys = pstmt.getGeneratedKeys()) {
@@ -596,7 +622,9 @@ public class TripDatabase {
                 "is_phev=?, fuel_pct_start=?, fuel_pct_end=?, litres_used=?, fuel_price_per_l=?, " +
                 "fuel_cost=?, electric_cost=?, ice_seconds=?, fuel_con_start=?, fuel_con_end=?, " +
                 "size_bytes=?, sidecar_size_bytes=?, odometer_start_km=?, odometer_end_km=?, " +
-                "rate_source=?, rate_label=?, elec_con_start=?, elec_con_end=? " +
+                "rate_source=?, rate_label=?, elec_con_start=?, elec_con_end=?, " +
+                "tyre_fl_start=?, tyre_fr_start=?, tyre_rl_start=?, tyre_rr_start=?, " +
+                "tyre_fl_end=?, tyre_fr_end=?, tyre_rl_end=?, tyre_rr_end=? " +
                 "WHERE id=?";
 
         try (PreparedStatement pstmt = connection.prepareStatement(sql)) {
@@ -611,7 +639,8 @@ public class TripDatabase {
             pstmt.setString(49, trip.rateLabel != null ? trip.rateLabel : "");
             pstmt.setDouble(50, trip.elecConStart);
             pstmt.setDouble(51, trip.elecConEnd);
-            pstmt.setLong(52, trip.id);
+            setTripTyreParams(pstmt, trip, 52);
+            pstmt.setLong(60, trip.id);
             int rows = pstmt.executeUpdate();
             logger.debug("Updated trip id=" + trip.id + " (rows=" + rows + ")");
             return rows > 0;
@@ -2762,6 +2791,14 @@ public class TripDatabase {
             o.put("elecConEnd", t.elecConEnd);
             o.put("odometerStartKm", t.odometerStartKm);
             o.put("odometerEndKm", t.odometerEndKm);
+            o.put("tyreFlStart", t.tyreFlStart);
+            o.put("tyreFrStart", t.tyreFrStart);
+            o.put("tyreRlStart", t.tyreRlStart);
+            o.put("tyreRrStart", t.tyreRrStart);
+            o.put("tyreFlEnd", t.tyreFlEnd);
+            o.put("tyreFrEnd", t.tyreFrEnd);
+            o.put("tyreRlEnd", t.tyreRlEnd);
+            o.put("tyreRrEnd", t.tyreRrEnd);
         } catch (Exception e) {
             logger.warn("tripToJson failed for trip start=" + t.startTime + ": " + e.getMessage());
         }
@@ -2822,6 +2859,14 @@ public class TripDatabase {
         t.odometerEndKm = o.optDouble("odometerEndKm", 0);
         t.rateSource = o.optString("rateSource", "");
         t.rateLabel = o.optString("rateLabel", "");
+        t.tyreFlStart = o.optInt("tyreFlStart", -1);
+        t.tyreFrStart = o.optInt("tyreFrStart", -1);
+        t.tyreRlStart = o.optInt("tyreRlStart", -1);
+        t.tyreRrStart = o.optInt("tyreRrStart", -1);
+        t.tyreFlEnd = o.optInt("tyreFlEnd", -1);
+        t.tyreFrEnd = o.optInt("tyreFrEnd", -1);
+        t.tyreRlEnd = o.optInt("tyreRlEnd", -1);
+        t.tyreRrEnd = o.optInt("tyreRrEnd", -1);
         return t;
     }
 
@@ -3049,7 +3094,24 @@ public class TripDatabase {
         // recorded before this column existed → UI omits the chip.
         try { String rs1 = rs.getString("rate_source"); trip.rateSource = rs1 != null ? rs1 : ""; } catch (Exception e) { trip.rateSource = ""; }
         try { String rl = rs.getString("rate_label");  trip.rateLabel  = rl != null ? rl : ""; }   catch (Exception e) { trip.rateLabel = ""; }
+        trip.tyreFlStart = readIntOrMinusOne(rs, "tyre_fl_start");
+        trip.tyreFrStart = readIntOrMinusOne(rs, "tyre_fr_start");
+        trip.tyreRlStart = readIntOrMinusOne(rs, "tyre_rl_start");
+        trip.tyreRrStart = readIntOrMinusOne(rs, "tyre_rr_start");
+        trip.tyreFlEnd = readIntOrMinusOne(rs, "tyre_fl_end");
+        trip.tyreFrEnd = readIntOrMinusOne(rs, "tyre_fr_end");
+        trip.tyreRlEnd = readIntOrMinusOne(rs, "tyre_rl_end");
+        trip.tyreRrEnd = readIntOrMinusOne(rs, "tyre_rr_end");
         return trip;
+    }
+
+    private static int readIntOrMinusOne(ResultSet rs, String col) {
+        try {
+            int val = rs.getInt(col);
+            return rs.wasNull() ? -1 : val;
+        } catch (Exception e) {
+            return -1;
+        }
     }
 
     /**
@@ -3111,6 +3173,17 @@ public class TripDatabase {
         pstmt.setInt    (firstIdx + 7, trip.iceSeconds());
         pstmt.setDouble (firstIdx + 8, trip.fuelConStart);
         pstmt.setDouble (firstIdx + 9, trip.fuelConEnd);
+    }
+
+    private void setTripTyreParams(PreparedStatement pstmt, TripRecord trip, int firstIdx) throws Exception {
+        pstmt.setInt(firstIdx,     trip.tyreFlStart);
+        pstmt.setInt(firstIdx + 1, trip.tyreFrStart);
+        pstmt.setInt(firstIdx + 2, trip.tyreRlStart);
+        pstmt.setInt(firstIdx + 3, trip.tyreRrStart);
+        pstmt.setInt(firstIdx + 4, trip.tyreFlEnd);
+        pstmt.setInt(firstIdx + 5, trip.tyreFrEnd);
+        pstmt.setInt(firstIdx + 6, trip.tyreRlEnd);
+        pstmt.setInt(firstIdx + 7, trip.tyreRrEnd);
     }
 
     /**

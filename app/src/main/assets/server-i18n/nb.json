@@ -351,7 +351,7 @@
       "uploading": "⏳ Opplasting *{0}* logg…",
       "service_unreachable": "⚠️ Kunne ikke nå loggtjenesten. Kameraedemon kjører kanskje ikke. Prøv `/daemon kameraet start`.",
       "upload_failed": "⚠️ Loggopplasting feilet: {0}",
-      "upload_success": ":check_mark_knapp: *{0}* logg lastet opp.\n\nDel denne koden med oss og inkluder en note som beskriver hva som gikk galt:\n`{1}`\n\nRapporter den på:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Secrets ble fjernet før opplasting. Loggen utløper automatisk._"
+      "upload_success": ":check_mark_knapp: *{0}* logg lastet opp.\n\nDel denne koden med oss og inkluder en note som beskriver hva som gikk galt:\n`{1}`\n\nRapporter den på:\n• GitHub: {2}\n\n_Secrets ble fjernet før opplasting. Loggen utløper automatisk._"
     },
     "greeting": {
       "online": "🤖 *Overvåking av botten online*\n\nBot daemon startet og klar.\nBruk /help for tilgjengelige kommandoer."

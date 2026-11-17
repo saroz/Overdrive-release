@@ -27,6 +27,40 @@ fun safeKeepOAuthField(key: String): String {
     return "\"" + v.replace("\\", "\\\\").replace("\"", "\\\"") + "\""
 }
 
+// Optional .env file at the repo root (gitignored) for self-hosted Cloudflare
+// Worker endpoints and build-time flags. Precedence: Gradle -P property > .env >
+// process environment > empty string (feature disabled by default).
+val dotEnv = Properties().apply {
+    val f = rootProject.file(".env")
+    if (f.isFile) {
+        f.readLines(Charsets.UTF_8).forEach { rawLine ->
+            val line = rawLine.trim()
+            if (line.isEmpty() || line.startsWith("#")) return@forEach
+            val cleaned = if (line.startsWith("export ")) line.removePrefix("export ").trim() else line
+            val eq = cleaned.indexOf('=')
+            if (eq <= 0) return@forEach
+            val k = cleaned.substring(0, eq).trim()
+            var v = cleaned.substring(eq + 1).trim()
+            if ((v.startsWith("\"") && v.endsWith("\"") && v.length >= 2) ||
+                (v.startsWith("'") && v.endsWith("'") && v.length >= 2)
+            ) {
+                v = v.substring(1, v.length - 1)
+            }
+            setProperty(k, v)
+        }
+    }
+}
+fun envOrProp(envKey: String, propKey: String? = null): String {
+    val raw = (propKey?.let { project.findProperty(it) as? String })
+        ?: (project.findProperty(envKey) as? String)
+        ?: dotEnv.getProperty(envKey)
+        ?: System.getenv(envKey)
+        ?: ""
+    return raw.trim()
+}
+fun quotedBuildConfig(value: String): String =
+    "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"") + "\""
+
 // Auto-download OpenH264 from Cisco's official binary releases
 tasks.register("downloadOpenH264") {
     val openh264Dir = file("src/main/cpp/openh264")
@@ -458,6 +492,12 @@ android {
         // the working build's generated BuildConfig (default-config fields).
         buildConfigField("boolean", "LOG_CAPTURE", "false")
         buildConfigField("String", "LOG_UPLOAD_URL", "\"\"")
+        // Self-hosted Cloudflare Worker defaults injected at build time from `.env`
+        // (or `-Poverdrive*WorkerUrl=...`). Empty when unset so builds carry no
+        // external default endpoints.
+        buildConfigField("String", "ANALYTICS_WORKER_URL", quotedBuildConfig(envOrProp("ANALYTICS_WORKER_URL", "overdriveAnalyticsWorkerUrl")))
+        buildConfigField("String", "COMMUNITY_WORKER_URL", quotedBuildConfig(envOrProp("COMMUNITY_WORKER_URL", "overdriveCommunityWorkerUrl")))
+        buildConfigField("String", "ROADSENSE_WORKER_URL", quotedBuildConfig(envOrProp("ROADSENSE_WORKER_URL", "overdriveRoadSenseWorkerUrl")))
         // Hard-off for the in-car DiLink 5 BYD Cloud keep-alive poller in this
         // release. A future build must deliberately flip this before the
         // independent runtime config gate can enable network polling.
@@ -560,11 +600,11 @@ android {
             buildConfigField("String", "UPDATE_CHANNEL", "\"braveheart\"")
             buildConfigField("boolean", "LOG_CAPTURE", "true")
             // Cloudflare Worker that stashes an uploaded daemon log and returns a short
-            // retrieval code. Supplied at build time (-PoverdriveLogUploadUrl=…) rather
-            // than hardcoded, so this tree carries no deployment-specific endpoint.
+            // retrieval code. Supplied at build time via `.env` (LOG_UPLOAD_URL) or
+            // `-PoverdriveLogUploadUrl=…` rather than hardcoded.
             // Empty → the in-app log upload is disabled, same as release/debug.
             buildConfigField("String", "LOG_UPLOAD_URL",
-                "\"${project.findProperty("overdriveLogUploadUrl") as? String ?: ""}\"")
+                quotedBuildConfig(envOrProp("LOG_UPLOAD_URL", "overdriveLogUploadUrl")))
         }
     }
     

@@ -1,5 +1,6 @@
 package com.overdrive.app.analytics
 
+import com.overdrive.app.BuildConfig
 import com.overdrive.app.config.UnifiedConfigManager
 import com.overdrive.app.logging.DaemonLogger
 import com.overdrive.app.updater.AppUpdater
@@ -45,8 +46,10 @@ object AnalyticsPinger {
     private const val KEY_WORKER_URL = "workerUrl"
     private const val KEY_LAST_PING_DAY = "lastPingDay"
 
-    /** Project default backend. A self-hoster overrides `analytics.workerUrl`. */
-    private const val DEFAULT_WORKER_URL = "https://analytics-edge.yash321sri.workers.dev"
+    /** Build-time default backend (from `.env` / Gradle properties; empty when unset).
+     *  A self-hoster can also override `analytics.workerUrl` at runtime. */
+    private val DEFAULT_WORKER_URL: String
+        get() = BuildConfig.ANALYTICS_WORKER_URL
 
     private val logger = DaemonLogger.getInstance("Analytics/Ping")
     private val JSON = "application/json; charset=utf-8".toMediaType()
@@ -77,7 +80,10 @@ object AnalyticsPinger {
             if (section?.optString(KEY_LAST_PING_DAY, "") == today) return // already pinged today
 
             val base = (section?.optString(KEY_WORKER_URL, "")?.trim()
-                ?.takeIf { it.isNotEmpty() } ?: DEFAULT_WORKER_URL).trimEnd('/')
+                ?.takeIf { it.isNotEmpty() }
+                ?: DEFAULT_WORKER_URL.trim().takeIf { it.isNotEmpty() })
+                ?.trimEnd('/')
+                ?: return
 
             // Pass the section we already loaded so AnalyticsId doesn't do a second
             // forceReload() disk/cross-UID read on this same tick.

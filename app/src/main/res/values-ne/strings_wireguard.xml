@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="daemon_name_wireguard">WireGuard टनेल</string>
+    <string name="daemon_config_no_wireguard">WireGuard कन्फिगरेसन छैन</string>
+    <string name="daemon_status_wireguard_connected">जडान भयो · %1$s</string>
+    <string name="daemon_status_wireguard_connecting">%1$s मा जडान हुँदैछ…</string>
+    <string name="daemon_status_wireguard_error">त्रुटि: %1$s</string>
+</resources>

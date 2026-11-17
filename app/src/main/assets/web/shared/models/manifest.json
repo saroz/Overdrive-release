@@ -1,7 +1,7 @@
 {
   "version": 13,
   "default": "seal",
-  "baseUrl": "https://github.com/yash-srivastava/Overdrive-release/releases/download/models-v1/",
+  "baseUrl": "https://github.com/saroz/Overdrive-release/releases/download/models-v1/",
   "batteryChemistryDefinitions": {
     "blade": {
       "chemistry": "lfp",

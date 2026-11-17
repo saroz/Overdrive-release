@@ -66,6 +66,6 @@
          license, source link, support links + Check for Updates. -->
     <item
         android:id="@+id/settingsAboutFragment"
-        android:icon="@drawable/ic_update"
+        android:icon="@drawable/ic_about"
         android:title="@string/settings_section_about" />
 </menu>

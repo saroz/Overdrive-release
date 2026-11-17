@@ -842,7 +842,7 @@
     <string name="settings_about_support_section">מונע בזכות אנשים כמוך</string>
     <string name="settings_about_support_share_title">ספר לבעל רכב נוסף</string>
     <string name="settings_about_support_share_value">כל קישור שתשתף עוזר לבעל רכב BYD נוסף לגלות את Overdrive.</string>
-    <string name="settings_about_support_share_message">כדאי להכיר את Overdrive — מערכת מעקב ומצלמת דרך בקוד פתוח עבור BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">כדאי להכיר את Overdrive — מערכת מעקב ומצלמת דרך בקוד פתוח עבור BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">שיתוף Overdrive</string>
     <string name="settings_about_youtube_title">הירשמו לערוץ שלנו ב-YouTube</string>
     <string name="settings_about_youtube_value">תנו לייק, הירשמו ושתפו — כל צפייה עוזרת ל-Overdrive לגדול.</string>
@@ -853,7 +853,7 @@
     <string name="settings_about_license_title">רישיון</string>
     <string name="settings_about_license_value">‏MIT — קוד פתוח. הקש לצפייה בטקסט המלא.</string>
     <string name="settings_about_source_title">קוד מקור</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">פרגנו לנו בכוכב ב-GitHub</string>
     <string name="settings_about_star_value">לוקח שנייה. שווה המון.</string>
     <string name="settings_about_thanks_title">תודות</string>

@@ -57,8 +57,8 @@
                                     <span><span class="ui-data-label" data-i18n="dashboard.drive_metric_speed">Speed</span> <strong id="dashDriveSpeed">--</strong> <small id="dashDriveSpeedUnit">km/h</small></span>
                                 </div>
                             </div>
-                            <img class="ui-hero-image" src="../shared/dashboard-vehicle-reference.webp" width="600" height="338"
-                                 alt="BYD Dolphin vehicle illustration" data-i18n-attr="alt:dashboard.home_vehicle_image"
+                            <img class="ui-hero-image" id="homeHeroVehicleImg" src="../shared/dashboard-vehicle-reference.webp" width="600" height="338"
+                                 alt="BYD vehicle illustration" data-i18n-attr="alt:dashboard.home_vehicle_image"
                                  decoding="async" fetchpriority="high">
                             <div class="ui-hero-badges">
                                 <a class="ui-status home-chip" id="dashSurvChip" href="surveillance.html" data-ico="shield"><span class="home-chip-text" data-i18n="dashboard.chip_surveillance_pending">Surveillance --</span></a>
@@ -99,76 +99,74 @@
                                 <div class="ui-detail-row"><span data-i18n="dashboard.glance_tyres">Tyres</span><strong id="glTyresText">--</strong></div>
                                 <div class="ui-detail-row"><span data-i18n="dashboard.glance_sentry">Sentry</span><strong id="glSentryText">--</strong></div>
                             </div>
-                            <details class="home-sensors">
+                            <details class="home-sensors" open>
                                 <summary class="ui-text-button" data-i18n="dashboard.home_sensor_details">Tyre and door details</summary>
                                 <div class="home-car" id="dashGlanceCar">
-                                    <svg class="home-car-svg" viewBox="0 0 150 260" preserveAspectRatio="xMidYMid meet">
-                                        <rect id="glTyreFL" class="dash-car-tyre" x="18" y="46" width="13" height="34" rx="5"/>
-                                        <rect id="glTyreFR" class="dash-car-tyre" x="119" y="46" width="13" height="34" rx="5"/>
-                                        <rect id="glTyreRL" class="dash-car-tyre" x="18" y="186" width="13" height="34" rx="5"/>
-                                        <rect id="glTyreRR" class="dash-car-tyre" x="119" y="186" width="13" height="34" rx="5"/>
-                                        <path class="home-car-body" d="M75 12 C51 12 37 24 35 50 L31 92 L31 196 C31 228 47 248 75 248 C103 248 119 228 119 196 L119 92 L115 50 C113 24 99 12 75 12 Z"/>
-                                        <path id="glGlassFront" class="home-car-glass" d="M48 62 C58 54 92 54 102 62 L98 88 C84 82 66 82 52 88 Z"/>
-                                        <path id="glGlassRear" class="home-car-glass" d="M52 202 C66 208 84 208 98 202 L102 222 C92 230 58 230 48 222 Z"/>
-                                        <rect id="glDoorLF" class="dash-car-door" x="27" y="98" width="5" height="44" rx="2.5"/>
-                                        <rect id="glDoorLR" class="dash-car-door" x="27" y="148" width="5" height="44" rx="2.5"/>
-                                        <rect id="glDoorRF" class="dash-car-door" x="118" y="98" width="5" height="44" rx="2.5"/>
-                                        <rect id="glDoorRR" class="dash-car-door" x="118" y="148" width="5" height="44" rx="2.5"/>
-                                        <text id="glPsiFL" class="dash-car-psi" x="24" y="25" text-anchor="middle">--</text>
-                                        <text id="glPsiFR" class="dash-car-psi" x="126" y="25" text-anchor="middle">--</text>
-                                        <text id="glPsiRL" class="dash-car-psi" x="24" y="240" text-anchor="middle">--</text>
-                                        <text id="glPsiRR" class="dash-car-psi" x="126" y="240" text-anchor="middle">--</text>
-                                        <g class="home-car-temp">
-                                            <text id="glTempFL" x="24" y="42" text-anchor="middle">--</text>
-                                            <text id="glTempFR" x="126" y="42" text-anchor="middle">--</text>
-                                            <text id="glTempRL" x="24" y="255" text-anchor="middle">--</text>
-                                            <text id="glTempRR" x="126" y="255" text-anchor="middle">--</text>
-                                        </g>
-                                        <g id="glLockGlyph" class="dash-car-lock" transform="translate(75,142)">
-                                            <path id="glLockShackle" d="M-4 -3 v-3 a4 4 0 0 1 8 0 v3" fill="none"/>
-                                            <rect x="-7" y="-3" width="14" height="11" rx="2.5"/>
-                                        </g>
-                                    </svg>
+                                    <div class="home-car-stage">
+                                        <div class="home-car-model" aria-hidden="true">
+                                            <img class="home-car-fallback" src="../shared/car-icon.webp" alt="">
+                                            <canvas id="homeCarTopCanvas" class="home-car-canvas"></canvas>
+                                        </div>
+                                        <svg class="home-car-svg" viewBox="0 0 150 260" preserveAspectRatio="xMidYMid meet">
+                                            <rect id="glTyreFL" class="dash-car-tyre" x="18" y="46" width="13" height="34" rx="5"/>
+                                            <rect id="glTyreFR" class="dash-car-tyre" x="119" y="46" width="13" height="34" rx="5"/>
+                                            <rect id="glTyreRL" class="dash-car-tyre" x="18" y="186" width="13" height="34" rx="5"/>
+                                            <rect id="glTyreRR" class="dash-car-tyre" x="119" y="186" width="13" height="34" rx="5"/>
+                                            <path class="home-car-body" d="M75 12 C51 12 37 24 35 50 L31 92 L31 196 C31 228 47 248 75 248 C103 248 119 228 119 196 L119 92 L115 50 C113 24 99 12 75 12 Z"/>
+                                            <path id="glGlassFront" class="home-car-glass" d="M48 62 C58 54 92 54 102 62 L98 88 C84 82 66 82 52 88 Z"/>
+                                            <path id="glGlassRear" class="home-car-glass" d="M52 202 C66 208 84 208 98 202 L102 222 C92 230 58 230 48 222 Z"/>
+                                            <rect id="glDoorLF" class="dash-car-door" x="27" y="98" width="5" height="44" rx="2.5"/>
+                                            <rect id="glDoorLR" class="dash-car-door" x="27" y="148" width="5" height="44" rx="2.5"/>
+                                            <rect id="glDoorRF" class="dash-car-door" x="118" y="98" width="5" height="44" rx="2.5"/>
+                                            <rect id="glDoorRR" class="dash-car-door" x="118" y="148" width="5" height="44" rx="2.5"/>
+                                            <text id="glPsiFL" class="dash-car-psi" x="24" y="25" text-anchor="middle">--</text>
+                                            <text id="glPsiFR" class="dash-car-psi" x="126" y="25" text-anchor="middle">--</text>
+                                            <text id="glPsiRL" class="dash-car-psi" x="24" y="240" text-anchor="middle">--</text>
+                                            <text id="glPsiRR" class="dash-car-psi" x="126" y="240" text-anchor="middle">--</text>
+                                            <g class="home-car-temp">
+                                                <text id="glTempFL" x="24" y="42" text-anchor="middle">--</text>
+                                                <text id="glTempFR" x="126" y="42" text-anchor="middle">--</text>
+                                                <text id="glTempRL" x="24" y="255" text-anchor="middle">--</text>
+                                                <text id="glTempRR" x="126" y="255" text-anchor="middle">--</text>
+                                            </g>
+                                            <g id="glLockGlyph" class="dash-car-lock" transform="translate(75,142)">
+                                                <path id="glLockShackle" d="M-4 -3 v-3 a4 4 0 0 1 8 0 v3" fill="none"/>
+                                                <rect x="-7" y="-3" width="14" height="11" rx="2.5"/>
+                                            </g>
+                                        </svg>
+                                    </div>
                                 </div>
                             </details>
                         </div>
                     </section>
 
-                    <section class="ui-panel" id="homeControls" aria-labelledby="homeControlsTitle">
-                        <div class="ui-panel-head">
+                    <section class="home-controls" id="homeControls" aria-labelledby="homeControlsTitle">
+                        <div class="home-controls-head">
                             <h2 id="homeControlsTitle" data-i18n="dashboard.card_commands">Quick controls</h2>
                         </div>
-                        <div class="ui-panel-body">
-                            <button class="ui-row" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/lock')">
-                                <svg class="ui-icon" aria-hidden="true"><use href="#ph-lock"></use></svg>
-                                <span class="ui-row-copy"><strong data-i18n="dashboard.cmd_lock">Lock</strong><small data-i18n="dashboard.cmd_lock_hint">Secure all doors</small></span>
-                                <svg class="ui-icon ui-row-end" aria-hidden="true"><use href="#ph-caret-right"></use></svg>
-                            </button>
-                            <button class="ui-row" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/unlock')">
-                                <svg class="ui-icon" aria-hidden="true"><use href="#ph-unlock"></use></svg>
-                                <span class="ui-row-copy"><strong data-i18n="dashboard.cmd_unlock">Unlock</strong><small data-i18n="dashboard.cmd_unlock_hint">Unlock the doors</small></span>
-                                <svg class="ui-icon ui-row-end" aria-hidden="true"><use href="#ph-caret-right"></use></svg>
-                            </button>
+                        <div class="home-controls-body">
                             <div class="home-actions">
-                                <button class="ui-button ui-button-soft" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/flash')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-headlights"></use></svg><span data-i18n="dashboard.cmd_flash">Flash</span></button>
-                                <button class="ui-button ui-button-soft" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/find-car')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-find"></use></svg><span data-i18n="dashboard.cmd_find">Find</span></button>
-                                <button class="ui-button ui-button-soft" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'open'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-open"></use></svg><span data-i18n="dashboard.cmd_trunk_open">Open trunk</span></button>
-                                <button class="ui-button ui-button-soft" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'close'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-close"></use></svg><span data-i18n="dashboard.cmd_trunk_close">Close trunk</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/lock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-lock"></use></svg><span data-i18n="dashboard.cmd_lock">Lock</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/unlock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-unlock"></use></svg><span data-i18n="dashboard.cmd_unlock">Unlock</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/flash')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-headlights"></use></svg><span data-i18n="dashboard.cmd_flash">Flash</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/find-car')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-find"></use></svg><span data-i18n="dashboard.cmd_find">Find</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'open'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-open"></use></svg><span data-i18n="dashboard.cmd_trunk_open">Open trunk</span></button>
+                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'close'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-close"></use></svg><span data-i18n="dashboard.cmd_trunk_close">Close trunk</span></button>
                             </div>
                             <div class="home-pills" id="dashPills">
                                 <!-- Vehicle power. Local rail only; stays display:none until
                                      /api/vehicle/cloud-status confirms that rail exists on this car. -->
                                 <div class="home-actions" id="dashPowerCommands" style="display:none">
-                                    <button class="ui-button ui-button-soft home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, true)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_on">Power on</span></button>
-                                    <button class="ui-button ui-button-soft home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, false)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_off">Power off</span></button>
+                                    <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, true)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_on">Power on</span></button>
+                                    <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, false)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_off">Power off</span></button>
                                 </div>
                                 <!-- User-defined buttons (GET /api/quick-controls); hidden until one exists. -->
                                 <div class="home-actions" id="dashCustomCommands" style="display:none"></div>
                                 <div class="home-actions">
-                                    <a class="ui-button ui-button-soft home-cmd" href="live-view.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-live-view"></use></svg><span data-i18n="dashboard.cmd_live">Live</span></a>
-                                    <a class="ui-button ui-button-soft home-cmd" href="events.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-recordings"></use></svg><span data-i18n="dashboard.cmd_recordings">Recordings</span></a>
-                                    <a class="ui-button ui-button-soft home-cmd" href="trips.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trips"></use></svg><span data-i18n="dashboard.cmd_trips">Trips</span></a>
-                                    <a class="ui-button ui-button-soft home-cmd" href="parking.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-parking"></use></svg><span data-i18n="dashboard.cmd_parking">Parking</span></a>
+                                    <a class="ui-button home-cmd" href="live-view.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-live-view"></use></svg><span data-i18n="dashboard.cmd_live">Live</span></a>
+                                    <a class="ui-button home-cmd" href="events.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-recordings"></use></svg><span data-i18n="dashboard.cmd_recordings">Recordings</span></a>
+                                    <a class="ui-button home-cmd" href="trips.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trips"></use></svg><span data-i18n="dashboard.cmd_trips">Trips</span></a>
+                                    <a class="ui-button home-cmd" href="parking.html"><svg class="ui-icon" aria-hidden="true"><use href="#ph-parking"></use></svg><span data-i18n="dashboard.cmd_parking">Parking</span></a>
                                 </div>
                                 <button type="button" class="ui-text-button" id="dashPillsMore" hidden aria-expanded="false" aria-controls="dashPills"><span data-i18n="common.more">More</span></button>
                             </div>
@@ -271,10 +269,18 @@
         .home-sensors { margin-top: 12px; }
         .home-sensors summary { list-style: none; }
         .home-sensors summary::-webkit-details-marker { display: none; }
-        .home-car { display: grid; place-items: center; padding: 8px 0; }
-        .home-car-svg { width: 150px; height: 240px; }
-        .home-car-body { fill: var(--ui-soft); stroke: var(--ui-line); stroke-width: 1.5; }
-        .home-car-glass { fill: var(--ui-hero); }
+        .home-car { display: grid; place-items: center; margin-top: 8px; padding: 14px 12px; border: 1px solid var(--ui-line); border-radius: 14px; background: var(--ui-hero-bg); transition: border-color .2s, box-shadow .2s; }
+        .home-car.is-flashing { border-color: var(--ui-accent); box-shadow: 0 0 0 3px var(--ui-accent-soft); }
+        .home-car-stage { position: relative; width: 168px; height: 268px; }
+        .home-car-model { position: absolute; left: 20.5%; top: 5%; width: 59%; height: 90%; z-index: 2; pointer-events: none; }
+        .home-car-fallback, .home-car-canvas { position: absolute; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; object-fit: contain; filter: var(--ui-car-shadow); transition: opacity .25s ease; }
+        .home-car-fallback { opacity: .88; }
+        .home-car-canvas { opacity: 0; display: block; }
+        .home-car.vehicle-render-ready .home-car-fallback { opacity: 0; }
+        .home-car.vehicle-render-ready .home-car-canvas { opacity: 1; }
+        .home-car-svg { position: relative; z-index: 4; width: 100%; height: 100%; }
+        .home-car-body, .home-car-glass { opacity: 0; fill: none; stroke: transparent; }
+        .home-car-glass.open { opacity: .65; stroke: var(--ui-accent); stroke-width: 2; }
         .dash-car-tyre, .dash-car-door { fill: var(--ui-line); }
         .dash-car-tyre.normal, .dash-car-door.locked { fill: var(--ui-green); }
         .dash-car-tyre.warn, .dash-car-door.unlocked, .dash-car-door.open { fill: var(--ui-accent); }
@@ -282,12 +288,9 @@
         .dash-car-lock rect, .dash-car-lock path { fill: var(--ui-muted); stroke: var(--ui-muted); stroke-width: 1.5; }
         .dash-car-lock.locked rect { fill: var(--ui-green); stroke: var(--ui-green); }
         .dash-car-psi, .home-car-temp text { fill: var(--ui-muted); font-size: 9px; font-weight: 600; }
-        .home-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+        .home-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-gap: 10px; gap: 10px; margin-top: 10px; }
+        #homeControls .home-controls-body > .home-actions:first-child { margin-top: 0; }
         .ui-row.pending, .ui-button.pending { opacity: .55; pointer-events: none; }
-        .home-metrics { display: block; overflow: hidden; }
-        .home-metric-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 22px; margin-inline-start: -25px; }
-        .home-metric-grid .ui-metric { padding-inline: 24px; border-inline-start: 1px solid var(--ui-line); }
-        .home-metric-text { font-size: 20px; overflow-wrap: anywhere; }
         .home-energy-total { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
         .home-chart { display: flex; align-items: flex-end; gap: 10px; height: 150px; margin-top: 14px; }
         .home-bar { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; height: 100%; color: var(--ui-muted); font-size: 11px; }
@@ -297,12 +300,7 @@
         .home-location { margin-top: 20px; }
         .home-map { height: 240px; border-top: 1px solid var(--ui-line); }
         #mapContainer { width: 100%; height: 100%; }
-        @media (max-width: 1150px) { .home-metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-        @media (max-width: 540px) {
-            .home-metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .home-facts { grid-template-columns: 1fr; }
-            .home-drive { justify-content: flex-start; }
-        }
+        @media (max-width: 540px) { .home-facts { grid-template-columns: 1fr; } .home-drive { justify-content: flex-start; } }
     </style>
 
     <script src="../shared/auth.js"></script>
@@ -513,9 +511,16 @@
                         var b = buttons[i];
                         if (!b || !b.id) continue;
                         var el = document.createElement('button');
-                        el.className = 'ui-button ui-button-soft home-cmd';
+                        el.className = 'ui-button home-cmd';
                         el.type = 'button';
                         el.setAttribute('data-qc-id', b.id);
+                        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                        svg.setAttribute('class', 'ui-icon');
+                        svg.setAttribute('aria-hidden', 'true');
+                        var use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+                        use.setAttribute('href', '#ph-key-mapping');
+                        svg.appendChild(use);
+                        el.appendChild(svg);
                         // Label via textContent, never innerHTML — a user-authored label must
                         // not be able to inject markup into the dashboard.
                         var span = document.createElement('span');
@@ -1855,6 +1860,43 @@
                     list.appendChild(item);
                 }
             },
+            syncVehicleArt: function(modelId) {
+                var img = document.getElementById('homeHeroVehicleImg');
+                if (!img || !modelId) return;
+                if (!img._fallbackWired) {
+                    img._fallbackWired = true;
+                    img.addEventListener('error', function() {
+                        if (img.getAttribute('data-fallback-applied') === '1') return;
+                        img.setAttribute('data-fallback-applied', '1');
+                        img.src = '../shared/dashboard-vehicle-reference.webp';
+                    });
+                }
+                img.removeAttribute('data-fallback-applied');
+                img.src = '/api/models/art?id=' + encodeURIComponent(modelId);
+            },
+            initVehicleVisuals: function() {
+                var self = this;
+                if (window.OverdriveAppShell && typeof window.OverdriveAppShell.getSelectedVehicle === 'function') {
+                    var current = window.OverdriveAppShell.getSelectedVehicle();
+                    if (current && current.modelId) self.syncVehicleArt(current.modelId);
+                }
+                document.addEventListener('overdrive:vehicle-resolved', function(ev) {
+                    if (ev && ev.detail && ev.detail.modelId) self.syncVehicleArt(ev.detail.modelId);
+                });
+                document.addEventListener('overdrive:vehicle-changed', function(ev) {
+                    if (ev && ev.detail && ev.detail.modelId) self.syncVehicleArt(ev.detail.modelId);
+                });
+                var car = document.getElementById('dashGlanceCar');
+                var canvas = document.getElementById('homeCarTopCanvas');
+                if (car && canvas && window.OverdriveAppShell
+                        && typeof window.OverdriveAppShell.mountVehicleCanvas === 'function'
+                        && !this._topCarHandle) {
+                    this._topCarHandle = window.OverdriveAppShell.mountVehicleCanvas(canvas, {
+                        view: 'top',
+                        onReady: function() { car.classList.add('vehicle-render-ready'); }
+                    });
+                }
+            },
             openDirections: function() {
                 var gps = this.lastStatus && this.lastStatus.gps;
                 if (!gps || !gps.hasLocation) {
@@ -1901,6 +1943,7 @@
 
         BYD.i18n.init().then(function() {
             BYD.core.init();
+            BYD.dashboard.initVehicleVisuals();
             if (BYD.map) BYD.map.init();
             // The map fills its tile, whose height follows the bento row; Leaflet
             // only re-measures on window resize, so re-measure when the box changes.

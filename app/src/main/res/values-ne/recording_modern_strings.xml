@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="recording_library_loading">रेकर्डिङहरू लोड हुँदैछन्</string>
+    <string name="recording_library_refreshing">रेकर्डिङहरू ताजा बनाइँदैछन्</string>
+    <string name="recording_library_loading_more">थप रेकर्डिङहरू लोड हुँदैछन्</string>
+    <string name="recording_library_page_error">थप रेकर्डिङ लोड गर्न सकिएन।</string>
+    <string name="recording_library_page_unavailable">थप रेकर्डिङहरू अस्थायी रूपमा उपलब्ध छैनन्।</string>
+    <string name="recording_library_refresh_error">ताजा बनाउन सकिएन। पहिले लोड भएका रेकर्डिङ देखाइँदैछ।</string>
+    <string name="recording_library_fatal_title">रेकर्डिङहरू खोल्न सकिएन</string>
+    <string name="recording_library_fatal_body">रेकर्डिङ सेवा र भण्डारण जाँच गरी पुनः प्रयास गर्नुहोस्।</string>
+    <string name="recording_library_select">रेकर्डिङ छान्नुहोस्</string>
+    <string name="recording_library_open_filters">रेकर्डिङ फिल्टर गर्नुहोस्</string>
+    <string name="recording_library_clear_search">स्थान खोज खाली गर्नुहोस्</string>
+    <string name="recording_preview_details">रेकर्डिङ विवरण</string>
+    <string name="cd_expand_recording_details">रेकर्डिङ विवरण देखाउनुहोस्</string>
+    <string name="cd_collapse_recording_details">रेकर्डिङ विवरण लुकाउनुहोस्</string>
+    <string name="recording_item_description">%1$s, %2$s, %3$s। रेकर्डिङ खोल्नुहोस्।</string>
+    <string name="recording_item_selection_description">%1$s, %2$s, %3$s। %4$s</string>
+    <string name="recording_item_selected_action">चयन गरिएको छ। हटाउन डबल ट्याप गर्नुहोस्।</string>
+    <string name="recording_item_not_selected_action">चयन गरिएको छैन। चयन गर्न डबल ट्याप गर्नुहोस्।</string>
+    <string name="recording_item_select">%1$s छान्नुहोस्</string>
+    <string name="recording_item_deselect">%1$s चयन हटाउनुहोस्</string>
+    <string name="cd_pause">पज</string>
+    <string name="cd_player_unmute">अडियो अन गर्नुहोस्</string>
+    <string name="cd_player_mute_audio">अडियो म्युट गर्नुहोस्</string>
+    <string name="video_player_buffering">भिडियो लोड हुँदैछ</string>
+    <string name="video_player_error_title">यो रेकर्डिङ प्ले गर्न सकिएन</string>
+    <string name="video_player_error_body">फाइल उपलब्ध नहुन सक्छ वा भण्डारण उपकरण विच्छेद भएको हुन सक्छ।</string>
+    <string name="video_player_retry">पुनः प्रयास</string>
+    <string name="video_player_next">अर्को रेकर्डिङ</string>
+    <string name="video_timeline_empty">घटना समयरेखा। कुनै घटना पहिचान भएन।</string>
+    <string name="video_timeline_events">घटना समयरेखा। %1$d घटनाहरू पहिचान भए। नजिकको घटनामा जान ट्याप गर्नुहोस्।</string>
+    <string name="video_timeline_selected">%2$s मा %1$s घटना</string>
+</resources>

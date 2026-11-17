@@ -52,7 +52,7 @@ public final class Messages {
         if (raw == null && !lang.equals("en")) raw = lookupAsset("en", key);
         if (raw == null) return key; // dev-visible miss
         if (args == null || args.length == 0) return raw;
-        // Escapes lone apostrophes before formatting. Crowdin translators write
+        // Escapes lone apostrophes before formatting. Translators write
         // natural elision (fr "l'", uk "з'", nl "{0}'s"), which raw MessageFormat
         // reads as a quoted literal — dropping the apostrophe and, when it comes
         // before a placeholder, suppressing the substitution entirely.

@@ -88,3 +88,39 @@
 @media (prefers-reduced-motion: reduce) {
   .ui-nav-chevron, .ui-meter-fill, .car-icon-wrapper { transition: none; }
 }
+
+/* Home quick-control 3-column square tiles: clean surface, dark icon & label, no outer card. */
+.home-controls { min-width: 0; }
+.home-controls-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.home-controls-head h2 { font-size: 17px; font-weight: 650; letter-spacing: -.25px; }
+#homeControls .home-cmd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 92px;
+  aspect-ratio: 1 / 1;
+  padding: 12px 8px;
+  border-radius: 14px;
+  border: 1px solid var(--ui-line);
+  background: var(--ui-surface);
+  color: var(--ui-ink);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;
+  transition: transform .12s ease, background-color .12s ease;
+}
+#homeControls .home-cmd:hover { background: var(--ui-soft); }
+#homeControls .home-cmd:active { transform: scale(.98); }
+#homeControls .home-cmd .ui-icon { width: 28px; height: 28px; flex-shrink: 0; color: var(--ui-ink); }
+html.ui-no-flex-gap #homeControls .home-cmd > * + * { margin-left: 0; margin-top: 8px; }

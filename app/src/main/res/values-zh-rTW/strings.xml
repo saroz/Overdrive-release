@@ -665,7 +665,7 @@
     <string name="settings_about_support_section">靠像你這樣的人動力</string>
     <string name="settings_about_support_share_title">告訴另一位車主</string>
     <string name="settings_about_support_share_value">每一次分享都幫助另一位 BYD 車主發現 Overdrive</string>
-    <string name="settings_about_support_share_message">查看Overdrive 開放源監控和Dashcam的BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">查看Overdrive 開放源監控和Dashcam的BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">分享 Overdrive</string>
     <string name="settings_about_youtube_title">在 YouTube 上訂閱</string>
     <string name="settings_about_youtube_value">按讚、訂閱、分享——每一次觀看都在幫助 Overdrive 成長。</string>
@@ -676,7 +676,7 @@
     <string name="settings_about_license_title">授權使用</string>
     <string name="settings_about_license_value">開源. 按下來查看全文.</string>
     <string name="settings_about_source_title">源代碼</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">在 GitHub 上放一個</string>
     <string name="settings_about_star_value">需要一秒, 這意味著很多.</string>
     <string name="settings_about_thanks_title">致謝</string>

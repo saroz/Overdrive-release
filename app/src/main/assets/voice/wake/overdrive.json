@@ -1,8 +1,8 @@
 {
   "type": "micro",
   "wake_word": "OverDrive",
-  "author": "irshsay",
-  "website": "https://github.com/yourname",
+  "author": "saroz",
+  "website": "https://github.com/saroz/Overdrive-release",
   "model": "overdrive.tflite",
   "trained_languages": [
     "en"

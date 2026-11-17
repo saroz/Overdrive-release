@@ -677,7 +677,7 @@
     <string name="settings_about_support_section">مدعوم من أشخاص مثلك</string>
     <string name="settings_about_support_share_title">أخبر مالك زميل</string>
     <string name="settings_about_support_share_value">كل رابط مشترك يساعد مالك BYD آخر على اكتشاف الزحف المفرط.</string>
-    <string name="settings_about_support_share_message">تحقق من فائقة القيادة - مراقبة مفتوحة المصدر &amp; Dashcam لـ BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">تحقق من فائقة القيادة - مراقبة مفتوحة المصدر &amp; Dashcam لـ BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">شارك فوق القرص</string>
     <string name="settings_about_youtube_title">اشترك في قناتنا على YouTube</string>
     <string name="settings_about_youtube_value">سجّل إعجابك واشترك وشارك — كل مشاهدة تساعد Overdrive على النمو.</string>
@@ -688,7 +688,7 @@
     <string name="settings_about_license_title">الترخيص</string>
     <string name="settings_about_license_value">MIT - المصدر المفتوح. انقر لعرض النص الكامل.</string>
     <string name="settings_about_source_title">الكود المصدري</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Star us on GitHub</string>
     <string name="settings_about_star_value">يأخذ ثانية. يعني الكثير.</string>
     <string name="settings_about_thanks_title">شكراً</string>
@@ -1222,9 +1222,9 @@
     <string name="toast_cloudflared_saved_settings">تم حفظ إعدادات Cloudflared</string>
     <!-- Added machine-generated placeholder translations for previously missing Arabic strings -->
     <string name="cd_replay_status">حالة إعادة العرض الفورية</string>
-    <string name="community_discord_url">https://discord.gg/PZutk9fg4h</string>
-    <string name="community_github_issues_url">https://github.com/yash-srivastava/Overdrive-release/issues</string>
-    <string name="community_whatsapp_url">https://chat.whatsapp.com/HChmriCWgr9KwAtE6OEkiM</string>
+    <string name="community_discord_url"></string>
+    <string name="community_github_issues_url">https://github.com/saroz/Overdrive-release/issues</string>
+    <string name="community_whatsapp_url"></string>
     <string name="onboarding_authorize_body">يقوم Overdrive بتشغيل الكاميرات عبر أداة مساعدة صغيرة على الجهاز. سيطلب Android مرة واحدة السماح بتصحيح USB — اضغط </string>
     <string name="onboarding_authorize_button">السماح بالوصول</string>
     <string name="onboarding_authorize_retry_body">الأداة المساعدة لم تعمل بعد. قد يكون إذن Android قد تم رفضه. حاول مرة أخرى وتأكد من التحقق من </string>
@@ -1339,10 +1339,10 @@
     <string name="roadsense_map_route_key_rejected">تم رفض مفتاح التوجيه. تحقق من مفتاحك في إعدادات RoadSense.</string>
     <string name="roadsense_map_route_network">الشبكة بطيئة جدًا للعثور على مسار. تحقق من اتصالك وحاول مرة أخرى.</string>
     <string name="roadsense_map_search_network">تعذر الوصول إلى خدمة البحث. تحقق من اتصالك أو الوكيل وحاول مرة أخرى.</string>
-    <string name="settings_about_license_url">https://github.com/yash-srivastava/Overdrive-release/blob/main/LICENSE</string>
-    <string name="settings_about_source_url">https://github.com/yash-srivastava/Overdrive-release</string>
-    <string name="settings_about_star_url">https://github.com/yash-srivastava/Overdrive-release</string>
-    <string name="settings_about_support_kofi_url">https://ko-fi.com/E1E71XALHX</string>
+    <string name="settings_about_license_url">https://github.com/saroz/Overdrive-release/blob/main/LICENSE</string>
+    <string name="settings_about_source_url">https://github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_star_url">https://github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_support_kofi_url"></string>
     <string name="settings_backup_daemon_down">يجب أن تكون خدمة الكاميرا قيد التشغيل لعمل النسخ الاحتياطي أو الاستعادة. قم بتشغيلها من Daemons ثم حاول مرة أخرى.</string>
     <string name="settings_backup_default_filename">overdrive-backup.json</string>
     <string name="settings_backup_export_failed">فشل تصدير النسخة الاحتياطية</string>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="navmap_google_layers_cd">नक्सा तहहरू</string>
+    <string name="navmap_google_type_default">Google नक्सा</string>
+    <string name="navmap_google_type_satellite">स्याटेलाइट</string>
+    <string name="navmap_google_type_hybrid">हाइब्रिड</string>
+    <string name="navmap_google_type_terrain">भू-भाग</string>
+    <string name="navmap_google_type_overdrive">OverDrive नक्सा</string>
+    <string name="navmap_google_traffic">लाइभ ट्राफिक</string>
+    <string name="navmap_google_traffic_on">लाइभ ट्राफिक अन</string>
+    <string name="navmap_google_traffic_off">लाइभ ट्राफिक अफ</string>
+    <string name="navmap_google_traffic_paused">लाइभ ट्राफिक %1$s सम्म रोकिएको छ (निःशुल्क दैनिक सीमा)</string>
+    <string name="navmap_google_map_paused">Google नक्सा %1$s सम्म रोकिएको छ (निःशुल्क दैनिक सीमा)</string>
+    <string name="navmap_google_map_unavailable">Google नक्सा उपलब्ध छैन, OverDrive नक्सा देखाइँदैछ</string>
+    <string name="navmap_google_key_problem">Google Maps कुञ्जीमा समस्या छ। RoadSense सेटिङ जाँच गर्नुहोस्।</string>
+    <string name="navmap_google_route_key_problem">Google रुटिङले कुञ्जी अस्वीकार गर्‍यो। RoadSense सेटिङ जाँच गर्नुहोस्।</string>
+    <string name="navmap_google_route_limit">आजको लागि Google रुटिङ सीमा पुग्यो</string>
+    <string name="navmap_google_arrived">तपाईं आफ्नो गन्तव्यमा पुग्नुभयो</string>
+    <string name="navmap_google_traffic_delay">+%1$s ट्राफिक</string>
+    <string name="navmap_google_no_delays">कुनै ट्राफिक ढिलाइ छैन</string>
+    <string name="navmap_google_faster_route">छिटो मार्ग भेटियो, %1$s बचत हुन्छ</string>
+    <string name="navmap_google_faster_route_switch">बदल्नुहोस्</string>
+    <string name="navmap_google_routes_by_google">Google द्वारा मार्गहरू</string>
+    <string name="navmap_google_routing_provided_by">%1$s द्वारा रुटिङ प्रदान गरिएको</string>
+    <string name="navmap_google_place_failed">त्यो स्थान खोल्न सकिएन</string>
+    <string name="navmap_google_finding_place">स्थान खोजिँदैछ…</string>
+</resources>

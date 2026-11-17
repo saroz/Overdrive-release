@@ -132,37 +132,6 @@
                                     <polyline points="9 18 15 12 9 6"/>
                                 </svg>
                             </button>
-
-                            <a class="tier-card" id="tierYoutube" href="https://www.youtube.com/@OverDrive-ys" target="_blank" rel="noopener noreferrer">
-                                <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
-                                </svg>
-                                <div class="tier-text">
-                                    <p class="tier-title" data-i18n="about.support.youtube_title">Subscribe on YouTube</p>
-                                    <p class="tier-value" data-i18n="about.support.youtube_value">Like, subscribe &amp; share — every view helps Overdrive grow.</p>
-                                </div>
-                                <svg class="tier-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"/>
-                                </svg>
-                            </a>
-
-                            <a class="tier-card kofi" id="tierKofi" target="_blank" rel="noopener noreferrer">
-                                <svg class="tier-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
-                                    <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
-                                    <line x1="6" y1="1" x2="6" y2="4"/>
-                                    <line x1="10" y1="1" x2="10" y2="4"/>
-                                    <line x1="14" y1="1" x2="14" y2="4"/>
-                                </svg>
-                                <div class="tier-text">
-                                    <p class="tier-title" data-i18n="about.support.kofi_title">Fuel the next release</p>
-                                    <p class="tier-value" data-i18n="about.support.kofi_value">A coffee on Ko-fi keeps the late-night commits coming.</p>
-                                </div>
-                                <svg class="tier-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="9 18 15 12 9 6"/>
-                                </svg>
-                            </a>
                         </div>
                     </section>
                 </div>
@@ -475,26 +444,20 @@
         }
 
         // Pull tier URLs from i18n catalog so they can be overridden per-locale
-        // if needed (Ko-fi handle, repo URL). Falls back to safe defaults until
+        // if needed (repo URL, share message). Falls back to safe defaults until
         // i18n is hydrated.
         function bindSupportTiers() {
             const t = (k, fb) => (window.BYD && window.BYD.i18n && window.BYD.i18n.t)
                 ? (window.BYD.i18n.t(k) || fb) : fb;
 
             const star = document.getElementById('tierStar');
-            if (star) star.href = t('about.support.star_url', 'https://github.com/yash-srivastava/Overdrive-release');
-
-            const youtube = document.getElementById('tierYoutube');
-            if (youtube) youtube.href = t('about.support.youtube_url', 'https://www.youtube.com/@OverDrive-ys');
-
-            const kofi = document.getElementById('tierKofi');
-            if (kofi) kofi.href = t('about.support.kofi_url', 'https://ko-fi.com/E1E71XALHX');
+            if (star) star.href = t('about.support.star_url', 'https://github.com/saroz/Overdrive-release');
 
             const share = document.getElementById('tierShare');
             if (share) {
                 share.addEventListener('click', async () => {
                     const text = t('about.support.share_message',
-                        'Check out Overdrive — open-source surveillance & dashcam for BYD: https://overdrive-5lc.pages.dev/');
+                        'Check out Overdrive — open-source surveillance & dashcam for BYD: https://github.com/saroz/Overdrive-release');
                     try {
                         if (navigator.share) {
                             await navigator.share({ text });

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="nav_hud_verbs_bare">
+        <item>सीधा जानुहोस्</item>
+        <item>अघि बढ्नुहोस्</item>
+        <item>पुग्नुभयो</item>
+        <item>दायाँतर्फ पुग्नुभयो</item>
+        <item>बायाँतर्फ पुग्नुभयो</item>
+        <item>दायाँ मोडिँदै जानुहोस्</item>
+        <item>दायाँ मोडिनुहोस्</item>
+        <item>तिखो दायाँ मोडिनुहोस्</item>
+        <item>यु-टर्न लिनुहोस्</item>
+        <item>तिखो बायाँ मोडिनुहोस्</item>
+        <item>बायाँ मोडिनुहोस्</item>
+        <item>बायाँ मोडिँदै जानुहोस्</item>
+        <item>र्‍याम्प लिनुहोस्</item>
+        <item>निकास लिनुहोस्</item>
+        <item>सीधा रहनुहोस्</item>
+        <item>दायाँतर्फ रहनुहोस्</item>
+        <item>बायाँतर्फ रहनुहोस्</item>
+        <item>मर्ज हुनुहोस्</item>
+        <item>दायाँ मर्ज हुनुहोस्</item>
+        <item>बायाँ मर्ज हुनुहोस्</item>
+        <item>गोलचक्करमा प्रवेश गर्नुहोस्</item>
+        <item>गोलचक्करबाट निस्कनुहोस्</item>
+        <item>फेरी चढ्नुहोस्</item>
+        <item>फेरीबाट ओर्लनुहोस्</item>
+    </string-array>
+    <string-array name="nav_hud_verbs_onto">
+        <item>सीधा जानुहोस्:</item>
+        <item>अघि बढ्नुहोस्:</item>
+        <item>पुग्नुभयो:</item>
+        <item>दायाँतर्फ पुग्नुभयो:</item>
+        <item>बायाँतर्फ पुग्नुभयो:</item>
+        <item>दायाँ मोडिँदै जानुहोस्:</item>
+        <item>दायाँ मोडिनुहोस्:</item>
+        <item>तिखो दायाँ मोडिनुहोस्:</item>
+        <item>यु-टर्न लिनुहोस्:</item>
+        <item>तिखो बायाँ मोडिनुहोस्:</item>
+        <item>बायाँ मोडिनुहोस्:</item>
+        <item>बायाँ मोडिँदै जानुहोस्:</item>
+        <item>र्‍याम्प लिनुहोस्:</item>
+        <item>निकास लिनुहोस्:</item>
+        <item>सीधा रहनुहोस्:</item>
+        <item>दायाँतर्फ रहनुहोस्:</item>
+        <item>बायाँतर्फ रहनुहोस्:</item>
+        <item>मर्ज हुनुहोस्:</item>
+        <item>दायाँ मर्ज हुनुहोस्:</item>
+        <item>बायाँ मर्ज हुनुहोस्:</item>
+        <item>गोलचक्करमा प्रवेश गर्नुहोस्:</item>
+        <item>गोलचक्करबाट निस्कनुहोस्:</item>
+        <item>फेरीमा जानुहोस्:</item>
+        <item>फेरीबाट ओर्लनुहोस्:</item>
+    </string-array>
+    <string-array name="nav_hud_ordinals">
+        <item>पहिलो</item>
+        <item>दोस्रो</item>
+        <item>तेस्रो</item>
+        <item>चौथो</item>
+        <item>पाँचौं</item>
+        <item>छैटौं</item>
+        <item>सातौं</item>
+        <item>आठौं</item>
+        <item>नवौं</item>
+        <item>दशौं</item>
+    </string-array>
+    <string name="nav_hud_roundabout_exit">%1$s निकास लिनुहोस्</string>
+    <string name="nav_hud_roundabout_exit_onto">%1$s निकास लिएर जानुहोस्:</string>
+    <string name="nav_hud_towards">तर्फ</string>
+    <string name="nav_hud_exit">निकास %1$s</string>
+    <string name="nav_hud_then">त्यसपछि</string>
+    <string name="nav_hud_arrive">पुग्नुभयो</string>
+    <string name="nav_hud_recenter">पुनः केन्द्रित</string>
+    <string name="nav_hud_end">अन्त्य</string>
+    <string name="nav_hud_delay">+%1$s</string>
+    <string name="nav_hud_unit_m">मि.</string>
+    <string name="nav_hud_unit_km">कि.मि.</string>
+    <string name="nav_hud_unit_ft">फुट</string>
+    <string name="nav_hud_unit_mi">माइल</string>
+    <string name="nav_hud_unit_kmh">कि.मि./घं.</string>
+    <string name="nav_hud_unit_mph">माइल/घं.</string>
+    <string name="nav_hud_cd_mute">भ्वाइस निर्देशन म्युट गर्नुहोस्</string>
+    <string name="nav_hud_cd_unmute">भ्वाइस निर्देशन अनम्युट गर्नुहोस्</string>
+    <string name="nav_hud_cd_overview">पूरा मार्ग देखाउनुहोस्</string>
+    <string name="nav_hud_cd_overview_exit">ड्राइभिङ दृश्यमा फर्कनुहोस्</string>
+    <string name="nav_hud_cd_end">नेभिगेसन अन्त्य गर्नुहोस्</string>
+    <string name="nav_hud_cd_recenter">गाडीमा पुनः केन्द्रित गर्नुहोस्</string>
+    <string name="nav_hud_cd_compass_heading_up">कम्पास: दिशा माथि। उत्तर माथिका लागि थिच्नुहोस्</string>
+    <string name="nav_hud_cd_compass_north_up">कम्पास: उत्तर माथि। दिशा माथिका लागि थिच्नुहोस्</string>
+    <string name="nav_hud_cd_back">नक्सा छोड्नुहोस्</string>
+    <string name="nav_hud_cd_then">त्यसपछि %2$s मा %1$s</string>
+    <string name="nav_hud_cd_trip">%1$s मा पुग्ने, %2$s, %3$s बाँकी</string>
+    <string name="nav_hud_cd_delay">%1$s ट्राफिक ढिलाइ</string>
+</resources>

@@ -72,7 +72,7 @@ public class TelegramCatalogParityTest {
 
     // The former placeholderTemplatesHaveNoUnescapedSingleApostrophes lived
     // here. It required raw catalog strings to carry MessageFormat's '' escape,
-    // which is an invariant a Crowdin-fed catalog cannot hold: translators write
+    // which is an invariant a community-translated catalog cannot hold: translators write
     // ordinary elision (fr "l'", uk "з'", nl "{0}'s"), so the rule went red on
     // every translation sync — and it only ever covered the telegram.* subtree,
     // missing the errors.*, notifications.* and srt.* templates that were losing

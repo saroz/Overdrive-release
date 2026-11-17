@@ -112,16 +112,14 @@
         codeEl.style.cssText = 'margin:0 0 14px;';
         codeEl.textContent = code;
 
-        // Where to report — the community links the user shares the code on.
+        // Where to report — GitHub Issues link to share the code on.
         var whereEl = document.createElement('div');
         whereEl.style.cssText = 'font-size:12px;color:#9aa6b3;margin:0 0 8px;line-height:1.5;';
-        whereEl.textContent = t('logs.uploaded_where', 'Post it on Discord, GitHub Issues or WhatsApp:');
+        whereEl.textContent = t('logs.uploaded_where', 'Post it on GitHub Issues:');
         var linkRow = document.createElement('div');
         linkRow.style.cssText = 'margin:0 0 18px;';
         var rdefs = [
-            { label: t('update.report_discord', 'Discord'), url: t('update.report_discord_url', 'https://discord.gg/PZutk9fg4h') },
-            { label: t('update.report_github', 'GitHub Issues'), url: t('update.report_github_url', 'https://github.com/yash-srivastava/Overdrive-release/issues') },
-            { label: t('update.report_whatsapp', 'WhatsApp'), url: t('update.report_whatsapp_url', 'https://chat.whatsapp.com/HChmriCWgr9KwAtE6OEkiM') }
+            { label: t('update.report_github', 'GitHub Issues'), url: t('update.report_github_url', 'https://github.com/saroz/Overdrive-release/issues') }
         ];
         for (var ri = 0; ri < rdefs.length; ri++) {
             var ra = document.createElement('a');

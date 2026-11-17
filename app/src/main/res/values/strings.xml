@@ -740,11 +740,11 @@
     <string name="settings_update_channel_alpha_desc">The stable release. Every published version is kept — pick any to install (downgrades allowed). Recommended for everyday use.</string>
     <string name="settings_update_channel_braveheart_desc">Bleeding-edge builds, delivered the moment they\'re published. You get new features first, but they may be unstable or buggy. If something breaks, open the Daemons screen, tap a daemon\'s log, choose \"Upload &amp; get a code\", and share the code with us on the community channels.</string>
     <string name="settings_update_channel_save_failed">Could not save the update channel</string>
-    <string name="settings_update_channel_braveheart_toast">Switched to Braveheart. Builds may be unstable — if something breaks, send the daemon log and report it on Discord/GitHub/WhatsApp.</string>
+    <string name="settings_update_channel_braveheart_toast">Switched to Braveheart. Builds may be unstable — if something breaks, send the daemon log and report it on GitHub Issues.</string>
     <!-- Community / report-a-bug links -->
-    <string name="community_discord_url" translatable="false">https://discord.gg/PZutk9fg4h</string>
-    <string name="community_github_issues_url" translatable="false">https://github.com/yash-srivastava/Overdrive-release/issues</string>
-    <string name="community_whatsapp_url" translatable="false">https://chat.whatsapp.com/HChmriCWgr9KwAtE6OEkiM</string>
+    <string name="community_discord_url" translatable="false"></string>
+    <string name="community_github_issues_url" translatable="false">https://github.com/saroz/Overdrive-release/issues</string>
+    <string name="community_whatsapp_url" translatable="false"></string>
 
     <string name="toast_storage_permission_required">Storage permission required for recordings</string>
     <string name="toast_url_copied_short">URL copied!</string>
@@ -1177,26 +1177,26 @@
 
     <string name="settings_about_support_share_title">Tell a fellow owner</string>
     <string name="settings_about_support_share_value">Every shared link helps another BYD owner discover Overdrive.</string>
-    <string name="settings_about_support_share_message">Check out Overdrive — open-source surveillance &amp; dashcam for BYD: https://overdrive-5lc.pages.dev/</string>
+    <string name="settings_about_support_share_message">Check out Overdrive — open-source surveillance &amp; dashcam for BYD: https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_support_share_chooser">Share Overdrive</string>
     <string name="settings_about_youtube_title">Subscribe on YouTube</string>
     <string name="settings_about_youtube_value">Like, subscribe &amp; share — every view helps Overdrive grow.</string>
-    <string name="settings_about_youtube_url" translatable="false">https://www.youtube.com/@OverDrive-ys</string>
+    <string name="settings_about_youtube_url" translatable="false"></string>
     <string name="settings_about_open_link_failed">Couldn\'t open link.</string>
     <string name="settings_about_open_link_copied">No browser found. URL copied: %1$s</string>
 
     <string name="settings_about_support_kofi_title">Fuel the next release</string>
     <string name="settings_about_support_kofi_value">A coffee on Ko-fi keeps the late-night commits coming.</string>
-    <string name="settings_about_support_kofi_url" translatable="false">https://ko-fi.com/E1E71XALHX</string>
+    <string name="settings_about_support_kofi_url" translatable="false"></string>
     <string name="settings_about_license_title">License</string>
     <string name="settings_about_license_value">MIT — open source. Tap to view full text.</string>
     <string name="settings_about_source_title">Source code</string>
-    <string name="settings_about_source_value">github.com/yash-srivastava/Overdrive-release</string>
-    <string name="settings_about_license_url" translatable="false">https://github.com/yash-srivastava/Overdrive-release/blob/main/LICENSE</string>
-    <string name="settings_about_source_url" translatable="false">https://github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_source_value">github.com/saroz/Overdrive-release</string>
+    <string name="settings_about_license_url" translatable="false">https://github.com/saroz/Overdrive-release/blob/main/LICENSE</string>
+    <string name="settings_about_source_url" translatable="false">https://github.com/saroz/Overdrive-release</string>
     <string name="settings_about_star_title">Star us on GitHub</string>
     <string name="settings_about_star_value">Takes a second. Means a lot.</string>
-    <string name="settings_about_star_url" translatable="false">https://github.com/yash-srivastava/Overdrive-release</string>
+    <string name="settings_about_star_url" translatable="false">https://github.com/saroz/Overdrive-release</string>
 
     <string name="settings_about_thanks_title">Thanks</string>
     <string name="settings_about_thanks_subtitle">Built with the help of contributors and supporters.</string>
@@ -1637,8 +1637,8 @@
     <string name="settings_security_recovery_title">ADB recovery</string>
     <string name="settings_security_recovery_body">Forgotten PIN can be cleared from a host machine over USB debugging without a factory reset. Run this command, then reopen the app.</string>
     <!-- Verbatim ADB command. translatable=false so the i18n pipeline
-         doesn't localize the literal path/command — translators following
-         Crowdin would otherwise risk breaking the only recovery path. -->
+         doesn't localize the literal path/command — translators would
+         otherwise risk breaking the only recovery path. -->
     <string name="settings_security_recovery_command" translatable="false">adb shell touch /data/local/tmp/.overdrive_pin_reset</string>
     <string name="settings_security_dialog_set_title">Set PIN</string>
     <string name="settings_security_dialog_set_body">Pick a 4–8 digit PIN. You\'ll need this every time you open the app.</string>

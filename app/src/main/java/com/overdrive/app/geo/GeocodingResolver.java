@@ -56,7 +56,7 @@ public final class GeocodingResolver {
 
     /** OpenStreetMap-friendly UA string. Uses build-time version. */
     private static final String USER_AGENT_TEMPLATE =
-            "OverDrive/%s (https://github.com/yash-srivastava/Overdrive-release)";
+            "OverDrive/%s (https://github.com/saroz/Overdrive-release)";
 
     private static final String NOMINATIM_DEFAULT =
             "https://nominatim.openstreetmap.org";

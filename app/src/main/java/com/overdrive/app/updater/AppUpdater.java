@@ -34,12 +34,12 @@ import okhttp3.Response;
  * - Update detection: compare asset updated_at vs last installed timestamp
  * - Debug tag is ignored in release builds
  *
- * API: https://api.github.com/repos/yash-srivastava/Overdrive-release/releases/tags/{channel}
+ * API: https://api.github.com/repos/saroz/Overdrive-release/releases/tags/{channel}
  */
 public class AppUpdater {
 
     private static final String TAG = "AppUpdater";
-    private static final String GITHUB_REPO = "yash-srivastava/Overdrive-release";
+    private static final String GITHUB_REPO = "saroz/Overdrive-release";
     private static final String PREFS_NAME = "app_updater";
     // LEGACY (pre-channel) baseline key/file. Still read once by
     // migrateBaseline() to seed the per-channel "alpha" slot, then unused.

@@ -363,7 +363,7 @@
       "uploading": "⏳ Hochladen des *{0}* Log…",
       "service_unreachable": ":warnung: Konnte den Log-Dienst nicht erreichen. Der Kamera-Daemon läuft möglicherweise nicht. Versuchen Sie `/daemon camera start`.",
       "upload_failed": ":Warnung: Log Upload fehlgeschlagen: {0}",
-      "upload_success": "✅ *{0}* Log hochgeladen.\n\nTeilen Sie diesen Code mit uns und fügen Sie eine Notiz ein, die beschreibt, was schief gelaufen ist:\n`{1}`\n\nMelden Sie ihn auf:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Geheimnisse wurden vor dem Hochladen entfernt. Das Log läuft automatisch ab._"
+      "upload_success": "✅ *{0}* Log hochgeladen.\n\nTeilen Sie diesen Code mit uns und fügen Sie eine Notiz ein, die beschreibt, was schief gelaufen ist:\n`{1}`\n\nMelden Sie ihn auf:\n• GitHub: {2}\n\n_Geheimnisse wurden vor dem Hochladen entfernt. Das Log läuft automatisch ab._"
     },
     "greeting": {
       "online": "🤖 *Surveillance Bot Online*\n\nBot Daemon gestartet und bereit.\nBenutze /help für verfügbare Befehle."

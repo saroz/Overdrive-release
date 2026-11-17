@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_security_byd_tools_title">BYD सेवा मेनुहरू</string>
+    <string name="settings_security_byd_tools_description">हेड-युनिटका अन्तर्निहित कन्फिगरेसन उपकरणहरू खोल्नुहोस्।</string>
+    <string name="settings_security_byd_adb_title">ADB / डेभलपर विकल्पहरू</string>
+    <string name="settings_security_byd_adb_hint">डेभलपर विकल्पहरू खोलेर त्यहाँ USB डिबगिङ अन गर्नुहोस्।</string>
+    <string name="settings_security_byd_adb_unavailable">यो फर्मवेयरमा ADB सेटिङहरू उपलब्ध छैनन्।</string>
+    <string name="settings_security_country_code_title">देश कोड</string>
+    <string name="settings_security_country_code_warning">यसले BYD देश/क्षेत्र सेटिङ खोल्छ। देश कोड परिवर्तन गर्दा क्षेत्रीय सेवामा असर पर्न सक्छ वा हेड-युनिट रिस्टार्ट चाहिन सक्छ। गाडी पार्क भएको बेलामा मात्र जारी राख्नुहोस्।</string>
+    <string name="settings_security_country_code_open">सेटिङ खोल्नुहोस्</string>
+    <string name="settings_security_country_code_unavailable">यो हेड-युनिटमा देश कोड उपलब्ध छैन।</string>
+</resources>

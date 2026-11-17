@@ -54,7 +54,8 @@ object LanguagePickerDialog {
         "ru" to "Русский",
         "ar" to "العربية",
         "cs" to "Čeština",
-        "he" to "עברית"
+        "he" to "עברית",
+        "ne" to "नेपाली"
     )
 
     @JvmOverloads

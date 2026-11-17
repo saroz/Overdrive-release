@@ -412,7 +412,7 @@
       "uploading": "⏳ Đang tải nhật ký *{0}* lên…",
       "service_unreachable": "⚠️ Không thể kết nối dịch vụ nhật ký. Có thể daemon camera không chạy. Hãy thử `/daemon camera start`.",
       "upload_failed": "⚠️ Tải nhật ký lên thất bại: {0}",
-      "upload_success": "✅ Đã tải nhật ký *{0}* lên.\n\nHãy chia sẻ mã này với chúng tôi kèm mô tả điều đã xảy ra:\n`{1}`\n\nBáo cáo tại:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Thông tin bí mật đã được loại bỏ trước khi tải lên. Nhật ký sẽ tự hết hạn._"
+      "upload_success": "✅ Đã tải nhật ký *{0}* lên.\n\nHãy chia sẻ mã này với chúng tôi kèm mô tả điều đã xảy ra:\n`{1}`\n\nBáo cáo tại:\n• GitHub: {2}\n\n_Thông tin bí mật đã được loại bỏ trước khi tải lên. Nhật ký sẽ tự hết hạn._"
     },
     "greeting": {
       "online": "🤖 *Bot giám sát đã trực tuyến*\n\nDaemon bot đã chạy và sẵn sàng.\nDùng /help để xem các lệnh khả dụng."

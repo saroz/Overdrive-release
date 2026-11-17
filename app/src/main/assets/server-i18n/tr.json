@@ -371,7 +371,7 @@
       "uploading": "⏳ *{0}* günlüğü yükleniyor…",
       "service_unreachable": "⚠️ Günlük hizmetine erişilemedi. Kamera daemon'ı çalışmıyor olabilir. `/daemon camera start` deneyin.",
       "upload_failed": "⚠️ Günlük yüklenemedi: {0}",
-      "upload_success": "✅ *{0}* günlüğü yüklendi.\n\nBu kodu bizimle paylaşın ve neyin ters gittiğini açıklayan bir not ekleyin:\n`{1}`\n\nŞuradan bildirin:\n• Discord: {2}\n• GitHub: {3}\n• WhatsApp: {4}\n\n_Gizli bilgiler yüklemeden önce kaldırıldı. Günlük, süresi dolunca otomatik olarak silinir._"
+      "upload_success": "✅ *{0}* günlüğü yüklendi.\n\nBu kodu bizimle paylaşın ve neyin ters gittiğini açıklayan bir not ekleyin:\n`{1}`\n\nŞuradan bildirin:\n• GitHub: {2}\n\n_Gizli bilgiler yüklemeden önce kaldırıldı. Günlük, süresi dolunca otomatik olarak silinir._"
     },
     "greeting": {
       "online": "🤖 *Gözetim botu çevrimiçi*\n\nBot daemon'ı başlatıldı ve hazır.\nKullanılabilir komutlar için /help yazın."

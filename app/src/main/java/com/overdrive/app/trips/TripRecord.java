@@ -86,6 +86,17 @@ public class TripRecord {
     public double endLat, endLon;
     public int extTempC;
 
+    // Per-tyre pressures in kPa [FL, FR, RL, RR] snapshotted at trip start and end.
+    // -1 = TPMS reading unavailable at that edge.
+    public int tyreFlStart = -1;
+    public int tyreFrStart = -1;
+    public int tyreRlStart = -1;
+    public int tyreRrStart = -1;
+    public int tyreFlEnd = -1;
+    public int tyreFrEnd = -1;
+    public int tyreRlEnd = -1;
+    public int tyreRrEnd = -1;
+
     // Driving DNA scores (0-100)
     public int anticipationScore;
     public int smoothnessScore;
@@ -114,6 +125,28 @@ public class TripRecord {
     public int getOverallScore() {
         return (int) Math.round((anticipationScore + smoothnessScore + speedDisciplineScore
                 + efficiencyScore + consistencyScore) / 5.0);
+    }
+
+    /** True when at least one tyre start pressure reading (> 0 kPa) was captured. */
+    public boolean hasTyreStart() {
+        return tyreFlStart > 0 || tyreFrStart > 0 || tyreRlStart > 0 || tyreRrStart > 0;
+    }
+
+    /** True when at least one tyre end pressure reading (> 0 kPa) was captured. */
+    public boolean hasTyreEnd() {
+        return tyreFlEnd > 0 || tyreFrEnd > 0 || tyreRlEnd > 0 || tyreRrEnd > 0;
+    }
+
+    private static JSONObject tyreSnapshotJson(int fl, int fr, int rl, int rr) {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("fl", fl > 0 ? fl : JSONObject.NULL);
+            obj.put("fr", fr > 0 ? fr : JSONObject.NULL);
+            obj.put("rl", rl > 0 ? rl : JSONObject.NULL);
+            obj.put("rr", rr > 0 ? rr : JSONObject.NULL);
+        } catch (Exception ignored) {
+        }
+        return obj;
     }
 
     /**
@@ -309,6 +342,12 @@ public class TripRecord {
             json.put("fuelCost", fuelCost);
             json.put("electricCost", electricCost);
             json.put("iceSeconds", iceSeconds());
+            if (hasTyreStart()) {
+                json.put("tyreStart", tyreSnapshotJson(tyreFlStart, tyreFrStart, tyreRlStart, tyreRrStart));
+            }
+            if (hasTyreEnd()) {
+                json.put("tyreEnd", tyreSnapshotJson(tyreFlEnd, tyreFrEnd, tyreRlEnd, tyreRrEnd));
+            }
             json.put("microMomentsJson", microMomentsJson != null ? microMomentsJson : "");
             json.put("telemetryFilePath", telemetryFilePath != null ? telemetryFilePath : "");
         } catch (Exception e) {
@@ -381,6 +420,12 @@ public class TripRecord {
             json.put("fuelCost", fuelCost);
             json.put("electricCost", electricCost);
             json.put("iceSeconds", iceSeconds());
+            if (hasTyreStart()) {
+                json.put("tyreStart", tyreSnapshotJson(tyreFlStart, tyreFrStart, tyreRlStart, tyreRrStart));
+            }
+            if (hasTyreEnd()) {
+                json.put("tyreEnd", tyreSnapshotJson(tyreFlEnd, tyreFrEnd, tyreRlEnd, tyreRrEnd));
+            }
         } catch (Exception e) {
             // JSONObject.put only throws on null key
         }

@@ -833,6 +833,14 @@ public class TripAnalyticsManager {
         s.fuelPctStart = t.fuelPctStart;
         s.fuelPctEnd = t.fuelPctEnd;
         s.fuelConStart = t.fuelConStart;
+        s.tyreFlStart = t.tyreFlStart;
+        s.tyreFrStart = t.tyreFrStart;
+        s.tyreRlStart = t.tyreRlStart;
+        s.tyreRrStart = t.tyreRrStart;
+        s.tyreFlEnd = t.tyreFlEnd;
+        s.tyreFrEnd = t.tyreFrEnd;
+        s.tyreRlEnd = t.tyreRlEnd;
+        s.tyreRrEnd = t.tyreRrEnd;
         s.iceSecondsAtomic.set(t.iceSeconds());
         return s;
     }
