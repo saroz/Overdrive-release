@@ -54,9 +54,10 @@ public final class CredentialCipher {
         default void keyRejected() {}
     }
 
-    private static final KeySource NO_KEY = () -> null;
     private static volatile KeySource keySource = null;
-    private static volatile KeySource defaultKeySource = NO_KEY;
+    // This process's key store, made on first use (every daemon process, not only the camera daemon, reads
+    // credentials); the app also points it at its private copy at start-up.
+    private static volatile KeySource defaultKeySource = null;
     private static volatile java.util.function.Supplier<String> deviceIdSource = null;
 
     /** Overrides the key source (tests); null goes back to this process's default. */
@@ -64,9 +65,9 @@ public final class CredentialCipher {
         keySource = source;
     }
 
-    /** This process's own key store; set once at start-up. */
-    public static void useDefaultKeySource(KeySource source) {
-        defaultKeySource = source == null ? NO_KEY : source;
+    /** This process's own key store. */
+    static void useDefaultKeySource(KeySource source) {
+        defaultKeySource = source;
     }
 
     /** Tests: the device id the legacy key derives from (null: the device-id file). */
@@ -76,7 +77,9 @@ public final class CredentialCipher {
 
     private static KeySource source() {
         KeySource s = keySource;
-        return s != null ? s : defaultKeySource;
+        if (s != null) return s;
+        KeySource d = defaultKeySource;
+        return d != null ? d : CredentialKeyStore.processStore();
     }
 
     private static byte[] currentKey() {

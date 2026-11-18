@@ -178,7 +178,11 @@ object CloudflaredPaidConfig {
                         Toast.makeText(context, context.getString(R.string.toast_cloudflared_encrypt_failed), Toast.LENGTH_LONG).show()
                         return@setPositiveButton
                     }
-                    newConfig.put("token", encrypted)
+                    // The field shows "" for a stored token this process can't open yet (an ENC2 value before the
+                    // app holds the key); saving it empty must not wipe that token.
+                    val stored = UnifiedConfigManager.getCloudflared().optString("token", "")
+                    newConfig.put("token",
+                        if (token.isEmpty() && CredentialCipher.isUndecryptable(stored)) stored else encrypted)
 
                     // Save to unified config (atomic write via daemon IPC if called from app)
                     Thread {

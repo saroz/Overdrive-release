@@ -233,7 +233,12 @@ public final class BydCloudConfig {
                 logger.warn("Credential encryption failed; aborting BYD-cloud save (not persisting plaintext)");
                 return;
             }
-            bydCloud.put("rawPassword", encPw);
+            // A save that reuses the stored password (BydCloudApiHandler, no new one typed) passes "" when this
+            // process couldn't open it (an ENC2 value before the key is held). Leave the stored one as it is
+            // (updateSection merges per key) rather than write "" over it.
+            boolean keepStored = (rawPassword == null || rawPassword.isEmpty())
+                    && CredentialCipher.isUndecryptable(currentStoredRawPassword());
+            if (!keepStored) bydCloud.put("rawPassword", encPw);
             bydCloud.put("vin", vin);
             String normalizedCountryCode = BydCloudRegionCatalog.normalizeCountryCode(countryCode);
             if (!BydCloudRegionCatalog.isSupportedCountryCode(normalizedCountryCode)) {
@@ -253,6 +258,11 @@ public final class BydCloudConfig {
             throw new RuntimeException("Failed to build config JSON", e);
         }
         UnifiedConfigManager.updateSection("bydCloud", bydCloud);
+    }
+
+    private static String currentStoredRawPassword() {
+        JSONObject bydCloud = UnifiedConfigManager.loadConfig().optJSONObject("bydCloud");
+        return bydCloud == null ? "" : bydCloud.optString("rawPassword", "");
     }
 
     /**

@@ -748,6 +748,13 @@ public class CameraDaemon {
         // Generate device ID
         generateDeviceId();
 
+        // The owner-only credential key (made by the first daemon to run); the app fetches its copy from it.
+        try {
+            com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.installForDaemon();
+        } catch (Throwable t) {
+            log("Credential key setup failed (credentials keep the device-id form): " + t.getMessage());
+        }
+
         log("Output dir: " + outputDir);
         log("Device ID: " + didForLog(deviceId));
 

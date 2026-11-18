@@ -37,6 +37,9 @@ class OverdriveApplication : Application() {
         // The device secret's private copy (the shared config only hands it over).
         com.overdrive.app.auth.AuthManager.useAppPrivateDir(filesDir)
         com.overdrive.app.auth.AuthManager.useDaemonSecretReader(com.overdrive.app.auth.DaemonSecretShellReader(this))
+        // The credential key's private copy, fetched in the background from the daemons' owner-only file.
+        val credKeyReader = com.overdrive.app.auth.DaemonSecretShellReader(this)
+        com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.installForApp(filesDir) { path -> credKeyReader.read(path) }
 
         try {
             startService(Intent(this, com.overdrive.app.remote.RemoteDevViewBridgeService::class.java))

@@ -25,6 +25,11 @@ public class MqttConnectionConfig {
     public String clientId;              // Auto-generated from deviceId + connectionId
     public String username;              // Optional MQTT auth
     public String password;              // Optional MQTT auth
+
+    // The stored value of a login this process couldn't open (an ENC2 value read before it holds the key): kept so
+    // that saving the list writes it back as it was rather than the "" it read as. Dropped once the field is set.
+    private transient String unreadUsername;
+    private transient String unreadPassword;
     public int qos;                      // 0 = fire-and-forget, 1 = at-least-once
     public boolean enabled;              // Per-connection toggle
     public int publishIntervalSeconds;   // Deprecated — kept for migration (seeds minIntervalSeconds)
@@ -234,8 +239,8 @@ public class MqttConnectionConfig {
             json.put("port", port);
             json.put("topic", topic);
             json.put("clientId", clientId);
-            json.put("username", CredentialCipher.encrypt(username));
-            json.put("password", CredentialCipher.encrypt(password));
+            json.put("username", storedForm(username, unreadUsername));
+            json.put("password", storedForm(password, unreadPassword));
             json.put("qos", qos);
             json.put("enabled", enabled);
             json.put("publishIntervalSeconds", publishIntervalSeconds);
@@ -254,6 +259,12 @@ public class MqttConnectionConfig {
             json.put("chargingIntervalSeconds", chargingIntervalSeconds);
         } catch (Exception ignored) {}
         return json;
+    }
+
+    // A login this process read as "" because it couldn't open it goes back as stored; anything set since is encrypted.
+    private static String storedForm(String value, String unread) {
+        if ((value == null || value.isEmpty()) && unread != null) return unread;
+        return CredentialCipher.encrypt(value);
     }
 
     /**
@@ -288,8 +299,12 @@ public class MqttConnectionConfig {
         // decrypt() passes plaintext through unchanged (isEncrypted() check),
         // so this also transparently migrates connections saved before
         // username/password were encrypted — the next save() re-encrypts them.
-        config.username = CredentialCipher.decrypt(json.optString("username", ""));
-        config.password = CredentialCipher.decrypt(json.optString("password", ""));
+        String storedUser = json.optString("username", "");
+        String storedPass = json.optString("password", "");
+        config.username = CredentialCipher.decrypt(storedUser);
+        config.password = CredentialCipher.decrypt(storedPass);
+        if (config.username.isEmpty() && CredentialCipher.isEncrypted(storedUser)) config.unreadUsername = storedUser;
+        if (config.password.isEmpty() && CredentialCipher.isEncrypted(storedPass)) config.unreadPassword = storedPass;
         config.qos = json.optInt("qos", DEFAULT_QOS);
         config.enabled = json.optBoolean("enabled", false);
         config.publishIntervalSeconds = json.optInt("publishIntervalSeconds", DEFAULT_PUBLISH_INTERVAL);
