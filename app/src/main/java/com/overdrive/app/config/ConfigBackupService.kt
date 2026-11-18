@@ -36,7 +36,10 @@ import java.util.concurrent.atomic.AtomicLong
  * Telegram, and GenAI API keys) are stored as their `ENC:` blobs and
  * the bundle ALSO snapshots the device-id file (.byd_device_id) that
  * CredentialCipher derives its key from. Restoring the DID first lets the
- * blobs decrypt again even after a factory reset. TRADEOFF: the bundle then
+ * blobs decrypt again even after a factory reset. Newer `ENC2:` blobs are bound
+ * instead to the owner-only credential key file (.overdrive_cred_key, see
+ * CredentialKeyStore), which the bundle carries as `credKey` and the restore
+ * writes in the same journaled transition as the DID. TRADEOFF: the bundle then
  * contains key material, so the export endpoint MUST stay LOCAL-mode + JWT
  * gated and the UI MUST warn the user to keep the file private.
  */
@@ -55,7 +58,11 @@ object ConfigBackupService {
     private val DID_PATH: String get() = com.overdrive.app.util.ScratchRoot.path(".byd_device_id")
     private val RESTORE_JOURNAL_PATH: String get() = com.overdrive.app.util.ScratchRoot.path(".overdrive_config_restore_txn.json")
     private const val RESTORE_JOURNAL_VERSION = 1
+    // CredentialKeyStore.KEY_FILE_NAME: the ENC2 credential key, owner-only (the daemons' UID).
+    private val CRED_KEY_PATH: String get() = com.overdrive.app.util.ScratchRoot.path(".overdrive_cred_key")
+    private const val OWNER_ONLY_MODE = 384 // 0600
     private val didTempSequence = AtomicLong(0)
+    private val credKeyTempSequence = AtomicLong(0)
     private val restoreJournalTempSequence = AtomicLong(0)
 
     // Runtime/coordination keys that are meaningless or harmful to restore even
@@ -238,6 +245,10 @@ object ConfigBackupService {
         // factory reset. Best-effort: absent DID just means secrets fall back
         // to re-entry on a reset (they still decrypt on a non-reset restore).
         didValue(snapshot.did)?.let { bundle.put("did", it) }
+        // The same for the ENC2: secrets, bound to the credential key instead.
+        // Absent when this process can't read it: those secrets then restore
+        // only where the current key still opens them (verified on import).
+        credKeyValue(snapshot.did.key)?.let { bundle.put("credKey", it) }
 
         // Opt-in trips category (stats only — no telemetry files). The trips DB
         // lives in the daemon; pulled via the manager. Best-effort: if the
@@ -261,7 +272,7 @@ object ConfigBackupService {
         manifest.put("categories", categories)
 
         Log.i(TAG, "Built backup bundle (appVersion=$appVersion, model=$deviceModel, " +
-            "didIncluded=${bundle.has("did")})")
+            "didIncluded=${bundle.has("did")}, credKeyIncluded=${bundle.has("credKey")})")
         return bundle
     }
 
@@ -277,7 +288,15 @@ object ConfigBackupService {
         val unified: JSONObject,
         val did: DidSnapshot,
     )
+    // The device-key material credentials are bound to: the DID (ENC:) and,
+    // alongside it, the credential key (ENC2:). [key] null = unknown (the key
+    // file couldn't be read, or a journal from before it existed): left as is.
     private data class DidSnapshot(
+        val existed: Boolean,
+        val bytes: ByteArray,
+        val key: KeySnapshot? = null,
+    )
+    private data class KeySnapshot(
         val existed: Boolean,
         val bytes: ByteArray,
     )
@@ -433,10 +452,14 @@ object ConfigBackupService {
                 // malformed config may use a seeded restore base.
                 val current =
                     UnifiedConfigManager.readDurableConfigForRestore()
-                val didWrite = if (bundle.has("did")
-                        && bundle.optString("did", "").isNotEmpty()) {
+                // The credential key travels with the DID: restored first, so
+                // the verification below opens ENC2: secrets with it.
+                val bundledDid = if (bundle.has("did")) bundle.optString("did", "") else ""
+                val bundledCredKey = bundle.optString("credKey", "")
+                val didWrite = if (bundledDid.isNotEmpty()
+                        || bundledCredKey.isNotEmpty()) {
                     beginBundledDidTransition(
-                        bundle.optString("did"), priorDid, current)
+                        bundledDid, bundledCredKey, priorDid, current)
                 } else {
                     DidWriteResult(usable = true, changed = false)
                 }
@@ -845,6 +868,7 @@ object ConfigBackupService {
         if (!restoreDidSnapshot(priorDid)) {
             throw IOException("Could not restore prior DID")
         }
+        com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.invalidateProcessCache()
         if (!UnifiedConfigManager.saveConfig(
                 JSONObject(priorConfig.toString()), /* force = */ true)) {
             throw IOException("Could not restore prior config")
@@ -856,16 +880,43 @@ object ConfigBackupService {
 
     private fun beginBundledDidTransition(
         value: String,
+        credKeyValue: String,
         priorDid: DidSnapshot,
         priorConfig: JSONObject,
     ): DidWriteResult {
-        val single = value.lineSequence().firstOrNull()?.trim() ?: ""
-        if (single.isEmpty()) {
-            Log.w(TAG, "Bundled device-id is empty; credential sections will be kept")
-            return DidWriteResult(usable = false, changed = false)
+        // DID: "" = the bundle carries none (an older/odd bundle with only a key).
+        val bytes: ByteArray? = if (value.isEmpty()) null else {
+            val single = value.lineSequence().firstOrNull()?.trim() ?: ""
+            if (single.isEmpty()) {
+                Log.w(TAG, "Bundled device-id is empty; credential sections will be kept")
+                return DidWriteResult(usable = false, changed = false)
+            }
+            single.toByteArray(StandardCharsets.UTF_8)
         }
-        val bytes = single.toByteArray(StandardCharsets.UTF_8)
-        if (priorDid.existed && priorDid.bytes.contentEquals(bytes)) {
+        val didChanges = bytes != null &&
+            !(priorDid.existed && priorDid.bytes.contentEquals(bytes))
+
+        // Credential key: restored only when well-formed and the current one
+        // could be read (and so journaled for rollback). Otherwise the current
+        // key stays and the import verification decides about ENC2: secrets.
+        val keyText = credKeyValue.trim()
+        val keyBytes: ByteArray? = when {
+            keyText.isEmpty() -> null
+            !com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.isValidKeyText(keyText) -> {
+                Log.w(TAG, "Bundled credential key is malformed; not restored")
+                null
+            }
+            priorDid.key == null -> {
+                Log.w(TAG, "Current credential key is unreadable; bundled key not restored")
+                null
+            }
+            else -> keyText.toByteArray(StandardCharsets.UTF_8)
+        }
+        val keyChanges = keyBytes != null && priorDid.key != null &&
+            !(priorDid.key.existed &&
+                String(priorDid.key.bytes, StandardCharsets.UTF_8).trim() == keyText)
+
+        if (!didChanges && !keyChanges) {
             return DidWriteResult(usable = true, changed = false)
         }
 
@@ -875,8 +926,16 @@ object ConfigBackupService {
                     credentialFreeBridge(priorConfig), /* force = */ true)) {
                 throw IOException("Could not publish credential-free restore bridge")
             }
-            writeDidBytesAtomic(bytes)
-            Log.i(TAG, "Restored device-id from bundle")
+            if (bytes != null && didChanges) {
+                writeDidBytesAtomic(bytes)
+                Log.i(TAG, "Restored device-id from bundle")
+            }
+            if (keyBytes != null && keyChanges) {
+                writeCredKeyAtomic(keyBytes)
+                Log.i(TAG, "Restored credential key from bundle")
+            }
+            // Every reader of the key in this process sees the restored one.
+            com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.invalidateProcessCache()
             DidWriteResult(usable = true, changed = true)
         } catch (transitionFailure: Throwable) {
             if (File(RESTORE_JOURNAL_PATH).exists()) {
@@ -911,6 +970,13 @@ object ConfigBackupService {
             .put("priorDidExisted", priorDid.existed)
             .put("priorDidBytes", didBytes)
             .put("priorConfig", JSONObject(priorConfig.toString()))
+        // Older journals lack these; recovery then leaves the key file alone.
+        priorDid.key?.let { key ->
+            val keyBytes = JSONArray()
+            for (byte in key.bytes) keyBytes.put(byte.toInt() and 0xff)
+            journal.put("priorCredKeyExisted", key.existed)
+                .put("priorCredKeyBytes", keyBytes)
+        }
         writeAtomicFile(
             File(RESTORE_JOURNAL_PATH),
             journal.toString().toByteArray(StandardCharsets.UTF_8),
@@ -922,18 +988,33 @@ object ConfigBackupService {
     private fun didSnapshotFromJournal(journal: JSONObject): DidSnapshot {
         val encoded = journal.optJSONArray("priorDidBytes")
             ?: throw IOException("Restore journal has no prior DID bytes")
+        val key = if (journal.has("priorCredKeyExisted")) {
+            val encodedKey = journal.optJSONArray("priorCredKeyBytes")
+                ?: throw IOException("Restore journal has no prior credential key bytes")
+            KeySnapshot(
+                existed = journal.optBoolean("priorCredKeyExisted", false),
+                bytes = journalBytes(encodedKey, "credential key"),
+            )
+        } else {
+            null
+        }
+        return DidSnapshot(
+            existed = journal.optBoolean("priorDidExisted", false),
+            bytes = journalBytes(encoded, "DID"),
+            key = key,
+        )
+    }
+
+    private fun journalBytes(encoded: JSONArray, what: String): ByteArray {
         val bytes = ByteArray(encoded.length())
         for (i in 0 until encoded.length()) {
             val value = encoded.optInt(i, -1)
             if (value !in 0..255) {
-                throw IOException("Restore journal has malformed DID bytes")
+                throw IOException("Restore journal has malformed $what bytes")
             }
             bytes[i] = value.toByte()
         }
-        return DidSnapshot(
-            existed = journal.optBoolean("priorDidExisted", false),
-            bytes = bytes,
-        )
+        return bytes
     }
 
     private fun clearRestoreJournal() {
@@ -947,13 +1028,35 @@ object ConfigBackupService {
 
     private fun readDidSnapshotStrict(): DidSnapshot {
         val f = File(DID_PATH)
-        if (!f.exists()) return DidSnapshot(existed = false, bytes = ByteArray(0))
+        if (!f.exists()) {
+            return DidSnapshot(existed = false, bytes = ByteArray(0), key = readCredKeySnapshot())
+        }
         if (!f.isFile) throw IOException("DID path is not a regular file")
-        return try {
-            DidSnapshot(existed = true, bytes = f.readBytes())
+        val bytes = try {
+            f.readBytes()
         } catch (e: Exception) {
             throw IOException("DID read failed", e)
         }
+        return DidSnapshot(existed = true, bytes = bytes, key = readCredKeySnapshot())
+    }
+
+    // Lenient, unlike the DID: an unreadable key (another owner) is left out of
+    // the export and never replaced by a restore (null = unknown).
+    private fun readCredKeySnapshot(): KeySnapshot? {
+        val f = File(CRED_KEY_PATH)
+        if (!f.exists()) return KeySnapshot(existed = false, bytes = ByteArray(0))
+        return try {
+            if (f.isFile) KeySnapshot(existed = true, bytes = f.readBytes()) else null
+        } catch (e: Exception) {
+            Log.w(TAG, "Credential key unreadable: ${e.message}")
+            null
+        }
+    }
+
+    private fun credKeyValue(snapshot: KeySnapshot?): String? {
+        if (snapshot == null || !snapshot.existed) return null
+        val text = String(snapshot.bytes, StandardCharsets.UTF_8).trim()
+        return if (com.overdrive.app.byd.cloud.crypto.CredentialKeyStore.isValidKeyText(text)) text else null
     }
 
     private fun didValue(snapshot: DidSnapshot): String? {
@@ -978,6 +1081,7 @@ object ConfigBackupService {
                     ?: throw IOException("DID parent is unavailable")
                 syncDidDirectory(parent)
             }
+            restoreCredKeySnapshot(snapshot.key)
             true
         } catch (rollbackFailure: Throwable) {
             Log.e(TAG, "DID rollback failed: ${rollbackFailure.message}", rollbackFailure)
@@ -995,6 +1099,31 @@ object ConfigBackupService {
         )
     }
 
+    // Puts the credential key back as journaled (null: not journaled, left as is).
+    private fun restoreCredKeySnapshot(snapshot: KeySnapshot?) {
+        if (snapshot == null) return
+        if (snapshot.existed) {
+            writeCredKeyAtomic(snapshot.bytes)
+        } else {
+            val file = File(CRED_KEY_PATH)
+            if (file.exists() && !file.delete()) {
+                throw IOException("Could not remove newly-created credential key")
+            }
+            val parent = file.parentFile
+                ?: throw IOException("Credential key parent is unavailable")
+            syncDidDirectory(parent)
+        }
+    }
+
+    private fun writeCredKeyAtomic(bytes: ByteArray) {
+        writeAtomicFile(
+            File(CRED_KEY_PATH),
+            bytes,
+            worldAccessible = false,
+            sequence = credKeyTempSequence.incrementAndGet(),
+        )
+    }
+
     private fun writeAtomicFile(
         file: File,
         bytes: ByteArray,
@@ -1009,6 +1138,9 @@ object ConfigBackupService {
         )
         try {
             FileOutputStream(tmp).use { output ->
+                // Private files (the journal, the credential key) are owner-only
+                // before any content lands, whatever the process umask.
+                if (!worldAccessible) Os.chmod(tmp.path, OWNER_ONLY_MODE)
                 output.write(bytes)
                 output.flush()
                 tmp.setReadable(true, !worldAccessible)

@@ -271,6 +271,11 @@ public final class CredentialKeyStore implements CredentialCipher.KeySource {
         }
     }
 
+    /** True for text in the key file's format (64 hex characters, surrounding whitespace ignored). */
+    public static boolean isValidKeyText(String text) {
+        return parse(text) != null;
+    }
+
     static byte[] parse(String text) {
         if (text == null) return null;
         String t = text.trim();
