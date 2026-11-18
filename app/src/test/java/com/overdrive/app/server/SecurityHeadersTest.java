@@ -25,11 +25,14 @@ public class SecurityHeadersTest {
         assertTrue(resp.contains("Content-Security-Policy: "));
         assertTrue(resp.contains("object-src 'none'"));
         assertTrue(resp.contains("base-uri 'none'"));
-        // Live view loads JMuxer from jsDelivr and starts blob: workers on Chrome 58.
+        // Live view starts blob: workers and inline scripts on Chrome 58: no script/worker policy yet.
         assertFalse(HttpResponse.CSP.contains("default-src"));
         assertFalse(HttpResponse.CSP.contains("script-src"));
         assertFalse(HttpResponse.CSP.contains("worker-src"));
-        assertFalse(HttpResponse.CSP.contains("connect-src"));
+        // Security fix F9: pages may only fetch/XHR their own server (plus the theme GIF host).
+        // ws:/wss: because Chrome 58 (CSP2) doesn't match ws:// to 'self'.
+        assertTrue(resp.contains(
+                "connect-src 'self' ws: wss: blob: data: https://raw.githubusercontent.com"));
         assertTrue(resp.contains("frame-ancestors 'none'"));
         assertTrue(resp.contains("X-Frame-Options: DENY"));
         assertTrue(resp.contains("X-Content-Type-Options: nosniff"));

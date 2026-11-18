@@ -14,11 +14,16 @@ public class HttpResponse {
     private static final int FILE_STREAM_BUFFER = 64 * 1024;
 
     /**
-     * No fetch directives: live view (JMuxer from jsDelivr, Broadway and Draco blob workers,
-     * WebAssembly) must keep loading on the head unit's Chrome 58 WebView.
+     * No script/worker directives yet: live view (Broadway and Draco blob workers,
+     * WebAssembly, inline scripts) must keep loading on the head unit's Chrome 58 WebView.
+     *
+     * connect-src (security fix F9): pages may fetch/XHR only their own server, so an
+     * injected script can't send data elsewhere. ws:/wss: because Chrome 58 (CSP2) doesn't
+     * match ws:// to 'self'; raw.githubusercontent.com for the surveillance theme download.
      */
     public static final String CSP =
-            "object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'";
+            "object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; "
+            + "connect-src 'self' ws: wss: blob: data: https://raw.githubusercontent.com";
     public static final String SECURITY_HEADERS =
             "Content-Security-Policy: " + CSP + "\r\n" +
             "X-Frame-Options: DENY\r\n" +
