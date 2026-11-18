@@ -27,10 +27,10 @@ public class TokenOnlyColoursAssetTest {
         assertTrue("raw colours: " + offenders, offenders.isEmpty());
     }
 
-    /** Content colours (colour-wheel/paint swatches, a test page, the dev screen mirror) are not theme. */
+    /** Content colours (colour-wheel/paint swatches, the dev screen mirror) are not theme. */
     private static final java.util.Set<String> EXEMPT = new java.util.HashSet<>(java.util.Arrays.asList(
             "design-tokens.css", "leaflet.css", "vehicle-control.css",
-            "vehicle-control-3d-test.html", "remote-dev-view.html"));
+            "remote-dev-view.html"));
 
     @Test
     public void allWebStylesUseTokens() throws IOException {

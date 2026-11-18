@@ -116,8 +116,8 @@ export async function validateSetupGuide(root, guide, reference) {
     });
     assert.ok(settings.length >= 9, "Settings inventory is empty or incomplete");
 
-    // Development fixtures do not represent a menu or user feature.
-    const excluded = { "vehicle-control-3d-test.html": "Development fixture" };
+    // Development fixtures do not represent a menu or user feature (none ship today).
+    const excluded = {};
     const extraPages = (await readdir(resolve(root, "app/src/main/assets/web/local")))
         .filter(file => file.endsWith(".html") && !excluded[file] && !browser.some(item => item.page === file))
         .map(page => ({ page, routes: coveredSurface(page, "Additional user page") }));

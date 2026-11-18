@@ -73,7 +73,7 @@ export function snapshot(page) {
 if (process.argv[1] && process.argv[1].endsWith('snapshot-ids.mjs')) {
   const args = process.argv.slice(2);
   const pages = args.includes('--all')
-    ? readdirSync(LOCAL).filter(f => f.endsWith('.html') && f !== 'vehicle-control-3d-test.html')
+    ? readdirSync(LOCAL).filter(f => f.endsWith('.html'))
     : args;
   for (const p of pages) console.log(p, snapshot(p), 'ids');
 }

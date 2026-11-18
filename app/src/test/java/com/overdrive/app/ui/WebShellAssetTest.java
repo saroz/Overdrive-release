@@ -127,7 +127,7 @@ public class WebShellAssetTest {
         File dir = WebThemeTokensAssetTest.locate("app/src/main/assets/web/local").toFile();
         for (File page : dir.listFiles()) {
             String name = page.getName();
-            if (!name.endsWith(".html") || name.equals("vehicle-control-3d-test.html")) continue;
+            if (!name.endsWith(".html")) continue;
             String html = WebThemeTokensAssetTest.read("app/src/main/assets/web/local/" + name);
             assertTrue(name + " lacks ui.css", html.contains("href=\"../shared/ui.css?v="));
             assertTrue(name + " lacks ph-icons.js", html.contains("src=\"../shared/ph-icons.js?v="));
