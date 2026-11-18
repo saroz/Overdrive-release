@@ -47,7 +47,8 @@ public class UnifiedConfigManagerDurabilityContractTest {
 
         int write = writer.indexOf("output.write(");
         int flush = writer.indexOf("output.flush()", write);
-        int permissions = writer.indexOf("file.setWritable(true, false)", flush);
+        // F14 stage D: 0644 (was world-writable 0666), still set before fsync
+        int permissions = writer.indexOf("chmodQuietly(file, CONFIG_FILE_MODE)", flush);
         int sync = writer.indexOf("output.fd.sync()", permissions);
 
         assertTrue(write >= 0);

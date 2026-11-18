@@ -77,6 +77,44 @@ public class AppConfigReadWithoutFileLockTest {
         assertFalse(save.contains("configFile.writeText("));
     }
 
+    // ---------- stage D: no world-writable config, owner-only lock ----------
+
+    @Test
+    public void configIsWorldReadableButDaemonWrittenAndLockIsOwnerOnly() throws IOException {
+        String src = read(UCM);
+        assertTrue(src.contains("private const val CONFIG_FILE_MODE = 420 // 0644"));
+        assertTrue(src.contains("private const val LOCK_FILE_MODE = 384 // 0600"));
+        assertFalse("nothing in the config manager may make a file world-writable",
+                src.contains("setWritable(true, false)"));
+        assertTrue(src.contains("android.system.Os.chmod(file.path, mode)"));
+    }
+
+    @Test
+    public void everyPermissionPathUsesTheNewModes() throws IOException {
+        String src = read(UCM);
+        String provision = between(src, "private fun provisionLockFile() {", "private fun chmodQuietly(");
+        assertTrue(provision.contains("chmodQuietly(lf, LOCK_FILE_MODE)"));
+        String writer = between(src, "private fun writeFileAndSync(", "output.fd.sync()");
+        assertTrue(writer.contains("chmodQuietly(file, CONFIG_FILE_MODE)"));
+        String init = between(src, "fun init() {", "private fun provisionLockFile()");
+        assertTrue("init tightens a config left 0666 by an older build",
+                init.contains("chmodQuietly(configFile, CONFIG_FILE_MODE)"));
+        assertTrue(init.contains("chmodQuietly(File(configFile.parentFile, configFile.name + \".bak\"), CONFIG_FILE_MODE)"));
+        String lock = between(src, "private fun <T> withConfigFileLock(body: () -> T): T {",
+                "private fun <T> withConfigReadLock(");
+        assertTrue(lock.contains("chmodQuietly(lockFile, LOCK_FILE_MODE)"));
+    }
+
+    @Test
+    public void appFailsFastOnTheOwnerOnlyLock() throws IOException {
+        String lock = between(read(UCM), "private fun <T> withConfigFileLock(body: () -> T): T {",
+                "private fun <T> withConfigReadLock(");
+        int check = lock.indexOf("!lockFile.canWrite()");
+        int open = lock.indexOf("RandomAccessFile(lockFile, \"rw\")");
+        assertTrue(check > 0);
+        assertTrue("the app must not try to open the daemon-only lock", open > check);
+    }
+
     private static String between(String text, String start, String end) {
         int s = text.indexOf(start);
         assertTrue("missing: " + start, s >= 0);

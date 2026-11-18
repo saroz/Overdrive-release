@@ -127,6 +127,15 @@ object UnifiedConfigManager {
     private const val CACHE_REVALIDATE_MS = 1000L
     // Upper bound on any wait for the config locks; the app main thread never waits.
     private const val LOCK_WAIT_MS = 10_000L
+    /**
+     * F14 stage D. 0644 for the live config and its sticky .bak: the daemons
+     * (owner, UID 2000) write, every process reads. Before this they were 0666,
+     * so any app could truncate-write its own settings in place (MQTT broker,
+     * Telegram token, ...). App writes already go through the daemon's IPC.
+     */
+    private const val CONFIG_FILE_MODE = 420 // 0644
+    /** 0600 for the cross-process lock: no other app can hold it to stall the daemons. */
+    private const val LOCK_FILE_MODE = 384 // 0600
     /** App reads without the file lock retry this often if the file is replaced mid-read. */
     private const val LOCK_FREE_READ_ATTEMPTS = 3
     private const val LOCK_POLL_MAX_MS = 50L
@@ -255,12 +264,10 @@ object UnifiedConfigManager {
     @JvmStatic
     fun init() {
         // Provision the cross-process lock file here. init() runs in the daemon
-        // (UID 2000), which CAN create files in sticky /data/local/tmp; once it
-        // exists 0666, the app UID (which canNOT create there) can still OPEN it
-        // to acquire the lock. Without this, an app-UID writer in the daemon-down
-        // window cannot create the lock itself. Best-effort here: if provisioning
-        // is unavailable, app-side local mutation is explicitly deferred rather
-        // than running without cross-process exclusion.
+        // (UID 2000), which CAN create files in sticky /data/local/tmp. Since F14
+        // stage D it is owner-only (0600): the app reads without it and sends its
+        // writes to the daemon, so no other app can hold it to stall the daemons.
+        // App-side local mutation is deferred rather than run without exclusion.
         provisionLockFile()
         // A config restore can span the config file and the credential DID file.
         // Recover its write-ahead journal before any daemon consumer can read
@@ -275,16 +282,11 @@ object UnifiedConfigManager {
             Log.i(TAG, "Unified config not found, migrating from legacy configs...")
             migrateFromLegacy()
         } else {
-            // SOTA: Always re-assert 666 if we're the daemon. If the app
-            // process wrote the file during the update window, it might
-            // have different permissions than we expect on some builds (DiLink 3).
+            // Re-assert 0644 in the daemon: tightens a config left 0666 by an
+            // older build (F14 stage D), whatever wrote it last.
             if (android.os.Process.myUid() == SHELL_DAEMON_UID) {
-                try {
-                    configFile.setReadable(true, false)
-                    configFile.setWritable(true, false)
-                } catch (e: Exception) {
-                    Log.w(TAG, "Failed to re-assert permissions: ${e.message}")
-                }
+                chmodQuietly(configFile, CONFIG_FILE_MODE)
+                chmodQuietly(File(configFile.parentFile, configFile.name + ".bak"), CONFIG_FILE_MODE)
             }
             Log.i(TAG, "Unified config exists at $CONFIG_PATH")
             loadConfig()
@@ -294,7 +296,11 @@ object UnifiedConfigManager {
         com.overdrive.app.logging.DaemonLogger.syncMinLevelFromConfig()
     }
 
-    /** Create the lock file 0666 (daemon UID) so the app UID can later open it. */
+    /**
+     * Create the lock file owner-only (0600, daemon UID). The app no longer
+     * takes it (F14 stage B/D): app reads skip it and app writes go through
+     * the daemon. Also tightens a lock left 0666 by an older build.
+     */
     private fun provisionLockFile() {
         if (android.os.Process.myUid() != SHELL_DAEMON_UID) return
         try {
@@ -303,10 +309,18 @@ object UnifiedConfigManager {
                 lf.parentFile?.mkdirs()
                 lf.createNewFile()
             }
-            lf.setReadable(true, false)
-            lf.setWritable(true, false)
+            chmodQuietly(lf, LOCK_FILE_MODE)
         } catch (e: Exception) {
             Log.w(TAG, "Lock file provisioning skipped: ${e.message}")
+        }
+    }
+
+    private fun chmodQuietly(file: File, mode: Int) {
+        if (!file.exists()) return
+        try {
+            android.system.Os.chmod(file.path, mode)
+        } catch (e: Exception) {
+            Log.w(TAG, "chmod ${Integer.toOctalString(mode)} ${file.path} failed: ${e.message}")
         }
     }
     
@@ -1907,7 +1921,8 @@ object UnifiedConfigManager {
     /**
      * Truncate/write [file] and make both its bytes and inode metadata durable
      * before returning. Permission changes happen before fsync so the daemon's
-     * world-RW contract is covered by the same durability boundary.
+     * 0644 contract (world-readable, daemon-written) is covered by the same
+     * durability boundary.
      */
     private fun writeFileAndSync(
         file: File,
@@ -1918,8 +1933,9 @@ object UnifiedConfigManager {
             output.write(payload.toByteArray(StandardCharsets.UTF_8))
             output.flush()
             if (worldAccessible && android.os.Process.myUid() == SHELL_DAEMON_UID) {
-                file.setReadable(true, false)
-                file.setWritable(true, false)
+                // 0644 (F14 stage D): readable by all, written only by the daemons.
+                // The rename carries this mode onto the live file / .bak.
+                chmodQuietly(file, CONFIG_FILE_MODE)
             }
             output.fd.sync()
         }
@@ -4751,6 +4767,14 @@ object UnifiedConfigManager {
                         "local mutation must retry after daemon initialization"
                 )
             }
+            if (android.os.Process.myUid() != SHELL_DAEMON_UID && !lockFile.canWrite()) {
+                // Owner-only since F14 stage D: the app cannot write the live file
+                // either, so its local fallback defers until the daemon is back.
+                throw ConfigLockUnavailableException(
+                    "Stable config lock $LOCK_PATH is daemon-only; " +
+                        "app writes go through the daemon"
+                )
+            }
 
             var raf: RandomAccessFile? = null
             var channel: FileChannel? = null
@@ -4767,10 +4791,8 @@ object UnifiedConfigManager {
                     )
                     if (lock != null) {
                         if (android.os.Process.myUid() == SHELL_DAEMON_UID) {
-                            try {
-                                lockFile.setReadable(true, false)
-                                lockFile.setWritable(true, false)
-                            } catch (_: Exception) {}
+                            // RandomAccessFile may just have created it under the umask
+                            chmodQuietly(lockFile, LOCK_FILE_MODE)
                         }
                         recordStableLockOwner(channel)
                     }

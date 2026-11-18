@@ -107,7 +107,7 @@ public class ConfigBackupServiceDurabilityContractTest {
         String manager = readRepositoryFile(
                 "app/src/main/java/com/overdrive/app/config/"
                         + "UnifiedConfigManager.kt");
-        String init = between(manager, "fun init()", "/** Create the lock file");
+        String init = between(manager, "fun init()", "private fun provisionLockFile()");
 
         assertOrdered(
                 recovery,
