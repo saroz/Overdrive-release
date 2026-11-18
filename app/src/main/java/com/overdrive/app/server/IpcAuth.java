@@ -146,6 +146,11 @@ public final class IpcAuth {
         return tokenProblem(token);
     }
 
+    /** Port 19878 audio ingest: why the AUTH frame's {@code token} is not valid, or null. */
+    public static String audioRejectionReason(String token) {
+        return tokenProblem(token);
+    }
+
     /** {@code request} as text for a log line, with the token masked. */
     public static String redactedForLog(JSONObject request) {
         if (request == null) return "null";

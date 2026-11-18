@@ -124,6 +124,7 @@ public class AppAudioCaptureController {
     private static final int MSG_DATA = 2;
     private static final int MSG_PCM = 3;
     private static final int MSG_LISTENER_ONLY = 4;
+    private static final int MSG_AUTH = 5;
 
     // Drain-loop bail-out: after running=false, allow this many
     // consecutive INFO_TRY_AGAIN_LATER timeouts before exiting so we
@@ -632,6 +633,14 @@ public class AppAudioCaptureController {
         socket.connect(new InetSocketAddress(INGEST_HOST, INGEST_PORT), 2000);
         socket.setTcpNoDelay(true);
         out = new DataOutputStream(socket.getOutputStream());
+
+        // F14: AUTH first, so the daemon lets us take the mic slot (empty when we hold no secret).
+        String ipcToken = com.overdrive.app.server.IpcAuth.mint();
+        byte[] token = ipcToken == null
+                ? new byte[0] : ipcToken.getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        out.writeInt(4 + token.length);
+        out.writeInt(MSG_AUTH);
+        out.write(token);
 
         if (!recordForMuxing) {
             // Explicitly clear any cached AAC config left by a recording

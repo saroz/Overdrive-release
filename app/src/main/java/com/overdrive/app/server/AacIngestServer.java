@@ -51,6 +51,12 @@ import java.net.SocketException;
  * <h4>msgType=3 (PCM)</h4>
  * Mono 48 kHz PCM_16LE for the active remote listener.
  *
+ * <h4>msgType=5 (AUTH)</h4>
+ * First frame on every connection (F14): payload = a 2-minute IPC token, UTF-8 (empty when the
+ * app holds no secret). It is read before the client may replace the active one, so another
+ * app can't kick OverDrive off the mic slot or inject audio. While {@code IpcAuth.ENFORCE} is
+ * false a missing or bad token is only logged; a client that sends no AUTH frame keeps its bytes.
+ *
  * <h4>msgType=4 (LISTENER_ONLY)</h4>
  * Empty marker sent by a listener-only capture. It clears stale recording
  * audio config from a client this connection replaced.
@@ -84,6 +90,10 @@ public class AacIngestServer implements Runnable {
     private static final int MSG_DATA = 2;
     private static final int MSG_PCM = 3;
     private static final int MSG_LISTENER_ONLY = 4;
+    static final int MSG_AUTH = 5;
+    /** How long the accept loop waits for the AUTH frame before deciding (F14). */
+    private static final int AUTH_TIMEOUT_MS = 1500;
+    private static final int MAX_TOKEN_BYTES = 4096;
     private static final int MAX_PCM_FRAME_BYTES = 8 * 1024;
 
     // Hard cap so a runaway / corrupt client can't allocate 2 GB.
@@ -145,6 +155,28 @@ public class AacIngestServer implements Runnable {
                     continue;
                 }
 
+                // F14: a client proves it is the OverDrive app BEFORE it may replace the
+                // active one, so another app can't kick it off the mic slot.
+                java.io.PushbackInputStream clientIn;
+                String unauthorized;
+                try {
+                    clientIn = new java.io.PushbackInputStream(client.getInputStream(), 8);
+                    unauthorized = readAuthFrame(client, clientIn);
+                } catch (IOException ioe) {
+                    try { client.close(); } catch (IOException ignored) {}
+                    continue;
+                }
+                if (unauthorized != null) {
+                    if (IpcAuth.shouldLog("aac", System.currentTimeMillis())) {
+                        logger.warn("Audio client without a valid token (" + unauthorized + ")"
+                                + (IpcAuth.ENFORCE ? " - rejected" : " - allowed, log-only"));
+                    }
+                    if (IpcAuth.ENFORCE) {
+                        try { client.close(); } catch (IOException ignored) {}
+                        continue;
+                    }
+                }
+
                 // Evict the previous client cleanly. Critical ordering:
                 // PUBLISH the new client+worker as the active pair BEFORE
                 // closing/interrupting/joining the old one. The old
@@ -173,8 +205,9 @@ public class AacIngestServer implements Runnable {
                 // completion before we touch encoder state for the new
                 // client. Daemon thread so JVM exit isn't blocked.
                 final Socket workerClient = client;
+                final java.io.InputStream workerIn = clientIn;
                 Thread worker = new Thread(new Runnable() {
-                    @Override public void run() { handleClient(workerClient); }
+                    @Override public void run() { handleClient(workerClient, workerIn); }
                 }, "AacClient");
                 worker.setDaemon(true);
 
@@ -257,7 +290,48 @@ public class AacIngestServer implements Runnable {
         }
     }
 
-    private void handleClient(Socket client) {
+    /**
+     * Reads the AUTH frame that opens a connection. Returns why the client is not authorised, or
+     * null when its token is valid. A first frame that is not AUTH (or a timeout) is pushed back
+     * unread, so in log-only mode that client's stream is untouched.
+     */
+    static String readAuthFrame(Socket client, java.io.PushbackInputStream in) throws IOException {
+        int previousTimeout = client.getSoTimeout();
+        client.setSoTimeout(AUTH_TIMEOUT_MS);
+        try {
+            byte[] header = new byte[8];
+            int got = 0;
+            try {
+                while (got < header.length) {
+                    int n = in.read(header, got, header.length - got);
+                    if (n < 0) break;
+                    got += n;
+                }
+            } catch (java.net.SocketTimeoutException timeout) {
+                // fall through with what arrived
+            }
+            if (got < header.length) {
+                if (got > 0) in.unread(header, 0, got);
+                return "no auth frame";
+            }
+            int total = readIntBE(header, 0);
+            int type = readIntBE(header, 4);
+            if (type != MSG_AUTH) {
+                in.unread(header, 0, got);
+                return "no auth frame";
+            }
+            int tokenLength = total - 4;
+            if (tokenLength < 0 || tokenLength > MAX_TOKEN_BYTES) return "bad auth frame";
+            byte[] token = new byte[tokenLength];
+            new DataInputStream(in).readFully(token);
+            return IpcAuth.audioRejectionReason(
+                    new String(token, java.nio.charset.StandardCharsets.UTF_8));
+        } finally {
+            client.setSoTimeout(previousTimeout);
+        }
+    }
+
+    private void handleClient(Socket client, java.io.InputStream source) {
         // Capture this worker's socket so the finally block can tell
         // whether it's still the active client. If a newer client has
         // taken over, we MUST NOT call disableAudioMuxing() — that
@@ -274,7 +348,7 @@ public class AacIngestServer implements Runnable {
             // Catch a half-open peer (app crashed without RST) within
             // ~2 hours via the kernel's keepalive probes.
             client.setKeepAlive(true);
-            in = new DataInputStream(client.getInputStream());
+            in = new DataInputStream(source);
 
             boolean configReceived = false;
             // Reusable read buffer — sized for the largest AAC frame we
