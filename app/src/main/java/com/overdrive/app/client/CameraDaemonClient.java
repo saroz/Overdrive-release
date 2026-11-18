@@ -112,7 +112,7 @@ public class CameraDaemonClient {
             }
 
             try {
-                writer.println(command.toString());
+                writer.println(com.overdrive.app.server.IpcAuth.attach(command).toString());
                 writer.flush();
                 if (writer.checkError()) {
                     connected = false;

@@ -20,6 +20,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * port can't replay it as a sign-in). Only the OverDrive app (its copy of the auth secret) and
  * the daemons (the owner-only secret file) can mint one.
  *
+ * <p>The camera daemon's command port 19876 ({@code TcpCommandServer}, key {@code "cmd"}) gets
+ * the same check through {@link #cameraTcpRejectionReason}.
+ *
  * <p>Stage A: {@link #ENFORCE} is false, so the server only logs a command that arrives without
  * a valid token. After a car run shows no such log lines, flip it to true.
  */
@@ -48,6 +51,18 @@ public final class IpcAuth {
             // reads that return secrets or identity
             "GET_CONFIG", "EXPORT_CONFIG", "GET_MQTT_CONNECTIONS", "GET_ABRP_CONFIG",
             "GET_VEHICLE_IDENTITY")));
+
+    /**
+     * Port 19876 commands that change recording, streaming or surveillance, stop the daemon, or
+     * return a live camera frame. Status reads, ping, telenavUse and auth_invalidate stay open.
+     */
+    static final Set<String> CAMERA_TCP_GUARDED = Collections.unmodifiableSet(new HashSet<>(
+            Arrays.asList(
+                    "start", "stop", "shutdown", "getFrame",
+                    "startStream", "stopStream", "setStreamMode",
+                    "enableSurveillance", "disableSurveillance", "setAccState",
+                    "setRecordingMode", "setBitrate", "setCodec",
+                    "setRecordingsStorageType", "setRecordingsLimitMb")));
 
     private static final long LOG_INTERVAL_MS = 60_000L;
     private static final Map<String, Long> lastLogged = new ConcurrentHashMap<>();
@@ -78,6 +93,33 @@ public final class IpcAuth {
      */
     public static String rejectionReason(String command, JSONObject request) {
         if (!requiresToken(command)) return null;
+        return tokenProblem(request);
+    }
+
+    public static boolean cameraTcpRequiresToken(String cmd) {
+        return cmd != null && CAMERA_TCP_GUARDED.contains(cmd);
+    }
+
+    /** Port 19876: why {@code cmd} is not authorised, or null when it is (or needs no token). */
+    public static String cameraTcpRejectionReason(String cmd, JSONObject request) {
+        if (!cameraTcpRequiresToken(cmd)) return null;
+        return tokenProblem(request);
+    }
+
+    /** {@code request} as text for a log line, with the token masked. */
+    public static String redactedForLog(JSONObject request) {
+        if (request == null) return "null";
+        if (!request.has(FIELD)) return request.toString();
+        try {
+            JSONObject copy = new JSONObject(request.toString());
+            copy.put(FIELD, "***");
+            return copy.toString();
+        } catch (Exception e) {
+            return "(unprintable request)";
+        }
+    }
+
+    private static String tokenProblem(JSONObject request) {
         String token = request == null ? "" : request.optString(FIELD, "");
         if (token.isEmpty()) return "no token";
         try {

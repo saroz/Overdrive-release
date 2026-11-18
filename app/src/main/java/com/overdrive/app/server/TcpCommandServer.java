@@ -99,10 +99,10 @@ public class TcpCommandServer {
 
             String line;
             while ((line = reader.readLine()) != null) {
-                CameraDaemon.log("TCP received: " + line);
-                
                 try {
                     JSONObject cmd = new JSONObject(line);
+                    // (never log the caller's token)
+                    CameraDaemon.log("TCP received: " + IpcAuth.redactedForLog(cmd));
                     JSONObject response = processCommand(cmd);
                     writer.println(response.toString());
                 } catch (Exception e) {
@@ -124,6 +124,20 @@ public class TcpCommandServer {
         JSONObject response = new JSONObject();
         
         CameraDaemon.log("Processing command: " + action);
+
+        // F14: this port takes any local app; state changes and camera frames need a token.
+        String unauthorized = IpcAuth.cameraTcpRejectionReason(action, cmd);
+        if (unauthorized != null) {
+            if (IpcAuth.shouldLog("tcp:" + action, System.currentTimeMillis())) {
+                CameraDaemon.log("TCP " + action + " without a valid token (" + unauthorized + ")"
+                        + (IpcAuth.ENFORCE ? " - rejected" : " - allowed, log-only"));
+            }
+            if (IpcAuth.ENFORCE) {
+                response.put("status", "error");
+                response.put("message", "unauthorized");
+                return response;
+            }
+        }
 
         switch (action) {
             case "start":

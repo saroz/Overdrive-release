@@ -126,13 +126,20 @@ class CameraDaemonController(
         }.start()
     }
     
+    /** F14: the camera daemon's port 19876 asks state changes for an IPC token. */
+    private fun withToken(json: String): String = try {
+        com.overdrive.app.server.IpcAuth.attach(JSONObject(json)).toString()
+    } catch (e: Exception) {
+        json
+    }
+
     private fun sendShutdownCommand(): Boolean {
         return try {
             android.util.Log.i("CameraDaemonCtrl", "Attempting TCP shutdown on port $DAEMON_TCP_PORT")
             Socket("127.0.0.1", DAEMON_TCP_PORT).use { socket ->
                 socket.soTimeout = 5000
                 val writer = OutputStreamWriter(socket.getOutputStream())
-                writer.write("{\"cmd\":\"shutdown\"}\n")
+                writer.write(withToken("{\"cmd\":\"shutdown\"}") + "\n")
                 writer.flush()
                 
                 val reader = socket.getInputStream().bufferedReader()
@@ -240,7 +247,7 @@ class CameraDaemonController(
             Socket("127.0.0.1", DAEMON_TCP_PORT).use { socket ->
                 socket.soTimeout = 5000
                 val writer = OutputStreamWriter(socket.getOutputStream())
-                writer.write("$command\n")
+                writer.write(withToken(command) + "\n")
                 writer.flush()
                 
                 val reader = socket.getInputStream().bufferedReader()
@@ -260,7 +267,7 @@ class CameraDaemonController(
             Socket("127.0.0.1", DAEMON_TCP_PORT).use { socket ->
                 socket.soTimeout = 5000
                 val writer = OutputStreamWriter(socket.getOutputStream())
-                writer.write("$command\n")
+                writer.write(withToken(command) + "\n")
                 writer.flush()
                 
                 val reader = socket.getInputStream().bufferedReader()

@@ -1454,7 +1454,7 @@ public class StatusOverlayService extends Service {
                 cmd.put("cmd", "setRecordingMode");
                 cmd.put("mode", mode);
                 java.io.OutputStream os = socket.getOutputStream();
-                os.write((cmd.toString() + "\n").getBytes());
+                os.write((com.overdrive.app.server.IpcAuth.attach(cmd).toString() + "\n").getBytes());
                 os.flush();
                 BufferedReader reader = new BufferedReader(
                         new InputStreamReader(socket.getInputStream()));
@@ -2559,7 +2559,7 @@ public class StatusOverlayService extends Service {
                 cmd.put("mode", configuredMode);
 
                 java.io.OutputStream os = socket.getOutputStream();
-                os.write((cmd.toString() + "\n").getBytes());
+                os.write((com.overdrive.app.server.IpcAuth.attach(cmd).toString() + "\n").getBytes());
                 os.flush();
 
                 BufferedReader reader = new BufferedReader(

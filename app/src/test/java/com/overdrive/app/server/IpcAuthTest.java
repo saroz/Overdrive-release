@@ -144,6 +144,70 @@ public class IpcAuthTest {
         }
     }
 
+    // ---------- port 19876 (camera daemon TcpCommandServer) ----------
+
+    private static final String[] CAMERA_GUARDED = {
+            "start", "stop", "shutdown", "getFrame", "startStream", "stopStream", "setStreamMode",
+            "enableSurveillance", "disableSurveillance", "setAccState", "setRecordingMode",
+            "setBitrate", "setCodec", "setRecordingsStorageType", "setRecordingsLimitMb",
+    };
+
+    private static final String[] CAMERA_OPEN = {
+            "status", "ping", "setOutput", "streamStatus", "getStreamMode", "surveillanceStatus",
+            "getRecordingMode", "getQualitySettings", "setRtmpUrl", "auth_invalidate",
+            "telenavUse", "",
+    };
+
+    @Test
+    public void cameraPortGuardsStateChangesAndFrames() throws Exception {
+        for (String cmd : CAMERA_GUARDED) {
+            assertTrue(cmd + " must need a token", IpcAuth.cameraTcpRequiresToken(cmd));
+            assertEquals("no token",
+                    IpcAuth.cameraTcpRejectionReason(cmd, new JSONObject().put("cmd", cmd)));
+        }
+        assertEquals(CAMERA_GUARDED.length, IpcAuth.CAMERA_TCP_GUARDED.size());
+        for (String cmd : CAMERA_OPEN) {
+            assertFalse(cmd + " must stay open", IpcAuth.cameraTcpRequiresToken(cmd));
+            assertNull(IpcAuth.cameraTcpRejectionReason(cmd, new JSONObject()));
+        }
+    }
+
+    @Test
+    public void logLinesMaskTheToken() throws Exception {
+        JSONObject request = new JSONObject().put("cmd", "stop").put("jwt", "secret.token.value");
+        String logged = IpcAuth.redactedForLog(request);
+        assertFalse(logged.contains("secret.token.value"));
+        assertTrue(logged.contains("\"cmd\":\"stop\""));
+        assertEquals("secret.token.value", request.getString("jwt"));
+        assertEquals("{\"cmd\":\"ping\"}", IpcAuth.redactedForLog(new JSONObject().put("cmd", "ping")));
+    }
+
+    @Test
+    public void cameraServerChecksBeforeDispatchAndNeverLogsTheRawLine() throws IOException {
+        String server = read("app/src/main/java/com/overdrive/app/server/TcpCommandServer.java");
+        int check = server.indexOf("IpcAuth.cameraTcpRejectionReason(action, cmd)");
+        int dispatch = server.indexOf("switch (action) {", check);
+        assertTrue(check > 0);
+        assertTrue(dispatch > check);
+        assertFalse(server.contains("\"TCP received: \" + line"));
+        assertTrue(server.contains("IpcAuth.redactedForLog(cmd)"));
+    }
+
+    @Test
+    public void cameraPortSendersAttachAToken() throws IOException {
+        String[] senders = {
+                "app/src/main/java/com/overdrive/app/client/CameraDaemonClient.java",
+                "app/src/main/java/com/overdrive/app/overlay/StatusOverlayService.java",
+                "app/src/main/java/com/overdrive/app/ui/daemon/CameraDaemonController.kt",
+        };
+        for (String path : senders) {
+            assertTrue(path + " must attach an IPC token", read(path).contains("IpcAuth.attach("));
+        }
+        String controller = read("app/src/main/java/com/overdrive/app/ui/daemon/CameraDaemonController.kt");
+        assertFalse(controller.contains("writer.write(\"$command\\n\")"));
+        assertFalse(controller.contains("writer.write(\"{\\\"cmd\\\":\\\"shutdown\\\"}\\n\")"));
+    }
+
     private static String read(String relativePath) throws IOException {
         return new String(Files.readAllBytes(locate(relativePath)), StandardCharsets.UTF_8);
     }
