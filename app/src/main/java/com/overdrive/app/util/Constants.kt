@@ -47,12 +47,6 @@ object Constants {
     const val STREAM_JPEG_QUALITY = 40
     const val STREAM_INTERVAL_MS = 100L
     
-    // VPS Configuration - REMOVED (keeping only for reference)
-    // const val VPS_API_URL = "http://35.211.235.83/api/device"
-    // const val RTMP_BASE_URL = "rtmp://35.211.235.83:1935/live"
-    // const val PUBLISHER_PASSWORD = "byd-cam-secret-2024"
-    // const val HEARTBEAT_INTERVAL_MS = 30_000L
-    
     // Timeouts
     const val DAEMON_START_TIMEOUT_MS = 10_000L
     const val DAEMON_STOP_TIMEOUT_MS = 5_000L

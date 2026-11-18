@@ -767,9 +767,10 @@
                         <div class="ui-row ui-row-stack" style="border-bottom:none;">
                             <div class="ui-row-copy">
                                 <div class="ui-row-title" data-i18n="road_sense.crowd_worker_url">Sync worker URL</div>
-                                <div class="ui-row-desc" data-i18n="road_sense.crowd_worker_url_desc">Optional. Point upload/download at your own sync worker instead of the default endpoint.</div>
+                                <div class="ui-row-desc" data-i18n="road_sense.crowd_worker_url_desc">Point upload/download at your own sync worker. Nothing is sent until you enter one.</div>
+                                <div class="ui-row-desc" id="rsSyncWorkerStatus" role="status" style="display:none;" data-i18n="road_sense.crowd_worker_not_configured">Not configured — crowd sync is off until you enter your own worker URL.</div>
                             </div>
-                            <input type="url" id="rsSyncWorkerUrl" class="ui-input" inputmode="url" placeholder="https://roadsense.example.workers.dev" onchange="RoadSenseSettings.saveWorkerUrl()" />
+                            <input type="url" id="rsSyncWorkerUrl" class="ui-input" inputmode="url" placeholder="https://your-sync-worker.example.com" onchange="RoadSenseSettings.saveWorkerUrl()" />
                         </div>
                     </div>
                 </div>

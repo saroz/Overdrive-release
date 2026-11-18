@@ -56,14 +56,14 @@ class CommunitySyncProvider(
      *  when set, is sent as X-Device-Id so the Worker can flag which rows are the
      *  caller's own (`mine`) — advisory UX only, never required. */
     fun list(query: String, viewerDeviceId: String? = null): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         val url = if (query.isEmpty()) "$base/automations" else "$base/automations?$query"
         return httpGet(url, viewerDeviceId)
     }
 
     /** GET /automations/{id} — full record including the rules blob. [viewerDeviceId] as in [list]. */
     fun get(id: String, viewerDeviceId: String? = null): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         return httpGet("$base/automations/${enc(id)}", viewerDeviceId)
     }
 
@@ -81,7 +81,7 @@ class CommunitySyncProvider(
         schemaVersion: Int,
         actionGroups: JSONObject? = null,
     ): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         val payload = JSONObject()
             .put("deviceId", deviceId)
             .put("authorName", authorName)
@@ -107,7 +107,7 @@ class CommunitySyncProvider(
         schemaVersion: Int,
         actionGroups: JSONObject? = null,
     ): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         val payload = JSONObject()
             .put("deviceId", deviceId)
             .put("authorName", authorName)
@@ -131,13 +131,13 @@ class CommunitySyncProvider(
 
     /** POST /automations/{id}/rate — stars 1..5. */
     fun rate(id: String, deviceId: String, stars: Int): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         return post("$base/automations/${enc(id)}/rate", deviceId, JSONObject().put("deviceId", deviceId).put("stars", stars))
     }
 
     /** POST /automations/{id}/report — flag abuse. */
     fun report(id: String, deviceId: String, reason: String?): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         val body = JSONObject().put("deviceId", deviceId)
         if (!reason.isNullOrEmpty()) body.put("reason", reason)
         return post("$base/automations/${enc(id)}/report", deviceId, body)
@@ -145,13 +145,13 @@ class CommunitySyncProvider(
 
     /** POST /automations/{id}/install — best-effort download counter bump. */
     fun install(id: String): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         return post("$base/automations/${enc(id)}/install", null, JSONObject())
     }
 
     /** DELETE /automations/{id} — author delete (publishing-device match). */
     fun delete(id: String, deviceId: String): Result {
-        val base = baseUrl() ?: return fail("no community worker URL configured")
+        val base = baseUrl() ?: return fail("community worker URL not configured")
         return try {
             val req = Request.Builder()
                 .url("$base/automations/${enc(id)}")

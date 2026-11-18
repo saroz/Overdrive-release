@@ -309,6 +309,8 @@ class RoadSenseController @JvmOverloads constructor(
     // gate; it is WRITTEN solely on syncExecutor (single-threaded). Volatile gives the
     // tick thread visibility of the latest write without a lock.
     @Volatile private var lastSyncMs = -1L
+    // One-shot log latch for "crowd sync opted in but no worker URL" (privacy G3).
+    @Volatile private var loggedSyncNotConfigured = false
     // Last uploaded row's updated_ms, PERSISTED in UCM (roadSense.lastUploadCursor)
     // so a daemon restart / ACC cycle doesn't re-scan and re-upload every eligible
     // local row from 0 (wasted bandwidth) and — worse — re-contribute this device's
@@ -1075,6 +1077,17 @@ class RoadSenseController @JvmOverloads constructor(
      */
     private fun maybeSync(cfg: RoadSenseConfig.Snapshot, pose: com.overdrive.app.roadsense.detect.Pose, now: Long) {
         if (!cfg.crowdDownload && !cfg.crowdUpload) return
+        // Privacy G3: no built-in worker endpoint. Opted in but no URL configured →
+        // "not configured": never schedule an attempt (no failed-call/backoff churn),
+        // log once per process so the state is visible in the daemon log.
+        if (!cfg.crowdSyncActive()) {
+            if (!loggedSyncNotConfigured) {
+                loggedSyncNotConfigured = true
+                Log.i(TAG, "crowd sync opted in but no worker URL configured — sync disabled (no network calls)")
+            }
+            return
+        }
+        loggedSyncNotConfigured = false
         // Already syncing on syncExecutor → don't queue another (one at a time).
         if (syncInFlight) return
         // Lazy-load the persisted last-sync time on first use so a reboot doesn't

@@ -54,6 +54,19 @@ object AnalyticsPinger {
     private val logger = DaemonLogger.getInstance("Analytics/Ping")
     private val JSON = "application/json; charset=utf-8".toMediaType()
 
+    /** One-shot log latch for "enabled but no worker URL" (privacy G3). */
+    @Volatile private var loggedNotConfigured = false
+
+    /**
+     * Pick the analytics base URL: the user's `analytics.workerUrl` first, then the
+     * build-time default (empty unless a self-hoster set one in `.env`). Returns null
+     * when neither is set — the caller must then make NO network call (privacy G3).
+     */
+    internal fun resolveBaseUrl(configured: String?, buildDefault: String?): String? =
+        (configured?.trim()?.takeIf { it.isNotEmpty() }
+            ?: buildDefault?.trim()?.takeIf { it.isNotEmpty() })
+            ?.trimEnd('/')
+
     /** UTC calendar day "YYYY-MM-DD" — matches the Worker's UTC day bucketing. */
     private fun dayOf(nowMs: Long): String {
         val fmt = SimpleDateFormat("yyyy-MM-dd", Locale.US)
@@ -79,11 +92,16 @@ object AnalyticsPinger {
             val today = dayOf(nowMs)
             if (section?.optString(KEY_LAST_PING_DAY, "") == today) return // already pinged today
 
-            val base = (section?.optString(KEY_WORKER_URL, "")?.trim()
-                ?.takeIf { it.isNotEmpty() }
-                ?: DEFAULT_WORKER_URL.trim().takeIf { it.isNotEmpty() })
-                ?.trimEnd('/')
-                ?: return
+            val base = resolveBaseUrl(section.optString(KEY_WORKER_URL, ""), DEFAULT_WORKER_URL)
+            if (base == null) {
+                // Privacy G3: no built-in endpoint. Opted in but nothing configured →
+                // skip without touching the network; log once per process.
+                if (!loggedNotConfigured) {
+                    loggedNotConfigured = true
+                    logger.info("analytics enabled but no worker URL configured — ping disabled (no network calls)")
+                }
+                return
+            }
 
             // Pass the section we already loaded so AnalyticsId doesn't do a second
             // forceReload() disk/cross-UID read on this same tick.

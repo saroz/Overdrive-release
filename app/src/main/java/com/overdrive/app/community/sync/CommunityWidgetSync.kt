@@ -120,7 +120,7 @@ internal class CommunityWidgetSync(
         return u.trimEnd('/')
     }
 
-    private fun noUrl(): Result = fail("no community worker URL configured")
+    private fun noUrl(): Result = fail("community worker URL not configured")
 
     private fun fail(msg: String): Result {
         logger.warn("community widgets call failed: $msg")

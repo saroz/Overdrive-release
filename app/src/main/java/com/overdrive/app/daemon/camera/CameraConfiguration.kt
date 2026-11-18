@@ -41,10 +41,4 @@ object CameraConfiguration {
     // Stream modes
     const val STREAM_MODE_PRIVATE = "private"  // Local MJPEG only
     const val STREAM_MODE_PUBLIC = "public"    // Public access via tunnel
-    
-    // VPS configuration - REMOVED (keeping only for reference)
-    // const val VPS_API_URL = "http://35.211.235.83/api/device"
-    // const val PUBLISHER_PASSWORD = "byd-cam-secret-2024"
-    // const val HEARTBEAT_INTERVAL_MS = 30_000L  // 30 seconds
-    // const val DEFAULT_RTMP_BASE_URL = "rtmp://35.211.235.83:1935/live"
 }

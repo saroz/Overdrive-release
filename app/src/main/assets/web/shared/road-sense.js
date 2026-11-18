@@ -544,6 +544,7 @@ BYD.roadSense = {
         this._setChecked('rsCrowdDownload', c.crowdDownload);
         const urlInput = document.getElementById('rsSyncWorkerUrl');
         if (urlInput) urlInput.value = c.syncWorkerUrl || '';
+        this._renderWorkerStatus(c.syncWorkerUrl);
 
         // Blind Spot.
         this._setChecked('bsEnabled', c.bsEnabled);
@@ -1181,8 +1182,17 @@ BYD.roadSense = {
         if (!input) return;
         const url = (input.value || '').trim();
         const ok = await this._save({ syncWorkerUrl: url });
-        if (ok) { this.config.syncWorkerUrl = url; this._toastSaved(); }
+        if (ok) { this.config.syncWorkerUrl = url; this._renderWorkerStatus(url); this._toastSaved(); }
         else { this._toastFailed(); }
+    },
+
+    // Privacy G3: there is no built-in sync endpoint. A blank URL means crowd
+    // sync never contacts anything, so say so plainly. ES5 only (Chrome 58).
+    _renderWorkerStatus: function (url) {
+        var el = document.getElementById('rsSyncWorkerStatus');
+        if (!el) return;
+        var blank = !url || !String(url).replace(/^\s+|\s+$/g, '');
+        el.style.display = blank ? '' : 'none';
     },
 
     // ==================== Routing (BYOK) ====================

@@ -134,6 +134,11 @@ object RoadSenseConfig {
          *  master feature ON (nothing to render otherwise) AND the user not to have hidden
          *  it. The single gate every start site + the service's own poll consult, so the
          *  start/keep-warm/regime-edge paths can't disagree about visibility. */
+        /** Crowd sync runs only when a direction is opted in AND a worker URL is set
+         *  (privacy G3: no built-in default endpoint). See [crowdSyncActive]. */
+        fun crowdSyncActive(): Boolean =
+            RoadSenseConfig.crowdSyncActive(crowdUpload, crowdDownload, syncWorkerUrl)
+
         fun overlayShouldShow(): Boolean =
             com.overdrive.app.roadsense.overlay.RoadSenseOverlayPolicy.shouldShow(
                 enabled,
@@ -152,6 +157,14 @@ object RoadSenseConfig {
             }
         }
     }
+
+    /**
+     * Privacy G3: crowdsource sync is active only when the user opted into upload or
+     * download AND a worker URL is configured. The app ships no default endpoint, so
+     * a blank URL means "not configured" → sync stays off (no attempts, no retries).
+     */
+    fun crowdSyncActive(crowdUpload: Boolean, crowdDownload: Boolean, syncWorkerUrl: String?): Boolean =
+        (crowdUpload || crowdDownload) && !syncWorkerUrl.isNullOrBlank()
 
     /**
      * Read the current section. [forceReload]=true forces a cross-UID disk re-read
