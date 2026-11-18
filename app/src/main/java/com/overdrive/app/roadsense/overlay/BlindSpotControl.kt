@@ -42,6 +42,7 @@ object BlindSpotControl {
             .connectTimeout(2, TimeUnit.SECONDS)
             .readTimeout(3, TimeUnit.SECONDS)
             .retryOnConnectionFailure(false)
+            .addInterceptor(com.overdrive.app.util.DaemonHttpClient.sessionInterceptor)
             .build()
     }
 

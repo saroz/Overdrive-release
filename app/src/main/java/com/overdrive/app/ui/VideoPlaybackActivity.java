@@ -207,12 +207,14 @@ public final class VideoPlaybackActivity extends Activity {
         String filePath = request.filePath;
 
         Uri uri;
+        java.util.Map<String, String> headers = null;
         if (libName != null && !libName.trim().isEmpty()) {
-            // Library file streams from the daemon over LOOPBACK (127.0.0.1); the auth
-            // middleware's loopback safety net trusts 127.0.0.1 with no tunnel headers, so
-            // no auth cookie is needed (ZoomableVideoView.setVideoURI has no header overload,
-            // and the raw endpoint is Range-aware so the MediaPlayer can seek the moov atom).
+            // Library file streams from the daemon over LOOPBACK (127.0.0.1). Since security
+            // fix F2 loopback needs the session cookie like any caller (the raw endpoint is
+            // Range-aware so the MediaPlayer can seek the moov atom).
             uri = Uri.parse(DAEMON_BASE + "/api/audio/library/raw?name=" + Uri.encode(libName));
+            String cookie = com.overdrive.app.util.DaemonHttpClient.sessionCookie();
+            if (cookie != null) headers = java.util.Collections.singletonMap("Cookie", cookie);
         } else if (filePath != null && !filePath.trim().isEmpty()) {
             uri = Uri.fromFile(new java.io.File(filePath));
         } else {
@@ -260,7 +262,7 @@ public final class VideoPlaybackActivity extends Activity {
                 return true;
             });
             Log.i(TAG, "setVideoURI " + uri);
-            videoView.setVideoURI(uri);
+            videoView.setVideoURI(uri, headers);
             hasAcceptedPlayback = true;
             videoView.requestFocus();
             return true;

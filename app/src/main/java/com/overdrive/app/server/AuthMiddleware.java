@@ -11,18 +11,11 @@ import java.util.Set;
 /**
  * Authentication middleware for HttpServer.
  *
- * Two-tier authentication:
+ * Authentication:
  *
- *   Tier 1 — JWT (cookie or Authorization: Bearer): primary, all callers should use this.
- *
- *   Tier 2 — loopback safety net: requests originating from 127.0.0.1 are
- *            trusted ONLY when the request carries no tunnel-fingerprint
- *            headers (X-Forwarded-*, Cf-*, X-Real-Ip, Forwarded). This
- *            keeps developer-tools and ADB shell access working while
- *            blocking traffic relayed via cloudflared / zrok / ngrok which
- *            all forward to localhost but inject these proxy headers.
- *            Browser requests may use this fallback only when their Origin
- *            is the local HTTP daemon on the accepted listener's port.
+ *   JWT (cookie or Authorization: Bearer) for every caller, local or remote.
+ *   The former loopback "Tier 2" trust was removed (security fix F2): any app
+ *   on the head unit can reach 127.0.0.1, so loopback proves nothing.
  *
  * Public paths (no auth required at all) — the authoritative list is PUBLIC_PATHS /
  * PUBLIC_PREFIXES below; this summary must not drift from it:
@@ -143,78 +136,16 @@ public class AuthMiddleware {
             if (validation.valid) {
                 return true;
             }
-            // JWT was provided but invalid — log and fall through to Tier 2
-            // (a stale cached JWT shouldn't lock out a legitimate same-device caller).
             log("JWT invalid for " + HttpServer.redactQueryToken(path)
                     + ": " + validation.error);
         }
 
-        // Tier 2 — loopback safety net. Trust 127.0.0.1 / ::1 ONLY when no
-        // tunnel-fingerprint headers are present. Reverse proxies (cloudflared,
-        // zrok, ngrok) all forward to localhost but inject these headers — so
-        // their absence is a strong signal we're talking to a same-device
-        // caller. A foreign browser page also reaches this socket from loopback,
-        // so a supplied Origin must independently identify the local listener.
-        if (!hasTunnelHeaders && clientAddress != null
-                && isLocalBrowserOrigin(originHeader, localPort)
-                && isLocalHostHeader(hostHeader)) {
-            String addrStr = clientAddress.toString();
-            boolean isLoopback = addrStr.contains("127.0.0.1") || addrStr.contains("/0:0:0:0:0:0:0:1");
-            if (isLoopback) {
-                return true;
-            }
-        }
+        // Security fix F2: no loopback fallback. Every app on the head unit can reach
+        // 127.0.0.1, so a same-device caller must present a JWT like anyone else
+        // (in-app callers attach one via DaemonHttpClient).
 
         return handleUnauthorized(path, out,
             jwt == null || jwt.isEmpty() ? "No session token" : "Invalid session token");
-    }
-
-    /**
-     * A present Host must name this device. A DNS-rebinding page reaches the loopback socket under
-     * its own hostname, and its same-origin GETs carry no Origin. Native callers send a loopback
-     * Host, or none (HTTP/1.0).
-     */
-    static boolean isLocalHostHeader(String host) {
-        if (host == null) return true;
-        String h = host.trim().toLowerCase(java.util.Locale.ROOT);
-        if (h.startsWith("[")) {
-            int end = h.indexOf(']');
-            if (end < 0) return false;
-            h = h.substring(1, end);
-        } else if (h.indexOf(':') >= 0 && h.indexOf(':') == h.lastIndexOf(':')) {
-            h = h.substring(0, h.indexOf(':'));
-        }
-        return h.equals("127.0.0.1") || h.equals("localhost")
-                || h.equals("::1") || h.equals("0:0:0:0:0:0:0:1");
-    }
-
-    private static boolean isLocalBrowserOrigin(String origin, int localPort) {
-        // Native clients and direct navigation do not supply Origin. Preserve the
-        // existing fallback for them; an explicitly empty/opaque Origin is different.
-        if (origin == null) return true;
-        if (origin.trim().isEmpty() || localPort < 1 || localPort > 65535) return false;
-        try {
-            java.net.URI source = new java.net.URI(origin.trim());
-            if (!"http".equalsIgnoreCase(source.getScheme())
-                    || source.getUserInfo() != null || source.getQuery() != null
-                    || source.getFragment() != null
-                    || (source.getPath() != null && !source.getPath().isEmpty()
-                        && !"/".equals(source.getPath()))) {
-                return false;
-            }
-            String host = source.getHost();
-            boolean loopbackHost = "127.0.0.1".equals(host)
-                    || "localhost".equalsIgnoreCase(host)
-                    || "[::1]".equals(host) || "::1".equals(host)
-                    || "[0:0:0:0:0:0:0:1]".equals(host)
-                    || "0:0:0:0:0:0:0:1".equals(host);
-            int port = source.getPort() < 0 ? 80 : source.getPort();
-            // Host / forwarded headers are client-controlled and cannot grant
-            // fallback authority. Compare with the actual accepted socket instead.
-            return loopbackHost && port == localPort;
-        } catch (Exception ignored) {
-            return false;
-        }
     }
 
     /**

@@ -52,12 +52,20 @@ public class HttpServerProxyProtocolTest {
     }
 
     @Test
-    public void loopbackBypassRemainsLocalOnly() throws Exception {
+    public void loopbackWithoutTokenIsRejected() throws Exception {
+        // Security fix F2: loopback is no longer trusted without a JWT — any app on the
+        // head unit can reach 127.0.0.1, so a token-less local call must get 401.
         InetSocketAddress loopback = new InetSocketAddress(
                 InetAddress.getByName("127.0.0.1"), 54321);
 
-        assertTrue(AuthMiddleware.checkAuth(
+        ByteArrayOutputStream localResponse = new ByteArrayOutputStream();
+        assertFalse(AuthMiddleware.checkAuth(
                 "/api/settings/unified", null, null,
+                localResponse, loopback, false, null, 8080, "127.0.0.1:8080"));
+        assertTrue(localResponse.toString("UTF-8").contains("401 Unauthorized"));
+
+        assertFalse(AuthMiddleware.checkAuth(
+                "/api/backup/export", null, null,
                 new ByteArrayOutputStream(), loopback, false));
 
         ByteArrayOutputStream proxiedResponse = new ByteArrayOutputStream();

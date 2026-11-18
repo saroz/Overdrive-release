@@ -78,6 +78,20 @@ object DaemonHttpClient {
     @JvmStatic
     fun sessionCookie(): String? = currentJwt()?.let { "byd_session=$it" }
 
+    /**
+     * OkHttp interceptor that adds the session cookie to daemon (loopback) requests.
+     * Required since security fix F2 removed the loopback auth bypass. Never adds the
+     * cookie to a non-loopback host, so the JWT can't leak if a client is reused.
+     */
+    @JvmField
+    val sessionInterceptor: okhttp3.Interceptor = okhttp3.Interceptor { chain ->
+        val req = chain.request()
+        val host = req.url.host
+        val loopback = host == "127.0.0.1" || host == "localhost"
+        val cookie = if (loopback && req.header("Cookie") == null) sessionCookie() else null
+        chain.proceed(if (cookie != null) req.newBuilder().header("Cookie", cookie).build() else req)
+    }
+
     /** Loopback WebSocket URL for a daemon path starting with "/". */
     @JvmStatic
     fun webSocketUrl(path: String): String = "ws://127.0.0.1:${CameraDaemon.HTTP_PORT}$path"

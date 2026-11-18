@@ -108,6 +108,7 @@ class ZoomableVideoView @JvmOverloads constructor(
     // Surface; the next prepare waits for it (a second producer can't connect).
     private var teardownPending = false
     private var pendingUri: Uri? = null
+    private var pendingHeaders: Map<String, String>? = null
     private var surfaceReady: Boolean = false
     private var prepared: Boolean = false
     private var playbackVolume: Float = 1f
@@ -285,8 +286,11 @@ class ZoomableVideoView @JvmOverloads constructor(
 
     // --------- VideoView-shaped surface ---------
 
-    fun setVideoURI(uri: Uri) {
+    /** @param headers request headers for an http URI (e.g. the daemon session cookie, F2). */
+    @JvmOverloads
+    fun setVideoURI(uri: Uri, headers: Map<String, String>? = null) {
         pendingUri = uri
+        pendingHeaders = headers
         prepared = false
         firstFrameSeen = false
         // A new clip starts at zero. Distinct from the surface-recreate
@@ -535,7 +539,9 @@ class ZoomableVideoView @JvmOverloads constructor(
                 mp.setVolume(playbackVolume, playbackVolume)
             } catch (_: Throwable) {
             }
-            mp.setDataSource(context, uri)
+            val headers = pendingHeaders
+            if (headers.isNullOrEmpty()) mp.setDataSource(context, uri)
+            else mp.setDataSource(context, uri, headers)
             // Hold a strong ref so the GC doesn't collect this Surface
             // while MediaPlayer is using it (see producerSurface field
             // comment for the the BYD head-unit (Android 10) ramifications).

@@ -2243,6 +2243,7 @@ class GlassWidgetsOverlayService : Service() {
         var conn: HttpURLConnection? = null
         return try {
             conn = URL("http://127.0.0.1:$PORT$path").openConnection(Proxy.NO_PROXY) as HttpURLConnection
+            com.overdrive.app.util.DaemonHttpClient.attachAuth(conn)
             conn.requestMethod = method
             conn.connectTimeout = min(3000, readTimeoutMs)
             conn.readTimeout = readTimeoutMs

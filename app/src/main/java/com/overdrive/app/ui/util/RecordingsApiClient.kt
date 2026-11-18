@@ -54,6 +54,7 @@ object RecordingsApiClient {
             // path instead of OkHttp's silent retry burning the connect
             // budget.
             .retryOnConnectionFailure(false)
+            .addInterceptor(DaemonHttpClient.sessionInterceptor)
             .build()
     }
 

@@ -47,6 +47,7 @@ object RoadSenseHazardApiClient {
             // Let a single connect failure bubble straight up — the caller
             // keeps the last good data rather than waiting out a silent retry.
             .retryOnConnectionFailure(false)
+            .addInterceptor(com.overdrive.app.util.DaemonHttpClient.sessionInterceptor)
             .build()
     }
 

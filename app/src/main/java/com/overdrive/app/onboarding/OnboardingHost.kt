@@ -457,6 +457,7 @@ class OnboardingHost(
                 try {
                     conn = java.net.URL("http://127.0.0.1:8080/api/surveillance/config")
                         .openConnection(java.net.Proxy.NO_PROXY) as java.net.HttpURLConnection
+                    com.overdrive.app.util.DaemonHttpClient.attachAuth(conn)
                     conn.requestMethod = "POST"
                     conn.doOutput = true
                     conn.connectTimeout = 3000
@@ -552,6 +553,7 @@ class OnboardingHost(
                     try {
                         conn = java.net.URL("http://127.0.0.1:8080/api/surveillance/config")
                             .openConnection(java.net.Proxy.NO_PROXY) as java.net.HttpURLConnection
+                        com.overdrive.app.util.DaemonHttpClient.attachAuth(conn)
                         conn.requestMethod = "POST"
                         conn.doOutput = true
                         conn.connectTimeout = 3000
@@ -593,6 +595,7 @@ class OnboardingHost(
             try {
                 conn = java.net.URL("http://127.0.0.1:8080/api/surveillance/config")
                     .openConnection(java.net.Proxy.NO_PROXY) as java.net.HttpURLConnection
+                com.overdrive.app.util.DaemonHttpClient.attachAuth(conn)
                 conn.requestMethod = "GET"
                 conn.connectTimeout = 3000
                 conn.readTimeout = 3000

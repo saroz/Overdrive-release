@@ -38,6 +38,7 @@ object GoogleUsageReporter {
             .connectTimeout(1500, TimeUnit.MILLISECONDS)
             .readTimeout(3000, TimeUnit.MILLISECONDS)
             .retryOnConnectionFailure(false)
+            .addInterceptor(com.overdrive.app.util.DaemonHttpClient.sessionInterceptor)
             .build()
     }
 
