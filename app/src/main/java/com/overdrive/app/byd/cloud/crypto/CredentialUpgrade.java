@@ -7,8 +7,11 @@ import org.json.JSONObject;
 /**
  * Shared one-shot upgrade of a stored credential field from the LEGACY
  * firmware-fingerprint-bound key to the STABLE device-id-only key, so a future
- * OTA can't strand it (see {@link CredentialCipher}). Used by the Telegram bot
- * token, the BYD-cloud password, and the NavMap routing key.
+ * OTA can't strand it (see {@link CredentialCipher}), and, in the daemons that
+ * own the credential key, of every ENC: value to ENC2 (F1: the device-id key is
+ * rebuildable by any app). Used by the Telegram bot token, the BYD-cloud
+ * password, the NavMap/Google/GenAI keys, the cloudflared token and the
+ * SafeKeep destination secrets.
  *
  * <p>Two correctness guards, both learned from the Telegram-token fix:
  * <ul>

@@ -129,6 +129,13 @@ public class CredentialKeyStoreTest {
     }
 
     @Test
+    public void onlyTheDaemonsOwnTheKey() {
+        File f = new File(tmp.getRoot(), ".overdrive_cred_key");
+        assertTrue(daemon(f).ownsKey());
+        assertFalse(app(f, new File(tmp.getRoot(), "cred_key"), path -> null).ownsKey());
+    }
+
+    @Test
     public void cipherUsesTheStoreForEnc2() throws Exception {
         File f = new File(tmp.getRoot(), ".overdrive_cred_key");
         CredentialCipher.useKeySource(daemon(f));

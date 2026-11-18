@@ -52,6 +52,14 @@ public final class CredentialCipher {
 
         /** An ENC2 value could not be opened with what {@link #key()} gave (or it gave none): fetch it again. */
         default void keyRejected() {}
+
+        /**
+         * True where the key is the original (the daemons' own file), not a copy that may be stale: only there are
+         * stored values moved to ENC2 by {@link #upgradeToStableOrNull}.
+         */
+        default boolean ownsKey() {
+            return true;
+        }
     }
 
     private static volatile KeySource keySource = null;
@@ -302,12 +310,25 @@ public final class CredentialCipher {
 
     // ==================== UPGRADE ====================
 
+    // Whether this process may move values to ENC2: it holds the key and it is the original, not a copy.
+    private static boolean canMigrateToEnc2() {
+        try {
+            return currentKey() != null && source().ownsKey();
+        } catch (Throwable t) {
+            return false;
+        }
+    }
+
     /**
-     * True when {@code stored} is encrypted but only the LEGACY
-     * (fingerprint-bound) key can decrypt it — i.e. it was written by the old
-     * scheme and should be re-encrypted under the stable key before a future
-     * OTA strands it. Returns false for plaintext, unset, or already-stable
-     * values, and for values that don't decrypt at all (nothing we can do).
+     * True when {@code stored} should be rewritten:
+     * <ul>
+     *   <li>any readable ENC: value, when this process holds the ENC2 key and owns it (the daemons): the device-id
+     *       key anyone can rebuild no longer protects it once it moves to ENC2;</li>
+     *   <li>otherwise, as before, an ENC: value only the LEGACY (fingerprint-bound) key can decrypt, which should
+     *       move to the stable key before a future OTA strands it.</li>
+     * </ul>
+     * Returns false for plaintext, unset, ENC2, or already-stable values without the key, and for values that don't
+     * decrypt at all (nothing we can do).
      */
     public static boolean needsStableReEncrypt(String stored) {
         if (!isEncrypted(stored) || isEnc2(stored)) return false;
@@ -322,16 +343,18 @@ public final class CredentialCipher {
         System.arraycopy(combined, 0, iv, 0, IV_LEN);
         byte[] ct = new byte[combined.length - IV_LEN];
         System.arraycopy(combined, IV_LEN, ct, 0, ct.length);
+        boolean stable = tryDecrypt(iv, ct, false) != null;
+        if (canMigrateToEnc2()) return stable || tryDecrypt(iv, ct, true) != null;
         // Stable can't, but legacy can → it's a legacy ciphertext.
-        return tryDecrypt(iv, ct, false) == null && tryDecrypt(iv, ct, true) != null;
+        return !stable && tryDecrypt(iv, ct, true) != null;
     }
 
     /**
-     * Upgrade a stored credential to the stable key if (and only if) it is a
-     * legacy fingerprint-bound ciphertext. Returns the re-encrypted (stable)
-     * value to persist, or {@code null} when no rewrite should happen (not
-     * encrypted, already stable, unrecoverable, or a transient encrypt failure
-     * that would otherwise downgrade it to plaintext). Callers persist the
+     * Upgrade a stored ENC: credential: to ENC2 where this process owns the key, else (as before) to the stable
+     * device-id key if (and only if) it is a legacy fingerprint-bound ciphertext. Returns the re-encrypted value to
+     * persist, or {@code null} when no rewrite should happen (not encrypted, already ENC2, already stable without
+     * the key, unrecoverable, a transient encrypt failure that would otherwise downgrade it to plaintext, or a new
+     * value that doesn't read back as the same plaintext). Callers persist the
      * returned value under the cross-process config lock.
      *
      * <p>Centralises the OTA-stability upgrade so every credential field
@@ -346,6 +369,11 @@ public final class CredentialCipher {
         // encrypt() is fail-open (returns plaintext on JCE error). Never persist
         // a non-encrypted result over a working encrypted blob.
         if (!isEncrypted(reEncrypted)) return null;
+        // A value the stable device-id key already reads is rewritten only to reach ENC2: if the key went away
+        // between the check and the encrypt, rewriting it as ENC: again gains nothing.
+        if (!isEnc2(reEncrypted) && readsUnderStableDeviceKey(stored)) return null;
+        // Only the key's owner commits ENC2 values: a copy (the app's) may be stale.
+        if (isEnc2(reEncrypted) && !canMigrateToEnc2()) return null;
         // Round-trip verify before committing: if the DID file flapped unreadable
         // between the decrypt above and this encrypt, deriveKey throws and the
         // isEncrypted() check above already catches that (encrypt() fails open
@@ -355,6 +383,20 @@ public final class CredentialCipher {
         // working legacy blob untouched for the next run.
         if (!plain.equals(decrypt(reEncrypted))) return null;
         return reEncrypted;
+    }
+
+    private static boolean readsUnderStableDeviceKey(String stored) {
+        try {
+            byte[] combined = legacyBase64Decode(stored.substring(ENC_PREFIX.length()));
+            if (combined.length < IV_LEN + 1) return false;
+            byte[] iv = new byte[IV_LEN];
+            System.arraycopy(combined, 0, iv, 0, IV_LEN);
+            byte[] ct = new byte[combined.length - IV_LEN];
+            System.arraycopy(combined, IV_LEN, ct, 0, ct.length);
+            return tryDecrypt(iv, ct, false) != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // ==================== LEGACY KEY ====================

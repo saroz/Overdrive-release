@@ -39,6 +39,8 @@ public final class SafeKeepSecrets {
                 String plain = CredentialCipher.decrypt(blob);
                 if (plain == null || plain.isEmpty()) return UNREADABLE;
                 c = new JSONObject(plain);
+                // An ENC: blob moves to ENC2 in the daemons (single key, compare-and-set; a no-op elsewhere).
+                com.overdrive.app.byd.cloud.crypto.CredentialUpgrade.reEncryptKeyIfLegacy(SECTION, destId);
             }
         } catch (Exception e) {
             return UNREADABLE;

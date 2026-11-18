@@ -143,6 +143,12 @@ public final class CredentialKeyStore implements CredentialCipher.KeySource {
         if (!daemonSide) requestFetch(false);
     }
 
+    /** The daemons hold the original; the app's copy may lag a restored key, so it doesn't migrate values. */
+    @Override
+    public boolean ownsKey() {
+        return daemonSide;
+    }
+
     void invalidate() {
         cached = null;
         cachedMtime = 0;

@@ -45,7 +45,12 @@ object CloudflaredPaidConfig {
         // Stored encrypted; decrypt() returns "" on a tampered/undecryptable
         // value and returns legacy plaintext untouched.
         val stored = UnifiedConfigManager.getCloudflared().optString("token", "")
-        return CredentialCipher.decrypt(stored)
+        val plain = CredentialCipher.decrypt(stored)
+        // An ENC: token moves to ENC2 in the daemons (a no-op elsewhere, or once done).
+        if (plain.isNotEmpty() && CredentialCipher.isEncrypted(stored)) {
+            com.overdrive.app.byd.cloud.crypto.CredentialUpgrade.reEncryptKeyIfLegacy("cloudflared", "token")
+        }
+        return plain
     }
 
     /**
