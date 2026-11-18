@@ -983,6 +983,13 @@ html.vc-mode-immersive .vc-view-to-3d { display: none; }
     background-clip: content-box;
     outline: none;
 }
+/* Keyboard focus: a ring hugging the 20px ramp (the outline is pulled in over the transparent
+   touch padding). :focus because Chrome 58 has no :focus-visible; newer engines drop it for touch. */
+.vc-ambient-slider:focus { outline: 2px solid var(--primary); outline-offset: -10px; }
+:root[data-android-embed="1"] .vc-ambient-slider:focus { outline-offset: -16px; }
+@supports selector(:focus-visible) {
+    .vc-ambient-slider:focus:not(:focus-visible) { outline: none; }
+}
 .vc-ambient-slider:disabled {
     opacity: .45;
     cursor: not-allowed;

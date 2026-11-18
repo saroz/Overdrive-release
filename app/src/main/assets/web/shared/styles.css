@@ -2046,11 +2046,15 @@ select.text-input option {
     flex: 1;
     background: none;
     border: none;
-    outline: none;
     color: var(--text-primary);
     font-size: 14px;
 }
 .lang-sheet-search input::placeholder { color: var(--text-muted); }
+/* The box shows focus where :focus-within exists; Chrome 58 keeps the input's own :focus ring. */
+@supports selector(:focus-within) {
+    .lang-sheet-search:focus-within { border-color: var(--brand-primary); }
+    .lang-sheet-search input:focus { outline: none; }
+}
 
 .lang-sheet-list {
     list-style: none;
@@ -2071,7 +2075,7 @@ select.text-input option {
     transition: background 0.15s;
 }
 .lang-sheet-item:hover,
-.lang-sheet-item:focus { background: var(--bg-hover); outline: none; }
+.lang-sheet-item:focus { background: var(--bg-hover); }
 .lang-sheet-item.active { background: rgba(0, 212, 170, 0.1); }
 .lang-sheet-name {
     flex: 1;

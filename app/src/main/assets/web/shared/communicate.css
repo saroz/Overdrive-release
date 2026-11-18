@@ -185,8 +185,13 @@
     outline: none;
 }
 
-.ptt-button:focus-visible {
+/* :focus, not :focus-visible: the head-unit WebView (Chrome 58) has no :focus-visible and would
+   drop the rule. Newer engines hide the ring again for pointer/touch focus below. */
+.ptt-button:focus {
     box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--primary);
+}
+@supports selector(:focus-visible) {
+    .ptt-button:focus:not(:focus-visible) { box-shadow: none; }
 }
 
 .ptt-ring {

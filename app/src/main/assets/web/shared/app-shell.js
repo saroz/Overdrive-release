@@ -1646,7 +1646,7 @@
         if (document.querySelector('link[data-overdrive-search-css]')) return;
         var l = document.createElement('link');
         l.rel = 'stylesheet';
-        l.href = '../shared/search.css?v=1';
+        l.href = '../shared/search.css?v=2';
         l.setAttribute('data-overdrive-search-css', '1');
         document.head.appendChild(l);
     }

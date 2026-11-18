@@ -58,7 +58,7 @@ public class VehicleControlAssetTest {
         String html = readRepositoryFile("app/src/main/assets/web/local/vehicle-control.html");
         String css = readRepositoryFile("app/src/main/assets/web/shared/vehicle-control.css");
 
-        assertTrue(html.contains("vehicle-control.css?v=52"));
+        assertTrue(html.contains("vehicle-control.css?v=53"));
         assertTrue(css.contains("order: 3;"));
         assertTrue(css.contains("flex: 0 0 100%;"));
         assertTrue(css.contains(".vc-bar { left: 0; right: 0; bottom: 0; }"));

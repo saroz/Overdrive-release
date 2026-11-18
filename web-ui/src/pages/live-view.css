@@ -96,7 +96,6 @@ body[data-page="live-view"] .quality-menu__trigger {
             border: 1px solid var(--lv-pill-border);
             border-radius: var(--radius-full);
             cursor: pointer;
-            outline: none;
             transition: background-color var(--duration-fast) var(--easing-standard);
         }
 @media (hover: hover) {

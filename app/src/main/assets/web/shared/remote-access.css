@@ -157,7 +157,9 @@
 .ra-threshold-line { display: flex; align-items: center; justify-content: space-between; --ra-space: 16px; margin: 18px 24px 0; }
 .ra-threshold-line > label { display: flex; flex-direction: column; --ra-column-space: 5px; color: var(--on-surface); font-size: 12px; }
 .ra-number-wrap { display: flex; align-items: center; width: 110px; flex-shrink: 0; }
-.ra-number-wrap input { width: 67px; min-width: 0; padding: 10px 0 10px 12px; border: 0; color: var(--on-surface); background: transparent; font-size: 18px; font-variant-numeric: tabular-nums; outline: none; }
+.ra-number-wrap input { width: 67px; min-width: 0; padding: 10px 0 10px 12px; border: 0; color: var(--on-surface); background: transparent; font-size: 18px; font-variant-numeric: tabular-nums; }
+/* The wrapper draws the ring where :focus-within exists; Chrome 58 keeps the input's own :focus ring. */
+@supports selector(:focus-within) { .ra-number-wrap input:focus { outline: none; } }
 .ra-number-wrap > span { color: var(--outline); font-size: 9px; padding-right: 10px; }
 .ra-boundary-visual { display: flex; align-items: center; --ra-space: 7px; margin: 22px 24px 6px; color: var(--outline); font-size: 8px; }
 .ra-boundary-visual > span:first-child { color: var(--tertiary); }

@@ -142,7 +142,6 @@ html[data-android-embed="1"] .sidebar-search .sidebar-search-kbd {
     min-width: 0;
     background: transparent;
     border: 0;
-    outline: none;
     color: var(--text-primary);
     /* 16px avoids the iOS focus-zoom; comfortable on the head unit too. */
     font-size: 16px;

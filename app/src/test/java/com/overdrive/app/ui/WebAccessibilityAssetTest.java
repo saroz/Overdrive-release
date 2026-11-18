@@ -24,6 +24,7 @@ import org.junit.Test;
 public class WebAccessibilityAssetTest {
 
     private static final String LOCAL = "app/src/main/assets/web/local";
+    private static final String SHARED = "app/src/main/assets/web/shared";
 
     @Test
     public void developmentTestPageIsNotShipped() {
@@ -57,6 +58,101 @@ public class WebAccessibilityAssetTest {
         }
         assertEquals("only gesture-owning pages may block pinch-zoom",
                 new TreeSet<>(ZOOM_LOCKED), new TreeSet<>(locked));
+    }
+
+    /**
+     * Rules that may still say `outline: none` because the same focus state draws its own visible
+     * indicator (accent border/ring, ::after ring, wrapper ring), or because the element is a
+     * dialog container that only takes programmatic focus while its controls carry the ring.
+     * Selectors containing `:not(:focus-visible)` (pointer-focus suppression) are always allowed.
+     */
+    private static final Set<String> CUSTOM_FOCUS = new HashSet<>(Arrays.asList(
+            "pages/abrp.css body[data-page=\"abrp\"] .token-input-row input:focus",
+            "pages/assistant.css body[data-page=\"assistant\"] .ai-composer textarea:focus",
+            "pages/charging.css body[data-page=\"charging\"] .ch-field:focus-within input:focus",
+            "pages/charging.css body[data-page=\"charging\"] .ch-text-field:focus",
+            "pages/events.css body[data-page=\"events\"] .place-search input:focus",
+            "pages/login.css body[data-page=\"login\"] .form-input",
+            "pages/network.css body[data-page=\"network\"] .hs-field input:focus",
+            "pages/notifications.css body[data-page=\"notifications\"] .notif-num:focus",
+            "pages/recording.css body[data-page=\"recording\"] .rec-hero-today > .link-value:focus",
+            "pages/trips.css body[data-page=\"trips\"] .trip-open:focus",
+            "pages/trips.css body[data-page=\"trips\"] .range-cal-card:focus",
+            "automations.css .automations-sort-select:focus",
+            "automations.css .form-grid select:focus",
+            "automations.css .form-grid input.time:focus",
+            "communicate.css .ptt-button",
+            "community-automations.css .community-search-input:focus",
+            "community-automations.css .community-sort-select:focus",
+            "community-automations.css .community-publish-input:focus",
+            "remote-access.css .ra-number-wrap input:focus",
+            "styles.css .text-input",
+            "styles.css .slider",
+            "styles.css .select-control",
+            "styles.css .lang-sheet-search input:focus",
+            "timeline-view.css .tlv-menu:focus, .tlv-menu:focus-visible",
+            "vehicle-control.css .vc-ambient-slider",
+            "vehicle-control.css .vc-time",
+            "vehicle-control.css .vc-color-hex",
+            "widget-builder/builder.css .wb-select:focus"));
+
+    private static final Pattern OUTLINE_OFF =
+            Pattern.compile("(?<![-\\w])outline\\s*:\\s*(?:none|0)(?![\\w.%])");
+
+    @Test
+    public void outlineIsOnlyRemovedWhereAnotherFocusStyleShows() throws IOException {
+        Path shared = WebThemeTokensAssetTest.locate(SHARED);
+        List<Path> sheets;
+        try (Stream<Path> files = Files.walk(shared)) {
+            sheets = files.filter(p -> p.toString().endsWith(".css"))
+                    .filter(p -> !p.toString().contains("vendor"))
+                    .filter(p -> !p.getFileName().toString().equals("leaflet.css"))
+                    .collect(Collectors.toList());
+        }
+        Set<String> offenders = new TreeSet<>();
+        for (Path sheet : sheets) {
+            String rel = shared.relativize(sheet).toString().replace('\\', '/');
+            for (String selector : outlineOffSelectors(read(sheet))) {
+                if (selector.contains(":not(:focus-visible)")) continue;
+                String key = rel + " " + selector;
+                if (!CUSTOM_FOCUS.contains(key)) offenders.add(key);
+            }
+        }
+        for (Path page : pages()) {
+            for (String selector : outlineOffSelectors(read(page))) {
+                if (!selector.contains(":not(:focus-visible)")) offenders.add(page.getFileName() + " " + selector);
+            }
+        }
+        assertTrue("outline removed with no visible replacement focus style: " + offenders, offenders.isEmpty());
+    }
+
+    @Test
+    public void focusRingsReachChrome58() throws IOException {
+        // :focus-visible alone is dropped by the head-unit WebView, so these rings use :focus.
+        String ptt = WebThemeTokensAssetTest.read(SHARED + "/communicate.css");
+        assertTrue(ptt.contains(".ptt-button:focus {"));
+        assertFalse(ptt.contains(".ptt-button:focus-visible {"));
+        String vc = WebThemeTokensAssetTest.read(SHARED + "/vehicle-control.css");
+        assertTrue(vc.contains(".vc-ambient-slider:focus { outline: 2px solid var(--primary);"));
+        String base = WebThemeTokensAssetTest.read(SHARED + "/styles.css");
+        assertTrue(base.contains("button:focus,\na:focus,\ninput:focus,"));
+    }
+
+    /** Selector of every rule that turns the outline off. */
+    static List<String> outlineOffSelectors(String css) {
+        String text = css.replaceAll("(?s)/\\*.*?\\*/", " ");
+        List<String> selectors = new ArrayList<>();
+        Matcher m = OUTLINE_OFF.matcher(text);
+        while (m.find()) {
+            int open = text.lastIndexOf('{', m.start());
+            int start = Math.max(Math.max(text.lastIndexOf('}', open - 1), text.lastIndexOf('{', open - 1)),
+                    text.lastIndexOf(';', open - 1));
+            String selector = text.substring(start + 1, open).trim().replaceAll("\\s+", " ");
+            int styleTag = selector.lastIndexOf("<style>");
+            if (styleTag >= 0) selector = selector.substring(styleTag + 7).trim();
+            selectors.add(selector);
+        }
+        return selectors;
     }
 
     private static List<Path> pages() throws IOException {

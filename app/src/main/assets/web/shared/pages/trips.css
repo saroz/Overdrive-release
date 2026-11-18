@@ -1256,8 +1256,10 @@ body[data-page="trips"] #timelineSlider {
             -webkit-appearance: none;
             appearance: none;
             background: transparent;
-            outline: none;
         }
+@supports selector(:focus-visible) {
+body[data-page="trips"] #timelineSlider:focus:not(:focus-visible) { outline: none; }
+}
 body[data-page="trips"] #timelineSlider::-webkit-slider-runnable-track {
             height: 6px;
             background: var(--well-2);

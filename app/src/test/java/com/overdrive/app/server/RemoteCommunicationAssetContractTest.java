@@ -111,7 +111,7 @@ public class RemoteCommunicationAssetContractTest {
         String mobile = between(
                 styles, "@media (max-width: 700px)", "@media (max-width: 430px)");
 
-        assertTrue(page.contains("communicate.css?v=6"));
+        assertTrue(page.contains("communicate.css?v=7"));
         assertTrue(styles.contains("height: calc(var(--vh, 1vh) * 100)"));
         assertTrue(mobile.contains("height: auto"));
         assertTrue(mobile.contains("flex: 1 1 auto"));
