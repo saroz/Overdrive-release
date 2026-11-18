@@ -208,6 +208,67 @@ public class IpcAuthTest {
         assertFalse(controller.contains("writer.write(\"{\\\"cmd\\\":\\\"shutdown\\\"}\\n\")"));
     }
 
+    // ---------- port 19880 (Telegram bot daemon) and 19879 (SentryDaemon control) ----------
+
+    @Test
+    public void telegramPortNeedsATokenForEverythingButPing() throws Exception {
+        for (String cmd : new String[] {"sendMessage", "sendVideo", "notifyTunnel", "notifyMotion",
+                "notifyMotionFinalized", "notifyParking", "notifyCritical", "", "anythingNew"}) {
+            assertEquals(cmd, "no token",
+                    IpcAuth.telegramRejectionReason(cmd, new JSONObject().put("cmd", cmd)));
+        }
+        assertNull(IpcAuth.telegramRejectionReason("ping", new JSONObject()));
+    }
+
+    @Test
+    public void telegramBotOnlyEverSendsToTheOwner() throws IOException {
+        String daemon = read("app/src/main/java/com/overdrive/app/daemon/TelegramBotDaemon.java");
+        assertFalse("a caller-chosen chatId let any app send through the bot to its own chat",
+                daemon.contains("optLong(\"chatId\""));
+        assertTrue(daemon.contains("long chatId = ownerChatId;"));
+        assertTrue(daemon.contains("long videoChatId = ownerChatId;"));
+        assertFalse(daemon.contains("log(\"IPC received: \" + line)"));
+        int check = daemon.indexOf("IpcAuth.telegramRejectionReason(action, cmd)");
+        int dispatch = daemon.indexOf("lane.execute(", check);
+        assertTrue(check > 0);
+        assertTrue("the check must come before the command is queued", dispatch > check);
+        assertTrue(read("app/src/main/java/com/overdrive/app/telegram/TelegramNotifier.java")
+                .contains("IpcAuth.attach(command)"));
+    }
+
+    @Test
+    public void sentryPortGuardsStopAndLocationControl() {
+        for (String cmd : new String[] {"STOP", "KILL", "EXIT",
+                "LOCATION_MONITOR_ON", "LOCATION_MONITOR_OFF", "LOCATION_RESTART"}) {
+            assertEquals(cmd, "no token", IpcAuth.sentryRejectionReason(cmd, ""));
+            assertEquals(cmd, "no token", IpcAuth.sentryRejectionReason(cmd, null));
+        }
+        assertNull(IpcAuth.sentryRejectionReason("PING", ""));
+        assertNull(IpcAuth.sentryRejectionReason("STATUS", ""));
+        assertNull(IpcAuth.sentryRejectionReason(null, ""));
+    }
+
+    @Test
+    public void sentryReadsTheTokenBeforeUpperCasing() throws IOException {
+        String daemon = read("app/src/main/java/com/overdrive/app/daemon/SentryDaemon.java");
+        int split = daemon.indexOf("command.trim().split(\"\\\\s+\", 2)");
+        int check = daemon.indexOf("IpcAuth\n                                    .sentryRejectionReason(command, token)");
+        int dispatch = daemon.indexOf("switch (command) {", check);
+        assertTrue(split > 0);
+        assertFalse(daemon.contains("command = command.trim().toUpperCase();"));
+        assertTrue(check > split);
+        assertTrue(dispatch > check);
+        assertTrue(daemon.contains("\"STOP \" + token"));
+    }
+
+    @Test
+    public void attachNeverMutatesTheCallersRequest() throws IOException {
+        String auth = read("app/src/main/java/com/overdrive/app/server/IpcAuth.java");
+        assertTrue("a spooled request must not keep an old token",
+                auth.contains("JSONObject copy = new JSONObject(request.toString());"));
+        assertFalse(auth.contains("request.has(FIELD)) return request;"));
+    }
+
     private static String read(String relativePath) throws IOException {
         return new String(Files.readAllBytes(locate(relativePath)), StandardCharsets.UTF_8);
     }

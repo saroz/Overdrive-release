@@ -1153,7 +1153,6 @@ public class TelegramBotDaemon {
             return;
         }
 
-        log("IPC received: " + line);
         final String reqLine = line;
         final JSONObject cmd;
         String action;
@@ -1164,6 +1163,27 @@ public class TelegramBotDaemon {
             log("IPC parse error: " + e.getMessage());
             try { client.close(); } catch (Exception ignored) {}
             return;
+        }
+        // (never log the caller's token)
+        log("IPC received: " + com.overdrive.app.server.IpcAuth.redactedForLog(cmd));
+
+        // F14: this port takes any local app; everything but ping needs a token.
+        String unauthorized = com.overdrive.app.server.IpcAuth.telegramRejectionReason(action, cmd);
+        if (unauthorized != null) {
+            if (com.overdrive.app.server.IpcAuth.shouldLog("tg:" + action, System.currentTimeMillis())) {
+                log("IPC " + action + " without a valid token (" + unauthorized + ")"
+                        + (com.overdrive.app.server.IpcAuth.ENFORCE ? " - rejected" : " - allowed, log-only"));
+            }
+            if (com.overdrive.app.server.IpcAuth.ENFORCE) {
+                try {
+                    new PrintWriter(client.getOutputStream(), true)
+                            .println("{\"status\":\"error\",\"message\":\"unauthorized\"}");
+                } catch (Exception ignored) {
+                } finally {
+                    try { client.close(); } catch (Exception ignored) {}
+                }
+                return;
+            }
         }
 
         java.util.concurrent.ExecutorService lane =
@@ -1286,7 +1306,9 @@ public class TelegramBotDaemon {
                     // everything except the typed command paths below, which
                     // declare their own category. Callers who want a different
                     // category can pass an explicit `category` field.
-                    long chatId = cmd.optLong("chatId", ownerChatId);
+                    // F14: only ever the owner's chat — a caller-chosen chatId let any app
+                    // on the head unit send through the bot to a chat of its own.
+                    long chatId = ownerChatId;
                     String text = cmd.optString("text", "");
                     String msgCategory = cmd.optString("category", "CRITICAL");
                     boolean remoteAccess = com.overdrive.app.remoteaccess.RemoteAccessNotifications
@@ -1321,7 +1343,9 @@ public class TelegramBotDaemon {
                         break;
                     }
 
-                    long videoChatId = cmd.optLong("chatId", ownerChatId);
+                    // F14: only ever the owner's chat (a caller-chosen chatId plus any
+                    // readable path was a file-exfiltration channel).
+                    long videoChatId = ownerChatId;
                     String videoPath = cmd.optString("path", "");
                     String caption = cmd.optString("caption", "");
                     if (videoChatId > 0 && !videoPath.isEmpty()) {

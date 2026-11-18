@@ -597,7 +597,7 @@ public class TelegramNotifier {
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            writer.println(command.toString());
+            writer.println(com.overdrive.app.server.IpcAuth.attach(command).toString());
             String response = reader.readLine();
 
             if (response != null) {
@@ -657,7 +657,7 @@ public class TelegramNotifier {
             socket.connect(new java.net.InetSocketAddress("127.0.0.1", IPC_PORT),
                     CONNECT_TIMEOUT_MS);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-            writer.println(command.toString());
+            writer.println(com.overdrive.app.server.IpcAuth.attach(command).toString());
             writer.flush();
             // Half-close the write side: flushes the bytes and sends a FIN so the
             // daemon's readLine() sees a clean end-of-request. We never read the

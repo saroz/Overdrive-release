@@ -21,7 +21,9 @@ import java.util.concurrent.ConcurrentHashMap;
  * the daemons (the owner-only secret file) can mint one.
  *
  * <p>The camera daemon's command port 19876 ({@code TcpCommandServer}, key {@code "cmd"}) gets
- * the same check through {@link #cameraTcpRejectionReason}.
+ * the same check through {@link #cameraTcpRejectionReason}; the Telegram bot daemon's port 19880
+ * through {@link #telegramRejectionReason}; SentryDaemon's plain-text control port 19879
+ * ({@code "STOP <token>"}) through {@link #sentryRejectionReason}.
  *
  * <p>Stage A: {@link #ENFORCE} is false, so the server only logs a command that arrives without
  * a valid token. After a car run shows no such log lines, flip it to true.
@@ -64,6 +66,14 @@ public final class IpcAuth {
                     "setRecordingMode", "setBitrate", "setCodec",
                     "setRecordingsStorageType", "setRecordingsLimitMb")));
 
+    /** Port 19880: everything but ping makes the bot send something to Telegram. */
+    static final Set<String> TELEGRAM_OPEN = Collections.singleton("ping");
+
+    /** Port 19879 (plain text, upper-cased): stopping the daemon and the location monitor. */
+    static final Set<String> SENTRY_GUARDED = Collections.unmodifiableSet(new HashSet<>(
+            Arrays.asList("STOP", "KILL", "EXIT",
+                    "LOCATION_MONITOR_ON", "LOCATION_MONITOR_OFF", "LOCATION_RESTART")));
+
     private static final long LOG_INTERVAL_MS = 60_000L;
     private static final Map<String, Long> lastLogged = new ConcurrentHashMap<>();
 
@@ -74,18 +84,33 @@ public final class IpcAuth {
     }
 
     /**
-     * Client side: add a freshly minted token to {@code request} unless it already has one.
-     * A caller that can't mint (no secret yet) sends the request unchanged.
+     * Client side: a copy of {@code request} carrying a freshly minted token (replacing any
+     * older one). The caller's object is left alone, so a request that is spooled and replayed
+     * later never carries an expired token. A caller that can't mint (no secret yet) gets
+     * {@code request} back unchanged.
      */
     public static JSONObject attach(JSONObject request) {
-        if (request == null || request.has(FIELD)) return request;
+        if (request == null) return null;
+        String token = mint();
+        if (token == null) return request;
+        try {
+            JSONObject copy = new JSONObject(request.toString());
+            copy.put(FIELD, token);
+            return copy;
+        } catch (Exception e) {
+            return request;
+        }
+    }
+
+    /** A fresh IPC token, or null when this process holds no secret. */
+    public static String mint() {
         try {
             String token = AuthManager.generateIpcJwt();
-            if (token != null && !token.isEmpty()) request.put(FIELD, token);
+            return token == null || token.isEmpty() ? null : token;
         } catch (Throwable ignored) {
             // no secret available in this process: the server logs the missing token
+            return null;
         }
-        return request;
     }
 
     /**
@@ -106,6 +131,21 @@ public final class IpcAuth {
         return tokenProblem(request);
     }
 
+    /** Port 19880: why {@code cmd} is not authorised, or null when it is (or needs no token). */
+    public static String telegramRejectionReason(String cmd, JSONObject request) {
+        if (cmd != null && TELEGRAM_OPEN.contains(cmd)) return null;
+        return tokenProblem(request);
+    }
+
+    /**
+     * Port 19879: why the plain-text {@code command} is not authorised, or null when it is.
+     * {@code token} is the text after the command word, as sent.
+     */
+    public static String sentryRejectionReason(String command, String token) {
+        if (command == null || !SENTRY_GUARDED.contains(command)) return null;
+        return tokenProblem(token);
+    }
+
     /** {@code request} as text for a log line, with the token masked. */
     public static String redactedForLog(JSONObject request) {
         if (request == null) return "null";
@@ -120,8 +160,11 @@ public final class IpcAuth {
     }
 
     private static String tokenProblem(JSONObject request) {
-        String token = request == null ? "" : request.optString(FIELD, "");
-        if (token.isEmpty()) return "no token";
+        return tokenProblem(request == null ? "" : request.optString(FIELD, ""));
+    }
+
+    private static String tokenProblem(String token) {
+        if (token == null || token.isEmpty()) return "no token";
         try {
             AuthManager.JwtValidation v = AuthManager.validateIpcJwt(token);
             if (v != null && v.valid) return null;
@@ -132,7 +175,7 @@ public final class IpcAuth {
     }
 
     /** At most one log line per command per minute, so a missed caller can't flood the log. */
-    static boolean shouldLog(String command, long nowMs) {
+    public static boolean shouldLog(String command, long nowMs) {
         Long last = lastLogged.get(command);
         if (last != null && nowMs - last < LOG_INTERVAL_MS) return false;
         lastLogged.put(command, nowMs);

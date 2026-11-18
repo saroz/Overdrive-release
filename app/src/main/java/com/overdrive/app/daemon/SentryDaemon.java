@@ -726,9 +726,30 @@ public class SentryDaemon {
                         
                         String command = reader.readLine();
                         if (command != null) {
-                            command = command.trim().toUpperCase();
+                            // "COMMAND [token]": split before upper-casing, which would break the token
+                            String[] parts = command.trim().split("\\s+", 2);
+                            String token = parts.length > 1 ? parts[1].trim() : "";
+                            command = parts[0].toUpperCase();
                             log("Control command: " + command);
-                            
+
+                            // F14: this port takes any local app; stop and location control need a token
+                            String unauthorized = com.overdrive.app.server.IpcAuth
+                                    .sentryRejectionReason(command, token);
+                            if (unauthorized != null) {
+                                if (com.overdrive.app.server.IpcAuth.shouldLog(
+                                        "sentry:" + command, System.currentTimeMillis())) {
+                                    log("Control " + command + " without a valid token ("
+                                            + unauthorized + ")"
+                                            + (com.overdrive.app.server.IpcAuth.ENFORCE
+                                                    ? " - rejected" : " - allowed, log-only"));
+                                }
+                                if (com.overdrive.app.server.IpcAuth.ENFORCE) {
+                                    writer.println("ERROR:UNAUTHORIZED");
+                                    client.close();
+                                    continue;
+                                }
+                            }
+
                             switch (command) {
                                 case "STOP":
                                 case "KILL":
@@ -1030,7 +1051,8 @@ public class SentryDaemon {
             java.io.PrintWriter writer = new java.io.PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             
-            writer.println("STOP");
+            String token = com.overdrive.app.server.IpcAuth.mint();
+            writer.println(token == null ? "STOP" : "STOP " + token);
             String response = reader.readLine();
             
             socket.close();
