@@ -20,7 +20,11 @@ import java.security.SecureRandom;
  */
 public class PairingManager implements IPairingManager {
     
+    /** Security fix F3: wrong guesses allowed per PIN before it is burned. */
+    public static final int MAX_PIN_ATTEMPTS = 5;
+
     private final IOwnerStore ownerStore;
+    private int failedAttempts = 0;
     private final SecureRandom random = new SecureRandom();
     
     @Nullable
@@ -31,11 +35,12 @@ public class PairingManager implements IPairingManager {
     }
     
     @Override
-    public PinState generatePin() {
+    public synchronized PinState generatePin() {
         // Generate 6-digit numeric PIN
         int pinNum = random.nextInt(900000) + 100000;  // 100000-999999
         String pin = String.valueOf(pinNum);
         
+        failedAttempts = 0;
         currentPinState = new PinState(pin);
         return currentPinState;
     }
@@ -47,7 +52,7 @@ public class PairingManager implements IPairingManager {
     }
     
     @Override
-    public boolean validateAndPair(String pin, long chatId, String username, String firstName) {
+    public synchronized boolean validateAndPair(String pin, long chatId, String username, String firstName) {
         // Owner lockout: if owner exists, reject all pairing attempts
         if (ownerStore.hasOwner()) {
             return false;
@@ -65,8 +70,14 @@ public class PairingManager implements IPairingManager {
             return false;
         }
         
-        // Validate PIN
-        if (!state.getPin().equals(pin)) {
+        // Validate PIN (constant-time). Too many wrong guesses burn it (F3): the owner
+        // has to generate a new PIN in the app.
+        byte[] expected = state.getPin().getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        byte[] given = (pin == null ? "" : pin).getBytes(java.nio.charset.StandardCharsets.UTF_8);
+        if (!java.security.MessageDigest.isEqual(expected, given)) {
+            if (++failedAttempts >= MAX_PIN_ATTEMPTS) {
+                currentPinState = null;
+            }
             return false;
         }
         
