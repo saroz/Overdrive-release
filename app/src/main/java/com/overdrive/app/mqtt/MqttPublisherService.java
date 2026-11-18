@@ -326,6 +326,11 @@ public class MqttPublisherService implements MqttCallback {
             // QoS 0 publishes made just before a drop "succeed" into the dead socket: resync all.
             forceFullResend = true;
 
+            // Security finding F8: trust-all disables TLS certificate checks. Log it on
+            // every (re)connect so it stays visible in the daemon log, not only at setup.
+            String tlsWarning = trustAllWarning(config.trustAllCerts, isSsl, brokerUri);
+            if (tlsWarning != null) logger.warn(tlsWarning);
+
             // Publish "online" availability immediately after successful connect.
             // This pairs with the LWT "offline" — consumers can subscribe to
             // <topic>/availability to track connection state.
@@ -871,6 +876,18 @@ public class MqttPublisherService implements MqttCallback {
 
     private static boolean isChangedNull(JSONObject snapshot, Set<String> changed, String key) {
         return changed.contains(key) && snapshot.opt(key) == JSONObject.NULL;
+    }
+
+    /**
+     * WARN text for a connect made with "trust all certificates" (security finding F8), or null
+     * when there is nothing to warn about. Only TLS (ssl/wss) connects use the trust-all factory.
+     */
+    static String trustAllWarning(boolean trustAllCerts, boolean isSsl, String brokerUri) {
+        if (!trustAllCerts || !isSsl) return null;
+        return "INSECURE: connected to " + brokerUri + " with 'trust all certificates' ON."
+                + " TLS certificate checks are disabled, so anyone on the network path can"
+                + " impersonate the broker and read telemetry (GPS, vehicle state) and the"
+                + " MQTT credentials. Turn it off or install a trusted certificate on the broker.";
     }
 
     /**

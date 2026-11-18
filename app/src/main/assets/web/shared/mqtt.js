@@ -176,6 +176,7 @@ const MQTT = {
                     <span class="ui-toggle-track"></span>
                 </label>
             </div>
+            ${conn.trustAllCerts === true ? this.renderTrustAllWarning() : ''}
             <div class="conn-detail ${isExpanded ? 'open' : ''}" id="detail-${conn.id}">
                 <div class="conn-stats">
                     <div class="conn-stat"><div class="ui-detail-label">${BYD.i18n.t('mqtt.label_status')}</div><div class="ui-detail-value">${statusText}</div></div>
@@ -194,6 +195,16 @@ const MQTT = {
                 </div>
             </div>
         </div>`;
+    },
+
+    // Security finding F8: always-visible (not collapsible) card warning while a
+    // connection has "Trust all certificates" on.
+    renderTrustAllWarning: function () {
+        var icon = '<svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+        return '<div style="padding:0 16px 12px;">'
+            + '<div class="ui-note ui-note-warning" role="note">' + icon
+            + '<div class="ui-note-text">' + this.esc(BYD.i18n.t('mqtt.trust_all_card_warning')) + '</div>'
+            + '</div></div>';
     },
 
     toggleExpand(id) {
@@ -237,9 +248,11 @@ const MQTT = {
         var fs0 = document.getElementById('formFlushOnStateChange'); if (fs0) fs0.checked = true;
         document.getElementById('formAllowControl').checked = false;
         document.getElementById('formRetain').checked = false;
+        document.getElementById('formTrustAllCerts').checked = false;
         document.getElementById('formEnabled').checked = true;
         this.onSlider();
         this.onHaToggle();
+        this.onTrustAllToggle();
         this._switchTab('add');
         var nameEl = document.getElementById('formName');
         if (nameEl) nameEl.focus();
@@ -272,9 +285,11 @@ const MQTT = {
         var fsE = document.getElementById('formFlushOnStateChange'); if (fsE) fsE.checked = conn.flushOnStateChange !== false;
         document.getElementById('formAllowControl').checked = conn.allowControl || false;
         document.getElementById('formRetain').checked = conn.retainMessages || false;
+        document.getElementById('formTrustAllCerts').checked = conn.trustAllCerts === true;
         document.getElementById('formEnabled').checked = conn.enabled || false;
         this.onSlider();
         this.onHaToggle();
+        this.onTrustAllToggle();
         this._switchTab('add');
         var nameEl = document.getElementById('formName');
         if (nameEl) nameEl.focus();
@@ -328,6 +343,14 @@ const MQTT = {
         if (fsRow) fsRow.style.display = on ? 'flex' : 'none';
     },
 
+    // Security finding F8: keep the insecure-TLS warning visible for as long as
+    // "Trust all certificates" is on (the [hidden] attribute hides the box).
+    onTrustAllToggle: function () {
+        var box = document.getElementById('formTrustAllCerts');
+        var warn = document.getElementById('formTrustAllWarning');
+        if (warn) warn.hidden = !(box && box.checked);
+    },
+
     async saveForm() {
         const data = {
             name: document.getElementById('formName').value.trim(),
@@ -349,6 +372,7 @@ const MQTT = {
             flushOnStateChange: (function(){ var e=document.getElementById('formFlushOnStateChange'); return e ? e.checked : true; })(),
             allowControl: document.getElementById('formAllowControl').checked,
             retainMessages: document.getElementById('formRetain').checked,
+            trustAllCerts: document.getElementById('formTrustAllCerts').checked,
             enabled: document.getElementById('formEnabled').checked
         };
         // Keep the window coherent: max must be >= min.
