@@ -65,6 +65,10 @@ public class HttpResponse {
         sendJsonInternal(out, status, json, false);
     }
 
+    // Security fix F4: no response carries Access-Control-Allow-Origin. Every page
+    // is served by this server, so the browser treats its API calls as same-origin
+    // and needs no CORS headers; "*" only let other sites read the responses.
+    // The cors flag is kept so existing callers compile unchanged.
     private static void sendJsonInternal(
             OutputStream out, int status, String json, boolean cors)
             throws Exception {
@@ -74,11 +78,6 @@ public class HttpResponse {
                 .append("HTTP/1.1 ").append(status).append(' ')
                 .append(reason).append("\r\n")
                 .append("Content-Type: application/json\r\n");
-        if (cors) {
-            headers.append("Access-Control-Allow-Origin: *\r\n")
-                    .append("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n")
-                    .append("Access-Control-Allow-Headers: Content-Type, Authorization\r\n");
-        }
         headers.append("Cache-Control: no-cache, no-store\r\n")
                 .append(SECURITY_HEADERS)
                 .append("Content-Length: ").append(body.length).append("\r\n")
@@ -174,35 +173,62 @@ public class HttpResponse {
     }
     
     /**
-     * Send CORS preflight response for OPTIONS requests.
-     * Browsers send OPTIONS before cross-origin POST/PUT/DELETE with JSON content-type.
-     * Without this, the webapp (accessed via external URL/tunnel) cannot save settings.
+     * Answer an OPTIONS preflight (security fix F4).
+     *
+     * <p>Same-origin pages never send a preflight, so this only matters for a
+     * browser on another origin. The Origin is echoed back only when it is this
+     * server itself: same host and port as the request's Host (X-Forwarded-Host
+     * behind a tunnel), or a loopback origin (127.0.0.1 / localhost / [::1]) on
+     * the listening port. Anything else gets a 204 with no Allow-Origin, so the
+     * browser blocks the real request. Allow-Credentials is never sent.
      */
-    public static void sendCorsPreflightResponse(OutputStream out) throws Exception {
-        String headers = "HTTP/1.1 204 No Content\r\n" +
-                        "Access-Control-Allow-Origin: *\r\n" +
-                        "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n" +
-                        "Access-Control-Allow-Headers: Content-Type, Authorization\r\n" +
-                        "Access-Control-Max-Age: 86400\r\n" +
-                        "Content-Length: 0\r\n" +
-                        "Connection: close\r\n\r\n";
-        out.write(headers.getBytes());
+    public static void sendCorsPreflightResponse(OutputStream out, String origin,
+            String host, String forwardedHost, int localPort) throws Exception {
+        String allowed = allowedCorsOrigin(origin, host, forwardedHost, localPort);
+        StringBuilder headers = new StringBuilder("HTTP/1.1 204 No Content\r\n");
+        if (allowed != null) {
+            headers.append("Access-Control-Allow-Origin: ").append(allowed).append("\r\n")
+                    .append("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n")
+                    .append("Access-Control-Allow-Headers: Content-Type, Authorization\r\n")
+                    .append("Access-Control-Max-Age: 600\r\n");
+        }
+        headers.append("Vary: Origin\r\n")
+                .append("Content-Length: 0\r\n")
+                .append("Connection: close\r\n\r\n");
+        out.write(headers.toString().getBytes(StandardCharsets.UTF_8));
         out.flush();
     }
 
-    public static void sendCorsPreflightResponse(
-            OutputStream out, String allowedOrigin) throws Exception {
-        String origin = safeHeader(allowedOrigin);
-        String headers = "HTTP/1.1 204 No Content\r\n" +
-                        "Access-Control-Allow-Origin: " + origin + "\r\n" +
-                        "Vary: Origin\r\n" +
-                        "Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS\r\n" +
-                        "Access-Control-Allow-Headers: Content-Type, Authorization\r\n" +
-                        "Access-Control-Max-Age: 600\r\n" +
-                        "Content-Length: 0\r\n" +
-                        "Connection: close\r\n\r\n";
-        out.write(headers.getBytes(StandardCharsets.UTF_8));
-        out.flush();
+    /** The Origin to echo in a preflight, or null when it is not this server. */
+    static String allowedCorsOrigin(
+            String origin, String host, String forwardedHost, int localPort) {
+        if (origin == null) return null;
+        String trimmed = origin.trim();
+        // Reject anything that could split the header or is not a plain origin.
+        if (trimmed.isEmpty() || "null".equalsIgnoreCase(trimmed)) return null;
+        for (int i = 0; i < trimmed.length(); i++) {
+            char c = trimmed.charAt(i);
+            if (c <= 0x20 || c >= 0x7f) return null;
+        }
+        if (GenAiRequestSecurity.isAllowedOrigin(trimmed, host, forwardedHost)) {
+            return trimmed;
+        }
+        try {
+            java.net.URI uri = new java.net.URI(trimmed);
+            String h = uri.getHost();
+            boolean loopback = "127.0.0.1".equals(h) || "localhost".equalsIgnoreCase(h)
+                    || "[::1]".equals(h);
+            boolean bare = uri.getUserInfo() == null && uri.getQuery() == null
+                    && uri.getFragment() == null
+                    && (uri.getPath() == null || uri.getPath().isEmpty());
+            if ("http".equalsIgnoreCase(uri.getScheme()) && loopback && bare
+                    && localPort > 0 && uri.getPort() == localPort) {
+                return trimmed;
+            }
+        } catch (Exception ignored) {
+            // Not a parseable origin.
+        }
+        return null;
     }
     
     public static void sendJsonError(OutputStream out, String error) throws Exception {
@@ -220,7 +246,6 @@ public class HttpResponse {
         String headers = "HTTP/1.1 401 Unauthorized\r\n" +
                         "Content-Type: application/json\r\n" +
                         "WWW-Authenticate: Bearer realm=\"BYD Champ\"\r\n" +
-                        "Access-Control-Allow-Origin: *\r\n" +
                         "Content-Length: " + body.length + "\r\n" +
                         "Connection: close\r\n\r\n";
         out.write(headers.getBytes());
@@ -248,7 +273,6 @@ public class HttpResponse {
         String headers = "HTTP/1.1 200 OK\r\n" +
                         "Content-Type: application/json\r\n" +
                         "Set-Cookie: " + cookie + "\r\n" +
-                        "Access-Control-Allow-Origin: *\r\n" +
                         "Content-Length: " + body.length + "\r\n" +
                         "Connection: close\r\n\r\n";
         out.write(headers.getBytes());

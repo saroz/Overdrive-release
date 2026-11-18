@@ -889,16 +889,14 @@ public class HttpServer {
                 return;
             }
 
-            // Handle CORS preflight (OPTIONS) requests for cross-origin webapp access.
-            // Browsers send OPTIONS before POST/PUT/DELETE with Content-Type: application/json.
-            // The in-app WebView is same-origin so it skips this, but the external webapp needs it.
-            // Must be handled BEFORE auth check — preflight requests don't carry cookies/tokens.
+            // CORS preflight (OPTIONS). Every page (in-app WebView, LAN, VPN, tunnel)
+            // is served by this server, so its own calls are same-origin and never
+            // preflight. Security fix F4: echo the Origin only when it is this server
+            // itself; other sites get no Allow-Origin. Handled before auth because
+            // preflights carry no cookie/token.
             if (method.equals("OPTIONS")) {
-                if (genAiRequest) {
-                    HttpResponse.sendCorsPreflightResponse(out, originHeader);
-                } else {
-                    HttpResponse.sendCorsPreflightResponse(out);
-                }
+                HttpResponse.sendCorsPreflightResponse(out, originHeader, hostHeader,
+                        forwardedHostHeader, client.getLocalPort());
                 client.close();
                 return;
             }

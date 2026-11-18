@@ -3016,7 +3016,6 @@ public class SurveillanceApiHandler {
                         "Content-Type: image/jpeg\r\n" +
                         "Content-Length: " + jpegBytes.length + "\r\n" +
                         "Cache-Control: no-cache\r\n" +
-                        "Access-Control-Allow-Origin: *\r\n" +
                         "\r\n";
                 out.write(header.getBytes());
                 out.write(jpegBytes);
@@ -3064,7 +3063,6 @@ public class SurveillanceApiHandler {
                 "Content-Type: image/jpeg\r\n" +
                 "Content-Length: " + jpegBytes.length + "\r\n" +
                 "Cache-Control: no-cache\r\n" +
-                "Access-Control-Allow-Origin: *\r\n" +
                 "\r\n";
         out.write(header.getBytes());
         out.write(jpegBytes);
@@ -3389,7 +3387,6 @@ public class SurveillanceApiHandler {
                 "Content-Length: " + payload.length + "\r\n" +
                 "Retry-After: 2\r\n" +
                 "Cache-Control: no-cache\r\n" +
-                "Access-Control-Allow-Origin: *\r\n" +
                 "Connection: close\r\n\r\n";
         out.write(header.getBytes());
         out.write(payload);
@@ -3528,7 +3525,6 @@ public class SurveillanceApiHandler {
                 "Content-Type: image/jpeg\r\n" +
                 "Content-Length: " + jpegBytes.length + "\r\n" +
                 "Cache-Control: no-cache\r\n" +
-                "Access-Control-Allow-Origin: *\r\n" +
                 "\r\n";
         out.write(header.getBytes());
         out.write(jpegBytes);
