@@ -672,12 +672,13 @@ object ConfigBackupService {
 
     // ==================== helpers ====================
 
-    /** True if the named section in [unified] carries an `ENC:` credential blob.
+    /** True if the named section in [unified] carries an `ENC:` or `ENC2:` credential blob.
      *  Lets the skip-warning name only the credentials the bundle ACTUALLY held,
      *  rather than a blanket token-count message. */
     private fun sectionHasEncryptedSecret(unified: JSONObject, section: String): Boolean {
         val obj = unified.optJSONObject(section) ?: return false
-        return obj.toString().contains("\"ENC:")
+        val text = obj.toString()
+        return text.contains("\"ENC:") || text.contains("\"ENC2:")
     }
 
     /**

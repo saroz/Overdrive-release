@@ -178,7 +178,8 @@ object GoogleMapsConfig {
     @JvmStatic
     fun saveKey(apiKey: String): Boolean {
         val key = apiKey.trim()
-        // encrypt() passes an "ENC:"-prefixed input through unchanged, which would store it in clear.
+        // encrypt() passes an "ENC:"- or "ENC2:"-prefixed input through unchanged, which would store it in clear;
+        // isEncrypted() recognises both.
         if (!isUsableKey(key) || CredentialCipher.isEncrypted(key)) return false
         return try {
             val enc = CredentialCipher.encrypt(key)

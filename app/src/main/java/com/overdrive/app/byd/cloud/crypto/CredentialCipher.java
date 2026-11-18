@@ -15,6 +15,17 @@ import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Protects sensitive credential fields at rest.
+ *
+ * <p>Two stored forms:
+ * <ul>
+ *   <li>{@code "ENC2:" + base64(iv | AES-GCM ciphertext)} under a random 256-bit key from a {@link KeySource} (an
+ *       owner-only file the daemons share, of which the app keeps a private copy). Every new write uses it whenever
+ *       this process holds the key.</li>
+ *   <li>{@code "ENC:" + base64(iv | AES-GCM ciphertext)} under SHA-256 of the device-id file (plus, for the oldest
+ *       values, the firmware fingerprint). That file is world-readable, so any app on the head unit can rebuild this
+ *       key. It is kept only to read older values, and as the fallback when the key isn't held (as before);
+ *       {@link #upgradeToStableOrNull} moves such values to ENC2.</li>
+ * </ul>
  */
 public final class CredentialCipher {
 
@@ -22,6 +33,8 @@ public final class CredentialCipher {
     private static final DaemonLogger logger = DaemonLogger.getInstance(TAG);
 
     private static final String ENC_PREFIX = "ENC:";
+    private static final String ENC2_PREFIX = "ENC2:";
+    private static final int KEY_LEN = 32;
     private static final String CIPHER_ALGO = "AES/GCM/NoPadding";
     private static final int IV_LEN = 12;
     private static final int TAG_BITS = 128;
@@ -30,50 +43,143 @@ public final class CredentialCipher {
 
     private CredentialCipher() {}
 
+    // ==================== KEY SOURCE ====================
+
+    /** Where the ENC2 key comes from in this process. */
+    public interface KeySource {
+        /** The 32-byte key, or null when this process doesn't hold it (yet). Must not block. */
+        byte[] key();
+
+        /** An ENC2 value could not be opened with what {@link #key()} gave (or it gave none): fetch it again. */
+        default void keyRejected() {}
+    }
+
+    private static final KeySource NO_KEY = () -> null;
+    private static volatile KeySource keySource = null;
+    private static volatile KeySource defaultKeySource = NO_KEY;
+    private static volatile java.util.function.Supplier<String> deviceIdSource = null;
+
+    /** Overrides the key source (tests); null goes back to this process's default. */
+    public static void useKeySource(KeySource source) {
+        keySource = source;
+    }
+
+    /** This process's own key store; set once at start-up. */
+    public static void useDefaultKeySource(KeySource source) {
+        defaultKeySource = source == null ? NO_KEY : source;
+    }
+
+    /** Tests: the device id the legacy key derives from (null: the device-id file). */
+    static void useDeviceIdSource(java.util.function.Supplier<String> source) {
+        deviceIdSource = source;
+    }
+
+    private static KeySource source() {
+        KeySource s = keySource;
+        return s != null ? s : defaultKeySource;
+    }
+
+    private static byte[] currentKey() {
+        try {
+            byte[] k = source().key();
+            return k != null && k.length == KEY_LEN ? k : null;
+        } catch (Throwable t) {
+            return null;
+        }
+    }
+
+    /** True when this process holds the ENC2 key right now. */
+    public static boolean hasKey() {
+        return currentKey() != null;
+    }
+
+    private static void reportRejected() {
+        try {
+            source().keyRejected();
+        } catch (Throwable ignored) {}
+    }
+
+    // ==================== FORMS ====================
+
+    /** True for both stored forms ("ENC:" device-id key, "ENC2:" random key). */
     public static boolean isEncrypted(String value) {
-        return value != null && value.startsWith(ENC_PREFIX);
+        return value != null && (value.startsWith(ENC_PREFIX) || value.startsWith(ENC2_PREFIX));
+    }
+
+    /** True for a value in the random-key form. */
+    public static boolean isEnc2(String value) {
+        return value != null && value.startsWith(ENC2_PREFIX);
     }
 
     /**
-     * Encrypt a plaintext credential for storage.
-     * Returns the original value if encryption fails.
+     * True when {@code stored} is an encrypted value this process can't open right now (decrypt gives ""), e.g. an
+     * ENC2 value read by the app before it holds the key. A caller that rewrites a credential it read must then keep
+     * {@code stored} as it is instead of writing that "" back over it.
+     */
+    public static boolean isUndecryptable(String stored) {
+        if (!isEncrypted(stored)) return false;
+        String plain = decrypt(stored);
+        return plain == null || plain.isEmpty();
+    }
+
+    // ==================== ENCRYPT ====================
+
+    /**
+     * Encrypt a plaintext credential for storage: ENC2 when this process holds the key, else ENC: (the device-id
+     * key, as before). Returns the original value if encryption fails.
      */
     public static String encrypt(String plaintext) {
         if (plaintext == null || plaintext.isEmpty()) return plaintext;
         if (isEncrypted(plaintext)) return plaintext;
 
+        byte[] k2 = currentKey();
+        if (k2 != null) {
+            try {
+                return ENC2_PREFIX + java.util.Base64.getEncoder().encodeToString(seal(k2, plaintext));
+            } catch (Exception e) {
+                logger.warn("Credential protection (ENC2) failed, using the device-id key: " + e.getMessage());
+            }
+        }
+
         try {
             // Always encrypt under the stable (fingerprint-free) key so a
             // later OTA can't strand this ciphertext. decrypt() still reads
             // legacy fingerprint-bound values via its fallback.
-            byte[] key = deriveKey(/*includeFingerprint=*/false);
-            byte[] iv = new byte[IV_LEN];
-            new SecureRandom().nextBytes(iv);
-
-            Cipher cipher = Cipher.getInstance(CIPHER_ALGO);
-            cipher.init(Cipher.ENCRYPT_MODE,
-                    new SecretKeySpec(key, "AES"),
-                    new GCMParameterSpec(TAG_BITS, iv));
-
-            byte[] ct = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
-
-            byte[] out = new byte[iv.length + ct.length];
-            System.arraycopy(iv, 0, out, 0, iv.length);
-            System.arraycopy(ct, 0, out, iv.length, ct.length);
-
-            return ENC_PREFIX + android.util.Base64.encodeToString(out, android.util.Base64.NO_WRAP);
+            return ENC_PREFIX + legacyBase64Encode(seal(deriveKey(/*includeFingerprint=*/false), plaintext));
         } catch (Exception e) {
             logger.warn("Credential protection failed: " + e.getMessage());
             return plaintext;
         }
     }
 
+    private static byte[] seal(byte[] key, String plaintext) throws Exception {
+        byte[] iv = new byte[IV_LEN];
+        new SecureRandom().nextBytes(iv);
+
+        Cipher cipher = Cipher.getInstance(CIPHER_ALGO);
+        cipher.init(Cipher.ENCRYPT_MODE,
+                new SecretKeySpec(key, "AES"),
+                new GCMParameterSpec(TAG_BITS, iv));
+
+        byte[] ct = cipher.doFinal(plaintext.getBytes(StandardCharsets.UTF_8));
+
+        byte[] out = new byte[iv.length + ct.length];
+        System.arraycopy(iv, 0, out, 0, iv.length);
+        System.arraycopy(ct, 0, out, iv.length, ct.length);
+        return out;
+    }
+
+    // ==================== DECRYPT ====================
+
     /**
      * Decrypt a stored credential.
      * Values without the encrypted marker are returned as-is (legacy support).
      * Returns empty string on decryption failure (forces re-setup).
      *
-     * <p>Tries the stable (device-id-only) key first, then falls back to the
+     * <p>ENC2 values open only with the key from the {@link KeySource}; without it (the app before it fetched it)
+     * they give "" like any other failure, and the key source is told so it can fetch the key.
+     *
+     * <p>ENC: values: tries the stable (device-id-only) key first, then falls back to the
      * legacy (device-id + firmware-fingerprint) key. The GCM auth tag makes a
      * wrong-key attempt fail cleanly (AEADBadTagException), so trying both is
      * safe and unambiguous. This lets a credential written by the old
@@ -84,11 +190,11 @@ public final class CredentialCipher {
     public static String decrypt(String stored) {
         if (stored == null || stored.isEmpty()) return stored;
         if (!isEncrypted(stored)) return stored;
+        if (isEnc2(stored)) return decryptEnc2(stored);
 
         final byte[] combined;
         try {
-            combined = android.util.Base64.decode(
-                    stored.substring(ENC_PREFIX.length()), android.util.Base64.NO_WRAP);
+            combined = legacyBase64Decode(stored.substring(ENC_PREFIX.length()));
         } catch (Exception e) {
             logger.error("Credential recovery failed (base64): " + e.getMessage());
             return "";
@@ -117,10 +223,46 @@ public final class CredentialCipher {
         return "";
     }
 
+    // ENC2 values: "" when it can't be opened (no key, another key, malformed), like the ENC: failure path.
+    private static String decryptEnc2(String stored) {
+        final byte[] combined;
+        try {
+            combined = java.util.Base64.getDecoder().decode(stored.substring(ENC2_PREFIX.length()));
+        } catch (Exception e) {
+            logger.error("Credential recovery failed (ENC2 base64): " + e.getMessage());
+            return "";
+        }
+        if (combined.length < IV_LEN + 1) return "";
+        byte[] key = currentKey();
+        if (key == null) {
+            logger.warn("Credential recovery deferred: this process doesn't hold the credential key yet");
+            reportRejected();
+            return "";
+        }
+        byte[] iv = new byte[IV_LEN];
+        System.arraycopy(combined, 0, iv, 0, IV_LEN);
+        byte[] ct = new byte[combined.length - IV_LEN];
+        System.arraycopy(combined, IV_LEN, ct, 0, ct.length);
+        String plain = tryDecryptWith(key, iv, ct);
+        if (plain != null) return plain;
+        logger.error("Credential recovery failed: the credential key doesn't open this value");
+        reportRejected();
+        return "";
+    }
+
     /** One decrypt attempt under a specific key derivation. Null on failure. */
     private static String tryDecrypt(byte[] iv, byte[] ct, boolean includeFingerprint) {
+        final byte[] key;
         try {
-            byte[] key = deriveKey(includeFingerprint);
+            key = deriveKey(includeFingerprint);
+        } catch (Exception e) {
+            return null;  // no device id
+        }
+        return tryDecryptWith(key, iv, ct);
+    }
+
+    private static String tryDecryptWith(byte[] key, byte[] iv, byte[] ct) {
+        try {
             Cipher cipher = Cipher.getInstance(CIPHER_ALGO);
             cipher.init(Cipher.DECRYPT_MODE,
                     new SecretKeySpec(key, "AES"),
@@ -131,6 +273,32 @@ public final class CredentialCipher {
         }
     }
 
+    // The ENC: encoding: android.util.Base64 on the device; java.util.Base64 (same alphabet, no line wrap) where the
+    // Android class is only a stub (JVM unit tests).
+    private static String legacyBase64Encode(byte[] data) {
+        String out = null;
+        try {
+            out = android.util.Base64.encodeToString(data, android.util.Base64.NO_WRAP);
+        } catch (RuntimeException ignored) {
+            // JVM unit-test stub
+        }
+        return out != null ? out : java.util.Base64.getEncoder().encodeToString(data);
+    }
+
+    private static byte[] legacyBase64Decode(String data) {
+        byte[] out = null;
+        try {
+            out = android.util.Base64.decode(data, android.util.Base64.NO_WRAP);
+        } catch (IllegalArgumentException e) {
+            throw e;  // real decoder: bad input
+        } catch (RuntimeException ignored) {
+            // JVM unit-test stub
+        }
+        return out != null ? out : java.util.Base64.getDecoder().decode(data);
+    }
+
+    // ==================== UPGRADE ====================
+
     /**
      * True when {@code stored} is encrypted but only the LEGACY
      * (fingerprint-bound) key can decrypt it — i.e. it was written by the old
@@ -139,11 +307,10 @@ public final class CredentialCipher {
      * values, and for values that don't decrypt at all (nothing we can do).
      */
     public static boolean needsStableReEncrypt(String stored) {
-        if (!isEncrypted(stored)) return false;
+        if (!isEncrypted(stored) || isEnc2(stored)) return false;
         final byte[] combined;
         try {
-            combined = android.util.Base64.decode(
-                    stored.substring(ENC_PREFIX.length()), android.util.Base64.NO_WRAP);
+            combined = legacyBase64Decode(stored.substring(ENC_PREFIX.length()));
         } catch (Exception e) {
             return false;
         }
@@ -187,6 +354,8 @@ public final class CredentialCipher {
         return reEncrypted;
     }
 
+    // ==================== LEGACY KEY ====================
+
     /**
      * Device-bound AES key. The persisted device id ({@link #DID_PATH}) is the
      * sole device binding for the going-forward (stable) key. The legacy key
@@ -211,7 +380,7 @@ public final class CredentialCipher {
             String bp;
             try {
                 bp = android.os.Build.FINGERPRINT;
-            } catch (Exception e) {
+            } catch (Throwable e) {
                 bp = "unknown";
             }
             material = material + ":" + bp;
@@ -229,6 +398,8 @@ public final class CredentialCipher {
      * only reads it.
      */
     private static String readDid() {
+        java.util.function.Supplier<String> override = deviceIdSource;
+        if (override != null) return override.get();
         try {
             File f = new File(DID_PATH);
             if (f.exists()) {

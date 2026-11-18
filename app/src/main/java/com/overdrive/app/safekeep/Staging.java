@@ -182,7 +182,9 @@ public final class Staging {
             while (it.hasNext()) {
                 String k = it.next();
                 Object v = o.opt(k);
-                if (v instanceof String && ((String) v).startsWith("ENC:")) drop.add(k);
+                // both stored forms ("ENC:" and "ENC2:")
+                if (v instanceof String
+                        && com.overdrive.app.byd.cloud.crypto.CredentialCipher.isEncrypted((String) v)) drop.add(k);
                 else stripEncrypted(v, depth + 1);
             }
             for (String k : drop) o.remove(k);
