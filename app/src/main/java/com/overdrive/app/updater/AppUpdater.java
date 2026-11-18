@@ -263,7 +263,23 @@ public class AppUpdater {
     private com.overdrive.app.launcher.AdbDaemonLauncher adbLauncher; // For daemon management
 
     private String latestDownloadUrl;
+    private String latestApkDigest;
     private long latestApkSizeBytes;
+
+    /**
+     * Security fix F12: null when the downloaded APK's sha256 (first token of
+     * `sha256sum` output) matches GitHub's {@code sha256:<hex>} asset digest; else the
+     * reason. Fails closed: no published digest means no install.
+     */
+    static String apkDigestError(String expectedDigest, String sha256sumOutput) {
+        if (expectedDigest == null || !expectedDigest.regionMatches(true, 0, "sha256:", 0, 7)) {
+            return "release has no sha256 digest";
+        }
+        String expected = expectedDigest.substring(7).trim();
+        String actual = sha256sumOutput == null ? "" : sha256sumOutput.trim().split("\\s+")[0];
+        if (expected.isEmpty() || actual.isEmpty()) return "could not hash the download";
+        return expected.equalsIgnoreCase(actual) ? null : "checksum mismatch";
+    }
     private String releaseNotes;
     private String remoteVersion;
     private String remoteUpdatedAt;
@@ -906,6 +922,7 @@ public class AppUpdater {
                     String apkDigest = apk[4];
 
                     latestDownloadUrl = apkUrl;
+                    latestApkDigest = apkDigest;
                     latestApkSizeBytes = Long.parseLong(apk[3]);
                     remoteUpdatedAt = updatedAt;
                     // Bind the pending install to THIS channel at the seed
@@ -1274,6 +1291,35 @@ public class AppUpdater {
                         @Override public void onError(String e) {}
                     });
                     postInstallError(callback, "Invalid APK (size: " + fileSize + ")");
+                    return;
+                }
+
+                // Security fix F12: the download must match GitHub's sha256 digest.
+                final boolean[] shaDone = {false};
+                final String[] shaResult = {null};
+                runShell("sha256sum " + APK_PATH + " 2>/dev/null",
+                        new com.overdrive.app.launcher.AdbDaemonLauncher.LaunchCallback() {
+                    @Override public void onLog(String message) { shaResult[0] = message; }
+                    @Override public void onLaunched() {
+                        shaDone[0] = true;
+                        synchronized (shaDone) { shaDone.notify(); }
+                    }
+                    @Override public void onError(String error) {
+                        shaDone[0] = true;
+                        synchronized (shaDone) { shaDone.notify(); }
+                    }
+                });
+                synchronized (shaDone) {
+                    if (!shaDone[0]) shaDone.wait(60000);
+                }
+                String digestError = apkDigestError(latestApkDigest, shaResult[0]);
+                if (digestError != null) {
+                    runShell("rm -f " + APK_PATH, new com.overdrive.app.launcher.AdbDaemonLauncher.LaunchCallback() {
+                        @Override public void onLog(String m) {}
+                        @Override public void onLaunched() {}
+                        @Override public void onError(String e) {}
+                    });
+                    postInstallError(callback, "Update rejected: " + digestError);
                     return;
                 }
 
@@ -3599,6 +3645,7 @@ public class AppUpdater {
             }
             releaseNotes = release.optString("body", "");
             latestDownloadUrl = apk[0];
+            latestApkDigest = apk[4];
             latestApkSizeBytes = Long.parseLong(apk[3]);
             remoteUpdatedAt = apk[2];
             // Canonicalize to "alpha-v<semver>" (this path is alpha-only) so a
