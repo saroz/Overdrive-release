@@ -41,7 +41,7 @@ public final class DaemonIpcClient {
             socket.setSoTimeout(readTimeoutMs);
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            writer.println(request.toString());
+            writer.println(IpcAuth.attach(request).toString());
             String line = reader.readLine();
             if (line == null || line.isEmpty()) return null;
             return new JSONObject(line);

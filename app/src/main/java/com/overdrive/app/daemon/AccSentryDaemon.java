@@ -8665,7 +8665,7 @@ public class AccSentryDaemon {
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-                writer.println(command.toString());
+                writer.println(com.overdrive.app.server.IpcAuth.attach(command).toString());
                 String responseLine = reader.readLine();
 
                 return responseLine != null ? new JSONObject(responseLine) : null;

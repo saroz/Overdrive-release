@@ -85,6 +85,9 @@ public class AuthManager {
     // shorter expiry would need an actual refresh mechanism to avoid
     // constant re-login friction.
     private static final long JWT_EXPIRY_MS = 30L * 24 * 60 * 60 * 1000L; // 30 days
+    /** F14: tokens for the loopback IPC port live 2 minutes and are refused by the web API. */
+    static final String IPC_AUDIENCE = "ipc";
+    private static final long IPC_JWT_TTL_S = 120;
     // Public so AuthApiHandler's login response can report the real value
     // instead of hardcoding its own copy that could drift from this one.
     public static final long JWT_EXPIRY_SECONDS = JWT_EXPIRY_MS / 1000;
@@ -917,7 +920,20 @@ public class AuthManager {
         return jwtFor(state, null, now, now + (JWT_EXPIRY_MS / 1000));
     }
 
+    /**
+     * A token for the loopback IPC port only (F14): short-lived and marked {@code aud=ipc}, so a
+     * process squatting on that port can't replay it as a web sign-in.
+     */
+    public static String generateIpcJwt() {
+        long now = System.currentTimeMillis() / 1000;
+        return jwtFor(getState(), null, IPC_AUDIENCE, now, now + IPC_JWT_TTL_S);
+    }
+
     private static String jwtFor(AuthState state, String jti, long now, long exp) {
+        return jwtFor(state, jti, null, now, exp);
+    }
+
+    private static String jwtFor(AuthState state, String jti, String aud, long now, long exp) {
         if (state == null) {
             return null;
         }
@@ -932,6 +948,7 @@ public class AuthManager {
             payload.put("iat", now);
             payload.put("exp", exp);
             if (jti != null) payload.put("jti", jti);
+            if (aud != null) payload.put("aud", aud);
 
             String headerB64 = base64UrlEncode(header.toString().getBytes(StandardCharsets.UTF_8));
             String payloadB64 = base64UrlEncode(payload.toString().getBytes(StandardCharsets.UTF_8));
@@ -1039,6 +1056,15 @@ public class AuthManager {
      * Validate a JWT and extract claims.
      */
     public static JwtValidation validateJwt(String jwt) {
+        return validate(jwt, false);
+    }
+
+    /** For the loopback IPC port: accepts IPC tokens as well as normal session tokens. */
+    public static JwtValidation validateIpcJwt(String jwt) {
+        return validate(jwt, true);
+    }
+
+    private static JwtValidation validate(String jwt, boolean allowIpcAudience) {
         if (jwt == null || jwt.isEmpty()) {
             return JwtValidation.failure("No token provided");
         }
@@ -1068,6 +1094,10 @@ public class AuthManager {
 
             String payloadJson = new String(base64UrlDecode(parts[1]), StandardCharsets.UTF_8);
             JSONObject payload = new JSONObject(payloadJson);
+
+            if (IPC_AUDIENCE.equals(payload.optString("aud", "")) && !allowIpcAudience) {
+                return JwtValidation.failure("IPC-only token");
+            }
 
             long exp = payload.getLong("exp");
             if (System.currentTimeMillis() / 1000 > exp) {

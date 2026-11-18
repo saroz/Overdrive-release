@@ -3858,10 +3858,12 @@ object UnifiedConfigManager {
             socket.soTimeout = IPC_READ_TIMEOUT_MS
             val writer = PrintWriter(socket.getOutputStream(), true)
             val reader = BufferedReader(InputStreamReader(socket.getInputStream()))
-            val req = JSONObject()
-                .put("command", command)
-                .put("section", section)
-                .put(payloadKey, payload)
+            val req = com.overdrive.app.server.IpcAuth.attach(
+                JSONObject()
+                    .put("command", command)
+                    .put("section", section)
+                    .put(payloadKey, payload)
+            )
             // From this point onward, any transport failure is ambiguous: the
             // daemon may commit even if this process never receives its ack.
             requestMayHaveBeenSent = true

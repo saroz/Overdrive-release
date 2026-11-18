@@ -383,7 +383,21 @@ public class SurveillanceIpcServer implements Runnable {
         
         try {
             String command = request.optString("command", "");
-            
+
+            // F14: this port takes any local app; writes and secret reads need a session token.
+            String unauthorized = IpcAuth.rejectionReason(command, request);
+            if (unauthorized != null) {
+                if (IpcAuth.shouldLog(command, System.currentTimeMillis())) {
+                    logger.warn("IPC " + command + " without a valid token (" + unauthorized + ")"
+                            + (IpcAuth.ENFORCE ? " - rejected" : " - allowed, log-only"));
+                }
+                if (IpcAuth.ENFORCE) {
+                    response.put("success", false);
+                    response.put("error", "unauthorized");
+                    return response;
+                }
+            }
+
             switch (command) {
                 case "DILINK5_HELLO":
                     if (!diLink5Authenticated) return null;
@@ -755,7 +769,7 @@ public class SurveillanceIpcServer implements Runnable {
                     boolean includeTrips = request.optBoolean("includeTrips", false);
                     // the login code only for a caller holding a session (this port takes any local app)
                     boolean withSecret = com.overdrive.app.auth.AuthManager
-                            .validateJwt(request.optString("jwt", "")).valid;
+                            .validateIpcJwt(request.optString("jwt", "")).valid;
                     JSONObject bundle = com.overdrive.app.config.ConfigBackupService.buildBundle(
                             com.overdrive.app.updater.AppUpdater.getInstalledVersion(),
                             deviceModelString(),
@@ -784,7 +798,7 @@ public class SurveillanceIpcServer implements Runnable {
                     }
                     com.overdrive.app.config.ConfigBackupService.ApplyResult res;
                     boolean withSecret = com.overdrive.app.auth.AuthManager
-                            .validateJwt(request.optString("jwt", "")).valid;
+                            .validateIpcJwt(request.optString("jwt", "")).valid;
                     synchronized (CONFIG_LOCK) {
                         com.overdrive.app.config.UnifiedConfigManager.forceReload();
                         res = com.overdrive.app.config.ConfigBackupService.applyBundle(

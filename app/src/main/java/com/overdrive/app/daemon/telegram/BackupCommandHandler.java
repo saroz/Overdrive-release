@@ -53,7 +53,7 @@ public class BackupCommandHandler implements TelegramCommandHandler {
             req.put("command", "EXPORT_CONFIG");
             req.put("includeTrips", includeTrips);
             // (the owner's own chat: the bundle keeps the login code, as before)
-            String jwt = com.overdrive.app.auth.AuthManager.generateJwt();
+            String jwt = com.overdrive.app.auth.AuthManager.generateIpcJwt();
             if (jwt != null) req.put("jwt", jwt);
         } catch (Exception ignored) {}
 
