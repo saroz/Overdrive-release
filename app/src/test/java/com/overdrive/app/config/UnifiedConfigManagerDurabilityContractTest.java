@@ -486,9 +486,11 @@ public class UnifiedConfigManagerDurabilityContractTest {
                 "private fun readDurableConfigLockedStrict(): JSONObject",
                 "@JvmStatic\n    fun loadConfig()");
 
+        // F14 stage B: the daemon takes the file lock inside withConfigReadLock; the app reads
+        // under the in-process lock only (the live file is replaced only by atomic rename).
         assertOrdered(
                 entry,
-                "withConfigFileLock {",
+                "withConfigReadLock {",
                 "readDurableConfigLockedStrict()");
         assertOrdered(
                 locked,

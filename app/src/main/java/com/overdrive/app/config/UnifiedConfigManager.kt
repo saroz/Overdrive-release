@@ -127,6 +127,8 @@ object UnifiedConfigManager {
     private const val CACHE_REVALIDATE_MS = 1000L
     // Upper bound on any wait for the config locks; the app main thread never waits.
     private const val LOCK_WAIT_MS = 10_000L
+    /** App reads without the file lock retry this often if the file is replaced mid-read. */
+    private const val LOCK_FREE_READ_ATTEMPTS = 3
     private const val LOCK_POLL_MAX_MS = 50L
     private const val LOCK_STALL_RELOG_MS = 5L * 60_000L
     
@@ -510,7 +512,7 @@ object UnifiedConfigManager {
      * backup, or repairs the live file.
      */
     @JvmStatic
-    fun readDurableConfigStrict(): JSONObject = withConfigFileLock {
+    fun readDurableConfigStrict(): JSONObject = withConfigReadLock {
         readDurableConfigLockedStrict()
     }
 
@@ -519,11 +521,11 @@ object UnifiedConfigManager {
      * an I/O or lock failure remains transient and must abort the operation.
      */
     @JvmStatic
-    fun readDurableConfigForRestore(): JSONObject = withConfigFileLock {
+    fun readDurableConfigForRestore(): JSONObject = withConfigReadLock {
         val file = File(CONFIG_PATH)
-        if (!file.exists()) return@withConfigFileLock createDefaultConfig()
+        if (!file.exists()) return@withConfigReadLock createDefaultConfig()
         val encoded = readLiveConfigText(file)
-        if (encoded.isBlank()) return@withConfigFileLock createDefaultConfig()
+        if (encoded.isBlank()) return@withConfigReadLock createDefaultConfig()
         try {
             JSONObject(encoded)
         } catch (malformed: Exception) {
@@ -1326,7 +1328,9 @@ object UnifiedConfigManager {
             }
         }
         
-        val loaded = try {
+        val loaded = if (android.os.Process.myUid() != SHELL_DAEMON_UID) {
+            loadConfigInAppWithoutFileLock(configFile)
+        } else try {
             withConfigFileLock {
                 loadConfigUnderFileLock(configFile)
             }
@@ -1350,8 +1354,56 @@ object UnifiedConfigManager {
     }
 
     /**
+     * F14 stage B: the app process reads the config WITHOUT the cross-process
+     * file lock, so the lock file can become owner-only and no other app can
+     * hold it to stall the daemons' writes.
+     *
+     * Safe because the live file is only ever replaced by an atomic rename
+     * (saveConfigInternal never writes it in place), so any read sees one
+     * complete version. What the lock added on top is that the cache stamp
+     * (mtime) belongs to the bytes read. Here the file's identity (inode,
+     * mtime, size) is compared before and after the read; a mismatch means a
+     * peer replaced it mid-read, so the stamp is dropped and the read retried.
+     * The in-process [configLock] still serializes this JVM's own threads.
+     */
+    private fun loadConfigInAppWithoutFileLock(configFile: File): JSONObject {
+        // Missing file: only the daemon can create it; don't run init()'s locked
+        // recovery from the app.
+        if (!configFile.exists()) return loadConfigWithoutStableLock(configFile)
+        val deadline = SystemClock.elapsedRealtime() + lockWaitMs()
+        if (!acquireConfigLock(deadline)) return loadConfigWithoutStableLock(configFile)
+        try {
+            var loaded: JSONObject? = null
+            for (attempt in 1..LOCK_FREE_READ_ATTEMPTS) {
+                val before = configFileIdentity(configFile)
+                loaded = loadConfigUnderFileLock(configFile)
+                val after = configFileIdentity(configFile)
+                if (before != null && before == after) return loaded
+                // Replaced mid-read: these bytes may be older than the stamp just taken.
+                stampFreshness(0)
+            }
+            return loaded ?: loadConfigWithoutStableLock(configFile)
+        } finally {
+            configLock.unlock()
+        }
+    }
+
+    private data class ConfigFileIdentity(val inode: Long, val mtime: Long, val size: Long)
+
+    private fun configFileIdentity(file: File): ConfigFileIdentity? {
+        if (!file.exists()) return null
+        val inode = try {
+            android.system.Os.stat(file.path).st_ino
+        } catch (_: Throwable) {
+            -1L
+        }
+        return ConfigFileIdentity(inode, file.lastModified(), file.length())
+    }
+
+    /**
      * Parse, migrate, and publish one config snapshot while the stable
-     * cross-process lock is held. Keeping the byte read through cache+mtime
+     * cross-process lock is held (daemon), or under the identity check of
+     * [loadConfigInAppWithoutFileLock] (app). Keeping the byte read through cache+mtime
      * publication in this critical section prevents old bytes from being
      * stamped with a peer replacement's newer mtime.
      */
@@ -4753,6 +4805,29 @@ object UnifiedConfigManager {
                 try { channel?.close() } catch (_: Exception) {}
                 try { raf?.close() } catch (_: Exception) {}
             }
+        } finally {
+            configLock.unlock()
+        }
+    }
+
+    /**
+     * Lock for a plain read of the live file. The daemon takes the stable file
+     * lock as before. The app takes only the in-process [configLock] (F14 stage
+     * B): the live file is only ever replaced by an atomic rename, so a read
+     * always sees one complete version, and the app must not need the file
+     * lock, which becomes owner-only.
+     */
+    private fun <T> withConfigReadLock(body: () -> T): T {
+        if (android.os.Process.myUid() == SHELL_DAEMON_UID) return withConfigFileLock(body)
+        val deadline = SystemClock.elapsedRealtime() + lockWaitMs()
+        if (!acquireConfigLock(deadline)) {
+            throw ConfigLockUnavailableException(
+                "Config lock is held by another thread of this process",
+                contended = true
+            )
+        }
+        try {
+            return body()
         } finally {
             configLock.unlock()
         }
