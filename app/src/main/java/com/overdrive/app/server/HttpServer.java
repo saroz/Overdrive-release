@@ -147,7 +147,17 @@ public class HttpServer {
 
                 // Extract overlay icons for telemetry overlay
                 extractAssetDir(assetManager, "overlay", new File(com.overdrive.app.util.ScratchRoot.path("overlay")), manifest);
-            
+
+            }
+
+            // Security fix F10: other apps must not be able to replace pages or
+            // JS served with the login cookie. Dirs 0755, files 0644, on every
+            // start so a tree left by an older build (or a loose umask) is fixed.
+            int permFailures = WebRootPermissions.restrict(webRoot)
+                    + WebRootPermissions.restrict(new File(com.overdrive.app.util.ScratchRoot.path("overlay")));
+            if (permFailures > 0) {
+                CameraDaemon.log("WARN: could not restrict permissions on "
+                        + permFailures + " web asset entries");
             }
 
             // Validate external crypto tables on every boot, even on a web cache hit.
