@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notif_channel_roadsense_overlay">RoadSense ओभरले</string>
+    <string name="notif_roadsense_overlay_text">खतरा ओभरले सक्रिय छ</string>
+    <string name="notif_channel_roadsense_imu">RoadSense IMU</string>
+    <string name="notif_roadsense_imu_text">सडक संवेदन सक्रिय छ</string>
+    <string name="notif_channel_onscreen_messages">स्क्रिन सन्देशहरू</string>
+    <string name="notif_onscreen_message_title">स्क्रिन सन्देश</string>
+    <string name="notif_channel_parked_impact">पार्क ठक्कर निगरानी</string>
+    <string name="notif_parked_impact_title">सेन्ट्री</string>
+    <string name="notif_parked_impact_text">पार्क हुँदा ठक्करका लागि निगरानी गर्दै</string>
+    <string name="notif_network_hotspot">नेटवर्क र हटस्पट</string>
+    <string name="notif_channel_media_playback">मिडिया प्लेब्याक</string>
+    <string name="notif_roadsense_chime_title">RoadSense चेतावनी</string>
+    <string name="notif_roadsense_chime_text">सुरक्षा घण्टी बज्दैछ</string>
+    <string name="notif_channel_location">स्थान सेवा</string>
+    <string name="notif_channel_location_desc">निगरानीका लागि GPS ट्र्याकिङ</string>
+    <string name="notif_location_title">स्थान सक्रिय छ</string>
+    <string name="notif_location_text">GPS ट्र्याकिङ चलिरहेको छ</string>
+    <string name="notif_vehicle_control">गाडी नियन्त्रण</string>
+    <string name="notif_media_title">अडियो बज्दैछ</string>
+    <string name="notif_media_text">OverDrive स्वचालन</string>
+    <string name="notif_channel_keepalive">डेमन किप-अलाइभ</string>
+    <string name="notif_channel_keepalive_desc">पृष्ठभूमिमा डेमनहरू चालु राख्छ</string>
+    <string name="notif_channel_summary">Overdrive स्थिति</string>
+    <string name="notif_channel_summary_desc">Overdrive को पृष्ठभूमि सेवाहरूका लागि संयुक्त स्थिति पङ्क्ति</string>
+    <string name="notif_channel_remote_voice">रिमोट आवाज</string>
+    <string name="notif_channel_status_overlay">स्थिति ओभरले</string>
+    <string name="notif_channel_status_overlay_desc">रेकर्डिङ र यात्रा स्थिति ओभरले</string>
+</resources>

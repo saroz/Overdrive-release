@@ -1,7 +1,8 @@
 /* Mockup dialog and .toast. The scrim is solid (no blur) per the no-blur rule. */
 
 .ui-dialog {
-  width: min(520px, calc(100% - 32px));
+  width: 520px;
+  max-width: calc(100% - 32px);
   box-sizing: border-box;
   padding: 26px;
   border: 1px solid var(--ui-line);

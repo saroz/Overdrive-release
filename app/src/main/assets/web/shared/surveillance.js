@@ -4045,7 +4045,7 @@ BYD.surveillance = {
             if (stored && this._tabFieldMap[stored]) return stored;
         } catch (e) {}
         // Fall back to the visible bottom-tab pill.
-        var visible = document.querySelector('.bottom-tab.is-active');
+        var visible = document.querySelector('.ui-tab.is-active');
         if (visible) return visible.getAttribute('data-tab-target') || 'general';
         return 'general';
     },

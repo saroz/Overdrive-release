@@ -3110,7 +3110,7 @@ const TRIPS = {
             history.replaceState(null, '', window.location.pathname + window.location.search);
         } catch (e) { /* keep the hash */ }
         // The range card lives on the Stats tab; land there under the sheet.
-        const statsTab = document.querySelector('.bottom-tab[data-tab-target="stats"]');
+        const statsTab = document.querySelector('.ui-tab[data-tab-target="stats"]');
         if (statsTab && statsTab.getAttribute('aria-selected') !== 'true') statsTab.click();
         this.openRangeCalibration();
     },

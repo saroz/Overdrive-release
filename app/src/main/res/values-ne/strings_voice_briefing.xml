@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="voice_brief_starting">दिशा सुरु गर्दै।</string>
+    <string name="voice_brief_opening_waze">Waze खोल्दै।</string>
+    <string name="voice_brief_opening_gmaps">Google Maps खोल्दै।</string>
+    <string name="voice_brief_starting_car">गाडीको नेभिगेसन सुरु गर्दै।</string>
+    <string name="voice_brief_app_missing">त्यो एप स्थापित छैन। स्क्रिनमा एउटा छान्नुहोस्।</string>
+</resources>

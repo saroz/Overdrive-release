@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="projection_app_density">एप DPI</string>
+    <string name="projection_app_keyboard">किबोर्ड</string>
+    <string name="projection_app_guidance">एप उपकरणहरू</string>
+    <string name="projection_tools_select_app">पहिले कास्ट एप छान्नुहोस्।</string>
+    <string name="projection_tools_daemon_unavailable">क्लस्टर डेमन उपलब्ध छैन। जडान भएपछि पुनः प्रयास गर्नुहोस्।</string>
+    <string name="projection_tools_save">सेभ गर्नुहोस्</string>
+    <string name="projection_tools_save_failed">सेटिङ सेभ गर्न सकिएन। कृपया पुनः प्रयास गर्नुहोस्।</string>
+    <string name="projection_density_description">अर्को कास्टमा %1$s का लागि घनत्व। डिस्प्ले घनत्व राख्न 0, वा 96–480 DPI प्रयोग गर्नुहोस्।\n\nघनत्वले कास्ट हुँदा त्यस डिस्प्लेको हरेक नक्सा र ओभरलेमा असर गर्छ। रोकेपछि डिस्प्ले सुरक्षित रूपमा उपलब्ध हुँदा अघिल्लो ओभरराइड पुनःस्थापित हुन्छ।</string>
+    <string name="projection_density_range">0 वा 96 देखि 480 सम्मको पूर्ण संख्या लेख्नुहोस्।</string>
+    <string name="projection_density_saved">सेभ भयो। घनत्व लागू गर्न एप रोकेर फेरि कास्ट गर्नुहोस्।</string>
+    <string name="projection_density_not_applied">अन्तिम कास्टले यो घनत्व लागू गर्न सकेन: %1$s</string>
+    <string name="projection_guidance_di3">DI3 क्लस्टर पट्टी र विन्डशिल्ड मार्गदर्शन (गाडीमा जाँच आवश्यक छ)</string>
+    <string name="projection_guidance_di5">प्रयोगात्मक DI5 क्लस्टर पट्टी</string>
+    <string name="projection_guidance_notifications">नक्सा सूचना पहुँच</string>
+    <string name="projection_guidance_setup">सेभ गर्नुहोस्, अनि RoadSense मा नेभिगेसन सुरु गर्नुहोस्। Google Maps वा Waze लाई नक्सा सूचना पहुँच पनि चाहिन्छ।\n\nDI3 HUD चालु राख्नुहोस् र कुनै पनि अन्तर्निहित नेभिगेसन रोक्नुहोस्। गाडीमा नेभिगेसन सामग्रीका लागि HUD सेटिङ छ भने चालु गर्नुहोस्। यो टगलले HUD अन गर्दैन।</string>
+    <string name="projection_guidance_setup_di5">सेभ गर्नुहोस्, अनि RoadSense मा नेभिगेसन सुरु गर्नुहोस्। Google Maps वा Waze लाई नक्सा सूचना पहुँच पनि चाहिन्छ।\n\nDI5 क्लस्टर पट्टी प्रयोगात्मक छ। परीक्षण गर्नुअघि कुनै पनि पूर्ण-स्क्रिन क्लस्टर कास्ट वा नक्सा रोक्नुहोस्। DI5 मा विन्डशिल्ड मार्गदर्शन उपलब्ध छैन।</string>
+    <string name="projection_keyboard_auto">क्लस्टर पाठ फिल्डमा DI5 किबोर्ड स्वतः खोल्नुहोस्</string>
+    <string name="projection_guidance_saved">सेभ भयो। विन्डशिल्ड मार्गदर्शन DI3 मा मात्र छ; DI5 पट्टी रेन्डरिङ गाडीमा जाँच्न बाँकी छ।</string>
+    <string name="projection_tools_title">उपकरणहरू</string>
+    <string name="projection_tools_dialog_title">प्रक्षेपण उपकरणहरू</string>
+    <string name="projection_tools_description">क्लस्टरका लागि नेभिगेसन, एप आकार र पाठ प्रविष्टि सेटअप गर्नुहोस्।</string>
+    <string name="projection_tools_navigation">नेभिगेसन मार्गदर्शन</string>
+    <string name="projection_tools_navigation_description">RoadSense वा नक्सा सूचनाका दिशाहरू कहाँ देखिन्छन् छान्नुहोस्।</string>
+    <string name="projection_tools_density">एप डिस्प्ले आकार</string>
+    <string name="projection_tools_density_description">अर्को कास्टमा चयन गरिएको एपको डिस्प्ले घनत्व मिलाउनुहोस्।</string>
+    <string name="projection_tools_keyboard_description">कास्ट एपमा पाठ प्रविष्ट गर्नुहोस् र स्वचालित प्रम्प्ट व्यवस्थापन गर्नुहोस्। DI5 मात्र।</string>
+    <string name="projection_tools_density_value">डिस्प्ले घनत्व (DPI)</string>
+    <string name="projection_tools_density_default">0 ले डिस्प्ले घनत्व राख्छ · 96–480 ले कस्टम आकार सेट गर्छ</string>
+    <string name="projection_tools_di3_title">DI3 HUD र क्लस्टर</string>
+    <string name="projection_tools_di3_description">विन्डशिल्ड HUD र क्लस्टर पट्टीमा दिशा पठाउनुहोस्। गाडीमा तीर रेन्डरिङ पुष्टि गर्नुहोस्।</string>
+    <string name="projection_tools_di3_only">DI3 मोडमा उपलब्ध छ।</string>
+    <string name="projection_tools_di5_title">DI5 क्लस्टर पट्टी</string>
+    <string name="projection_tools_di5_description">क्लस्टर पट्टीमा प्रयोगात्मक दिशाहरू। DI5 मा विन्डशिल्ड मार्गदर्शन उपलब्ध छैन।</string>
+    <string name="projection_tools_di5_only">DI5 मोडमा उपलब्ध छ।</string>
+    <string name="projection_tools_setup">सुरुवात गर्दै</string>
+</resources>

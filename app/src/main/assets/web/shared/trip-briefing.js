@@ -774,13 +774,15 @@
             this.noticeKey = kind;
             while (card.firstChild) card.removeChild(card.firstChild);
             if (kind === 'loading' || kind === 'preparing') {
-                var loading = el('div', 'loading-state tb-loading');
+                var body = el('div', 'ui-panel-body');
+                var loading = el('div', 'tb-loading ui-muted');
                 loading.setAttribute('role', 'status');
-                var spin = el('span', 'r-btn-spinner');
+                var spin = el('span', 'ui-spinner');
                 spin.setAttribute('aria-hidden', 'true');
                 loading.appendChild(spin);
                 loading.appendChild(el('span', null, t(kind)));
-                card.appendChild(loading);
+                body.appendChild(loading);
+                card.appendChild(body);
                 return;
             }
             var self = this;
@@ -790,18 +792,18 @@
                 none: ['no_trips_title', 'no_trips_desc', 'open_trips', '/trips', ICONS.trips],
                 off: ['trips_off_title', 'trips_off_desc', 'turn_on_trips', '/trips#storage', ICONS.trips]
             }[kind];
-            var box = el('div', 'empty-state tb-notice' + (kind === 'error' ? ' is-error' : ''));
+            var box = el('div', 'ui-empty tb-notice' + (kind === 'error' ? ' is-error' : ''));
             if (kind === 'error') box.setAttribute('role', 'alert');
-            box.appendChild(icon(copy[4], 'empty-icon'));
-            box.appendChild(el('div', 'empty-title', t(copy[0])));
-            box.appendChild(el('p', 'empty-text', t(copy[1])));
+            box.appendChild(icon(copy[4]));
+            box.appendChild(el('h3', null, t(copy[0])));
+            box.appendChild(el('p', null, t(copy[1])));
             var actions = el('div', 'tb-notice-actions');
             var action;
             if (copy[3]) {
-                action = el('a', 'btn btn-primary', t(copy[2]));
+                action = el('a', 'ui-button ui-button-primary', t(copy[2]));
                 action.href = copy[3];
             } else {
-                action = el('button', 'btn btn-primary', t(copy[2]));
+                action = el('button', 'ui-button ui-button-primary', t(copy[2]));
                 action.type = 'button';
                 action.addEventListener('click', function () {
                     if (kind === 'not_ready') self.retryReady();
@@ -854,7 +856,7 @@
             if (button) {
                 while (button.firstChild) button.removeChild(button.firstChild);
                 if (this.learning) {
-                    var spinner = el('span', 'r-btn-spinner');
+                    var spinner = el('span', 'ui-spinner');
                     spinner.setAttribute('aria-hidden', 'true');
                     button.appendChild(spinner);
                 }
@@ -947,13 +949,13 @@
             route.appendChild(el('span', isUnnamed(routine.from) ? 'is-unnamed' : null, placeName(routine.from)));
             route.appendChild(icon(ICONS.arrow, 'tb-route-arrow'));
             route.appendChild(el('span', isUnnamed(routine.to) ? 'is-unnamed' : null, placeName(routine.to)));
-            if (routine.hidden) route.appendChild(el('span', 'setting-badge', t('hidden')));
+            if (routine.hidden) route.appendChild(el('span', 'ui-badge', t('hidden')));
             var pausedUntil = Number(routine.pausedUntil);
             var paused = routine.pausedUntil != null && isFinite(pausedUntil) && pausedUntil > Date.now();
-            if (paused && !routine.hidden) route.appendChild(el('span', 'setting-badge', t('paused', { date: day(pausedUntil) })));
+            if (paused && !routine.hidden) route.appendChild(el('span', 'ui-badge', t('paused', { date: day(pausedUntil) })));
             head.appendChild(route);
 
-            var toggle = el('label', 'toggle-switch');
+            var toggle = el('label', 'ui-toggle');
             var input = el('input');
             input.type = 'checkbox';
             input.checked = !routine.hidden;
@@ -963,7 +965,7 @@
                 self.setRoutine(routine, { hidden: !on }, function () { input.checked = !on; });
             });
             toggle.appendChild(input);
-            toggle.appendChild(el('span', 'toggle-slider'));
+            toggle.appendChild(el('span', 'ui-toggle-track'));
             head.appendChild(toggle);
             item.appendChild(head);
 
@@ -984,7 +986,7 @@
             var actions = el('div', 'ai-result-actions tb-item-actions');
             var pick = el('label', 'tb-app');
             pick.appendChild(el('span', 'tb-app-label', t('open_in')));
-            var select = el('select', 'text-input');
+            var select = el('select', 'ui-input');
             select.appendChild(option('', t('app_default', { app: appLabel(settings.defaultApp) })));
             for (var a = 0; a < APPS.length; a++) select.appendChild(option(APPS[a], appLabel(APPS[a])));
             select.value = appId(routine.app);
@@ -996,7 +998,7 @@
             actions.appendChild(pick);
 
             if (paused && !routine.hidden) {
-                var resume = el('button', 'btn btn-secondary', t('resume'));
+                var resume = el('button', 'ui-button', t('resume'));
                 resume.type = 'button';
                 resume.addEventListener('click', function () { self.setRoutine(routine, { paused: false }); });
                 actions.appendChild(resume);
@@ -1012,7 +1014,7 @@
                 var label = unnamedEnd
                     ? (ends[e] === 'from' ? t('name_start') : t('name_end'))
                     : (ends[e] === 'from' ? t('rename_start') : t('rename_end'));
-                var name = el('button', 'btn btn-secondary', label);
+                var name = el('button', 'ui-button', label);
                 name.type = 'button';
                 name.addEventListener('click', (function (target, current) {
                     return function () { self.promptName(target, current); };
@@ -1036,7 +1038,7 @@
 
             var form = el('form', 'ai-result-actions tb-name-form');
             form.setAttribute('novalidate', '');
-            var input = el('input', 'text-input');
+            var input = el('input', 'ui-input');
             input.type = 'text';
             input.maxLength = NAME_MAX;
             input.autocomplete = 'off';
@@ -1046,7 +1048,7 @@
             input.value = this.drafts[key] || '';
             input.addEventListener('input', function () { self.drafts[key] = input.value; });
             form.appendChild(input);
-            var save = el('button', 'btn btn-secondary', t('save'));
+            var save = el('button', 'ui-button', t('save'));
             save.type = 'submit';
             form.appendChild(save);
             form.addEventListener('submit', function (event) {

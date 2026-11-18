@@ -298,13 +298,11 @@ BYD.stream = {
             }
         }
         
-        // Also highlight the label
-        document.querySelectorAll('.cam-label').forEach(label => {
-            if (section && label.classList.contains(section)) {
-                label.classList.add('hover');
-            } else {
-                label.classList.remove('hover');
-            }
+        // Also highlight the hotspot
+        const camBySection = { front: 1, right: 2, rear: 3, left: 4 };
+        const cam = camBySection[section];
+        document.querySelectorAll('.cam-hotspot').forEach(el => {
+            el.classList.toggle('hover', cam !== undefined && parseInt(el.dataset.cam) === cam);
         });
     },
     
@@ -312,25 +310,9 @@ BYD.stream = {
      * Update car diagram selection
      */
     updateCarDiagram(mode) {
-        // Remove all active states
-        document.querySelectorAll('.cam-indicator').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.cam-label').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.cam-area').forEach(el => el.classList.remove('active'));
-        
-        // Add active state to selected
-        const camMap = { 0: 'all', 1: 'front', 2: 'right', 3: 'rear', 4: 'left' };
-        const camName = camMap[mode];
-        
-        if (mode === 0) {
-            // All cameras - highlight all
-            document.querySelectorAll('.cam-indicator').forEach(el => el.classList.add('active'));
-        } else {
-            const indicator = document.querySelector(`.cam-indicator[data-cam="${mode}"]`);
-            if (indicator) indicator.classList.add('active');
-        }
-        
-        const label = document.querySelector(`.cam-label.${camName}`);
-        if (label) label.classList.add('active');
+        document.querySelectorAll('.cam-hotspot').forEach(el => {
+            el.classList.toggle('active', parseInt(el.dataset.cam) === mode);
+        });
     },
     
     /**
@@ -917,8 +899,7 @@ BYD.stream = {
         
         // Reset selection
         this.currentViewMode = -1;
-        document.querySelectorAll('.cam-indicator').forEach(el => el.classList.remove('active'));
-        document.querySelectorAll('.cam-label').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.cam-hotspot').forEach(el => el.classList.remove('active'));
     },
     
     /**

@@ -262,87 +262,89 @@
 
                 <!-- Trip Briefing (trip-briefing.js, /api/briefing): settings, self-test, routines, places. -->
                 <section data-tab="briefing" id="tbSection" class="tb-section" data-state="loading">
-                    <div class="r-hero tb-hero is-off" id="tbHero">
-                        <div class="r-hero-icon" aria-hidden="true">
+                    <div class="ui-panel ui-summary tb-hero is-off" id="tbHero">
+                        <div class="ui-strip-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
                         </div>
-                        <div class="r-hero-text">
-                            <h2 class="r-hero-title" id="tbTitle" data-i18n="trip_briefing.title">Trip Briefing</h2>
-                            <div class="r-hero-sub" data-i18n="trip_briefing.intro">At car start, OverDrive suggests where you're likely going and asks if you want directions.</div>
+                        <div class="ui-summary-text">
+                            <h2 class="ui-panel-title" id="tbTitle" data-i18n="trip_briefing.title">Trip Briefing</h2>
+                            <div class="ui-panel-sub" data-i18n="trip_briefing.intro">At car start, OverDrive suggests where you're likely going and asks if you want directions.</div>
                         </div>
-                        <div class="r-hero-ctl">
-                            <label class="toggle-switch">
+                        <div class="ui-summary-ctl">
+                            <label class="ui-toggle">
                                 <input type="checkbox" id="tbEnabled" aria-labelledby="tbTitle" disabled>
-                                <span class="toggle-slider"></span>
+                                <span class="ui-toggle-track"></span>
                             </label>
                         </div>
                     </div>
 
-                    <div class="card" id="tbNotice">
-                        <div class="loading-state tb-loading" role="status"><span class="r-btn-spinner" aria-hidden="true"></span><span data-i18n="trip_briefing.loading">Loading Trip Briefing…</span></div>
+                    <div class="ui-panel" id="tbNotice">
+                        <div class="ui-panel-body">
+                            <div class="tb-loading ui-muted" role="status"><span class="ui-spinner" aria-hidden="true"></span><span data-i18n="trip_briefing.loading">Loading Trip Briefing…</span></div>
+                        </div>
                     </div>
 
                     <div class="ai-local-grid" id="tbMain" hidden>
-                        <div class="card" id="tbLearnCard" hidden>
-                            <div class="card-header">
-                                <div class="card-title">
+                        <div class="ui-panel" id="tbLearnCard" hidden>
+                            <div class="ui-panel-head">
+                                <div class="ui-panel-title">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
                                     <span data-i18n="trip_briefing.learn_title">Learn from my trips</span>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="setting-desc" data-i18n="trip_briefing.learn_desc">Replays your past trips to check how often it would have guessed right.</div>
+                            <div class="ui-panel-body">
+                                <div class="ui-row-desc" data-i18n="trip_briefing.learn_desc">Replays your past trips to check how often it would have guessed right.</div>
                                 <div class="ai-actions tb-learn-row">
-                                    <button class="btn btn-primary" id="tbLearnBtn" type="button">Learn from my trips</button>
+                                    <button class="ui-button ui-button-primary" id="tbLearnBtn" type="button">Learn from my trips</button>
                                     <span class="tb-caption" id="tbLearnedAt"></span>
                                 </div>
                                 <div id="tbResult" aria-live="polite"></div>
                                 <div class="tb-cta" id="tbCta" hidden>
                                     <div class="tb-cta-text" data-i18n="trip_briefing.cta_desc">Trip Briefing is off. Turn it on to get these suggestions at car start.</div>
-                                    <button class="btn btn-primary" id="tbCtaBtn" type="button" data-i18n="trip_briefing.cta">Turn on Trip Briefing</button>
+                                    <button class="ui-button ui-button-primary" id="tbCtaBtn" type="button" data-i18n="trip_briefing.cta">Turn on Trip Briefing</button>
                                 </div>
-                                <div class="info-box-warning" id="tbTripsOff" role="note" hidden>
-                                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                                <div class="ui-note ui-note-warning" id="tbTripsOff" role="note" hidden style="margin-top:12px;">
+                                    <svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
                                     <div>
-                                        <div class="info-note" data-i18n="trip_briefing.trips_off_note">Trip recording is off, so new trips aren't learned.</div>
-                                        <a class="btn btn-secondary tb-note-action" href="/trips#storage" data-i18n="trip_briefing.turn_on_trips">Turn on trip recording</a>
+                                        <div class="ui-note-text" data-i18n="trip_briefing.trips_off_note">Trip recording is off, so new trips aren't learned.</div>
+                                        <a class="ui-button tb-note-action" href="/trips#storage" data-i18n="trip_briefing.turn_on_trips">Turn on trip recording</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="card" id="tbSettingsCard">
-                            <div class="card-header">
-                                <div class="card-title">
+                        <div class="ui-panel" id="tbSettingsCard">
+                            <div class="ui-panel-head">
+                                <div class="ui-panel-title">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/></svg>
                                     <span data-i18n="trip_briefing.settings_title">How it asks</span>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <div class="setting-row">
-                                    <div class="setting-info">
-                                        <div class="setting-name" id="tbVoiceName" data-i18n="trip_briefing.voice">Ask by voice</div>
-                                        <div class="setting-desc" data-i18n="trip_briefing.voice_desc">Off shows the card only.</div>
-                                        <div class="setting-desc" data-i18n="trip_briefing.voice_ai_note">In GenAI mode, and in Hybrid when your language isn't one the car understands offline, the place's name is sent to your AI provider so it can ask.</div>
-                                        <div class="setting-desc" id="tbVoiceMode"></div>
+                            <div class="ui-panel-body">
+                                <div class="ui-row">
+                                    <div class="ui-row-copy">
+                                        <div class="ui-row-title" id="tbVoiceName" data-i18n="trip_briefing.voice">Ask by voice</div>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.voice_desc">Off shows the card only.</div>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.voice_ai_note">In GenAI mode, and in Hybrid when your language isn't one the car understands offline, the place's name is sent to your AI provider so it can ask.</div>
+                                        <div class="ui-row-desc" id="tbVoiceMode"></div>
                                         <div class="tb-row-action" id="tbVoiceSettings" hidden>
-                                            <button class="btn btn-secondary" id="tbVoiceSettingsBtn" type="button" data-i18n="trip_briefing.voice_settings">Voice settings</button>
+                                            <button class="ui-button" id="tbVoiceSettingsBtn" type="button" data-i18n="trip_briefing.voice_settings">Voice settings</button>
                                         </div>
                                     </div>
-                                    <div class="setting-control">
-                                        <label class="toggle-switch">
+                                    <div class="ui-row-end">
+                                        <label class="ui-toggle">
                                             <input type="checkbox" id="tbVoice" aria-labelledby="tbVoiceName" disabled>
-                                            <span class="toggle-slider"></span>
+                                            <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
                                 </div>
-                                <div class="setting-row">
-                                    <div class="setting-info">
-                                        <label class="setting-name" for="tbDefaultApp" data-i18n="trip_briefing.app">Default navigation app</label>
-                                        <div class="setting-desc" data-i18n="trip_briefing.app_desc">Opens when you say yes. If it isn't installed, OverDrive is offered first.</div>
+                                <div class="ui-row">
+                                    <div class="ui-row-copy">
+                                        <label class="ui-row-title" for="tbDefaultApp" data-i18n="trip_briefing.app">Default navigation app</label>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.app_desc">Opens when you say yes. If it isn't installed, OverDrive is offered first.</div>
                                     </div>
-                                    <div class="setting-control">
-                                        <select class="text-input" id="tbDefaultApp" disabled>
+                                    <div class="ui-row-end">
+                                        <select class="ui-input" id="tbDefaultApp" disabled>
                                             <option value="overdrive" data-i18n="trip_briefing.app_overdrive">OverDrive</option>
                                             <option value="waze" data-i18n="trip_briefing.app_waze">Waze</option>
                                             <option value="gmaps" data-i18n="trip_briefing.app_gmaps">Google Maps</option>
@@ -350,27 +352,27 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="setting-row">
-                                    <div class="setting-info">
-                                        <div class="setting-name" id="tbExtrasName" data-i18n="trip_briefing.extras">Range and hazard notes</div>
-                                        <div class="setting-desc" data-i18n="trip_briefing.extras_desc">Adds one short note when it matters: range too low for the trip, or new road hazards on the way. Worked out on the car.</div>
+                                <div class="ui-row">
+                                    <div class="ui-row-copy">
+                                        <div class="ui-row-title" id="tbExtrasName" data-i18n="trip_briefing.extras">Range and hazard notes</div>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.extras_desc">Adds one short note when it matters: range too low for the trip, or new road hazards on the way. Worked out on the car.</div>
                                     </div>
-                                    <div class="setting-control">
-                                        <label class="toggle-switch">
+                                    <div class="ui-row-end">
+                                        <label class="ui-toggle">
                                             <input type="checkbox" id="tbExtras" aria-labelledby="tbExtrasName" disabled>
-                                            <span class="toggle-slider"></span>
+                                            <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
                                 </div>
-                                <div class="setting-row">
-                                    <div class="setting-info">
-                                        <div class="setting-name" id="tbOnlineExtrasName" data-i18n="trip_briefing.online_extras">Rain note</div>
-                                        <div class="setting-desc" data-i18n="trip_briefing.online_extras_desc">Says when rain is likely in the next few hours. Sends the car's position to the weather service (Open-Meteo) at each car start.</div>
+                                <div class="ui-row">
+                                    <div class="ui-row-copy">
+                                        <div class="ui-row-title" id="tbOnlineExtrasName" data-i18n="trip_briefing.online_extras">Rain note</div>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.online_extras_desc">Says when rain is likely in the next few hours. Sends the car's position to the weather service (Open-Meteo) at each car start.</div>
                                     </div>
-                                    <div class="setting-control">
-                                        <label class="toggle-switch">
+                                    <div class="ui-row-end">
+                                        <label class="ui-toggle">
                                             <input type="checkbox" id="tbOnlineExtras" aria-labelledby="tbOnlineExtrasName" disabled>
-                                            <span class="toggle-slider"></span>
+                                            <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
                                 </div>
@@ -378,42 +380,42 @@
                         </div>
                     </div>
 
-                    <div class="card" id="tbRoutinesCard" hidden>
-                        <div class="card-header">
-                            <div class="card-title">
+                    <div class="ui-panel" id="tbRoutinesCard" hidden>
+                        <div class="ui-panel-head">
+                            <div class="ui-panel-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
                                 <span data-i18n="trip_briefing.routines_title">Your routines</span>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="setting-desc" data-i18n="trip_briefing.routines_desc">Trips you make again and again at about the same time.</div>
+                        <div class="ui-panel-body">
+                            <div class="ui-row-desc" data-i18n="trip_briefing.routines_desc">Trips you make again and again at about the same time.</div>
                             <div class="ai-inline-note" id="tbRoutinesEmpty" data-i18n="trip_briefing.routines_empty" hidden>It stays quiet until it sees a routine at least 3 times.</div>
                             <div class="tb-list" id="tbRoutines"></div>
                         </div>
                     </div>
 
-                    <div class="card" id="tbPlacesCard" hidden>
-                        <div class="card-header">
-                            <div class="card-title">
+                    <div class="ui-panel" id="tbPlacesCard" hidden>
+                        <div class="ui-panel-head">
+                            <div class="ui-panel-title">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
                                 <span data-i18n="trip_briefing.places_title">Places to name</span>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="setting-desc" data-i18n="trip_briefing.places_desc">Places you often drive to. Named places get a spoken suggestion.</div>
+                        <div class="ui-panel-body">
+                            <div class="ui-row-desc" data-i18n="trip_briefing.places_desc">Places you often drive to. Named places get a spoken suggestion.</div>
                             <div class="tb-list" id="tbPlaces"></div>
                         </div>
                     </div>
 
-                    <div class="card" id="tbForgetCard" hidden>
-                        <div class="card-body">
-                            <div class="setting-row">
-                                <div class="setting-info">
-                                    <div class="setting-name" data-i18n="trip_briefing.forget_title">Forget my patterns</div>
-                                    <div class="setting-desc" data-i18n="trip_briefing.forget_desc">Clears place names, hidden routines, app choices and your answers. Your trips are kept.</div>
+                    <div class="ui-panel" id="tbForgetCard" hidden>
+                        <div class="ui-panel-body">
+                            <div class="ui-row">
+                                <div class="ui-row-copy">
+                                    <div class="ui-row-title" data-i18n="trip_briefing.forget_title">Forget my patterns</div>
+                                    <div class="ui-row-desc" data-i18n="trip_briefing.forget_desc">Clears place names, hidden routines, app choices and your answers. Your trips are kept.</div>
                                 </div>
-                                <div class="setting-control">
-                                    <button class="btn btn-danger-ghost" id="tbForgetBtn" type="button" data-i18n="trip_briefing.forget">Forget</button>
+                                <div class="ui-row-end">
+                                    <button class="ui-button ui-button-danger" id="tbForgetBtn" type="button" data-i18n="trip_briefing.forget">Forget</button>
                                 </div>
                             </div>
                         </div>

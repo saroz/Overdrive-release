@@ -361,26 +361,6 @@ textarea:focus,
 .status-value.on { color: var(--success); }
 .status-value.off { color: var(--text-muted); }
 .status-value.stale { color: var(--warning); font-size: 0.85em; }
-
-/* Network info - stacked SSID + IP in sidebar */
-.status-value.net-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 1px;
-    line-height: 1.2;
-}
-.net-ssid {
-    font-size: 0.82em;
-    color: var(--success);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* 140px instead of 120 so localized labels like "Données mobiles"
-       (FR: "Mobile Data") fit without clipping while WiFi SSIDs still
-       truncate cleanly when very long. */
-    max-width: 140px;
-}
 /* Network address alone in the value; the label names Wi-Fi or Mobile Data. */
 .status-value.net-addr {
     font-family: 'SF Mono', 'Fira Code', monospace;
@@ -389,12 +369,6 @@ textarea:focus,
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 140px;
-}
-.net-ip {
-    font-size: 0.7em;
-    color: var(--text-muted);
-    opacity: 0.8;
-    font-family: 'SF Mono', 'Fira Code', monospace;
 }
 
 .stale {
@@ -486,19 +460,6 @@ textarea:focus,
     align-items: center;
     gap: 12px;
 }
-
-.header-badge {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 14px;
-    background: var(--bg-elevated);
-    border-radius: var(--radius-full);
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.header-badge svg { width: 16px; height: 16px; color: var(--text-muted); }
 
 /* === PAGE BODY === */
 .page-body {
@@ -732,31 +693,6 @@ select.text-input option {
 
 [dir="rtl"] .toggle-switch input:checked + .toggle-slider::before {
     transform: translateX(-20px);
-}
-
-.btn-toggle {
-    padding: 8px 12px;
-    min-height: 48px;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.3;
-    text-align: center;
-    white-space: normal;
-    color: var(--text-secondary);
-    border-radius: var(--radius-sm);
-    transition: all 0.2s;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    -webkit-appearance: none;
-    outline: none;
-}
-
-.btn-toggle:hover { color: var(--text-primary); }
-
-.btn-toggle.active {
-    background: var(--brand-primary);
-    color: var(--on-primary);
 }
 
 /* === BUTTONS === */
@@ -1688,100 +1624,10 @@ select.text-input option {
 }
 
 /* Camera Areas (clickable) */
-.cam-area {
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.cam-area:hover .cam-indicator {
-    fill: rgba(0, 212, 170, 0.3);
-    stroke: var(--brand-primary);
-    stroke-width: 2;
-    filter: drop-shadow(0 0 12px rgba(0, 212, 170, 0.6));
-}
 
 /* Camera Indicators */
-.cam-indicator {
-    fill: rgba(255, 255, 255, 0.08);
-    stroke: rgba(255, 255, 255, 0.25);
-    stroke-width: 1.5;
-    transition: all 0.25s ease;
-}
-
-.cam-indicator.active {
-    fill: var(--brand-primary);
-    stroke: var(--brand-primary);
-    filter: drop-shadow(0 0 16px rgba(0, 212, 170, 0.9));
-}
-
-.cam-label {
-    position: absolute;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    color: var(--text-muted);
-    padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: var(--radius-full);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    cursor: pointer;
-    pointer-events: auto;
-    transition: all 0.2s ease;
-    white-space: nowrap;
-}
-
-.cam-label:hover,
-.cam-label.hover {
-    color: var(--text-primary);
-    border-color: rgba(0, 212, 170, 0.4);
-    background: rgba(0, 0, 0, 0.7);
-}
-
-.cam-label.active {
-    color: var(--brand-primary);
-    border-color: var(--brand-primary);
-    background: rgba(0, 212, 170, 0.15);
-    box-shadow: 0 0 12px rgba(0, 212, 170, 0.3);
-}
 
 /* Label Positions - aligned with camera indicators */
-.cam-label.front {
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.cam-label.rear {
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.cam-label.left {
-    left: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.cam-label.right {
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.cam-label.front:hover,
-.cam-label.front.hover,
-.cam-label.rear:hover,
-.cam-label.rear.hover {
-    transform: translateX(-50%) scale(1.05);
-}
-
-.cam-label.left:hover,
-.cam-label.left.hover,
-.cam-label.right:hover,
-.cam-label.right.hover {
-    transform: translateY(-50%) scale(1.05);
-}
 
 .status-dot {
     width: 8px;
@@ -1941,14 +1787,6 @@ select.text-input option {
         left: auto;
         width: 200px;
     }
-    .cam-label {
-        font-size: 9px;
-        padding: 4px 8px;
-    }
-    .cam-label.front { top: -16px; }
-    .cam-label.rear { bottom: -16px; }
-    .cam-label.left { left: -48px; }
-    .cam-label.right { right: -48px; }
     /* Tab Bar Mobile */
     .tab-bar {
         padding: 8px 12px;

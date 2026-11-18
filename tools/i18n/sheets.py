@@ -217,7 +217,7 @@ OverDrive translation sheet: {name} ({lang})
 3. Don't translate brand names: OverDrive, BYD, DiLink, RoadSense, ABRP, MQTT, Telegram, Tailscale, Zrok, WireGuard...
 4. You don't have to finish: translate what you can. Fix existing translations the same way.
 5. Save (keep it as .xlsx, or CSV UTF-8) and attach the file to a "Translation update" issue on GitHub:
-   https://github.com/yash-srivastava/Overdrive-release/issues/new/choose
+   https://github.com/saroz/Overdrive-release/issues/new/choose
 Every line is checked before it ships, so a mistake can't break the app.
 """
 

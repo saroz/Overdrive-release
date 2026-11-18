@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cluster_text_title">क्लस्टर पाठ प्रविष्टि</string>
+    <string name="cluster_text_service_label">OverDrive क्लस्टर पाठ प्रविष्टि</string>
+    <string name="cluster_text_service_description">हेड युनिटबाट DiLink 5 क्लस्टर कास्ट एपको केन्द्रित पाठ फिल्डमा पाठ लेख्न दिन्छ। पासवर्ड फिल्डहरू समावेश छैनन्। क्लस्टर पाठ फिल्ड केन्द्रित हुँदा किबोर्ड संवाद स्वतः खोलियोस् भन्ने चाहनुहुन्छ भने मात्र स्वचालित प्रम्प्ट सक्षम गर्नुहोस्।</string>
+    <string name="cluster_text_hint">क्लस्टर एपका लागि पाठ</string>
+    <string name="cluster_text_auto_prompt">क्लस्टर पाठ फिल्डका लागि स्वतः खोल्नुहोस्</string>
+    <string name="cluster_text_send">पाठ पठाउनुहोस्</string>
+    <string name="cluster_text_send_submit">पाठ पठाई Enter थिच्नुहोस्</string>
+    <string name="cluster_text_retry">केन्द्रित फिल्ड जाँच गर्नुहोस्</string>
+    <string name="cluster_text_enable_service">एक्सेसिबिलिटी सेटिङ</string>
+    <string name="cluster_text_enable_hint">एक्सेसिबिलिटी सेटिङमा “OverDrive क्लस्टर पाठ प्रविष्टि” सक्षम गर्नुहोस्, त्यसपछि कास्ट एपमा पाठ फिल्ड केन्द्रित गरी फेरि जाँच गर्नुहोस्।</string>
+    <string name="cluster_text_checking">क्लस्टर पाठ फिल्ड जाँच हुँदै…</string>
+    <string name="cluster_text_target">%1$s मा पाठ फिल्ड</string>
+    <string name="cluster_text_requires_android11">क्लस्टर पाठ प्रविष्टिका लागि Android 11 वा सोभन्दा नयाँ संस्करणको DiLink 5 र क्लस्टरको एक्सेसिबिलिटी विन्डोमा पहुँच चाहिन्छ। यो फर्मवेयरले कुन डिस्प्लेमा पाठ फिल्ड छ भनी प्रमाणित गर्न सक्दैन।</string>
+    <string name="cluster_text_requires_cast">पाठ प्रविष्ट गर्नुअघि DiLink 5 एप कास्ट सुरु गर्नुहोस्।</string>
+    <string name="cluster_text_no_field">क्लस्टरमा पहुँचयोग्य, केन्द्रित पाठ फिल्ड भेटिएन। कास्ट एपमा फिल्ड केन्द्रित गरी फेरि जाँच गर्नुहोस्। पासवर्ड फिल्डहरू समावेश छैनन्।</string>
+    <string name="cluster_text_field_changed">कास्ट सत्र वा केन्द्रित फिल्ड बदलियो। पठाउनुअघि फिल्ड फेरि जाँच गर्नुहोस्।</string>
+    <string name="cluster_text_unavailable">क्लस्टर पाठ फिल्ड प्रमाणित गर्न सकिएन। कास्ट र एक्सेसिबिलिटी जडान जाँच गरी पुनः प्रयास गर्नुहोस्।</string>
+    <string name="cluster_text_rejected">एपले पाठ पुष्टि गरेन। पुनः प्रयास गर्नुअघि क्लस्टर फिल्ड जाँच गर्नुहोस्।</string>
+    <string name="cluster_text_submit_rejected">पाठ पठाइयो, तर एपले Enter स्वीकार गरेन। क्लस्टर एपबाटै पेश गर्नुहोस्।</string>
+</resources>

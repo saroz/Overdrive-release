@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="trip_briefing_greeting_morning">शुभ प्रभात।</string>
+    <string name="trip_briefing_greeting_afternoon">शुभ अपरान्ह।</string>
+    <string name="trip_briefing_greeting_evening">शुभ सन्ध्या।</string>
+    <string name="trip_briefing_heading_home">घर जाँदै हुनुहुन्छ?</string>
+    <string name="trip_briefing_heading_work">कार्यस्थल जाँदै हुनुहुन्छ?</string>
+    <string name="trip_briefing_heading_place">%1$s जाँदै हुनुहुन्छ?</string>
+    <plurals name="trip_briefing_duration">
+        <item quantity="one">करिब %1$d मिनेट।</item>
+        <item quantity="other">करिब %1$d मिनेट।</item>
+    </plurals>
+    <string name="trip_briefing_extra_range">रेन्ज कम छ: %2$s यात्राका लागि %1$s बाँकी छ।</string>
+    <plurals name="trip_briefing_extra_hazards">
+        <item quantity="one">बाटोमा %1$d नयाँ खतरा।</item>
+        <item quantity="other">बाटोमा %1$d नयाँ खतराहरू।</item>
+    </plurals>
+    <string name="trip_briefing_extra_rain">%1$s तिर वर्षा हुने सम्भावना छ।</string>
+    <string name="trip_briefing_question">दिशा चाहिन्छ?</string>
+    <string name="trip_briefing_distance_km">%1$d km</string>
+    <string name="trip_briefing_distance_mi">%1$d mi</string>
+    <string name="trip_briefing_said_home">घर</string>
+    <string name="trip_briefing_said_work">कार्यस्थल</string>
+    <string name="trip_briefing_title_home">घर</string>
+    <string name="trip_briefing_title_work">कार्यस्थल</string>
+    <string name="trip_briefing_title_unnamed">तपाईंको नियमित स्थान</string>
+    <string name="trip_briefing_name_place">यस स्थानको नाम राख्नुहोस्</string>
+    <string name="trip_briefing_no">होइन</string>
+    <string name="trip_briefing_go_failed">दिशा सुरु भएन। नेभिगेट गर्न नक्सा खोल्नुहोस्।</string>
+    <string name="trip_briefing_app_car">गाडीको नेभिगेसन</string>
+</resources>

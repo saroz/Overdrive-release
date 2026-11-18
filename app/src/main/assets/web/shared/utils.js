@@ -325,7 +325,7 @@ const BYD = {
             if (enabledEl) enabledEl.checked = c.enabled;
 
             // Sensitivity buttons
-            document.querySelectorAll('.btn-toggle[data-value]').forEach(btn => {
+            document.querySelectorAll('.ui-segment[data-value]').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.value === c.sensitivity);
             });
 
@@ -407,7 +407,7 @@ const BYD = {
 
         setSensitivity(level) {
             this.config.sensitivity = level;
-            document.querySelectorAll('.btn-toggle[data-value]').forEach(btn => {
+            document.querySelectorAll('.ui-segment[data-value]').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.value === level);
             });
         },

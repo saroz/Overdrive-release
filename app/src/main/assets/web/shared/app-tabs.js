@@ -195,7 +195,7 @@
                 try { window.scrollTo(0, 0); } catch (e) { /* ignore */ }
                 if (document.documentElement) document.documentElement.scrollTop = 0;
                 if (document.body) document.body.scrollTop = 0;
-                var pageBody = document.querySelector('.page-body');
+                var pageBody = document.querySelector('.ui-page-body, .page-body');
                 if (pageBody) pageBody.scrollTop = 0;
             });
         }
@@ -228,7 +228,7 @@
         nav.appendChild(slot);
 
         // ===== Apply button relocation (optional) =====
-        var origStrip = document.querySelector('.footer-bar, .ui-savebar');
+        var origStrip = document.querySelector('.ui-savebar');
         var origBtn = origStrip ? origStrip.querySelector('#btnApply') : null;
         if (origBtn) {
             // Drop the old .btn classes so the mockup button style applies.
@@ -322,7 +322,7 @@
         // In flow above the page body (after the header and any summary tile),
         // sticky while the page scrolls. Pages without a body get it after
         // their heading, or at the top of the page content.
-        var pageBody = main.querySelector('.page-body');
+        var pageBody = main.querySelector('.ui-page-body, .page-body');
         var heading = main.querySelector('.ui-page-head, .page-header');
         if (pageBody && pageBody.parentNode) {
             pageBody.parentNode.insertBefore(nav, pageBody);

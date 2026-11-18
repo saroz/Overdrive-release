@@ -239,10 +239,8 @@ html.video-modal-open #bydThemePicker {
     width: 44px;
     height: 44px;
     border-radius: 22px;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.72);
     color: var(--fixed-white);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     flex-shrink: 0;
     margin: 0;
@@ -255,10 +253,8 @@ html.video-modal-open #bydThemePicker {
     width: 44px;
     height: 44px;
     border-radius: 22px;
-    background: rgba(0, 0, 0, 0.55);
+    background: rgba(0, 0, 0, 0.72);
     color: var(--fixed-white);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.18);
     flex-shrink: 0;
     margin: 0;
@@ -762,10 +758,8 @@ html.video-modal-open #bydThemePicker {
     display: flex;
     padding: 4px;
     border-radius: 999px;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.78);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
     /* Above the modal's video-header (z-index: auto inside the
        flex column). Important for the fullscreen path too where
        the header gradient pseudo sits at z:9 — bar must reliably

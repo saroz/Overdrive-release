@@ -3,6 +3,7 @@ package com.overdrive.app.battery;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import com.overdrive.app.ui.WebThemeTokensAssetTest;
 import org.junit.Test;
 
 import java.nio.charset.StandardCharsets;
@@ -47,11 +48,11 @@ public class ChargingSessionQualityAssetTest {
         while (current != null) {
             Path candidate = current.resolve(relative);
             if (Files.isRegularFile(candidate)) {
-                return new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8);
+                return WebThemeTokensAssetTest.withMovedCss(relative, new String(Files.readAllBytes(candidate), StandardCharsets.UTF_8));
             }
             Path fromModule = current.resolve(relative.replaceFirst("^app/", ""));
             if (Files.isRegularFile(fromModule)) {
-                return new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8);
+                return WebThemeTokensAssetTest.withMovedCss(relative, new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8));
             }
             current = current.getParent();
         }

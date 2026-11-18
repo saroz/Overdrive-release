@@ -36,6 +36,7 @@
   bottom: 25px;
   inset-inline-start: 26px;
   display: grid;
+  grid-gap: 5px;
   gap: 5px;
   max-width: 190px;
   color: var(--ui-muted);
@@ -46,6 +47,7 @@
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   align-items: center;
+  grid-gap: 30px;
   gap: 30px;
   padding: 20px 26px;
 }
@@ -76,7 +78,7 @@
 @media (max-width: 1150px) {
   .ui-hero-image { width: 90%; margin: 15px -5px 0 auto; }
   .ui-hero-badges { position: static; display: flex; justify-content: space-between; max-width: none; margin-top: 10px; }
-  .ui-hero-foot { gap: 22px; padding: 19px 22px; }
+  .ui-hero-foot { grid-gap: 22px; gap: 22px; padding: 19px 22px; }
   .ui-hero-foot > div + div { padding-inline-start: 22px; }
   .ui-reading-line > small { display: none; }
 }
@@ -93,7 +95,7 @@
   .ui-hero-head p { font-size: 12px; }
   .ui-hero-image { width: 100%; height: 174px; margin: 4px auto 0; }
   .ui-hero-badges { position: static; display: flex; justify-content: space-between; gap: 10px; max-width: none; margin-top: 8px; font-size: 11px; }
-  .ui-hero-foot { gap: 24px; padding: 20px; }
+  .ui-hero-foot { grid-gap: 24px; gap: 24px; padding: 20px; }
   .ui-hero-foot > div + div { padding-inline-start: 24px; }
   .ui-reading { font-size: 28px; }
 }

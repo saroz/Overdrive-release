@@ -476,7 +476,7 @@ window.SK = (function () {
 
     /** The tab bar restores the last tab without an event: read it from the bar itself. */
     function syncActiveTab() {
-        var act = document.querySelector('.bottom-tabs .bottom-tab.is-active');
+        var act = document.querySelector('.ui-tabs .ui-tab.is-active');
         var id = act && act.getAttribute('data-tab-target');
         if (id) state.tab = id;
     }

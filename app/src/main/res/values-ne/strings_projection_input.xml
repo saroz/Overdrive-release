@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="projection_cluster_controls">क्लस्टर नियन्त्रणहरू</string>
+    <string name="projection_cluster_back">पछाडि</string>
+    <string name="projection_cluster_home">गृह</string>
+    <string name="projection_cluster_volume_down">भोल्युम −</string>
+    <string name="projection_cluster_volume_up">भोल्युम +</string>
+    <string name="projection_cluster_control_unavailable">क्लस्टर नियन्त्रण उपलब्ध छैन। सक्रिय कास्ट जाँच गरी अद्यावधिकपछि डेमन रिस्टार्ट गर्नुहोस्।</string>
+</resources>

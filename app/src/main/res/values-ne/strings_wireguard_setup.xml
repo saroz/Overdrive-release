@@ -36,6 +36,10 @@
     <string name="wgsetup_import_too_large">त्यो फाइल धेरै ठूलो छ</string>
     <string name="wgsetup_import_no_qr">त्यस तस्वीरमा कुनै QR कोड फेला परेन</string>
     <string name="wgsetup_imported">आयात भयो। पाठ जाँच गरेर सेभ थिच्नुहोस्।</string>
+    <string name="wgsetup_import_pick_title">कन्फिग फाइल छान्नुहोस्</string>
+    <string name="wgsetup_import_qr_picture">QR कोडको तस्वीर…</string>
+    <string name="wgsetup_import_none_found">Download, Documents, Overdrive वा USB ड्राइभमा कुनै .conf फाइल भेटिएन। फाइललाई USB ड्राइभको मुख्य फोल्डर वा Download मा राखी फेरि प्रयास गर्नुहोस्।</string>
+    <string name="wgsetup_import_no_picker">यस हेड युनिटमा फाइल छान्ने पिकल उपलब्ध छैन</string>
 
     <string name="wgsetup_phone_title">आफ्नो फोनमा यो खोल्नुहोस्</string>
     <string name="wgsetup_phone_steps">कोड स्क्यान गर्नुहोस्, साइन इन गर्नुहोस्, अनि राउटरबाट निर्यात गरेको कन्फिग अपलोड वा पेस्ट गर्नुहोस्। फोन गाडीसँग एउटै नेटवर्कमा हुनुपर्छ (एउटै Wi-Fi/हटस्पट वा सक्रिय टनेलमार्फत)।</string>

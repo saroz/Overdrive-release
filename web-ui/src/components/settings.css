@@ -82,7 +82,7 @@
 }
 
 /* Choice cards (Smart / Continuous …). */
-.ui-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; width: 100%; padding: 0; border: 0; background: none; }
+.ui-choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); grid-gap: 10px; gap: 10px; width: 100%; padding: 0; border: 0; background: none; }
 .ui-choices > .ui-segment {
   display: flex;
   flex-direction: column;
@@ -126,7 +126,7 @@
 .ui-summary > .ui-panel-head { padding: 0; }
 .ui-summary > .ui-row { grid-column: 2; margin: 0; padding: 8px 0 0; border: 0; min-height: 0; }
 .ui-summary-text { min-width: 0; }
-.ui-summary-stats { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 16px; }
+.ui-summary-stats { display: grid; grid-column: 1 / -1; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); grid-gap: 12px; gap: 12px; margin-top: 16px; }
 .ui-summary-stat { padding: 12px 14px; border-radius: 10px; background: var(--ui-soft); }
 .ui-summary-value { display: block; margin-top: 4px; color: var(--ui-ink); font-size: 18px; font-weight: 600; }
 
@@ -138,7 +138,7 @@
 .ui-detail-label { color: var(--ui-muted); }
 .ui-detail-value { color: var(--ui-ink); font-weight: 600; text-align: end; overflow-wrap: anywhere; }
 
-.ui-field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; }
+.ui-field-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); grid-gap: 14px; gap: 14px; }
 /* Old floating-label fields: <div class="ui-field-box"><input><label></div>. Label goes above the input. */
 .ui-field-box { position: relative; display: flex; flex-direction: column; gap: 6px; }
 .ui-field-box > .ui-label { order: -1; }
@@ -213,7 +213,7 @@
 
 /* Checkbox list (old .checkbox-item / .telemetry-fields). */
 .ui-check-group { margin-top: 10px; }
-.ui-check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 8px; }
+.ui-check-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); grid-gap: 8px; gap: 8px; }
 .ui-check { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--ui-line); border-radius: 8px; background: var(--ui-surface); font-size: 13px; cursor: pointer; }
 .ui-check:hover { border-color: var(--ui-muted); }
 .ui-check input { width: 18px; height: 18px; margin: 0; accent-color: var(--ui-accent); }

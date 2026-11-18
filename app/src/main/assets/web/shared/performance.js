@@ -243,7 +243,7 @@ BYD.performance = {
 
     _detectActiveTab() {
         const activeButton = document.querySelector(
-            '.bottom-tabs .bottom-tab.is-active[data-tab-target]');
+            '.ui-tabs .ui-tab.is-active[data-tab-target]');
         if (activeButton) return activeButton.getAttribute('data-tab-target');
         const visiblePanel = document.querySelector('[data-tab]:not([hidden])');
         return visiblePanel ? visiblePanel.getAttribute('data-tab') : 'battery';

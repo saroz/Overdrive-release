@@ -137,7 +137,7 @@ public class DecoupledEncoderLaneContractTest {
                 "&& !localRecorder.isRecording()) {",
                 "strideBaseSeq = f.seq;",
                 "((f.seq - strideBaseSeq) % stride) == 0",
-                "if (!camRing.pinForRead(f.camSlot, f.camGeneration)) {",
+                "if (!camRing.pinForRead(f.camSlot)) {",
                 "return;",
                 "localRecorder.drawFrame(f.camTex,",
                 "glFinish();",
@@ -169,8 +169,7 @@ public class DecoupledEncoderLaneContractTest {
                 "} finally {",
                 "GLES20.glBindFramebuffer(GLES20.GL_FRAMEBUFFER, 0);");
         assertOrdered(ring,
-                "public synchronized boolean pinForRead(int slot, long expectedGeneration) {",
-                "slotGenerations[slot] != expectedGeneration) return false;",
+                "public synchronized boolean pinForRead(int slot) {",
                 "if (slot == writingSlot) {",
                 "return false;",
                 "pinnedSlot = slot;");

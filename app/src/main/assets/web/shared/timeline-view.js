@@ -945,7 +945,7 @@
     function sizeLayout() {
         if (!V.active) return;
         var vh = root.innerHeight || 800;
-        var nav = doc.querySelector('.app-bottom-nav'), navH = 0;
+        var nav = doc.querySelector('.ui-bottom-nav'), navH = 0;
         if (nav) { var nr = nav.getBoundingClientRect(); if (nr.height && root.getComputedStyle(nav).display !== 'none') navH = nr.height; }
         var top = els.root.getBoundingClientRect().top + (root.pageYOffset || 0);
         var off = top + navH + (V.short ? 8 : 16), avail;

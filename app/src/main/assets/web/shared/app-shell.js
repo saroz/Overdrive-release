@@ -318,7 +318,7 @@
     // The device already shows the time; no page header carries a clock badge.
     function hideHeaderClock() {
         var clock = document.getElementById('currentTime');
-        var badge = clock && clock.closest ? clock.closest('.header-badge, .ui-badge') : null;
+        var badge = clock && clock.closest ? clock.closest('.ui-badge') : null;
         if (badge) badge.style.display = 'none';
     }
 
@@ -340,9 +340,9 @@
     }
 
     // Summary tiles take their off look from the page's own status badge
-    // (<div class="r-hero" data-hero-badge="badgeId">; badge.inactive = off).
+    // (<div class="ui-summary" data-hero-badge="badgeId">; badge.inactive = off).
     function wireHeroState() {
-        var heroes = document.querySelectorAll('.r-hero[data-hero-badge]');
+        var heroes = document.querySelectorAll('.ui-summary[data-hero-badge]');
         for (var i = 0; i < heroes.length; i++) {
             (function (hero) {
                 var badge = document.getElementById(hero.getAttribute('data-hero-badge'));
@@ -369,10 +369,10 @@
     }
 
     function foldDescriptions(root) {
-        var descs = root.querySelectorAll('.setting-row .setting-desc:not([data-fold]), .setting-stack .setting-desc:not([data-fold])');
+        var descs = root.querySelectorAll('.setting-row .setting-desc:not([data-fold])');
         for (var i = 0; i < descs.length; i++) {
             var d = descs[i], info = d.parentNode;
-            var hint = info && info.classList.contains('has-hint') ? info.querySelector('.setting-hint') : null;
+            var hint = null;
             if (!hint && (d.textContent || '').replace(/\s+/g, ' ').length < FOLD_MIN_CHARS) continue;
             d.setAttribute('data-fold', hint ? 'hint' : 'clamp');
             d.classList.add('is-folded');
@@ -438,18 +438,7 @@
     // Short helper text that belongs to a row (.setting-hint right after it)
     // becomes the row's visible description; the long description moves
     // behind More, as in the mock.
-    function inlineHints(root) {
-        // Choice cards carry their own descriptions, so their hint stays out of the row.
-        var hints = root.querySelectorAll('.setting-row + .setting-hint:not(.r-choice-hint)');
-        for (var i = 0; i < hints.length; i++) {
-            var hint = hints[i], row = hint.previousElementSibling;
-            var info = row && row.querySelector('.setting-info');
-            if (!info || info.querySelector('.setting-hint')) continue;
-            var desc = info.querySelector('.setting-desc');
-            info.insertBefore(hint, desc || null);
-            info.classList.add('has-hint');
-        }
-    }
+    function inlineHints() { }
 
     function watchSwitchRows() {
         var main = document.querySelector('.main-content');

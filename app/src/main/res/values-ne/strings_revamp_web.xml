@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="web_state_retry_now">अहिले पुनः प्रयास गर्नुहोस्</string>
+    <string name="web_state_retry_in">स्वतः पुनः प्रयास हुँदै · %1$d से मा अर्को प्रयास</string>
+    <string name="web_state_retrying_now">स्वतः पुनः प्रयास हुँदै · अहिले प्रयास गर्दै…</string>
+    <string name="web_state_sign_in_title">यस पृष्ठमा साइन इन गर्न सकिएन</string>
+    <string name="web_state_sign_in_body">क्यामेरा डेमन चलिरहेको छ तर एपको साइन-इन स्वीकार गरेन। ADB जडित हुँदा OverDrive ले यसलाई स्वतः पुनःस्थापित गर्छ।</string>
+</resources>

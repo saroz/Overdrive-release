@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_section_adb">ADB</string>
+    <string name="settings_adb_subtitle">जडान, सक्षमता र स्वचालित पुनःप्राप्ति।</string>
+    <string name="settings_adb_connection_title">जडान</string>
+    <string name="settings_adb_automatic_title">स्वचालित पुनःप्राप्ति</string>
+    <string name="settings_adb_automatic_restore">ADB स्वतः पुनःस्थापना गर्नुहोस्</string>
+    <string name="settings_adb_automatic_description">स्टार्टअपमा र बन्द हुँदा हरेक पटक ADB सेटिङ पुनःस्थापना गर्नुहोस्। सेटिङ अनुमति पहिले नै दिइएको छ भने Wi-Fi बिना नै काम गर्छ। DiLink 5 ले पहिले नै अधिकृत कुञ्जीसहित प्रमाणित Wi-Fi मा वायरलेस पुनःप्राप्ति पनि प्रयोग गर्न सक्छ।</string>
+    <string name="settings_adb_recover">अहिले ADB पुनःप्राप्ति गर्नुहोस्</string>
+    <string name="settings_adb_cancel_recovery">पुनःप्राप्ति रद्द गर्नुहोस्</string>
+    <string name="settings_adb_manual_title">म्यानुअल सक्षमता</string>
+    <string name="settings_adb_manual_description">ADB पहुँच अनुरोध गर्न मिल्दो BYD उपकरणहरू प्रयोग गर्नुहोस्। Wi-Fi जडान आवश्यक छैन।</string>
+    <string name="settings_adb_enable">ADB सक्षम गर्नुहोस्</string>
+    <string name="settings_adb_advanced_tools">उन्नत उपकरणहरू</string>
+    <string name="settings_adb_hide_advanced">उन्नत उपकरणहरू लुकाउनुहोस्</string>
+    <string name="settings_adb_advanced_description">समस्या निदान गर्नुहोस्, BYD उपकरण खोल्नुहोस् वा म्यानुअल प्रयास फिर्ता लिनुहोस्।</string>
+    <string name="settings_adb_open_developer">विकासकर्ता विकल्प खोल्नुहोस्</string>
+    <string name="settings_adb_developer_page">BYD विकासकर्ता पृष्ठ अनुरोध गर्नुहोस्</string>
+    <string name="settings_adb_diagnostics">अनुकूलता र जडान जाँच गर्नुहोस्</string>
+    <string name="settings_adb_restore">म्यानुअल सक्षमता परिवर्तन फिर्ता लिनुहोस्</string>
+    <string name="settings_adb_export">BYD विकासकर्ता-उपकरण APK निर्यात गर्नुहोस्</string>
+    <string name="settings_adb_dialog_confirm">यस नेटवर्कमा वायरलेस डिबगिङ स्वीकृत गर्नुहोस्</string>
+    <string name="settings_adb_dialog_confirm_description">पहिले प्रमाणित Wi-Fi नेटवर्कमा जोड्नुहोस्। OverDrive लाई यस नेटवर्कका लागि मात्र वायरलेस डिबगिङ संवाद पुष्टि गर्न अनुमति दिनुहोस्।</string>
+    <string name="settings_adb_tools_unavailable">हालको मोड वा स्थापित BYD उपकरणका लागि म्यानुअल सक्षमता उपलब्ध छैन।</string>
+    <string name="settings_adb_recovery_availability">स्थानीय पुनःप्राप्तिका लागि ADB सेटअपको क्रममा दिइएको सेटिङ अनुमति चाहिन्छ। यसलाई Wi-Fi वा DiLink 5 मोड चाहिँदैन।</string>
+    <string name="settings_adb_recovery_confirm_body">OverDrive ले Wi-Fi बिना नै पहिले दिइएको सेटिङ अनुमति प्रयोग गरी ADB सेटिङ पुनःस्थापना गर्नेछ। DiLink 5 मा वायरलेस पुनःप्राप्तिले प्रमाणित Wi-Fi र तपाईंको पहिले अधिकृत कुञ्जी पनि प्रयोग गर्न सक्छ। पोर्ट 5555 मा ADB गाडी नेटवर्कका अन्य उपकरणबाट पहुँचयोग्य हुन सक्छ। विश्वासिलो नेटवर्क प्रयोग गर्नुहोस्। ADB कुञ्जी प्रमाणीकरण चालु नै रहन्छ।</string>
+    <string name="settings_adb_recovery_permission_missing">सेटिङ अनुमति छुटेको छ। ADB पनि अनुपलब्ध भए पहिले ADB सक्षम गर्नुहोस् वा विकासकर्ता विकल्प प्रयोग गर्नुहोस्, अनि ADB सेटअप फेरि पूरा गर्नुहोस्।</string>
+    <string name="settings_adb_recovery_setting_enabled">ADB सेटिङ सक्षम छ। प्रमाणित ADB जडान पुष्टि भएको छैन।</string>
+    <string name="settings_adb_recovery_setting_failed">ADB सेटिङ सक्षम र प्रमाणित गर्न सकिएन। यो फर्मवेयरले परिवर्तन अस्वीकार गर्न सक्छ।</string>
+    <string name="settings_adb_recovery_save_failed">स्वचालित पुनःप्राप्ति प्राथमिकता सेभ गर्न सकिएन। ADB जाँच गरी पुनः प्रयास गर्नुहोस्।</string>
+    <string name="settings_adb_details_title">अन्तिम प्रयास विवरण</string>
+</resources>

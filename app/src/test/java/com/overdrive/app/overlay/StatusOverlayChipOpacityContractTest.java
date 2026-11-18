@@ -26,8 +26,8 @@ public class StatusOverlayChipOpacityContractTest {
         String layout = readRepositoryFile(
                 "app/src/main/res/layout/fragment_settings_overlay.xml");
         assertTrue(layout.contains("sliderOverlayChipOpacity"));
-        assertTrue(layout.contains("android:valueFrom=\"10\""));
-        assertTrue(layout.contains("android:valueTo=\"100\""));
+        assertTrue(layout.contains("android:valueFrom=\"0\""));
+        assertTrue(layout.contains("android:valueTo=\"80\""));
         assertTrue(layout.contains("sliderOverlayIconOpacity"));
         assertTrue(layout.contains("tvOverlayIconOpacity"));
     }
@@ -48,7 +48,7 @@ public class StatusOverlayChipOpacityContractTest {
                 "app/src/main/java/com/overdrive/app/ui/fragment/settings/SettingsOverlayFragment.kt");
         assertTrue(fragment.contains("sliderOverlayIconOpacity"));
         assertTrue(fragment.contains("StatusOverlayUiWriter.writeInt(\"iconOpacity\""));
-        assertTrue(fragment.contains("chipOpacitySaveGeneration"));
+        assertTrue(fragment.contains("persistInt(\"chipOpacity\""));
         assertTrue(fragment.contains("previewChipOpacity"));
     }
 
@@ -56,7 +56,7 @@ public class StatusOverlayChipOpacityContractTest {
     public void englishKeepsIconTransparencyStrings() throws Exception {
         String en = readRepositoryFile("app/src/main/res/values/strings.xml");
         assertTrue(en.contains("settings_overlay_icon_opacity\">Icon transparency"));
-        assertTrue(en.contains("Chip visibility"));
+        assertTrue(en.contains("settings_overlay_chip_opacity\">Indicator transparency"));
     }
 
     private static String readRepositoryFile(String relativePath) throws Exception {

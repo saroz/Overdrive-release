@@ -233,9 +233,14 @@ public class Di4ProducerRecoveryTest {
                 "\n    /**\n     * Force an immediate re-activation");
         assertOrdered(restart,
                 "if (!acc || mode == Mode.NONE)",
+                "if (isLegacyCameraMode()) {",
+                "return;",
                 "if (pipeline.isRunning())",
                 "CameraDaemon.requestProcessRestartPreservingTrip(");
-        assertFalse(restart.contains("; nothing to restart"));
+        String legacyGuard = method(rmm,
+                "private static boolean isLegacyCameraMode() {",
+                "\n    /**");
+        assertTrue(legacyGuard.contains("!CameraDaemon.isDilink4ModeActiveStatic()"));
         assertOrdered(restart,
                 "pipeline.stop();",
                 "if (pipeline.isRunning())",

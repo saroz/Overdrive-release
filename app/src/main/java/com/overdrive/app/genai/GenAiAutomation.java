@@ -81,9 +81,9 @@ public final class GenAiAutomation {
             }
             context.put("catalog", catalog);
             context.put("safety",
-                    "The events catalog is shared by triggers and conditions; use an event id as the output type and omit comparator/value for triggers. Use an action id as the output type. Only listed ids/options are valid. Shell and action-group actions are forbidden. The app re-validates and saves only as manual-only.");
+                    "Events apply to triggers & conditions (use event id as type; omit comparator/value for triggers). Actions use action id. Only listed ids/options are valid; shell/actionGroup forbidden; saved manual-only.");
             context.put("signalAddress",
-                    "A signalAddress field, and any ${signal:...} value, names one event instance: the event id, then ':' and EVERY variable that event declares as key=value pairs joined by ',' (speed:units=kmph, turnSignal:side=left). A user variable is variable:name=<the exact name its setVariable uses>. An id without its variables matches nothing.");
+                    "signalAddress and ${signal:...} identify one event instance: <eventId>:<k>=<v>,... with ALL declared variables (e.g. speed:units=kmph, turnSignal:side=left; user var: variable:name=<setVariable name>).");
         } catch (Exception ignored) {
         }
         return context;

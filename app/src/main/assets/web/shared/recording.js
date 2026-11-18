@@ -1651,7 +1651,7 @@ BYD.recording = {
                 if (tabs[i] && tabs[i].id === stored) return stored;
             }
         } catch (e) {}
-        var visible = document.querySelector('.bottom-tab.is-active');
+        var visible = document.querySelector('.ui-tab.is-active');
         if (visible) return visible.getAttribute('data-tab-target') || 'capture';
         return 'capture';
     },

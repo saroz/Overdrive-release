@@ -156,7 +156,7 @@ body.ui-app {
 .ui-garage-bar { max-width: none; margin-top: 12px; }
 .ui-evcard-charging .ui-garage-bar > span, .ui-garage.charging + .ui-garage-bar > span { background: var(--ui-accent); }
 
-.ui-sidebar-status { display: grid; gap: 4px; margin: 14px 0 0; }
+.ui-sidebar-status { display: grid; grid-gap: 4px; gap: 4px; margin: 14px 0 0; }
 .ui-sidebar-status > div { display: flex; justify-content: space-between; gap: 8px; }
 .ui-sidebar-status dt { display: flex; align-items: center; gap: 6px; margin: 0; }
 .ui-sidebar-status dd { margin: 0; color: var(--ui-ink); font-weight: 550; text-align: end; }
@@ -331,12 +331,14 @@ html.ui-shell-on body #sidebar.ui-sidebar { position: fixed; inset-block: 0; ins
 .ui-grid-main {
   display: grid;
   grid-template-columns: minmax(0, 1.85fr) minmax(300px, 1fr);
+  grid-gap: 20px;
   gap: 20px;
 }
 
 .ui-grid-2 {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-gap: 20px;
   gap: 20px;
 }
 
@@ -345,7 +347,8 @@ html.ui-shell-on body #sidebar.ui-sidebar { position: fixed; inset-block: 0; ins
 /* Inside the native app the Android rail is the navigation: no web sidebar, top bar or bottom bar. */
 html[data-android-embed="1"] .ui-sidebar,
 html[data-android-embed="1"] .ui-topbar,
-html[data-android-embed="1"] .ui-bottom-nav { display: none !important; }
+html[data-android-embed="1"] .ui-bottom-nav,
+html[data-android-embed="1"] .ui-page-head { display: none !important; }
 html[data-android-embed="1"] .ui-shell { display: block; }
 html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
 
@@ -391,7 +394,8 @@ html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
   .ui-main { padding: 24px 16px 92px; }
   .ui-page-head h1 { font-size: 24px; }
   .ui-page-head p { font-size: 12px; }
-  .ui-grid-main, .ui-grid-2, .ui-stack { gap: 16px; }
+  .ui-grid-main, .ui-grid-2 { grid-gap: 16px; gap: 16px; }
+  .ui-stack { gap: 16px; }
 }
 
 @media (max-width: 360px) {

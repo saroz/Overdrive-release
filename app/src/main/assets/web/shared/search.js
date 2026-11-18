@@ -174,7 +174,7 @@
             });
         }
 
-        var names = doc.querySelectorAll('.setting-name[data-i18n]');
+        var names = doc.querySelectorAll('.ui-row-title[data-i18n], .setting-name[data-i18n]');
         for (var s = 0; s < names.length; s++) {
             var el = names[s];
             var key = el.getAttribute('data-i18n');
@@ -357,8 +357,8 @@
     function extractLiveEntries() {
         var href = currentBasename();
         // Nothing indexable on this page (e.g. the dashboard) — skip.
-        if (!document.querySelector('.setting-name[data-i18n]') &&
-            !document.querySelector('.bottom-tab[data-tab-target]')) {
+        if (!document.querySelector('.ui-row-title[data-i18n], .setting-name[data-i18n]') &&
+            !document.querySelector('.ui-tab[data-tab-target]')) {
             return null;
         }
         var pm = pagesMap()[href] || {};
@@ -366,15 +366,15 @@
         var pageLabel = pm.label || humanize((href || '').replace(/\.html$/, ''));
         var entries = [];
 
-        // Live tabs — the rendered bottom-tab bar is exactly the runtime OT_TABS.
+        // Live tabs — the rendered tab bar is the runtime OT_TABS.
         var tabKeyById = {};
         var firstTab = null;
-        var btns = document.querySelectorAll('.bottom-tab[data-tab-target]');
+        var btns = document.querySelectorAll('.ui-tab[data-tab-target]');
         for (var i = 0; i < btns.length; i++) {
             var id = btns[i].getAttribute('data-tab-target');
             if (!id) continue;
             if (!firstTab) firstTab = id;
-            var le = btns[i].querySelector('.bottom-tab-label');
+            var le = btns[i].querySelector('span[data-i18n], span');
             var k = le ? le.getAttribute('data-i18n') : null;
             tabKeyById[id] = k || null;
             entries.push({
@@ -384,7 +384,7 @@
         }
 
         // Live settings — includes JS-rendered rows the static crawl can't see.
-        var names = document.querySelectorAll('.setting-name[data-i18n]');
+        var names = document.querySelectorAll('.ui-row-title[data-i18n], .setting-name[data-i18n]');
         for (var s = 0; s < names.length; s++) {
             var el = names[s];
             var key = el.getAttribute('data-i18n');
@@ -780,13 +780,13 @@
     function selectTab(id) {
         if (!id) return;
         if (!/^[\w-]+$/.test(id)) return;
-        var btn = document.querySelector('.bottom-tab[data-tab-target="' + id + '"]');
+        var btn = document.querySelector('.ui-tab[data-tab-target="' + id + '"]');
         if (btn) { try { btn.click(); } catch (e) {} }
         else { try { window.location.hash = id; } catch (e) {} }
     }
 
     function findSettingEl(key) {
-        var nodes = document.querySelectorAll('.setting-name[data-i18n]');
+        var nodes = document.querySelectorAll('.ui-row-title[data-i18n], .setting-name[data-i18n]');
         var first = null;
         for (var i = 0; i < nodes.length; i++) {
             if (nodes[i].getAttribute('data-i18n') !== key) continue;
@@ -803,7 +803,7 @@
     function scrollFlash(nameEl) {
         var row = nameEl, n = nameEl;
         while (n && n !== document.body) {
-            if (n.className && ('' + n.className).indexOf('setting-row') >= 0) { row = n; break; }
+            if (n.className && (('' + n.className).indexOf('ui-row') >= 0 || ('' + n.className).indexOf('setting-row') >= 0)) { row = n; break; }
             n = n.parentNode;
         }
         try { row.scrollIntoView({ block: 'center' }); }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dash_vehicle_line">%1$s · %2$.1f kWh</string>
+    <string name="dash_range_caption">रेन्ज</string>
+    <string name="dash_status_remote_on">रिमोट पहुँच चालु</string>
+    <string name="dash_status_remote_off">रिमोट पहुँच बन्द</string>
+    <string name="dash_status_remote_state">रिमोट पहुँच · %1$s</string>
+    <string name="dash_status_services">%2$d मध्ये %1$d सेवाहरू</string>
+    <string name="dash_status_view">हेर्नुहोस्</string>
+    <string name="dash_status_recording_idle">रेकर्डिङ निष्क्रिय</string>
+    <string name="dash_services_running">%2$d मध्ये %1$d चलिरहेको</string>
+    <string name="dash_charge_eta_left">%1$s बाँकी</string>
+    <string name="dash_charge_session_inline">यो सत्र %1$s</string>
+    <plurals name="dash_clip_count">
+        <item quantity="one">%1$d क्लिप</item>
+        <item quantity="other">%1$d क्लिपहरू</item>
+    </plurals>
+</resources>

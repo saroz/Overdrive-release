@@ -426,7 +426,7 @@
     // Bars pinned to the bottom of the viewport (bars moved to the top are
     // ignored). Returns the one reaching highest, so the picker clears all.
     function lowestStickyBar() {
-        var els = document.querySelectorAll('.footer-bar, .mobile-nav, .tab-bar, .bottom-tabs, .ui-bottom-nav');
+        var els = document.querySelectorAll('.ui-bottom-nav');
         var vh = window.innerHeight || document.documentElement.clientHeight;
         var best = null, bestTop = vh;
         for (var i = 0; i < els.length; i++) {
@@ -464,7 +464,7 @@
         // actions) or a [data-theme-dock] row.
         var dock = pickerDock();
         if (dock) {
-            var slot = dock.querySelector('.header-actions') || dock;
+            var slot = dock.querySelector('.ui-page-actions') || dock;
             if (wrap.parentNode !== slot) slot.appendChild(wrap);
             wrap.classList.add('is-docked');
             wrap.setAttribute('data-popup', popupSide('down'));

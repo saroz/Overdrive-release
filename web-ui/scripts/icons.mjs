@@ -31,6 +31,18 @@ export function buildIcons(outDir) {
 (function () {
   var SPRITE = ${JSON.stringify(sprite)};
   var injected = false;
+  try {
+    var flex = document.createElement('div');
+    flex.style.display = 'flex';
+    flex.style.flexDirection = 'column';
+    flex.style.rowGap = '1px';
+    flex.appendChild(document.createElement('div'));
+    flex.appendChild(document.createElement('div'));
+    document.documentElement.appendChild(flex);
+    var noFlexGap = flex.scrollHeight !== 1;
+    document.documentElement.removeChild(flex);
+    if (noFlexGap) document.documentElement.classList.add('ui-no-flex-gap');
+  } catch (e) {}
   function inject() {
     if (injected || !document.body) return;
     injected = true;
