@@ -36,6 +36,12 @@ class SingboxLauncher(
      * Launch sing-box proxy via ADB shell.
      */
     fun launchSingbox(callback: SingboxCallback) {
+        if (!com.overdrive.app.daemon.proxy.ProxyConfiguration.isServerConfigured()) {
+            // Security fix F11: no built-in proxy server in this fork.
+            logManager.info(TAG, "Sing-box proxy not available: no proxy server configured")
+            callback.onError("Proxy not available in this build (no server configured)")
+            return
+        }
         logManager.info(TAG, "Launching sing-box...")
         callback.onLog("Setting up sing-box...")
         
@@ -144,56 +150,16 @@ class SingboxLauncher(
     private fun createConfigAndLaunch(callback: SingboxCallback) {
         callback.onLog("Creating sing-box config...")
         
-        // VLESS Reality config for HTTP proxy on port 8119
-        // Updated for sing-box 1.12.0+ (removed deprecated geoip rules and legacy DNS format)
-        val config = """
-{
-  "log": { "level": "warn", "timestamp": true, "output": "$SINGBOX_LOG" },
-  "dns": {
-    "servers": [
-      { "tag": "google", "address": "tcp://8.8.8.8", "detour": "proxy" }
-    ],
-    "final": "google",
-    "strategy": "ipv4_only"
-  },
-  "inbounds": [
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "127.0.0.1",
-      "listen_port": $PROXY_PORT,
-      "sniff": true
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "vless",
-      "tag": "proxy",
-      "server": "80.225.224.92",
-      "server_port": 443,
-      "uuid": "ce8591be-9fa8-4361-90f3-427e9b5e8b85",
-      "flow": "xtls-rprx-vision",
-      "tls": {
-        "enabled": true,
-        "server_name": "google.com",
-        "utls": { "enabled": true, "fingerprint": "chrome" },
-        "reality": {
-          "enabled": true,
-          "public_key": "fxNUGiLzVwAk89RgogDrMq2u4pzyWAe_wx8D2frOPAQ",
-          "short_id": "3ca47a3f8fb71e13"
+        // Security fix F11: upstream hardcoded a third-party VLESS server here in plain text.
+        // Use the shared generator, which refuses while no server is configured.
+        val config = try {
+            com.overdrive.app.daemon.proxy.ProxyConfiguration.createConfig()
+        } catch (e: IllegalStateException) {
+            logManager.error(TAG, "Sing-box config refused: ${e.message}")
+            callback.onError("Proxy not available in this build (no server configured)")
+            return
         }
-      }
-    },
-    { "type": "direct", "tag": "direct" }
-  ],
-  "route": {
-    "rules": [
-      { "protocol": "dns", "outbound": "proxy" }
-    ]
-  }
-}
-""".trimIndent()
-        
+
         // Write config via shell
         val escapedConfig = config.replace("\"", "\\\"").replace("\n", "\\n")
         adbShellExecutor.execute(

@@ -3,7 +3,6 @@ package com.overdrive.app.mqtt;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import com.overdrive.app.daemon.proxy.ProxyConfiguration;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,18 +15,8 @@ import org.junit.Test;
  */
 public class ProxyUpstreamHealthAndConfigTest {
 
-    @Test
-    public void proxyConfigurationEmitsValidHardenedSingboxJsonWithoutPlaceholders() {
-        String json = ProxyConfiguration.createConfig();
-        assertFalse(json.contains("YOUR_SERVER_IP_HERE"));
-        assertFalse(json.contains("YOUR_UUID_HERE"));
-        assertFalse(json.contains("YOUR_SHORT_ID_HERE"));
-        assertFalse(json.contains("YOUR_PUBLIC_KEY_HERE"));
-        assertFalse(json.contains("\"ERR\""));
-        assertTrue(json.contains("\"address\": \"tcp://8.8.8.8\""));
-        assertTrue(json.contains("\"10.0.0.0/8\""));
-        assertTrue(json.contains("\"192.168.0.0/16\""));
-    }
+    // F11: config generation for the built-in server is gone; see
+    // daemon/proxy/BuiltInProxyServerRemovedTest for the replacement checks.
 
     @Test
     public void tailscaleDaemonHandlerAndAbrpUseProxyRoutingAndLogPaths() throws Exception {

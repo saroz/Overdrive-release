@@ -25,6 +25,14 @@ object ProxyConfiguration {
     val PUBLIC_KEY: String get() = Enc.PROXY_PUBLIC_KEY
     private val SNI: String get() = Enc.PROXY_SNI
     
+    /**
+     * Security fix F11: this fork ships no built-in proxy server (upstream's pointed at a
+     * third-party host). Every sing-box start path must check this first.
+     */
+    @JvmStatic
+    fun isServerConfigured(): Boolean =
+        SERVER_IP.isNotBlank() && UUID.isNotBlank() && PUBLIC_KEY.isNotBlank()
+
     // Proxy configuration
     const val PROXY_PORT = 8119
     val PROXY_EXCLUSIONS: String get() = Enc.PROXY_EXCLUSIONS
@@ -78,6 +86,7 @@ object ProxyConfiguration {
         clientRelaySocksPort: Int? = null,
         clientListen: String = DEFAULT_LISTEN,
     ): String {
+        check(isServerConfigured()) { "No proxy server configured (built-in server removed, F11)" }
         val listenAddress = if (listen.isBlank()) DEFAULT_LISTEN else listen
         val clientListenAddress = if (clientListen.isBlank()) DEFAULT_LISTEN else clientListen
         val serverIp = SERVER_IP

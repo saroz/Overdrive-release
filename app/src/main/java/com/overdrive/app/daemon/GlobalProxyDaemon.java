@@ -1,5 +1,7 @@
 package com.overdrive.app.daemon;
 
+import com.overdrive.app.daemon.proxy.Enc;
+import com.overdrive.app.daemon.proxy.ProxyConfiguration;
 import com.overdrive.app.daemon.proxy.Safe;
 
 import java.io.*;
@@ -66,21 +68,23 @@ public class GlobalProxyDaemon {
     /** localhost,127.0.0.1,*.local,10.*,192.168.* */
     private static String PROXY_EXCLUSIONS() { return Safe.s("W7U2p2zXmYFyuvgULJIqsoxZjUDWIXt7EPxQTiIZSC2LArvfp3HcABvEZcmXXayC"); }
 
-    // ==================== VLESS SERVER CREDENTIALS (encrypted) ====================
-    /** [VLESS server IP] */
-    private static String SERVER_IP() { return Safe.s("Z1e89edb4BHkcdq18ZwS4g=="); }
-    /** [VLESS UUID] */
-    private static String UUID() { return Safe.s("Y4LjDZ/o19unOrs5FoJBf5MjCDMSI/PGZXX9WqDp2Y4JJPBSUh2sYkt1ymAV0v2L"); }
-    /** [VLESS short_id] */
-    private static String SHORT_ID() { return Safe.s("o/bXp+lFk608hy8OWTfuELQgU4pZxSk/2VDwpg+KW/o="); }
-    /** [VLESS public_key] */
-    private static String PUBLIC_KEY() { return Safe.s("A37D/HxqBdi7vuJ5cyw8gh2VvwTgbS9cbhEaDv78GqpZznF3x5JiRMDj9WJpQ7Gm"); }
-    /** [VLESS SNI] */
-    private static String SNI() { return Safe.s("u7674GDA85JNqEffkyiqRg=="); }
+    // ==================== VLESS SERVER (security fix F11) ====================
+    // Upstream's hardcoded third-party server was removed; values come from ProxyConfiguration,
+    // which ships empty, so main() exits before touching the system proxy.
+    private static String SERVER_IP() { return ProxyConfiguration.INSTANCE.getSERVER_IP(); }
+    private static String UUID() { return ProxyConfiguration.INSTANCE.getUUID(); }
+    private static String SHORT_ID() { return ProxyConfiguration.INSTANCE.getSHORT_ID(); }
+    private static String PUBLIC_KEY() { return ProxyConfiguration.INSTANCE.getPUBLIC_KEY(); }
+    private static String SNI() { return Enc.PROXY_SNI; }
 
     public static void main(String[] args) {
         com.overdrive.app.util.ScratchRoot.bootstrapFromEnv();
         log("=== Global Proxy Daemon ===");
+
+        if (!ProxyConfiguration.isServerConfigured()) {
+            log("No proxy server configured (built-in server removed, F11) - not starting");
+            return;
+        }
 
         try {
             // Acquire WakeLock to keep CPU running when screen is off

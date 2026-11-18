@@ -1112,6 +1112,12 @@ public class DaemonCommandHandler implements TelegramCommandHandler {
                 break;
 
             case "singbox":
+                // Security fix F11: no built-in proxy server. Check before the on-disk
+                // config shortcut below, so a stale config from an older build can't start it.
+                if (!com.overdrive.app.daemon.proxy.ProxyConfiguration.isServerConfigured()) {
+                    ctx.log("Sing-box proxy not available: no proxy server configured");
+                    return false;
+                }
                 // Ensure singbox_config.json exists with valid encrypted VLESS credentials
                 String sbConfigPath = com.overdrive.app.daemon.proxy.ProxyConfiguration.INSTANCE.getCONFIG_PATH();
                 String sbConfigCheck = ctx.execShell("test -s " + sbConfigPath + " && echo yes || echo no");
