@@ -78,12 +78,15 @@ public class CspReportCollectorTest {
     }
 
     @Test
-    public void htmlCarriesTheReportOnlyPolicyAndEnforcesNoScriptPolicyYet() throws Exception {
+    public void reportOnlyFallbackKeepsTheStageOnePolicy() throws Exception {
+        // Step 5 enforces by default; the owner's report-only switch sends the stage-1 headers.
+        assertTrue(HttpResponse.SECURITY_HEADERS_REPORT_ONLY.contains(
+                "Content-Security-Policy-Report-Only: script-src 'self'; child-src 'self' blob:; report-uri /api/csp-report\r\n"));
+        assertFalse(HttpResponse.CSP_BASE.contains("script-src"));
+        // Enforced policy still reports what it blocks.
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         HttpResponse.sendHtml(out, "<html></html>");
-        String resp = out.toString(StandardCharsets.UTF_8.name());
-        assertTrue(resp.contains("Content-Security-Policy-Report-Only: script-src 'self'; child-src 'self' blob:; report-uri /api/csp-report\r\n"));
-        assertFalse(HttpResponse.CSP.contains("script-src"));
+        assertTrue(out.toString(StandardCharsets.UTF_8.name()).contains("report-uri /api/csp-report"));
     }
 
     @Test

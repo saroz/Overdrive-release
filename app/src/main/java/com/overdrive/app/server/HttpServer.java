@@ -2554,7 +2554,7 @@ public class HttpServer {
                    // SECURITY (run-2 fix): CSP + XFO on every static response;
                    // HTML pages get the full policy, other assets get nosniff/XFO.
                    .append(relativePath.endsWith(".html")
-                           ? HttpResponse.SECURITY_HEADERS
+                           ? HttpResponse.securityHeaders()
                            : "X-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n");
             if (relativePath.endsWith(".html")) {
                 headers.append("Pragma: no-cache\r\n")

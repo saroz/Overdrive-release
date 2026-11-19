@@ -185,6 +185,18 @@
                         </div>
                         <div class="ui-row">
                             <div class="ui-row-copy">
+                                <div class="ui-row-title" data-i18n="network.script_report_only">Relax the script safety check</div>
+                                <div class="ui-row-desc" data-i18n="network.script_report_only_desc">Leave this off. Turn it on only if a page stops working after an update: scripts the check would block then run and are only reported.</div>
+                            </div>
+                            <div class="ui-row-end">
+                                <label class="ui-toggle">
+                                    <input type="checkbox" id="hsScriptReportOnly" data-on-change="NetworkPage.saveSwitch('scriptPolicyReportOnly', 'hsScriptReportOnly')">
+                                    <span class="ui-toggle-track"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ui-row">
+                            <div class="ui-row-copy">
                                 <div class="ui-row-title" data-i18n="network.keepalive">Keep the hotspot up</div>
                                 <div class="ui-row-desc" data-i18n="network.keepalive_desc">If the access point drops on its own, start it again.</div>
                             </div>
@@ -270,7 +282,7 @@
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/network.js?v=6"></script>
+    <script src="../shared/network.js?v=7"></script>
     <script src="../shared/pages/network-2.page.js?v=1"></script>
 </body>
 </html>

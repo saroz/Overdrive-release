@@ -25,9 +25,11 @@ public class SecurityHeadersTest {
         assertTrue(resp.contains("Content-Security-Policy: "));
         assertTrue(resp.contains("object-src 'none'"));
         assertTrue(resp.contains("base-uri 'none'"));
-        // Live view starts blob: workers and inline scripts on Chrome 58: no script/worker policy yet.
+        // Security F9 step 5: scripts only from this server (CSP2: workers via child-src).
         assertFalse(HttpResponse.CSP.contains("default-src"));
-        assertFalse(HttpResponse.CSP.contains("script-src"));
+        assertTrue(HttpResponse.CSP.contains("script-src 'self'; child-src 'self' blob:; report-uri /api/csp-report"));
+        assertFalse(HttpResponse.CSP.contains("unsafe-inline"));
+        assertFalse(HttpResponse.CSP.contains("unsafe-eval"));
         assertFalse(HttpResponse.CSP.contains("worker-src"));
         // Security fix F9: pages may only fetch/XHR their own server (plus the theme GIF host).
         // ws:/wss: because Chrome 58 (CSP2) doesn't match ws:// to 'self'.
@@ -51,7 +53,7 @@ public class SecurityHeadersTest {
     public void staticFileServingAddsHeaders() throws Exception {
         String s = new String(Files.readAllBytes(Paths.get(
                 "src/main/java/com/overdrive/app/server/HttpServer.java")), StandardCharsets.UTF_8);
-        assertTrue(s.contains("HttpResponse.SECURITY_HEADERS"));
+        assertTrue(s.contains("HttpResponse.securityHeaders()"));
         assertFalse("no response may lack the frame/nosniff headers",
                 s.contains("headers.append(\"Connection: close\\r\\n\\r\\n\")") && !s.contains("X-Frame-Options: DENY\\r\\n\")"));
     }

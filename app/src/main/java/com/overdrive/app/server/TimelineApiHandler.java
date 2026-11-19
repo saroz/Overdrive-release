@@ -195,7 +195,7 @@ public final class TimelineApiHandler {
                 + "Content-Type: application/json\r\n"
                 + "Cache-Control: " + REVALIDATE + "\r\n"
                 + "ETag: " + etag + "\r\n"
-                + HttpResponse.SECURITY_HEADERS
+                + HttpResponse.securityHeaders()
                 + "Content-Length: " + bytes.length + "\r\n"
                 + "Connection: close\r\n\r\n";
         out.write(head.getBytes(StandardCharsets.US_ASCII));
@@ -562,7 +562,7 @@ public final class TimelineApiHandler {
                 + "Content-Type: application/json\r\n"
                 + "Cache-Control: " + NO_STORE + "\r\n"
                 + "Retry-After: 1\r\n"
-                + HttpResponse.SECURITY_HEADERS
+                + HttpResponse.securityHeaders()
                 + "Content-Length: " + body.length + "\r\n"
                 + "Connection: close\r\n\r\n";
         out.write(head.getBytes(StandardCharsets.US_ASCII));

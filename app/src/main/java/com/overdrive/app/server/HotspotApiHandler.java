@@ -203,6 +203,7 @@ public class HotspotApiHandler {
             status.put("proxyPort", 8119);
             // G2: hotspot clients can reach network ADB (5555); warn when it needs no RSA prompt.
             status.put("localOnly", LanAccessPolicy.localOnlyEnabled());
+            status.put("scriptPolicyReportOnly", ScriptPolicy.reportOnly());
             status.put("adbAuthDisabled", AdbExposure.authDisabled(readProp("ro.adb.secure")));
 
             resp.put("success", true);
@@ -274,11 +275,15 @@ public class HotspotApiHandler {
             // G1: local-only mode lives in its own section and is read by the daemon's
             // HttpServer directly, so it needs no app-side dispatch.
             int webAccessApplied = 0;
-            if (in.has("localOnly")) {
+            if (in.has("localOnly") || in.has("scriptPolicyReportOnly")) {
                 java.util.Map<String, Object> web = new java.util.LinkedHashMap<>();
-                web.put("localOnly", in.optBoolean("localOnly", false));
+                if (in.has("localOnly")) web.put("localOnly", in.optBoolean("localOnly", false));
+                // F9: report-only is the way back if a head unit still needs an inline script.
+                if (in.has("scriptPolicyReportOnly")) {
+                    web.put("scriptPolicyReportOnly", in.optBoolean("scriptPolicyReportOnly", false));
+                }
                 if (!UnifiedConfigManager.updateValues("webAccess", web)) {
-                    throw new IllegalStateException("could not save local-only mode");
+                    throw new IllegalStateException("could not save web access settings");
                 }
                 webAccessApplied = 1;
             }

@@ -212,23 +212,54 @@ class WebViewFragment : Fragment() {
         /** Splice [EMBED_CHROME] into a page's `<head>`, falling back to
          *  `<html>` and then the document start. */
         @JvmStatic
-        fun spliceEmbedChrome(html: String): String {
+        fun spliceEmbedChrome(html: String): String = spliceEmbedChrome(html, null)
+
+        /**
+         * As above; with a [nonce] every injected `<script>` carries it, so the page's
+         * `script-src 'self'` policy (security F9) still lets the app's own scripts run once
+         * [withScriptNonce] has added the same nonce to the response's policy header.
+         */
+        @JvmStatic
+        fun spliceEmbedChrome(html: String, nonce: String?): String {
             if (html.contains(EMBED_ATTR)) return html
-            var out = EMBED_CHROME + html
+            val open = if (nonce == null) "<script>" else "<script nonce=\"$nonce\">"
+            val chrome = if (nonce == null) EMBED_CHROME else EMBED_CHROME.replace("<script>", open)
+            var out = chrome + html
             for (tag in arrayOf("<head", "<html")) {
-                val open = html.indexOf(tag, ignoreCase = true)
-                if (open < 0) continue
-                val close = html.indexOf('>', open)
+                val start = html.indexOf(tag, ignoreCase = true)
+                if (start < 0) continue
+                val close = html.indexOf('>', start)
                 if (close < 0) continue
-                out = html.substring(0, close + 1) + EMBED_CHROME + html.substring(close + 1)
+                out = html.substring(0, close + 1) + chrome + html.substring(close + 1)
                 break
             }
             // App-shell overrides at the end of <head>: the cascade position INJECT_JS
             // gets on load, but in place for the first paint (no restyle jump).
             val headEnd = out.indexOf("</head>", ignoreCase = true)
             if (headEnd < 0) return out
-            return out.substring(0, headEnd) + "<script>" + INJECT_JS + "</script>" +
+            return out.substring(0, headEnd) + open + INJECT_JS + "</script>" +
                 out.substring(headEnd)
+        }
+
+        /**
+         * Security F9: allow this load's injected scripts. Adds `'nonce-…'` to the script-src
+         * directive of a (report-only or enforced) policy header; a policy without script-src
+         * is returned unchanged (nothing to relax).
+         */
+        @JvmStatic
+        fun withScriptNonce(policy: String, nonce: String): String {
+            val at = policy.indexOf("script-src")
+            if (at < 0) return policy
+            val end = at + "script-src".length
+            return policy.substring(0, end) + " 'nonce-" + nonce + "'" + policy.substring(end)
+        }
+
+        /** 128-bit base64 nonce for one HTML response. */
+        @JvmStatic
+        fun newScriptNonce(): String {
+            val bytes = ByteArray(16)
+            java.security.SecureRandom().nextBytes(bytes)
+            return java.util.Base64.getEncoder().encodeToString(bytes)
         }
 
         // ── Key-mapping capture bridge ────────────────────────────────────
@@ -1001,10 +1032,11 @@ class WebViewFragment : Fragment() {
                         // embed chrome never lands on the tunnel / PWA clients.
                         var bodyStream: java.io.InputStream = stream
                         var splicedHtml = false
+                        val scriptNonce = newScriptNonce()
                         if (mime == "text/html" && connection.responseCode == 200) {
                             try {
                                 val patched = spliceEmbedChrome(
-                                    String(stream.readBytes(), Charsets.UTF_8))
+                                    String(stream.readBytes(), Charsets.UTF_8), scriptNonce)
                                 bodyStream = java.io.ByteArrayInputStream(
                                     patched.toByteArray(Charsets.UTF_8))
                                 splicedHtml = true
@@ -1060,6 +1092,16 @@ class WebViewFragment : Fragment() {
                         headers["Accept-Ranges"] = "bytes"  // Tells player "You can seek"
                         if (length > 0 && !splicedHtml) {
                             headers["Content-Length"] = length.toString()
+                        }
+                        if (splicedHtml) {
+                            // Security F9: let the scripts spliced in above run under script-src 'self'.
+                            for (key in headers.keys.toList()) {
+                                val lower = key.lowercase()
+                                if (lower == "content-security-policy" ||
+                                    lower == "content-security-policy-report-only") {
+                                    headers[key] = withScriptNonce(headers[key] ?: "", scriptNonce)
+                                }
+                            }
                         }
                         response.responseHeaders = headers
 

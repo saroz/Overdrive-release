@@ -14,29 +14,42 @@ public class HttpResponse {
     private static final int FILE_STREAM_BUFFER = 64 * 1024;
 
     /**
-     * No script/worker directives yet: live view (Broadway and Draco blob workers,
-     * WebAssembly, inline scripts) must keep loading on the head unit's Chrome 58 WebView.
-     *
      * connect-src (security fix F9): pages may fetch/XHR only their own server, so an
      * injected script can't send data elsewhere. ws:/wss: because Chrome 58 (CSP2) doesn't
      * match ws:// to 'self'; raw.githubusercontent.com for the surveillance theme download.
      */
-    public static final String CSP =
+    public static final String CSP_BASE =
             "object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; "
             + "connect-src 'self' ws: wss: blob: data: https://raw.githubusercontent.com";
     /**
-     * Security fix F9, stage 1: the script policy we want, in report-only mode. Nothing is
-     * blocked; the WebView posts what WOULD break to {@link CspReportCollector} so inline
-     * scripts and handlers can be moved out page by page before it is enforced. CSP2 (Chrome 58):
-     * child-src governs workers, report-uri (not report-to).
+     * Security fix F9: scripts only from this server. Pages carry no inline scripts or inline
+     * handlers any more (steps 3-4; data-on-* via shared/on-actions.js). CSP2 (Chrome 58):
+     * child-src governs workers (Broadway runs from shared/broadway-worker.js; blob: kept for
+     * the 3D/Draco loaders), report-uri (not report-to) keeps blocked items visible at
+     * /api/csp-reports. The app WebView adds a per-load nonce for the scripts it injects
+     * (WebViewFragment.withScriptNonce).
      */
-    public static final String CSP_REPORT_ONLY =
+    public static final String SCRIPT_POLICY =
             "script-src 'self'; child-src 'self' blob:; report-uri /api/csp-report";
+    /** Enforced policy (step 5). */
+    public static final String CSP = CSP_BASE + "; " + SCRIPT_POLICY;
+    /** Stage-1 name kept for the report-only fallback. */
+    public static final String CSP_REPORT_ONLY = SCRIPT_POLICY;
     public static final String SECURITY_HEADERS =
             "Content-Security-Policy: " + CSP + "\r\n" +
+            "X-Frame-Options: DENY\r\n" +
+            "X-Content-Type-Options: nosniff\r\n";
+    /** Fallback when webAccess.scriptPolicyReportOnly is on: scripts reported, not blocked. */
+    public static final String SECURITY_HEADERS_REPORT_ONLY =
+            "Content-Security-Policy: " + CSP_BASE + "\r\n" +
             "Content-Security-Policy-Report-Only: " + CSP_REPORT_ONLY + "\r\n" +
             "X-Frame-Options: DENY\r\n" +
             "X-Content-Type-Options: nosniff\r\n";
+
+    /** The headers to send now: enforced unless the owner switched to report-only. */
+    public static String securityHeaders() {
+        return ScriptPolicy.reportOnly() ? SECURITY_HEADERS_REPORT_ONLY : SECURITY_HEADERS;
+    }
 
     public static void sendError(OutputStream out, int code, String message) throws Exception {
         String response = "HTTP/1.1 " + code + " " + message + "\r\n" +
@@ -52,7 +65,7 @@ public class HttpResponse {
         String headers = "HTTP/1.1 200 OK\r\n" +
                         "Content-Type: text/html; charset=utf-8\r\n" +
                         "Content-Length: " + body.length + "\r\n" +
-                        SECURITY_HEADERS +
+                        securityHeaders() +
                         "Connection: close\r\n\r\n";
         out.write(headers.getBytes());
         out.write(body);
@@ -88,7 +101,7 @@ public class HttpResponse {
                 .append(reason).append("\r\n")
                 .append("Content-Type: application/json\r\n");
         headers.append("Cache-Control: no-cache, no-store\r\n")
-                .append(SECURITY_HEADERS)
+                .append(securityHeaders())
                 .append("Content-Length: ").append(body.length).append("\r\n")
                 .append("Connection: close\r\n\r\n");
         out.write(headers.toString().getBytes(StandardCharsets.UTF_8));
