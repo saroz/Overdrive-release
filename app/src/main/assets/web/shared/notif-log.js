@@ -178,7 +178,7 @@ var NOTIFLOG = {
         if (this.selectMode) {
             var checked = this.selected[n.id] ? ' checked' : '';
             checkCol =
-                '<label class="nl-check" onclick="event.stopPropagation();">' +
+                '<label class="nl-check" data-stop-click>' +
                     '<input type="checkbox"' + checked + ' data-check="' + this._esc(n.id) + '">' +
                     '<span class="nl-check-box"></span>' +
                 '</label>';
@@ -210,7 +210,7 @@ var NOTIFLOG = {
             // /remote-tracking). Lazy; hide on error so a dead link leaves no box.
             thumb = '<div class="nl-thumb"><img loading="lazy" src="' + this._esc(n.data.snapshot) +
                 '" alt="' + this._t('notiflog.snapshot_alt', 'Event snapshot') +
-                '" onerror="this.parentNode.style.display=\'none\'"></div>';
+                '"></div>';
         }
 
         card.innerHTML =
@@ -234,6 +234,13 @@ var NOTIFLOG = {
                 '</button>');
 
         // ---- Wire interactions ----
+        // Security F9: a dead snapshot link hides its box (was an inline onerror).
+        var thumbImg = card.querySelector('.nl-thumb img');
+        if (thumbImg) {
+            thumbImg.addEventListener('error', function () {
+                if (this.parentNode) this.parentNode.style.display = 'none';
+            });
+        }
         if (this.selectMode) {
             var cb = card.querySelector('input[type="checkbox"]');
             if (cb) cb.addEventListener('change', function () { self._toggleSelect(n.id, this.checked); });

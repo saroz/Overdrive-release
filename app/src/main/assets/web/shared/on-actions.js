@@ -129,7 +129,49 @@
         };
     }
 
+    function insideInert(el) {
+        for (var n = el; n && n.nodeType === 1; n = n.parentNode) {
+            if (n.hasAttribute && n.hasAttribute('inert')) return true;
+        }
+        return false;
+    }
+
+    /*
+     * data-stop-<type> replaces inline "event.stopPropagation(); ..." on an element inside a card
+     * that has its own listener (e.g. Delete inside a clickable trip card). Bubble-phase delegation
+     * would run too late, after the card's listener, so these run in the capture phase: the
+     * element's own data-on-<type> (and any between it and the target) run, then the event stops
+     * and never reaches the card. Inside an inert (still loading) section nothing runs, so
+     * settings-hydration.js keeps blocking it.
+     */
+    function stopper(type) {
+        var onAttr = 'data-on-' + type;
+        var stopAttr = 'data-stop-' + type;
+        return function (event) {
+            var target = event.target;
+            if (target && target.nodeType !== 1) target = target.parentNode;
+            var stopAt = null;
+            for (var n = target; n && n.nodeType === 1; n = n.parentNode) {
+                if (n.hasAttribute && n.hasAttribute(stopAttr)) { stopAt = n; break; }
+            }
+            if (!stopAt || insideInert(stopAt)) return;
+            for (var el = target; el; el = el.parentNode) {
+                var spec = el.getAttribute(onAttr);
+                if (spec) {
+                    try {
+                        run(el, spec, event);
+                    } catch (e) {
+                        if (window.console) console.error(e);
+                    }
+                }
+                if (el === stopAt || event.cancelBubble) break;
+            }
+            event.stopPropagation();
+        };
+    }
+
     for (var t = 0; t < TYPES.length; t++) {
+        document.addEventListener(TYPES[t], stopper(TYPES[t]), true);
         document.addEventListener(TYPES[t], handler(TYPES[t]), false);
     }
 

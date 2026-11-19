@@ -2440,7 +2440,7 @@ const TRIPS = {
             '</div>' +
             '<div class="trip-card-actions">' +
                 '<svg class="trip-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>' +
-                '<button type="button" class="trip-delete-btn" onclick="event.stopPropagation(); TRIPS.deleteTrip(\'' + tripId + '\')" title="' + delTitle + '" aria-label="' + delTitle + '">' +
+                '<button type="button" class="trip-delete-btn" data-stop-click data-on-click="TRIPS.deleteTrip(\'' + tripId + '\')" title="' + delTitle + '" aria-label="' + delTitle + '">' +
                     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>' +
                 '</button>' +
             '</div>';
@@ -4243,7 +4243,7 @@ const TRIPS = {
 
             // Compare on Map button
             if (stats.bestTripId > 0) {
-                html += '<button type="button" class="ui-button rc-map-btn" onclick="TRIPS.showRouteMapComparison(' + tripId + ',' + stats.bestTripId + ',' + (stats.worstTripId > 0 ? stats.worstTripId : -1) + ')">'
+                html += '<button type="button" class="ui-button rc-map-btn" data-on-click="TRIPS.showRouteMapComparison(' + tripId + ',' + stats.bestTripId + ',' + (stats.worstTripId > 0 ? stats.worstTripId : -1) + ')">'
                     + ico('<polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><path d="M8 2v16M16 6v16"/>')
                     + '<span>' + esc(tr('trip.route_compare.compare_map', 'Compare on map')) + '</span></button>';
             }
@@ -4256,7 +4256,7 @@ const TRIPS = {
                 var energy = (t.energyUsedKwh || t.energy_used_kwh || 0);
                 var cost = t.tripCost || t.trip_cost || 0;
                 var isBest = t.id === stats.bestTripId;
-                html += '<button type="button" class="route-comparison-item" onclick="TRIPS.showDetail(' + Number(t.id) + ')">';
+                html += '<button type="button" class="route-comparison-item" data-on-click="TRIPS.showDetail(' + Number(t.id) + ')">';
                 html += '<span class="route-comparison-date">' + esc(date) + (isBest ? '<span class="rc-best">' + esc(bestLabel) + '</span>' : '') + '</span>';
                 html += '<span class="route-comparison-eff">' + esc((energy > 0 ? energy.toFixed(1) + ' kWh' : '--') + (cost > 0 ? ' · ' + currency + cost.toFixed(0) : '')) + '</span>';
                 html += ico('<path d="m9 18 6-6-6-6"/>', 'rc-chevron');

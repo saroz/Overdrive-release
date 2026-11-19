@@ -53,7 +53,7 @@ public class MqttTrustAllWarningTest {
         assertTrue(html.contains("data-i18n=\"mqtt.trust_all_desc\""));
         assertTrue(html.contains("id=\"formTrustAllWarning\""));
         assertTrue(html.contains("data-i18n=\"mqtt.trust_all_warning\""));
-        assertTrue(html.contains("../shared/mqtt.js?v=6"));
+        assertTrue(html.contains("../shared/mqtt.js?v=7"));
     }
 
     @Test

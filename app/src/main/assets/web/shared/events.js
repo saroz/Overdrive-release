@@ -1801,7 +1801,7 @@ BYD.events = {
             
             // Checkbox for select mode
             const checkbox = this.selectMode 
-                ? '<label class="select-checkbox-wrap" onclick="event.stopPropagation()"><input type="checkbox" class="select-checkbox" ' + (isSelected ? 'checked' : '') + ' onchange="BYD.events.toggleFileSelection(\'' + this._jsStr(recordingKey) + '\', event)"></label>'
+                ? '<label class="select-checkbox-wrap" data-stop-click><input type="checkbox" class="select-checkbox" ' + (isSelected ? 'checked' : '') + ' data-on-change="BYD.events.toggleFileSelection(\'' + this._jsStr(recordingKey) + '\', event)"></label>'
                 : '';
             
             // Card click handler depends on mode
@@ -1874,7 +1874,7 @@ BYD.events = {
             const thumbMeta = (rec.duration ? '<span class="duration-badge">' + rec.duration + '</span>' : '') +
                 (rec.sizeFormatted ? '<span>' + rec.sizeFormatted + '</span>' : '');
 
-            return dayHead + '<div class="recording-card' + (isSelected ? ' selected' : '') + (sevClass ? ' ' + sevClass : '') + (rec.watched ? ' watched' : '') + '" data-recording-key="' + this._esc(recordingKey) + '" data-filename="' + this._esc(rec.filename) + '" onclick="' + this._esc(cardClick) + '">' +
+            return dayHead + '<div class="recording-card' + (isSelected ? ' selected' : '') + (sevClass ? ' ' + sevClass : '') + (rec.watched ? ' watched' : '') + '" data-recording-key="' + this._esc(recordingKey) + '" data-filename="' + this._esc(rec.filename) + '" data-on-click="' + this._esc(cardClick) + '">' +
                 checkbox +
                 '<div class="recording-thumbnail" id="' + thumbId + '" data-thumb="' + thumbUrl + '">' +
                 '<div class="thumb-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg></div>' +
@@ -1891,9 +1891,9 @@ BYD.events = {
                 '<span class="recording-name" title="' + this._esc(rec.filename) + '">' + this._esc(rec.filename) + '</span>' +
                 (this.selectMode ? '' : 
                 '<div class="recording-actions">' +
-                '<button class="action-btn" onclick="event.stopPropagation(); BYD.events.createIncidentPack(\'' + this._jsStr(recordingKey) + '\')" title="Create AI evidence pack"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><path d="M5 5l14 14"/></svg></button>' +
-                '<button class="action-btn" onclick="event.stopPropagation(); BYD.events.downloadVideo(\'' + this._jsStr(recordingKey) + '\')" title="' + BYD.i18n.t('common.download') + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>' +
-                '<button class="action-btn delete" onclick="event.stopPropagation(); BYD.events.deleteRecording(\'' + this._jsStr(recordingKey) + '\')" title="' + BYD.i18n.t('common.delete') + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>' +
+                '<button class="action-btn" data-stop-click data-on-click="BYD.events.createIncidentPack(\'' + this._jsStr(recordingKey) + '\')" title="Create AI evidence pack"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/><path d="M5 5l14 14"/></svg></button>' +
+                '<button class="action-btn" data-stop-click data-on-click="BYD.events.downloadVideo(\'' + this._jsStr(recordingKey) + '\')" title="' + BYD.i18n.t('common.download') + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>' +
+                '<button class="action-btn delete" data-stop-click data-on-click="BYD.events.deleteRecording(\'' + this._jsStr(recordingKey) + '\')" title="' + BYD.i18n.t('common.delete') + '"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>' +
                 '</div>') +
                 '</div>' +
                 '</div>' +

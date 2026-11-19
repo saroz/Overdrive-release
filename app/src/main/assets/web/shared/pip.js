@@ -39,7 +39,7 @@ BYD.pip = {
                     <span id="pipStatus">${BYD.i18n.t('pip.select_camera')}</span>
                 </div>
                 <div class="pip-controls">
-                    <button class="pip-btn" onclick="BYD.pip.toggleSize()" title="${BYD.i18n.t('pip.title_resize')}">
+                    <button class="pip-btn"data-on-click="BYD.pip.toggleSize()" title="${BYD.i18n.t('pip.title_resize')}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M8 3H5a2 2 0 0 0-2 2v3"/>
                             <path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
@@ -47,12 +47,12 @@ BYD.pip = {
                             <path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
                         </svg>
                     </button>
-                    <button class="pip-btn" onclick="BYD.pip.minimize()" title="${BYD.i18n.t('pip.title_minimize')}">
+                    <button class="pip-btn"data-on-click="BYD.pip.minimize()" title="${BYD.i18n.t('pip.title_minimize')}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14"/>
                         </svg>
                     </button>
-                    <button class="pip-btn" onclick="BYD.pip.close()" title="${BYD.i18n.t('pip.title_close')}">
+                    <button class="pip-btn"data-on-click="BYD.pip.close()" title="${BYD.i18n.t('pip.title_close')}">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
                         </svg>
@@ -73,11 +73,11 @@ BYD.pip = {
                 <div class="decoder-badge" id="pipDecoderBadge"></div>
             </div>
             <div class="pip-footer">
-                <button class="pip-cam-btn" id="pip_vm4" onclick="BYD.pip.setView(4)" title="${BYD.i18n.t('pip.title_left_camera')}">L</button>
-                <button class="pip-cam-btn" id="pip_vm1" onclick="BYD.pip.setView(1)" title="${BYD.i18n.t('pip.title_front_camera')}">F</button>
-                <button class="pip-cam-btn" id="pip_vm0" onclick="BYD.pip.setView(0)" title="${BYD.i18n.t('pip.title_all_cameras')}">ALL</button>
-                <button class="pip-cam-btn" id="pip_vm3" onclick="BYD.pip.setView(3)" title="${BYD.i18n.t('pip.title_rear_camera')}">R</button>
-                <button class="pip-cam-btn" id="pip_vm2" onclick="BYD.pip.setView(2)" title="${BYD.i18n.t('pip.title_right_camera')}">RT</button>
+                <button class="pip-cam-btn" id="pip_vm4"data-on-click="BYD.pip.setView(4)" title="${BYD.i18n.t('pip.title_left_camera')}">L</button>
+                <button class="pip-cam-btn" id="pip_vm1"data-on-click="BYD.pip.setView(1)" title="${BYD.i18n.t('pip.title_front_camera')}">F</button>
+                <button class="pip-cam-btn" id="pip_vm0"data-on-click="BYD.pip.setView(0)" title="${BYD.i18n.t('pip.title_all_cameras')}">ALL</button>
+                <button class="pip-cam-btn" id="pip_vm3"data-on-click="BYD.pip.setView(3)" title="${BYD.i18n.t('pip.title_rear_camera')}">R</button>
+                <button class="pip-cam-btn" id="pip_vm2"data-on-click="BYD.pip.setView(2)" title="${BYD.i18n.t('pip.title_right_camera')}">RT</button>
             </div>
         </div>`;
         

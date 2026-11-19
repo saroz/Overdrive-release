@@ -86,6 +86,25 @@ public class OnActionsMarkupTest {
         }
     }
 
+    /** Step 4b: app scripts no longer build inline handlers into HTML strings either. */
+    @Test
+    public void appScriptsBuildNoInlineHandlers() throws Exception {
+        Pattern inline = Pattern.compile("\\son(click|change|input|error|load|submit|keydown|keyup|focus|blur|mouseover|mouseout)=[\"'\\\\]");
+        Pattern vendor = Pattern.compile("^(leaflet|Decoder|Player|YUVCanvas|SotaPlayer|jmuxer|three|GLTFLoader|DRACOLoader|draco).*|.*\\.min\\.js$");
+        for (String dir : new String[]{"app/src/main/assets/web/shared", "app/src/main/assets/web/shared/pages"}) {
+            try (java.util.stream.Stream<Path> files = Files.list(locate(dir))) {
+                for (Path f : (Iterable<Path>) files::iterator) {
+                    String name = f.getFileName().toString();
+                    if (!name.endsWith(".js") || vendor.matcher(name).matches()) continue;
+                    String js = new String(Files.readAllBytes(f), StandardCharsets.ISO_8859_1);
+                    Matcher m = inline.matcher(js);
+                    assertFalse(name + " builds an inline handler: " + (m.find() ? m.group() : ""),
+                            inline.matcher(js).find());
+                }
+            }
+        }
+    }
+
     @Test
     public void helperListensInTheBubblePhaseWithoutEval() throws Exception {
         String js = new String(Files.readAllBytes(locate("app/src/main/assets/web/shared/on-actions.js")),

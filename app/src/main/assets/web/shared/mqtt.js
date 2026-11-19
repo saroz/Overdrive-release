@@ -158,21 +158,21 @@ const MQTT = {
             : '<span class="ui-dot off"></span><span>' + BYD.i18n.t('common.disabled') + '</span>';
         return `
         <div class="ui-panel conn-card" style="${!conn.enabled ? 'opacity:0.6;' : ''}">
-            <div class="conn-header" onclick="MQTT.toggleExpand('${conn.id}')">
+            <div class="conn-header" data-on-click="MQTT.toggleExpand('${conn.id}')">
                 <span class="conn-dot ${dotClass}"></span>
                 <div class="conn-info">
                     <div class="conn-name">${this.esc(conn.name || BYD.i18n.t('mqtt.unnamed'))}</div>
                     <div class="conn-broker">${this.esc(conn.brokerUrl || '')}:${conn.port} → ${this.esc(conn.topic || '')}</div>
                 </div>
-                <div class="conn-actions" onclick="event.stopPropagation()">
-                    <button class="icon-btn" onclick="MQTT.editConnection('${conn.id}')" title="${BYD.i18n.t('common.edit')}" aria-label="${BYD.i18n.t('common.edit')}">${editIcon}</button>
-                    <button class="icon-btn danger" onclick="MQTT.deleteConnection('${conn.id}')" title="${BYD.i18n.t('common.delete')}" aria-label="${BYD.i18n.t('common.delete')}">${deleteIcon}</button>
+                <div class="conn-actions" data-stop-click>
+                    <button class="icon-btn" data-on-click="MQTT.editConnection('${conn.id}')" title="${BYD.i18n.t('common.edit')}" aria-label="${BYD.i18n.t('common.edit')}">${editIcon}</button>
+                    <button class="icon-btn danger" data-on-click="MQTT.deleteConnection('${conn.id}')" title="${BYD.i18n.t('common.delete')}" aria-label="${BYD.i18n.t('common.delete')}">${deleteIcon}</button>
                 </div>
             </div>
-            <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;gap:8px;" onclick="event.stopPropagation()">
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:0 16px 12px;gap:8px;" data-stop-click>
                 <div style="display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);">${enabledHtml}</div>
                 <label class="ui-toggle">
-                    <input type="checkbox" ${conn.enabled ? 'checked' : ''} onchange="MQTT.toggleEnabled('${conn.id}', this.checked)">
+                    <input type="checkbox" ${conn.enabled ? 'checked' : ''} data-on-change="MQTT.toggleEnabled('${conn.id}', this.checked)">
                     <span class="ui-toggle-track"></span>
                 </label>
             </div>

@@ -9,14 +9,14 @@
             <div class="video-header">
                 <span class="video-title" id="videoTitle" data-i18n="events.video_title">Recording</span>
                 <span class="video-nav" id="videoNav" hidden>
-                    <button type="button" class="video-nav-btn" id="videoPrevBtn" onclick="BYD.events.navigateRecording(-1)" data-i18n-attr="title:common.nav_previous;aria-label:common.nav_previous" title="Previous" aria-label="Previous">
+                    <button type="button" class="video-nav-btn" id="videoPrevBtn"data-on-click="BYD.events.navigateRecording(-1)" data-i18n-attr="title:common.nav_previous;aria-label:common.nav_previous" title="Previous" aria-label="Previous">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
                     </button>
-                    <button type="button" class="video-nav-btn" id="videoNextBtn" onclick="BYD.events.navigateRecording(1)" data-i18n-attr="title:common.nav_next;aria-label:common.nav_next" title="Next" aria-label="Next">
+                    <button type="button" class="video-nav-btn" id="videoNextBtn"data-on-click="BYD.events.navigateRecording(1)" data-i18n-attr="title:common.nav_next;aria-label:common.nav_next" title="Next" aria-label="Next">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
                     </button>
                 </span>
-                <button class="video-close" onclick="BYD.events.closeVideo()" data-i18n-attr="title:common.close" title="Close">
+                <button class="video-close"data-on-click="BYD.events.closeVideo()" data-i18n-attr="title:common.close" title="Close">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="18" y1="6" x2="6" y2="18"/>
                         <line x1="6" y1="6" x2="18" y2="18"/>

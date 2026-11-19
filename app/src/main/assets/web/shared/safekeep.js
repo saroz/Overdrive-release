@@ -368,7 +368,7 @@ window.SK = (function () {
 
     function toggle(id, checked, onchange) {
         return '<label class="ui-toggle"><input type="checkbox" id="' + id + '"' + (checked ? ' checked' : '')
-            + (onchange ? ' onchange="' + onchange + '"' : '') + '><span class="ui-toggle-track"></span></label>';
+            + (onchange ? ' data-on-change="' + onchange + '"' : '') + '><span class="ui-toggle-track"></span></label>';
     }
 
     function val(id) {
@@ -1329,7 +1329,7 @@ window.SK = (function () {
                     + '<div class="mode-selector" role="radiogroup">';
                 PRESETS.forEach(function (p) {
                     h += '<label class="mode-option"><input type="radio" name="skPreset_' + l.id + '" value="' + p + '"' + (p === preset ? ' checked' : '')
-                        + ' onchange="SK._lanePreset(\'' + l.id + '\', this.value)"><div class="mode-card"><span class="mode-body"><span class="mode-name">' + esc(presetTitle(p)) + '</span>'
+                        + ' data-on-change="SK._lanePreset(\'' + l.id + '\', this.value)"><div class="mode-card"><span class="mode-body"><span class="mode-name">' + esc(presetTitle(p)) + '</span>'
                         + '<span class="mode-desc">' + esc(presetDesc(p)) + '</span></span><span class="mode-radio" aria-hidden="true"></span></div></label>';
                 });
                 h += '</div>';
@@ -1364,7 +1364,7 @@ window.SK = (function () {
             + field('skCTo_' + laneId, t('safekeep.to', 'To'), minToTime(w ? w.to : 360), 'time') + '</div>'
             + '<div class="sk-chip-row" id="skCDays_' + laneId + '">';
         DAYS.forEach(function (d) {
-            h += '<span class="sk-chip' + (days.length === 0 || days.indexOf(d) >= 0 ? ' active' : '') + '" data-day="' + d + '" onclick="this.classList.toggle(\'active\')">' + esc(t('safekeep.day_' + d, d.charAt(0).toUpperCase() + d.slice(1, 3))) + '</span>';
+            h += '<span class="sk-chip' + (days.length === 0 || days.indexOf(d) >= 0 ? ' active' : '') + '" data-day="' + d + '" data-on-click="SK._toggleActive(this)">' + esc(t('safekeep.day_' + d, d.charAt(0).toUpperCase() + d.slice(1, 3))) + '</span>';
         });
         h += '</div></div>'
             + settingRow(t('safekeep.max_mbps', 'Speed limit for this item (Mbps, 0 = none)'), '', '<input type="number" class="ui-input" id="skCMbps_' + laneId + '" min="0" max="1000" step="0.5" value="' + esc(String(Number(rule.maxMbps) || 0)) + '" style="width:96px;min-width:96px;">')
@@ -1372,7 +1372,7 @@ window.SK = (function () {
             + '<div class="ui-row-desc" style="margin-bottom:8px;">' + esc(t('safekeep.conditions_desc', 'The same signals automations use, e.g. location is Home and battery is above 30%.')) + '</div>'
             + settingRow(t('safekeep.match', 'Match'), '', select('skCLogic_' + laneId, [['AND', t('safekeep.match_all', 'All conditions')], ['OR', t('safekeep.match_any', 'Any condition')]], (rule.advanced && rule.advanced.logic) || 'AND'))
             + '<div id="skConds_' + laneId + '"></div>'
-            + '<div class="byd-action-row"><button class="ui-button" onclick="SK._addCond(\'' + laneId + '\')">' + esc(t('safekeep.add_condition', 'Add condition')) + '</button></div>';
+            + '<div class="byd-action-row"><button class="ui-button" data-on-click="SK._addCond(\'' + laneId + '\')">' + esc(t('safekeep.add_condition', 'Add condition')) + '</button></div>';
         return h;
     }
 
@@ -1419,7 +1419,7 @@ window.SK = (function () {
             else if (def.kind === 'int') valHtml = '<input type="number" class="ui-input" id="skCV_' + laneId + '_' + i + '" min="' + def.min + '" max="' + def.max + '" value="' + esc(c.value == null ? def.min : c.value) + '">';
             else valHtml = '<input class="ui-input" id="skCV_' + laneId + '_' + i + '" value="' + esc(c.value || '') + '">';
             h += '<div class="sk-cond">'
-                + '<span class="sk-cond-type">' + select('skCT_' + laneId + '_' + i, typeOpts, c.type).replace('<select ', '<select onchange="SK._condType(\'' + laneId + '\',' + i + ', this.value)" ') + '</span>'
+                + '<span class="sk-cond-type">' + select('skCT_' + laneId + '_' + i, typeOpts, c.type).replace('<select ', '<select data-on-change="SK._condType(\'' + laneId + '\',' + i + ', this.value)" ') + '</span>'
                 + '<span class="sk-cond-cmp">' + select('skCC_' + laneId + '_' + i, cmpOpts, c.comparator || 'eq') + '</span>'
                 + '<span class="sk-cond-val">' + valHtml + '</span>'
                 + '<button class="safe-zone-icon-btn is-danger" data-sk="_removeCond" data-a="' + laneId + '" data-b="' + i + '" title="' + esc(t('safekeep.remove', 'Remove')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>'
@@ -1549,7 +1549,7 @@ window.SK = (function () {
         if (!box) return;
         if (!state.ssids.length) { box.innerHTML = '<span class="sk-muted">' + esc(t('safekeep.no_ssids', 'No home networks yet')) + '</span>'; return; }
         box.innerHTML = state.ssids.map(function (s, i) {
-            return '<span class="sk-chip active" onclick="SK._removeSsid(' + i + ')">' + esc(s) + ' <span class="sk-x">×</span></span>';
+            return '<span class="sk-chip active" data-on-click="SK._removeSsid(' + i + ')">' + esc(s) + ' <span class="sk-x">×</span></span>';
         }).join('');
     }
 
@@ -1576,7 +1576,7 @@ window.SK = (function () {
             var ev = w.events || [];
             return '<div class="sk-queue-row"><div class="sk-queue-info"><div class="sk-queue-name">' + esc(w.url) + '</div><div class="sk-queue-meta">'
                 + esc(ev.map(function (e) { return e === 'trip.finished' ? t('safekeep.hook_trip', 'Trip finished') : t('safekeep.hook_clip', 'Clip saved'); }).join(' · ')) + '</div></div>'
-                + '<button class="safe-zone-icon-btn is-danger" onclick="SK._removeWebhook(' + i + ')" title="' + esc(t('safekeep.remove', 'Remove')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>';
+                + '<button class="safe-zone-icon-btn is-danger" data-on-click="SK._removeWebhook(' + i + ')" title="' + esc(t('safekeep.remove', 'Remove')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>';
         }).join('');
     }
 
@@ -1664,8 +1664,8 @@ window.SK = (function () {
                     + esc(meta.join(' · ')) + '</div>'
                     + (err ? '<div class="sk-queue-err">' + esc(err) + '</div>' : '') + '</div>'
                     + (it.state === 'FAILED' || it.state === 'PENDING'
-                        ? '<button class="ui-button" onclick="SK._retry(' + Number(it.id) + ')">' + esc(t('safekeep.retry', 'Retry')) + '</button>'
-                        + '<button class="safe-zone-icon-btn" onclick="SK._skip(' + Number(it.id) + ')" title="' + esc(t('safekeep.skip', 'Skip')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>'
+                        ? '<button class="ui-button" data-on-click="SK._retry(' + Number(it.id) + ')">' + esc(t('safekeep.retry', 'Retry')) + '</button>'
+                        + '<button class="safe-zone-icon-btn" data-on-click="SK._skip(' + Number(it.id) + ')" title="' + esc(t('safekeep.skip', 'Skip')) + '"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>'
                         : '') + '</div>';
             }).join('');
         });
@@ -1836,6 +1836,11 @@ window.SK = (function () {
         api('POST', '/api/safekeep/queue/retry', { id: id }).then(loadQueue);
     }
 
+    /* Security F9: day chips toggled inline before; markup can only call a function. */
+    function _toggleActive(el) {
+        el.classList.toggle('active');
+    }
+
     function _skip(id) {
         api('POST', '/api/safekeep/queue/skip', { id: id }).then(loadQueue);
     }
@@ -1873,6 +1878,7 @@ window.SK = (function () {
         _removeSsid: _removeSsid,
         _removeWebhook: _removeWebhook,
         _retry: _retry,
-        _skip: _skip
+        _skip: _skip,
+        _toggleActive: _toggleActive
     };
 })();

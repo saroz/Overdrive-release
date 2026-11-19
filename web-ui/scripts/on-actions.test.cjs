@@ -7,9 +7,11 @@ const assert = require('assert');
 const listeners = {};
 function el(attrs, parent, props) {
     return Object.assign({ nodeType: 1, parentNode: parent || null, attrs: attrs || {},
-        getAttribute(n) { return Object.prototype.hasOwnProperty.call(this.attrs, n) ? this.attrs[n] : null; } }, props || {});
+        getAttribute(n) { return Object.prototype.hasOwnProperty.call(this.attrs, n) ? this.attrs[n] : null; },
+        hasAttribute(n) { return Object.prototype.hasOwnProperty.call(this.attrs, n); } }, props || {});
 }
-const doc = { nodeType: 9, addEventListener(t, fn, cap) { assert.strictEqual(cap, false); listeners[t] = fn; } };
+const capture = {};
+const doc = { nodeType: 9, addEventListener(t, fn, cap) { if (cap) capture[t] = fn; else listeners[t] = fn; } };
 const calls = [];
 const errors = [];
 const win = {
@@ -28,8 +30,13 @@ const ctx = vm.createContext(win);
 vm.runInContext(fs.readFileSync(process.argv[2], 'utf8'), ctx);
 
 function fire(type, target) {
-    const ev = { type, target, cancelBubble: false };
-    listeners[type](ev);
+    const ev = { type, target, cancelBubble: false, stopped: false,
+        stopPropagation() { this.cancelBubble = true; this.stopped = true; } };
+    capture[type](ev);
+    if (!ev.stopped) {
+        ev.cardListenerRan = true; // stands in for a target/ancestor addEventListener in bubble
+        listeners[type](ev);
+    }
     return ev;
 }
 
@@ -109,5 +116,27 @@ win.BYDOnActions.clickId('importFile');
 win.BYDOnActions.clickId('missing');
 win.BYDOnActions.clickId({});
 assert.deepStrictEqual(pressed, ['importFile']);
+
+// 11. data-stop-click: runs the button's handler and stops before the card's listener
+const card2 = el({ 'data-on-click': "plain('card2')" }, doc);
+const del = el({ 'data-on-click': "plain('delete')", 'data-stop-click': '' }, card2);
+const icon = el({}, del);
+let ev11 = fire('click', icon);
+assert.deepStrictEqual(calls.splice(0), [['plain', 'delete']]);
+assert.strictEqual(ev11.cardListenerRan, undefined, 'card listener must not run');
+// a bare stopper (old onclick="event.stopPropagation()") just stops
+const wrap = el({ 'data-stop-click': '' }, card2);
+ev11 = fire('click', el({}, wrap));
+assert.deepStrictEqual(calls.splice(0), []);
+assert.strictEqual(ev11.cardListenerRan, undefined);
+// clicks elsewhere in the card still bubble normally
+ev11 = fire('click', el({}, card2));
+assert.deepStrictEqual(calls.splice(0), [['plain', 'card2']]);
+assert.strictEqual(ev11.cardListenerRan, true);
+// inside an inert (loading) section the stopper does nothing; the capture lock owns it
+const lockedMain = el({ inert: '' }, doc);
+const lockedBtn = el({ 'data-on-click': "plain('locked')", 'data-stop-click': '' }, lockedMain);
+fire('click', lockedBtn);
+assert.deepStrictEqual(calls.splice(0), [['plain', 'locked']], 'reaches bubble path only (the real lock stops it earlier)');
 
 console.log('on-actions: all checks passed');
