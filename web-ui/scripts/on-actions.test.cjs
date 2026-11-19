@@ -102,4 +102,12 @@ assert.strictEqual(win.location.href, '/start');
 fire('click', el({ 'data-on-click': "BYDOnActions.go('/automations')" }, doc));
 assert.strictEqual(win.location.href, '/automations');
 
+// 10. clickId presses the element with that id, ignores anything else
+const pressed = [];
+win.document.getElementById = (id) => (id === 'importFile' ? { click() { pressed.push(id); } } : null);
+win.BYDOnActions.clickId('importFile');
+win.BYDOnActions.clickId('missing');
+win.BYDOnActions.clickId({});
+assert.deepStrictEqual(pressed, ['importFile']);
+
 console.log('on-actions: all checks passed');

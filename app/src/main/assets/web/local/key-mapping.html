@@ -7,6 +7,7 @@
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -45,7 +46,7 @@
                     </div>
                     <div class="ui-row-end">
                         <label class="ui-toggle">
-                            <input type="checkbox" id="kmEnable" onchange="KM.saveConfig()">
+                            <input type="checkbox" id="kmEnable" data-on-change="KM.saveConfig()">
                             <span class="ui-toggle-track"></span>
                         </label>
                     </div>
@@ -74,7 +75,7 @@
                             <svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="#03a9f4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                             <div data-i18n="keymap.a11y_pending">The service is enabled and starting up — hardware buttons become active in a few seconds. No action needed.</div>
                         </div>
-                        <button class="ui-button ui-button-primary" id="kmA11yOpenBtn" onclick="KM.openA11ySettings()" style="width:100%;margin-top:12px;">
+                        <button class="ui-button ui-button-primary" id="kmA11yOpenBtn" data-on-click="KM.openA11ySettings()" style="width:100%;margin-top:12px;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                             <span data-i18n="keymap.open_a11y">Open accessibility settings</span>
                         </button>
@@ -99,7 +100,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="kmAllowAdvanced" onchange="KM.saveConfig()">
+                                    <input type="checkbox" id="kmAllowAdvanced" data-on-change="KM.saveConfig()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -111,7 +112,7 @@
                             </div>
                             <div class="ui-row-end km-dt-ctl" style="display:flex;align-items:center;">
                                 <input type="range" class="ui-range" id="kmDoubleTapWindow" min="250" max="1500" step="50"
-                                       oninput="KM.onDoubleTapWindowInput()" onchange="KM.onDoubleTapWindowChange()"
+                                       data-on-input="KM.onDoubleTapWindowInput()" data-on-change="KM.onDoubleTapWindowChange()"
                                        style="vertical-align:middle;">
                                 <span id="kmDoubleTapWindowVal" class="km-dt-val">0.5s</span>
                             </div>
@@ -137,7 +138,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M7 13h10"/></svg>
                             <p data-i18n="keymap.empty_p">No key bindings yet.</p>
                             <p class="ui-hint" data-i18n="keymap.empty_hint">Switch to the Add tab, press a hardware button to capture it, then choose what it should do.</p>
-                            <button class="ui-button ui-button-primary" onclick="KM.goAdd()" data-i18n="keymap.add_binding">Add binding</button>
+                            <button class="ui-button ui-button-primary" data-on-click="KM.goAdd()" data-i18n="keymap.add_binding">Add binding</button>
                         </div>
                     </div>
                 </div>
@@ -162,7 +163,7 @@
                                 <div class="ui-row-title" data-i18n="keymap.known_button">Button</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="kmKnownButton" class="ui-select" onchange="KM.onKnownButtonChange()"></select>
+                                <select id="kmKnownButton" class="ui-select" data-on-change="KM.onKnownButtonChange()"></select>
                             </div>
                         </div>
 
@@ -176,7 +177,7 @@
                                 <div class="km-keycode" id="kmCapKeycode">—</div>
                                 <div class="km-caphint" id="kmCapHint" data-i18n="keymap.capture_idle">No key captured</div>
                             </div>
-                            <button class="ui-button" id="kmCaptureBtn" onclick="KM.toggleCapture()" style="width:100%;">
+                            <button class="ui-button" id="kmCaptureBtn" data-on-click="KM.toggleCapture()" style="width:100%;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                                 <span id="kmCaptureBtnLabel" data-i18n="keymap.capture">Capture a key</span>
                             </button>
@@ -198,7 +199,7 @@
                                 <div class="ui-row-title" data-i18n="keymap.press_type">Press type</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="kmPressType" class="ui-select" onchange="KM.onPressTypeChange()">
+                                <select id="kmPressType" class="ui-select" data-on-change="KM.onPressTypeChange()">
                                     <option value="single" data-i18n="keymap.press_single">Single press</option>
                                     <option value="double" data-i18n="keymap.press_double">Double press</option>
                                     <option value="long" data-i18n="keymap.press_long">Long press</option>
@@ -230,7 +231,7 @@
                                 <div class="ui-row-title" data-i18n="keymap.action">Action</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="kmActionKind" class="ui-select" onchange="KM.onKindChange()">
+                                <select id="kmActionKind" class="ui-select" data-on-change="KM.onKindChange()">
                                     <option value="curated" data-i18n="keymap.kind_curated">Vehicle action</option>
                                     <option value="openApp" data-i18n="keymap.kind_open_app">Open app</option>
                                     <option value="shell" id="kmShellOption" data-i18n="keymap.kind_shell">Advanced: shell</option>
@@ -245,7 +246,7 @@
                             <div class="ui-row">
                                 <div class="ui-row-copy"><div class="ui-row-title" data-i18n="keymap.curated_action">Vehicle action</div></div>
                                 <div class="ui-row-end">
-                                    <select id="kmCuratedAction" class="ui-select" onchange="KM.onCuratedChange()"></select>
+                                    <select id="kmCuratedAction" class="ui-select" data-on-change="KM.onCuratedChange()"></select>
                                 </div>
                             </div>
                             <div class="ui-row" id="kmPayloadRow" style="border-bottom:none;">
@@ -264,7 +265,7 @@
                                 <div class="ui-row">
                                     <div class="ui-row-copy"><div class="ui-row-title" data-i18n="keymap.clip_window">Clip window</div></div>
                                     <div class="ui-row-end">
-                                        <select id="kmClipPreset" class="ui-select" onchange="KM.onClipPresetChange()">
+                                        <select id="kmClipPreset" class="ui-select" data-on-change="KM.onClipPresetChange()">
                                             <option value="15:0" data-i18n="keymap.clip_previous_15">Previous 15 seconds</option>
                                             <option value="30:0" data-i18n="keymap.clip_previous_30" selected>Previous 30 seconds</option>
                                             <option value="60:0" data-i18n="keymap.clip_previous_60">Previous 60 seconds</option>
@@ -280,7 +281,7 @@
                                         <div class="ui-row-end">
                                             <div class="ui-slider">
                                                 <span class="ui-slider-value" id="kmClipBeforeValue">30s</span>
-                                                <input type="range" class="ui-range" id="kmClipBefore" min="0" max="60" step="1" value="30" oninput="KM.onClipWindowChange()">
+                                                <input type="range" class="ui-range" id="kmClipBefore" min="0" max="60" step="1" value="30" data-on-input="KM.onClipWindowChange()">
                                             </div>
                                         </div>
                                     </div>
@@ -289,7 +290,7 @@
                                         <div class="ui-row-end">
                                             <div class="ui-slider">
                                                 <span class="ui-slider-value" id="kmClipAfterValue">0s</span>
-                                                <input type="range" class="ui-range" id="kmClipAfter" min="0" max="60" step="1" value="0" oninput="KM.onClipWindowChange()">
+                                                <input type="range" class="ui-range" id="kmClipAfter" min="0" max="60" step="1" value="0" data-on-input="KM.onClipWindowChange()">
                                             </div>
                                         </div>
                                     </div>
@@ -343,11 +344,11 @@
                         <div id="kmSeqSteps" class="km-steps" style="display:none;"></div>
 
                         <div class="byd-action-row" style="margin-top:16px;">
-                            <button class="ui-button" id="kmAddStepBtn" onclick="KM.addStep()" style="flex:1;">
+                            <button class="ui-button" id="kmAddStepBtn" data-on-click="KM.addStep()" style="flex:1;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                                 <span data-i18n="keymap.add_step">Add step</span>
                             </button>
-                            <button class="ui-button ui-button-primary" id="kmAddBtn" onclick="KM.addBinding()" style="flex:1;">
+                            <button class="ui-button ui-button-primary" id="kmAddBtn" data-on-click="KM.addBinding()" style="flex:1;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span id="kmAddBtnLabel" data-i18n="keymap.add_binding">Add binding</span>
                             </button>
@@ -370,7 +371,7 @@
                             </div>
                         </div>
                         <div class="byd-action-row" style="margin-top:12px;">
-                            <button class="ui-button" id="kmQcSaveBtn" onclick="KM.saveQuickControl()" style="flex:1;">
+                            <button class="ui-button" id="kmQcSaveBtn" data-on-click="KM.saveQuickControl()" style="flex:1;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
                                 <span data-i18n="keymap.qc_save">Add dashboard button</span>
                             </button>

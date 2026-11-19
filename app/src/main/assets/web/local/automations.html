@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.automations_title">Automations - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -58,7 +59,7 @@
                      uppercase section-title used across the other local pages. -->
                 <div class="automations-section-head" data-tab="automations" id="listHead" style="display:none;">
                     <h2 class="automations-section-title" data-i18n="automation.list_title">Your automations</h2>
-                    <button class="ui-button" onclick="AutomationSettings.showForm(null, {})">
+                    <button class="ui-button" data-on-click="AutomationsPage.newRule()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                         <span data-i18n="automation.add_automation">Add Automation</span>
                     </button>
@@ -70,7 +71,7 @@
                      render()) — a single card has nothing to sort. -->
                 <div class="automations-sort-row" id="automationSortRow" data-tab="automations" style="display:none;">
                     <label class="automations-sort-label" for="automationSortSelect" data-i18n="automation.sort_by">Sort by</label>
-                    <select id="automationSortSelect" class="automations-sort-select" onchange="AutomationSettings.setSort(this.value)">
+                    <select id="automationSortSelect" class="automations-sort-select" data-on-change="AutomationSettings.setSort(this.value)">
                         <option value="default" data-i18n="automation.sort_default">Default order</option>
                         <option value="name_az" data-i18n="automation.sort_name_az">Name A&#8594;Z</option>
                         <option value="name_za" data-i18n="automation.sort_name_za">Name Z&#8594;A</option>
@@ -90,7 +91,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="8" x="3" y="3" rx="2"/><path d="M7 11v4a2 2 0 0 0 2 2h4"/><rect width="8" height="8" x="13" y="13" rx="2"/></svg>
                         <p data-i18n="automation.empty_p">No Automations configured. Add an automation.</p>
                         <p class="ui-hint" data-i18n="automation.empty_hint">Create one to trigger an action when a vehicle event matches your conditions.</p>
-                        <button class="ui-button ui-button-primary" onclick="AutomationSettings.showForm(null, {})" data-i18n="automation.add_automation">Add Automation</button>
+                        <button class="ui-button ui-button-primary" data-on-click="AutomationsPage.newRule()" data-i18n="automation.add_automation">Add Automation</button>
                     </div>
                 </div>
 
@@ -113,7 +114,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="autoAllowShell" onchange="AutomationSettings.saveSettings()">
+                                    <input type="checkbox" id="autoAllowShell" data-on-change="AutomationSettings.saveSettings()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -144,11 +145,11 @@
                                 <div class="ui-row-desc" data-i18n="automation.backup_desc">Save all your automations to a file, or restore them from a backup. Importing merges into your current automations (existing ones with the same id are replaced).</div>
                             </div>
                             <div class="ui-row-end" style="display:flex; gap:8px;">
-                                <button class="ui-button" onclick="AutomationSettings.exportAll()">
+                                <button class="ui-button" data-on-click="AutomationSettings.exportAll()">
                                     <span data-i18n="automation.backup_export">Export</span>
                                 </button>
-                                <input type="file" id="automationImportFile" accept="application/json,.json" style="display:none;" onchange="AutomationSettings.importFile(this.files[0])">
-                                <button class="ui-button" onclick="document.getElementById('automationImportFile').click()">
+                                <input type="file" id="automationImportFile" accept="application/json,.json" style="display:none;" data-on-change="AutomationsPage.importFile(this)">
+                                <button class="ui-button" data-on-click="BYDOnActions.clickId('automationImportFile')">
                                     <span data-i18n="automation.backup_import">Import</span>
                                 </button>
                             </div>
@@ -172,8 +173,8 @@
                                 <div class="ui-row-desc" data-i18n="automation.audio_library_desc">Upload MP3, WAV or MP4 sounds (max 48 MB). The Play Audio action and key mapping can play any sound here.</div>
                             </div>
                             <div class="ui-row-end">
-                                <input type="file" id="audioLibFile" accept="audio/*,video/mp4,.mp3,.wav,.m4a,.aac,.ogg" style="display:none;" onchange="AudioLibrary.upload(this.files[0])">
-                                <button class="ui-button" onclick="document.getElementById('audioLibFile').click()">
+                                <input type="file" id="audioLibFile" accept="audio/*,video/mp4,.mp3,.wav,.m4a,.aac,.ogg" style="display:none;" data-on-change="AutomationsPage.uploadAudio(this)">
+                                <button class="ui-button" data-on-click="BYDOnActions.clickId('audioLibFile')">
                                     <span id="audioLibUploadLabel" data-i18n="automation.audio_upload">Upload</span>
                                 </button>
                             </div>
@@ -209,7 +210,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyDoorLocks" data-safety-key="doorLocks" checked aria-labelledby="safetyDoorLocksName" aria-describedby="safetyDoorLocksDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyDoorLocks" data-safety-key="doorLocks" checked aria-labelledby="safetyDoorLocksName" aria-describedby="safetyDoorLocksDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -222,7 +223,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyHornLights" data-safety-key="hornLights" checked aria-labelledby="safetyHornLightsName" aria-describedby="safetyHornLightsDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyHornLights" data-safety-key="hornLights" checked aria-labelledby="safetyHornLightsName" aria-describedby="safetyHornLightsDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -235,7 +236,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyTrunk" data-safety-key="trunk" checked aria-labelledby="safetyTrunkName" aria-describedby="safetyTrunkDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyTrunk" data-safety-key="trunk" checked aria-labelledby="safetyTrunkName" aria-describedby="safetyTrunkDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -248,7 +249,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyMirrorFold" data-safety-key="mirrorFold" checked aria-labelledby="safetyMirrorFoldName" aria-describedby="safetyMirrorFoldDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyMirrorFold" data-safety-key="mirrorFold" checked aria-labelledby="safetyMirrorFoldName" aria-describedby="safetyMirrorFoldDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -261,7 +262,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyPositioning" data-safety-key="positioning" checked aria-labelledby="safetyPositioningName" aria-describedby="safetyPositioningDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyPositioning" data-safety-key="positioning" checked aria-labelledby="safetyPositioningName" aria-describedby="safetyPositioningDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -274,7 +275,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyHeadlightOff" data-safety-key="headlightOff" checked aria-labelledby="safetyHeadlightOffName" aria-describedby="safetyHeadlightOffDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyHeadlightOff" data-safety-key="headlightOff" checked aria-labelledby="safetyHeadlightOffName" aria-describedby="safetyHeadlightOffDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -287,7 +288,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyDisplayBrightness" data-safety-key="displayBrightness" checked aria-labelledby="safetyDisplayBrightnessName" aria-describedby="safetyDisplayBrightnessDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyDisplayBrightness" data-safety-key="displayBrightness" checked aria-labelledby="safetyDisplayBrightnessName" aria-describedby="safetyDisplayBrightnessDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -300,7 +301,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyDisplayPower" data-safety-key="displayPower" checked aria-labelledby="safetyDisplayPowerName" aria-describedby="safetyDisplayPowerDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyDisplayPower" data-safety-key="displayPower" checked aria-labelledby="safetyDisplayPowerName" aria-describedby="safetyDisplayPowerDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -313,7 +314,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" role="switch" id="safetyScreenMedia" data-safety-key="screenMedia" checked aria-labelledby="safetyScreenMediaName" aria-describedby="safetyScreenMediaDesc" onchange="AutomationSettings.saveSafetySetting(this)">
+                                    <input type="checkbox" role="switch" id="safetyScreenMedia" data-safety-key="screenMedia" checked aria-labelledby="safetyScreenMediaName" aria-describedby="safetyScreenMediaDesc" data-on-change="AutomationSettings.saveSafetySetting(this)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -355,8 +356,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <button class="ui-button" onclick="AutomationSettings.hideForm()" data-i18n="common.cancel">Cancel</button>
-                            <button id="saveBtn" class="ui-button ui-button-primary" onclick="AutomationSettings.saveForm()" data-i18n="automation.save_automation">Save Automation</button>
+                            <button class="ui-button" data-on-click="AutomationSettings.hideForm()" data-i18n="common.cancel">Cancel</button>
+                            <button id="saveBtn" class="ui-button ui-button-primary" data-on-click="AutomationSettings.saveForm()" data-i18n="automation.save_automation">Save Automation</button>
                         </div>
                     </div>
                 </div>
@@ -372,16 +373,16 @@
                             <!-- Export / import the group set. Backend: GET /api/action-groups/export
                                  + POST /api/action-groups/import (validates every group before
                                  storing), mirroring the automation backup on the Settings tab. -->
-                            <button class="ui-button" onclick="AutomationSettings.exportGroups()" data-i18n-attr="title:automation.groups_backup_export_hint">
+                            <button class="ui-button" data-on-click="AutomationSettings.exportGroups()" data-i18n-attr="title:automation.groups_backup_export_hint">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                                 <span data-i18n="automation.backup_export">Export</span>
                             </button>
-                            <input type="file" id="groupImportFile" accept="application/json,.json" style="display:none;" onchange="AutomationSettings.importGroupsFile(this.files[0])">
-                            <button class="ui-button" onclick="document.getElementById('groupImportFile').click()" data-i18n-attr="title:automation.groups_backup_import_hint">
+                            <input type="file" id="groupImportFile" accept="application/json,.json" style="display:none;" data-on-change="AutomationsPage.importGroupsFile(this)">
+                            <button class="ui-button" data-on-click="BYDOnActions.clickId('groupImportFile')" data-i18n-attr="title:automation.groups_backup_import_hint">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                                 <span data-i18n="automation.backup_import">Import</span>
                             </button>
-                            <button class="ui-button" onclick="AutomationSettings.showGroupForm(null)">
+                            <button class="ui-button" data-on-click="AutomationSettings.showGroupForm(null)">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                                 <span data-i18n="automation.new_group">New group</span>
                             </button>
@@ -393,7 +394,7 @@
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></svg>
                             <p data-i18n="automation.groups_empty">No action groups yet.</p>
                             <p class="ui-hint" data-i18n="automation.groups_empty_hint">Create a group of actions once, then run it from any automation or key binding with "Run action group".</p>
-                            <button class="ui-button ui-button-primary" onclick="AutomationSettings.showGroupForm(null)" data-i18n="automation.new_group">New group</button>
+                            <button class="ui-button ui-button-primary" data-on-click="AutomationSettings.showGroupForm(null)" data-i18n="automation.new_group">New group</button>
                         </div>
                     </div>
                 </div>
@@ -409,8 +410,8 @@
                     <div class="ui-panel-body">
                         <div class="form-grid" id="groupFormGrid"></div>
                         <div class="form-actions">
-                            <button class="ui-button" onclick="AutomationSettings.hideGroupForm()" data-i18n="common.cancel">Cancel</button>
-                            <button id="groupSaveBtn" class="ui-button ui-button-primary" onclick="AutomationSettings.saveGroup()" data-i18n="automation.save_group">Save group</button>
+                            <button class="ui-button" data-on-click="AutomationSettings.hideGroupForm()" data-i18n="common.cancel">Cancel</button>
+                            <button id="groupSaveBtn" class="ui-button ui-button-primary" data-on-click="AutomationSettings.saveGroup()" data-i18n="automation.save_group">Save group</button>
                         </div>
                     </div>
                 </div>

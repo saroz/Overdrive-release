@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -88,9 +89,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="survStorageTypeBtns">
-                                    <button class="ui-segment active" data-value="INTERNAL" onclick="StoragePage.setSurvStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
-                                    <button class="ui-segment" data-value="SD_CARD" onclick="StoragePage.setSurvStorageType('SD_CARD')" id="btnSurvSdCard" data-i18n="trip.settings.storage_sd">SD card</button>
-                                    <button class="ui-segment" data-value="USB" onclick="StoragePage.setSurvStorageType('USB')" id="btnSurvUsb" data-i18n="trip.settings.storage_usb">USB</button>
+                                    <button class="ui-segment active" data-value="INTERNAL" data-on-click="StoragePage.setSurvStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
+                                    <button class="ui-segment" data-value="SD_CARD" data-on-click="StoragePage.setSurvStorageType('SD_CARD')" id="btnSurvSdCard" data-i18n="trip.settings.storage_sd">SD card</button>
+                                    <button class="ui-segment" data-value="USB" data-on-click="StoragePage.setSurvStorageType('USB')" id="btnSurvUsb" data-i18n="trip.settings.storage_usb">USB</button>
                                 </div>
                             </div>
                         </div>
@@ -117,9 +118,9 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="survLimitValue">500 MB</span>
-                                    <input type="range" class="ui-range" id="survLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateSurvLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
+                                    <input type="range" class="ui-range" id="survLimitSlider" min="100" max="100000" step="100" value="500" data-on-input="StoragePage.updateSurvLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
-                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="surveillanceNoLimit" onchange="StoragePage.setNoLimit('surveillance', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
+                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="surveillanceNoLimit" data-on-change="StoragePage.setNoLimit('surveillance', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -151,9 +152,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="recStorageTypeBtns">
-                                    <button class="ui-segment active" data-value="INTERNAL" onclick="StoragePage.setRecStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
-                                    <button class="ui-segment" data-value="SD_CARD" onclick="StoragePage.setRecStorageType('SD_CARD')" id="btnRecSdCard" data-i18n="trip.settings.storage_sd">SD card</button>
-                                    <button class="ui-segment" data-value="USB" onclick="StoragePage.setRecStorageType('USB')" id="btnRecUsb" data-i18n="trip.settings.storage_usb">USB</button>
+                                    <button class="ui-segment active" data-value="INTERNAL" data-on-click="StoragePage.setRecStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
+                                    <button class="ui-segment" data-value="SD_CARD" data-on-click="StoragePage.setRecStorageType('SD_CARD')" id="btnRecSdCard" data-i18n="trip.settings.storage_sd">SD card</button>
+                                    <button class="ui-segment" data-value="USB" data-on-click="StoragePage.setRecStorageType('USB')" id="btnRecUsb" data-i18n="trip.settings.storage_usb">USB</button>
                                 </div>
                             </div>
                         </div>
@@ -183,9 +184,9 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="recLimitValue">500 MB</span>
-                                    <input type="range" class="ui-range" id="recLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateRecLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
+                                    <input type="range" class="ui-range" id="recLimitSlider" min="100" max="100000" step="100" value="500" data-on-input="StoragePage.updateRecLimit(this.value)" data-i18n-attr="aria-label:recording.storage_limit" aria-label="Storage Limit">
                                 </div>
-                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="recordingsNoLimit" onchange="StoragePage.setNoLimit('recordings', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
+                                <label class="st-no-limit" style="display:flex;align-items:center;margin-top:8px;font-size:12px;color:var(--ui-muted)"><input type="checkbox" style="margin:0 6px 0 0" id="recordingsNoLimit" data-on-change="StoragePage.setNoLimit('recordings', this.checked)"> <span data-i18n="storage.no_limit">No Limit</span></label>
                             </div>
                         </div>
                         <div class="ui-meter-labels st-range-under">
@@ -216,9 +217,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="tripStorageTypeBtns">
-                                    <button class="ui-segment active" data-value="INTERNAL" id="storageInternal" onclick="StoragePage.setTripStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
-                                    <button class="ui-segment" data-value="SD_CARD" id="storageSdCard" onclick="StoragePage.setTripStorageType('SD_CARD')" data-i18n="trip.settings.storage_sd">SD card</button>
-                                    <button class="ui-segment" data-value="USB" id="storageUsb" onclick="StoragePage.setTripStorageType('USB')" data-i18n="trip.settings.storage_usb">USB</button>
+                                    <button class="ui-segment active" data-value="INTERNAL" id="storageInternal" data-on-click="StoragePage.setTripStorageType('INTERNAL')" data-i18n="trip.settings.storage_internal">Internal</button>
+                                    <button class="ui-segment" data-value="SD_CARD" id="storageSdCard" data-on-click="StoragePage.setTripStorageType('SD_CARD')" data-i18n="trip.settings.storage_sd">SD card</button>
+                                    <button class="ui-segment" data-value="USB" id="storageUsb" data-on-click="StoragePage.setTripStorageType('USB')" data-i18n="trip.settings.storage_usb">USB</button>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +244,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="storageLimitValue">500 MB</span>
-                                    <input type="range" class="ui-range" id="storageLimitSlider" min="100" max="100000" step="100" value="500" oninput="StoragePage.updateTripLimit(this.value)" data-i18n-attr="aria-label:trip.settings.storage_limit" aria-label="Storage Limit">
+                                    <input type="range" class="ui-range" id="storageLimitSlider" min="100" max="100000" step="100" value="500" data-on-input="StoragePage.updateTripLimit(this.value)" data-i18n-attr="aria-label:trip.settings.storage_limit" aria-label="Storage Limit">
                                 </div>
                             </div>
                         </div>
@@ -279,7 +280,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="cdrCleanupEnabled" disabled onchange="StoragePage.toggleCdrCleanup()">
+                                    <input type="checkbox" id="cdrCleanupEnabled" disabled data-on-change="StoragePage.toggleCdrCleanup()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -309,7 +310,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="cdrReservedValue">2 GB</span>
-                                    <input type="range" class="ui-range" id="cdrReservedSlider" disabled min="100" max="20000" step="100" value="2000" oninput="StoragePage.updateCdrReserved(this.value)" data-i18n-attr="aria-label:recording.cdr_reserved" aria-label="Reserved Space for Overdrive">
+                                    <input type="range" class="ui-range" id="cdrReservedSlider" disabled min="100" max="20000" step="100" value="2000" data-on-input="StoragePage.updateCdrReserved(this.value)" data-i18n-attr="aria-label:recording.cdr_reserved" aria-label="Reserved Space for Overdrive">
                                 </div>
                             </div>
                         </div>
@@ -321,7 +322,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="cdrProtectedValue">24h</span>
-                                    <input type="range" class="ui-range" id="cdrProtectedSlider" disabled min="0" max="168" step="12" value="24" oninput="StoragePage.updateCdrProtected(this.value)" data-i18n-attr="aria-label:recording.cdr_protect_recent" aria-label="Protect Recent Files">
+                                    <input type="range" class="ui-range" id="cdrProtectedSlider" disabled min="0" max="168" step="12" value="24" data-on-input="StoragePage.updateCdrProtected(this.value)" data-i18n-attr="aria-label:recording.cdr_protect_recent" aria-label="Protect Recent Files">
                                 </div>
                             </div>
                         </div>
@@ -333,11 +334,11 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="cdrMinKeepValue">10</span>
-                                    <input type="range" class="ui-range" id="cdrMinKeepSlider" disabled min="0" max="100" step="5" value="10" oninput="StoragePage.updateCdrMinKeep(this.value)" data-i18n-attr="aria-label:recording.cdr_min_keep" aria-label="Keep Minimum Files">
+                                    <input type="range" class="ui-range" id="cdrMinKeepSlider" disabled min="0" max="100" step="5" value="10" data-on-input="StoragePage.updateCdrMinKeep(this.value)" data-i18n-attr="aria-label:recording.cdr_min_keep" aria-label="Keep Minimum Files">
                                 </div>
                             </div>
                         </div>
-                        <button class="ui-button ui-button-danger" id="cdrCleanupNow" disabled style="width:100%;margin-top:12px;" onclick="StoragePage.triggerCdrCleanup()">
+                        <button class="ui-button ui-button-danger" id="cdrCleanupNow" disabled style="width:100%;margin-top:12px;" data-on-click="StoragePage.triggerCdrCleanup()">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                             <span data-i18n="recording.cdr_cleanup_now_v2">Clean up now</span>
                         </button>
@@ -363,7 +364,7 @@
                                 <div class="ui-row-desc" data-i18n="trip.recover.desc">If trips vanished from your history after an SD card was briefly undetected, this rebuilds them from the telemetry files still on disk. Distance, speed, route and elevation are restored; energy, cost and driving scores aren’t available for recovered trips. Safe to run anytime.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button class="ui-button" id="tripRecoverBtn" onclick="StoragePage.recoverTrips()" data-i18n="trip.recover.button">Scan &amp; Recover Trips</button>
+                                <button class="ui-button" id="tripRecoverBtn" data-on-click="StoragePage.recoverTrips()" data-i18n="trip.recover.button">Scan &amp; Recover Trips</button>
                             </div>
                         </div>
                         <div id="tripRecoverResult" class="ui-row-desc st-recover-result" style="display:none;" role="status" aria-live="polite"></div>
@@ -371,7 +372,7 @@
                 </div>
             </div>
                 <div class="ui-savebar" id="footerBar">
-            <button class="ui-button ui-button-primary" id="btnApply" disabled onclick="StoragePage.applySettings()">
+            <button class="ui-button ui-button-primary" id="btnApply" disabled data-on-click="StoragePage.applySettings()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
                 <span data-i18n="common.apply_changes">Apply Changes</span>
             </button>

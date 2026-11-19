@@ -1433,3 +1433,10 @@ if (window.OverdriveAppShell && window.OverdriveAppShell.mountVehicleCanvas) {
 } else {
     document.addEventListener('app-shell:ready', mountLiveCarCanvas);
 }
+
+// Security F9 step 4: the timeline link starts one minute back, so it is built here.
+window.LiveViewPage = {
+    openTimeline: function () {
+        location.href = 'events.html?view=timeline&t=' + (new Date().getTime() - 60000);
+    }
+};

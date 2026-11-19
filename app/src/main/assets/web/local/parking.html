@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -70,10 +71,10 @@
                     <!-- Top Bar: quick range filters -->
                     <div class="pk-top-bar" data-tab="sessions">
                         <div class="filter-tabs">
-                            <button class="filter-tab" data-days="7" onclick="Parking.quickFilter(7, this)" data-i18n="trip.filter.days_7">7 Days</button>
-                            <button class="filter-tab active" data-days="30" onclick="Parking.quickFilter(30, this)" data-i18n="trip.filter.days_30">30 Days</button>
-                            <button class="filter-tab" data-days="90" onclick="Parking.quickFilter(90, this)" data-i18n="parking.filter_days_90">90 Days</button>
-                            <button class="filter-tab" data-days="0" onclick="Parking.quickFilter(0, this)" data-i18n="parking.filter_all">All</button>
+                            <button class="filter-tab" data-days="7" data-on-click="Parking.quickFilter(7, this)" data-i18n="trip.filter.days_7">7 Days</button>
+                            <button class="filter-tab active" data-days="30" data-on-click="Parking.quickFilter(30, this)" data-i18n="trip.filter.days_30">30 Days</button>
+                            <button class="filter-tab" data-days="90" data-on-click="Parking.quickFilter(90, this)" data-i18n="parking.filter_days_90">90 Days</button>
+                            <button class="filter-tab" data-days="0" data-on-click="Parking.quickFilter(0, this)" data-i18n="parking.filter_all">All</button>
                         </div>
                     </div>
 
@@ -90,10 +91,10 @@
                         <div class="empty-title" id="pkEmptyTitle" data-i18n="parking.no_sessions_title">No parking sessions yet</div>
                         <div class="empty-text" id="pkEmptyText" data-i18n="parking.no_sessions">The first one is created the next time the car is switched off.</div>
                         <!-- Shown only while the feature is OFF (mirrors trips' enable-from-empty). -->
-                        <button class="ui-button ui-button-primary" id="pkEnableFromEmpty" style="display:none;margin-top:16px;" onclick="Parking.enableFromEmptyState()" data-i18n="parking.enable">Turn on Parking Intelligence</button>
+                        <button class="ui-button ui-button-primary" id="pkEnableFromEmpty" style="display:none;margin-top:16px;" data-on-click="Parking.enableFromEmptyState()" data-i18n="parking.enable">Turn on Parking Intelligence</button>
                     </div>
 
-                    <button class="load-more-btn" data-tab="sessions" id="pkMoreBtn" style="display:none;" onclick="Parking.loadMore()" data-i18n="parking.load_more">Load more sessions</button>
+                    <button class="load-more-btn" data-tab="sessions" id="pkMoreBtn" style="display:none;" data-on-click="Parking.loadMore()" data-i18n="parking.load_more">Load more sessions</button>
 
                     <!-- ========== SETTINGS TAB ========== -->
                     <div class="ui-panel" data-tab="settings" id="pkSettingsCard">
@@ -112,7 +113,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingEnabled" onchange="ParkingSettings.save('enabled', this.checked)">
+                                        <input type="checkbox" id="parkingEnabled" data-on-change="ParkingSettings.save('enabled', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -124,7 +125,7 @@
                                         <div class="ui-row-desc" data-i18n="parking.settings_end_trigger_desc">When a parking session closes. "When I return": a door opens after you have been away, or an unlock followed by a door (or power-on). "When the car powers on": door and unlock only refresh the returned stills. "When I drive away": waits until the gear leaves P; without a usable gear reading it closes ~2 minutes after power-on.</div>
                                     </div>
                                     <div class="ui-row-end">
-                                        <select class="ui-input pk-field" id="parkingEndTrigger" aria-labelledby="pkEndTriggerName" onchange="ParkingSettings.save('endTrigger', this.value)">
+                                        <select class="ui-input pk-field" id="parkingEndTrigger" aria-labelledby="pkEndTriggerName" data-on-change="ParkingSettings.save('endTrigger', this.value)">
                                             <option value="return" data-i18n="parking.end_trigger_return">When I return</option>
                                             <option value="power_on" data-i18n="parking.end_trigger_power_on">When the car powers on</option>
                                             <option value="drive_away" data-i18n="parking.end_trigger_drive_away">When I drive away</option>
@@ -138,7 +139,7 @@
                                     </div>
                                     <div class="ui-row-end">
                                         <label class="ui-toggle">
-                                            <input type="checkbox" id="parkingSnapshots" onchange="ParkingSettings.save('snapshots', this.checked)">
+                                            <input type="checkbox" id="parkingSnapshots" data-on-change="ParkingSettings.save('snapshots', this.checked)">
                                             <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
@@ -150,7 +151,7 @@
                                     </div>
                                     <div class="ui-row-end">
                                         <label class="ui-toggle">
-                                            <input type="checkbox" id="parkingNeighbours" onchange="ParkingSettings.save('neighbours', this.checked)">
+                                            <input type="checkbox" id="parkingNeighbours" data-on-change="ParkingSettings.save('neighbours', this.checked)">
                                             <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
@@ -162,7 +163,7 @@
                                     </div>
                                     <div class="ui-row-end">
                                         <label class="ui-toggle">
-                                            <input type="checkbox" id="parkingSignage" onchange="ParkingSettings.save('signage', this.checked)">
+                                            <input type="checkbox" id="parkingSignage" data-on-change="ParkingSettings.save('signage', this.checked)">
                                             <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
@@ -175,7 +176,7 @@
                                     </div>
                                     <div class="ui-row-end">
                                         <label class="ui-toggle">
-                                            <input type="checkbox" id="parkingGeocodingEnabled" onchange="ParkingSettings.saveGeocoding('enabled', this.checked)">
+                                            <input type="checkbox" id="parkingGeocodingEnabled" data-on-change="ParkingSettings.saveGeocoding('enabled', this.checked)">
                                             <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
@@ -188,7 +189,7 @@
                                     </div>
                                     <div class="ui-row-end">
                                         <label class="ui-toggle">
-                                            <input type="checkbox" id="parkingGeocodingOnline" onchange="ParkingSettings.saveGeocoding('allowOnline', this.checked)">
+                                            <input type="checkbox" id="parkingGeocodingOnline" data-on-change="ParkingSettings.saveGeocoding('allowOnline', this.checked)">
                                             <span class="ui-toggle-track"></span>
                                         </label>
                                     </div>
@@ -198,7 +199,7 @@
                                         <div class="ui-row-title" id="pkRetentionName" data-i18n="parking.settings_retention">Keep sessions (days)</div>
                                     </div>
                                     <div class="ui-row-end">
-                                        <input type="number" class="ui-input pk-field pk-field--num" id="parkingRetentionDays" aria-labelledby="pkRetentionName" min="7" max="730" step="1" onchange="ParkingSettings.save('retentionDays', parseInt(this.value, 10))">
+                                        <input type="number" class="ui-input pk-field pk-field--num" id="parkingRetentionDays" aria-labelledby="pkRetentionName" min="7" max="730" step="1" data-on-change="ParkingPage.saveInt('retentionDays', this.value)">
                                     </div>
                                 </div>
                                 <div class="ui-row">
@@ -206,7 +207,7 @@
                                         <div class="ui-row-title" id="pkCapName" data-i18n="parking.settings_cap">Stills &amp; frames cap (MB)</div>
                                     </div>
                                     <div class="ui-row-end">
-                                        <input type="number" class="ui-input pk-field pk-field--num" id="parkingStorageCapMb" aria-labelledby="pkCapName" min="50" max="4096" step="50" onchange="ParkingSettings.save('storageCapMb', parseInt(this.value, 10))">
+                                        <input type="number" class="ui-input pk-field pk-field--num" id="parkingStorageCapMb" aria-labelledby="pkCapName" min="50" max="4096" step="50" data-on-change="ParkingPage.saveInt('storageCapMb', this.value)">
                                     </div>
                                 </div>
                             </div>
@@ -223,7 +224,7 @@
 
     <div id="toastContainer" class="ui-toast-stack"></div>
 
-    <div class="pk-lightbox" id="pkLightbox" onclick="Parking.closeLightbox()">
+    <div class="pk-lightbox" id="pkLightbox" data-on-click="Parking.closeLightbox()">
         <img id="pkLightboxImg" alt="">
     </div>
 

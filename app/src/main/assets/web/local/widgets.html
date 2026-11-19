@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.widgets_title">Widgets - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -43,7 +44,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwEnabled" onchange="WidgetsSettings.setEnabled(this.checked)">
+                                    <input type="checkbox" id="gwEnabled" data-on-change="WidgetsSettings.setEnabled(this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -61,8 +62,8 @@
                     </div>
                     <div class="ui-panel-body">
                         <div class="gw-seg" role="radiogroup">
-                            <label><input type="radio" name="gwMode" value="home" onchange="WidgetsSettings.set('mode', 'home')"><span data-i18n="widgets.mode_home">Home screen only</span></label>
-                            <label><input type="radio" name="gwMode" value="global" onchange="WidgetsSettings.set('mode', 'global')"><span data-i18n="widgets.mode_global">Over every app</span></label>
+                            <label><input type="radio" name="gwMode" value="home" data-on-change="WidgetsSettings.set('mode', 'home')"><span data-i18n="widgets.mode_home">Home screen only</span></label>
+                            <label><input type="radio" name="gwMode" value="global" data-on-change="WidgetsSettings.set('mode', 'global')"><span data-i18n="widgets.mode_global">Over every app</span></label>
                         </div>
                         <div class="gw-note" data-i18n="widgets.mode_note">Widgets always hide while reversing. "Home screen only" hides them as soon as another app opens.</div>
                     </div>
@@ -98,7 +99,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwFloating" onchange="WidgetsSettings.set('floatingShortcuts', this.checked)">
+                                    <input type="checkbox" id="gwFloating" data-on-change="WidgetsSettings.set('floatingShortcuts', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -122,8 +123,8 @@
                                 <div class="ui-row-desc" id="gwArrangedNote" style="display:none" data-i18n="widgets.arranged_note">Arranged on screen: the position and distances below apply after a reset.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button class="ui-button" type="button" id="gwResetArrange" style="display:none" onclick="WidgetsSettings.resetArrangement()" data-i18n="widgets.arrange_reset">Reset</button>
-                                <button class="ui-button" type="button" onclick="WidgetsSettings.arrange()" data-i18n="widgets.arrange_open">Arrange</button>
+                                <button class="ui-button" type="button" id="gwResetArrange" style="display:none" data-on-click="WidgetsSettings.resetArrangement()" data-i18n="widgets.arrange_reset">Reset</button>
+                                <button class="ui-button" type="button" data-on-click="WidgetsSettings.arrange()" data-i18n="widgets.arrange_open">Arrange</button>
                             </div>
                         </div>
                         <div class="ui-row">
@@ -132,7 +133,7 @@
                                 <div class="ui-row-desc" data-i18n="widgets.position_desc">Corners and bottom show the widgets in a row; left and right stack them in a column.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="gwPosition" class="ui-input" onchange="WidgetsSettings.set('position', this.value)">
+                                <select id="gwPosition" class="ui-input" data-on-change="WidgetsSettings.set('position', this.value)">
                                     <option value="bottom-left" data-i18n="widgets.pos_bottom_left">Bottom left</option>
                                     <option value="bottom-center" data-i18n="widgets.pos_bottom_center">Bottom centre</option>
                                     <option value="bottom-right" data-i18n="widgets.pos_bottom_right">Bottom right</option>
@@ -150,7 +151,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="gwOffsetXValue">24</span>
-                                    <input type="range" class="ui-range" id="gwOffsetX" min="0" max="600" step="4" value="24" oninput="WidgetsSettings.slide('offsetX', +this.value)">
+                                    <input type="range" class="ui-range" id="gwOffsetX" min="0" max="600" step="4" value="24" data-on-input="WidgetsPage.slideNumber('offsetX', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -161,7 +162,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="gwOffsetYValue">24</span>
-                                    <input type="range" class="ui-range" id="gwOffsetY" min="0" max="600" step="4" value="24" oninput="WidgetsSettings.slide('offsetY', +this.value)">
+                                    <input type="range" class="ui-range" id="gwOffsetY" min="0" max="600" step="4" value="24" data-on-input="WidgetsPage.slideNumber('offsetY', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -172,7 +173,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="gwScaleValue">100%</span>
-                                    <input type="range" class="ui-range" id="gwScale" min="60" max="130" step="5" value="100" oninput="WidgetsSettings.slide('scale', this.value / 100)">
+                                    <input type="range" class="ui-range" id="gwScale" min="60" max="130" step="5" value="100" data-on-input="WidgetsPage.slidePercent('scale', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -182,7 +183,7 @@
                                 <div class="ui-row-desc" data-i18n="widgets.theme_desc">Auto follows the head unit's day and night mode.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="gwTheme" class="ui-input" onchange="WidgetsSettings.set('theme', this.value)">
+                                <select id="gwTheme" class="ui-input" data-on-change="WidgetsSettings.set('theme', this.value)">
                                     <option value="auto" data-i18n="widgets.theme_auto">Auto</option>
                                     <option value="night" data-i18n="widgets.theme_night">Always night</option>
                                     <option value="day" data-i18n="widgets.theme_day">Always day</option>
@@ -197,7 +198,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="gwTintValue">82%</span>
-                                    <input type="range" class="ui-range" id="gwTint" min="70" max="95" step="1" value="82" oninput="WidgetsSettings.slide('tint', this.value / 100)">
+                                    <input type="range" class="ui-range" id="gwTint" min="70" max="95" step="1" value="82" data-on-input="WidgetsPage.slidePercent('tint', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -208,7 +209,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwReduce" onchange="WidgetsSettings.set('reduceMotion', this.checked)">
+                                    <input type="checkbox" id="gwReduce" data-on-change="WidgetsSettings.set('reduceMotion', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -231,7 +232,7 @@
                                 <div class="ui-row-desc" data-i18n="widgets.motors_desc">For the power widget. Auto learns it from the car while you drive.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="gwMotors" class="ui-input" onchange="WidgetsSettings.set('motors', this.value)">
+                                <select id="gwMotors" class="ui-input" data-on-change="WidgetsSettings.set('motors', this.value)">
                                     <option value="auto" data-i18n="widgets.motors_auto">Auto</option>
                                     <option value="fwd" data-i18n="widgets.motors_front">Front motor</option>
                                     <option value="rwd" data-i18n="widgets.motors_rear">Rear motor</option>
@@ -246,7 +247,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <span class="ui-slider-value" id="gwUnitNow"></span>
-                                <button class="ui-button" type="button" onclick="window.location.href='/notifications#tyreLimitsSection'" data-i18n="widgets.units_change">Change</button>
+                                <button class="ui-button" type="button" data-on-click="BYDOnActions.go('/notifications#tyreLimitsSection')" data-i18n="widgets.units_change">Change</button>
                             </div>
                         </div>
                         <div class="ui-row">
@@ -255,7 +256,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwChargingAuto" onchange="WidgetsSettings.set('chargingOnlyWhenActive', this.checked)">
+                                    <input type="checkbox" id="gwChargingAuto" data-on-change="WidgetsSettings.set('chargingOnlyWhenActive', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -267,7 +268,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwBlindSpot" onchange="WidgetsSettings.set('showBlindSpot', this.checked)">
+                                    <input type="checkbox" id="gwBlindSpot" data-on-change="WidgetsSettings.set('showBlindSpot', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -279,7 +280,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="gwTerrain" onchange="WidgetsSettings.set('terrain', this.checked)">
+                                    <input type="checkbox" id="gwTerrain" data-on-change="WidgetsSettings.set('terrain', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>

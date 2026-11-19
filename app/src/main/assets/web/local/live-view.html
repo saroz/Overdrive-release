@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/skeleton.js?v=4"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
@@ -59,7 +60,7 @@
                                          trigger and list mirror it because a native
                                          option popup can't be themed. -->
                                     <div class="quality-menu is-loading" id="qualityMenu" aria-busy="true">
-                                        <select id="qualitySelector" class="quality-menu__native" onchange="BYD.stream.setQuality(this.value)">
+                                        <select id="qualitySelector" class="quality-menu__native" data-on-change="BYD.stream.setQuality(this.value)">
                                             <option value="ULTRA_LOW"  data-i18n="stream.quality_ultra_low">Ultra Low (400k)</option>
                                             <option value="LOW"        data-i18n="stream.quality_low">Low (600k)</option>
                                             <option value="MEDIUM"     selected data-i18n="stream.quality_medium">Medium (1M)</option>
@@ -83,7 +84,7 @@
                                     <button class="top-bar-btn cabin-listen-btn"
                                             id="cabinListenButton"
                                             type="button"
-                                            onclick="BYD.cabinListener.toggle()"
+                                            data-on-click="BYD.cabinListener.toggle()"
                                             aria-pressed="false"
                                             data-i18n-attr="title:liveview.listen_cabin;aria-label:liveview.listen_cabin"
                                             title="Listen to cabin"
@@ -95,7 +96,7 @@
                                         </svg>
                                     </button>
                                     <button type="button" class="top-bar-btn vehicle-actions-trigger" id="vehicleActionsTrigger"
-                                            onclick="BYD.stream.toggleVehicleActions()" aria-haspopup="true"
+                                            data-on-click="BYD.stream.toggleVehicleActions()" aria-haspopup="true"
                                             aria-controls="deterrentControls" aria-expanded="false"
                                             data-i18n-attr="title:liveview.actions;aria-label:liveview.actions"
                                             title="Actions" aria-label="Actions">
@@ -105,14 +106,14 @@
                                         <span data-i18n="liveview.actions">Actions</span>
                                     </button>
                                     <button type="button" class="top-bar-btn" id="liveRewindBtn"
-                                            onclick="location.href='events.html?view=timeline&amp;t='+(new Date().getTime()-60000)"
+                                            data-on-click="LiveViewPage.openTimeline()"
                                             data-i18n-attr="title:tlview.rewind;aria-label:tlview.rewind"
                                             title="Rewind" aria-label="Rewind">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                             <path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/>
                                         </svg>
                                     </button>
-                                    <button class="top-bar-btn" onclick="BYD.stream.toggleFullscreen()" aria-label="Fullscreen" data-i18n-attr="aria-label:events.player_fullscreen;title:events.player_fullscreen" title="Fullscreen">
+                                    <button class="top-bar-btn" data-on-click="BYD.stream.toggleFullscreen()" aria-label="Fullscreen" data-i18n-attr="aria-label:events.player_fullscreen;title:events.player_fullscreen" title="Fullscreen">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                             <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
                                             <path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/>
@@ -154,7 +155,7 @@
                                          when either cloud or the local remote key is available. -->
                                     <div class="vehicle-lock-row" id="vehicleLockRow" style="display:none;">
                                         <button type="button" class="deterrent-btn deterrent-lock" id="vehicleLockBtn"
-                                                onclick="BYD.stream.fireLiveAction('lock')"
+                                                data-on-click="BYD.stream.fireLiveAction('lock')"
                                                 data-i18n-attr="title:dashboard.cmd_lock;aria-label:dashboard.cmd_lock"
                                                 title="Lock" aria-label="Lock">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -163,7 +164,7 @@
                                             <span class="deterrent-label" data-i18n="dashboard.cmd_lock">Lock</span>
                                         </button>
                                         <button type="button" class="deterrent-btn deterrent-unlock" id="vehicleUnlockBtn"
-                                                onclick="BYD.stream.fireLiveAction('unlock')"
+                                                data-on-click="BYD.stream.fireLiveAction('unlock')"
                                                 data-i18n-attr="title:dashboard.cmd_unlock;aria-label:dashboard.cmd_unlock"
                                                 title="Unlock" aria-label="Unlock">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -173,7 +174,7 @@
                                         </button>
                                     </div>
                                     <button type="button" class="deterrent-btn deterrent-flash" id="deterrentFlashBtn" style="display:none;"
-                                            onclick="BYD.stream.fireLiveAction('flash')"
+                                            data-on-click="BYD.stream.fireLiveAction('flash')"
                                             data-i18n-attr="title:liveview.deterrent_flash;aria-label:liveview.deterrent_flash"
                                             title="Flash" aria-label="Flash">
                                         <!-- Lucide lightbulb -->
@@ -183,7 +184,7 @@
                                         <span class="deterrent-label" data-i18n="liveview.deterrent_flash">Flash</span>
                                     </button>
                                     <button type="button" class="deterrent-btn deterrent-horn" id="deterrentHornBtn" style="display:none;"
-                                            onclick="BYD.stream.fireLiveAction('horn')"
+                                            data-on-click="BYD.stream.fireLiveAction('horn')"
                                             data-i18n-attr="title:liveview.deterrent_horn;aria-label:liveview.deterrent_horn"
                                             title="Horn" aria-label="Horn">
                                         <!-- Lucide megaphone -->
@@ -193,22 +194,22 @@
                                         <span class="deterrent-label" data-i18n="liveview.deterrent_horn">Horn</span>
                                     </button>
                                     <button type="button" class="deterrent-btn" id="vehiclePowerOnBtn" style="display:none;"
-                                            onclick="BYD.stream.fireLiveAction('powerOn')">
+                                            data-on-click="BYD.stream.fireLiveAction('powerOn')">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg>
                                         <span class="deterrent-label" data-i18n="vehicle.power_on">Power on</span>
                                     </button>
                                     <button type="button" class="deterrent-btn" id="vehiclePowerOffBtn" style="display:none;"
-                                            onclick="BYD.stream.fireLiveAction('powerOff')">
+                                            data-on-click="BYD.stream.fireLiveAction('powerOff')">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64A9 9 0 0 1 20.77 15"/><path d="M6.16 6.16a9 9 0 1 0 12.68 12.68"/><path d="M12 2v4"/><line x1="2" y1="2" x2="22" y2="22"/></svg>
                                         <span class="deterrent-label" data-i18n="vehicle.power_off">Power off</span>
                                     </button>
                                     <button type="button" class="deterrent-btn" id="vehicleTrunkOpenBtn"
-                                            onclick="BYD.stream.fireLiveAction('trunkOpen')">
+                                            data-on-click="BYD.stream.fireLiveAction('trunkOpen')">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 21H2"/><path d="M10 4a2 2 0 0 1 2.36-1.968l5.41.992A1.5 1.5 0 0 1 19 4.5V21l-7.876.992A1 1 0 0 1 10 21z"/><path d="M10.268 3H7a2 2 0 0 0-2 2v16"/><path d="M14 12h.01"/><path d="M22 21h-3"/></svg>
                                         <span class="deterrent-label" data-i18n="dashboard.cmd_trunk_open">Open trunk</span>
                                     </button>
                                     <button type="button" class="deterrent-btn" id="vehicleTrunkCloseBtn"
-                                            onclick="BYD.stream.fireLiveAction('trunkClose')">
+                                            data-on-click="BYD.stream.fireLiveAction('trunkClose')">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21V5a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v16"/><path d="M2 21h20"/><path d="M9 12h.01"/></svg>
                                         <span class="deterrent-label" data-i18n="dashboard.cmd_trunk_close">Close trunk</span>
                                     </button>
@@ -231,7 +232,7 @@
                                     <canvas id="liveCarCanvas" class="car-image" aria-hidden="true"></canvas>
                                     
                                     <!-- Camera Hotspots with Pulse Animation -->
-                                    <div class="cam-hotspot" data-cam="1" onclick="BYD.stream.selectCamera(1)">
+                                    <div class="cam-hotspot" data-cam="1" data-on-click="BYD.stream.selectCamera(1)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_front">FRONT</span>
@@ -243,27 +244,27 @@
                                          from the FRONT quadrant marker so users see the
                                          standalone dashcam sensor as distinct from the
                                          AVM front-quadrant stitch. -->
-                                    <div class="cam-hotspot cam-dvr" data-cam="6" style="display:none;" onclick="BYD.stream.selectCamera(6)">
+                                    <div class="cam-hotspot cam-dvr" data-cam="6" style="display:none;" data-on-click="BYD.stream.selectCamera(6)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_oem_dashcam">DVR</span>
                                     </div>
-                                    <div class="cam-hotspot" data-cam="3" onclick="BYD.stream.selectCamera(3)">
+                                    <div class="cam-hotspot" data-cam="3" data-on-click="BYD.stream.selectCamera(3)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_rear">REAR</span>
                                     </div>
-                                    <div class="cam-hotspot" data-cam="4" onclick="BYD.stream.selectCamera(4)">
+                                    <div class="cam-hotspot" data-cam="4" data-on-click="BYD.stream.selectCamera(4)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_left">LEFT</span>
                                     </div>
-                                    <div class="cam-hotspot" data-cam="2" onclick="BYD.stream.selectCamera(2)">
+                                    <div class="cam-hotspot" data-cam="2" data-on-click="BYD.stream.selectCamera(2)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_right">RIGHT</span>
                                     </div>
-                                    <div class="cam-hotspot cam-all" data-cam="0" onclick="BYD.stream.selectCamera(0)">
+                                    <div class="cam-hotspot cam-all" data-cam="0" data-on-click="BYD.stream.selectCamera(0)">
                                         <div class="hotspot-pulse"></div>
                                         <div class="hotspot-ring"></div>
                                         <span class="hotspot-label" data-i18n="stream.hotspot_all">ALL</span>
@@ -285,7 +286,7 @@
                                         </div>
                                     </div>
                                     <button type="button" class="location-close-button"
-                                            onclick="BYD.liveLayout.setMapExpanded(false)"
+                                            data-on-click="BYD.liveLayout.setMapExpanded(false)"
                                             data-i18n-attr="aria-label:liveview.back_to_cameras"
                                             aria-label="Back to cameras">
                                         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -298,7 +299,7 @@
                                     <div class="map-container" id="mapContainer"></div>
                                     <div class="map-overlay-actions">
                                         <button class="btn-map-float btn-my-location"
-                                                onclick="BYD.map.showMyLocation()"
+                                                data-on-click="BYD.map.showMyLocation()"
                                                 data-i18n-attr="aria-label:liveview.my_location"
                                                 aria-label="Show my location">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -306,7 +307,7 @@
                                             </svg>
                                         </button>
                                         <button class="btn-map-float btn-directions"
-                                                onclick="BYD.map.openDirections()"
+                                                data-on-click="BYD.map.openDirections()"
                                                 data-i18n-attr="aria-label:liveview.directions"
                                                 aria-label="Directions to vehicle">
                                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
@@ -325,7 +326,7 @@
 
                                 <button type="button" class="location-expand-button"
                                         id="locationExpandButton"
-                                        onclick="BYD.liveLayout.toggleMap()"
+                                        data-on-click="BYD.liveLayout.toggleMap()"
                                         aria-expanded="false">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                         <path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.performance_title">Performance - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -59,9 +60,9 @@
                             <span data-i18n="performance.soc_history">Battery SOC History</span>
                         </div>
                         <div class="soc-time-selector" id="socTimeSelector">
-                            <button class="time-btn" data-hours="24" onclick="BYD.performance.setSocTimeRange(24)" data-i18n="performance.range_24h">24h</button>
-                            <button class="time-btn active" data-hours="72" onclick="BYD.performance.setSocTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
-                            <button class="time-btn" data-hours="168" onclick="BYD.performance.setSocTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
+                            <button class="time-btn" data-hours="24" data-on-click="BYD.performance.setSocTimeRange(24)" data-i18n="performance.range_24h">24h</button>
+                            <button class="time-btn active" data-hours="72" data-on-click="BYD.performance.setSocTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
+                            <button class="time-btn" data-hours="168" data-on-click="BYD.performance.setSocTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
                         </div>
                     </div>
                     <div class="soc-stats-row">
@@ -91,9 +92,9 @@
                             <span data-i18n="performance.batt12v_history">12V Battery History</span>
                         </div>
                         <div class="soc-time-selector" id="voltageTimeSelector">
-                            <button class="time-btn" data-hours="24" onclick="BYD.performance.setBatteryTimeRange(24)" data-i18n="performance.range_24h">24h</button>
-                            <button class="time-btn active" data-hours="72" onclick="BYD.performance.setBatteryTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
-                            <button class="time-btn" data-hours="168" onclick="BYD.performance.setBatteryTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
+                            <button class="time-btn" data-hours="24" data-on-click="BYD.performance.setBatteryTimeRange(24)" data-i18n="performance.range_24h">24h</button>
+                            <button class="time-btn active" data-hours="72" data-on-click="BYD.performance.setBatteryTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
+                            <button class="time-btn" data-hours="168" data-on-click="BYD.performance.setBatteryTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
                         </div>
                     </div>
                     <div class="soc-stats-row">
@@ -123,9 +124,9 @@
                             <span data-i18n="performance.battery_health">Battery Health</span>
                         </div>
                         <div class="soc-time-selector" id="healthTimeSelector">
-                            <button class="time-btn" data-hours="24" onclick="BYD.performance.setHealthTimeRange(24)" data-i18n="performance.range_24h">24h</button>
-                            <button class="time-btn active" data-hours="72" onclick="BYD.performance.setHealthTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
-                            <button class="time-btn" data-hours="168" onclick="BYD.performance.setHealthTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
+                            <button class="time-btn" data-hours="24" data-on-click="BYD.performance.setHealthTimeRange(24)" data-i18n="performance.range_24h">24h</button>
+                            <button class="time-btn active" data-hours="72" data-on-click="BYD.performance.setHealthTimeRange(72)" data-i18n="performance.range_3d">3 Days</button>
+                            <button class="time-btn" data-hours="168" data-on-click="BYD.performance.setHealthTimeRange(168)" data-i18n="performance.range_7d">7 Days</button>
                         </div>
                     </div>
                     <div class="soc-stats-row">
@@ -158,7 +159,7 @@
                             </svg>
                             <span data-i18n="performance.soh_card_title">State of Health (SOH)</span>
                         </div>
-                        <button class="ui-button ui-button-ghost ui-button-danger" id="btnResetSoh" onclick="BYD.performance.resetSoh()" data-i18n="performance.btn_reset">Reset</button>
+                        <button class="ui-button ui-button-ghost ui-button-danger" id="btnResetSoh" data-on-click="BYD.performance.resetSoh()" data-i18n="performance.btn_reset">Reset</button>
                     </div>
 
                     <!-- Live SOH headline -->
@@ -171,7 +172,7 @@
                         </div>
                         <div style="flex:1;min-width:0;">
                             <!-- Battery capacity row — tappable, opens modal -->
-                            <div id="sohCapacityRow" onclick="BYD.performance.openSohCapacityModal()"
+                            <div id="sohCapacityRow" data-on-click="BYD.performance.openSohCapacityModal()"
                                  style="background:var(--bg-elevated);padding:14px 16px;border-radius:12px;cursor:pointer;border:1px solid var(--border-subtle);">
                                 <div style="font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;" data-i18n="soh.battery_capacity_label">Battery capacity</div>
                                 <div id="sohCapacitySummary" style="font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:600;color:var(--text-primary);margin-top:4px;" data-i18n="soh.tap_to_set">Tap to set</div>
@@ -220,9 +221,9 @@
                         <select id="sohCapacityModalModel" class="ui-input soh-modal-select"></select>
 
                         <div class="ui-dialog-actions">
-                            <button class="ui-button" onclick="BYD.performance.resetSohCapacityToAuto()" data-i18n="soh.modal_reset">Reset to auto-detect</button>
-                            <button class="ui-button" onclick="BYD.performance.closeSohCapacityModal()" data-i18n="common.cancel">Cancel</button>
-                            <button id="sohCapacityModalSave" class="ui-button ui-button-primary" onclick="BYD.performance.saveSohCapacity()" data-i18n="soh.modal_save">Save</button>
+                            <button class="ui-button" data-on-click="BYD.performance.resetSohCapacityToAuto()" data-i18n="soh.modal_reset">Reset to auto-detect</button>
+                            <button class="ui-button" data-on-click="BYD.performance.closeSohCapacityModal()" data-i18n="common.cancel">Cancel</button>
+                            <button id="sohCapacityModalSave" class="ui-button ui-button-primary" data-on-click="BYD.performance.saveSohCapacity()" data-i18n="soh.modal_save">Save</button>
                         </div>
                     </div>
                 </div>
@@ -436,7 +437,7 @@
                                 type="button" title="Refresh process snapshot"
                                 aria-label="Refresh process snapshot"
                                 data-i18n-attr="title:performance.refresh_snapshot;aria-label:performance.refresh_snapshot"
-                                onclick="BYD.performance.refreshTopNow()">
+                                data-on-click="BYD.performance.refreshTopNow()">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 11a8 8 0 1 0 2 5.3"/>
@@ -483,7 +484,7 @@
                             <span data-i18n="performance.data_usage_title">Data Usage</span>
                         </div>
                         <label class="du-toggle" id="dataUsageToggle" title="">
-                            <input type="checkbox" id="dataUsageEnabled" onchange="BYD.performance.toggleDataUsage(this.checked)">
+                            <input type="checkbox" id="dataUsageEnabled" data-on-change="BYD.performance.toggleDataUsage(this.checked)">
                             <span class="du-toggle-track"><span class="du-toggle-thumb"></span></span>
                             <span class="du-toggle-label" data-i18n="performance.data_usage_enabled">Enabled</span>
                         </label>
@@ -497,8 +498,8 @@
                     <!-- Live content (shown when enabled) -->
                     <div id="dataUsageContent" style="display:none;">
                         <div class="soc-time-selector" id="dataUsageTimeSelector" style="margin-bottom:12px;">
-                            <button class="time-btn" data-days="7" onclick="BYD.performance.setDataUsageRange(7)" data-i18n="performance.range_7d">7 Days</button>
-                            <button class="time-btn active" data-days="30" onclick="BYD.performance.setDataUsageRange(30)" data-i18n="performance.range_30d">30 Days</button>
+                            <button class="time-btn" data-days="7" data-on-click="BYD.performance.setDataUsageRange(7)" data-i18n="performance.range_7d">7 Days</button>
+                            <button class="time-btn active" data-days="30" data-on-click="BYD.performance.setDataUsageRange(30)" data-i18n="performance.range_30d">30 Days</button>
                         </div>
                         <div class="soc-stats-row">
                             <div class="soc-stat"><span class="soc-stat-value" id="duTotal">--</span><span class="soc-stat-label" data-i18n="performance.data_usage_total">Total</span></div>
@@ -657,9 +658,9 @@
                         </div>
                     </div>
                     <div style="display:flex;gap:8px;padding:12px 0 4px;">
-                        <button class="ui-button" onclick="BYD.performance.toggleAllResetCategories(true)" style="flex:1;background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--card-border);" data-i18n="performance.btn_select_all">Select all</button>
-                        <button class="ui-button" onclick="BYD.performance.toggleAllResetCategories(false)" style="flex:1;background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--card-border);" data-i18n="performance.btn_clear">Clear</button>
-                        <button class="ui-button ui-button-danger" onclick="BYD.performance.runReset()" style="flex:2;" data-i18n="performance.btn_reset_selected">Reset Selected</button>
+                        <button class="ui-button" data-on-click="BYD.performance.toggleAllResetCategories(true)" style="flex:1;background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--card-border);" data-i18n="performance.btn_select_all">Select all</button>
+                        <button class="ui-button" data-on-click="BYD.performance.toggleAllResetCategories(false)" style="flex:1;background:var(--bg-elevated);color:var(--text-primary);border:1px solid var(--card-border);" data-i18n="performance.btn_clear">Clear</button>
+                        <button class="ui-button ui-button-danger" data-on-click="BYD.performance.runReset()" style="flex:2;" data-i18n="performance.btn_reset_selected">Reset Selected</button>
                     </div>
                 </div>
 

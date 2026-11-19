@@ -138,5 +138,11 @@
         if (typeof url === 'string' && /^\/(?!\/)/.test(url)) window.location.href = url;
     }
 
-    window.BYDOnActions = { parse: parse, go: go };
+    /** Open a hidden file picker (or press any element) by id, e.g. an "Import" button. */
+    function clickId(id) {
+        var target = typeof id === 'string' ? document.getElementById(id) : null;
+        if (target && typeof target.click === 'function') target.click();
+    }
+
+    window.BYDOnActions = { parse: parse, go: go, clickId: clickId };
 })();
