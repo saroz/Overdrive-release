@@ -51,11 +51,13 @@ class VehicleVersionInfoWebAssetTest {
         while (current != null) {
             val direct = current.resolve(relative)
             if (Files.exists(direct)) {
-                return String(Files.readAllBytes(direct), StandardCharsets.UTF_8)
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relative,
+                    String(Files.readAllBytes(direct), StandardCharsets.UTF_8))
             }
             val fromModule = current.resolve(relative.removePrefix("app/"))
             if (Files.exists(fromModule)) {
-                return String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8)
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relative,
+                    String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8))
             }
             current = current.parent
         }

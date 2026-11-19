@@ -56,17 +56,6 @@
 <script src="../shared/core.js?v=27"></script>
 <script src="../shared/update-flow.js?v=3"></script>
 <script src="../shared/factory-dvr.js?v=1"></script>
-<script>
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('sidebarOverlay').classList.toggle('show');
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-        BYD.i18n.init().then(function () {
-            BYD.core.init();
-            BYD.factoryDvr.init();
-        });
-    });
-</script>
+<script src="../shared/pages/factory-dvr.js?v=1"></script>
 </body>
 </html>

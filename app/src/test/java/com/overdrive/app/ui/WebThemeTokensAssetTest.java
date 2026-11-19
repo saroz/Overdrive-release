@@ -154,6 +154,16 @@ public class WebThemeTokensAssetTest {
             } catch (AssertionError none) {
                 // page has no moved CSS
             }
+            // Security F9: inline <script> blocks moved to shared/pages/<page>.js, <page>-2.js, ...
+            for (int i = 1; ; i++) {
+                String js = "app/src/main/assets/web/shared/pages/" + page.group(1)
+                        + (i == 1 ? "" : "-" + i) + ".js";
+                try {
+                    out.append('\n').append(new String(Files.readAllBytes(locate(js)), StandardCharsets.UTF_8));
+                } catch (AssertionError none) {
+                    break;
+                }
+            }
         }
         if (p.endsWith("web/shared/styles.css") || p.endsWith("web/shared/revamp.css")) {
             Path dir = locate("web-ui/src/components/adopted");
