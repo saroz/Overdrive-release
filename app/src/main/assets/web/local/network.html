@@ -68,6 +68,11 @@
                             <div class="ui-note-text" data-i18n="network.adb_insecure_warning">This head unit lets any device on its WiFi or hotspot open a debug shell (ADB) without asking on the car screen. Only let devices you trust join the hotspot or the car's WiFi.</div>
                         </div>
 
+                        <div class="ui-note ui-note-warning" id="scriptRelaxedWarning" role="alert" hidden style="margin-bottom:12px;">
+                            <svg class="ui-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                            <div class="ui-note-text" data-i18n="network.script_relaxed_warning">The script safety check is relaxed: pages run scripts it would normally block. Turn “Relax the script safety check” off again once the broken page is fixed.</div>
+                        </div>
+
                         <div class="ui-row">
                             <div class="ui-row-copy">
                                 <div class="ui-row-title" data-i18n="network.enable_label">Share mobile data over WiFi</div>
@@ -282,7 +287,7 @@
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/network.js?v=7"></script>
+    <script src="../shared/network.js?v=8"></script>
     <script src="../shared/pages/network-2.page.js?v=1"></script>
 </body>
 </html>

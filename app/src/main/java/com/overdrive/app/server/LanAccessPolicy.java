@@ -60,6 +60,11 @@ public final class LanAccessPolicy {
         }
     }
 
+    /** Forget the cached settings so the next check reads the config again (after a save). */
+    public static void invalidate() {
+        cachedAt = 0L;
+    }
+
     /** True when the daemon config has local-only mode on. */
     public static boolean localOnlyEnabled() {
         return current().localOnly;

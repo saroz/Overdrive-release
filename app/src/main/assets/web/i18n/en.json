@@ -4986,6 +4986,7 @@
     "warn_body": "This head unit has one WiFi radio, so it cannot host a hotspot and stay on a WiFi network at the same time. While the hotspot is on, the car disconnects from WiFi and uses the built-in SIM's mobile data for itself and for every connected device. WiFi comes back when you turn the hotspot off.",
     "warn_continue": "Turn on hotspot",
     "adb_insecure_warning": "This head unit lets any device on its WiFi or hotspot open a debug shell (ADB) without asking on the car screen. Only let devices you trust join the hotspot or the car's WiFi.",
+    "script_relaxed_warning": "The script safety check is relaxed: pages run scripts it would normally block. Turn “Relax the script safety check” off again once the broken page is fixed.",
     "local_only": "Only the car and its hotspot",
     "local_only_desc": "Block the OverDrive web page for devices on other WiFi networks the car joins, such as home or office WiFi. The car screen, phones on the car's hotspot and remote tunnels keep working.",
     "script_report_only": "Relax the script safety check",

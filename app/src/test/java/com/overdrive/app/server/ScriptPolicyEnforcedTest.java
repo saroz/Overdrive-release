@@ -64,4 +64,32 @@ public class ScriptPolicyEnforcedTest {
         if (!Files.exists(p)) p = Paths.get(rel.replaceFirst("^app/", ""));
         return new String(Files.readAllBytes(p), StandardCharsets.UTF_8);
     }
+    @Test
+    public void savingTheSwitchDropsTheCachesSoItDoesNotSnapBack() throws Exception {
+        String api = read("app/src/main/java/com/overdrive/app/server/HotspotApiHandler.java");
+        int save = api.indexOf("UnifiedConfigManager.updateValues(\"webAccess\", web)");
+        assertTrue(save > 0);
+        assertTrue(api.indexOf("ScriptPolicy.invalidate();", save) > save);
+        assertTrue(api.indexOf("LanAccessPolicy.invalidate();", save) > save);
+    }
+
+    @Test
+    public void networkPageWarnsWhileTheCheckIsRelaxed() throws Exception {
+        String html = read("app/src/main/assets/web/local/network.html");
+        assertTrue(html.contains("id=\"scriptRelaxedWarning\" role=\"alert\" hidden"));
+        assertTrue(html.contains("data-i18n=\"network.script_relaxed_warning\""));
+        String js = read("app/src/main/assets/web/shared/network.js");
+        assertTrue(js.contains("relaxedWarn.hidden = s.scriptPolicyReportOnly !== true;"));
+        for (String lang : new String[] {"en", "ne", "he"}) {
+            assertTrue(lang, read("app/src/main/assets/web/i18n/" + lang + ".json")
+                    .contains("\"script_relaxed_warning\""));
+        }
+    }
+
+    @Test
+    public void liveViewDoesNotCompileWebAssemblyOnThePage() throws Exception {
+        // Chrome 58 refuses WebAssembly under script-src without 'unsafe-eval'; the Broadway
+        // decoder runs only inside shared/broadway-worker.js.
+        assertFalse(read("app/src/main/assets/web/local/live-view.html").contains("Decoder.js"));
+    }
 }

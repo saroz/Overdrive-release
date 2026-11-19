@@ -285,6 +285,10 @@ public class HotspotApiHandler {
                 if (!UnifiedConfigManager.updateValues("webAccess", web)) {
                     throw new IllegalStateException("could not save web access settings");
                 }
+                // Drop the 5 s / 2 s caches so the status poll right after the save (and the
+                // next page load) sees the new value instead of snapping the switch back.
+                ScriptPolicy.invalidate();
+                LanAccessPolicy.invalidate();
                 webAccessApplied = 1;
             }
 

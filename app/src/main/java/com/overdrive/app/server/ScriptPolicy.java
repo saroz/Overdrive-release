@@ -10,7 +10,9 @@ import org.json.JSONObject;
  * <p>{@code webAccess.scriptPolicyReportOnly=true} (Network page > Behaviour) is the way back if
  * something on a head unit still needs an inline script or eval: pages then behave as before
  * step 5 and violations are only reported to /api/csp-report. Read from the daemon config,
- * cached for 5 s; an unreadable config keeps the last answer (enforce at start).
+ * cached for 5 s and dropped by {@link #invalidate()} when the owner saves the switch. If the
+ * config cannot be read, the loader hands back defaults, so the policy falls back to ENFORCED
+ * (the safe side) until the config reads again.
  */
 public final class ScriptPolicy {
 
@@ -31,5 +33,10 @@ public final class ScriptPolicy {
         }
         cachedAt = now;
         return reportOnly;
+    }
+
+    /** Forget the cached answer so the next request reads the config again (after a save). */
+    public static void invalidate() {
+        cachedAt = 0L;
     }
 }
