@@ -531,36 +531,9 @@ BYD.stream = {
                 return false;
             }
             
-            // 1. Construct Absolute URL for the WASM file
-            // Assumes current page is in /local/ and assets are in /shared/
-            const baseUrl = new URL('../shared/', window.location.href).href;
-            const wasmUrl = baseUrl + 'avc.wasm';
-            
-            // 2. Fetch Decoder.js source code
-            const decoderUrl = baseUrl + "Decoder.js";
-            const response = await fetch(decoderUrl);
-            let decoderCode = await response.text();
-            
-            // 3. CRITICAL FIX: Replace relative "avc.wasm" with Absolute URL
-            // This fixes: "Failed to parse URL from avc.wasm" in Blob Workers
-            decoderCode = decoderCode.replace(/["']avc\.wasm["']/g, `"${wasmUrl}"`);
-            
-            // 4. Inject locateFile (Standard Emscripten hook) as a backup
-            const locateFileInjection = `
-                var Module = Module || {};
-                Module['locateFile'] = function(path) {
-                    if (path.endsWith('.wasm')) {
-                        return '${wasmUrl}';
-                    }
-                    return path;
-                };
-            `;
-            decoderCode = locateFileInjection + decoderCode;
-            
-            // 5. Create Worker from modified source
-            const blob = new Blob([decoderCode], { type: 'application/javascript' });
-            const workerUrl = URL.createObjectURL(blob);
-            this._broadwayWorkerUrl = workerUrl;
+            // Security F9: a static worker next to Decoder.js/avc.wasm (no fetched-and-patched
+            // blob worker). Relative paths resolve inside shared/.
+            const workerUrl = new URL('../shared/broadway-worker.js', window.location.href).href;
 
             this.broadwayPlayer = new Player({
                 useWorker: true,

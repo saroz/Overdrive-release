@@ -408,25 +408,8 @@ BYD.pip = {
             document.getElementById('pip_sota_canvas').style.display = 'none';
             document.getElementById('pip_hw_player').style.display = 'none';
             
-            const baseUrl = new URL('../shared/', window.location.href).href;
-            const wasmUrl = baseUrl + 'avc.wasm';
-            const decoderUrl = baseUrl + 'Decoder.js';
-            
-            const response = await fetch(decoderUrl);
-            let decoderCode = await response.text();
-            decoderCode = decoderCode.replace(/["']avc\.wasm["']/g, `"${wasmUrl}"`);
-            
-            const locateFileInjection = `
-                var Module = Module || {};
-                Module['locateFile'] = function(path) {
-                    if (path.endsWith('.wasm')) return '${wasmUrl}';
-                    return path;
-                };
-            `;
-            decoderCode = locateFileInjection + decoderCode;
-            
-            const blob = new Blob([decoderCode], { type: 'application/javascript' });
-            const workerUrl = URL.createObjectURL(blob);
+            // Security F9: static decoder worker (see shared/broadway-worker.js).
+            const workerUrl = new URL('../shared/broadway-worker.js', window.location.href).href;
             
             this.broadwayPlayer = new Player({
                 useWorker: true,
