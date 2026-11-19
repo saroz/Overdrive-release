@@ -144,7 +144,7 @@ public class WebSettingsToggleReliabilityContractTest {
         String script = read("app/src/main/assets/web/shared/safe-locations.js");
 
         assertTrue(html.contains(
-                "id=\"safeLocEnabled\" disabled onchange=\"SafeLocations.toggleFeature()\""));
+                "id=\"safeLocEnabled\" disabled data-on-change=\"SafeLocations.toggleFeature()\""));
         assertTrue(html.contains("safe-locations.js?v=6"));
         assertOrdered(script);
         assertTrue(script.contains("this.ready = await this.loadData();"));

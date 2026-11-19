@@ -263,7 +263,7 @@ public class DiLink5AssistOffContractTest {
             assertTrue(control, html.contains("id=\"survAssistOff" + control + "Row\""));
             assertTrue(control, html.contains(
                     "id=\"survAssistOff" + control + "\" disabled "
-                            + "onchange=\"SurvSettings.toggleAssistOff('"
+                            + "data-on-change=\"SurvSettings.toggleAssistOff('"
                             + control.toLowerCase() + "')\""));
         }
         // Rows sit right after the keep-alive row and are NOT part of the onOnly dimming.

@@ -21,3 +21,13 @@ BYD.i18n.init().then(function () {
         ParkingSettings.init()
     ]);
 }).then(unlockSettings, failSettings);
+
+// Security F9 step 4: expressions the markup can no longer hold.
+window.SurveillancePage = {
+    saveParkingInt: function (key, value) {
+        ParkingSettings.save(key, parseInt(value, 10));
+    },
+    uploadDeterrentImage: function (input) {
+        SurvSettings.uploadScreenDeterrentImage(input.files[0]);
+    }
+};

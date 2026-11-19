@@ -289,7 +289,7 @@ public class Di5ParkedKeepAliveContractTest {
                 "id=\"survDi5ParkedKeepAliveRow\" style=\"display:none;\""));
         assertTrue(html.contains(
                 "id=\"survDi5ParkedKeepAlive\" disabled "
-                        + "onchange=\"SurvSettings.toggleDi5ParkedKeepAlive()\""));
+                        + "data-on-change=\"SurvSettings.toggleDi5ParkedKeepAlive()\""));
         // The cloud row keeps its own capability gate; the two are independent.
         assertTrue(html.contains(
                 "id=\"survDi5CloudKeepAliveRow\" style=\"display:none;\""));

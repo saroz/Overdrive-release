@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -69,7 +70,7 @@
                     </div>
                     <div class="ui-row-end">
                         <label class="ui-toggle">
-                            <input type="checkbox" id="survEnabled" disabled onchange="SurvSettings.toggleSurveillance()">
+                            <input type="checkbox" id="survEnabled" disabled data-on-change="SurvSettings.toggleSurveillance()">
                             <span class="ui-toggle-track"></span>
                         </label>
                     </div>
@@ -95,8 +96,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="operatingModeBtns">
-                                    <button class="ui-segment" data-value="onAndOff" onclick="SurvSettings.setOperatingMode('onAndOff')" data-i18n="surveillance.operating_mode_on_off">On &amp; Off</button>
-                                    <button class="ui-segment" data-value="onOnly" onclick="SurvSettings.setOperatingMode('onOnly')" data-i18n="surveillance.operating_mode_on_only">On Only</button>
+                                    <button class="ui-segment" data-value="onAndOff" data-on-click="SurvSettings.setOperatingMode('onAndOff')" data-i18n="surveillance.operating_mode_on_off">On &amp; Off</button>
+                                    <button class="ui-segment" data-value="onOnly" data-on-click="SurvSettings.setOperatingMode('onOnly')" data-i18n="surveillance.operating_mode_on_only">On Only</button>
                                 </div>
                             </div>
                         </div>
@@ -119,8 +120,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="armModeBtns">
-                                    <button class="ui-segment" data-value="lock" onclick="SurvSettings.setArmMode('lock')" data-i18n="surveillance.arm_lock">On Lock</button>
-                                    <button class="ui-segment" data-value="power" onclick="SurvSettings.setArmMode('power')" data-i18n="surveillance.arm_power">On Power-Off</button>
+                                    <button class="ui-segment" data-value="lock" data-on-click="SurvSettings.setArmMode('lock')" data-i18n="surveillance.arm_lock">On Lock</button>
+                                    <button class="ui-segment" data-value="power" data-on-click="SurvSettings.setArmMode('power')" data-i18n="surveillance.arm_power">On Power-Off</button>
                                 </div>
                             </div>
                         </div>
@@ -134,8 +135,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented ui-choices" id="accOffModeBtns">
-                                    <button class="ui-segment" data-value="smart" onclick="SurvSettings.setAccOffMode('smart')" data-i18n="surveillance.accoff_smart"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6 4.6 1.9-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>Smart<span class="ui-choice-desc" data-i18n="surveillance.accoff_hint_smart">Motion + AI gating. Recordings begin only when something moves and AI confirms a person, vehicle, or other relevant object.</span></button>
-                                    <button class="ui-segment" data-value="continuous" onclick="SurvSettings.setAccOffMode('continuous')" data-i18n="surveillance.accoff_continuous"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></svg></span>Continuous<span class="ui-choice-desc" data-i18n="surveillance.accoff_hint_continuous">Plain rolling recording. All four cameras record from arm to disarm with no motion filters.</span></button>
+                                    <button class="ui-segment" data-value="smart" data-on-click="SurvSettings.setAccOffMode('smart')" data-i18n="surveillance.accoff_smart"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6 4.6 1.9-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z"/><path d="M19 15l.8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></svg></span>Smart<span class="ui-choice-desc" data-i18n="surveillance.accoff_hint_smart">Motion + AI gating. Recordings begin only when something moves and AI confirms a person, vehicle, or other relevant object.</span></button>
+                                    <button class="ui-segment" data-value="continuous" data-on-click="SurvSettings.setAccOffMode('continuous')" data-i18n="surveillance.accoff_continuous"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 4v16M17 4v16M2 9h5M2 15h5M17 9h5M17 15h5"/></svg></span>Continuous<span class="ui-choice-desc" data-i18n="surveillance.accoff_hint_continuous">Plain rolling recording. All four cameras record from arm to disarm with no motion filters.</span></button>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +155,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survKeepUsbPower" onchange="SurvSettings.toggleKeepUsbPower()">
+                                    <input type="checkbox" id="survKeepUsbPower" data-on-change="SurvSettings.toggleKeepUsbPower()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -174,7 +175,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survMobileDataKeepAlive" onchange="SurvSettings.toggleMobileDataKeepAlive()">
+                                    <input type="checkbox" id="survMobileDataKeepAlive" data-on-change="SurvSettings.toggleMobileDataKeepAlive()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -187,7 +188,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survBluetoothKeepAlive" disabled onchange="SurvSettings.toggleBluetoothKeepAlive()">
+                                    <input type="checkbox" id="survBluetoothKeepAlive" disabled data-on-change="SurvSettings.toggleBluetoothKeepAlive()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -204,7 +205,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survDi5CloudKeepAlive" disabled onchange="SurvSettings.toggleDi5CloudKeepAlive()">
+                                    <input type="checkbox" id="survDi5CloudKeepAlive" disabled data-on-change="SurvSettings.toggleDi5CloudKeepAlive()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -228,7 +229,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survDi5ParkedKeepAlive" disabled onchange="SurvSettings.toggleDi5ParkedKeepAlive()">
+                                    <input type="checkbox" id="survDi5ParkedKeepAlive" disabled data-on-change="SurvSettings.toggleDi5ParkedKeepAlive()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -252,7 +253,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survAssistOffCpd" disabled onchange="SurvSettings.toggleAssistOff('cpd')">
+                                    <input type="checkbox" id="survAssistOffCpd" disabled data-on-change="SurvSettings.toggleAssistOff('cpd')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -264,7 +265,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survAssistOffLda" disabled onchange="SurvSettings.toggleAssistOff('lda')">
+                                    <input type="checkbox" id="survAssistOffLda" disabled data-on-change="SurvSettings.toggleAssistOff('lda')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -276,7 +277,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survAssistOffElka" disabled onchange="SurvSettings.toggleAssistOff('elka')">
+                                    <input type="checkbox" id="survAssistOffElka" disabled data-on-change="SurvSettings.toggleAssistOff('elka')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -288,7 +289,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survAssistOffDms" disabled onchange="SurvSettings.toggleAssistOff('dms')">
+                                    <input type="checkbox" id="survAssistOffDms" disabled data-on-change="SurvSettings.toggleAssistOff('dms')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -319,7 +320,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survLowPowerMode" onchange="SurvSettings.toggleLowPowerMode()">
+                                    <input type="checkbox" id="survLowPowerMode" data-on-change="SurvSettings.toggleLowPowerMode()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -341,7 +342,7 @@
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="lowSocCutoffValue">10%</span>
                                     <input type="range" class="ui-range" id="lowSocCutoffSlider" min="0" max="30" step="1" value="10"
-                                           oninput="SurvSettings.previewLowSocCutoff(this.value)" onchange="SurvSettings.updateLowSocCutoff(this.value)">
+                                           data-on-input="SurvSettings.previewLowSocCutoff(this.value)" data-on-change="SurvSettings.updateLowSocCutoff(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -366,7 +367,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="safeLocEnabled" disabled onchange="SafeLocations.toggleFeature()">
+                                    <input type="checkbox" id="safeLocEnabled" disabled data-on-change="SafeLocations.toggleFeature()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -397,7 +398,7 @@
                                     <span class="safe-zone-radius-value" id="safeLocRadiusValue">150m</span>
                                 </div>
                                 <input type="range" class="ui-range safe-zone-radius-slider" id="safeLocRadiusSlider" min="15" max="500" step="5" value="150"
-                                    oninput="SafeLocations.updateEditCircleRadius(this.value)">
+                                    data-on-input="SafeLocations.updateEditCircleRadius(this.value)">
                                 <div class="safe-zone-range-labels">
                                     <span>15m</span>
                                     <span>500m</span>
@@ -405,7 +406,7 @@
                             </div>
 
                             <!-- Add Button -->
-                            <button class="ui-button ui-button-primary" style="width:100%; margin-top:12px;" onclick="SafeLocations.addCurrentZone()">
+                            <button class="ui-button ui-button-primary" style="width:100%; margin-top:12px;" data-on-click="SafeLocations.addCurrentZone()">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                                 <span data-i18n="surveillance.add_zone">Add this zone</span>
                             </button>
@@ -435,9 +436,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="envPresetBtns">
-                                    <button class="ui-segment" data-value="outdoor" onclick="SurvSettings.setEnvironmentPreset('outdoor')" data-i18n="surveillance.env_outdoor">Outdoor</button>
-                                    <button class="ui-segment" data-value="garage" onclick="SurvSettings.setEnvironmentPreset('garage')" data-i18n="surveillance.env_garage">Garage</button>
-                                    <button class="ui-segment" data-value="street" onclick="SurvSettings.setEnvironmentPreset('street')" data-i18n="surveillance.env_street">Street</button>
+                                    <button class="ui-segment" data-value="outdoor" data-on-click="SurvSettings.setEnvironmentPreset('outdoor')" data-i18n="surveillance.env_outdoor">Outdoor</button>
+                                    <button class="ui-segment" data-value="garage" data-on-click="SurvSettings.setEnvironmentPreset('garage')" data-i18n="surveillance.env_garage">Garage</button>
+                                    <button class="ui-segment" data-value="street" data-on-click="SurvSettings.setEnvironmentPreset('street')" data-i18n="surveillance.env_street">Street</button>
                                     <button class="ui-segment" data-value="custom" id="envPresetCustom" style="opacity:0.7;cursor:default;" data-i18n="surveillance.env_custom">Custom</button>
                                 </div>
                             </div>
@@ -453,7 +454,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="v2SensitivityValue" data-i18n="surveillance.v2_sens_label.3">3 — Default</span>
-                                    <input type="range" class="ui-range" id="v2SensitivitySlider" min="1" max="5" value="3" oninput="SurvSettings.updateV2Sensitivity(this.value)">
+                                    <input type="range" class="ui-range" id="v2SensitivitySlider" min="1" max="5" value="3" data-on-input="SurvSettings.updateV2Sensitivity(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -467,9 +468,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="detectionZoneBtns">
-                                    <button class="ui-segment" data-value="close" onclick="SurvSettings.setDetectionZone('close')" data-i18n="surveillance.det_close">Close (~3m)</button>
-                                    <button class="ui-segment active" data-value="normal" onclick="SurvSettings.setDetectionZone('normal')" data-i18n="surveillance.det_normal">Normal (~6m)</button>
-                                    <button class="ui-segment" data-value="extended" onclick="SurvSettings.setDetectionZone('extended')" data-i18n="surveillance.det_extended">Extended (full frame)</button>
+                                    <button class="ui-segment" data-value="close" data-on-click="SurvSettings.setDetectionZone('close')" data-i18n="surveillance.det_close">Close (~3m)</button>
+                                    <button class="ui-segment active" data-value="normal" data-on-click="SurvSettings.setDetectionZone('normal')" data-i18n="surveillance.det_normal">Normal (~6m)</button>
+                                    <button class="ui-segment" data-value="extended" data-on-click="SurvSettings.setDetectionZone('extended')" data-i18n="surveillance.det_extended">Extended (full frame)</button>
                                 </div>
                             </div>
                         </div>
@@ -484,7 +485,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="loiteringTimeValue">3s</span>
-                                    <input type="range" class="ui-range" id="loiteringTimeSlider" min="1" max="10" value="3" oninput="SurvSettings.updateLoiteringTime(this.value)">
+                                    <input type="range" class="ui-range" id="loiteringTimeSlider" min="1" max="10" value="3" data-on-input="SurvSettings.updateLoiteringTime(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -499,7 +500,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="approachTriggerValue">2s</span>
-                                    <input type="range" class="ui-range" id="approachTriggerSlider" min="0" max="10" value="2" oninput="SurvSettings.updateApproachTrigger(this.value)">
+                                    <input type="range" class="ui-range" id="approachTriggerSlider" min="0" max="10" value="2" data-on-input="SurvSettings.updateApproachTrigger(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -512,7 +513,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.shadow_filter_desc">Filters out tree shadows, cloud shadows, and other lighting changes that cause false recordings</div>
                             </div>
                             <div class="ui-row-end">
-                                <select class="ui-select" id="shadowFilterSelect" onchange="SurvSettings.updateShadowFilter(this.value)">
+                                <select class="ui-select" id="shadowFilterSelect" data-on-change="SurvSettings.updateShadowFilter(this.value)">
                                     <option value="0" data-i18n="surveillance.shadow_off">Off</option>
                                     <option value="1" data-i18n="surveillance.shadow_light">Light</option>
                                     <option value="2" selected data-i18n="surveillance.shadow_normal">Normal</option>
@@ -530,7 +531,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="v2MotionSalience" onchange="SurvSettings.updateMotionSalience()">
+                                    <input type="checkbox" id="v2MotionSalience" data-on-change="SurvSettings.updateMotionSalience()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -545,7 +546,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="v2DiscardEmptyMotion" onchange="SurvSettings.updateDiscardEmptyMotion()">
+                                    <input type="checkbox" id="v2DiscardEmptyMotion" data-on-change="SurvSettings.updateDiscardEmptyMotion()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -560,7 +561,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="v2DiscardEmptyMotionNight" onchange="SurvSettings.updateDiscardEmptyMotionAtNight()">
+                                    <input type="checkbox" id="v2DiscardEmptyMotionNight" data-on-change="SurvSettings.updateDiscardEmptyMotionAtNight()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -579,7 +580,7 @@
                                 <div class="ui-row-copy"><div class="ui-row-title" data-i18n="surveillance.camera_front">Front</div></div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="v2CameraFront" checked onchange="SurvSettings.updateV2Cameras()">
+                                        <input type="checkbox" id="v2CameraFront" checked data-on-change="SurvSettings.updateV2Cameras()">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -588,7 +589,7 @@
                                 <div class="ui-row-copy"><div class="ui-row-title" data-i18n="surveillance.camera_right">Right</div></div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="v2CameraRight" checked onchange="SurvSettings.updateV2Cameras()">
+                                        <input type="checkbox" id="v2CameraRight" checked data-on-change="SurvSettings.updateV2Cameras()">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -597,7 +598,7 @@
                                 <div class="ui-row-copy"><div class="ui-row-title" data-i18n="surveillance.camera_left">Left</div></div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="v2CameraLeft" checked onchange="SurvSettings.updateV2Cameras()">
+                                        <input type="checkbox" id="v2CameraLeft" checked data-on-change="SurvSettings.updateV2Cameras()">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -606,7 +607,7 @@
                                 <div class="ui-row-copy"><div class="ui-row-title" data-i18n="surveillance.camera_rear">Rear</div></div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="v2CameraRear" checked onchange="SurvSettings.updateV2Cameras()">
+                                        <input type="checkbox" id="v2CameraRear" checked data-on-change="SurvSettings.updateV2Cameras()">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -622,7 +623,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="sideCamBoostEnabled" onchange="SurvSettings.updateSideCamBoost()">
+                                    <input type="checkbox" id="sideCamBoostEnabled" data-on-change="SurvSettings.updateSideCamBoost()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -635,7 +636,7 @@
                                 <div class="ui-row-end">
                                     <div class="ui-slider">
                                         <span class="ui-slider-value" id="sideCamSensValue" data-i18n="surveillance.v2_sens_label.4">4</span>
-                                        <input type="range" class="ui-range" id="sideCamSensSlider" min="1" max="5" value="4" oninput="SurvSettings.updateSideCamSens(this.value)">
+                                        <input type="range" class="ui-range" id="sideCamSensSlider" min="1" max="5" value="4" data-on-input="SurvSettings.updateSideCamSens(this.value)">
                                     </div>
                                 </div>
                             </div>
@@ -645,9 +646,9 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <div class="ui-segmented" id="sideCamZoneBtns">
-                                        <button class="ui-segment" data-value="close" onclick="SurvSettings.setSideCamZone('close')" data-i18n="surveillance.det_close">Close</button>
-                                        <button class="ui-segment" data-value="normal" onclick="SurvSettings.setSideCamZone('normal')" data-i18n="surveillance.det_normal">Normal</button>
-                                        <button class="ui-segment active" data-value="extended" onclick="SurvSettings.setSideCamZone('extended')" data-i18n="surveillance.det_extended">Extended</button>
+                                        <button class="ui-segment" data-value="close" data-on-click="SurvSettings.setSideCamZone('close')" data-i18n="surveillance.det_close">Close</button>
+                                        <button class="ui-segment" data-value="normal" data-on-click="SurvSettings.setSideCamZone('normal')" data-i18n="surveillance.det_normal">Normal</button>
+                                        <button class="ui-segment active" data-value="extended" data-on-click="SurvSettings.setSideCamZone('extended')" data-i18n="surveillance.det_extended">Extended</button>
                                     </div>
                                 </div>
                             </div>
@@ -661,10 +662,10 @@
                             </div>
                         </div>
                         <div class="ui-check-row">
-                            <label class="ui-check active"><input type="checkbox" id="detectPerson" checked onchange="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_person">Person</span></label>
-                            <label class="ui-check active"><input type="checkbox" id="detectCar" checked onchange="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_vehicle">Vehicle</span></label>
-                            <label class="ui-check"><input type="checkbox" id="detectBike" onchange="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_bike">Bike</span></label>
-                            <label class="ui-check"><input type="checkbox" id="detectAnimal" onchange="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_animal">Animal</span></label>
+                            <label class="ui-check active"><input type="checkbox" id="detectPerson" checked data-on-change="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_person">Person</span></label>
+                            <label class="ui-check active"><input type="checkbox" id="detectCar" checked data-on-change="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_vehicle">Vehicle</span></label>
+                            <label class="ui-check"><input type="checkbox" id="detectBike" data-on-change="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_bike">Bike</span></label>
+                            <label class="ui-check"><input type="checkbox" id="detectAnimal" data-on-change="SurvSettings.updateDetection()"><span data-i18n="surveillance.detect_animal">Animal</span></label>
                         </div>
                         <div class="ui-hint" data-i18n="surveillance.detect_objects_hint">Select which objects YOLO AI should identify. Motion detection triggers regardless — AI classifies what was detected.</div>
 
@@ -694,7 +695,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle" data-i18n-attr="title:surveillance.motion_heatmap_title" title="Shows colored blocks on the live stream indicating where motion is detected.">
-                                    <input type="checkbox" id="v2MotionHeatmap" onchange="SurvSettings.updateV2Dev()">
+                                    <input type="checkbox" id="v2MotionHeatmap" data-on-change="SurvSettings.updateV2Dev()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -706,7 +707,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle" data-i18n-attr="title:surveillance.filter_debug_log_title" title="Logs detailed filter decisions for each detection.">
-                                    <input type="checkbox" id="v2FilterDebugLog" onchange="SurvSettings.updateV2Dev()">
+                                    <input type="checkbox" id="v2FilterDebugLog" data-on-change="SurvSettings.updateV2Dev()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -728,10 +729,10 @@
                         <!-- Camera tabs + unsaved indicator -->
                         <div class="surv-roi-bar">
                             <div class="ui-segmented" id="roiCameraTabs" style="flex:1;">
-                                <button class="ui-segment active" onclick="RoiEditor.selectCamera(0)" data-i18n="surveillance.camera_front">Front</button>
-                                <button class="ui-segment" onclick="RoiEditor.selectCamera(1)" data-i18n="surveillance.camera_right">Right</button>
-                                <button class="ui-segment" onclick="RoiEditor.selectCamera(2)" data-i18n="surveillance.camera_rear">Rear</button>
-                                <button class="ui-segment" onclick="RoiEditor.selectCamera(3)" data-i18n="surveillance.camera_left">Left</button>
+                                <button class="ui-segment active" data-on-click="RoiEditor.selectCamera(0)" data-i18n="surveillance.camera_front">Front</button>
+                                <button class="ui-segment" data-on-click="RoiEditor.selectCamera(1)" data-i18n="surveillance.camera_right">Right</button>
+                                <button class="ui-segment" data-on-click="RoiEditor.selectCamera(2)" data-i18n="surveillance.camera_rear">Rear</button>
+                                <button class="ui-segment" data-on-click="RoiEditor.selectCamera(3)" data-i18n="surveillance.camera_left">Left</button>
                             </div>
                             <span class="ui-unsaved" id="roiUnsaved" style="display:none;flex-shrink:0;" data-i18n="surveillance.unsaved">● unsaved</span>
                         </div>
@@ -744,7 +745,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="roiEnabled" onchange="RoiEditor.toggleRoi()">
+                                    <input type="checkbox" id="roiEnabled" data-on-change="RoiEditor.toggleRoi()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -759,9 +760,9 @@
 
                             <!-- Buttons -->
                             <div class="surv-roi-actions">
-                                <button class="ui-button ui-button-primary" style="flex:1;" onclick="RoiEditor.save()" data-i18n="surveillance.roi_save">Save Zone</button>
-                                <button class="ui-button" onclick="RoiEditor.selectAll()" data-i18n="surveillance.roi_all">All</button>
-                                <button class="ui-button" onclick="RoiEditor.clear()" data-i18n="surveillance.roi_none">None</button>
+                                <button class="ui-button ui-button-primary" style="flex:1;" data-on-click="RoiEditor.save()" data-i18n="surveillance.roi_save">Save Zone</button>
+                                <button class="ui-button" data-on-click="RoiEditor.selectAll()" data-i18n="surveillance.roi_all">All</button>
+                                <button class="ui-button" data-on-click="RoiEditor.clear()" data-i18n="surveillance.roi_none">None</button>
                             </div>
                         </div>
 
@@ -787,7 +788,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="scheduleEnabled" onchange="ScheduleEditor.toggle()">
+                                    <input type="checkbox" id="scheduleEnabled" data-on-change="ScheduleEditor.toggle()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -798,10 +799,10 @@
 
                             <div id="scheduleRulesList"></div>
 
-                            <button class="ui-button surv-block-btn" style="margin-top:8px;" onclick="ScheduleEditor.addRule()" data-i18n="surveillance.schedule_add_window">+ Add Time Window</button>
+                            <button class="ui-button surv-block-btn" style="margin-top:8px;" data-on-click="ScheduleEditor.addRule()" data-i18n="surveillance.schedule_add_window">+ Add Time Window</button>
 
                             <div style="margin-top:12px;">
-                                <button class="ui-button ui-button-primary" id="scheduleSaveBtn" style="width:100%;" onclick="ScheduleEditor.save()" data-i18n="surveillance.schedule_save">Save Schedule</button>
+                                <button class="ui-button ui-button-primary" id="scheduleSaveBtn" style="width:100%;" data-on-click="ScheduleEditor.save()" data-i18n="surveillance.schedule_save">Save Schedule</button>
                             </div>
                             
                             <div class="surv-status-line" id="scheduleSummary"></div>
@@ -830,7 +831,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="parkingEnabled" onchange="ParkingSettings.save('enabled', this.checked)">
+                                    <input type="checkbox" id="parkingEnabled" data-on-change="ParkingSettings.save('enabled', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -843,7 +844,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingSnapshots" onchange="ParkingSettings.save('snapshots', this.checked)">
+                                        <input type="checkbox" id="parkingSnapshots" data-on-change="ParkingSettings.save('snapshots', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -855,7 +856,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingNeighbours" onchange="ParkingSettings.save('neighbours', this.checked)">
+                                        <input type="checkbox" id="parkingNeighbours" data-on-change="ParkingSettings.save('neighbours', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -867,7 +868,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingSignage" onchange="ParkingSettings.save('signage', this.checked)">
+                                        <input type="checkbox" id="parkingSignage" data-on-change="ParkingSettings.save('signage', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -880,7 +881,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingGeocodingEnabled" onchange="ParkingSettings.saveGeocoding('enabled', this.checked)">
+                                        <input type="checkbox" id="parkingGeocodingEnabled" data-on-change="ParkingSettings.saveGeocoding('enabled', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -893,7 +894,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="parkingGeocodingOnline" onchange="ParkingSettings.saveGeocoding('allowOnline', this.checked)">
+                                        <input type="checkbox" id="parkingGeocodingOnline" data-on-change="ParkingSettings.saveGeocoding('allowOnline', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -903,7 +904,7 @@
                                     <div class="ui-row-title" data-i18n="parking.settings_retention">Keep sessions (days)</div>
                                 </div>
                                 <div class="ui-row-end">
-                                    <input type="number" class="ui-input" id="parkingRetentionDays" min="7" max="730" step="1" style="width:96px;min-width:96px;" onchange="ParkingSettings.save('retentionDays', parseInt(this.value, 10))">
+                                    <input type="number" class="ui-input" id="parkingRetentionDays" min="7" max="730" step="1" style="width:96px;min-width:96px;" data-on-change="SurveillancePage.saveParkingInt('retentionDays', this.value)">
                                 </div>
                             </div>
                             <div class="ui-row" style="border-bottom:none;">
@@ -911,7 +912,7 @@
                                     <div class="ui-row-title" data-i18n="parking.settings_cap">Stills &amp; frames cap (MB)</div>
                                 </div>
                                 <div class="ui-row-end">
-                                    <input type="number" class="ui-input" id="parkingStorageCapMb" min="50" max="4096" step="50" style="width:96px;min-width:96px;" onchange="ParkingSettings.save('storageCapMb', parseInt(this.value, 10))">
+                                    <input type="number" class="ui-input" id="parkingStorageCapMb" min="50" max="4096" step="50" style="width:96px;min-width:96px;" data-on-change="SurveillancePage.saveParkingInt('storageCapMb', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -939,7 +940,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="screenDeterrentEnabled" onchange="SurvSettings.updateScreenDeterrent('enabled', this.checked)">
+                                    <input type="checkbox" id="screenDeterrentEnabled" data-on-change="SurvSettings.updateScreenDeterrent('enabled', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -952,7 +953,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="screenDeterrentDurationValue">8s</span>
-                                    <input type="range" class="ui-range" id="screenDeterrentDurationSlider" min="3" max="30" value="8" oninput="SurvSettings.previewScreenDeterrentDuration(this.value)" onchange="SurvSettings.updateScreenDeterrent('duration', this.value)">
+                                    <input type="range" class="ui-range" id="screenDeterrentDurationSlider" min="3" max="30" value="8" data-on-input="SurvSettings.previewScreenDeterrentDuration(this.value)" data-on-change="SurvSettings.updateScreenDeterrent('duration', this.value)">
                                 </div>
                             </div>
                         </div>
@@ -978,7 +979,7 @@
                                     <div class="ui-row-desc" data-i18n="surveillance.screen_deterrent_message_desc">Replaces "YOU ARE ON CAMERA" on the default red screen.</div>
                                 </div>
                                 <div class="ui-row-end">
-                                    <input type="text" id="screenDeterrentMessage" maxlength="120" class="ui-input" oninput="SurvSettings.queueScreenDeterrentMessage(this.value)" placeholder="YOU ARE ON CAMERA" style="padding-top:14px; padding-bottom:14px; line-height:1.2;">
+                                    <input type="text" id="screenDeterrentMessage" maxlength="120" class="ui-input" data-on-input="SurvSettings.queueScreenDeterrentMessage(this.value)" placeholder="YOU ARE ON CAMERA" style="padding-top:14px; padding-bottom:14px; line-height:1.2;">
                                 </div>
                             </div>
 
@@ -1000,14 +1001,14 @@
                                             <!-- Theme 1 -->
                                             <div class="surv-theme">
                                                 <div class="surv-theme-name">Sentry 1</div>
-                                                <button type="button" class="ui-button ui-button-primary surv-theme-btn" onclick="SurvSettings.downloadAndSetTheme('https://raw.githubusercontent.com/saroz/Overdrive-release/refs/heads/main/themes/sentry1.gif', 'sentry1.gif', this)">
+                                                <button type="button" class="ui-button ui-button-primary surv-theme-btn" data-on-click="SurvSettings.downloadAndSetTheme('https://raw.githubusercontent.com/saroz/Overdrive-release/refs/heads/main/themes/sentry1.gif', 'sentry1.gif', this)">
                                                     <span data-i18n="surveillance.download_set">Download &amp; Set</span>
                                                 </button>
                                             </div>
                                             <!-- Theme 2 -->
                                             <div class="surv-theme">
                                                 <div class="surv-theme-name">Sentry 2</div>
-                                                <button type="button" class="ui-button ui-button-primary surv-theme-btn" onclick="SurvSettings.downloadAndSetTheme('https://raw.githubusercontent.com/saroz/Overdrive-release/refs/heads/main/themes/sentry2.gif', 'sentry2.gif', this)">
+                                                <button type="button" class="ui-button ui-button-primary surv-theme-btn" data-on-click="SurvSettings.downloadAndSetTheme('https://raw.githubusercontent.com/saroz/Overdrive-release/refs/heads/main/themes/sentry2.gif', 'sentry2.gif', this)">
                                                     <span data-i18n="surveillance.download_set">Download &amp; Set</span>
                                                 </button>
                                             </div>
@@ -1015,12 +1016,12 @@
                                     </div>
                                 </div>
                                 <div class="ui-row-end surv-btn-row">
-                                    <input type="file" id="screenDeterrentFile" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4" style="display:none;" onchange="SurvSettings.uploadScreenDeterrentImage(this.files[0])">
-                                    <button type="button" class="ui-button" onclick="document.getElementById('screenDeterrentFile').click()" id="screenDeterrentUploadBtn">
+                                    <input type="file" id="screenDeterrentFile" accept="image/png,image/jpeg,image/webp,image/gif,video/mp4" style="display:none;" data-on-change="SurveillancePage.uploadDeterrentImage(this)">
+                                    <button type="button" class="ui-button" data-on-click="BYDOnActions.clickId('screenDeterrentFile')" id="screenDeterrentUploadBtn">
                                         <svg class="surv-btn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                                         <span id="screenDeterrentUploadLabel" data-i18n="surveillance.screen_deterrent_upload">Upload</span>
                                     </button>
-                                    <button type="button" class="ui-button surv-btn-danger" id="screenDeterrentClearBtn" onclick="SurvSettings.clearScreenDeterrentImage()" style="display:none;">
+                                    <button type="button" class="ui-button surv-btn-danger" id="screenDeterrentClearBtn" data-on-click="SurvSettings.clearScreenDeterrentImage()" style="display:none;">
                                         <svg class="surv-btn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
                                         <span data-i18n="surveillance.screen_deterrent_remove">Remove asset</span>
                                     </button>
@@ -1031,7 +1032,7 @@
                                 <img id="screenDeterrentPreviewImg" class="surv-asset" alt="" />
                                 <video id="screenDeterrentPreviewVideo" class="surv-asset" muted loop playsinline controls preload="auto" style="display:none;"></video>
                                 <div id="screenDeterrentPreviewLabel" class="surv-caption" data-i18n="surveillance.screen_deterrent_preview_label">Current asset</div>
-                                <button type="button" class="ui-button" style="margin-top:8px;" onclick="SurvSettings.testScreenDeterrent()">
+                                <button type="button" class="ui-button" style="margin-top:8px;" data-on-click="SurvSettings.testScreenDeterrent()">
                                     <svg class="surv-btn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                                     <span data-i18n="surveillance.test_on_screen">Test on Screen</span>
                                 </button>
@@ -1057,7 +1058,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.deterrent_on_motion_desc">Action to take via BYD Cloud when a threat is confirmed. Requires BYD Cloud account setup.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select class="ui-select" id="deterrentAction" onchange="SurvSettings.updateDeterrent(this.value)">
+                                <select class="ui-select" id="deterrentAction" data-on-change="SurvSettings.updateDeterrent(this.value)">
                                     <option value="silent" data-i18n="surveillance.deterrent_silent_option">Silent (record only)</option>
                                     <option value="flash_lights" data-i18n="surveillance.deterrent_flash_option">Flash lights</option>
                                     <option value="find_car" data-i18n="surveillance.deterrent_horn_option">Horn + lights</option>
@@ -1070,7 +1071,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.deterrent_trigger_desc">Hold the lights and horn back until detection confirms what moved. "Any motion" keeps the previous behaviour.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select class="ui-select" id="deterrentTrigger" onchange="SurvSettings.updateDeterrentTrigger(this.value)">
+                                <select class="ui-select" id="deterrentTrigger" data-on-change="SurvSettings.updateDeterrentTrigger(this.value)">
                                     <option value="any" data-i18n="surveillance.deterrent_trigger_any">Any motion</option>
                                     <option value="person" data-i18n="surveillance.deterrent_trigger_person">Person only</option>
                                     <option value="person_or_vehicle" data-i18n="surveillance.deterrent_trigger_person_vehicle">Person or vehicle</option>
@@ -1083,7 +1084,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.deterrent_zone_desc">Only flash or honk when motion is this close. Recording still uses the detection zone.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select class="ui-select" id="deterrentZone" onchange="SurvSettings.updateDeterrentZone(this.value)">
+                                <select class="ui-select" id="deterrentZone" data-on-change="SurvSettings.updateDeterrentZone(this.value)">
                                     <option value="follow" data-i18n="surveillance.deterrent_zone_follow">Same as detection zone</option>
                                     <option value="close" data-i18n="surveillance.det_close">Close (~3m)</option>
                                     <option value="normal" data-i18n="surveillance.det_normal">Normal (~6m)</option>
@@ -1098,7 +1099,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="deterrentScheduleEnabled" onchange="SurvSettings.updateDeterrentSchedule()">
+                                    <input type="checkbox" id="deterrentScheduleEnabled" data-on-change="SurvSettings.updateDeterrentSchedule()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1108,9 +1109,9 @@
                                 <div class="ui-row-title" data-i18n="surveillance.deterrent_schedule_hours">Active hours</div>
                             </div>
                             <div class="ui-row-end">
-                                <input type="time" class="ui-select" id="deterrentScheduleStart" value="20:00" aria-label="Start" onchange="SurvSettings.updateDeterrentSchedule()">
+                                <input type="time" class="ui-select" id="deterrentScheduleStart" value="20:00" aria-label="Start" data-on-change="SurvSettings.updateDeterrentSchedule()">
                                 <span aria-hidden="true" style="margin:0 6px">–</span>
-                                <input type="time" class="ui-select" id="deterrentScheduleEnd" value="06:00" aria-label="End" onchange="SurvSettings.updateDeterrentSchedule()">
+                                <input type="time" class="ui-select" id="deterrentScheduleEnd" value="06:00" aria-label="End" data-on-change="SurvSettings.updateDeterrentSchedule()">
                             </div>
                         </div>
                         <div class="ui-hint" data-i18n="surveillance.deterrent_hint_v2">Flash Lights and Horn + Lights use BYD's cloud API. BYD Cloud account setup required — set it up on the BYD Cloud page (sidebar → Integrations → BYD Cloud).</div>
@@ -1140,7 +1141,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="impactDetection" onchange="SurvSettings.updateImpact('impactDetection', this.checked)">
+                                    <input type="checkbox" id="impactDetection" data-on-change="SurvSettings.updateImpact('impactDetection', this.checked)">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1158,7 +1159,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.impact_sensitivity_desc">Higher sensitivity catches lighter knocks but may react to heavy traffic or wind.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select class="ui-select" id="impactSensitivity" onchange="SurvSettings.updateImpact('impactSensitivity', this.value)">
+                                <select class="ui-select" id="impactSensitivity" data-on-change="SurvSettings.updateImpact('impactSensitivity', this.value)">
                                     <option value="low" data-i18n="surveillance.impact_sensitivity_low">Low</option>
                                     <option value="medium" data-i18n="surveillance.impact_sensitivity_medium">Medium</option>
                                     <option value="high" data-i18n="surveillance.impact_sensitivity_high">High</option>
@@ -1193,7 +1194,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survGeocodingEnabled" onchange="SurvSettings.toggleGeocodingEnabled()">
+                                    <input type="checkbox" id="survGeocodingEnabled" data-on-change="SurvSettings.toggleGeocodingEnabled()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1205,7 +1206,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survGeocodingOnline" disabled onchange="SurvSettings.toggleGeocodingOnline()">
+                                    <input type="checkbox" id="survGeocodingOnline" disabled data-on-change="SurvSettings.toggleGeocodingOnline()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1216,7 +1217,7 @@
                                 <div class="ui-row-desc" data-i18n="surveillance.geocoding_custom_url_desc">Optional. Point to a self-hosted instance to skip the public OSM endpoint entirely. Shared with dashcam settings.</div>
                             </div>
                             <div class="ui-row-end">
-                                <input type="url" id="survGeocodingCustomUrl" class="ui-input" inputmode="url" placeholder="https://nominatim.example.com" disabled onchange="SurvSettings.saveGeocodingCustomUrl()" />
+                                <input type="url" id="survGeocodingCustomUrl" class="ui-input" inputmode="url" placeholder="https://nominatim.example.com" disabled data-on-change="SurvSettings.saveGeocodingCustomUrl()" />
                             </div>
                         </div>
                     </div>
@@ -1240,7 +1241,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="preRecValue">5s</span>
-                                    <input type="range" class="ui-range" id="preRecSlider" min="2" max="30" value="5" oninput="SurvSettings.updatePreRec(this.value)">
+                                    <input type="range" class="ui-range" id="preRecSlider" min="2" max="30" value="5" data-on-input="SurvSettings.updatePreRec(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -1252,7 +1253,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="postRecValue">10s</span>
-                                    <input type="range" class="ui-range" id="postRecSlider" min="5" max="30" value="10" oninput="SurvSettings.updatePostRec(this.value)">
+                                    <input type="range" class="ui-range" id="postRecSlider" min="5" max="30" value="10" data-on-input="SurvSettings.updatePostRec(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -1265,19 +1266,19 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented ui-segmented ui-segmented-vertical" id="survQualityBtns">
-                                    <button class="ui-segment" data-value="ECONOMY"  onclick="SurvSettings.setRecordingQuality('ECONOMY')">
+                                    <button class="ui-segment" data-value="ECONOMY"  data-on-click="SurvSettings.setRecordingQuality('ECONOMY')">
                                         <span class="tier-name" data-i18n="recording.tier_economy">Economy</span>
                                     </button>
-                                    <button class="ui-segment" data-value="STANDARD" onclick="SurvSettings.setRecordingQuality('STANDARD')">
+                                    <button class="ui-segment" data-value="STANDARD" data-on-click="SurvSettings.setRecordingQuality('STANDARD')">
                                         <span class="tier-name" data-i18n="recording.tier_standard">Standard</span>
                                     </button>
-                                    <button class="ui-segment active" data-value="HIGH" onclick="SurvSettings.setRecordingQuality('HIGH')">
+                                    <button class="ui-segment active" data-value="HIGH" data-on-click="SurvSettings.setRecordingQuality('HIGH')">
                                         <span class="tier-name" data-i18n="recording.tier_high">High</span>
                                     </button>
-                                    <button class="ui-segment" data-value="PREMIUM" onclick="SurvSettings.setRecordingQuality('PREMIUM')">
+                                    <button class="ui-segment" data-value="PREMIUM" data-on-click="SurvSettings.setRecordingQuality('PREMIUM')">
                                         <span class="tier-name" data-i18n="recording.tier_premium">Premium</span>
                                     </button>
-                                    <button class="ui-segment" data-value="MAX" onclick="SurvSettings.setRecordingQuality('MAX')">
+                                    <button class="ui-segment" data-value="MAX" data-on-click="SurvSettings.setRecordingQuality('MAX')">
                                         <span class="tier-name" data-i18n="recording.tier_max">Max</span>
                                     </button>
                                 </div>
@@ -1292,8 +1293,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="codecBtns">
-                                    <button class="ui-segment active" data-value="H264" onclick="SurvSettings.setCodec('H264')">H.264</button>
-                                    <button class="ui-segment" data-value="H265" onclick="SurvSettings.setCodec('H265')">H.265</button>
+                                    <button class="ui-segment active" data-value="H264" data-on-click="SurvSettings.setCodec('H264')">H.264</button>
+                                    <button class="ui-segment" data-value="H265" data-on-click="SurvSettings.setCodec('H265')">H.265</button>
                                 </div>
                             </div>
                         </div>
@@ -1306,11 +1307,11 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="survFpsBtns">
-                                    <button class="ui-segment" data-value="10" onclick="SurvSettings.setFps(10)">10</button>
-                                    <button class="ui-segment active" data-value="15" onclick="SurvSettings.setFps(15)">15</button>
-                                    <button class="ui-segment" data-value="20" onclick="SurvSettings.setFps(20)">20</button>
-                                    <button class="ui-segment" data-value="25" onclick="SurvSettings.setFps(25)">25</button>
-                                    <button class="ui-segment" data-value="30" onclick="SurvSettings.setFps(30)">30</button>
+                                    <button class="ui-segment" data-value="10" data-on-click="SurvSettings.setFps(10)">10</button>
+                                    <button class="ui-segment active" data-value="15" data-on-click="SurvSettings.setFps(15)">15</button>
+                                    <button class="ui-segment" data-value="20" data-on-click="SurvSettings.setFps(20)">20</button>
+                                    <button class="ui-segment" data-value="25" data-on-click="SurvSettings.setFps(25)">25</button>
+                                    <button class="ui-segment" data-value="30" data-on-click="SurvSettings.setFps(30)">30</button>
                                 </div>
                             </div>
                         </div>
@@ -1326,9 +1327,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="survClipDurationBtns">
-                                    <button class="ui-segment active" data-value="2" onclick="SurvSettings.setClipDuration(2)" data-i18n="recording.clip_2min">2 min</button>
-                                    <button class="ui-segment" data-value="5" onclick="SurvSettings.setClipDuration(5)" data-i18n="recording.clip_5min">5 min</button>
-                                    <button class="ui-segment" data-value="10" onclick="SurvSettings.setClipDuration(10)" data-i18n="recording.clip_10min">10 min</button>
+                                    <button class="ui-segment active" data-value="2" data-on-click="SurvSettings.setClipDuration(2)" data-i18n="recording.clip_2min">2 min</button>
+                                    <button class="ui-segment" data-value="5" data-on-click="SurvSettings.setClipDuration(5)" data-i18n="recording.clip_5min">5 min</button>
+                                    <button class="ui-segment" data-value="10" data-on-click="SurvSettings.setClipDuration(10)" data-i18n="recording.clip_10min">10 min</button>
                                 </div>
                             </div>
                         </div>
@@ -1388,10 +1389,10 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented ui-segmented ui-segmented-vertical" id="survLayoutBtns">
-                                    <button class="ui-segment active" data-value="standard" onclick="SurvSettings.setSurveillanceLayout('standard')">
+                                    <button class="ui-segment active" data-value="standard" data-on-click="SurvSettings.setSurveillanceLayout('standard')">
                                         <span class="tier-name" data-i18n="recording.layout_standard">Standard (360 grid)</span>
                                     </button>
-                                    <button class="ui-segment" data-value="dashcam" onclick="SurvSettings.setSurveillanceLayout('dashcam')">
+                                    <button class="ui-segment" data-value="dashcam" data-on-click="SurvSettings.setSurveillanceLayout('dashcam')">
                                         <span class="tier-name" data-i18n="recording.layout_dashcam">Dashcam (forward + sides)</span>
                                     </button>
                                 </div>
@@ -1405,7 +1406,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survUseWindshield" onchange="SurvSettings.toggleSurveillanceWindshield()">
+                                    <input type="checkbox" id="survUseWindshield" data-on-change="SurvSettings.toggleSurveillanceWindshield()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1435,7 +1436,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="survTelemetryOverlayEnabled" onchange="SurvSettings.toggleSurvTelemetryOverlay()">
+                                    <input type="checkbox" id="survTelemetryOverlayEnabled" data-on-change="SurvSettings.toggleSurvTelemetryOverlay()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -1478,7 +1479,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="survRectifyValue">Off</span>
-                                    <input type="range" class="ui-range" id="survRectifySlider" min="0" max="100" step="1" value="0" oninput="SurvSettings.updateRectifyStrength(this.value)">
+                                    <input type="range" class="ui-range" id="survRectifySlider" min="0" max="100" step="1" value="0" data-on-input="SurvSettings.updateRectifyStrength(this.value)">
                                 </div>
                                 <!-- Range labels constrained to the 120px slider track
                                      and right-anchored under the slider (not flushed
@@ -1533,7 +1534,7 @@
                         </div>
                         <div class="mode-selector" role="radiogroup" aria-busy="true" data-hydrating="true" data-i18n-attr="aria-label:oem_dashcam.mode_picker_aria_surveillance" aria-label="OEM Dashcam surveillance mode" aria-controls="oemPipelineStatusHint">
                             <label class="mode-option">
-                                <input type="radio" name="oemSurveillanceMode" value="off" checked onchange="SurvSettings.setOemSurveillanceMode('off')" aria-describedby="oemSurvModeDesc_off">
+                                <input type="radio" name="oemSurveillanceMode" value="off" checked data-on-change="SurvSettings.setOemSurveillanceMode('off')" aria-describedby="oemSurvModeDesc_off">
                                 <div class="mode-card mode-card-active">
                                     <span class="mode-icon" aria-hidden="true">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
@@ -1546,7 +1547,7 @@
                                 </div>
                             </label>
                             <label class="mode-option">
-                                <input type="radio" name="oemSurveillanceMode" value="continuous" onchange="SurvSettings.setOemSurveillanceMode('continuous')" aria-describedby="oemSurvModeDesc_continuous">
+                                <input type="radio" name="oemSurveillanceMode" value="continuous" data-on-change="SurvSettings.setOemSurveillanceMode('continuous')" aria-describedby="oemSurvModeDesc_continuous">
                                 <div class="mode-card">
                                     <span class="mode-icon" aria-hidden="true">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/><circle cx="9" cy="12" r="1.5" fill="currentColor"/></svg>
@@ -1559,7 +1560,7 @@
                                 </div>
                             </label>
                             <label class="mode-option">
-                                <input type="radio" name="oemSurveillanceMode" value="smart" onchange="SurvSettings.setOemSurveillanceMode('smart')" aria-describedby="oemSurvModeDesc_smart">
+                                <input type="radio" name="oemSurveillanceMode" value="smart" data-on-change="SurvSettings.setOemSurveillanceMode('smart')" aria-describedby="oemSurvModeDesc_smart">
                                 <div class="mode-card">
                                     <span class="mode-icon" aria-hidden="true">
                                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
@@ -1601,7 +1602,7 @@
                                 <div class="ui-row-title" id="oemNativeDvrStatusLabel" style="margin-top:8px;" data-i18n="oem_dashcam.native_dvr_status_enabled">Status: Enabled</div>
                             </div>
                             <div class="ui-row-end">
-                                <button class="ui-button ui-button-primary" id="oemNativeDvrToggleBtn" onclick="SurvSettings.toggleOemNativeDvr()" data-i18n="oem_dashcam.native_dvr_disable">Disable native DVR</button>
+                                <button class="ui-button ui-button-primary" id="oemNativeDvrToggleBtn" data-on-click="SurvSettings.toggleOemNativeDvr()" data-i18n="oem_dashcam.native_dvr_disable">Disable native DVR</button>
                             </div>
                         </div>
                     </div>
@@ -1609,7 +1610,7 @@
                 <a class="ui-panel ui-link-row" href="storage.html" data-tab="oem"><span class="ui-strip-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M6 16h.01M10 16h.01"/></svg></span><span class="ui-row-copy"><span class="ui-row-title" data-i18n="recording.tab_storage">Storage</span><span class="ui-row-desc" data-i18n="recording.cdr_reserved">Reserved Space for Overdrive</span></span><svg class="ui-row-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></a>
             </div>
                 <div class="ui-savebar" id="footerBar">
-            <button class="ui-button ui-button-primary" id="btnApply" disabled onclick="SurvSettings.applySettings()">
+            <button class="ui-button ui-button-primary" id="btnApply" disabled data-on-click="SurvSettings.applySettings()">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><polyline points="20 6 9 17 4 12"/></svg>
                 <span data-i18n="common.apply_changes">Apply Changes</span>
             </button>

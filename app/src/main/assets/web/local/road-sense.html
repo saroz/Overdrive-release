@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.road_sense_title">RoadSense - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -55,7 +56,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsEnabled" onchange="RoadSenseSettings.toggleEnabled()">
+                                    <input type="checkbox" id="rsEnabled" data-on-change="RoadSenseSettings.toggleEnabled()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -78,7 +79,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.map_open_desc">Open the full-screen map to search routes, navigate, and see road hazards along the way. Tap any hazard to confirm it or remove it.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button type="button" id="rsOpenMapBtn" class="ui-button ui-button-primary" onclick="RoadSenseSettings.openHazardMap()" data-i18n="road_sense.map_open_btn">Open Map</button>
+                                <button type="button" id="rsOpenMapBtn" class="ui-button ui-button-primary" data-on-click="RoadSenseSettings.openHazardMap()" data-i18n="road_sense.map_open_btn">Open Map</button>
                             </div>
                         </div>
                     </div>
@@ -106,7 +107,7 @@
                         <div class="routing-guide" style="margin:4px 0 12px;padding:14px 16px;border-radius:14px;background:var(--md-sys-color-surface-container-high,rgba(127,127,127,0.10));">
                             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px;flex-wrap:wrap;">
                                 <div class="ui-row-title" data-i18n="road_sense.routing_guide_title">How to get a free routing key</div>
-                                <button type="button" class="ui-button ui-button-primary" onclick="RoadSenseSettings.openRoutingSignup()" data-i18n="road_sense.routing_get_key">Get a free key (Stadia Maps)</button>
+                                <button type="button" class="ui-button ui-button-primary" data-on-click="RoadSenseSettings.openRoutingSignup()" data-i18n="road_sense.routing_get_key">Get a free key (Stadia Maps)</button>
                             </div>
                             <ol class="routing-steps" style="margin:0;padding-left:20px;line-height:1.6;font-size:13px;color:var(--md-sys-color-on-surface-variant,#666);">
                                 <li data-i18n="road_sense.routing_step1">Tap "Get a free key" to open the Stadia Maps signup, then create a free account (no credit card for the free tier).</li>
@@ -134,8 +135,8 @@
                         </div>
                         <div class="ui-row" style="border-bottom:none;justify-content:flex-end;gap:8px;">
                             <div class="ui-row-end" style="display:flex;gap:8px;">
-                                <button type="button" class="ui-button" id="rsRoutingClearBtn" onclick="RoadSenseSettings.clearRouting()" data-i18n="road_sense.routing_clear">Clear</button>
-                                <button type="button" class="ui-button ui-button-primary" id="rsRoutingSaveBtn" onclick="RoadSenseSettings.saveRouting()" data-i18n="road_sense.routing_save">Save</button>
+                                <button type="button" class="ui-button" id="rsRoutingClearBtn" data-on-click="RoadSenseSettings.clearRouting()" data-i18n="road_sense.routing_clear">Clear</button>
+                                <button type="button" class="ui-button ui-button-primary" id="rsRoutingSaveBtn" data-on-click="RoadSenseSettings.saveRouting()" data-i18n="road_sense.routing_save">Save</button>
                             </div>
                         </div>
                     </div>
@@ -157,39 +158,39 @@
                         <div class="routing-guide" style="margin:4px 0 12px;padding:14px 16px;border-radius:14px;background:var(--md-sys-color-surface-container-high,rgba(127,127,127,0.10));">
                             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;">
                                 <div class="ui-row-title" data-i18n="road_sense.google_guide_title">How to set up your Google key</div>
-                                <button type="button" class="ui-button" id="rsGoogleGuideBtn" aria-expanded="true" aria-controls="rsGoogleGuideBody" onclick="RoadSenseSettings.toggleGoogleGuide()" data-i18n="road_sense.google_guide_hide">Hide steps</button>
+                                <button type="button" class="ui-button" id="rsGoogleGuideBtn" aria-expanded="true" aria-controls="rsGoogleGuideBody" data-on-click="RoadSenseSettings.toggleGoogleGuide()" data-i18n="road_sense.google_guide_hide">Hide steps</button>
                             </div>
                             <div id="rsGoogleGuideBody" style="margin-top:8px;">
                                 <ol class="routing-steps" style="margin:0;padding-left:20px;line-height:1.6;font-size:13px;color:var(--md-sys-color-on-surface-variant,#666);">
                                     <li>
                                         <span data-i18n="road_sense.google_step1">Create a NEW Google Cloud project.</span>
                                         <div style="color:var(--warning);" data-i18n="road_sense.google_step1_warn">Don't use your Gemini / AI Studio project: turning on billing there moves Gemini to paid.</div>
-                                        <div class="rs-google-links"><button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('project')" data-i18n="road_sense.google_open">Open</button></div>
+                                        <div class="rs-google-links"><button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('project')" data-i18n="road_sense.google_open">Open</button></div>
                                     </li>
                                     <li>
                                         <span data-i18n="road_sense.google_step2">Turn on billing for the new project. A card is required; nothing is charged while you stay inside the free usage and the daily limits below.</span>
-                                        <div class="rs-google-links"><button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('billing')" data-i18n="road_sense.google_open">Open</button></div>
+                                        <div class="rs-google-links"><button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('billing')" data-i18n="road_sense.google_open">Open</button></div>
                                     </li>
                                     <li>
                                         <span data-i18n="road_sense.google_step3">Enable these four APIs in the new project:</span>
                                         <div class="rs-google-links">
-                                            <button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('tiles')" data-i18n="road_sense.google_api_tiles_name">Map Tiles API</button>
-                                            <button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('routes')" data-i18n="road_sense.google_api_routes_name">Routes API</button>
-                                            <button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('places')" data-i18n="road_sense.google_api_places_name">Places API (New)</button>
-                                            <button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('geocode')" data-i18n="road_sense.google_api_geocode_name">Geocoding API</button>
+                                            <button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('tiles')" data-i18n="road_sense.google_api_tiles_name">Map Tiles API</button>
+                                            <button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('routes')" data-i18n="road_sense.google_api_routes_name">Routes API</button>
+                                            <button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('places')" data-i18n="road_sense.google_api_places_name">Places API (New)</button>
+                                            <button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('geocode')" data-i18n="road_sense.google_api_geocode_name">Geocoding API</button>
                                         </div>
                                     </li>
                                     <li>
                                         <span data-i18n="road_sense.google_step4">Create an API key and restrict it to those four APIs.</span>
-                                        <div class="rs-google-links"><button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('credentials')" data-i18n="road_sense.google_open">Open</button></div>
+                                        <div class="rs-google-links"><button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('credentials')" data-i18n="road_sense.google_open">Open</button></div>
                                     </li>
                                     <li>
                                         <span data-i18n="road_sense.google_step5">Set the daily quotas to the numbers shown below.</span>
-                                        <div class="rs-google-links"><button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('quotas')" data-i18n="road_sense.google_open">Open</button></div>
+                                        <div class="rs-google-links"><button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('quotas')" data-i18n="road_sense.google_open">Open</button></div>
                                     </li>
                                     <li>
                                         <span id="rsGoogleStep6" data-i18n="road_sense.google_step6">Optional: add a $1 budget alert. It only alerts you; it doesn't stop charges.</span>
-                                        <div class="rs-google-links"><button type="button" class="ui-button" onclick="RoadSenseSettings.openGoogleConsole('budgets')" data-i18n="road_sense.google_open">Open</button></div>
+                                        <div class="rs-google-links"><button type="button" class="ui-button" data-on-click="RoadSenseSettings.openGoogleConsole('budgets')" data-i18n="road_sense.google_open">Open</button></div>
                                     </li>
                                     <li><span data-i18n="road_sense.google_step7">Paste the key below and tap Save. OverDrive checks each API.</span></li>
                                 </ol>
@@ -211,7 +212,7 @@
                                 <div class="ui-row-desc" id="rsGooglePricingHint" style="display:none;margin-top:4px;" data-i18n="road_sense.google_pricing_hint_india">This car's SIM is from India. Choose India if your Google Cloud billing country is India.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="rsGooglePricing" class="ui-input" onchange="RoadSenseSettings.setGooglePricing(this.value)">
+                                <select id="rsGooglePricing" class="ui-input" data-on-change="RoadSenseSettings.setGooglePricing(this.value)">
                                     <option value="global" data-i18n="road_sense.google_pricing_global">Global</option>
                                     <option value="india" data-i18n="road_sense.google_pricing_india">India (billing country India, most usage in India)</option>
                                 </select>
@@ -225,8 +226,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented ui-choices" id="rsGoogleSpendBtns">
-                                    <button type="button" class="ui-segment active" id="rsGoogleSpendFree" aria-pressed="true" onclick="RoadSenseSettings.setGoogleSpendMode('free')" data-i18n="road_sense.google_spend_free">Free only<span class="ui-choice-desc" data-i18n="road_sense.google_spend_free_desc">Recommended. Google features pause at the free daily limits, so nothing is charged.</span></button>
-                                    <button type="button" class="ui-segment" id="rsGoogleSpendPaid" aria-pressed="false" onclick="RoadSenseSettings.setGoogleSpendMode('paid')" data-i18n="road_sense.google_spend_paid_title">Allow paid usage<span class="ui-choice-desc" data-i18n="road_sense.google_spend_paid_desc">Up to a monthly limit you set. No daily pauses and faster traffic updates.</span></button>
+                                    <button type="button" class="ui-segment active" id="rsGoogleSpendFree" aria-pressed="true" data-on-click="RoadSenseSettings.setGoogleSpendMode('free')" data-i18n="road_sense.google_spend_free">Free only<span class="ui-choice-desc" data-i18n="road_sense.google_spend_free_desc">Recommended. Google features pause at the free daily limits, so nothing is charged.</span></button>
+                                    <button type="button" class="ui-segment" id="rsGoogleSpendPaid" aria-pressed="false" data-on-click="RoadSenseSettings.setGoogleSpendMode('paid')" data-i18n="road_sense.google_spend_paid_title">Allow paid usage<span class="ui-choice-desc" data-i18n="road_sense.google_spend_paid_desc">Up to a monthly limit you set. No daily pauses and faster traffic updates.</span></button>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +237,7 @@
                                 <div class="ui-row-desc" id="rsGoogleSpendLine"></div>
                             </div>
                             <div class="ui-row-end">
-                                <input type="number" id="rsGoogleBudget" class="ui-input" min="1" max="10000" step="0.01" inputmode="decimal" placeholder="10.00" aria-label="Monthly limit in US dollars" data-i18n-attr="aria-label:road_sense.google_spend_budget_aria" onchange="RoadSenseSettings.setGoogleBudget()">
+                                <input type="number" id="rsGoogleBudget" class="ui-input" min="1" max="10000" step="0.01" inputmode="decimal" placeholder="10.00" aria-label="Monthly limit in US dollars" data-i18n-attr="aria-label:road_sense.google_spend_budget_aria" data-on-change="RoadSenseSettings.setGoogleBudget()">
                             </div>
                         </div>
                         <div class="ui-row ui-row-stack" id="rsGoogleSpendPaidInfo" style="display:none;">
@@ -290,17 +291,17 @@
                         </div>
                         <div class="ui-row" style="border-bottom:none;justify-content:flex-end;gap:8px;">
                             <div class="ui-row-end" style="display:flex;gap:8px;">
-                                <button type="button" class="ui-button" id="rsGoogleClearBtn" onclick="RoadSenseSettings.clearGoogle()" data-i18n="road_sense.google_clear">Clear</button>
-                                <button type="button" class="ui-button" id="rsGoogleTestBtn" onclick="RoadSenseSettings.testGoogle()" data-i18n="road_sense.google_test">Test</button>
-                                <button type="button" class="ui-button ui-button-primary" id="rsGoogleSaveBtn" onclick="RoadSenseSettings.saveGoogle()" data-i18n="road_sense.google_save">Save</button>
+                                <button type="button" class="ui-button" id="rsGoogleClearBtn" data-on-click="RoadSenseSettings.clearGoogle()" data-i18n="road_sense.google_clear">Clear</button>
+                                <button type="button" class="ui-button" id="rsGoogleTestBtn" data-on-click="RoadSenseSettings.testGoogle()" data-i18n="road_sense.google_test">Test</button>
+                                <button type="button" class="ui-button ui-button-primary" id="rsGoogleSaveBtn" data-on-click="RoadSenseSettings.saveGoogle()" data-i18n="road_sense.google_save">Save</button>
                             </div>
                         </div>
 
                         <div class="ui-note" id="rsGoogleApiBox" style="display:none;margin-top:0;" role="status">
-                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_tiles">Map Tiles</span><span class="ui-detail-value"><span id="rsGoogleApiTilesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiTilesOpen" style="display:none;" onclick="RoadSenseSettings.openGoogleConsole('tiles')" data-i18n="road_sense.google_open">Open</button></span></div>
-                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_routes">Routes</span><span class="ui-detail-value"><span id="rsGoogleApiRoutesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiRoutesOpen" style="display:none;" onclick="RoadSenseSettings.openGoogleConsole('routes')" data-i18n="road_sense.google_open">Open</button></span></div>
-                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_api_places">Places</span><span class="ui-detail-value"><span id="rsGoogleApiPlacesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiPlacesOpen" style="display:none;" onclick="RoadSenseSettings.openGoogleConsole('places')" data-i18n="road_sense.google_open">Open</button></span></div>
-                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_geocode">Geocoding</span><span class="ui-detail-value"><span id="rsGoogleApiGeocodeState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiGeocodeOpen" style="display:none;" onclick="RoadSenseSettings.openGoogleConsole('geocode')" data-i18n="road_sense.google_open">Open</button></span></div>
+                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_tiles">Map Tiles</span><span class="ui-detail-value"><span id="rsGoogleApiTilesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiTilesOpen" style="display:none;" data-on-click="RoadSenseSettings.openGoogleConsole('tiles')" data-i18n="road_sense.google_open">Open</button></span></div>
+                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_routes">Routes</span><span class="ui-detail-value"><span id="rsGoogleApiRoutesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiRoutesOpen" style="display:none;" data-on-click="RoadSenseSettings.openGoogleConsole('routes')" data-i18n="road_sense.google_open">Open</button></span></div>
+                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_api_places">Places</span><span class="ui-detail-value"><span id="rsGoogleApiPlacesState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiPlacesOpen" style="display:none;" data-on-click="RoadSenseSettings.openGoogleConsole('places')" data-i18n="road_sense.google_open">Open</button></span></div>
+                            <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="road_sense.google_sku_geocode">Geocoding</span><span class="ui-detail-value"><span id="rsGoogleApiGeocodeState">--</span><button type="button" class="ui-button rs-google-open" id="rsGoogleApiGeocodeOpen" style="display:none;" data-on-click="RoadSenseSettings.openGoogleConsole('geocode')" data-i18n="road_sense.google_open">Open</button></span></div>
                         </div>
 
                         <div id="rsGoogleFeatures" style="display:none;">
@@ -311,7 +312,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="rsGoogleFeatBasemap" onchange="RoadSenseSettings.toggleGoogleFeature('basemap')">
+                                        <input type="checkbox" id="rsGoogleFeatBasemap" data-on-change="RoadSenseSettings.toggleGoogleFeature('basemap')">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -323,7 +324,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="rsGoogleFeatTraffic" onchange="RoadSenseSettings.toggleGoogleFeature('traffic')">
+                                        <input type="checkbox" id="rsGoogleFeatTraffic" data-on-change="RoadSenseSettings.toggleGoogleFeature('traffic')">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -335,7 +336,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="rsGoogleFeatRouting" onchange="RoadSenseSettings.toggleGoogleFeature('routing')">
+                                        <input type="checkbox" id="rsGoogleFeatRouting" data-on-change="RoadSenseSettings.toggleGoogleFeature('routing')">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -347,7 +348,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="rsGoogleFeatRouteTraffic" onchange="RoadSenseSettings.toggleGoogleFeature('routeTraffic')">
+                                        <input type="checkbox" id="rsGoogleFeatRouteTraffic" data-on-change="RoadSenseSettings.toggleGoogleFeature('routeTraffic')">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -359,7 +360,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="rsGoogleFeatSearch" onchange="RoadSenseSettings.toggleGoogleFeature('search')">
+                                        <input type="checkbox" id="rsGoogleFeatSearch" data-on-change="RoadSenseSettings.toggleGoogleFeature('search')">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -405,7 +406,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsClusterProject" onchange="RoadSenseSettings.toggleClusterProject()">
+                                    <input type="checkbox" id="rsClusterProject" data-on-change="RoadSenseSettings.toggleClusterProject()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -417,7 +418,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsClusterAuto" onchange="RoadSenseSettings.toggleClusterAuto()">
+                                    <input type="checkbox" id="rsClusterAuto" data-on-change="RoadSenseSettings.toggleClusterAuto()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -430,7 +431,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsClusterSpeed" onchange="RoadSenseSettings.toggleClusterSpeed()">
+                                    <input type="checkbox" id="rsClusterSpeed" data-on-change="RoadSenseSettings.toggleClusterSpeed()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -443,7 +444,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsClusterAdasHide" onchange="RoadSenseSettings.toggleClusterAdasHide()">
+                                    <input type="checkbox" id="rsClusterAdasHide" data-on-change="RoadSenseSettings.toggleClusterAdasHide()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -458,7 +459,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.map_cluster_layout_desc">Match this to your instrument cluster. Shared with the blind-spot cluster view. If the projection looks stretched or cropped, try another option.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="rsClusterLayout" class="ui-input" onchange="RoadSenseSettings.mapSetClusterLayout(this.value)">
+                                <select id="rsClusterLayout" class="ui-input" data-on-change="RoadSenseSettings.mapSetClusterLayout(this.value)">
                                     <option value="31" data-i18n="road_sense.bs_layout_1025">10.25&quot; cluster</option>
                                     <option value="30" data-i18n="road_sense.bs_layout_123">12.3&quot; cluster</option>
                                     <option value="29" data-i18n="road_sense.bs_layout_88">8.8&quot; cluster</option>
@@ -490,7 +491,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="rsDetectSensValue">50%</span>
-                                    <input type="range" class="ui-range" id="rsDetectSensSlider" min="0" max="100" step="5" value="50" oninput="RoadSenseSettings.updateDetectSensitivity(this.value)">
+                                    <input type="range" class="ui-range" id="rsDetectSensSlider" min="0" max="100" step="5" value="50" data-on-input="RoadSenseSettings.updateDetectSensitivity(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -517,7 +518,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsCalibrationMode" onchange="RoadSenseSettings.toggleCalibrationMode()">
+                                    <input type="checkbox" id="rsCalibrationMode" data-on-change="RoadSenseSettings.toggleCalibrationMode()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -544,7 +545,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsOverlayVisible" onchange="RoadSenseSettings.toggleOverlayVisible()">
+                                    <input type="checkbox" id="rsOverlayVisible" data-on-change="RoadSenseSettings.toggleOverlayVisible()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -569,7 +570,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsWarnEnabled" onchange="RoadSenseSettings.toggleWarnEnabled()">
+                                    <input type="checkbox" id="rsWarnEnabled" data-on-change="RoadSenseSettings.toggleWarnEnabled()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -583,9 +584,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" id="rsWarnModeBtns">
-                                    <button class="ui-segment" data-value="visual" onclick="RoadSenseSettings.setWarnMode('visual')" data-i18n="road_sense.warn_mode_visual">Visual</button>
-                                    <button class="ui-segment" data-value="audio" onclick="RoadSenseSettings.setWarnMode('audio')" data-i18n="road_sense.warn_mode_audio">Audio</button>
-                                    <button class="ui-segment" data-value="both" onclick="RoadSenseSettings.setWarnMode('both')" data-i18n="road_sense.warn_mode_both">Both</button>
+                                    <button class="ui-segment" data-value="visual" data-on-click="RoadSenseSettings.setWarnMode('visual')" data-i18n="road_sense.warn_mode_visual">Visual</button>
+                                    <button class="ui-segment" data-value="audio" data-on-click="RoadSenseSettings.setWarnMode('audio')" data-i18n="road_sense.warn_mode_audio">Audio</button>
+                                    <button class="ui-segment" data-value="both" data-on-click="RoadSenseSettings.setWarnMode('both')" data-i18n="road_sense.warn_mode_both">Both</button>
                                 </div>
                             </div>
                         </div>
@@ -597,7 +598,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.warn_channel_desc">Which audio channel the warning chime plays on. Navigation uses the car's guidance channel, so the chime ducks your music instead of competing with it and follows the navigation volume.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="rsWarnChannel" class="ui-input" onchange="RoadSenseSettings.setWarnChannel(this.value)">
+                                <select id="rsWarnChannel" class="ui-input" data-on-change="RoadSenseSettings.setWarnChannel(this.value)">
                                     <option value="navigation" data-i18n="road_sense.warn_channel_navigation">Navigation</option>
                                     <option value="media" data-i18n="road_sense.warn_channel_media">Media</option>
                                     <option value="voice" data-i18n="road_sense.warn_channel_voice">Voice</option>
@@ -617,7 +618,7 @@
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="rsWarnVolumeValue">75%</span>
                                     <div class="slider-track-control">
-                                        <input type="range" class="ui-range" id="rsWarnVolumeSlider" min="10" max="100" step="5" value="75" aria-labelledby="rsWarnVolumeLabel rsWarnVolumeValue" oninput="RoadSenseSettings.updateWarnVolume(this.value)" onchange="RoadSenseSettings.commitWarnVolume(this.value)">
+                                        <input type="range" class="ui-range" id="rsWarnVolumeSlider" min="10" max="100" step="5" value="75" aria-labelledby="rsWarnVolumeLabel rsWarnVolumeValue" data-on-input="RoadSenseSettings.updateWarnVolume(this.value)" data-on-change="RoadSenseSettings.commitWarnVolume(this.value)">
                                         <div class="ui-meter-labels">
                                             <span data-i18n="road_sense.warn_volume_min">Quiet</span>
                                             <span data-i18n="road_sense.warn_volume_max">Loud</span>
@@ -637,7 +638,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.warn_test_desc">Plays the warning sound now on the channel above, so you can check you can hear it and set the volume. The real warning only sounds while driving towards a hazard RoadSense already knows about.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button type="button" id="rsTestChimeBtn" class="ui-button" onclick="RoadSenseSettings.testChime()" data-i18n="road_sense.warn_test_btn">Play chime</button>
+                                <button type="button" id="rsTestChimeBtn" class="ui-button" data-on-click="RoadSenseSettings.testChime()" data-i18n="road_sense.warn_test_btn">Play chime</button>
                             </div>
                         </div>
 
@@ -650,7 +651,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="rsWarnLeadValue">4s</span>
-                                    <input type="range" class="ui-range" id="rsWarnLeadSlider" min="2" max="8" step="1" value="4" oninput="RoadSenseSettings.updateWarnLead(this.value)">
+                                    <input type="range" class="ui-range" id="rsWarnLeadSlider" min="2" max="8" step="1" value="4" data-on-input="RoadSenseSettings.updateWarnLead(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -668,7 +669,7 @@
                             <div class="ui-row-end">
                                 <div class="ui-slider">
                                     <span class="ui-slider-value" id="rsWarnConfValue">0%</span>
-                                    <input type="range" class="ui-range" id="rsWarnConfSlider" min="0" max="100" step="1" value="0" oninput="RoadSenseSettings.updateWarnConf(this.value)">
+                                    <input type="range" class="ui-range" id="rsWarnConfSlider" min="0" max="100" step="1" value="0" data-on-input="RoadSenseSettings.updateWarnConf(this.value)">
                                 </div>
                             </div>
                         </div>
@@ -688,7 +689,7 @@
                             <div class="ui-row-copy"><div class="ui-row-title" style="font-size:13px;" data-i18n="road_sense.severity_minor">Minor</div></div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsSeverityMinor" onchange="RoadSenseSettings.toggleSeverity('minor')">
+                                    <input type="checkbox" id="rsSeverityMinor" data-on-change="RoadSenseSettings.toggleSeverity('minor')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -697,7 +698,7 @@
                             <div class="ui-row-copy"><div class="ui-row-title" style="font-size:13px;" data-i18n="road_sense.severity_moderate">Moderate</div></div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsSeverityModerate" onchange="RoadSenseSettings.toggleSeverity('moderate')">
+                                    <input type="checkbox" id="rsSeverityModerate" data-on-change="RoadSenseSettings.toggleSeverity('moderate')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -706,7 +707,7 @@
                             <div class="ui-row-copy"><div class="ui-row-title" style="font-size:13px;" data-i18n="road_sense.severity_severe">Severe</div></div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsSeveritySevere" onchange="RoadSenseSettings.toggleSeverity('severe')">
+                                    <input type="checkbox" id="rsSeveritySevere" data-on-change="RoadSenseSettings.toggleSeverity('severe')">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -735,7 +736,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsCrowdUpload" onchange="RoadSenseSettings.toggleCrowdUpload()">
+                                    <input type="checkbox" id="rsCrowdUpload" data-on-change="RoadSenseSettings.toggleCrowdUpload()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -748,7 +749,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="rsCrowdDownload" onchange="RoadSenseSettings.toggleCrowdDownload()">
+                                    <input type="checkbox" id="rsCrowdDownload" data-on-change="RoadSenseSettings.toggleCrowdDownload()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -762,7 +763,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.crowd_worker_url_desc">Point upload/download at your own sync worker. Nothing is sent until you enter one.</div>
                                 <div class="ui-row-desc" id="rsSyncWorkerStatus" role="status" style="display:none;" data-i18n="road_sense.crowd_worker_not_configured">Not configured — crowd sync is off until you enter your own worker URL.</div>
                             </div>
-                            <input type="url" id="rsSyncWorkerUrl" class="ui-input" inputmode="url" placeholder="https://your-sync-worker.example.com" onchange="RoadSenseSettings.saveWorkerUrl()" />
+                            <input type="url" id="rsSyncWorkerUrl" class="ui-input" inputmode="url" placeholder="https://your-sync-worker.example.com" data-on-change="RoadSenseSettings.saveWorkerUrl()" />
                         </div>
                     </div>
                 </div>
@@ -783,7 +784,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.delete_local_desc">Removes the hazard detections and calibrations stored on this device. Cannot be undone.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button class="ui-button ui-button-danger" id="rsDeleteLocalBtn" onclick="RoadSenseSettings.deleteLocal()">
+                                <button class="ui-button ui-button-danger" id="rsDeleteLocalBtn" data-on-click="RoadSenseSettings.deleteLocal()">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;" aria-hidden="true"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                     <span data-i18n="road_sense.delete_local_btn">Delete local</span>
                                 </button>
@@ -796,7 +797,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.delete_cloud_desc">Removes the detections you uploaded from the shared cloud map. Other drivers' data is unaffected. Cannot be undone.</div>
                             </div>
                             <div class="ui-row-end">
-                                <button class="ui-button ui-button-danger" id="rsDeleteCloudBtn" onclick="RoadSenseSettings.deleteCloud()">
+                                <button class="ui-button ui-button-danger" id="rsDeleteCloudBtn" data-on-click="RoadSenseSettings.deleteCloud()">
                                     <!-- Lucide "cloud-off": the corner-to-corner slash (m2 2 20 20)
                                          fills the full 24-unit viewBox, so this renders at the same
                                          optical size as the trash glyph on the sibling button (the
@@ -827,7 +828,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="bsEnabled" onchange="RoadSenseSettings.bsToggleEnabled()">
+                                    <input type="checkbox" id="bsEnabled" data-on-change="RoadSenseSettings.bsToggleEnabled()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -842,9 +843,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" role="group" aria-label="Live preview" data-i18n-attr="aria-label:road_sense.bs_preview_title">
-                                    <button type="button" class="ui-segment active" id="bsPrevOff" aria-pressed="true" onclick="RoadSenseSettings.bsSetPreview('off')" data-i18n="road_sense.bs_preview_off">Off</button>
-                                    <button type="button" class="ui-segment" id="bsPrevL" aria-pressed="false" onclick="RoadSenseSettings.bsSetPreview('left')" data-i18n="road_sense.bs_turn_left">Left turn</button>
-                                    <button type="button" class="ui-segment" id="bsPrevR" aria-pressed="false" onclick="RoadSenseSettings.bsSetPreview('right')" data-i18n="road_sense.bs_turn_right">Right turn</button>
+                                    <button type="button" class="ui-segment active" id="bsPrevOff" aria-pressed="true" data-on-click="RoadSenseSettings.bsSetPreview('off')" data-i18n="road_sense.bs_preview_off">Off</button>
+                                    <button type="button" class="ui-segment" id="bsPrevL" aria-pressed="false" data-on-click="RoadSenseSettings.bsSetPreview('left')" data-i18n="road_sense.bs_turn_left">Left turn</button>
+                                    <button type="button" class="ui-segment" id="bsPrevR" aria-pressed="false" data-on-click="RoadSenseSettings.bsSetPreview('right')" data-i18n="road_sense.bs_turn_right">Right turn</button>
                                 </div>
                             </div>
                         </div>
@@ -867,9 +868,9 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented ui-choices bs-mode-cards">
-                                    <button type="button" class="ui-segment" id="bsMergeBoth" aria-pressed="false" onclick="RoadSenseSettings.bsSetMergeMode('both')" data-i18n="road_sense.bs_merge_both"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M7 8 1.5 11v9.5L7 14.5z" fill="currentColor" fill-opacity=".5" stroke="none"/><path d="M9.8 16.5h4.4l3.6 6H6.2z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Rear + side<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_both_desc">Rear and side cameras blended into one wide view.</span></button>
-                                    <button type="button" class="ui-segment" id="bsMergeSide" aria-pressed="false" onclick="RoadSenseSettings.bsSetMergeMode('side')" data-i18n="road_sense.bs_merge_side"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M7 8 1.5 11v9.5L7 14.5z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Side only<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_side_desc">Just the side camera on the side you're turning to.</span></button>
-                                    <button type="button" class="ui-segment" id="bsMergeRear" aria-pressed="false" onclick="RoadSenseSettings.bsSetMergeMode('rear')" data-i18n="road_sense.bs_merge_rear"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M9.8 16.5h4.4l3.6 6H6.2z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Rear only<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_rear_desc">Just the rear camera.</span></button>
+                                    <button type="button" class="ui-segment" id="bsMergeBoth" aria-pressed="false" data-on-click="RoadSenseSettings.bsSetMergeMode('both')" data-i18n="road_sense.bs_merge_both"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M7 8 1.5 11v9.5L7 14.5z" fill="currentColor" fill-opacity=".5" stroke="none"/><path d="M9.8 16.5h4.4l3.6 6H6.2z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Rear + side<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_both_desc">Rear and side cameras blended into one wide view.</span></button>
+                                    <button type="button" class="ui-segment" id="bsMergeSide" aria-pressed="false" data-on-click="RoadSenseSettings.bsSetMergeMode('side')" data-i18n="road_sense.bs_merge_side"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M7 8 1.5 11v9.5L7 14.5z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Side only<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_side_desc">Just the side camera on the side you're turning to.</span></button>
+                                    <button type="button" class="ui-segment" id="bsMergeRear" aria-pressed="false" data-on-click="RoadSenseSettings.bsSetMergeMode('rear')" data-i18n="road_sense.bs_merge_rear"><span class="ui-choice-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8.5" y="2" width="7" height="13" rx="2.5"/><path d="M10.2 6.2q1.8-1.2 3.6 0M10.2 11.3q1.8 1 3.6 0"/><path d="M9.8 16.5h4.4l3.6 6H6.2z" fill="currentColor" fill-opacity=".5" stroke="none"/></svg></span>Rear only<span class="ui-choice-desc" data-i18n="road_sense.bs_merge_rear_desc">Just the rear camera.</span></button>
                                 </div>
                             </div>
                         </div>
@@ -885,60 +886,60 @@
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_rear_fov">Width A</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsRearFovVal">1.66</span>
-                                    <input type="range" class="ui-range" id="bsRearFov" min="1.0" max="2.2" step="0.02" value="1.66" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsRearFov" min="1.0" max="2.2" step="0.02" value="1.66" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_side_fov">Width B</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsSideFovVal">1.98</span>
-                                    <input type="range" class="ui-range" id="bsSideFov" min="1.0" max="2.2" step="0.02" value="1.98" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsSideFov" min="1.0" max="2.2" step="0.02" value="1.98" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_yaw">Blend point</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsYawVal">1.23</span>
-                                    <input type="range" class="ui-range" id="bsYaw" min="0" max="1.4" step="0.01" value="1.23" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsYaw" min="0" max="1.4" step="0.01" value="1.23" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_roll">Tilt</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsRollVal">0.25</span>
-                                    <input type="range" class="ui-range" id="bsRoll" min="-0.4" max="0.4" step="0.005" value="0.25" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsRoll" min="-0.4" max="0.4" step="0.005" value="0.25" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_pitch">Height</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsPitchVal">-0.275</span>
-                                    <input type="range" class="ui-range" id="bsPitch" min="-0.4" max="0.4" step="0.005" value="-0.275" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsPitch" min="-0.4" max="0.4" step="0.005" value="-0.275" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_feather">Blend softness</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFeatherVal">0.38</span>
-                                    <input type="range" class="ui-range" id="bsFeather" min="0" max="1.0" step="0.02" value="0.38" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsFeather" min="0" max="1.0" step="0.02" value="0.38" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_proj_exp">Side spread</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsProjExpVal">1.00</span>
-                                    <input type="range" class="ui-range" id="bsProjExp" min="0.4" max="1.6" step="0.02" value="1.0" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsProjExp" min="0.4" max="1.6" step="0.02" value="1.0" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_rear_roll">Rear level</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsRearRollVal">0.00</span>
-                                    <input type="range" class="ui-range" id="bsRearRoll" min="-0.4" max="0.4" step="0.005" value="0.0" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsRearRoll" min="-0.4" max="0.4" step="0.005" value="0.0" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_rear_pitch">Rear tilt</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsRearPitchVal">0.00</span>
-                                    <input type="range" class="ui-range" id="bsRearPitch" min="-0.4" max="0.4" step="0.005" value="0.0" oninput="RoadSenseSettings.bsTune()">
+                                    <input type="range" class="ui-range" id="bsRearPitch" min="-0.4" max="0.4" step="0.005" value="0.0" data-on-input="RoadSenseSettings.bsTune()">
                                 </div></div>
                             </div>
                             <div class="bs-stitch-actions">
-                                <button class="ui-button ui-button-primary" id="bsStitchApplyBtn" disabled onclick="RoadSenseSettings.bsSave()" data-i18n="road_sense.bs_save">Apply alignment</button>
-                                <button class="ui-button" onclick="RoadSenseSettings.bsResetDefaults()" data-i18n="road_sense.bs_reset">Reset to default</button>
+                                <button class="ui-button ui-button-primary" id="bsStitchApplyBtn" disabled data-on-click="RoadSenseSettings.bsSave()" data-i18n="road_sense.bs_save">Apply alignment</button>
+                                <button class="ui-button" data-on-click="RoadSenseSettings.bsResetDefaults()" data-i18n="road_sense.bs_reset">Reset to default</button>
                             </div>
                         </div>
                         <!-- Single-camera modes only (the merged view has no per-side settings). -->
@@ -949,8 +950,8 @@
                             </div>
                             <div class="ui-row-end">
                                 <div class="ui-segmented" role="group" aria-label="Settings for" data-i18n-attr="aria-label:road_sense.bs_side_title">
-                                    <button type="button" class="ui-segment active" id="bsSideL" aria-pressed="true" onclick="RoadSenseSettings.bsSelectSide('left')" data-i18n="road_sense.bs_turn_left">Left turn</button>
-                                    <button type="button" class="ui-segment" id="bsSideR" aria-pressed="false" onclick="RoadSenseSettings.bsSelectSide('right')" data-i18n="road_sense.bs_turn_right">Right turn</button>
+                                    <button type="button" class="ui-segment active" id="bsSideL" aria-pressed="true" data-on-click="RoadSenseSettings.bsSelectSide('left')" data-i18n="road_sense.bs_turn_left">Left turn</button>
+                                    <button type="button" class="ui-segment" id="bsSideR" aria-pressed="false" data-on-click="RoadSenseSettings.bsSelectSide('right')" data-i18n="road_sense.bs_turn_right">Right turn</button>
                                 </div>
                             </div>
                         </div>
@@ -962,12 +963,12 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_rotation_left_desc">Rotate the left-turn view on screen. The window reshapes to match.</div>
                             </div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsRotL0" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
-                                <button class="ui-button" id="bsRotL90" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
-                                <button class="ui-button" id="bsRotL180" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
-                                <button class="ui-button" id="bsRotL270" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
-                                <button class="ui-button" id="bsRotL310" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 310)" data-i18n="road_sense.bs_rotation_310">310&deg;</button>
-                                <button class="ui-button" id="bsRotLAuto" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetRotation('left', 'auto')" data-i18n="road_sense.bs_rotation_auto">Auto</button>
+                                <button class="ui-button" id="bsRotL0" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
+                                <button class="ui-button" id="bsRotL90" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
+                                <button class="ui-button" id="bsRotL180" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
+                                <button class="ui-button" id="bsRotL270" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
+                                <button class="ui-button" id="bsRotL310" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 310)" data-i18n="road_sense.bs_rotation_310">310&deg;</button>
+                                <button class="ui-button" id="bsRotLAuto" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('left', 'auto')" data-i18n="road_sense.bs_rotation_auto">Auto</button>
                             </div>
                         </div>
                         <div class="ui-row" id="bsAutoBaseLeftRow" style="display:none;">
@@ -976,10 +977,10 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_auto_base_desc">The angle used while driving forward. Reverse gear flips the view 180° so it reads naturally when backing up.</div>
                             </div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsBaseL0" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('left', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
-                                <button class="ui-button" id="bsBaseL90" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('left', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
-                                <button class="ui-button" id="bsBaseL180" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('left', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
-                                <button class="ui-button" id="bsBaseL270" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('left', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
+                                <button class="ui-button" id="bsBaseL0" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('left', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
+                                <button class="ui-button" id="bsBaseL90" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('left', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
+                                <button class="ui-button" id="bsBaseL180" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('left', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
+                                <button class="ui-button" id="bsBaseL270" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('left', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
                             </div>
                         </div>
                         <!-- Per-side framing (Side only): bsSetFraming(side, key, value) saves on
@@ -991,7 +992,7 @@
                                     <div class="ui-row-desc" data-i18n="road_sense.bs_framing_desc_live">Fine-tune this side's picture for your car. Each change is saved when you let go.</div>
                                 </div>
                                 <div class="ui-row-end">
-                                    <button class="ui-button" onclick="RoadSenseSettings.bsResetFraming('left')" data-i18n="road_sense.bs_framing_reset">Reset</button>
+                                    <button class="ui-button" data-on-click="RoadSenseSettings.bsResetFraming('left')" data-i18n="road_sense.bs_framing_reset">Reset</button>
                                 </div>
                             </div>
                             <div class="ui-row">
@@ -1002,7 +1003,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="bsFrameLMirror" onchange="RoadSenseSettings.bsSetFramingMirror('left', this.checked)">
+                                        <input type="checkbox" id="bsFrameLMirror" data-on-change="RoadSenseSettings.bsSetFramingMirror('left', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -1010,25 +1011,25 @@
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_angle">Angle</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameLAngleVal">0&deg;</span>
-                                    <input type="range" class="ui-range" id="bsFrameLAngle" min="-180" max="180" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('left', 'angle', this.value)" onchange="RoadSenseSettings.bsSetFraming('left', 'angle', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameLAngle" min="-180" max="180" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('left', 'angle', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('left', 'angle', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_zoom">Zoom</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameLZoomVal">1.00&times;</span>
-                                    <input type="range" class="ui-range" id="bsFrameLZoom" min="0.5" max="2" step="0.05" value="1" oninput="RoadSenseSettings.bsFramingInput('left', 'zoom', this.value)" onchange="RoadSenseSettings.bsSetFraming('left', 'zoom', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameLZoom" min="0.5" max="2" step="0.05" value="1" data-on-input="RoadSenseSettings.bsFramingInput('left', 'zoom', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('left', 'zoom', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_pan_x">Move left / right</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameLPanXVal">0%</span>
-                                    <input type="range" class="ui-range" id="bsFrameLPanX" min="-50" max="50" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('left', 'panX', this.value)" onchange="RoadSenseSettings.bsSetFraming('left', 'panX', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameLPanX" min="-50" max="50" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('left', 'panX', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('left', 'panX', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_pan_y">Move up / down</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameLPanYVal">0%</span>
-                                    <input type="range" class="ui-range" id="bsFrameLPanY" min="-50" max="50" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('left', 'panY', this.value)" onchange="RoadSenseSettings.bsSetFraming('left', 'panY', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameLPanY" min="-50" max="50" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('left', 'panY', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('left', 'panY', this.value)">
                                 </div></div>
                             </div>
                         </div>
@@ -1038,12 +1039,12 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_rotation_right_desc">Rotate the right-turn view on screen; mirror-imaged from the left.</div>
                             </div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsRotR0" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
-                                <button class="ui-button" id="bsRotR40" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 40)" data-i18n="road_sense.bs_rotation_40">40&deg;</button>
-                                <button class="ui-button" id="bsRotR90" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
-                                <button class="ui-button" id="bsRotR180" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
-                                <button class="ui-button" id="bsRotR270" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
-                                <button class="ui-button" id="bsRotRAuto" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetRotation('right', 'auto')" data-i18n="road_sense.bs_rotation_auto">Auto</button>
+                                <button class="ui-button" id="bsRotR0" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
+                                <button class="ui-button" id="bsRotR40" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 40)" data-i18n="road_sense.bs_rotation_40">40&deg;</button>
+                                <button class="ui-button" id="bsRotR90" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
+                                <button class="ui-button" id="bsRotR180" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
+                                <button class="ui-button" id="bsRotR270" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
+                                <button class="ui-button" id="bsRotRAuto" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetRotation('right', 'auto')" data-i18n="road_sense.bs_rotation_auto">Auto</button>
                             </div>
                         </div>
                         <div class="ui-row" id="bsAutoBaseRightRow" style="display:none;">
@@ -1052,10 +1053,10 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_auto_base_desc">The angle used while driving forward. Reverse gear flips the view 180° so it reads naturally when backing up.</div>
                             </div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsBaseR0" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('right', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
-                                <button class="ui-button" id="bsBaseR90" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('right', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
-                                <button class="ui-button" id="bsBaseR180" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('right', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
-                                <button class="ui-button" id="bsBaseR270" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetRotationBase('right', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
+                                <button class="ui-button" id="bsBaseR0" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('right', 0)" data-i18n="road_sense.bs_rotation_0">0&deg;</button>
+                                <button class="ui-button" id="bsBaseR90" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('right', 90)" data-i18n="road_sense.bs_rotation_90">90&deg;</button>
+                                <button class="ui-button" id="bsBaseR180" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('right', 180)" data-i18n="road_sense.bs_rotation_180">180&deg;</button>
+                                <button class="ui-button" id="bsBaseR270" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetRotationBase('right', 270)" data-i18n="road_sense.bs_rotation_270">270&deg;</button>
                             </div>
                         </div>
                         <div class="bs-frame" id="bsFrameRRow" style="display:none;">
@@ -1065,7 +1066,7 @@
                                     <div class="ui-row-desc" data-i18n="road_sense.bs_framing_desc_live">Fine-tune this side's picture for your car. Each change is saved when you let go.</div>
                                 </div>
                                 <div class="ui-row-end">
-                                    <button class="ui-button" onclick="RoadSenseSettings.bsResetFraming('right')" data-i18n="road_sense.bs_framing_reset">Reset</button>
+                                    <button class="ui-button" data-on-click="RoadSenseSettings.bsResetFraming('right')" data-i18n="road_sense.bs_framing_reset">Reset</button>
                                 </div>
                             </div>
                             <div class="ui-row">
@@ -1076,7 +1077,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="bsFrameRMirror" onchange="RoadSenseSettings.bsSetFramingMirror('right', this.checked)">
+                                        <input type="checkbox" id="bsFrameRMirror" data-on-change="RoadSenseSettings.bsSetFramingMirror('right', this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -1084,25 +1085,25 @@
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_angle">Angle</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameRAngleVal">0&deg;</span>
-                                    <input type="range" class="ui-range" id="bsFrameRAngle" min="-180" max="180" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('right', 'angle', this.value)" onchange="RoadSenseSettings.bsSetFraming('right', 'angle', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameRAngle" min="-180" max="180" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('right', 'angle', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('right', 'angle', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_zoom">Zoom</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameRZoomVal">1.00&times;</span>
-                                    <input type="range" class="ui-range" id="bsFrameRZoom" min="0.5" max="2" step="0.05" value="1" oninput="RoadSenseSettings.bsFramingInput('right', 'zoom', this.value)" onchange="RoadSenseSettings.bsSetFraming('right', 'zoom', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameRZoom" min="0.5" max="2" step="0.05" value="1" data-on-input="RoadSenseSettings.bsFramingInput('right', 'zoom', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('right', 'zoom', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_pan_x">Move left / right</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameRPanXVal">0%</span>
-                                    <input type="range" class="ui-range" id="bsFrameRPanX" min="-50" max="50" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('right', 'panX', this.value)" onchange="RoadSenseSettings.bsSetFraming('right', 'panX', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameRPanX" min="-50" max="50" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('right', 'panX', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('right', 'panX', this.value)">
                                 </div></div>
                             </div>
                             <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_framing_pan_y">Move up / down</div></div>
                                 <div class="ui-row-end"><div class="ui-slider">
                                     <span class="ui-slider-value" id="bsFrameRPanYVal">0%</span>
-                                    <input type="range" class="ui-range" id="bsFrameRPanY" min="-50" max="50" step="1" value="0" oninput="RoadSenseSettings.bsFramingInput('right', 'panY', this.value)" onchange="RoadSenseSettings.bsSetFraming('right', 'panY', this.value)">
+                                    <input type="range" class="ui-range" id="bsFrameRPanY" min="-50" max="50" step="1" value="0" data-on-input="RoadSenseSettings.bsFramingInput('right', 'panY', this.value)" data-on-change="RoadSenseSettings.bsSetFraming('right', 'panY', this.value)">
                                 </div></div>
                             </div>
                         </div>
@@ -1115,7 +1116,7 @@
                             </div>
                             <div class="ui-row-end"><div class="ui-slider">
                                 <span class="ui-slider-value" id="bsRectifyVal">0</span>
-                                <input type="range" class="ui-range" id="bsRectify" min="0" max="100" step="1" value="0" oninput="RoadSenseSettings.bsRectifyInput(this.value)" onchange="RoadSenseSettings.bsSetRectify(this.value)">
+                                <input type="range" class="ui-range" id="bsRectify" min="0" max="100" step="1" value="0" data-on-input="RoadSenseSettings.bsRectifyInput(this.value)" data-on-change="RoadSenseSettings.bsSetRectify(this.value)">
                             </div></div>
                         </div>
                     </div>
@@ -1136,8 +1137,8 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_display_desc">Where the blind-spot view appears. Driver cluster shows it on the gauge screen behind the wheel; while a turn signal is active it temporarily replaces the gauges, which return when you stop signalling.</div>
                             </div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsTargetHeadunit" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetTarget('head_unit')" data-i18n="road_sense.bs_display_headunit">Infotainment screen</button>
-                                <button class="ui-button" id="bsTargetCluster" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetTarget('cluster')" data-i18n="road_sense.bs_display_cluster">Driver cluster</button>
+                                <button class="ui-button" id="bsTargetHeadunit" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetTarget('head_unit')" data-i18n="road_sense.bs_display_headunit">Infotainment screen</button>
+                                <button class="ui-button" id="bsTargetCluster" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetTarget('cluster')" data-i18n="road_sense.bs_display_cluster">Driver cluster</button>
                             </div>
                         </div>
                         <!-- Cluster projection layout (size profile). Only shown when the
@@ -1148,7 +1149,7 @@
                                 <div class="ui-row-desc" data-i18n="road_sense.bs_cluster_layout_desc">Match this to your instrument cluster size. If the projected view looks stretched or cropped, try another option.</div>
                             </div>
                             <div class="ui-row-end">
-                                <select id="bsClusterLayout" class="ui-input" onchange="RoadSenseSettings.bsSetClusterLayout(this.value)">
+                                <select id="bsClusterLayout" class="ui-input" data-on-change="RoadSenseSettings.bsSetClusterLayout(this.value)">
                                     <option value="31" data-i18n="road_sense.bs_layout_1025">10.25&quot; cluster</option>
                                     <option value="30" data-i18n="road_sense.bs_layout_123">12.3&quot; cluster</option>
                                     <option value="29" data-i18n="road_sense.bs_layout_88">8.8&quot; cluster</option>
@@ -1158,7 +1159,7 @@
                         <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_size">Overlay size</div></div>
                             <div class="ui-row-end"><div class="ui-slider">
                                 <span class="ui-slider-value" id="bsSizeVal">40%</span>
-                                <input type="range" class="ui-range" id="bsSize" min="15" max="90" step="1" value="40" oninput="RoadSenseSettings.bsSetSize(this.value)">
+                                <input type="range" class="ui-range" id="bsSize" min="15" max="90" step="1" value="40" data-on-input="RoadSenseSettings.bsSetSize(this.value)">
                             </div></div>
                         </div>
                         <!-- Position is PER SIDE: bsSetCorner(side, corner) writes
@@ -1166,27 +1167,27 @@
                              highlights bsCorner{L,R}*. One-arg calls no-op. -->
                         <div class="ui-row"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_position_left">Position — left</div></div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsCornerLTl" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('left', 'tl')" data-i18n="road_sense.bs_corner_tl">Top-left</button>
-                                <button class="ui-button" id="bsCornerLTr" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('left', 'tr')" data-i18n="road_sense.bs_corner_tr">Top-right</button>
-                                <button class="ui-button" id="bsCornerLBl" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('left', 'bl')" data-i18n="road_sense.bs_corner_bl">Bottom-left</button>
-                                <button class="ui-button" id="bsCornerLBr" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('left', 'br')" data-i18n="road_sense.bs_corner_br">Bottom-right</button>
-                                <button class="ui-button" id="bsCornerLCenter" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetCorner('left', 'center')" data-i18n="road_sense.bs_corner_center">Center</button>
+                                <button class="ui-button" id="bsCornerLTl" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('left', 'tl')" data-i18n="road_sense.bs_corner_tl">Top-left</button>
+                                <button class="ui-button" id="bsCornerLTr" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('left', 'tr')" data-i18n="road_sense.bs_corner_tr">Top-right</button>
+                                <button class="ui-button" id="bsCornerLBl" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('left', 'bl')" data-i18n="road_sense.bs_corner_bl">Bottom-left</button>
+                                <button class="ui-button" id="bsCornerLBr" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('left', 'br')" data-i18n="road_sense.bs_corner_br">Bottom-right</button>
+                                <button class="ui-button" id="bsCornerLCenter" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('left', 'center')" data-i18n="road_sense.bs_corner_center">Center</button>
                             </div>
                         </div>
                         <div class="ui-row" style="border-bottom:none;"><div class="ui-row-copy"><div class="ui-row-title" data-i18n="road_sense.bs_position_right">Position — right</div></div>
                             <div class="ui-row-end" style="display:flex;flex-wrap:wrap;">
-                                <button class="ui-button" id="bsCornerRTl" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('right', 'tl')" data-i18n="road_sense.bs_corner_tl">Top-left</button>
-                                <button class="ui-button" id="bsCornerRTr" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('right', 'tr')" data-i18n="road_sense.bs_corner_tr">Top-right</button>
-                                <button class="ui-button" id="bsCornerRBl" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('right', 'bl')" data-i18n="road_sense.bs_corner_bl">Bottom-left</button>
-                                <button class="ui-button" id="bsCornerRBr" style="margin:0 8px 8px 0;" onclick="RoadSenseSettings.bsSetCorner('right', 'br')" data-i18n="road_sense.bs_corner_br">Bottom-right</button>
-                                <button class="ui-button" id="bsCornerRCenter" style="margin:0 0 8px 0;" onclick="RoadSenseSettings.bsSetCorner('right', 'center')" data-i18n="road_sense.bs_corner_center">Center</button>
+                                <button class="ui-button" id="bsCornerRTl" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('right', 'tl')" data-i18n="road_sense.bs_corner_tl">Top-left</button>
+                                <button class="ui-button" id="bsCornerRTr" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('right', 'tr')" data-i18n="road_sense.bs_corner_tr">Top-right</button>
+                                <button class="ui-button" id="bsCornerRBl" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('right', 'bl')" data-i18n="road_sense.bs_corner_bl">Bottom-left</button>
+                                <button class="ui-button" id="bsCornerRBr" style="margin:0 8px 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('right', 'br')" data-i18n="road_sense.bs_corner_br">Bottom-right</button>
+                                <button class="ui-button" id="bsCornerRCenter" style="margin:0 0 8px 0;" data-on-click="RoadSenseSettings.bsSetCorner('right', 'center')" data-i18n="road_sense.bs_corner_center">Center</button>
                             </div>
                         </div>
                         <!-- Apply for the display+placement group (target/layout/size/position
                              stage their edits; this commits them together — matches the
                              Apply model on the recording/surveillance pages). -->
                         <div class="ui-row" style="border-bottom:none;justify-content:flex-end;">
-                            <button class="ui-button ui-button-primary" id="bsApplyBtn" disabled onclick="RoadSenseSettings.bsApplyDisplay()" data-i18n="common.apply_changes">
+                            <button class="ui-button ui-button-primary" id="bsApplyBtn" disabled data-on-click="RoadSenseSettings.bsApplyDisplay()" data-i18n="common.apply_changes">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"/></svg>
                                 Apply Changes
                             </button>
@@ -1221,13 +1222,13 @@
                                        min="0" max="300" step="1"
                                        data-i18n-attr="aria-label:road_sense.bs_speed_min_aria"
                                        aria-label="Minimum speed in km/h, 0 for any"
-                                       oninput="RoadSenseSettings.bsSpeedInput()">
+                                       data-on-input="RoadSenseSettings.bsSpeedInput()">
                                 <span class="bs-speed-dash">–</span>
                                 <input class="ui-input bs-speed-num" id="bsMaxSpeed" type="number" inputmode="numeric"
                                        min="0" max="300" step="1"
                                        data-i18n-attr="aria-label:road_sense.bs_speed_max_aria"
                                        aria-label="Maximum speed in km/h, 0 for any"
-                                       oninput="RoadSenseSettings.bsSpeedInput()">
+                                       data-on-input="RoadSenseSettings.bsSpeedInput()">
                                 <span class="bs-speed-unit">km/h</span>
                             </div>
                         </div>
@@ -1239,7 +1240,7 @@
                              one saves immediately. bs-apply-row tightens the top gap so
                              the button reads as part of the row above it. -->
                         <div class="ui-row bs-apply-row">
-                            <button class="ui-button ui-button-primary" id="bsSpeedApplyBtn" disabled onclick="RoadSenseSettings.bsApplySpeedWindow()" data-i18n="common.apply_changes">
+                            <button class="ui-button ui-button-primary" id="bsSpeedApplyBtn" disabled data-on-click="RoadSenseSettings.bsApplySpeedWindow()" data-i18n="common.apply_changes">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;"><polyline points="20 6 9 17 4 12"/></svg>
                                 Apply Changes
                             </button>
@@ -1251,7 +1252,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="bsSuppressReverse" onchange="RoadSenseSettings.bsToggleSuppressReverse()">
+                                    <input type="checkbox" id="bsSuppressReverse" data-on-change="RoadSenseSettings.bsToggleSuppressReverse()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>

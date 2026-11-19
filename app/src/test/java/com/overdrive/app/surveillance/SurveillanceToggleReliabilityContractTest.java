@@ -23,7 +23,7 @@ public class SurveillanceToggleReliabilityContractTest {
                 "app/src/main/java/com/overdrive/app/server/SurveillanceApiHandler.java");
 
         assertTrue(html.contains(
-                "id=\"survEnabled\" disabled onchange=\"SurvSettings.toggleSurveillance()\""));
+                "id=\"survEnabled\" disabled data-on-change=\"SurvSettings.toggleSurveillance()\""));
         assertTrue(html.contains(
                 "<main class=\"main-content\" aria-busy=\"true\" inert style=\"pointer-events:none\">"));
         assertTrue(html.contains("settings-hydration.js?v=1"));
