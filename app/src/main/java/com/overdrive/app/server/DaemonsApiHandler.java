@@ -100,6 +100,7 @@ public final class DaemonsApiHandler {
         int running = 0;
         DaemonType[] types = DaemonType.values();
         for (DaemonType type : types) {
+            if (!com.overdrive.app.ui.model.DaemonTypeKt.isOffered(type)) continue; // F11
             JSONObject d = new JSONObject();
             d.put("id", type.name());
             d.put("name", type.getDisplayName());
@@ -122,7 +123,7 @@ public final class DaemonsApiHandler {
         JSONObject root = new JSONObject();
         root.put("status", "ok");
         root.put("ts", System.currentTimeMillis());
-        root.put("total", types.length);
+        root.put("total", list.length());
         root.put("running", procs == null ? JSONObject.NULL : (Object) running);
         root.put("parkedShutdown", new File(ParkedShutdown.MARKER_PATH).exists());
         root.put("daemons", list);

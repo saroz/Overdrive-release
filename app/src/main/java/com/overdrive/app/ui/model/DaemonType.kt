@@ -106,6 +106,13 @@ object ParkedShutdown {
     }
 }
 
+/**
+ * Security fix F11: this fork ships no built-in sing-box server, so the Sing-box row is only
+ * offered (app list and web daemons page) when a server is configured.
+ */
+fun DaemonType.isOffered(): Boolean =
+    this != DaemonType.SINGBOX_PROXY || com.overdrive.app.daemon.proxy.ProxyConfiguration.isServerConfigured()
+
 fun DaemonType.localizedName(context: Context): String = context.getString(when (this) {
     DaemonType.CAMERA_DAEMON      -> R.string.daemon_name_camera
     DaemonType.SENTRY_DAEMON      -> R.string.daemon_name_surveillance

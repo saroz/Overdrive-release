@@ -78,6 +78,21 @@ public class BuiltInProxyServerRemovedTest {
         }
     }
 
+    @Test
+    public void singboxRowIsHiddenWhileNoServerIsConfigured() throws IOException {
+        assertFalse(ProxyConfiguration.isServerConfigured());
+        assertFalse(com.overdrive.app.ui.model.DaemonTypeKt.isOffered(
+                com.overdrive.app.ui.model.DaemonType.SINGBOX_PROXY));
+        assertTrue(com.overdrive.app.ui.model.DaemonTypeKt.isOffered(
+                com.overdrive.app.ui.model.DaemonType.TELEGRAM_DAEMON));
+        String fragment = new String(Files.readAllBytes(locate(
+                "app/src/main/java/com/overdrive/app/ui/fragment/DaemonsFragment.kt")), StandardCharsets.UTF_8);
+        assertTrue(fragment.contains("states.values.filter { it.type.isOffered() }"));
+        String api = new String(Files.readAllBytes(locate(
+                "app/src/main/java/com/overdrive/app/server/DaemonsApiHandler.java")), StandardCharsets.UTF_8);
+        assertTrue(api.contains("if (!com.overdrive.app.ui.model.DaemonTypeKt.isOffered(type)) continue;"));
+    }
+
     private static Path locate(String relativePath) {
         Path current = Paths.get("").toAbsolutePath();
         while (current != null) {

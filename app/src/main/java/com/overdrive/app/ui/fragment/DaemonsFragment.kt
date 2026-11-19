@@ -23,6 +23,7 @@ import com.overdrive.app.ui.adapter.DaemonAdapter
 import com.overdrive.app.ui.viewmodel.DaemonsViewModel
 import com.overdrive.app.ui.model.DaemonType
 import com.overdrive.app.ui.model.localizedName
+import com.overdrive.app.ui.model.isOffered
 import com.overdrive.app.R
 import com.overdrive.app.config.UnifiedConfigManager
 import com.overdrive.app.ui.model.DaemonStatus
@@ -217,7 +218,7 @@ class DaemonsFragment : Fragment() {
     private fun observeViewModel() {
         daemonsViewModel.daemonStates.observe(viewLifecycleOwner) { states ->
             // Convert map to list sorted by daemon type ordinal
-            val sortedList = states.values.sortedBy { it.type.ordinal }
+            val sortedList = states.values.filter { it.type.isOffered() }.sortedBy { it.type.ordinal }
             daemonAdapter.submitList(sortedList)
 
             // Update hero header live count: "X of Y running"
