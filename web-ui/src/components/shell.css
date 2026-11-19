@@ -60,6 +60,7 @@ body.ui-app {
 .ui-brand-mark img { width: 22px; height: 22px; object-fit: contain; }
 
 /* Altitude 8848 badge: the logo carries the name, so no text beside it. */
+.ui-brand { justify-content: center; }
 .ui-brand-logo { display: block; width: auto; height: 64px; }
 .ui-topbar-brand .ui-brand-logo { height: 36px; }
 
@@ -70,21 +71,14 @@ body.ui-app {
   gap: 5px;
   min-height: 0;
   margin-top: 28px;
-  margin-inline-end: -12px;
-  padding-inline-end: 6px;
   overflow-x: hidden;
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: transparent transparent;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-/* Menu scrollbar: thin, hidden until the pointer is over the menu or it scrolls. */
-.ui-nav::-webkit-scrollbar { width: 6px; }
-.ui-nav::-webkit-scrollbar-track { background: transparent; }
-.ui-nav::-webkit-scrollbar-thumb { border-radius: 3px; background: transparent; }
-.ui-nav:hover, .ui-nav.is-scrolling { scrollbar-color: var(--ui-line) transparent; }
-.ui-nav:hover::-webkit-scrollbar-thumb,
-.ui-nav.is-scrolling::-webkit-scrollbar-thumb { background: var(--ui-line); }
+/* The menu scrolls with the wheel, touch or keyboard; no scrollbar is drawn. */
+.ui-nav::-webkit-scrollbar { display: none; width: 0; height: 0; }
 .ui-nav > * { flex: none; }
 
 .ui-nav-link {

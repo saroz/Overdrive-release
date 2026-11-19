@@ -3,10 +3,10 @@
 <resources>
     <dimen name="shell_rail_compact_width">80dp</dimen>
     <dimen name="shell_rail_expanded_width">216dp</dimen>
-    <dimen name="shell_rail_brand_height">52dp</dimen>
+    <dimen name="shell_rail_brand_height">72dp</dimen>
     <dimen name="shell_rail_brand_inset">24dp</dimen>
-    <dimen name="shell_rail_mark_width">74dp</dimen>
-    <dimen name="shell_rail_mark_height">20dp</dimen>
+    <dimen name="shell_rail_mark_width">56dp</dimen>
+    <dimen name="shell_rail_mark_height">50dp</dimen>
     <dimen name="shell_rail_wordmark_gap">10dp</dimen>
 
     <!-- A row is a 52dp plate with 2dp above and below; the whole 56dp is the touch target. -->

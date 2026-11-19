@@ -56,8 +56,7 @@
                         android:layout_width="@dimen/card_icon_service"
                         android:layout_height="@dimen/card_icon_service"
                         android:contentDescription="@null"
-                        android:src="@drawable/ic_sidebar_logo"
-                        app:tint="?attr/colorPrimary" />
+                        android:src="@drawable/ic_brand_altitude" />
 
                     <TextView
                         android:layout_width="wrap_content"

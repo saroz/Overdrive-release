@@ -2304,13 +2304,14 @@ open class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** Mark at 24dp beside the wordmark when expanded; centred at 75% scale when compact. */
+    /** The Altitude 8848 badge stays centred: 75% scale when compact, full size when expanded. */
     private fun applyRailBrandMark(progress: Float) {
         val mark = railBrandMark ?: return
         val markWidth = mark.layoutParams.width.toFloat()
         val inset = resources.getDimension(R.dimen.shell_rail_brand_inset)
         val compactStart = (dp(RAIL_COMPACT_WIDTH_DP) - markWidth * RAIL_MARK_COMPACT_SCALE) / 2f
-        val start = compactStart + (inset - compactStart) * progress
+        val expandedStart = (resources.getDimension(R.dimen.shell_rail_expanded_width) - markWidth) / 2f
+        val start = compactStart + (expandedStart - compactStart) * progress
         val scale = RAIL_MARK_COMPACT_SCALE + (1f - RAIL_MARK_COMPACT_SCALE) * progress
         val rtl = isRailRtl()
         mark.pivotX = if (rtl) markWidth else 0f
@@ -2339,7 +2340,7 @@ open class MainActivity : AppCompatActivity() {
         railSectionViews.forEach { (label, _) ->
             label.visibility = if (shown) View.VISIBLE else View.INVISIBLE
         }
-        navigationRailBrand?.visibility = visibility
+        navigationRailBrand?.visibility = View.GONE
         railRemoteText?.visibility = visibility
         railTooltipRows.forEach { (row, label) ->
             TooltipCompat.setTooltipText(row, if (shown) null else label)

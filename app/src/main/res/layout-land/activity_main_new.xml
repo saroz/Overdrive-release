@@ -40,7 +40,7 @@
                     android:layout_marginStart="@dimen/shell_rail_brand_inset"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/ic_brand_od" />
+                    android:src="@drawable/ic_brand_altitude" />
 
                 <TextView
                     android:id="@+id/railBrand"

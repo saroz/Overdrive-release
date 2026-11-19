@@ -614,19 +614,6 @@
         });
     }
 
-    // Menu scrollbar: thin and hidden until the pointer is over the menu or it
-    // is scrolling, then it fades out again.
-    function wireNavScrollbar(aside) {
-        var nav = aside.querySelector('[data-sidebar-nav]');
-        if (!nav) return;
-        var timer = null;
-        nav.addEventListener('scroll', function () {
-            nav.classList.add('is-scrolling');
-            if (timer) clearTimeout(timer);
-            timer = setTimeout(function () { nav.classList.remove('is-scrolling'); }, 900);
-        });
-    }
-
     function currentPageTitle() {
         var source = document.querySelector('.page-title, .dev-view-header h1, main h1');
         var text = source && source.textContent ? source.textContent.replace(/^\s+|\s+$/g, '') : '';
@@ -660,7 +647,6 @@
             var foot = aside.querySelector('.ui-sidebar-foot');
             if (foot) foot.insertAdjacentHTML('afterbegin', buildVehicleStatus());
         }
-        wireNavScrollbar(aside);
         hideHeaderClock();
         mountBottomNav();
         watchSwitchRows();

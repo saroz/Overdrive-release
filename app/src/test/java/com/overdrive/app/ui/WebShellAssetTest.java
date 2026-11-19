@@ -150,10 +150,9 @@ public class WebShellAssetTest {
     }
 
     @Test
-    public void menuScrollbarIsThinAndShowsOnlyOnHoverOrScroll() throws IOException {
-        UiComponentsAssetTest.assertRule(".ui-nav::-webkit-scrollbar-thumb", "background:0 0"); // minified "transparent"
-        UiComponentsAssetTest.assertRule(".ui-nav.is-scrolling::-webkit-scrollbar-thumb", "background:var(--ui-line)");
-        assertTrue(js().contains("nav.classList.add('is-scrolling');"));
+    public void menuScrollsWithoutAVisibleScrollbar() throws IOException {
+        UiComponentsAssetTest.assertRule(".ui-nav", "scrollbar-width:none");
+        UiComponentsAssetTest.assertRule(".ui-nav::-webkit-scrollbar", "display:none");
     }
 
     @Test
