@@ -95,6 +95,8 @@ const NetworkPage = {
             }
             const desc = document.getElementById('hsStateDesc');
             if (desc && s.lastError && !on) desc.textContent = s.lastError;
+            const adbWarn = document.getElementById('adbInsecureWarning');
+            if (adbWarn) adbWarn.hidden = s.adbAuthDisabled !== true;
 
             // Vehicle-owned credentials: always safe to repaint, nothing editable.
             this._ssid = s.activeSsid || s.ssid || '';

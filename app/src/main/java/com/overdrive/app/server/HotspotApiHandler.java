@@ -201,6 +201,8 @@ public class HotspotApiHandler {
             String gateway = state.optString("gateway", "");
             status.put("gateway", gateway.isEmpty() ? "192.168.43.1" : gateway);
             status.put("proxyPort", 8119);
+            // G2: hotspot clients can reach network ADB (5555); warn when it needs no RSA prompt.
+            status.put("adbAuthDisabled", AdbExposure.authDisabled(readProp("ro.adb.secure")));
 
             resp.put("success", true);
             resp.put("status", status);
