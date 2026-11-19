@@ -1,11 +1,13 @@
 package com.overdrive.app.ui;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import com.overdrive.app.ui.fragment.WebViewFragment;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collections;
 import org.junit.Test;
 
 /** Only the daemon origin may receive a session or remain inside the bridged WebView. */
@@ -53,6 +55,20 @@ public class WebViewDaemonOriginTest {
         denied("http://example.invalid:8080/127.0.0.1:8080/events.html");
         denied("http://127.0.0.2:18080/citation?next=http://localhost:8080/");
         denied("https://example.invalid/?origin=http://127.0.0.1:8080/");
+    }
+
+    @Test
+    public void corsOriginIsNeverAWildcardAndOnlyEchoesTheDaemonOrigin() {
+        String canonical = "http://127.0.0.1:8080";
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(null));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.<String, String>emptyMap()));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.singletonMap("Origin", canonical)));
+        assertEquals("http://localhost:8080",
+                WebViewFragment.corsAllowOrigin(Collections.singletonMap("origin", "http://localhost:8080")));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.singletonMap("Origin", "https://example.invalid")));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.singletonMap("Origin", "null")));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.singletonMap("Origin", "http://127.0.0.1:8081")));
+        assertEquals(canonical, WebViewFragment.corsAllowOrigin(Collections.singletonMap("Origin", "http://127.0.0.1:8080.example.invalid")));
     }
 
     @Test

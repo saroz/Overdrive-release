@@ -94,6 +94,21 @@ class WebViewFragment : Fragment() {
                 false
             }
 
+        /**
+         * The value for `Access-Control-Allow-Origin` on a response this WebView synthesizes.
+         * Only the daemon's own pages load in this WebView ([isDaemonUrl]), so the answer is
+         * never a wildcard: the request's `Origin` when it is exactly the daemon origin (either
+         * loopback spelling), otherwise the canonical daemon origin. A foreign page can't read
+         * the response.
+         */
+        @JvmStatic
+        fun corsAllowOrigin(requestHeaders: Map<String, String>?): String {
+            val canonical = "http://127.0.0.1:${CameraDaemon.HTTP_PORT}"
+            val sent = requestHeaders?.entries
+                ?.firstOrNull { it.key.equals("Origin", ignoreCase = true) }?.value
+            return if (sent == canonical || sent == "http://localhost:${CameraDaemon.HTTP_PORT}") sent else canonical
+        }
+
         /** A daemon API endpoint (e.g. a pack download) opened as a navigation: never a page of its own. */
         private fun isApiNavigation(uri: Uri?): Boolean = uri?.path.orEmpty().startsWith("/api/")
 
@@ -724,7 +739,7 @@ class WebViewFragment : Fragment() {
                     val isLocalServer = isDaemonUrl(url)
 
                     if (isLocalServer) {
-                        interceptI18nCatalog(url)?.let { return it }
+                        interceptI18nCatalog(url, request.requestHeaders)?.let { return it }
                         // Versioned static assets (?v=…, bumped on every edit): let the WebView
                         // fetch them itself so they are cached (and their compiled JS kept) across
                         // screens. Unversioned ones stay on the uncached path below so a daemon
@@ -861,7 +876,8 @@ class WebViewFragment : Fragment() {
                                         lower == "upgrade") return@forEach
                                     headers[k] = v.last()
                                 }
-                                headers["Access-Control-Allow-Origin"] = "*"
+                                headers["Access-Control-Allow-Origin"] = corsAllowOrigin(request?.requestHeaders)
+                                headers["Vary"] = "Origin"
                                 response.responseHeaders = headers
 
                                 // Promote this strategy. Subsequent CDN
@@ -1039,7 +1055,8 @@ class WebViewFragment : Fragment() {
                             headers[k] = v.last()
                         }
                         // MANUAL OVERRIDES: Ensure these exist even if server forgot them
-                        headers["Access-Control-Allow-Origin"] = "*"
+                        headers["Access-Control-Allow-Origin"] = corsAllowOrigin(request.requestHeaders)
+                        headers["Vary"] = "Origin"
                         headers["Accept-Ranges"] = "bytes"  // Tells player "You can seek"
                         if (length > 0 && !splicedHtml) {
                             headers["Content-Length"] = length.toString()
@@ -2430,7 +2447,7 @@ class WebViewFragment : Fragment() {
      * Serve catalog requests straight from the installed APK in the embedded
      * WebView. External clients still use the daemon HTTP path.
      */
-    private fun interceptI18nCatalog(url: String): WebResourceResponse? {
+    private fun interceptI18nCatalog(url: String, requestHeaders: Map<String, String>?): WebResourceResponse? {
         val path = Uri.parse(url).path ?: return null
         if (!path.startsWith("/i18n/") || !path.endsWith(".json")) return null
         val file = path.substringAfter("/i18n/")
@@ -2446,7 +2463,8 @@ class WebViewFragment : Fragment() {
             setStatusCodeAndReasonPhrase(200, "OK")
             responseHeaders = mapOf(
                 "Cache-Control" to "no-store",
-                "Access-Control-Allow-Origin" to "*",
+                "Access-Control-Allow-Origin" to corsAllowOrigin(requestHeaders),
+                "Vary" to "Origin",
                 "Content-Length" to bytes.size.toString()
             )
         }
