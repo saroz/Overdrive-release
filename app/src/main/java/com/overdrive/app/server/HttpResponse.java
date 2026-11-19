@@ -24,8 +24,17 @@ public class HttpResponse {
     public static final String CSP =
             "object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; "
             + "connect-src 'self' ws: wss: blob: data: https://raw.githubusercontent.com";
+    /**
+     * Security fix F9, stage 1: the script policy we want, in report-only mode. Nothing is
+     * blocked; the WebView posts what WOULD break to {@link CspReportCollector} so inline
+     * scripts and handlers can be moved out page by page before it is enforced. CSP2 (Chrome 58):
+     * child-src governs workers, report-uri (not report-to).
+     */
+    public static final String CSP_REPORT_ONLY =
+            "script-src 'self'; child-src 'self' blob:; report-uri /api/csp-report";
     public static final String SECURITY_HEADERS =
             "Content-Security-Policy: " + CSP + "\r\n" +
+            "Content-Security-Policy-Report-Only: " + CSP_REPORT_ONLY + "\r\n" +
             "X-Frame-Options: DENY\r\n" +
             "X-Content-Type-Options: nosniff\r\n";
 

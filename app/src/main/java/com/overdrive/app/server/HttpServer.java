@@ -491,6 +491,9 @@ public class HttpServer {
                 && !requestLine.startsWith("POST /api/audio/library/");
         if (isAudioUpload) return 72 * 1024 * 1024;
 
+        // F9: a CSP report is small and this endpoint is public.
+        if (requestLine.startsWith("POST /api/csp-report ")) return CspReportCollector.MAX_BODY_BYTES;
+
         // A WireGuard config is at most 16 KB; leave room for the JSON wrapper.
         if (requestLine.startsWith("POST /api/wireguard/")) return 64 * 1024;
 
@@ -1387,6 +1390,23 @@ public class HttpServer {
                                      String ifNoneMatchHeader, OutputStream out) throws Exception {
         if (path.equals("/api/auth/handoff") || path.equals("/api/auth/regenerate")) {
             AuthApiHandler.handleSecret(method, path, isLocalSessionCaller(), out);
+            return true;
+        }
+        if (path.equals("/api/csp-report")) {
+            // F9 stage 1: public, POST only (see CspReportCollector).
+            if (!"POST".equals(method)) {
+                HttpResponse.sendError(out, 405, "Method Not Allowed");
+                return true;
+            }
+            String line = CspReportCollector.record(body, System.currentTimeMillis());
+            if (line != null) CameraDaemon.log(line);
+            HttpResponse.sendJsonNoCors(out, 200, "{\"success\":true}");
+            return true;
+        }
+        if (path.equals("/api/csp-reports") && "GET".equals(method)) {
+            HttpResponse.sendJsonNoCors(out, new JSONObject()
+                    .put("success", true)
+                    .put("reports", CspReportCollector.list()).toString());
             return true;
         }
         if (path.equals("/api/auth/sessions") || path.startsWith("/api/auth/sessions/")) {

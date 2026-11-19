@@ -47,7 +47,10 @@ public class AuthMiddleware {
         // worker registration and manifest discovery, with no Bearer header
         // (browser-internal fetch, not auth.js-wrapped).
         "/manifest.json",
-        "/sw.js"
+        "/sw.js",
+        // F9: CSP violation reports. The browser posts them with no Bearer header; the
+        // handler accepts POST only, caps the body and rate-limits logging (CspReportCollector).
+        "/api/csp-report"
     ));
 
     // Path prefixes that don't require authentication
