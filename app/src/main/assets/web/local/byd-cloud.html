@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -86,7 +87,7 @@
                              backend; several countries share one node. -->
                         <div class="ui-field">
                             <div class="ui-field-box">
-                                <select class="ui-input" id="bydCountryCode" onchange="BydCloud.onCountryChange(this.value)">
+                                <select class="ui-input" id="bydCountryCode" data-on-change="BydCloud.onCountryChange(this.value)">
                                 </select>
                                 <label class="ui-label" for="bydCountryCode" data-i18n="byd_cloud.country">Country</label>
                             </div>
@@ -142,7 +143,7 @@
                             <div class="ui-field-box">
                                 <input type="password" class="ui-input" id="bydPassword" placeholder=" " autocomplete="current-password">
                                 <label class="ui-label" for="bydPassword" data-i18n="surveillance.byd_password">Password</label>
-                                <button type="button" class="md-trailing-btn" onclick="BydCloud.togglePasswordVisibility('bydPassword', this)" data-i18n-attr="title:surveillance.byd_password_toggle_title;aria-label:surveillance.byd_password_toggle_title" title="Show / hide password" aria-label="Show / hide password">
+                                <button type="button" class="md-trailing-btn" data-on-click="BydCloud.togglePasswordVisibility('bydPassword', this)" data-i18n-attr="title:surveillance.byd_password_toggle_title;aria-label:surveillance.byd_password_toggle_title" title="Show / hide password" aria-label="Show / hide password">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                 </button>
                             </div>
@@ -159,11 +160,11 @@
                         </div>
 
                         <div class="byd-action-row">
-                            <button class="ui-button ui-button-primary" onclick="BydCloud.saveCredentials()" id="bydSaveBtn">
+                            <button class="ui-button ui-button-primary" data-on-click="BydCloud.saveCredentials()" id="bydSaveBtn">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
                                 <span data-i18n="surveillance.save_credentials">Save Credentials</span>
                             </button>
-                            <button class="ui-button" onclick="BydCloud.testConnection()" id="bydTestBtn" disabled>
+                            <button class="ui-button" data-on-click="BydCloud.testConnection()" id="bydTestBtn" disabled>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                                 <span data-i18n="surveillance.test_connection">Test Connection</span>
                             </button>
@@ -229,7 +230,7 @@
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
-                                        <input type="checkbox" id="bydCloudMergeToggle" disabled onchange="BydCloud.toggleCloudDataMerge(this.checked)">
+                                        <input type="checkbox" id="bydCloudMergeToggle" disabled data-on-change="BydCloud.toggleCloudDataMerge(this.checked)">
                                         <span class="ui-toggle-track"></span>
                                     </label>
                                 </div>
@@ -249,7 +250,7 @@
                     <div class="ui-panel-body">
                         <div id="bydClearSection">
                             <div class="ui-hint" style="margin-bottom:14px;" data-i18n="byd_cloud.clear_hint">Removes the saved credentials from this device. You'll need to re-enter your BYD app login + PIN to use cloud commands again.</div>
-                            <button class="ui-button ui-button-danger" onclick="BydCloud.clearCredentials()" style="width:100%;">
+                            <button class="ui-button ui-button-danger" data-on-click="BydCloud.clearCredentials()" style="width:100%;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
                                 <span data-i18n="surveillance.byd_clear">Clear Credentials</span>
                             </button>

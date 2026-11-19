@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.login_title">Login - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <link rel="stylesheet" href="../shared/design-tokens.css?v=3">
     <link rel="stylesheet" href="../shared/ui.css?v=1">
@@ -50,7 +51,7 @@
                 <p class="form-error" id="tokenError"></p>
             </div>
 
-            <button class="ui-button ui-button-primary ui-button-block" id="loginBtn" onclick="login()">
+            <button class="ui-button ui-button-primary ui-button-block" id="loginBtn" data-on-click="login()">
                 <span id="loginBtnText" data-i18n="login.login_btn">Login</span>
                 <div class="ui-spinner" id="loginSpinner" style="display:none;"></div>
             </button>

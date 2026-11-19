@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.abrp_title">ABRP - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -101,14 +102,14 @@
                         <div id="tokenDisplay" style="display:none;">
                             <span id="maskedToken" class="token-masked">••••xxxx</span>
                             <div class="token-actions">
-                                <button class="ui-button ui-button-danger" onclick="ABRP.deleteToken()" data-i18n="common.delete">Delete</button>
-                                <button class="ui-button" onclick="ABRP.showTokenInput()" data-i18n="common.edit">Change</button>
+                                <button class="ui-button ui-button-danger" data-on-click="ABRP.deleteToken()" data-i18n="common.delete">Delete</button>
+                                <button class="ui-button" data-on-click="ABRP.showTokenInput()" data-i18n="common.edit">Change</button>
                             </div>
                         </div>
                         <div id="tokenInput">
                             <div class="token-input-row">
                                 <input type="password" id="abrpTokenField" placeholder="Enter ABRP user token" data-i18n-attr="placeholder:abrp.token_placeholder">
-                                <button class="ui-button ui-button-primary" onclick="ABRP.saveToken()" data-i18n="abrp.save_test">Save &amp; Test</button>
+                                <button class="ui-button ui-button-primary" data-on-click="ABRP.saveToken()" data-i18n="abrp.save_test">Save &amp; Test</button>
                             </div>
                         </div>
                         <div id="tokenStatus" class="status-text"></div>
@@ -131,7 +132,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="abrpEnabled" onchange="ABRP.toggleEnabled()">
+                                    <input type="checkbox" id="abrpEnabled" data-on-change="ABRP.toggleEnabled()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -160,18 +161,18 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="abrpChangeOnly" onchange="ABRP.saveDataSaving()">
+                                    <input type="checkbox" id="abrpChangeOnly" data-on-change="ABRP.saveDataSaving()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
                         </div>
                         <div style="margin-top:14px;">
                             <label style="font-size:12px;color:var(--text-secondary);"><span data-i18n="abrp.min_interval">Min interval — fastest</span>: <span id="abrpMinLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">5s</span></label>
-                            <input type="range" class="ui-range" id="abrpMinInterval" min="1" max="30" step="1" value="5" style="width:100%;" oninput="ABRP.onSlider()" onchange="ABRP.saveDataSaving()">
+                            <input type="range" class="ui-range" id="abrpMinInterval" min="1" max="30" step="1" value="5" style="width:100%;" data-on-input="ABRP.onSlider()" data-on-change="ABRP.saveDataSaving()">
                         </div>
                         <div style="margin-top:14px;">
                             <label style="font-size:12px;color:var(--text-secondary);"><span data-i18n="abrp.max_interval">Max interval — heartbeat</span>: <span id="abrpMaxLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">2m</span></label>
-                            <input type="range" class="ui-range" id="abrpMaxInterval" min="30" max="1800" step="30" value="120" style="width:100%;" oninput="ABRP.onSlider()" onchange="ABRP.saveDataSaving()">
+                            <input type="range" class="ui-range" id="abrpMaxInterval" min="30" max="1800" step="30" value="120" style="width:100%;" data-on-input="ABRP.onSlider()" data-on-change="ABRP.saveDataSaving()">
                         </div>
                     </div>
                 </div>
@@ -192,7 +193,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="abrpGateOnApp" onchange="ABRP.onGateToggle(); ABRP.saveDataSaving()">
+                                    <input type="checkbox" id="abrpGateOnApp" data-on-change="ABRPPage.gateChanged()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -200,14 +201,14 @@
                         <div id="abrpGateOptions" style="display:none;">
                             <div style="margin-top:14px;display:flex;flex-direction:column;gap:4px;">
                                 <label style="font-size:12px;color:var(--text-secondary);" data-i18n="abrp.app_mode">Active when</label>
-                                <select id="abrpAppMode" onchange="ABRP.saveDataSaving()" style="padding:10px 12px;background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:8px;color:var(--text-primary);font-size:14px;">
+                                <select id="abrpAppMode" data-on-change="ABRP.saveDataSaving()" style="padding:10px 12px;background:var(--bg-elevated);border:1px solid var(--border-color);border-radius:8px;color:var(--text-primary);font-size:14px;">
                                     <option value="foreground" data-i18n="abrp.app_mode_foreground">ABRP is on screen (recommended)</option>
                                     <option value="running" data-i18n="abrp.app_mode_running">ABRP is running (incl. background)</option>
                                 </select>
                             </div>
                             <div style="margin-top:14px;">
                                 <label style="font-size:12px;color:var(--text-secondary);"><span data-i18n="abrp.app_grace">Grace period</span>: <span id="abrpGraceLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">90s</span></label>
-                                <input type="range" class="ui-range" id="abrpAppGrace" min="0" max="600" step="10" value="90" style="width:100%;" oninput="ABRP.onSlider()" onchange="ABRP.saveDataSaving()">
+                                <input type="range" class="ui-range" id="abrpAppGrace" min="0" max="600" step="10" value="90" style="width:100%;" data-on-input="ABRP.onSlider()" data-on-change="ABRP.saveDataSaving()">
                             </div>
                             <div class="ui-note" style="margin-top:12px;">
                                 <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="abrp.app_status">ABRP app</span><span class="ui-detail-value" id="abrpAppPresence">--</span></div>

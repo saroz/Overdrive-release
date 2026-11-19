@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.wireguard_title">WireGuard - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -51,7 +52,7 @@
 
                         <div class="file-row">
                             <label class="ui-button" for="wgFile" data-i18n="wireguard.choose_file">Choose .conf file</label>
-                            <input type="file" id="wgFile" accept=".conf,text/plain" style="display:none;" onchange="WG.onFile(this)">
+                            <input type="file" id="wgFile" accept=".conf,text/plain" style="display:none;" data-on-change="WG.onFile(this)">
                         </div>
 
                         <div class="ui-field">
@@ -64,8 +65,8 @@
                         <div class="ui-hint" data-i18n="wireguard.apply_note">A saved config applies immediately while the tunnel is running. Otherwise, switch on "WireGuard Tunnel" in the car's Daemons screen.</div>
 
                         <div class="form-actions">
-                            <button id="wgDeleteBtn" class="ui-button" style="display:none;" onclick="WG.remove()" data-i18n="wireguard.delete">Delete config</button>
-                            <button class="ui-button ui-button-primary" onclick="WG.save()" data-i18n="wireguard.save">Save config</button>
+                            <button id="wgDeleteBtn" class="ui-button" style="display:none;" data-on-click="WG.remove()" data-i18n="wireguard.delete">Delete config</button>
+                            <button class="ui-button ui-button-primary" data-on-click="WG.save()" data-i18n="wireguard.save">Save config</button>
                         </div>
                     </div>
                 </div>

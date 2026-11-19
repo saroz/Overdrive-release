@@ -114,7 +114,7 @@ public class WebSettingsToggleReliabilityContractTest {
 
         String bydCloud = read("app/src/main/assets/web/local/byd-cloud.html");
         assertTrue(bydCloud.contains(
-                "id=\"bydCloudMergeToggle\" disabled onchange=\"BydCloud.toggleCloudDataMerge(this.checked)\""));
+                "id=\"bydCloudMergeToggle\" disabled data-on-change=\"BydCloud.toggleCloudDataMerge(this.checked)\""));
 
         String notifications = read("app/src/main/assets/web/local/notifications.html");
         assertTrue(notifications.contains(

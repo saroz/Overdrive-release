@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="moduleFaults.page_title">Module Faults - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -29,8 +30,8 @@
                 </section>
                 <div id="mfError" class="mf-error" role="alert"></div>
                 <div class="mf-toolbar">
-                    <button class="ui-button ui-button-primary" id="mfRefresh" type="button" onclick="ModuleFaultsPage.refresh()" data-i18n="moduleFaults.refresh">Refresh readings</button>
-                    <button class="ui-button" id="mfCopy" type="button" onclick="ModuleFaultsPage.copyReport()" disabled data-i18n="moduleFaults.copy_report">Copy report</button>
+                    <button class="ui-button ui-button-primary" id="mfRefresh" type="button" data-on-click="ModuleFaultsPage.refresh()" data-i18n="moduleFaults.refresh">Refresh readings</button>
+                    <button class="ui-button" id="mfCopy" type="button" data-on-click="ModuleFaultsPage.copyReport()" disabled data-i18n="moduleFaults.copy_report">Copy report</button>
                     <span class="mf-updated"><span data-i18n="moduleFaults.last_updated">Last updated</span>: <span id="mfUpdated">—</span></span>
                 </div>
                 <div class="mf-summary" id="mfSummary" aria-live="polite">

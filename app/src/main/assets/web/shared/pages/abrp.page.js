@@ -4,3 +4,11 @@ window.OT_TABS = [
     { id: 'token',     label: 'Token',     i18n: 'abrp.tab_token',     svg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' },
     { id: 'telemetry', label: 'Telemetry', i18n: 'abrp.tab_telemetry', svg: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>', readOnly: true }
 ];
+
+// Security F9 step 4: one markup call for the data-saving gate switch.
+window.ABRPPage = {
+    gateChanged: function () {
+        ABRP.onGateToggle();
+        ABRP.saveDataSaving();
+    }
+};

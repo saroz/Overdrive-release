@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
+    "test:on-actions": "node scripts/on-actions.test.cjs ../app/src/main/assets/web/shared/on-actions.js",
     "serve": "node scripts/serve.mjs",
     "snapshot": "node scripts/snapshot-ids.mjs",
     "legacy-classes": "node scripts/legacy-classes.mjs",

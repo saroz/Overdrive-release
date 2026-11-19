@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.mqtt_title">MQTT - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -48,7 +49,7 @@
                     <div class="ui-empty">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="2"/><path d="M8.46 15.54A5 5 0 0 1 7 12a5 5 0 0 1 1.46-3.54"/><path d="M15.54 8.46A5 5 0 0 1 17 12a5 5 0 0 1-1.46 3.54"/><path d="M5.64 18.36A9 9 0 0 1 3 12a9 9 0 0 1 2.64-6.36"/><path d="M18.36 5.64A9 9 0 0 1 21 12a9 9 0 0 1-2.64 6.36"/></svg>
                         <p data-i18n="mqtt.empty_p">No MQTT connections configured. Add a connection to start publishing vehicle telemetry.</p>
-                        <button class="ui-button ui-button-primary" onclick="MQTT.showAddForm()" data-i18n="mqtt.add_connection">Add Connection</button>
+                        <button class="ui-button ui-button-primary" data-on-click="MQTT.showAddForm()" data-i18n="mqtt.add_connection">Add Connection</button>
                     </div>
                 </div>
 
@@ -103,11 +104,11 @@
                             </div>
                             <div class="ui-field" style="grid-column: span 2;">
                                 <label><span data-i18n="mqtt.field_min_interval">Min interval — fastest</span>: <span id="formMinLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">5s</span></label>
-                                <input type="range" class="ui-range" id="formMinInterval" min="1" max="60" step="1" value="5" oninput="MQTT.onSlider()">
+                                <input type="range" class="ui-range" id="formMinInterval" min="1" max="60" step="1" value="5" data-on-input="MQTT.onSlider()">
                             </div>
                             <div class="ui-field" style="grid-column: span 2;">
                                 <label><span data-i18n="mqtt.field_max_interval">Max interval — heartbeat</span>: <span id="formMaxLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">5m</span></label>
-                                <input type="range" class="ui-range" id="formMaxInterval" min="30" max="3600" step="30" value="300" oninput="MQTT.onSlider()">
+                                <input type="range" class="ui-range" id="formMaxInterval" min="30" max="3600" step="30" value="300" data-on-input="MQTT.onSlider()">
                             </div>
                             <!-- Per-state heartbeat overrides (issue #132). Optional: when set, they
                                  replace the heartbeat interval above while the car is parked / charging.
@@ -116,12 +117,12 @@
                                  data during the ACC-off network blackout; charging can keep stats lively. -->
                             <div class="ui-field" style="grid-column: span 2;">
                                 <label><span data-i18n="mqtt.field_parked_interval">Parked heartbeat (ACC off)</span>: <span id="formParkedLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">Off</span></label>
-                                <input type="range" class="ui-range" id="formParkedInterval" min="0" max="3600" step="30" value="0" oninput="MQTT.onSlider()">
+                                <input type="range" class="ui-range" id="formParkedInterval" min="0" max="3600" step="30" value="0" data-on-input="MQTT.onSlider()">
                                 <div style="font-size:12px;color:var(--text-muted);margin-top:2px;" data-i18n="mqtt.field_parked_interval_desc">Heartbeat cadence while the car is parked. Off = use the max interval. Higher = fewer publishes, less data.</div>
                             </div>
                             <div class="ui-field" style="grid-column: span 2;">
                                 <label><span data-i18n="mqtt.field_charging_interval">Charging heartbeat</span>: <span id="formChargingLabel" style="font-family:'JetBrains Mono',monospace;color:var(--text-primary);">Off</span></label>
-                                <input type="range" class="ui-range" id="formChargingInterval" min="0" max="3600" step="30" value="0" oninput="MQTT.onSlider()">
+                                <input type="range" class="ui-range" id="formChargingInterval" min="0" max="3600" step="30" value="0" data-on-input="MQTT.onSlider()">
                                 <div style="font-size:12px;color:var(--text-muted);margin-top:2px;" data-i18n="mqtt.field_charging_interval_desc">Heartbeat cadence while charging. Off = use the max interval. Takes precedence over the parked cadence.</div>
                             </div>
                         </div>
@@ -144,7 +145,7 @@
                                     <div style="font-size:12px;color:var(--text-muted);margin-top:2px;" data-i18n="mqtt.ha_discovery_desc">Auto-create entities in Home Assistant. Publishes per-field retained topics (no aggregate JSON).</div>
                                 </div>
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="formHaDiscovery" onchange="MQTT.onHaToggle()">
+                                    <input type="checkbox" id="formHaDiscovery" data-on-change="MQTT.onHaToggle()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -191,7 +192,7 @@
                                     <div style="font-size:12px;color:var(--text-muted);margin-top:2px;" data-i18n="mqtt.trust_all_desc">For ssl:// and wss:// brokers with a self-signed certificate. Turns off certificate checks, so the car can't tell your broker from an impostor. Off by default — leave it off unless you must.</div>
                                 </div>
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="formTrustAllCerts" onchange="MQTT.onTrustAllToggle()">
+                                    <input type="checkbox" id="formTrustAllCerts" data-on-change="MQTT.onTrustAllToggle()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>
@@ -222,8 +223,8 @@
                         </div>
 
                         <div class="form-actions">
-                            <button class="ui-button" onclick="MQTT.hideForm()" data-i18n="common.cancel">Cancel</button>
-                            <button class="ui-button ui-button-primary" onclick="MQTT.saveForm()" data-i18n="mqtt.save_connection">Save Connection</button>
+                            <button class="ui-button" data-on-click="MQTT.hideForm()" data-i18n="common.cancel">Cancel</button>
+                            <button class="ui-button ui-button-primary" data-on-click="MQTT.saveForm()" data-i18n="mqtt.save_connection">Save Connection</button>
                         </div>
                     </div>
                 </div>

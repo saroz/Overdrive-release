@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -147,19 +148,19 @@
                         </div>
                         <div class="home-controls-body">
                             <div class="home-actions">
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/lock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-lock"></use></svg><span data-i18n="dashboard.cmd_lock">Lock</span></button>
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/unlock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-unlock"></use></svg><span data-i18n="dashboard.cmd_unlock">Unlock</span></button>
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/flash')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-headlights"></use></svg><span data-i18n="dashboard.cmd_flash">Flash</span></button>
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/find-car')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-find"></use></svg><span data-i18n="dashboard.cmd_find">Find</span></button>
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'open'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-open"></use></svg><span data-i18n="dashboard.cmd_trunk_open">Open trunk</span></button>
-                                <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.command(this, '/api/vehicle/trunk', {action:'close'})"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-close"></use></svg><span data-i18n="dashboard.cmd_trunk_close">Close trunk</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.command(this, '/api/vehicle/lock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-lock"></use></svg><span data-i18n="dashboard.cmd_lock">Lock</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.command(this, '/api/vehicle/unlock')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-unlock"></use></svg><span data-i18n="dashboard.cmd_unlock">Unlock</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.command(this, '/api/vehicle/flash')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-headlights"></use></svg><span data-i18n="dashboard.cmd_flash">Flash</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.command(this, '/api/vehicle/find-car')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-find"></use></svg><span data-i18n="dashboard.cmd_find">Find</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.trunkCommand(this, 'open')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-open"></use></svg><span data-i18n="dashboard.cmd_trunk_open">Open trunk</span></button>
+                                <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.trunkCommand(this, 'close')"><svg class="ui-icon" aria-hidden="true"><use href="#ph-trunk-close"></use></svg><span data-i18n="dashboard.cmd_trunk_close">Close trunk</span></button>
                             </div>
                             <div class="home-pills" id="dashPills">
                                 <!-- Vehicle power. Local rail only; stays display:none until
                                      /api/vehicle/cloud-status confirms that rail exists on this car. -->
                                 <div class="home-actions" id="dashPowerCommands" style="display:none">
-                                    <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, true)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_on">Power on</span></button>
-                                    <button class="ui-button home-cmd" type="button" onclick="BYD.dashboard.powerCommand(this, false)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_off">Power off</span></button>
+                                    <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.powerCommand(this, true)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_on">Power on</span></button>
+                                    <button class="ui-button home-cmd" type="button" data-on-click="BYD.dashboard.powerCommand(this, false)"><svg class="ui-icon" aria-hidden="true"><use href="#ph-power-button"></use></svg><span data-i18n="vehicle.power_off">Power off</span></button>
                                 </div>
                                 <!-- User-defined buttons (GET /api/quick-controls); hidden until one exists. -->
                                 <div class="home-actions" id="dashCustomCommands" style="display:none"></div>
@@ -186,7 +187,7 @@
                         <div class="ui-metric"><div class="ui-metric-label">12V</div><div class="ui-metric-value" id="dash12v">--</div></div>
                         <div class="ui-metric" id="dashPowerMetric"><div class="ui-metric-label" data-i18n="dashboard.metric_power">Power</div><div class="ui-metric-value" id="dashAcc">--</div></div>
                         <!-- Value = SSID / Mobile Data / Ethernet; line below = IPv4 + Wi-Fi dBm when known -->
-                        <div class="ui-metric"><div class="ui-metric-label"><span data-i18n="dashboard.metric_network">Network</span><span id="dashWifiCtrl" hidden><label class="ui-toggle" id="dashWifiSwitch"><input type="checkbox" id="dashWifiToggle" onchange="BYD.dashboard.toggleWifi(this.checked)"><span class="ui-toggle-track"></span></label></span></div><div class="ui-metric-value home-metric-text" id="dashNetwork">--</div><div class="home-net-detail"><p id="dashNetworkIp" style="display:none"></p><p id="dashNetworkRssi" style="display:none"></p><button type="button" class="home-wifi-info" id="dashWifiInfoBtn" hidden aria-expanded="false" aria-controls="dashWifiNote" data-i18n-attr="title:dashboard.wifi_note_title;aria-label:dashboard.wifi_note_title" title="Wi-Fi and BYD connected services" aria-label="Wi-Fi and BYD connected services" onclick="BYD.dashboard.toggleWifiNote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></button></div><p class="home-wifi-note" id="dashWifiNote" hidden data-i18n="dashboard.wifi_cloud_note">Joining Wi-Fi can switch off the car's own SIM link to BYD, so BYD app remote controls may stop working until Wi-Fi is off.</p></div>
+                        <div class="ui-metric"><div class="ui-metric-label"><span data-i18n="dashboard.metric_network">Network</span><span id="dashWifiCtrl" hidden><label class="ui-toggle" id="dashWifiSwitch"><input type="checkbox" id="dashWifiToggle" data-on-change="BYD.dashboard.toggleWifi(this.checked)"><span class="ui-toggle-track"></span></label></span></div><div class="ui-metric-value home-metric-text" id="dashNetwork">--</div><div class="home-net-detail"><p id="dashNetworkIp" style="display:none"></p><p id="dashNetworkRssi" style="display:none"></p><button type="button" class="home-wifi-info" id="dashWifiInfoBtn" hidden aria-expanded="false" aria-controls="dashWifiNote" data-i18n-attr="title:dashboard.wifi_note_title;aria-label:dashboard.wifi_note_title" title="Wi-Fi and BYD connected services" aria-label="Wi-Fi and BYD connected services" data-on-click="BYD.dashboard.toggleWifiNote()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg></button></div><p class="home-wifi-note" id="dashWifiNote" hidden data-i18n="dashboard.wifi_cloud_note">Joining Wi-Fi can switch off the car's own SIM link to BYD, so BYD app remote controls may stop working until Wi-Fi is off.</p></div>
                         <div class="ui-metric" id="dashBluetoothMetric" data-state="unknown">
                             <div class="ui-metric-label" data-i18n="dashboard.metric_bluetooth">Bluetooth</div>
                             <div class="ui-metric-value home-metric-text" id="dashBluetoothValue" role="status" aria-live="polite" aria-label="Vehicle Bluetooth: Unknown"><span id="dashBluetooth"><span data-i18n="common.unknown">Unknown</span></span></div>
@@ -248,7 +249,7 @@
                     <div class="ui-strip">
                         <span class="ui-strip-icon"><svg class="ui-icon" aria-hidden="true"><use href="#ph-location"></use></svg></span>
                         <div class="ui-strip-copy"><h2 id="homeLocationTitle" data-i18n="dashboard.card_location">Vehicle location</h2><p data-i18n="dashboard.kicker_position">Position</p></div>
-                        <button class="ui-button" type="button" onclick="BYD.dashboard.openDirections()"><svg class="ui-icon" aria-hidden="true"><use href="#ph-abrp"></use></svg><span data-i18n="dashboard.directions">Navigate to car</span></button>
+                        <button class="ui-button" type="button" data-on-click="BYD.dashboard.openDirections()"><svg class="ui-icon" aria-hidden="true"><use href="#ph-abrp"></use></svg><span data-i18n="dashboard.directions">Navigate to car</span></button>
                     </div>
                     <div class="home-map"><div id="mapContainer"></div></div>
                 </section>

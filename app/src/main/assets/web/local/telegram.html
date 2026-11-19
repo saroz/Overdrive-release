@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -67,7 +68,7 @@
                             <div class="ui-field-box">
                                 <input type="password" class="ui-input" id="tgToken" placeholder=" " autocomplete="off">
                                 <label class="ui-label" for="tgToken" data-i18n="telegram.token">Bot token</label>
-                                <button type="button" class="md-trailing-btn" onclick="TG.toggleTokenVisibility(this)" aria-label="Show token" data-i18n-attr="aria-label:telegram.show_token">
+                                <button type="button" class="md-trailing-btn" data-on-click="TG.toggleTokenVisibility(this)" aria-label="Show token" data-i18n-attr="aria-label:telegram.show_token">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                                 </button>
                             </div>
@@ -75,11 +76,11 @@
                         </div>
 
                         <div class="byd-action-row">
-                            <button class="ui-button ui-button-primary" id="tgConnectBtn" onclick="TG.connect()">
+                            <button class="ui-button ui-button-primary" id="tgConnectBtn" data-on-click="TG.connect()">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span data-i18n="telegram.connect_test">Connect &amp; test</span>
                             </button>
-                            <button class="ui-button" id="tgClearTokenBtn" onclick="TG.clearAll()" style="display:none;">
+                            <button class="ui-button" id="tgClearTokenBtn" data-on-click="TG.clearAll()" style="display:none;">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                                 <span data-i18n="telegram.clear_token">Clear token</span>
                             </button>
@@ -116,7 +117,7 @@
                         </div>
                         <div id="tgPinCountdown" class="tg-pin-countdown"></div>
 
-                        <button class="ui-button ui-button-primary" id="tgGenPinBtn" onclick="TG.generatePin()" style="width:100%;">
+                        <button class="ui-button ui-button-primary" id="tgGenPinBtn" data-on-click="TG.generatePin()" style="width:100%;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
                             <span data-i18n="telegram.generate_pin">Generate PIN</span>
                         </button>
@@ -140,7 +141,7 @@
                             <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="telegram.owner_handle">Handle</span><span class="ui-detail-value" id="tgOwnerHandle">—</span></div>
                             <div class="ui-detail-row"><span class="ui-detail-label" data-i18n="telegram.owner_chat_id">Chat ID</span><span class="ui-detail-value" id="tgOwnerChatId">—</span></div>
                         </div>
-                        <button class="ui-button ui-button-danger" onclick="TG.unpair()" style="width:100%;margin-top:14px;">
+                        <button class="ui-button ui-button-danger" data-on-click="TG.unpair()" style="width:100%;margin-top:14px;">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             <span data-i18n="telegram.unpair">Unpair</span>
                         </button>
@@ -177,7 +178,7 @@
                             </div>
                             <div class="ui-row-end">
                                 <label class="ui-toggle">
-                                    <input type="checkbox" id="tgAutoStartAccOff" onchange="TG.savePrefs()">
+                                    <input type="checkbox" id="tgAutoStartAccOff" data-on-change="TG.savePrefs()">
                                     <span class="ui-toggle-track"></span>
                                 </label>
                             </div>

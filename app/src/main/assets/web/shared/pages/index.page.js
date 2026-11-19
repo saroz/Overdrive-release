@@ -1958,3 +1958,8 @@ BYD.i18n.init().then(function() {
         BYD.dashboard.loadActivity();
     }, 300000);
 });
+
+// Security F9 step 4: markup can only pass literals, so the trunk buttons call this.
+BYD.dashboard.trunkCommand = function (el, action) {
+    return this.command(el, '/api/vehicle/trunk', { action: action });
+};

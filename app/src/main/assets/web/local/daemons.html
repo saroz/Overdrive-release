@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="daemons.page_title">Daemons — OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -18,7 +19,7 @@
         <div id="app-shell-mount"></div>
         <main class="main-content">
             <div class="mobile-header">
-                <button class="menu-toggle" onclick="toggleSidebar()">
+                <button class="menu-toggle" data-on-click="toggleSidebar()">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
                 </button>
                 <span style="font-weight:600;" data-i18n="daemons.nav">Daemons</span>
@@ -53,7 +54,7 @@
             </div>
         </main>
     </div>
-    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar-overlay" id="sidebarOverlay" data-on-click="toggleSidebar()"></div>
     <div id="toastContainer" class="toast-container"></div>
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=27"></script>

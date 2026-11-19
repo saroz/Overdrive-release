@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title data-i18n="app.assistant_title">Assistant - OverDrive</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -39,7 +40,7 @@
                             <div class="ai-state-desc ui-panel-sub" id="genAiStateDesc" data-i18n="genai.checking_runtime">Checking the on-vehicle BYOK runtime.</div>
                         </div>
                         <div class="ai-state-action ui-summary-ctl">
-                            <button class="ui-button" id="genAiConfigureBtn" type="button" onclick="GenAI.openProvider()" data-i18n="genai.configure">Configure</button>
+                            <button class="ui-button" id="genAiConfigureBtn" type="button" data-on-click="GenAI.openProvider()" data-i18n="genai.configure">Configure</button>
                         </div>
                     </div>
 
@@ -155,7 +156,7 @@
                                     </div>
                                 </div>
                                 <div class="ai-actions">
-                                    <button class="ui-button ui-button-primary" id="genAiInsightGenerateBtn" type="button" onclick="GenAI.generateInsight()" data-i18n="genai.generate_now">Generate now</button>
+                                    <button class="ui-button ui-button-primary" id="genAiInsightGenerateBtn" type="button" data-on-click="GenAI.generateInsight()" data-i18n="genai.generate_now">Generate now</button>
                                 </div>
                             </div>
                         </div>
@@ -241,8 +242,8 @@
                                 </div>
                                 <div class="ai-inline-note" data-i18n="genai.schedule_note">The dashboard only reads already-generated text; displaying it never calls the provider. Daily and weekly presets use the existing automation clock. For after-trip, charging, RoadSense, or another trigger, add the “Generate AI insight” action in Automations.</div>
                                 <div class="ai-actions">
-                                    <button class="ui-button ui-button-primary" id="genAiInsightScheduleSaveBtn" type="button" onclick="GenAI.saveInsightSettings()" data-i18n="genai.save_settings">Save settings</button>
-                                    <button class="ui-button" type="button" onclick="window.location.href='/automations'" data-i18n="genai.open_automations">Open Automations</button>
+                                    <button class="ui-button ui-button-primary" id="genAiInsightScheduleSaveBtn" type="button" data-on-click="GenAI.saveInsightSettings()" data-i18n="genai.save_settings">Save settings</button>
+                                    <button class="ui-button" type="button" data-on-click="BYDOnActions.go('/automations')" data-i18n="genai.open_automations">Open Automations</button>
                                 </div>
                             </div>
                         </div>
@@ -490,8 +491,8 @@
                             </div>
 
                             <div class="ai-actions">
-                                <button class="ui-button ui-button-primary" id="genAiSaveBtn" type="button" onclick="GenAI.saveConfig()" data-i18n="common.save">Save</button>
-                                <button class="ui-button" id="genAiTestBtn" type="button" onclick="GenAI.testConnection()" data-i18n="genai.test">Test provider</button>
+                                <button class="ui-button ui-button-primary" id="genAiSaveBtn" type="button" data-on-click="GenAI.saveConfig()" data-i18n="common.save">Save</button>
+                                <button class="ui-button" id="genAiTestBtn" type="button" data-on-click="GenAI.testConnection()" data-i18n="genai.test">Test provider</button>
                             </div>
                         </div>
                     </div>
@@ -726,7 +727,7 @@
 
                             <div class="ai-inline-note" data-i18n="voice_assistant.ptt_hint">Prefer a button? In Key Mapping, bind a steering-wheel button to “Talk to OverDrive”.</div>
                             <div class="ai-actions">
-                                <button class="ui-button" type="button" onclick="window.location.href='/key-mapping#add'" data-i18n="voice_assistant.open_key_mapping">Open Key Mapping</button>
+                                <button class="ui-button" type="button" data-on-click="BYDOnActions.go('/key-mapping#add')" data-i18n="voice_assistant.open_key_mapping">Open Key Mapping</button>
                             </div>
                         </div>
                     </div>
@@ -768,9 +769,9 @@
                                 <div class="ai-runtime-item"><span data-i18n="genai.runtime_active">Active requests</span><strong id="genAiActiveRequests">0</strong></div>
                             </div>
                             <div class="ai-actions">
-                                <button class="ui-button ui-button-primary" id="genAiRoutineSaveBtn" type="button" onclick="GenAI.saveRoutineSettings()" data-i18n="genai.routine_save_setting">Save routine setting</button>
-                                <button class="ui-button" id="genAiRoutineResetBtn" type="button" onclick="GenAI.resetRoutineLearning()" data-i18n="genai.routine_reset_btn">Reset learned patterns</button>
-                                <button class="ui-button ui-button-danger" type="button" onclick="GenAI.clearCredentials()" data-i18n="genai.clear">Disable and clear API key</button>
+                                <button class="ui-button ui-button-primary" id="genAiRoutineSaveBtn" type="button" data-on-click="GenAI.saveRoutineSettings()" data-i18n="genai.routine_save_setting">Save routine setting</button>
+                                <button class="ui-button" id="genAiRoutineResetBtn" type="button" data-on-click="GenAI.resetRoutineLearning()" data-i18n="genai.routine_reset_btn">Reset learned patterns</button>
+                                <button class="ui-button ui-button-danger" type="button" data-on-click="GenAI.clearCredentials()" data-i18n="genai.clear">Disable and clear API key</button>
                             </div>
                         </div>
                     </div>
