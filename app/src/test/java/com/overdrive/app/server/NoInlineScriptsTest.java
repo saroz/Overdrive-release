@@ -12,11 +12,27 @@ import java.util.regex.Pattern;
 import org.junit.Test;
 
 /**
- * Security F9 step 3: pages whose inline {@code <script>} blocks moved to shared/pages/*.js.
- * Add each page here as it is migrated; once every page is listed, step 5 can enforce
- * {@code script-src 'self'}.
+ * Security F9 step 3: every page's inline {@code <script>} blocks moved to
+ * shared/pages/*.page.js. MIGRATED lists them; {@link #noPageAnywhereHasAnInlineScript} also
+ * covers pages added later, so step 5 can enforce {@code script-src 'self'}.
  */
 public class NoInlineScriptsTest {
+
+    @Test
+    public void noPageAnywhereHasAnInlineScript() throws Exception {
+        Path dir = locate("app/src/main/assets/web/local");
+        int pages = 0;
+        try (java.util.stream.Stream<Path> files = Files.list(dir)) {
+            for (Path f : (Iterable<Path>) files::iterator) {
+                if (!f.toString().endsWith(".html")) continue;
+                pages++;
+                String html = new String(Files.readAllBytes(f), StandardCharsets.UTF_8)
+                        .replaceAll("(?s)<!--.*?-->", "");
+                assertFalse(f.getFileName() + " has an inline <script>", INLINE.matcher(html).find());
+            }
+        }
+        assertTrue(pages >= 35);
+    }
 
     static final String[] MIGRATED = {
         "about", "daemons", "login", "sessions", "module-faults", "factory-dvr",
@@ -26,6 +42,7 @@ public class NoInlineScriptsTest {
         "events", "key-mapping", "mqtt", "recording",
         "assistant", "automations", "charging", "network", "performance", "road-sense",
         "trips", "notifications",
+        "live-view", "surveillance", "vehicle-control",
     };
 
     private static final Pattern INLINE = Pattern.compile("<script(?![^>]*\\ssrc=)[^>]*>", Pattern.CASE_INSENSITIVE);

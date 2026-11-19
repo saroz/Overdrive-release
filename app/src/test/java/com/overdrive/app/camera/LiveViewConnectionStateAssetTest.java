@@ -71,11 +71,13 @@ public class LiveViewConnectionStateAssetTest {
         Path current = Paths.get("").toAbsolutePath();
         Path fromModule = current.resolve("src/main/assets/web").resolve(relativePath);
         if (Files.exists(fromModule)) {
-            return new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8);
+            return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("web/" + relativePath,
+                    new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8));
         }
         Path fromRepository = current.resolve("app/src/main/assets/web").resolve(relativePath);
         if (Files.exists(fromRepository)) {
-            return new String(Files.readAllBytes(fromRepository), StandardCharsets.UTF_8);
+            return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss("web/" + relativePath,
+                    new String(Files.readAllBytes(fromRepository), StandardCharsets.UTF_8));
         }
         throw new AssertionError("Could not locate web asset: " + relativePath);
     }

@@ -18,18 +18,7 @@
          context — the ~2.4 MB immersive stack loads only when the saved
          preference is 'immersive' (persisted via the view-mode toggle in the
          status bar). html.vc-mode-* scopes the CSS for each mode. -->
-    <script>
-        (function () {
-            var mode = null;
-            try { mode = localStorage.getItem('vc.viewMode'); } catch (e) {}
-            window.VC_LITE = (mode !== 'immersive');
-            document.documentElement.className +=
-                window.VC_LITE ? ' vc-mode-lite' : ' vc-mode-immersive';
-            if (typeof window.AndroidBridge !== 'undefined') {
-                document.documentElement.className += ' is-app-webview';
-            }
-        })();
-    </script>
+    <script src="../shared/pages/vehicle-control.page.js?v=1"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
@@ -843,36 +832,7 @@
          only vehicle-control.js loads — its boot detects VC_LITE and skips
          the 3D scene entirely. NOTE: dynamically injected scripts don't block
          DOMContentLoaded, so vehicle-control.js boots readyState-aware. -->
-    <script>
-        (function () {
-            // Published so VC.switchViewMode() can pull the same stack, in the
-            // same order, when the user turns 3D on without reloading.
-            window.VC_VENDOR_CHAIN = [
-                '../shared/SotaPlayer.js?v=13',
-                '../shared/vendor/three.min.js?v=12',
-                '../shared/vendor/DRACOLoader.js?v=12',
-                '../shared/vendor/GLTFLoader.js?v=12',
-                '../shared/vendor/OrbitControls.js?v=12',
-                '../shared/vendor/gsap.min.js?v=12'
-            ];
-            var chain = window.VC_LITE ? [] : window.VC_VENDOR_CHAIN.slice();
-            chain.push('../shared/vehicle-control.js?v=vclite40');
-            for (var i = 0; i < chain.length; i++) {
-                var s = document.createElement('script');
-                s.src = chain[i];
-                s.async = false;   // preserve execution order
-                document.body.appendChild(s);
-            }
-        })();
-    </script>
-    <script>
-        // Kick off sidebar status polling. core.js doesn't auto-init (other
-        // pages call BYD.core.init() from their own bootstrap blocks).
-        if (window.BYD && BYD.core && typeof BYD.core.init === 'function') {
-            BYD.i18n.init().then(function () {
-                BYD.core.init();
-            });
-        }
-    </script>
+    <script src="../shared/pages/vehicle-control-2.page.js?v=1"></script>
+    <script src="../shared/pages/vehicle-control-3.page.js?v=1"></script>
 </body>
 </html>

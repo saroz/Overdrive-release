@@ -140,11 +140,13 @@ public class SurveillanceToggleReliabilityContractTest {
         while (current != null) {
             Path direct = current.resolve(relativePath);
             if (Files.isRegularFile(direct)) {
-                return new String(Files.readAllBytes(direct), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relativePath,
+                    new String(Files.readAllBytes(direct), StandardCharsets.UTF_8));
             }
             Path fromModule = current.resolve(relativePath.replaceFirst("^app/", ""));
             if (Files.isRegularFile(fromModule)) {
-                return new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8);
+                return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relativePath,
+                    new String(Files.readAllBytes(fromModule), StandardCharsets.UTF_8));
             }
             current = current.getParent();
         }
