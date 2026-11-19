@@ -13,7 +13,7 @@ public class HomeDataSlotsAssetTest {
 
     @Test
     public void summaryPrefersTheBriefThenTheDriveState() throws IOException {
-        String page = WebThemeTokensAssetTest.read(PAGE);
+        String page = WebThemeTokensAssetTest.withMovedCss(PAGE, WebThemeTokensAssetTest.read(PAGE));
         assertTrue(page.contains("renderHomeSummary: function(brief, stateLine)"));
         assertTrue("AI brief feeds the summary", page.contains("this.renderHomeSummary(text, null);"));
         assertTrue("drive state feeds the summary", page.contains("this.renderHomeSummary(null, stateLine);"));
@@ -23,13 +23,13 @@ public class HomeDataSlotsAssetTest {
 
     @Test
     public void summaryKeepsTheTranslatedDefaultWithoutData() throws IOException {
-        String page = WebThemeTokensAssetTest.read(PAGE);
+        String page = WebThemeTokensAssetTest.withMovedCss(PAGE, WebThemeTokensAssetTest.read(PAGE));
         assertTrue(page.contains("if (!line) return;"));
     }
 
     @Test
     public void optionalSlotsStartHidden() throws IOException {
-        String page = WebThemeTokensAssetTest.read(PAGE);
+        String page = WebThemeTokensAssetTest.withMovedCss(PAGE, WebThemeTokensAssetTest.read(PAGE));
         assertTrue(page.contains("id=\"dashFuelMetric\" style=\"display:none\""));
         assertTrue(page.contains("id=\"dashOdoMetric\" style=\"display:none\""));
         assertTrue(page.contains("id=\"dashGlanceCharge\" hidden"));
@@ -39,7 +39,7 @@ public class HomeDataSlotsAssetTest {
 
     @Test
     public void bottomRowUsesRealDataWithEmptyStates() throws IOException {
-        String page = WebThemeTokensAssetTest.read(PAGE);
+        String page = WebThemeTokensAssetTest.withMovedCss(PAGE, WebThemeTokensAssetTest.read(PAGE));
         // Energy: charging sessions the app records; activity: its recordings.
         assertTrue(page.contains("fetch('/api/charging?days=7&limit=200'"));
         assertTrue(page.contains("fetch('/api/recordings?page=1&pageSize=4'"));
@@ -56,7 +56,7 @@ public class HomeDataSlotsAssetTest {
 
     @Test
     public void noInventedValues() throws IOException {
-        String markup = WebThemeTokensAssetTest.read(PAGE);
+        String markup = WebThemeTokensAssetTest.withMovedCss(PAGE, WebThemeTokensAssetTest.read(PAGE));
         markup = markup.substring(0, markup.indexOf("<style>"));
         for (String sample : new String[]{"341 km", "82%", "2.5 bar", "24°C", "48 km"}) {
             assertFalse("sample value in markup: " + sample, markup.contains(sample));

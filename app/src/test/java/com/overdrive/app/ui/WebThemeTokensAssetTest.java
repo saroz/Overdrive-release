@@ -157,7 +157,7 @@ public class WebThemeTokensAssetTest {
             // Security F9: inline <script> blocks moved to shared/pages/<page>.js, <page>-2.js, ...
             for (int i = 1; ; i++) {
                 String js = "app/src/main/assets/web/shared/pages/" + page.group(1)
-                        + (i == 1 ? "" : "-" + i) + ".js";
+                        + (i == 1 ? "" : "-" + i) + ".page.js";
                 try {
                     out.append('\n').append(new String(Files.readAllBytes(locate(js)), StandardCharsets.UTF_8));
                 } catch (AssertionError none) {

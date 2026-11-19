@@ -21,10 +21,11 @@ public class NoInlineScriptsTest {
     static final String[] MIGRATED = {
         "about", "daemons", "login", "sessions", "module-faults", "factory-dvr",
         "storage", "wireguard", "widgets", "remote-dev-view",
+        "seat-positions", "remote-access", "communicate", "index",
     };
 
     private static final Pattern INLINE = Pattern.compile("<script(?![^>]*\\ssrc=)[^>]*>", Pattern.CASE_INSENSITIVE);
-    private static final Pattern PAGE_JS = Pattern.compile("src=\"\\.\\./(shared/pages/[\\w-]+\\.js)\\?v=\\d+\"");
+    private static final Pattern PAGE_JS = Pattern.compile("src=\"\\.\\./(shared/pages/[\\w-]+\\.page\\.js)\\?v=\\d+\"");
 
     @Test
     public void migratedPagesHaveNoInlineScriptAndTheirFilesExist() throws Exception {
