@@ -581,6 +581,14 @@ public class HttpServer {
     private void handleClient(Socket client) {
         OutputStream out = null;
         try {
+            // G1: opt-in local-only mode. Refuse a LAN peer before reading anything.
+            if (!LanAccessPolicy.allows(client.getInetAddress())) {
+                if (IpcAuth.shouldLog("lan-refused", System.currentTimeMillis())) {
+                    CameraDaemon.log("Local-only mode: refused a connection from the network");
+                }
+                client.close();
+                return;
+            }
             client.setSoTimeout(15000);
             try { client.setTcpNoDelay(true); } catch (Exception ignored) {}
             // Read network-controlled request lines/headers as bounded bytes,

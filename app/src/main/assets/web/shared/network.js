@@ -111,6 +111,7 @@ const NetworkPage = {
             }
 
             this.chk('hsKeepAlive', !!s.keepAlive);
+            this.chk('hsLocalOnly', !!s.localOnly);
             this.chk('hsAutoStart', !!s.autoStartBoot);
             this.chk('hsProxySystem', !!s.proxySystemWide);
             this.chk('hsProxyClients', !!s.proxyForClients);

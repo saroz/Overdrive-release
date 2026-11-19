@@ -202,6 +202,7 @@ public class HotspotApiHandler {
             status.put("gateway", gateway.isEmpty() ? "192.168.43.1" : gateway);
             status.put("proxyPort", 8119);
             // G2: hotspot clients can reach network ADB (5555); warn when it needs no RSA prompt.
+            status.put("localOnly", LanAccessPolicy.localOnlyEnabled());
             status.put("adbAuthDisabled", AdbExposure.authDisabled(readProp("ro.adb.secure")));
 
             resp.put("success", true);
@@ -270,6 +271,17 @@ public class HotspotApiHandler {
             if (in.has("autoStartBoot")) values.put("autoStartBoot", in.optBoolean("autoStartBoot", false));
             if (in.has("keepAlive")) values.put("keepAlive", in.optBoolean("keepAlive", false));
             if (in.has("warnAck")) values.put("warnAck", in.optBoolean("warnAck", false));
+            // G1: local-only mode lives in its own section and is read by the daemon's
+            // HttpServer directly, so it needs no app-side dispatch.
+            int webAccessApplied = 0;
+            if (in.has("localOnly")) {
+                java.util.Map<String, Object> web = new java.util.LinkedHashMap<>();
+                web.put("localOnly", in.optBoolean("localOnly", false));
+                if (!UnifiedConfigManager.updateValues("webAccess", web)) {
+                    throw new IllegalStateException("could not save local-only mode");
+                }
+                webAccessApplied = 1;
+            }
 
             if (!values.isEmpty()) {
                 UnifiedConfigManager.updateHotspot(values);
@@ -278,7 +290,7 @@ public class HotspotApiHandler {
                 dispatchToApp("settings");
             }
             resp.put("success", true);
-            resp.put("applied", values.keySet().size());
+            resp.put("applied", values.keySet().size() + webAccessApplied);
         } catch (IllegalArgumentException bad) {
             resp.put("success", false);
             resp.put("error", bad.getMessage());

@@ -178,6 +178,18 @@
                     <div class="ui-panel-body">
                         <div class="ui-row">
                             <div class="ui-row-copy">
+                                <div class="ui-row-title" data-i18n="network.local_only">Only the car and its hotspot</div>
+                                <div class="ui-row-desc" data-i18n="network.local_only_desc">Block the OverDrive web page for devices on other WiFi networks the car joins, such as home or office WiFi. The car screen, phones on the car's hotspot and remote tunnels keep working.</div>
+                            </div>
+                            <div class="ui-row-end">
+                                <label class="ui-toggle">
+                                    <input type="checkbox" id="hsLocalOnly" onchange="NetworkPage.saveSwitch('localOnly','hsLocalOnly')">
+                                    <span class="ui-toggle-track"></span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="ui-row">
+                            <div class="ui-row-copy">
                                 <div class="ui-row-title" data-i18n="network.keepalive">Keep the hotspot up</div>
                                 <div class="ui-row-desc" data-i18n="network.keepalive_desc">If the access point drops on its own, start it again.</div>
                             </div>
@@ -263,7 +275,7 @@
     <script src="../shared/auth.js"></script>
     <script src="../shared/core.js?v=27"></script>
     <script src="../shared/update-flow.js?v=4"></script>
-    <script src="../shared/network.js?v=5"></script>
+    <script src="../shared/network.js?v=6"></script>
     <script>
         BYD.i18n.init().then(function () {
             BYD.core.init();
