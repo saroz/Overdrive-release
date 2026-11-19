@@ -8,10 +8,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Security fix F9, stage 1: collects Content-Security-Policy-Report-Only violations.
+ * Security fix F9: collects Content-Security-Policy violation reports.
  *
- * <p>Pages carry a report-only {@code script-src 'self'} policy (see {@link HttpResponse#CSP_REPORT_ONLY}),
- * so the car's WebView tells us what would break before the policy is enforced. The browser
+ * <p>Pages carry an ENFORCED {@code script-src 'self'} policy (see {@link HttpResponse#CSP}), so a
+ * listed report is something the browser BLOCKED. With the owner's "Relax the script safety
+ * check" switch on ({@link ScriptPolicy}), the same policy is report-only and listed items ran. The browser
  * posts reports without any sign-in header, so {@code POST /api/csp-report} is public: the body
  * is capped, every field is truncated and stripped to printable ASCII, unique reports are kept
  * in a small in-memory table, and at most a few new ones a minute reach the daemon log.

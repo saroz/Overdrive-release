@@ -255,10 +255,12 @@ class WebViewFragment : Fragment() {
         }
 
         /** 128-bit base64 nonce for one HTML response. */
+        private val nonceRandom = java.security.SecureRandom()
+
         @JvmStatic
         fun newScriptNonce(): String {
             val bytes = ByteArray(16)
-            java.security.SecureRandom().nextBytes(bytes)
+            nonceRandom.nextBytes(bytes)
             return java.util.Base64.getEncoder().encodeToString(bytes)
         }
 
@@ -1032,8 +1034,10 @@ class WebViewFragment : Fragment() {
                         // embed chrome never lands on the tunnel / PWA clients.
                         var bodyStream: java.io.InputStream = stream
                         var splicedHtml = false
-                        val scriptNonce = newScriptNonce()
-                        if (mime == "text/html" && connection.responseCode == 200) {
+                        val isHtmlPage = mime == "text/html" && connection.responseCode == 200
+                        // Only spliced HTML pages use the nonce; skip the entropy for every other request.
+                        val scriptNonce = if (isHtmlPage) newScriptNonce() else ""
+                        if (isHtmlPage) {
                             try {
                                 val patched = spliceEmbedChrome(
                                     String(stream.readBytes(), Charsets.UTF_8), scriptNonce)
