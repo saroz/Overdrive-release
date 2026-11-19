@@ -210,6 +210,17 @@ public class AuthApiHandler {
                     .put("success", ok).put("current", ok && id.equals(currentId)).toString());
             return;
         }
+        if (path.equals("/api/auth/sessions/refresh") && "POST".equals(method)) {
+            // G1: renew this browser's 7-day sign-in (auth.js calls it on load and every 6 h).
+            AuthManager.RefreshResult r = AuthManager.refreshSessionJwt(jwt, null);
+            JSONObject resp = new JSONObject().put("success", r.jwt != null || !"invalid".equals(r.reason))
+                    .put("reason", r.reason);
+            if (r.jwt != null) {
+                resp.put("jwt", r.jwt).put("expiresIn", AuthManager.JWT_EXPIRY_SECONDS);
+            }
+            HttpResponse.sendJsonNoCors(out, "invalid".equals(r.reason) ? 401 : 200, resp.toString());
+            return;
+        }
         if (path.equals("/api/auth/sessions/revoke-others") && "POST".equals(method)) {
             int revoked = com.overdrive.app.auth.AuthSessions.revokeAllExcept(currentId);
             if (revoked > 0) log("Signed out " + revoked + " other browser session(s)");

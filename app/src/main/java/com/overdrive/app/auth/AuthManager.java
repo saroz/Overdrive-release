@@ -77,14 +77,12 @@ public class AuthManager {
     // still-unexpired JWT against anything but its signature. 30 days caps
     // that exposure window at roughly 1/12th of the previous one.
     //
-    // There's no silent-refresh endpoint: a client's cookie/localStorage JWT
-    // is minted once at login (AuthApiHandler.handleTokenValidation) and used
-    // until it expires, at which point auth.js's 401 handler redirects to
-    // /login.html for the user to re-enter their (unchanged) device token.
-    // That's an acceptable, deliberately simple trade-off at 30 days; a
-    // shorter expiry would need an actual refresh mechanism to avoid
-    // constant re-login friction.
-    private static final long JWT_EXPIRY_MS = 30L * 24 * 60 * 60 * 1000L; // 30 days
+    // Security G1: browser sign-ins last 7 days (was 30). auth.js renews an
+    // active page's token through POST /api/auth/sessions/refresh
+    // (refreshSessionJwt, SessionRefreshPolicy), so only a browser left
+    // unused for a week has to sign in again, and a stolen token dies within
+    // a week.
+    private static final long JWT_EXPIRY_MS = 7L * 24 * 60 * 60 * 1000L; // 7 days
     /** F14: tokens for the loopback IPC port live 2 minutes and are refused by the web API. */
     static final String IPC_AUDIENCE = "ipc";
     private static final long IPC_JWT_TTL_S = 120;
@@ -918,6 +916,58 @@ public class AuthManager {
     private static String jwtFor(AuthState state) {
         long now = System.currentTimeMillis() / 1000;
         return jwtFor(state, null, now, now + (JWT_EXPIRY_MS / 1000));
+    }
+
+    /** Result of {@link #refreshSessionJwt}: a new token, or none and why. */
+    public static final class RefreshResult {
+        public final String jwt;
+        public final String reason;
+
+        RefreshResult(String jwt, String reason) {
+            this.jwt = jwt;
+            this.reason = reason;
+        }
+    }
+
+    /**
+     * Security G1: renew a valid browser sign-in (7 days from now). A tracked sign-in keeps its
+     * {@code jti}; an untracked one stays untracked.
+     * Nothing is issued while the token is under a day old or the head-unit clock looks wrong.
+     */
+    public static RefreshResult refreshSessionJwt(String jwt, String userAgent) {
+        if (jwt == null || !validateJwt(jwt).valid) return new RefreshResult(null, "invalid");
+        AuthState state = getState();
+        if (state == null) return new RefreshResult(null, "invalid");
+        try {
+            String token = jwt.startsWith("Bearer ") ? jwt.substring(7) : jwt;
+            JSONObject payload = new JSONObject(new String(
+                    base64UrlDecode(token.split("\\.")[1]), StandardCharsets.UTF_8));
+            long now = System.currentTimeMillis() / 1000;
+            switch (SessionRefreshPolicy.decide(payload.optLong("iat", 0L), now)) {
+                case CLOCK_UNSAFE:
+                    log("Session refresh skipped: head-unit clock looks wrong");
+                    return new RefreshResult(null, "clock");
+                case NOT_DUE:
+                    return new RefreshResult(null, "not_due");
+                default:
+                    break;
+            }
+            long exp = now + JWT_EXPIRY_SECONDS;
+            String jti = payload.optString("jti", "");
+            if (jti.isEmpty()) {
+                // Untracked (the car's own WebView, or a pre-tracking sign-in): renew as untracked
+                // so the car screen doesn't show up in the signed-in browsers list.
+                String fresh = jwtFor(state, null, now, exp);
+                return new RefreshResult(fresh, fresh == null ? "error" : "renewed");
+            }
+            if (!daemonSide() || !AuthSessions.extend(jti, exp, state.deviceSecret)) {
+                return new RefreshResult(null, "error");
+            }
+            return new RefreshResult(jwtFor(state, jti, now, exp), "renewed");
+        } catch (Exception e) {
+            log("Session refresh failed: " + e.getMessage());
+            return new RefreshResult(null, "error");
+        }
     }
 
     /**

@@ -168,6 +168,34 @@ const BYDAuth = {
     };
 })();
 
+// Security G1: sign-ins last 7 days. Renew while a page is in use; the server only
+// re-issues a token once it is a day old and never while the car's clock looks wrong.
+(function () {
+    var KEY = 'byd_jwt_refresh_at';
+    function due() {
+        try {
+            var last = Number(localStorage.getItem(KEY)) || 0;
+            var now = Date.now();
+            return now - last > 3600000 || now < last;
+        } catch (e) { return true; }
+    }
+    function mark() {
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+    }
+    function refresh(force) {
+        if (!BYDAuth.getToken() || (!force && !due())) return;
+        mark();
+        fetch('/api/auth/sessions/refresh', { method: 'POST', credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (d) { if (d && d.jwt) BYDAuth.setToken(d.jwt); })
+            .catch(function () {});
+    }
+    if (typeof window !== 'undefined' && window.fetch && typeof localStorage !== 'undefined') {
+        refresh(false);
+        setInterval(function () { refresh(true); }, 6 * 3600 * 1000);
+    }
+})();
+
 // Export for module systems
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = BYDAuth;

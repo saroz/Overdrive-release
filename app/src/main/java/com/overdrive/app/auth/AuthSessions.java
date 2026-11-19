@@ -87,6 +87,27 @@ public final class AuthSessions {
         }
     }
 
+    /**
+     * G1: a renewed sign-in keeps its id (and its row in the signed-in list) with a later expiry.
+     * False when it isn't listed, was made with another secret, has expired, or couldn't be saved.
+     */
+    static boolean extend(String id, long newExpiresSec, String secret) {
+        if (!validId(id) || secret == null || secret.isEmpty()) return false;
+        long now = System.currentTimeMillis() / 1000;
+        synchronized (AuthSessions.class) {
+            refreshLocked(true);
+            Entry e = sessions.get(id);
+            if (e == null || e.expiresSec <= now || !e.keyTag.equals(keyTag(secret))) return false;
+            if (newExpiresSec <= e.expiresSec) return true;
+            sessions.put(id, new Entry(e.id, e.createdSec, newExpiresSec, e.label, e.keyTag, now));
+            if (!persistLocked()) {
+                sessions.put(id, e);
+                return false;
+            }
+            return true;
+        }
+    }
+
     /** Signs one browser out; false when it isn't listed or the change couldn't be saved. */
     public static boolean revoke(String id) {
         if (!validId(id)) return false;
