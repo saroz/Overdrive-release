@@ -1013,14 +1013,13 @@ var VC = {
 
         // Draco decoder — the GLB uses Draco mesh compression.
         // Local path: assets/web/shared/vendor/draco/ (extracted to /data/local/tmp/web/shared/vendor/draco/).
-        // WebAssembly is materially faster on the head unit and the local
-        // server serves .wasm as application/wasm. Keep JS as a fallback for
-        // WebViews without WebAssembly.
+        // Plain JS decoder (security F9): pages enforce script-src 'self' without
+        // 'unsafe-eval', and the head unit's Chrome 58 then refuses to compile
+        // WebAssembly (no 'wasm-unsafe-eval' before Chrome ~97). ev-card-3d.js
+        // already uses the JS decoder for the same reason.
         var dracoLoader = new THREE.DRACOLoader();
         dracoLoader.setDecoderPath('../shared/vendor/draco/');
-        dracoLoader.setDecoderConfig({
-            type: typeof WebAssembly === 'object' ? 'wasm' : 'js'
-        });
+        dracoLoader.setDecoderConfig({ type: 'js' });
         loader.setDRACOLoader(dracoLoader);
 
         loader.load(

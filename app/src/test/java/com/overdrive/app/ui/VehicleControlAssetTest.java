@@ -619,7 +619,9 @@ public class VehicleControlAssetTest {
         assertTrue(script.contains("_watchCanvasSize"));
         assertTrue(script.contains("new ResizeObserver(sync)"));
         assertTrue(script.contains("this.renderer.setPixelRatio(window.AndroidBridge"));
-        assertTrue(script.contains("type: typeof WebAssembly === 'object' ? 'wasm' : 'js'"));
+        // F9: no WebAssembly under script-src 'self' on Chrome 58.
+        assertTrue(script.contains("dracoLoader.setDecoderConfig({ type: 'js' });"));
+        assertFalse(script.contains("'wasm'"));
         assertTrue(script.contains("now - this._lastRenderFrame < 32"));
     }
 
@@ -636,7 +638,7 @@ public class VehicleControlAssetTest {
                 + count(html, "data-state=\"3\" disabled")
                 + count(html, "data-state=\"4\" disabled")
                 + count(html, "data-state=\"5\" disabled"));
-        assertTrue(html.contains("vehicle-control.js?v=vclite40"));
+        assertTrue(html.contains("vehicle-control.js?v=vclite41"));
         assertTrue(script.contains("fetch('/api/vehicle/ac-charge-current-limit')"));
         assertTrue(script.contains("self.apiPost('/api/vehicle/ac-charge-current-limit'"));
         assertTrue(script.contains("startAcChargeCurrentSync: function()"));
