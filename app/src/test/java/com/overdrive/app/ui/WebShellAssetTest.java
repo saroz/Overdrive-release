@@ -141,4 +141,40 @@ public class WebShellAssetTest {
         String lang = WebThemeTokensAssetTest.read("app/src/main/assets/web/shared/lang-picker.js");
         assertTrue(lang.contains("document.querySelector('.ui-sidebar-foot')"));
     }
+    @Test
+    public void sidebarNeverScrollsSidewaysAndOnlyTheMenuScrolls() throws IOException {
+        UiComponentsAssetTest.assertRule(".ui-sidebar", "overflow:hidden");
+        UiComponentsAssetTest.assertRule(".ui-nav", "overflow-x:hidden", "overflow-y:auto");
+        // Long values such as the device id wrap instead of widening the block.
+        UiComponentsAssetTest.assertRule(".ui-sidebar-status dd", "min-width:0", "word-break:break-all");
+    }
+
+    @Test
+    public void menuScrollbarIsThinAndShowsOnlyOnHoverOrScroll() throws IOException {
+        UiComponentsAssetTest.assertRule(".ui-nav::-webkit-scrollbar-thumb", "background:0 0"); // minified "transparent"
+        UiComponentsAssetTest.assertRule(".ui-nav.is-scrolling::-webkit-scrollbar-thumb", "background:var(--ui-line)");
+        assertTrue(js().contains("nav.classList.add('is-scrolling');"));
+    }
+
+    @Test
+    public void everyGroupFoldsAndLabelsAreUppercase() throws IOException {
+        String js = js();
+        assertFalse("Overview and Vehicle fold too", js.contains("var PLAIN = {"));
+        assertTrue(js.contains("var OPEN_BY_DEFAULT = { 'nav.overview_group': 1, 'nav.vehicle_group': 1 };"));
+        UiComponentsAssetTest.assertRule(".ui-nav-label", "text-transform:uppercase", "color:var(--ui-ink)");
+    }
+
+    @Test
+    public void languageAndVehicleMenuSitInTheTopBarAfterTheThemeSwitch() throws IOException {
+        String js = js();
+        int theme = js.indexOf("data-theme-choice=\"dark\"");
+        int lang = js.indexOf("data-lang-slot");
+        int car = js.indexOf("id=\"vehicleMenuButton\"");
+        assertTrue(theme > 0 && lang > theme && car > lang);
+        assertTrue(js.contains("'<div class=\"ui-vehicle-panel\" id=\"vehicleMenuPanel\" hidden>' + buildVehicleStatus()"));
+        // Inside the native app there is no top bar: the status ids still exist in the sidebar.
+        assertTrue(js.contains("foot.insertAdjacentHTML('afterbegin', buildVehicleStatus());"));
+        String lang2 = WebThemeTokensAssetTest.read("app/src/main/assets/web/shared/lang-picker.js");
+        assertTrue(lang2.contains("document.querySelector('[data-lang-slot]')"));
+    }
 }

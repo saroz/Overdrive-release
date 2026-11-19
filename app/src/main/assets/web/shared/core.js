@@ -2325,7 +2325,7 @@ BYD.utils.promptDialog = function (opts) {
 (function () {
     if (document.querySelector('script[data-byd-lang-picker]')) return;
     var s = document.createElement('script');
-    s.src = '/shared/lang-picker.js';
+    s.src = '/shared/lang-picker.js?v=2';
     s.async = true;
     s.setAttribute('data-byd-lang-picker', '1');
     (document.head || document.documentElement).appendChild(s);

@@ -228,14 +228,16 @@
     function mount() {
         if (typeof window.AndroidBridge !== 'undefined') return;
         if (document.getElementById('langChip')) return;
+        // Top bar slot (after the light/dark switch) when there is one; the
+        // sidebar footer otherwise. app-shell.js moves the chip into the slot
+        // if the top bar is built after this runs.
+        var slot = document.querySelector('[data-lang-slot]');
         var footer = document.querySelector('.ui-sidebar-foot');
-        if (!footer) return;
+        if (!slot && !footer) return;
         var chip = buildChip();
         chip.id = 'langChip';
-        // Insert before the first child so the chip sits at the top of the
-        // footer above the status card and EV card. Looks more like a control
-        // (top of section) than a vehicle metric (bottom).
-        footer.insertBefore(chip, footer.firstChild);
+        if (slot) slot.appendChild(chip);
+        else footer.insertBefore(chip, footer.firstChild);
     }
 
     if (document.readyState === 'loading') {

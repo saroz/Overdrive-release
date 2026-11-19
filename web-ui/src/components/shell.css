@@ -30,7 +30,7 @@ body.ui-app {
   padding: 32px 18px 20px;
   background: var(--ui-surface);
   border-inline-end: 1px solid var(--ui-line);
-  overflow-y: auto;
+  overflow: hidden;
 }
 
 .ui-brand {
@@ -61,10 +61,27 @@ body.ui-app {
 
 .ui-nav {
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   gap: 5px;
+  min-height: 0;
   margin-top: 43px;
+  margin-inline-end: -12px;
+  padding-inline-end: 6px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
+
+/* Menu scrollbar: thin, hidden until the pointer is over the menu or it scrolls. */
+.ui-nav::-webkit-scrollbar { width: 6px; }
+.ui-nav::-webkit-scrollbar-track { background: transparent; }
+.ui-nav::-webkit-scrollbar-thumb { border-radius: 3px; background: transparent; }
+.ui-nav:hover, .ui-nav.is-scrolling { scrollbar-color: var(--ui-line) transparent; }
+.ui-nav:hover::-webkit-scrollbar-thumb,
+.ui-nav.is-scrolling::-webkit-scrollbar-thumb { background: var(--ui-line); }
+.ui-nav > * { flex: none; }
 
 .ui-nav-link {
   display: flex;
@@ -97,13 +114,16 @@ body.ui-app {
 
 .ui-nav-label {
   padding: 24px 14px 6px;
-  color: var(--ui-muted);
-  font-size: 11px;
+  color: var(--ui-ink);
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .ui-sidebar-foot {
-  margin-top: auto;
-  padding: 28px 10px 0;
+  flex: none;
+  padding: 16px 10px 0;
   color: var(--ui-muted);
   font-size: 11px;
 }
@@ -121,7 +141,7 @@ body.ui-app {
 /* Foldable group labels (Integrations, Diagnostics, Settings). */
 .ui-nav-label { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .ui-nav-label.is-foldable { min-height: 36px; border-radius: 7px; cursor: pointer; }
-.ui-nav-label.is-foldable:hover { color: var(--ui-ink); }
+.ui-nav-label.is-foldable:hover { color: var(--ui-accent-text); }
 .ui-nav-chevron { display: grid; transition: transform .15s ease; }
 .ui-nav-chevron .ui-icon { width: 14px; height: 14px; }
 .ui-nav-label[data-collapsed=true] .ui-nav-chevron { transform: rotate(-90deg); }
@@ -159,7 +179,10 @@ body.ui-app {
 .ui-sidebar-status { display: grid; grid-gap: 4px; gap: 4px; margin: 14px 0 0; }
 .ui-sidebar-status > div { display: flex; justify-content: space-between; gap: 8px; }
 .ui-sidebar-status dt { display: flex; align-items: center; gap: 6px; margin: 0; }
-.ui-sidebar-status dd { margin: 0; color: var(--ui-ink); font-weight: 550; text-align: end; }
+.ui-sidebar-status dt { flex: none; }
+.ui-sidebar-status > .ui-status-wide { flex-wrap: wrap; gap: 2px 8px; }
+.ui-sidebar-status > .ui-status-wide dd { flex-basis: 100%; text-align: start; font-size: 11px; }
+.ui-sidebar-status dd { min-width: 0; margin: 0; color: var(--ui-ink); font-weight: 550; text-align: end; word-break: break-all; }
 .ui-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ui-muted); }
 .ui-dot.connected, .ui-dot.online, .ui-dot.active,
 .ui-dot.dot-active, .ui-dot.dot-good { background: var(--ui-green); }
@@ -173,7 +196,7 @@ body.ui-app {
 .ui-sidebar-fuel-head { display: flex; justify-content: space-between; }
 .ui-sidebar-fuel-head strong { color: var(--ui-ink); }
 .ui-sidebar-fuel .ui-progress { max-width: none; }
-.ui-sidebar-version { display: block; margin-top: 14px; }
+.ui-sidebar-version { display: block; }
 .ui-sidebar-version:empty { display: none; }
 
 .ui-topbar-brand { display: none; align-items: center; gap: 7px; color: var(--ui-ink); font-size: 18px; font-weight: 700; letter-spacing: -.5px; text-decoration: none; }
@@ -181,6 +204,47 @@ body.ui-app {
 .ui-topbar-brand .ui-brand-glyph { width: 16px; height: 16px; }
 .ui-topbar-search { background: transparent; color: var(--ui-muted); }
 .ui-topbar-search:hover { background: var(--ui-soft); color: var(--ui-ink); }
+
+.ui-topbar-lang { display: flex; }
+.ui-topbar-lang:empty { display: none; }
+.ui-topbar .lang-chip {
+  width: auto;
+  height: 46px;
+  margin: 0;
+  padding: 0 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: 7px;
+  background: var(--ui-soft);
+  color: var(--ui-ink);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ui-topbar .lang-chip:hover { border-color: var(--ui-muted); background: var(--ui-surface); }
+
+.ui-vehicle-menu { position: relative; }
+.ui-topbar-vehicle { width: 46px; height: 46px; border: 1px solid var(--ui-line); }
+.ui-topbar-vehicle:hover, .ui-topbar-vehicle.is-open { border-color: var(--ui-muted); background: var(--ui-surface); }
+.ui-topbar-vehicle .ui-icon { width: 20px; height: 20px; }
+
+.ui-vehicle-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  inset-inline-end: 0;
+  z-index: 500;
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  box-sizing: border-box;
+  padding: 16px;
+  border: 1px solid var(--ui-line);
+  border-radius: 12px;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow);
+  color: var(--ui-muted);
+  font-size: 12px;
+}
+.ui-vehicle-panel[hidden] { display: none; }
+.ui-vehicle-panel .ui-garage { padding-top: 0; border-top: 0; }
 
 /* Phone bottom bar (≤540px): four destinations and More. */
 .ui-bottom-nav {
@@ -241,6 +305,8 @@ html.ui-shell-on body #sidebar.ui-sidebar { position: fixed; inset-block: 0; ins
 .ui-workspace { min-width: 0; }
 
 .ui-topbar {
+  position: relative;
+  z-index: 350;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -388,7 +454,9 @@ html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
   .ui-more-nav .ui-nav-text, .ui-more-nav .ui-nav-label { display: block; }
   .ui-more-nav .ui-nav-link { justify-content: flex-start; padding: 12px 14px; }
   .ui-topbar { padding: 0 16px; }
-  .ui-topbar-actions { gap: 10px; }
+  .ui-topbar-actions { gap: 8px; }
+  .ui-topbar .lang-chip { padding: 0 10px; }
+  .ui-topbar .lang-chip-globe { display: none; }
   .ui-breadcrumb { display: none; }
   .ui-topbar-brand { display: flex; }
   .ui-main { padding: 24px 16px 92px; }
@@ -396,6 +464,10 @@ html[data-android-embed="1"] body .main-content { margin-inline-start: 0; }
   .ui-page-head p { font-size: 12px; }
   .ui-grid-main, .ui-grid-2 { grid-gap: 16px; gap: 16px; }
   .ui-stack { gap: 16px; }
+}
+
+@media (max-width: 400px) {
+  .ui-topbar-brand > span[data-i18n] { display: none; }
 }
 
 @media (max-width: 360px) {

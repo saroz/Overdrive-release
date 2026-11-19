@@ -166,11 +166,23 @@
 
         var nav = '<nav class="ui-nav" data-sidebar-nav aria-label="Main navigation">' + buildNav() + '</nav>';
 
-        // Footer (mockup .sidebar-bottom / .garage): the vehicle row, a battery
-        // bar and a compact device status list. Every id below is written by
-        // core.js / vehicle-control.js / performance.js and must stay.
+        // Footer: only the app version. The vehicle status block lives in the top
+        // bar's vehicle menu (buildVehicleStatus); inside the native app, where
+        // there is no top bar, mount() appends it here so its ids still exist.
         var footer = ''
             + '<div class="ui-sidebar-foot">'
+            +   '<span class="ui-sidebar-version" id="appVersion"></span>'
+            + '</div>';
+
+        return header + nav + footer;
+    }
+
+    // Vehicle status block (mockup .garage): the vehicle row, a battery bar and a
+    // compact device status list. Every id below is written by core.js /
+    // vehicle-control.js / performance.js and must stay.
+    function buildVehicleStatus() {
+        return ''
+            + '<div class="ui-vehicle-status" data-vehicle-status>'
             +   '<div class="ui-garage" id="evCard">'
             +     '<span class="ui-garage-icon">' + navIcon('vehicle') + '</span>'
             +     '<span class="ui-garage-copy">'
@@ -183,17 +195,14 @@
             +     '<div class="ui-sidebar-status-extra" id="evSohRow" style="display:none;"><dt>SOH</dt><dd id="evSohValue">--%</dd></div>'
             +     '<div class="ui-sidebar-status-extra" id="evPersonalizedRow" style="display:none;"><dt data-i18n="vehicle.personalized_label">Personalized</dt><dd id="evPersonalizedRange">-- km</dd></div>'
             +     '<div class="ui-sidebar-status-extra" id="evCombinedRow" style="display:none;"><dt data-i18n="vehicle.combined_label">Combined</dt><dd id="evCombinedRange">-- km</dd></div>'
-            +     '<div><dt><span class="ui-dot" id="connDot"></span><span data-i18n="status.device">Device</span></dt><dd id="deviceId">--</dd></div>'
+            +     '<div class="ui-status-wide"><dt><span class="ui-dot" id="connDot"></span><span data-i18n="status.device">Device</span></dt><dd id="deviceId">--</dd></div>'
             +     '<div><dt data-i18n="status.acc">ACC</dt><dd id="accValue">--</dd></div>'
             +     '<div><dt data-i18n="status.battery_12v">12V</dt><dd id="batteryValue">--</dd></div>'
             +     '<div><dt data-i18n="status.sentry">Surveillance</dt><dd id="survStatus" data-i18n="status.off">OFF</dd></div>'
             +     '<div><dt><span id="networkIcon"></span><span data-i18n="status.network">Net</span></dt><dd id="networkValue">--</dd></div>'
             +   '</dl>'
             +   buildFuelCard()
-            +   '<span class="ui-sidebar-version" id="appVersion"></span>'
             + '</div>';
-
-        return header + nav + footer;
     }
 
     function buildFuelCard() {
@@ -542,7 +551,17 @@
                 '<button type="button" data-theme-choice="light" aria-label="Light theme" aria-pressed="false">' + navIcon('sun') + '</button>' +
                 '<button type="button" data-theme-choice="dark" aria-label="Dark theme" aria-pressed="false">' + navIcon('moon') + '</button>' +
               '</div>' +
+              '<span class="ui-topbar-lang" data-lang-slot></span>' +
+              '<div class="ui-vehicle-menu">' +
+                '<button type="button" class="ui-icon-button ui-topbar-vehicle" id="vehicleMenuButton" aria-haspopup="true" aria-expanded="false" aria-controls="vehicleMenuPanel" aria-label="Vehicle status" data-i18n-attr="aria-label:status.vehicle_status">' + navIcon('vehicle') + '</button>' +
+                '<div class="ui-vehicle-panel" id="vehicleMenuPanel" hidden>' + buildVehicleStatus() + '</div>' +
+              '</div>' +
             '</div>';
+        wireVehicleMenu(bar);
+        // The language picker may have mounted before the top bar existed.
+        var chip = document.getElementById('langChip');
+        var slot = bar.querySelector('[data-lang-slot]');
+        if (chip && slot) slot.appendChild(chip);
         var buttons = bar.querySelectorAll('[data-theme-choice]');
         var sync = function () {
             var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
@@ -565,6 +584,49 @@
             { attributes: true, attributeFilter: ['data-theme'] });
         sync();
         main.insertBefore(bar, main.firstChild);
+    }
+
+    // Vehicle menu: the car button opens the status block; a click outside or
+    // Escape closes it.
+    function wireVehicleMenu(bar) {
+        var button = bar.querySelector('#vehicleMenuButton');
+        var panel = bar.querySelector('#vehicleMenuPanel');
+        if (!button || !panel) return;
+        function setOpen(open) {
+            if (open) panel.removeAttribute('hidden');
+            else panel.setAttribute('hidden', '');
+            button.setAttribute('aria-expanded', open ? 'true' : 'false');
+            if (open) button.classList.add('is-open');
+            else button.classList.remove('is-open');
+        }
+        button.addEventListener('click', function (e) {
+            e.stopPropagation();
+            setOpen(panel.hasAttribute('hidden'));
+        });
+        document.addEventListener('click', function (e) {
+            if (panel.hasAttribute('hidden')) return;
+            if (panel.contains(e.target) || button.contains(e.target)) return;
+            setOpen(false);
+        });
+        document.addEventListener('keydown', function (e) {
+            if ((e.key === 'Escape' || e.keyCode === 27) && !panel.hasAttribute('hidden')) {
+                setOpen(false);
+                button.focus();
+            }
+        });
+    }
+
+    // Menu scrollbar: thin and hidden until the pointer is over the menu or it
+    // is scrolling, then it fades out again.
+    function wireNavScrollbar(aside) {
+        var nav = aside.querySelector('[data-sidebar-nav]');
+        if (!nav) return;
+        var timer = null;
+        nav.addEventListener('scroll', function () {
+            nav.classList.add('is-scrolling');
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { nav.classList.remove('is-scrolling'); }, 900);
+        });
     }
 
     function currentPageTitle() {
@@ -596,6 +658,11 @@
         // the dismiss overlay and the compact mobile app bar.
         ensureResponsiveShell(aside);
         if (!embeddedInNativeApp) renderTopbar(currentPageTitle());
+        if (!document.querySelector('[data-vehicle-status]')) {
+            var foot = aside.querySelector('.ui-sidebar-foot');
+            if (foot) foot.insertAdjacentHTML('afterbegin', buildVehicleStatus());
+        }
+        wireNavScrollbar(aside);
         hideHeaderClock();
         mountBottomNav();
         watchSwitchRows();
@@ -1192,15 +1259,16 @@
         }
         if (currentGroup) groups.push(currentGroup);
 
-        // Overview and Vehicle are plain labels; the other groups fold and
-        // start closed unless they hold the current page or the user opened them.
-        var PLAIN = { 'nav.overview_group': 1, 'nav.vehicle_group': 1 };
+        // Every group folds. Overview and Vehicle start open; the others start
+        // closed unless they hold the current page or the user opened them.
+        var OPEN_BY_DEFAULT = { 'nav.overview_group': 1, 'nav.vehicle_group': 1 };
         function readState(slug) {
+            var fallback = !OPEN_BY_DEFAULT[slug];
             try {
                 var v = localStorage.getItem('overdrive.navGroup.' + slug);
-                return v === null ? true : v === '1';
+                return v === null ? fallback : v === '1';
             }
-            catch (e) { return true; }
+            catch (e) { return fallback; }
         }
         function writeState(slug, collapsed) {
             try { localStorage.setItem('overdrive.navGroup.' + slug, collapsed ? '1' : '0'); }
@@ -1211,11 +1279,6 @@
         for (var g = 0; g < groups.length; g++) {
             (function (group) {
                 var header = group.headerEl;
-                if (PLAIN[group.slug]) {
-                    header.classList.add('is-plain');
-                    for (var p = 0; p < group.members.length; p++) group.members[p].removeAttribute('hidden');
-                    return;
-                }
                 header.classList.add('is-foldable');
 
                 // Determine whether this group is currently collapsed — we
