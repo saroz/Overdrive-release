@@ -8,18 +8,7 @@
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
-    <script>
-        window.OT_TABS = [
-            { id: 'assistant', label: 'Assistant', i18n: 'genai.tab_assistant', svg: '<path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z"/>' },
-            { id: 'briefing', label: 'Trip Briefing', i18n: 'trip_briefing.tab', svg: '<polygon points="3 11 22 2 13 21 11 13 3 11"/>' },
-            { id: 'provider', label: 'Provider', i18n: 'genai.tab_provider', svg: '<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>' },
-            { id: 'privacy', label: 'Privacy', i18n: 'genai.tab_privacy', svg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' }
-        ];
-        window.OT_setActiveTab = function (id) {
-            var button = document.querySelector('[data-tab-target="' + id + '"]');
-            if (button) button.click();
-        };
-    </script>
+    <script src="../shared/pages/assistant.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
@@ -799,15 +788,6 @@
     <script src="../shared/genai.js?v=16"></script>
     <script src="../shared/voice-assistant.js?v=9"></script>
     <script src="../shared/trip-briefing.js?v=2"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            BYD.i18n.init().then(function () {
-                BYD.core.init();
-                GenAI.init();
-                VoiceAssistantCard.init();
-                TripBriefing.init();
-            });
-        });
-    </script>
+    <script src="../shared/pages/assistant-2.page.js?v=1"></script>
 </body>
 </html>

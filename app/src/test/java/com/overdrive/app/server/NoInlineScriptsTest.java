@@ -24,6 +24,8 @@ public class NoInlineScriptsTest {
         "seat-positions", "remote-access", "communicate", "index",
         "safekeep", "widget-builder", "parking", "telegram", "abrp", "byd-cloud",
         "events", "key-mapping", "mqtt", "recording",
+        "assistant", "automations", "charging", "network", "performance", "road-sense",
+        "trips", "notifications",
     };
 
     private static final Pattern INLINE = Pattern.compile("<script(?![^>]*\\ssrc=)[^>]*>", Pattern.CASE_INSENSITIVE);

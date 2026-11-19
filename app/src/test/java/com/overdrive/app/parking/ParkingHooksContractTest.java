@@ -199,7 +199,8 @@ public class ParkingHooksContractTest {
     // ---------------------------------------------------------------- helpers
 
     private static String read(String relativePath) throws IOException {
-        return new String(Files.readAllBytes(repositoryPath(relativePath)), StandardCharsets.UTF_8);
+        return com.overdrive.app.ui.WebThemeTokensAssetTest.withMovedCss(relativePath,
+                new String(Files.readAllBytes(repositoryPath(relativePath)), StandardCharsets.UTF_8));
     }
 
     private static Path repositoryPath(String relativePath) {
