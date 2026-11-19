@@ -118,9 +118,9 @@ public class WebSettingsToggleReliabilityContractTest {
 
         String notifications = read("app/src/main/assets/web/local/notifications.html");
         assertTrue(notifications.contains(
-                "id=\"v2TelegramSendStartPing\" disabled onchange=\"SurvSettings.updateTelegramStartPing()\""));
+                "id=\"v2TelegramSendStartPing\" disabled data-on-change=\"SurvSettings.updateTelegramStartPing()\""));
         assertTrue(notifications.contains(
-                "id=\"v2TelegramNotices\" disabled onchange=\"SurvSettings.updateTelegramTiers()\""));
+                "id=\"v2TelegramNotices\" disabled data-on-change=\"SurvSettings.updateTelegramTiers()\""));
         assertTrue(surveillance.contains("_geocodingWriteVersion"));
         assertTrue(surveillance.contains("_layoutWriteVersion"));
         assertTrue(surveillance.contains("_telemetryWriteVersion"));

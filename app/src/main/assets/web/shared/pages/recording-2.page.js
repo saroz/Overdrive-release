@@ -6,3 +6,11 @@ BYD.i18n.init().then(function () {
     console.error('Failed to initialize recording settings:', error);
     if (BYD.utils && BYD.utils.unlockSettingsHydration) BYD.utils.unlockSettingsHydration();
 });
+
+// Security F9 step 4: one markup call for the trigger-level change (two calls before).
+window.RecordingPage = {
+    triggerLevelChanged: function () {
+        RecSettings.markDirty();
+        RecSettings.syncTriggerLevelBtns();
+    }
+};

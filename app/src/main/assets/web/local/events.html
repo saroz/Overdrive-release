@@ -10,6 +10,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
+    <script src="../shared/on-actions.js?v=1"></script>
     <script src="../shared/theme.js?v=12"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
     <script src="../shared/app-shell.js?v=24"></script>
@@ -40,7 +41,7 @@
                         <button type="button" class="tlv-seg-btn" data-tlv-mode="list" aria-pressed="true" data-i18n="tlview.tabList">List</button>
                         <button type="button" class="tlv-seg-btn" data-tlv-mode="timeline" aria-pressed="false" data-i18n="tlview.tabTimeline">Timeline</button>
                     </div>
-                    <button class="calendar-toggle" id="calendarToggle" onclick="BYD.events.toggleCalendar()">
+                    <button class="calendar-toggle" id="calendarToggle" data-on-click="BYD.events.toggleCalendar()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                             <line x1="16" y1="2" x2="16" y2="6"/>
@@ -51,11 +52,11 @@
                     </button>
 
                     <div class="filter-tabs">
-                        <button class="filter-tab active" data-filter="all" onclick="BYD.events.setFilter('all')" data-i18n="events.all">All</button>
-                        <button class="filter-tab" data-filter="sentry" onclick="BYD.events.setFilter('sentry')" data-i18n="events.badge_sentry">Surveillance</button>
-                        <button class="filter-tab" data-filter="normal" onclick="BYD.events.setFilter('normal')" data-i18n="events.badge_normal">Normal</button>
-                        <button class="filter-tab" data-filter="proximity" onclick="BYD.events.setFilter('proximity')" data-i18n="events.badge_proximity">Proximity</button>
-                        <button class="filter-tab" data-filter="replay" onclick="BYD.events.setFilter('replay')" data-i18n="events.tab_replays">Replays</button>
+                        <button class="filter-tab active" data-filter="all" data-on-click="BYD.events.setFilter('all')" data-i18n="events.all">All</button>
+                        <button class="filter-tab" data-filter="sentry" data-on-click="BYD.events.setFilter('sentry')" data-i18n="events.badge_sentry">Surveillance</button>
+                        <button class="filter-tab" data-filter="normal" data-on-click="BYD.events.setFilter('normal')" data-i18n="events.badge_normal">Normal</button>
+                        <button class="filter-tab" data-filter="proximity" data-on-click="BYD.events.setFilter('proximity')" data-i18n="events.badge_proximity">Proximity</button>
+                        <button class="filter-tab" data-filter="replay" data-on-click="BYD.events.setFilter('replay')" data-i18n="events.tab_replays">Replays</button>
                     </div>
 
                     <div class="toolbar-end">
@@ -86,7 +87,7 @@
                             </div>
                         </div>
                         <a class="ui-button" href="/factory-dvr.html" data-i18n="factory_dvr.title">Factory DVR</a>
-                        <button class="select-mode-btn" id="selectModeBtn" onclick="BYD.events.toggleSelectMode()" title="Select multiple" data-i18n-attr="title:events.select_multiple">
+                        <button class="select-mode-btn" id="selectModeBtn" data-on-click="BYD.events.toggleSelectMode()" title="Select multiple" data-i18n-attr="title:events.select_multiple">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 11 12 14 22 4"/>
                                 <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
@@ -104,26 +105,26 @@
                 <div class="ui-panel actor-filter-rows">
                     <div class="filter-tabs filter-tabs-row2" data-filter-row="class">
                         <span class="filter-row-label" data-i18n="events.filter_what">What:</span>
-                        <button class="filter-chip active" data-class="" onclick="BYD.events.setActorFilter('class','')" data-i18n="events.actor_any">Any</button>
-                        <button class="filter-chip" data-class="person"  onclick="BYD.events.setActorFilter('class','person')" data-i18n="events.actor_person">Person</button>
-                        <button class="filter-chip" data-class="vehicle" onclick="BYD.events.setActorFilter('class','vehicle')" data-i18n="events.actor_vehicle">Vehicle</button>
-                        <button class="filter-chip" data-class="bike"    onclick="BYD.events.setActorFilter('class','bike')" data-i18n="events.actor_bike">Bike</button>
-                        <button class="filter-chip" data-class="animal"  onclick="BYD.events.setActorFilter('class','animal')" data-i18n="events.actor_animal">Animal</button>
+                        <button class="filter-chip active" data-class="" data-on-click="BYD.events.setActorFilter('class','')" data-i18n="events.actor_any">Any</button>
+                        <button class="filter-chip" data-class="person"  data-on-click="BYD.events.setActorFilter('class','person')" data-i18n="events.actor_person">Person</button>
+                        <button class="filter-chip" data-class="vehicle" data-on-click="BYD.events.setActorFilter('class','vehicle')" data-i18n="events.actor_vehicle">Vehicle</button>
+                        <button class="filter-chip" data-class="bike"    data-on-click="BYD.events.setActorFilter('class','bike')" data-i18n="events.actor_bike">Bike</button>
+                        <button class="filter-chip" data-class="animal"  data-on-click="BYD.events.setActorFilter('class','animal')" data-i18n="events.actor_animal">Animal</button>
                     </div>
                     <div class="filter-tabs filter-tabs-row2" data-filter-row="severity">
                         <span class="filter-row-label" data-i18n="events.filter_severity">Severity:</span>
-                        <button class="filter-chip active" data-severity="" onclick="BYD.events.setActorFilter('severity','')" data-i18n="events.actor_any">Any</button>
-                        <button class="filter-chip sev-notice"   data-severity="NOTICE"   onclick="BYD.events.setActorFilter('severity','NOTICE')" data-i18n="events.severity_notice">Notice</button>
-                        <button class="filter-chip sev-alert"    data-severity="ALERT"    onclick="BYD.events.setActorFilter('severity','ALERT')" data-i18n="events.severity_alert">Alert</button>
-                        <button class="filter-chip sev-critical" data-severity="CRITICAL" onclick="BYD.events.setActorFilter('severity','CRITICAL')" data-i18n="events.severity_critical">Critical</button>
+                        <button class="filter-chip active" data-severity="" data-on-click="BYD.events.setActorFilter('severity','')" data-i18n="events.actor_any">Any</button>
+                        <button class="filter-chip sev-notice"   data-severity="NOTICE"   data-on-click="BYD.events.setActorFilter('severity','NOTICE')" data-i18n="events.severity_notice">Notice</button>
+                        <button class="filter-chip sev-alert"    data-severity="ALERT"    data-on-click="BYD.events.setActorFilter('severity','ALERT')" data-i18n="events.severity_alert">Alert</button>
+                        <button class="filter-chip sev-critical" data-severity="CRITICAL" data-on-click="BYD.events.setActorFilter('severity','CRITICAL')" data-i18n="events.severity_critical">Critical</button>
                     </div>
                     <div class="filter-tabs filter-tabs-row2" data-filter-row="proximity">
                         <span class="filter-row-label" data-i18n="events.filter_distance">Distance:</span>
-                        <button class="filter-chip active" data-proximity="" onclick="BYD.events.setActorFilter('proximity','')" data-i18n="events.actor_any">Any</button>
-                        <button class="filter-chip" data-proximity="VERY_CLOSE" onclick="BYD.events.setActorFilter('proximity','VERY_CLOSE')" data-i18n="events.proximity_very_close">Very close</button>
-                        <button class="filter-chip" data-proximity="CLOSE"      onclick="BYD.events.setActorFilter('proximity','CLOSE')" data-i18n="events.proximity_close">Close</button>
-                        <button class="filter-chip" data-proximity="MID"        onclick="BYD.events.setActorFilter('proximity','MID')" data-i18n="events.proximity_mid">Mid</button>
-                        <button class="filter-chip" data-proximity="FAR"        onclick="BYD.events.setActorFilter('proximity','FAR')" data-i18n="events.proximity_far">Far</button>
+                        <button class="filter-chip active" data-proximity="" data-on-click="BYD.events.setActorFilter('proximity','')" data-i18n="events.actor_any">Any</button>
+                        <button class="filter-chip" data-proximity="VERY_CLOSE" data-on-click="BYD.events.setActorFilter('proximity','VERY_CLOSE')" data-i18n="events.proximity_very_close">Very close</button>
+                        <button class="filter-chip" data-proximity="CLOSE"      data-on-click="BYD.events.setActorFilter('proximity','CLOSE')" data-i18n="events.proximity_close">Close</button>
+                        <button class="filter-chip" data-proximity="MID"        data-on-click="BYD.events.setActorFilter('proximity','MID')" data-i18n="events.proximity_mid">Mid</button>
+                        <button class="filter-chip" data-proximity="FAR"        data-on-click="BYD.events.setActorFilter('proximity','FAR')" data-i18n="events.proximity_far">Far</button>
                     </div>
                     <!--
                       Storage chip row — narrow the library to one physical
@@ -134,10 +135,10 @@
                     -->
                     <div class="filter-tabs filter-tabs-row2" data-filter-row="storage">
                         <span class="filter-row-label" data-i18n="events.filter_storage">Storage:</span>
-                        <button class="filter-chip active" data-storage="" onclick="BYD.events.setStorageFilter('')" data-i18n="events.actor_any">Any</button>
-                        <button class="filter-chip storage-internal" data-storage="INTERNAL" onclick="BYD.events.setStorageFilter('INTERNAL')" data-i18n="events.storage_internal">Internal</button>
-                        <button class="filter-chip storage-sd" data-storage="SD_CARD" onclick="BYD.events.setStorageFilter('SD_CARD')" data-i18n="events.storage_sd_card">SD card</button>
-                        <button class="filter-chip storage-usb" data-storage="USB" onclick="BYD.events.setStorageFilter('USB')" data-i18n="events.storage_usb">USB</button>
+                        <button class="filter-chip active" data-storage="" data-on-click="BYD.events.setStorageFilter('')" data-i18n="events.actor_any">Any</button>
+                        <button class="filter-chip storage-internal" data-storage="INTERNAL" data-on-click="BYD.events.setStorageFilter('INTERNAL')" data-i18n="events.storage_internal">Internal</button>
+                        <button class="filter-chip storage-sd" data-storage="SD_CARD" data-on-click="BYD.events.setStorageFilter('SD_CARD')" data-i18n="events.storage_sd_card">SD card</button>
+                        <button class="filter-chip storage-usb" data-storage="USB" data-on-click="BYD.events.setStorageFilter('USB')" data-i18n="events.storage_usb">USB</button>
                     </div>
                     <!--
                       Place chip row — dynamically populated from
@@ -178,7 +179,7 @@
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                             </button>
                         </label>
-                        <button class="filter-chip active" data-place="" onclick="BYD.events.setActorFilter('place','')" data-i18n="events.actor_any">Any</button>
+                        <button class="filter-chip active" data-place="" data-on-click="BYD.events.setActorFilter('place','')" data-i18n="events.actor_any">Any</button>
                         <!-- Data chips injected by BYD.events.renderPlaceChips() -->
                         <span class="place-search-hits" id="placeSearchHits" aria-live="polite"></span>
                     </div>
@@ -197,14 +198,14 @@
                         </div>
                     </div>
                     <div class="pagination" id="pagination" style="display: none;">
-                        <button class="pagination-btn" id="prevPageBtn" onclick="BYD.events.prevPage()" disabled data-i18n="events.prev">
+                        <button class="pagination-btn" id="prevPageBtn" data-on-click="BYD.events.prevPage()" disabled data-i18n="events.prev">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M15 18l-6-6 6-6"/>
                             </svg>
                             Prev
                         </button>
                         <span class="pagination-info" id="paginationInfo" data-i18n="events.page_initial">Page 1 of 1</span>
-                        <button class="pagination-btn" id="nextPageBtn" onclick="BYD.events.nextPage()" disabled data-i18n="events.next">
+                        <button class="pagination-btn" id="nextPageBtn" data-on-click="BYD.events.nextPage()" disabled data-i18n="events.next">
                             Next
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 18l6-6-6-6"/>
@@ -215,10 +216,10 @@
                     <div class="select-toolbar" id="selectToolbar" style="display:none;">
                         <span class="selected-count" id="selectedCount" data-i18n="events.selected_count_initial">0 selected</span>
                         <div class="select-actions">
-                            <button class="select-action-btn" onclick="BYD.events.selectAll()" data-i18n="common.select_all">Select All</button>
-                            <button class="select-action-btn" onclick="BYD.events.deselectAll()" data-i18n="events.deselect">Deselect</button>
-                            <button class="select-action-btn cancel" onclick="BYD.events.exitSelectMode()" data-i18n="common.cancel">Cancel</button>
-                            <button class="select-action-btn danger" onclick="BYD.events.batchDelete()" data-i18n="common.delete">
+                            <button class="select-action-btn" data-on-click="BYD.events.selectAll()" data-i18n="common.select_all">Select All</button>
+                            <button class="select-action-btn" data-on-click="BYD.events.deselectAll()" data-i18n="events.deselect">Deselect</button>
+                            <button class="select-action-btn cancel" data-on-click="BYD.events.exitSelectMode()" data-i18n="common.cancel">Cancel</button>
+                            <button class="select-action-btn danger" data-on-click="BYD.events.batchDelete()" data-i18n="common.delete">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                     <polyline points="3 6 5 6 21 6"/>
                                     <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
@@ -242,12 +243,12 @@
             <div class="calendar-header">
                 <span class="calendar-title" id="calendarTitle" data-i18n="events.calendar_title_initial">Calendar</span>
                 <div class="calendar-nav">
-                    <button onclick="BYD.events.prevMonth()">
+                    <button data-on-click="BYD.events.prevMonth()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M15 18l-6-6 6-6"/>
                         </svg>
                     </button>
-                    <button onclick="BYD.events.nextMonth()">
+                    <button data-on-click="BYD.events.nextMonth()">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 18l6-6-6-6"/>
                         </svg>
@@ -257,7 +258,7 @@
             <div class="calendar-grid" id="calendarGrid">
                 <!-- Calendar days will be rendered here -->
             </div>
-            <button class="calendar-close" onclick="BYD.events.closeCalendar()" data-i18n="common.close">Close</button>
+            <button class="calendar-close" data-on-click="BYD.events.closeCalendar()" data-i18n="common.close">Close</button>
         </div>
     </div>
 
