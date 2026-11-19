@@ -157,7 +157,7 @@ public final class RemoteAccessMessageCodes {
         rule("Local command failed \\((.*)\\); cloud command abandoned for a newer unlock decision", "local_failed_superseded_unlock", "failure");
 
         // Request errors shown on the page.
-        exact("The car app is unavailable. Open OverDrive and retry.", "car_app_unavailable");
+        exact("The car app is unavailable. Open Altitude 8848 and retry.", "car_app_unavailable");
         exact("Remote access is temporarily unavailable", "temporarily_unavailable");
         exact("Select an enabled trusted phone", "select_enabled_phone");
         exact("Enable Advanced mode to capture calibration values", "calibration_needs_advanced");

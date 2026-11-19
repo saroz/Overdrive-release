@@ -251,7 +251,7 @@ public final class RemoteAccessApiHandler {
                 synchronized (STATE) { pairedDevices = result.optJSONArray("devices"); }
                 HttpResponse.sendJson(out, result.toString());
             } else {
-                HttpResponse.sendJson(out, 503, error("The car app is unavailable. Open OverDrive and retry.").toString());
+                HttpResponse.sendJson(out, 503, error("The car app is unavailable. Open Altitude 8848 and retry.").toString());
             }
             return true;
         }
