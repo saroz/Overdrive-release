@@ -1,5 +1,5 @@
 /**
- * OverDrive - WireGuard setup page.
+ * Altitude 8848 - WireGuard setup page.
  * Shows the tunnel status and lets the user upload or paste the config their
  * router exported. The private key is write-only: the API never returns it.
  */

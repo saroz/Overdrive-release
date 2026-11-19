@@ -2202,7 +2202,7 @@ BYD.events = {
             return (v && v !== key) ? v : fallback;
         };
         const body = tEv('events.pack_confirm_body',
-            'OverDrive sends only filtered event metadata to your configured AI provider. '
+            'Altitude 8848 sends only filtered event metadata to your configured AI provider. '
             + 'The video stays local and is added only to the downloaded evidence pack.');
         const confirmed = window.BYD && BYD.utils
                 && BYD.utils.confirmDialog

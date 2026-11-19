@@ -119,7 +119,7 @@ public class GenAiAssetContractTest {
         assertTrue(html.contains(
                 "class=\"ui-panel ai-insight-card\""));
         assertTrue(html.contains("core.js?v=28"));
-        assertTrue(html.contains("placeholder=\"Ask OverDrive…\""));
+        assertTrue(html.contains("placeholder=\"Ask Altitude 8848…\""));
         assertTrue(html.contains(
                 "min-height: 180px; max-height: 720px"));
         assertFalse(html.contains(

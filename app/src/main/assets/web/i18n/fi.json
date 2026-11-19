@@ -6,23 +6,23 @@
     "note": "Master source. Muita lokaatioita tuottaa dev/i18n_translate.py kautta NLLB-200. Muokkaa vain tätä tiedostoa; luo loput."
   },
   "app": {
-    "name": "OverDrive",
+    "name": "Altitude 8848",
     "tagline": "Seuranta Järjestelmä",
-    "live_view_title": "Live View - OverDrive",
-    "events_title": "Tapahtumat - OverDrive",
+    "live_view_title": "Live View - Altitude 8848",
+    "events_title": "Tapahtumat - Altitude 8848",
     "surveillance_title": "Valvonta - Yliajoitus",
-    "recordings_title": "Tallenteet - OverDrive",
-    "performance_title": "Suorituskyky - OverDrive",
-    "abrp_title": "ABRP - OverDrive",
-    "mqtt_title": "MQTT - OverDrive",
-    "trips_title": "Kyydit - OverDrive",
-    "notifications_title": "Ilmoitukset - OverDrive",
-    "vehicle_control_title": "Ajoneuvon Ohjaus - OverDrive",
-    "login_title": "Kirjautuminen - OverDrive",
-    "byd_cloud_title": "BYD Cloud - OverDrive",
-    "telegram_title": "Telegram - OverDrive",
-    "dashboard_title": "Hallintapaneeli - OverDrive",
-    "road_sense_title": "RoadSense - OverDrive"
+    "recordings_title": "Tallenteet - Altitude 8848",
+    "performance_title": "Suorituskyky - Altitude 8848",
+    "abrp_title": "ABRP - Altitude 8848",
+    "mqtt_title": "MQTT - Altitude 8848",
+    "trips_title": "Kyydit - Altitude 8848",
+    "notifications_title": "Ilmoitukset - Altitude 8848",
+    "vehicle_control_title": "Ajoneuvon Ohjaus - Altitude 8848",
+    "login_title": "Kirjautuminen - Altitude 8848",
+    "byd_cloud_title": "BYD Cloud - Altitude 8848",
+    "telegram_title": "Telegram - Altitude 8848",
+    "dashboard_title": "Hallintapaneeli - Altitude 8848",
+    "road_sense_title": "RoadSense - Altitude 8848"
   },
   "nav": {
     "dashboard": "Hallintapaneeli",
@@ -46,7 +46,7 @@
     "overview_group": "Yleiskatsaus",
     "vehicle_group": "Ajoneuvo",
     "about_group": "Tietoja",
-    "brand_home": "OverDrive – avoin hallintapaneeli",
+    "brand_home": "Altitude 8848 – avoin hallintapaneeli",
     "telegram": "Telegram",
     "road_sense": "RoadSense"
   },
@@ -292,7 +292,7 @@
   "login": {
     "subtitle": "Syötä laitteesi tunnus päästäksesi käsiksi",
     "device_id": "Laitteen Tunnus",
-    "find_hint": "Etsi tämä OverDrive-sovelluksestasi → Dashboard → Access Code",
+    "find_hint": "Etsi tämä Altitude 8848-sovelluksestasi → Dashboard → Access Code",
     "login_btn": "Kirjaudu",
     "privacy": "Tietosi pysyvät laitteessasi."
   },
@@ -1634,7 +1634,7 @@
     "lan_hint": "Paikallinen verkkoyhteys (<code>{ips}</code>) palauttaa ~{seconds}s nopeammin kuin tunneli — vaihda siihen nyt, jos voit.",
     "recommend_inapp_default": "BYD tyhjentää jokaisen asennuksen automaattisen käynnistyksen. Automaattisovellus pyytää sinua; webapp ei voi.",
     "recommend_inapp_intro": "<strong>Suositeltu: päivitä auto-sovellus sen sijaan.</strong> {reason}",
-    "title_update_to": "Päivitä OverDrive <span class=\"upd-newv\">{version}</span>?",
+    "title_update_to": "Päivitä Altitude 8848 <span class=\"upd-newv\">{version}</span>?",
     "currently_on": "Käytössä versio {version}",
     "downtime_warning": "<strong>Etäkäyttö offline-tilassa ~{minutes} min.</strong> Daemons uudelleenkäynnistys ja tunneli uudelleenyhdistää asennuksen jälkeen.",
     "fallback_check_label": "Tarkista päivitykset",
@@ -1916,14 +1916,14 @@
     "auto": "Automaattinen"
   },
   "about": {
-    "page_title": "Tietoja – OverDrive",
+    "page_title": "Tietoja – Altitude 8848",
     "page_title_short": "Tietoja",
     "contributors_title": "Avustajat",
-    "contributors_sub": "Ihmiset, jotka ovat lähettäneet koodin OverDriveen.",
+    "contributors_sub": "Ihmiset, jotka ovat lähettäneet koodin Altitude 8848:aan.",
     "supporters_title": "Tukijat",
     "supporters_sub": "Ihmiset, jotka ovat pitäneet myöhäisillan sitoutuu kofeiinit.",
     "acknowledgements_title": "Kiitokset",
-    "acknowledgements_sub": "OverDrivessa käytetyt kolmansien osapuolten omaisuuserät ja niiden lisenssit.",
+    "acknowledgements_sub": "Altitude 8848:ssa käytetyt kolmansien osapuolten omaisuuserät ja niiden lisenssit.",
     "ack_chimes": "RoadSense warning chimes - ääniä Google Sound Kirjasto, lisensoitu",
     "empty": "Luettelossa on väestömäärä ihmisten pitch sisään.",
     "support": {
@@ -1964,7 +1964,7 @@
     "recommend_step_5": "Valitse valtuutusaika, joka sopii siihen, kuinka kauan haluat tämän profiilin pysyvän aktiivisena.",
     "recommend_step_6": "Kirjaudu ulos BYD-sovelluksesta ja kirjoita sitten toissijainen sähköposti käyttäen vahvistuskoodia ja luo salasana.",
     "recommend_step_7": "Napauta Lukitse tai Avaa BYD-sovelluksessa — se kehottaa sinua asettamaan Ohjauspinnin.",
-    "recommend_step_8": "Syötä toissijainen sähköposti, salasana, ja Ohjaa Pin tähän OverDriveen."
+    "recommend_step_8": "Syötä toissijainen sähköposti, salasana, ja Ohjaa Pin tähän Altitude 8848:aan."
   },
   "telegram": {
     "page_title": "Telegram",
@@ -1972,7 +1972,7 @@
     "tab_pair": "Pari",
     "tab_preferences": "Asetukset",
     "bot_title": "Bot Token",
-    "bot_hint": "Luo botti Telegramin @BotFather -palvelun kautta, kopioi tunnus tähän, ja OverDrive vahvistaa sen. Tunnus on tallennettu vain tälle laitteelle.",
+    "bot_hint": "Luo botti Telegramin @BotFather -palvelun kautta, kopioi tunnus tähän, ja Altitude 8848 vahvistaa sen. Tunnus on tallennettu vain tälle laitteelle.",
     "token": "Bot token",
     "token_supporting": "Format: 123456789:ABCdef-GHI…",
     "token_keep": "Jätä tyhjäksi säilyttääksesi nykyinen",
@@ -2106,7 +2106,7 @@
     "mode_continuous": "Jatkuva",
     "mode_smart": "Älykäs",
     "mode_off_desc_recording": "Älä tallenna OEM-anturista. Pano dashcam kirjoittaa cam_*.mp4 normaalisti.",
-    "mode_continuous_desc_recording": "Nauhoita aina dvr_*.mp4 kun OverDrive on käynnissä, riippumatta siitä, mitä pano tekee.",
+    "mode_continuous_desc_recording": "Nauhoita aina dvr_*.mp4 kun Altitude 8848 on käynnissä, riippumatta siitä, mitä pano tekee.",
     "mode_smart_desc_recording": "Peilaa pano Dashcam: kun pano on tallennus (Drive Moode / Jatkuva / Läheisyys Guard fires), ennätys dvr_*.mp4 liian. Pano pysähtyy, OEM pysähtyy.",
     "mode_off_desc_surveillance": "Älä tallenna OEM-eteenpäin -anturista valvonnassa. Pano sentry jatkaa tapahtuman_*.mp4 kirjoittamista normaalisti.",
     "mode_continuous_desc_surveillance": "Aina tallentaa dvr_*.mp4 koko ajan auto on pysäköity liikkeestä riippumatta. Polttaa tallennustilan läpi.",
@@ -2118,12 +2118,12 @@
     "surveillance_mode_set_continuous": "OEM valvonnan ashcami: Jatkuva",
     "surveillance_mode_set_smart": "OEM tarkkailusuunnitelma: Älykäs (peili pano liike)",
     "native_dvr_title": "Native DVR app (com.byd.cdr)",
-    "native_dvr_explainer": "Tehtaan dashcam sovellus tallentaa /sdcard/DCIM/BYDCam -laitteeseen ja avaa AVMCameran jokaiseen ACC ON-laitteeseen. Ota OverDrive pois käytöstä ilman vastaväitteitä.",
+    "native_dvr_explainer": "Tehtaan dashcam sovellus tallentaa /sdcard/DCIM/BYDCam -laitteeseen ja avaa AVMCameran jokaiseen ACC ON-laitteeseen. Ota Altitude 8848 pois käytöstä ilman vastaväitteitä.",
     "native_dvr_disable": "Poista alkuperäinen DVR käytöstä",
     "native_dvr_enable": "Ota natiivi DVR uudelleen käyttöön",
     "native_dvr_status_enabled": "Tila: Käytössä",
-    "native_dvr_status_disabled": "Tila: poistettu käytöstä OverDriven toimesta",
-    "native_dvr_disable_toast": "Natiivi DVR poistettu käytöstä. OverDrive omistaa kameran.",
+    "native_dvr_status_disabled": "Tila: poistettu käytöstä Altitude 8848:n toimesta",
+    "native_dvr_disable_toast": "Natiivi DVR poistettu käytöstä. Altitude 8848 omistaa kameran.",
     "native_dvr_enable_toast": "Natiivi DVR uudelleen käytössä.",
     "start_timeout": "Putkilinjan käynnistäminen aikakatkaisussa — tarkista taustakuviologit"
   }

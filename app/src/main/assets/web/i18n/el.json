@@ -8,21 +8,21 @@
   "app": {
     "name": "Υπέρβαση",
     "tagline": "Σύστημα Παρακολούθησης",
-    "live_view_title": "Ζωντανή Προβολή - OverDrive",
-    "events_title": "Events - OverDrive",
-    "surveillance_title": "Παρακολούθηση - OverDrive",
-    "recordings_title": "Εγγραφές - OverDrive",
-    "performance_title": "Απόδοση - OverDrive",
-    "abrp_title": "ABRP - OverDrive",
-    "mqtt_title": "MQTT - OverDrive",
-    "trips_title": "Ταξίδια - OverDrive",
-    "notifications_title": "Ειδοποιήσεις - OverDrive",
-    "vehicle_control_title": "Έλεγχος Οχημάτων - OverDrive",
-    "login_title": "Σύνδεση - OverDrive",
-    "byd_cloud_title": "BYD Cloud - OverDrive",
-    "telegram_title": "Telegram - OverDrive",
-    "dashboard_title": "Ταμπλό - OverDrive",
-    "road_sense_title": "RoadSense - OverDrive"
+    "live_view_title": "Ζωντανή Προβολή - Altitude 8848",
+    "events_title": "Events - Altitude 8848",
+    "surveillance_title": "Παρακολούθηση - Altitude 8848",
+    "recordings_title": "Εγγραφές - Altitude 8848",
+    "performance_title": "Απόδοση - Altitude 8848",
+    "abrp_title": "ABRP - Altitude 8848",
+    "mqtt_title": "MQTT - Altitude 8848",
+    "trips_title": "Ταξίδια - Altitude 8848",
+    "notifications_title": "Ειδοποιήσεις - Altitude 8848",
+    "vehicle_control_title": "Έλεγχος Οχημάτων - Altitude 8848",
+    "login_title": "Σύνδεση - Altitude 8848",
+    "byd_cloud_title": "BYD Cloud - Altitude 8848",
+    "telegram_title": "Telegram - Altitude 8848",
+    "dashboard_title": "Ταμπλό - Altitude 8848",
+    "road_sense_title": "RoadSense - Altitude 8848"
   },
   "nav": {
     "dashboard": "Ταμπλό",
@@ -46,7 +46,7 @@
     "overview_group": "Επισκόπηση",
     "vehicle_group": "Όχημα",
     "about_group": "Σχετικά",
-    "brand_home": "OverDrive — ανοιχτό ταμπλό",
+    "brand_home": "Altitude 8848 — ανοιχτό ταμπλό",
     "telegram": "Telegram",
     "road_sense": "Οδική Αίσθηση"
   },
@@ -292,7 +292,7 @@
   "login": {
     "subtitle": "Εισάγετε το διακριτικό της συσκευής σας για πρόσβαση",
     "device_id": "Id Συσκευής",
-    "find_hint": "Βρείτε αυτό στο OverDrive app σας → Πίνακας ελέγχου → Κωδικός πρόσβασης",
+    "find_hint": "Βρείτε αυτό στο Altitude 8848 app σας → Πίνακας ελέγχου → Κωδικός πρόσβασης",
     "login_btn": "Είσοδος",
     "privacy": "Τα δεδομένα σας παραμένουν στη συσκευή σας."
   },
@@ -1613,7 +1613,7 @@
     "install_failed_start": "Η εγκατάσταση απέτυχε να ξεκινήσει",
     "install_request_failed": "Αποτυχία αιτήματος εγκατάστασης: {error}",
     "install_failed": "Αποτυχία εγκατάστασης: {error}",
-    "updating": "Ενημέρωση OverDrive",
+    "updating": "Ενημέρωση Altitude 8848",
     "reconnecting": "Επανασύνδεση…",
     "headunit_installing": "Η μονάδα κεφαλής εγκαθιστά την ενημέρωση. Αυτή η σελίδα θα ανανεωθεί αυτόματα όταν η νέα έκδοση είναι online.",
     "phase_queued": "Σε αναμονή — προετοιμασία…",
@@ -1634,7 +1634,7 @@
     "lan_hint": "Η πρόσβαση στο τοπικό δίκτυο (<code>{ips}</code>) ανακτά ~{seconds}s γρηγορότερα από τη σήραγγα — μεταβείτε σε αυτήν τώρα, αν μπορείτε.",
     "recommend_inapp_default": "Το BYD καθαρίζει την αυτόματη εκκίνηση της λευκής λίστας σε κάθε εγκατάσταση. Η εφαρμογή εντός αυτοκινήτου σας ζητάει και η εφαρμογή webapp δεν μπορεί.",
     "recommend_inapp_intro": "<strong>Προτείνεται: ενημέρωση από την εφαρμογή in-car αντί αυτού.</strong> {reason}",
-    "title_update_to": "Ενημέρωση OverDrive σε <span class=\"upd-newv\">{version}</span>?",
+    "title_update_to": "Ενημέρωση Altitude 8848 σε <span class=\"upd-newv\">{version}</span>?",
     "currently_on": "Αυτή τη στιγμή στο {version}",
     "downtime_warning": "<strong>Η απομακρυσμένη πρόσβαση θα είναι εκτός σύνδεσης για περίπου {minutes} λεπτά.</strong> Οι δαίμονες (daemons) κάνουν επανεκκίνηση και η σήραγγα επανασυνδέεται μετά την εγκατάσταση.",
     "fallback_check_label": "Έλεγχος για ενημερώσεις",
@@ -1836,7 +1836,7 @@
   },
   "map": {
     "your_vehicle": "Το Όχημά Σας",
-    "your_vehicle_sub": "Επιτήρηση OverDrive",
+    "your_vehicle_sub": "Επιτήρηση Altitude 8848",
     "you_are_here": "Είστε εδώ"
   },
   "pip": {
@@ -1916,14 +1916,14 @@
     "auto": "Αυτόματο"
   },
   "about": {
-    "page_title": "Περί — OverDrive",
+    "page_title": "Περί — Altitude 8848",
     "page_title_short": "Σχετικά",
     "contributors_title": "Συντελεστές",
-    "contributors_sub": "Άνθρωποι που έστειλαν κώδικα σε OverDrive.",
+    "contributors_sub": "Άνθρωποι που έστειλαν κώδικα σε Altitude 8848.",
     "supporters_title": "Υποστηρικτές",
     "supporters_sub": "Λαοί που κράτησαν τις τελευταίες νύχτες υποβολές που προσφέρονται.",
     "acknowledgements_title": "Ευχαριστίες",
-    "acknowledgements_sub": "Περιουσιακά στοιχεία τρίτων που χρησιμοποιούνται στο OverDrive, με τις άδειες τους.",
+    "acknowledgements_sub": "Περιουσιακά στοιχεία τρίτων που χρησιμοποιούνται στο Altitude 8848, με τις άδειες τους.",
     "ack_chimes": "Προειδοποίηση RoadSense χτυπήματα — ήχοι από τη Βιβλιοθήκη Ήχου Google, με άδεια",
     "empty": "Λίστα συμπληρώνεται ως άτομα pitch in.",
     "support": {
@@ -1964,7 +1964,7 @@
     "recommend_step_5": "Επιλέξτε μια περίοδο εξουσιοδότησης που ταιριάζει στο χρονικό διάστημα που θέλετε αυτό το προφίλ να παραμείνει ενεργό.",
     "recommend_step_6": "Αποσυνδεθείτε από την εφαρμογή BYD, στη συνέχεια, εγγραφείτε με το δευτερεύον email χρησιμοποιώντας τον κωδικό επαλήθευσης και δημιουργήστε έναν κωδικό πρόσβασης.",
     "recommend_step_7": "Πατήστε Κλείδωμα ή ξεκλείδωμα στην εφαρμογή BYD - θα σας ζητήσει να ορίσετε ένα PIN ελέγχου.",
-    "recommend_step_8": "Εισάγετε εδώ το δευτερεύον email, τον κωδικό πρόσβασης και τον κωδικό ελέγχου Pin στο OverDrive."
+    "recommend_step_8": "Εισάγετε εδώ το δευτερεύον email, τον κωδικό πρόσβασης και τον κωδικό ελέγχου Pin στο Altitude 8848."
   },
   "telegram": {
     "page_title": "Telegram",
@@ -1972,7 +1972,7 @@
     "tab_pair": "Ζεύγος",
     "tab_preferences": "Ρυθμίσεις",
     "bot_title": "Bot Token",
-    "bot_hint": "Δημιουργήστε ένα bot μέσω @BotFather στο Telegram, αντιγράψτε το διακριτικό εδώ και το OverDrive θα το επικυρώσει. Το διακριτικό αποθηκεύεται μόνο σε αυτή τη συσκευή.",
+    "bot_hint": "Δημιουργήστε ένα bot μέσω @BotFather στο Telegram, αντιγράψτε το διακριτικό εδώ και το Altitude 8848 θα το επικυρώσει. Το διακριτικό αποθηκεύεται μόνο σε αυτή τη συσκευή.",
     "token": "Bot token",
     "token_supporting": "Format: 123456789:ABCdef-GHI…",
     "token_keep": "Αφήστε κενό για να διατηρήσετε το τρέχον",
@@ -2106,7 +2106,7 @@
     "mode_continuous": "Συνεχής",
     "mode_smart": "Έξυπνο",
     "mode_off_desc_recording": "Μην καταγράφετε από τον αισθητήρα OEM προς τα εμπρός. Pano dashcam κρατά την εγγραφή cam_*.mp4 κανονικά.",
-    "mode_continuous_desc_recording": "Πάντα να καταγράφει dvr_*.mp4 ενώ το OverDrive τρέχει, ανεξάρτητα από το τι κάνει το pano dashCam.",
+    "mode_continuous_desc_recording": "Πάντα να καταγράφει dvr_*.mp4 ενώ το Altitude 8848 τρέχει, ανεξάρτητα από το τι κάνει το pano dashCam.",
     "mode_smart_desc_recording": "Καθρεφτίζει το pano dashcam: όταν καταγράφεται το pano (Drive Mode / Continuous / Proximity Guard fires), καταγράφει dvr_ *.mp4 επίσης.",
     "mode_off_desc_surveillance": "Μην καταγράφετε από τον αισθητήρα OEM εμπρός κατά την παρακολούθηση. Pano sentry κρατά το γράψιμο γεγονός_*.mp4 κανονικά.",
     "mode_continuous_desc_surveillance": "Πάντα να καταγράφει dvr_*.mp4 όλη την ώρα που το αυτοκίνητο είναι σταθμευμένο, ανεξάρτητα από την κίνηση. Θα καεί μέσα από την αποθήκευση γρηγορότερα.",
@@ -2122,8 +2122,8 @@
     "native_dvr_disable": "Απενεργοποίηση εγγενών DVR",
     "native_dvr_enable": "Επανενεργοποίηση εγγενούς DVR",
     "native_dvr_status_enabled": "Κατάσταση: Ενεργοποιημένη",
-    "native_dvr_status_disabled": "Κατάσταση: Απενεργοποιημένη από OverDrive",
-    "native_dvr_disable_toast": "Το OverDrive κατέχει τώρα την κάμερα.",
+    "native_dvr_status_disabled": "Κατάσταση: Απενεργοποιημένη από Altitude 8848",
+    "native_dvr_disable_toast": "Το Altitude 8848 κατέχει τώρα την κάμερα.",
     "native_dvr_enable_toast": "Η εγγενής επαναφορά DVR ενεργοποιήθηκε.",
     "start_timeout": "Λήξη χρονικού ορίου έναρξης αγωγού - ελέγξτε τα αρχεία καταγραφής δαίμονα"
   }

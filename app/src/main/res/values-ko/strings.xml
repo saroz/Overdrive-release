@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">Overdrive 차량 모니터링을 백그라운드에서 계속 활성 상태로 유지합니다. 이 서비스는 화면 콘텐츠를 읽거나 화면 콘텐츠와 상호 작용하지 않습니다.</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">자동으로 각 부트에서 트리밍에 적합한 카메라를 선택합니다. 카메라 1 = BYD Seal, 카메라 0 = Atto 트리밍. 설정이 효력을 발휘하기 위해 카메라 ID를 변경한 후 다이몬을 다시 시작하십시오.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">OEM 대시캠 카메라 ID</string>
-    <string name="camera_oem_dashcam_hint">전방 대시캠 센서를 가리키는 AVMCamera id를 선택하세요. 대시캠은 pano의 반대입니다: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. OverDrive가 선택하도록 Auto로 두세요.</string>
+    <string name="camera_oem_dashcam_hint">전방 대시캠 센서를 가리키는 AVMCamera id를 선택하세요. 대시캠은 pano의 반대입니다: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Altitude 8848가 선택하도록 Auto로 두세요.</string>
     <string name="camera_oem_dashcam_auto_resolved">자동 — id %1$d 사용 중 (파노는 id %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">자동 — 파노 id가 %1$d여서 대시캠을 추론할 수 없음</string>
     <string name="camera_oem_dashcam_save">저장</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">파노라마 스트림: 레거시 자동 탐지 / 탐지</string>
     <string name="camera_mapping_current_format">현재 지도: %1$s</string>
     <string name="camera_mapping_current_none">현재 지도: 자동 / 기본</string>
-    <string name="camera_mapping_hint">OverDrive는 기본으로 기존의 시작 동작을 유지하지만, 이제 통합된 판로마 스트립을 올바르게 캘리브 할 수 있습니다. 각 원료 통합된 슬라이드를 미리 볼 수 있으며, 논리적 360 역할이 실제로 차량에 앞/오른/뒤/왼쪽을 표시하는 슬라이드에 지도를 매핑하고, 데몬은 다시 시작 후 녹화, 스트리밍 및 AI를 위해 그 레이아웃을 재사용합니다.</string>
+    <string name="camera_mapping_hint">Altitude 8848는 기본으로 기존의 시작 동작을 유지하지만, 이제 통합된 판로마 스트립을 올바르게 캘리브 할 수 있습니다. 각 원료 통합된 슬라이드를 미리 볼 수 있으며, 논리적 360 역할이 실제로 차량에 앞/오른/뒤/왼쪽을 표시하는 슬라이드에 지도를 매핑하고, 데몬은 다시 시작 후 녹화, 스트리밍 및 AI를 위해 그 레이아웃을 재사용합니다.</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">연결하기 위해 스캔</string>
     <string name="dashboard_qr_waiting">터널을 기다렸어</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">당신 의 언어 를 선택 하십시오</string>
-    <string name="setup_language_body">OverDrive 앱과 웹 터널에 다른 언어를 선택하기 위해 버튼을 누르십시오.</string>
+    <string name="setup_language_body">Altitude 8848 앱과 웹 터널에 다른 언어를 선택하기 위해 버튼을 누르십시오.</string>
     <string name="setup_language_button">언어 를 선택 하십시오</string>
     <string name="setup_autostart_title">자동 시작 제한을 비활성화</string>
-    <string name="setup_autostart_body">아래를 누르면 BYD 자동 시작을 열 수 있습니다. 목록에서 OverDrive를 찾아 상자를 삭제합니다. BYD는 모든 설치에서 이것을 삭제합니다. 업데이트 후에 다시 할 것입니다.</string>
+    <string name="setup_autostart_body">아래를 누르면 BYD 자동 시작을 열 수 있습니다. 목록에서 Altitude 8848를 찾아 상자를 삭제합니다. BYD는 모든 설치에서 이것을 삭제합니다. 업데이트 후에 다시 할 것입니다.</string>
     <string name="setup_autostart_button">BYD 자동 시작 열</string>
     <string name="setup_overlay_title">다른 앱에서 표시할 수 있도록 하십시오</string>
     <string name="setup_overlay_body">다른 앱에 녹화 및 여행 추적을 위한 부동 상태 지표를 표시하기 위해 이것을 활성화하십시오.</string>
@@ -452,9 +452,9 @@
     <string name="dialog_traffic_cannot_check_title">상태 확인 불가능</string>
     <string name="dialog_traffic_cannot_check_message">ADB 연결은 아직 준비되지 않았습니다. 앱은 시스템 패키지를 관리하기 위해 ADB 액세스가 필요합니다. 개발자 옵션에서 USB 디버깅이 활성화되어 있는지 확인하십시오.</string>
     <string name="dialog_traffic_disable_title">BYD 트래픽 모니터를 비활성화하시겠습니까?</string>
-    <string name="dialog_traffic_disable_message">BYD 트래픽 모니터(com.byd.trafficmonitor)는 어떤 앱이 모바일 데이터를 사용할 수 있는지 제어하는 내장 시스템 앱입니다. 이 앱은 OverDrive를 포함한 타사 앱이 차량 내장 SIM을 사용하지 못하도록 차단합니다.\n\n왜 비활성화해야 하나요?\n\n• OverDrive 및 설치한 다른 앱이 BYD SIM을 통해 인터넷을 사용할 수 있게 됩니다\n• BYD SIM을 통해 차량에 원격으로 접속하는 데 필요합니다\n\n내비게이션, 블루투스 및 기타 모든 차량 기능은 영향을 받지 않습니다.\n\n비활성화한 후에는 하드 재부팅이 필요합니다(센터 콘솔 버튼을 5초간 길게 누르세요).</string>
+    <string name="dialog_traffic_disable_message">BYD 트래픽 모니터(com.byd.trafficmonitor)는 어떤 앱이 모바일 데이터를 사용할 수 있는지 제어하는 내장 시스템 앱입니다. 이 앱은 Altitude 8848를 포함한 타사 앱이 차량 내장 SIM을 사용하지 못하도록 차단합니다.\n\n왜 비활성화해야 하나요?\n\n• Altitude 8848 및 설치한 다른 앱이 BYD SIM을 통해 인터넷을 사용할 수 있게 됩니다\n• BYD SIM을 통해 차량에 원격으로 접속하는 데 필요합니다\n\n내비게이션, 블루투스 및 기타 모든 차량 기능은 영향을 받지 않습니다.\n\n비활성화한 후에는 하드 재부팅이 필요합니다(센터 콘솔 버튼을 5초간 길게 누르세요).</string>
     <string name="dialog_traffic_enable_title">BYD 트래픽 모니터를 다시 활성화하시겠습니까?</string>
-    <string name="dialog_traffic_enable_message">BYD 트래픽 모니터는 현재 비활성화되어 있습니다.\n\n다시 활성화하면 OverDrive 및 기타 타사 앱이 차량 내장 SIM을 사용하지 못하도록 다시 차단되므로 BYD SIM을 통한 원격 접근이 더 이상 작동하지 않습니다.\n\n활성화한 후에는 하드 재부팅이 필요합니다(센터 콘솔 버튼을 5초간 길게 누르세요).</string>
+    <string name="dialog_traffic_enable_message">BYD 트래픽 모니터는 현재 비활성화되어 있습니다.\n\n다시 활성화하면 Altitude 8848 및 기타 타사 앱이 차량 내장 SIM을 사용하지 못하도록 다시 차단되므로 BYD SIM을 통한 원격 접근이 더 이상 작동하지 않습니다.\n\n활성화한 후에는 하드 재부팅이 필요합니다(센터 콘솔 버튼을 5초간 길게 누르세요).</string>
     <string name="dialog_traffic_status_enabled">트래픽 모니터 활성화됨</string>
     <string name="dialog_traffic_status_disabled">트래픽 모니터 비활성화됨</string>
     <string name="dialog_traffic_reboot_message">변경 사항이 적용되었습니다. 이제 하드 재부팅을 수행하십시오. 중앙 콘솔 버튼을 5 초 동안 누르십시오.</string>
@@ -580,7 +580,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">팁 &amp; 문제 해결</string>
     <string name="setup_traffic_title">BYD 트래픽 모니터 비활성화</string>
-    <string name="setup_traffic_body">BYD 트래픽 모니터는 타사 앱이 인터넷에 접속하지 못하도록 차단합니다. 이를 비활성화하면 OverDrive 및 설치한 다른 모든 앱이 실제로 네트워크를 사용할 수 있습니다. 이후 하드 재부팅이 필요합니다.</string>
+    <string name="setup_traffic_body">BYD 트래픽 모니터는 타사 앱이 인터넷에 접속하지 못하도록 차단합니다. 이를 비활성화하면 Altitude 8848 및 설치한 다른 모든 앱이 실제로 네트워크를 사용할 수 있습니다. 이후 하드 재부팅이 필요합니다.</string>
     <string name="setup_traffic_button">트래픽 모니터 열기</string>
     <string name="setup_camera_fix_title">카메라가 검정색이나 틀렸나요?</string>
     <string name="setup_camera_fix_body">카메라 탐사선, 카메라 ID를 0으로 설정하고 저장 버튼을 누르면 카메라 데이몬을 다시 시작하십시오. 피드가 여전히 잘못되면 카메라 ID 1으로 반복하십시오. 지도 섹션을 손상시키지 마십시오.</string>
@@ -604,7 +604,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD 클라우드</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">OverDrive 상태</string>
+    <string name="status_overlay_notif_title">Altitude 8848 상태</string>
     <string name="status_overlay_notif_text">상태 덮개 활성</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -653,7 +653,7 @@
     <string name="settings_privacy_title">개인 정보 보호 &amp; 데이터</string>
     <string name="settings_privacy_body">리셋은 녹음 인덱스, 캐시 된 인증서, 데몬 상태 및 장치 상의 선호도를 클리어합니다. 이 동작은 취소할 수 없습니다.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">OverDrive에 대해</string>
+    <string name="settings_about_title">Altitude 8848에 대해</string>
     <string name="settings_about_version_label">버전</string>
     <string name="settings_about_package_label">건설</string>
     <string name="settings_about_check_update_value">최신 GitHub 릴리스를 확인하고 최신 버전인 경우 설치하십시오.</string>
@@ -757,7 +757,7 @@
     <string name="settings_action_check_update">업데이트 확인</string>
     <string name="settings_action_reset_data">데이터 리셋...</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -824,11 +824,11 @@
     <string name="settings_section_storage_subtitle">녹화 저장 위치, 공간 한도, BYD 블랙박스 정리.</string>
     <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT 러너.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">OverDrive에 대해</string>
+    <string name="settings_about_row_title">Altitude 8848에 대해</string>
     <string name="settings_about_row_subtitle">버전, 라이선스, 지원 개발.</string>
     <string name="settings_reset_row_subtitle">녹음, 사건, 또는 모든 캐시</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -845,7 +845,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">기본 장치</string>
-    <string name="settings_privacy_stance_body">OverDrive는 전용으로 작동합니다. 당신이 명시적으로 구성한 터널과 통합을 제외하고는 차에서 탈퇴할 수 없습니다.</string>
+    <string name="settings_privacy_stance_body">Altitude 8848는 전용으로 작동합니다. 당신이 명시적으로 구성한 터널과 통합을 제외하고는 차에서 탈퇴할 수 없습니다.</string>
     <string name="settings_privacy_overline_storage">로컬 스토리지</string>
     <string name="settings_privacy_overline_reset">데이터 리셋</string>
     <string name="settings_privacy_storage_clips_label">디스크에 있는 클립</string>
@@ -855,18 +855,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d 클립</string>
     <string name="settings_privacy_reset_subtitle">카테고리를 선택하세요: 녹음, 이벤트, 데몬 구성, 캐시된 텔레메트리...</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">보안</string>
-    <string name="settings_security_subtitle">승객이나 발렛이 PIN 없이 열 수 없도록 OverDrive 앱을 잠급니다.</string>
+    <string name="settings_security_subtitle">승객이나 발렛이 PIN 없이 열 수 없도록 Altitude 8848 앱을 잠급니다.</string>
     <string name="settings_security_stance_title">UI 잠금만</string>
-    <string name="settings_security_stance_body">앱이 잠긴 동안에도 감시, 녹화, 억제, 알림 및 백그라운드 서비스는 계속 실행됩니다. PIN은 OverDrive 인터페이스만 잠그며, 그 외에는 아무것도 잠그지 않습니다.</string>
+    <string name="settings_security_stance_body">앱이 잠긴 동안에도 감시, 녹화, 억제, 알림 및 백그라운드 서비스는 계속 실행됩니다. PIN은 Altitude 8848 인터페이스만 잠그며, 그 외에는 아무것도 잠그지 않습니다.</string>
     <string name="settings_security_overline_lock">앱 잠금</string>
     <string name="settings_security_overline_recovery">PIN을 잊어버린 경우</string>
     <string name="settings_security_toggle_title">PIN 요구</string>
-    <string name="settings_security_toggle_subtitle_off">끔 — 누구나 OverDrive를 열 수 있습니다.</string>
-    <string name="settings_security_toggle_subtitle_on">켬 — OverDrive를 열려면 PIN이 필요합니다.</string>
+    <string name="settings_security_toggle_subtitle_off">끔 — 누구나 Altitude 8848를 열 수 있습니다.</string>
+    <string name="settings_security_toggle_subtitle_on">켬 — Altitude 8848를 열려면 PIN이 필요합니다.</string>
     <string name="settings_security_change_title">PIN 변경</string>
     <string name="settings_security_change_subtitle">현재 PIN을 확인한 후 새 PIN을 설정하세요.</string>
     <string name="settings_security_autolock_title">자동 잠금</string>
@@ -903,7 +903,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">PIN 입력</string>
     <string name="pin_lock_title_unlocked">잠금 해제됨</string>
-    <string name="pin_lock_subtitle_default">계속하려면 OverDrive의 잠금을 해제하세요.</string>
+    <string name="pin_lock_subtitle_default">계속하려면 Altitude 8848의 잠금을 해제하세요.</string>
     <string name="pin_lock_subtitle_wrong">잘못된 PIN입니다. 다시 시도하세요.</string>
     <string name="pin_lock_subtitle_locked_out">시도가 너무 많습니다. 잠시 후 다시 시도하세요.</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->

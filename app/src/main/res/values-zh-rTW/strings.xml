@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">讓 Overdrive 的車輛監控在背景持續運作。本服務不會讀取或與螢幕內容互動。</string>
     <!-- Recording Mode Labels -->
@@ -135,7 +135,7 @@
     <string name="camera_selection_hint">自動選取對照相機的裝置.相機 1 = BYD Seal,相機 0 = Atto 裝置.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">OEM 行車記錄器相機 ID</string>
-    <string name="camera_oem_dashcam_hint">選擇指向前方行車記錄器感測器的 AVMCamera id。行車記錄器與 pano 相反：Seal/Han pano = 1 → dashcam = 0；Atto／Tang pano = 0 → dashcam = 1。保持 Auto 讓 OverDrive 自行選擇。</string>
+    <string name="camera_oem_dashcam_hint">選擇指向前方行車記錄器感測器的 AVMCamera id。行車記錄器與 pano 相反：Seal/Han pano = 1 → dashcam = 0；Atto／Tang pano = 0 → dashcam = 1。保持 Auto 讓 Altitude 8848 自行選擇。</string>
     <string name="camera_oem_dashcam_auto_resolved">自動 — 使用 id %1$d（全景為 id %2$d）</string>
     <string name="camera_oem_dashcam_auto_unavailable">自動 — 全景 id 為 %1$d，無法推斷行車記錄器</string>
     <string name="camera_oem_dashcam_save">儲存</string>
@@ -163,7 +163,7 @@
     <string name="camera_mapping_summary_probing">全景流:傳承自動檢測/探測</string>
     <string name="camera_mapping_current_format">目前的映射:%1$s</string>
     <string name="camera_mapping_current_none">目前映射:自动 /默认</string>
-    <string name="camera_mapping_hint">OverDrive默認保留舊的啟動行為, 但現在讓你正確校對合并的全景帶. 預覽每個原始合并的片段, 將 logical 360 角色映射到實際上顯示你的車輛前/右/後/左的片段,</string>
+    <string name="camera_mapping_hint">Altitude 8848默認保留舊的啟動行為, 但現在讓你正確校對合并的全景帶. 預覽每個原始合并的片段, 將 logical 360 角色映射到實際上顯示你的車輛前/右/後/左的片段,</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">掃描至連接</string>
     <string name="dashboard_qr_waiting">在等待道...</string>
@@ -180,10 +180,10 @@
     <string name="setup_step_two_label">其他國家</string>
     <string name="setup_step_three_label">其他國家</string>
     <string name="setup_language_title">選擇自己的語言</string>
-    <string name="setup_language_body">預設使用您車機主機的語言。輕觸即可為 OverDrive 應用程式和網頁通道選擇其他語言。</string>
+    <string name="setup_language_body">預設使用您車機主機的語言。輕觸即可為 Altitude 8848 應用程式和網頁通道選擇其他語言。</string>
     <string name="setup_language_button">選擇語言</string>
     <string name="setup_autostart_title">禁用自動啟動限制</string>
-    <string name="setup_autostart_body">按下來打開BYD自动啟動. 在列表中找到OverDrive,然後卸下欄位.BYD在每次安裝都擦除了這個.</string>
+    <string name="setup_autostart_body">按下來打開BYD自动啟動. 在列表中找到Altitude 8848,然後卸下欄位.BYD在每次安裝都擦除了這個.</string>
     <string name="setup_autostart_button">打開BYD自動啟動</string>
     <string name="setup_overlay_title">在其他應用程式上允許顯示</string>
     <string name="setup_overlay_body">在其他應用程式上顯示浮動狀態指標,</string>
@@ -453,9 +453,9 @@
     <string name="dialog_traffic_cannot_check_title">無法檢查狀況</string>
     <string name="dialog_traffic_cannot_check_message">應用程式需要ADB接入來管理系統包. 請確認:\n\n• 在開發者選項中已啟用USB Debugging\n• ADB授權提示已被接受\n\n狀態會自动更新,一旦連接.</string>
     <string name="dialog_traffic_disable_title">停用 BYD 流量監控？</string>
-    <string name="dialog_traffic_disable_message">BYD 流量監控（com.byd.trafficmonitor）是內建的系統應用程式，用於控制哪些應用程式可以使用行動數據。它會阻止包括 OverDrive 在內的第三方應用程式使用車輛內建的 SIM 卡。\n\n為什麼要停用它？\n\n• 讓 OverDrive 和您安裝的其他應用程式能透過 BYD SIM 卡上網\n• 若要透過 BYD SIM 卡遠端連線您的車輛，必須將其停用\n\n您的導航、藍牙及其他所有車輛功能都不受影響。\n\n停用後需要強制重新開機（按住中控台按鈕 5 秒）。</string>
+    <string name="dialog_traffic_disable_message">BYD 流量監控（com.byd.trafficmonitor）是內建的系統應用程式，用於控制哪些應用程式可以使用行動數據。它會阻止包括 Altitude 8848 在內的第三方應用程式使用車輛內建的 SIM 卡。\n\n為什麼要停用它？\n\n• 讓 Altitude 8848 和您安裝的其他應用程式能透過 BYD SIM 卡上網\n• 若要透過 BYD SIM 卡遠端連線您的車輛，必須將其停用\n\n您的導航、藍牙及其他所有車輛功能都不受影響。\n\n停用後需要強制重新開機（按住中控台按鈕 5 秒）。</string>
     <string name="dialog_traffic_enable_title">重新啟用 BYD 流量監控？</string>
-    <string name="dialog_traffic_enable_message">BYD 流量監控目前已停用。\n\n重新啟用後，它會再次阻止 OverDrive 和其他第三方應用程式使用車輛內建的 SIM 卡，因此將無法再透過 BYD SIM 卡進行遠端接入。\n\n啟用後需要強制重新開機（按住中控台按鈕 5 秒）。</string>
+    <string name="dialog_traffic_enable_message">BYD 流量監控目前已停用。\n\n重新啟用後，它會再次阻止 Altitude 8848 和其他第三方應用程式使用車輛內建的 SIM 卡，因此將無法再透過 BYD SIM 卡進行遠端接入。\n\n啟用後需要強制重新開機（按住中控台按鈕 5 秒）。</string>
     <string name="dialog_traffic_status_enabled">流量監控已啟用</string>
     <string name="dialog_traffic_status_disabled">流量監控已停用</string>
     <string name="dialog_traffic_reboot_message">請重新啟動: 按下中央控制台按5秒.</string>
@@ -581,7 +581,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">解決問題的建議</string>
     <string name="setup_traffic_title">停用 BYD 流量監控</string>
-    <string name="setup_traffic_body">BYD 流量監控會阻止第三方應用程式連上網際網路。停用後，OverDrive 及您安裝的任何其他應用程式才能真正使用網路。之後需要強制重新開機。</string>
+    <string name="setup_traffic_body">BYD 流量監控會阻止第三方應用程式連上網際網路。停用後，Altitude 8848 及您安裝的任何其他應用程式才能真正使用網路。之後需要強制重新開機。</string>
     <string name="setup_traffic_button">開啟流量監控</string>
     <string name="setup_camera_fix_title">攝影機提供黑色或不正确的訊息?</string>
     <string name="setup_camera_fix_body">攝影機探測器,設定攝影機ID為0,按 Save,然後重新啟動攝影機模擬器. 如果傳遞仍錯誤,請使用攝影機ID重複.</string>
@@ -605,7 +605,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD 雲端</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">OverDrive 狀態</string>
+    <string name="status_overlay_notif_title">Altitude 8848 狀態</string>
     <string name="status_overlay_notif_text">狀態覆蓋活動</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -655,7 +655,7 @@
     <string name="settings_privacy_title">隱私與資料</string>
     <string name="settings_privacy_body">復元清除錄音索引,預存資料,惡魔狀態和裝置上偏好.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">關於OverDrive</string>
+    <string name="settings_about_title">關於Altitude 8848</string>
     <string name="settings_about_version_label">版本</string>
     <string name="settings_about_package_label">建構</string>
     <string name="settings_about_check_update_value">檢查最新的GitHub版本，如果較新，請安裝。</string>
@@ -761,7 +761,7 @@
     <string name="settings_action_check_update">查看是否有更新</string>
     <string name="settings_action_reset_data">請重新設定資料.</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -829,11 +829,11 @@
     <string name="settings_section_storage_subtitle">錄影儲存位置、空間上限、BYD 行車記錄器清理。</string>
     <string name="settings_section_daemons_subtitle">Cloudflared、Zrok、Telegram、MQTT 執行程式。</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">關於OverDrive</string>
+    <string name="settings_about_row_title">關於Altitude 8848</string>
     <string name="settings_about_row_subtitle">版本,授權,支持開發.</string>
     <string name="settings_reset_row_subtitle">或是所有隱藏資料.</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -850,7 +850,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">預設在裝置上</string>
-    <string name="settings_privacy_stance_body">OverDrive 完全在車機主機上運作。除了透過您明確設定的通道與整合之外，沒有任何遙測資料會離開您的車輛。</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 完全在車機主機上運作。除了透過您明確設定的通道與整合之外，沒有任何遙測資料會離開您的車輛。</string>
     <string name="settings_privacy_overline_storage">地方儲存</string>
     <string name="settings_privacy_overline_reset">數據重置</string>
     <string name="settings_privacy_storage_clips_label">在磁盤上的剪辑</string>
@@ -860,18 +860,18 @@
     <string name="settings_privacy_storage_count_format_plural">片 %1$d</string>
     <string name="settings_privacy_reset_subtitle">選取類別:錄音,事件,惡魔設定,預存遠隔測量...</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">安全性</string>
-    <string name="settings_security_subtitle">鎖定 OverDrive 應用程式，讓乘客與代客泊車人員在沒有你的 PIN 時無法開啟。</string>
+    <string name="settings_security_subtitle">鎖定 Altitude 8848 應用程式，讓乘客與代客泊車人員在沒有你的 PIN 時無法開啟。</string>
     <string name="settings_security_stance_title">僅鎖定介面</string>
-    <string name="settings_security_stance_body">應用程式鎖定期間，監控、錄製、威懾、警示與背景服務仍持續運作。PIN 只把關 OverDrive 介面，其他一律不受影響。</string>
+    <string name="settings_security_stance_body">應用程式鎖定期間，監控、錄製、威懾、警示與背景服務仍持續運作。PIN 只把關 Altitude 8848 介面，其他一律不受影響。</string>
     <string name="settings_security_overline_lock">應用程式鎖</string>
     <string name="settings_security_overline_recovery">若你忘記 PIN</string>
     <string name="settings_security_toggle_title">需要 PIN</string>
-    <string name="settings_security_toggle_subtitle_off">關閉 — 任何人都能開啟 OverDrive。</string>
-    <string name="settings_security_toggle_subtitle_on">開啟 — 開啟 OverDrive 需要 PIN。</string>
+    <string name="settings_security_toggle_subtitle_off">關閉 — 任何人都能開啟 Altitude 8848。</string>
+    <string name="settings_security_toggle_subtitle_on">開啟 — 開啟 Altitude 8848 需要 PIN。</string>
     <string name="settings_security_change_title">變更 PIN</string>
     <string name="settings_security_change_subtitle">確認目前的 PIN，然後設定新的 PIN。</string>
     <string name="settings_security_autolock_title">自動上鎖</string>
@@ -908,7 +908,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">輸入 PIN</string>
     <string name="pin_lock_title_unlocked">已解鎖</string>
-    <string name="pin_lock_subtitle_default">解鎖 OverDrive 以繼續。</string>
+    <string name="pin_lock_subtitle_default">解鎖 Altitude 8848 以繼續。</string>
     <string name="pin_lock_subtitle_wrong">PIN 錯誤，請重試。</string>
     <string name="pin_lock_subtitle_locked_out">嘗試次數過多。請稍後再試。</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->

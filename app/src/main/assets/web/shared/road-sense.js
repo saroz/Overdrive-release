@@ -1501,10 +1501,10 @@ BYD.roadSense = {
         if (pause) {
             pause.textContent = time
                 ? this._t('road_sense.google_free_pause_at',
-                    'When a limit is reached, OverDrive pauses that Google feature until the daily reset at {time} (your time) and uses the OverDrive map or backup routing instead.',
+                    'When a limit is reached, Altitude 8848 pauses that Google feature until the daily reset at {time} (your time) and uses the Altitude 8848 map or backup routing instead.',
                     { time: time })
                 : this._t('road_sense.google_free_pause',
-                    'When a limit is reached, OverDrive pauses that Google feature until the daily reset and uses the OverDrive map or backup routing instead.');
+                    'When a limit is reached, Altitude 8848 pauses that Google feature until the daily reset and uses the Altitude 8848 map or backup routing instead.');
         }
 
         const terms = document.getElementById('rsGoogleTermsBlock');
@@ -1577,8 +1577,8 @@ BYD.roadSense = {
             const qKey = paid ? 'road_sense.google_quotas_desc_paid' : 'road_sense.google_quotas_desc';
             quotasDesc.setAttribute('data-i18n', qKey);
             quotasDesc.textContent = this._t(qKey, paid
-                ? 'Enter these in Google Cloud (step 5) as a safety net. In paid mode OverDrive limits by your monthly amount, not per day.'
-                : 'Enter these in Google Cloud (step 5). OverDrive\'s own daily limits use the same numbers.');
+                ? 'Enter these in Google Cloud (step 5) as a safety net. In paid mode Altitude 8848 limits by your monthly amount, not per day.'
+                : 'Enter these in Google Cloud (step 5). Altitude 8848\'s own daily limits use the same numbers.');
         }
         const step6 = document.getElementById('rsGoogleStep6');
         if (step6) {

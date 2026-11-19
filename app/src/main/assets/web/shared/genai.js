@@ -1,4 +1,4 @@
-/* OverDrive GenAI BYOK page. ES5 for the head-unit WebView floor. */
+/* Altitude 8848 GenAI BYOK page. ES5 for the head-unit WebView floor. */
 (function (window, document) {
     'use strict';
 

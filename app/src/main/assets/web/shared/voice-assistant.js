@@ -1,4 +1,4 @@
-/* OverDrive voice assistant settings card (Assistant page). ES5 for the head-unit WebView floor. */
+/* Altitude 8848 voice assistant settings card (Assistant page). ES5 for the head-unit WebView floor. */
 (function (window, document) {
     'use strict';
 
@@ -33,20 +33,20 @@
         command_language_en: 'English',
         command_language_zh_cn: '中文（简体）',
         command_language_zh_tw: '中文（繁體）',
-        command_language_hint: 'Which spoken commands OverDrive listens for. Only commands in this language are recognised locally.',
+        command_language_hint: 'Which spoken commands Altitude 8848 listens for. Only commands in this language are recognised locally.',
         direct_fallback_title: 'Allow a direct connection when the proxy is unreachable',
         direct_fallback_desc: 'Hands-free assistant only. If the car\'s privacy proxy accepts the connection but relays nothing for 5 seconds, the voice session is retried once over the car\'s own internet connection. The AI provider then sees the car\'s IP address. Off by default.',
         pause_media_title: 'Pause media while listening',
         pause_media_desc: 'When music or a podcast is playing, saying “OverDrive” pauses it for the command and resumes it afterwards. Turn off to only lower its volume instead.',
         resume_media_title: 'Resume media afterwards',
-        resume_media_desc: 'Plays the music or podcast again when OverDrive is done, but only if OverDrive paused it. Turn off to leave it paused.',
+        resume_media_desc: 'Plays the music or podcast again when Altitude 8848 is done, but only if Altitude 8848 paused it. Turn off to leave it paused.',
         share_location_title: 'Share the car\'s approximate location',
         share_location_desc: 'Hybrid and GenAI only. While you talk to the assistant, the car\'s approximate location (a nearby place name, or a position rounded to about 1 km) is sent to your AI provider so it can answer questions like “where am I”.',
         mic_source: 'Microphone input (experimental)',
         mic_source_mic: 'Standard microphone',
         mic_source_voice_recognition: 'Voice recognition',
         mic_source_voice_communication: 'Voice communication (echo cancelling)',
-        mic_source_hint: 'Voice communication may let the car cancel its own speakers so the wake word is heard over music. Try it if OverDrive misses you while media plays.',
+        mic_source_hint: 'Voice communication may let the car cancel its own speakers so the wake word is heard over music. Try it if Altitude 8848 misses you while media plays.',
         enroll_untrained: 'Not trained yet.',
         enroll_trained: 'Trained to your voice {when}.',
         enroll_requested: 'Starting… watch the car screen.',
@@ -70,7 +70,7 @@
         enroll_full: 'Four voices are trained. Forget one first.',
         enroll_forget_failed: 'Could not forget that voice.',
         enroll_moving: 'Park the car to train: road noise drowns your voice while driving.',
-        enroll_clear_confirm: 'Forget every trained voice? OverDrive goes back to the standard pronunciation until you train again.',
+        enroll_clear_confirm: 'Forget every trained voice? Altitude 8848 goes back to the standard pronunciation until you train again.',
         enroll_forget_confirm: 'Forget the trained voice of {name}?',
         enroll_cancel: 'Cancel'
     };

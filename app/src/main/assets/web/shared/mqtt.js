@@ -1,5 +1,5 @@
 /**
- * OverDrive - MQTT Connections Module
+ * Altitude 8848 - MQTT Connections Module
  * Manages multiple MQTT broker connections, configuration, and live status display.
  */
 

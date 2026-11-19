@@ -2394,7 +2394,7 @@ var VC = {
 
         this.bindBtn('btnIviReboot', function() {
             var body = self.translatedText('vehicle.ivi_reboot_confirm_body',
-                'The display and OverDrive will be unavailable while the IVI restarts.');
+                'The display and Altitude 8848 will be unavailable while the IVI restarts.');
             var title = self.translatedText('vehicle.ivi_reboot_confirm_title', 'Reboot IVI?');
             var confirmation = window.BYD && BYD.utils
                     && BYD.utils.confirmDialog

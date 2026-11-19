@@ -194,7 +194,7 @@ window.SK = (function () {
             archive: t('safekeep.lane_archive_desc', 'Continuous driving footage (cam_*.mp4) — about 1.3 GB per hour at default quality. Best for a NAS or S3 bucket on home Wi-Fi.'),
             trips: t('safekeep.lane_trips_desc', 'Trip summaries and GPS tracks. Small, and restorable onto a new head unit.'),
             tripExports: t('safekeep.lane_tripExports_desc', 'A GPX track per trip that opens in any maps app.'),
-            settings: t('safekeep.lane_settings_desc', 'Your OverDrive settings with every password, token and key removed.')
+            settings: t('safekeep.lane_settings_desc', 'Your Altitude 8848 settings with every password, token and key removed.')
         };
         return m[id] || '';
     }
@@ -1239,7 +1239,7 @@ window.SK = (function () {
             });
             $('skKitCopy').onclick = function () { copyText(r.identity); };
             if ($('skKitSave')) $('skKitSave').onclick = function () {
-                var text = '# OverDrive SafeKeep recovery kit\n# Keep this private. Decrypt with: age -d -i this-file backup.age\n# public key: ' + r.recipient + '\n' + r.identity + '\n';
+                var text = '# Altitude 8848 SafeKeep recovery kit\n# Keep this private. Decrypt with: age -d -i this-file backup.age\n# public key: ' + r.recipient + '\n' + r.identity + '\n';
                 try {
                     var blob = new Blob([text], { type: 'text/plain' });
                     var a = document.createElement('a');
@@ -1745,7 +1745,7 @@ window.SK = (function () {
                     if (!yes) return;
                     return api('POST', '/api/safekeep/restore/settings', { dest: dest, ref: f.ref, name: f.name, identity: identity, apply: true }).then(function (a) {
                         setv('skRestoreIdentity', '');
-                        out.innerHTML = esc(a.message || (a.success ? t('safekeep.saved', 'Saved') : 'Error')) + (a.restartRequired ? ' ' + esc(t('safekeep.restart_needed', 'Restart OverDrive to finish.')) : '');
+                        out.innerHTML = esc(a.message || (a.success ? t('safekeep.saved', 'Saved') : 'Error')) + (a.restartRequired ? ' ' + esc(t('safekeep.restart_needed', 'Restart Altitude 8848 to finish.')) : '');
                     });
                 });
             });

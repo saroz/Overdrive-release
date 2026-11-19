@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">ทำให้ระบบตรวจสอบรถยนต์ Overdrive ทำงานในพื้นหลังตลอดเวลา บริการนี้จะไม่อ่านหรือโต้ตอบกับเนื้อหาบนหน้าจอ</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">โหมด \'อัตโนมัติ\' จะเลือกกล้องที่เหมาะสมกับรุ่นรถของคุณทุกครั้งที่เปิดเครื่อง กล้อง 1 = BYD Seal, กล้อง 0 = รุ่น Atto กรุณารีสตาร์ทระบบเบื้องหลัง (Daemon) หลังจากการเปลี่ยน ID กล้องเพื่อให้การตั้งค่ามีผล</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">ID กล้อง OEM Dashcam</string>
-    <string name="camera_oem_dashcam_hint">เลือก AVMCamera id ที่ชี้ไปยังเซ็นเซอร์กล้องหน้ารถ Dashcam ตรงข้ามกับ pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1 ปล่อยไว้ที่ Auto เพื่อให้ OverDrive เลือก</string>
+    <string name="camera_oem_dashcam_hint">เลือก AVMCamera id ที่ชี้ไปยังเซ็นเซอร์กล้องหน้ารถ Dashcam ตรงข้ามกับ pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1 ปล่อยไว้ที่ Auto เพื่อให้ Altitude 8848 เลือก</string>
     <string name="camera_oem_dashcam_auto_resolved">อัตโนมัติ — ใช้ id %1$d (pano คือ id %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">อัตโนมัติ — pano id คือ %1$d ไม่สามารถอนุมานกล้องได้</string>
     <string name="camera_oem_dashcam_save">บันทึก</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">ภาพกล้องรอบคัน: ตรวจจับอัตโนมัติแบบดั้งเดิม</string>
     <string name="camera_mapping_current_format">การจับคู่ปัจจุบัน: %1$s</string>
     <string name="camera_mapping_current_none">การจับคู่ปัจจุบัน: อัตโนมัติ / ค่าเริ่มต้น</string>
-    <string name="camera_mapping_hint">โดยปกติ OverDrive จะใช้ระบบตรวจจับแบบดั้งเดิมเมื่อเริ่มทำงาน แต่ปัจจุบันคุณสามารถตั้งค่าภาพกล้องรอบคันให้ถูกต้องได้ กรุณาตรวจสอบภาพตัวอย่างแต่ละส่วน และจับคู่ตำแหน่งกล้องหน้า/ขวา/หลัง/ซ้าย ให้ตรงกับรถของคุณ ระบบจะบันทึกค่านี้เพื่อใช้สำหรับการบันทึกวิดีโอ การสตรีมมิ่ง และระบบ AI ในครั้งถัดไป</string>
+    <string name="camera_mapping_hint">โดยปกติ Altitude 8848 จะใช้ระบบตรวจจับแบบดั้งเดิมเมื่อเริ่มทำงาน แต่ปัจจุบันคุณสามารถตั้งค่าภาพกล้องรอบคันให้ถูกต้องได้ กรุณาตรวจสอบภาพตัวอย่างแต่ละส่วน และจับคู่ตำแหน่งกล้องหน้า/ขวา/หลัง/ซ้าย ให้ตรงกับรถของคุณ ระบบจะบันทึกค่านี้เพื่อใช้สำหรับการบันทึกวิดีโอ การสตรีมมิ่ง และระบบ AI ในครั้งถัดไป</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">สแกนเพื่อเชื่อมต่อ</string>
     <string name="dashboard_qr_waiting">กำลังรอ Tunnel…</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">เลือกภาษาของคุณ</string>
-    <string name="setup_language_body">ค่าเริ่มต้นจะเป็นภาษาของหน้าจอรถ แตะเพื่อเปลี่ยนภาษาสำหรับแอปพลิเคชัน OverDrive และเว็บ Tunnel</string>
+    <string name="setup_language_body">ค่าเริ่มต้นจะเป็นภาษาของหน้าจอรถ แตะเพื่อเปลี่ยนภาษาสำหรับแอปพลิเคชัน Altitude 8848 และเว็บ Tunnel</string>
     <string name="setup_language_button">เลือกภาษา</string>
     <string name="setup_autostart_title">ปิดการจำกัดการเริ่มแอปอัตโนมัติ</string>
-    <string name="setup_autostart_body">แตะด้านล่างเพื่อเปิดการตั้งค่า Auto-Start ของ BYD ค้นหา OverDrive ในรายการและนำเครื่องหมายถูกออก ระบบ BYD จะรีเซ็ตค่านี้ทุกครั้งที่มีการติดตั้งแอปพลิเคชัน — คุณจำเป็นต้องดำเนินการขั้นตอนนี้อีกครั้งหลังการอัปเดต</string>
+    <string name="setup_autostart_body">แตะด้านล่างเพื่อเปิดการตั้งค่า Auto-Start ของ BYD ค้นหา Altitude 8848 ในรายการและนำเครื่องหมายถูกออก ระบบ BYD จะรีเซ็ตค่านี้ทุกครั้งที่มีการติดตั้งแอปพลิเคชัน — คุณจำเป็นต้องดำเนินการขั้นตอนนี้อีกครั้งหลังการอัปเดต</string>
     <string name="setup_autostart_button">เปิด BYD Auto-Start</string>
     <string name="setup_overlay_title">อนุญาตให้แสดงทับแอปอื่น</string>
     <string name="setup_overlay_body">เปิดใช้งานเพื่อแสดงสถานะการบันทึกวิดีโอและติดตามทริปลอยอยู่บนแอปพลิเคชันอื่น</string>
@@ -452,9 +452,9 @@
     <string name="dialog_traffic_cannot_check_title">ตรวจสอบสถานะไม่ได้</string>
     <string name="dialog_traffic_cannot_check_message">การเชื่อมต่อ ADB ยังไม่พร้อมใช้งาน\n\nแอปพลิเคชันจำเป็นต้องใช้ ADB เพื่อจัดการระบบของอุปกรณ์ กรุณาตรวจสอบว่า:\n\n• เปิดใช้งาน \'การแก้ไขจุดบกพร่อง USB\' (USB Debugging) ในตัวเลือกนักพัฒนาแล้ว\n• กดยอมรับการแจ้งเตือนเพื่ออนุญาต ADB แล้ว\n\nสถานะจะได้รับการอัปเดตโดยอัตโนมัติหลังจากเชื่อมต่อสำเร็จ</string>
     <string name="dialog_traffic_disable_title">ต้องการปิดใช้งาน BYD Traffic Monitor หรือไม่?</string>
-    <string name="dialog_traffic_disable_message">BYD Traffic Monitor (com.byd.trafficmonitor) เป็นแอปพลิเคชันระบบในตัวที่ควบคุมว่าแอปใดบ้างสามารถใช้ข้อมูลมือถือได้ แอปนี้จะบล็อกแอปของบุคคลที่สาม รวมถึง OverDrive ไม่ให้ใช้ซิมในตัวรถ\n\nเหตุใดจึงควรปิดใช้งาน?\n\n• ช่วยให้ OverDrive และแอปอื่นๆ ที่คุณติดตั้งใช้อินเทอร์เน็ตผ่านซิม BYD ได้\n• จำเป็นสำหรับการเข้าถึงรถของคุณจากระยะไกลผ่านซิม BYD\n\nระบบนำทาง บลูทูธ และฟังก์ชันอื่นๆ ทั้งหมดของรถจะไม่ได้รับผลกระทบ\n\nหลังจากปิดใช้งานแล้ว จำเป็นต้องรีบูตแบบบังคับ (กดปุ่มบนคอนโซลกลางค้างไว้ 5 วินาที)</string>
+    <string name="dialog_traffic_disable_message">BYD Traffic Monitor (com.byd.trafficmonitor) เป็นแอปพลิเคชันระบบในตัวที่ควบคุมว่าแอปใดบ้างสามารถใช้ข้อมูลมือถือได้ แอปนี้จะบล็อกแอปของบุคคลที่สาม รวมถึง Altitude 8848 ไม่ให้ใช้ซิมในตัวรถ\n\nเหตุใดจึงควรปิดใช้งาน?\n\n• ช่วยให้ Altitude 8848 และแอปอื่นๆ ที่คุณติดตั้งใช้อินเทอร์เน็ตผ่านซิม BYD ได้\n• จำเป็นสำหรับการเข้าถึงรถของคุณจากระยะไกลผ่านซิม BYD\n\nระบบนำทาง บลูทูธ และฟังก์ชันอื่นๆ ทั้งหมดของรถจะไม่ได้รับผลกระทบ\n\nหลังจากปิดใช้งานแล้ว จำเป็นต้องรีบูตแบบบังคับ (กดปุ่มบนคอนโซลกลางค้างไว้ 5 วินาที)</string>
     <string name="dialog_traffic_enable_title">ต้องการเปิดใช้งาน BYD Traffic Monitor อีกครั้งหรือไม่?</string>
-    <string name="dialog_traffic_enable_message">ขณะนี้ BYD Traffic Monitor ถูกปิดใช้งานอยู่\n\nหากเปิดใช้งานอีกครั้ง แอปนี้จะกลับมาบล็อก OverDrive และแอปของบุคคลที่สามอื่นๆ ไม่ให้ใช้ซิมในตัวรถ ส่งผลให้การเข้าถึงระยะไกลผ่านซิม BYD หยุดทำงาน\n\nหลังจากเปิดใช้งานแล้ว จำเป็นต้องรีบูตแบบบังคับ (กดปุ่มบนคอนโซลกลางค้างไว้ 5 วินาที)</string>
+    <string name="dialog_traffic_enable_message">ขณะนี้ BYD Traffic Monitor ถูกปิดใช้งานอยู่\n\nหากเปิดใช้งานอีกครั้ง แอปนี้จะกลับมาบล็อก Altitude 8848 และแอปของบุคคลที่สามอื่นๆ ไม่ให้ใช้ซิมในตัวรถ ส่งผลให้การเข้าถึงระยะไกลผ่านซิม BYD หยุดทำงาน\n\nหลังจากเปิดใช้งานแล้ว จำเป็นต้องรีบูตแบบบังคับ (กดปุ่มบนคอนโซลกลางค้างไว้ 5 วินาที)</string>
     <string name="dialog_traffic_status_enabled">Traffic Monitor เปิดใช้งานอยู่</string>
     <string name="dialog_traffic_status_disabled">Traffic Monitor ปิดใช้งานอยู่</string>
     <string name="dialog_traffic_reboot_message">บันทึกการตั้งค่าเรียบร้อยแล้ว\n\nกรุณารีสตาร์ทหน้าจอรถของคุณ:\nกดปุ่มตรงกลางคอนโซลค้างไว้ 5 วินาที</string>
@@ -580,7 +580,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">คำแนะนำและการแก้ปัญหา</string>
     <string name="setup_traffic_title">ปิดใช้งาน BYD Traffic Monitor</string>
-    <string name="setup_traffic_body">BYD Traffic Monitor จะบล็อกแอปของบุคคลที่สามไม่ให้เข้าถึงอินเทอร์เน็ต การปิดใช้งานจะช่วยให้ OverDrive และแอปอื่นใดก็ตามที่คุณติดตั้งสามารถใช้งานเครือข่ายได้จริง หลังจากนั้นจำเป็นต้องรีบูตแบบบังคับ</string>
+    <string name="setup_traffic_body">BYD Traffic Monitor จะบล็อกแอปของบุคคลที่สามไม่ให้เข้าถึงอินเทอร์เน็ต การปิดใช้งานจะช่วยให้ Altitude 8848 และแอปอื่นใดก็ตามที่คุณติดตั้งสามารถใช้งานเครือข่ายได้จริง หลังจากนั้นจำเป็นต้องรีบูตแบบบังคับ</string>
     <string name="setup_traffic_button">เปิดแอป Traffic Monitor</string>
     <string name="setup_camera_fix_title">ภาพกล้องมืดหรือไม่ถูกต้อง?</string>
     <string name="setup_camera_fix_body">ตรวจสอบกล้อง กำหนดค่า Camera ID เป็น 0 แล้วกดบันทึก จากนั้นให้ทำการรีสตาร์ทระบบกล้อง หากภาพยังคงผิดปกติ กรุณาลองเปลี่ยนเป็น Camera ID 1 โดยไม่ต้องปรับการจับคู่ (Mapping)</string>
@@ -604,7 +604,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD Cloud</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">สถานะระบบ OverDrive</string>
+    <string name="status_overlay_notif_title">สถานะระบบ Altitude 8848</string>
     <string name="status_overlay_notif_text">แถบสถานะกำลังทำงาน</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -653,7 +653,7 @@
     <string name="settings_privacy_title">ความเป็นส่วนตัวและข้อมูล</string>
     <string name="settings_privacy_body">การรีเซ็ตข้อมูลจะทำการลบประวัติไฟล์วิดีโอ ข้อมูลการเข้าสู่ระบบ สถานะระบบเบื้องหลัง และการตั้งค่าบนอุปกรณ์ การดำเนินการนี้ไม่สามารถกู้คืนได้</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">เกี่ยวกับ OverDrive</string>
+    <string name="settings_about_title">เกี่ยวกับ Altitude 8848</string>
     <string name="settings_about_version_label">เวอร์ชัน</string>
     <string name="settings_about_package_label">หมายเลขรุ่น (Build)</string>
     <string name="settings_about_check_update_value">ตรวจสอบเวอร์ชันล่าสุดบน GitHub และติดตั้งหากมีอัปเดตใหม่</string>
@@ -757,7 +757,7 @@
     <string name="settings_action_check_update">ตรวจสอบการอัปเดต</string>
     <string name="settings_action_reset_data">ล้างข้อมูล (Reset)…</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -824,11 +824,11 @@
     <string name="settings_section_storage_subtitle">ตำแหน่งจัดเก็บการบันทึก, ขีดจำกัดพื้นที่, การล้างไฟล์กล้องหน้ารถ BYD</string>
     <string name="settings_section_daemons_subtitle">ระบบการจัดการ Cloudflared, Zrok, Telegram, MQTT</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">เกี่ยวกับ OverDrive</string>
+    <string name="settings_about_row_title">เกี่ยวกับ Altitude 8848</string>
     <string name="settings_about_row_subtitle">เวอร์ชัน, สัญญาอนุญาต, สนับสนุนนักพัฒนา</string>
     <string name="settings_reset_row_subtitle">ลบข้อมูลไฟล์วิดีโอ, เหตุการณ์ หรือเคลียร์แคช</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -845,7 +845,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">จัดเก็บข้อมูลบนอุปกรณ์เท่านั้น</string>
-    <string name="settings_privacy_stance_body">ระบบของ OverDrive จะทำงานบนจอของรถยนต์ทั้งหมด และจะไม่มีการส่งข้อมูลใดๆ ออกนอกอุปกรณ์ ยกเว้นผ่าน Tunnel และระบบบริการเสริมที่คุณเป็นผู้กำหนดค่าเท่านั้น</string>
+    <string name="settings_privacy_stance_body">ระบบของ Altitude 8848 จะทำงานบนจอของรถยนต์ทั้งหมด และจะไม่มีการส่งข้อมูลใดๆ ออกนอกอุปกรณ์ ยกเว้นผ่าน Tunnel และระบบบริการเสริมที่คุณเป็นผู้กำหนดค่าเท่านั้น</string>
     <string name="settings_privacy_overline_storage">พื้นที่จัดเก็บข้อมูลบนอุปกรณ์</string>
     <string name="settings_privacy_overline_reset">การล้างข้อมูล (RESET)</string>
     <string name="settings_privacy_storage_clips_label">จำนวนคลิปที่จัดเก็บ</string>
@@ -855,18 +855,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d คลิป</string>
     <string name="settings_privacy_reset_subtitle">เลือกข้อมูลเพื่อลบ: ไฟล์วิดีโอ, เหตุการณ์, การตั้งค่าระบบเบื้องหลัง, แคชข้อมูล…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">ความปลอดภัย</string>
-    <string name="settings_security_subtitle">ล็อกแอป OverDrive เพื่อไม่ให้ผู้โดยสารและพนักงานรับรถเปิดได้หากไม่มี PIN ของคุณ</string>
+    <string name="settings_security_subtitle">ล็อกแอป Altitude 8848 เพื่อไม่ให้ผู้โดยสารและพนักงานรับรถเปิดได้หากไม่มี PIN ของคุณ</string>
     <string name="settings_security_stance_title">ล็อก UI เท่านั้น</string>
-    <string name="settings_security_stance_body">การเฝ้าระวัง การบันทึก การป้องกัน การแจ้งเตือน และบริการเบื้องหลังยังคงทำงานอยู่ขณะที่แอปถูกล็อก PIN ใช้สำหรับล็อกส่วนติดต่อผู้ใช้ OverDrive เท่านั้น</string>
+    <string name="settings_security_stance_body">การเฝ้าระวัง การบันทึก การป้องกัน การแจ้งเตือน และบริการเบื้องหลังยังคงทำงานอยู่ขณะที่แอปถูกล็อก PIN ใช้สำหรับล็อกส่วนติดต่อผู้ใช้ Altitude 8848 เท่านั้น</string>
     <string name="settings_security_overline_lock">ล็อกแอป</string>
     <string name="settings_security_overline_recovery">หากคุณลืม PIN</string>
     <string name="settings_security_toggle_title">ต้องใช้ PIN</string>
-    <string name="settings_security_toggle_subtitle_off">ปิด — ใครก็สามารถเปิด OverDrive ได้</string>
-    <string name="settings_security_toggle_subtitle_on">เปิด — ต้องใช้ PIN เพื่อเปิด OverDrive</string>
+    <string name="settings_security_toggle_subtitle_off">ปิด — ใครก็สามารถเปิด Altitude 8848 ได้</string>
+    <string name="settings_security_toggle_subtitle_on">เปิด — ต้องใช้ PIN เพื่อเปิด Altitude 8848</string>
     <string name="settings_security_change_title">เปลี่ยน PIN</string>
     <string name="settings_security_change_subtitle">ยืนยัน PIN ปัจจุบัน จากนั้นตั้งค่าใหม่</string>
     <string name="settings_security_autolock_title">ล็อกอัตโนมัติ</string>
@@ -903,7 +903,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">ป้อน PIN</string>
     <string name="pin_lock_title_unlocked">ปลดล็อกแล้ว</string>
-    <string name="pin_lock_subtitle_default">ปลดล็อก OverDrive เพื่อดำเนินการต่อ</string>
+    <string name="pin_lock_subtitle_default">ปลดล็อก Altitude 8848 เพื่อดำเนินการต่อ</string>
     <string name="pin_lock_subtitle_wrong">PIN ไม่ถูกต้อง ลองอีกครั้ง</string>
     <string name="pin_lock_subtitle_locked_out">พยายามมากเกินไป ลองอีกครั้งในไม่ช้า</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->
@@ -970,10 +970,10 @@
     </plurals>
     <!-- Process uptime. Days form takes (days, hours); hours form takes hours only. -->
     <plurals name="dashboard_insight_uptime_days_hours">
-        <item quantity="other">OverDrive ออนไลน์เป็นเวลา %1$d วัน %2$d ชม.</item>
+        <item quantity="other">Altitude 8848 ออนไลน์เป็นเวลา %1$d วัน %2$d ชม.</item>
     </plurals>
     <plurals name="dashboard_insight_uptime_hours">
-        <item quantity="other">OverDrive ออนไลน์เป็นเวลา %1$d ชม.</item>
+        <item quantity="other">Altitude 8848 ออนไลน์เป็นเวลา %1$d ชม.</item>
     </plurals>
     <!-- Duration helpers used inside insights (last_charge etc.). -->
     <plurals name="dashboard_insight_minutes">

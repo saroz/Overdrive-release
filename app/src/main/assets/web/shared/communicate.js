@@ -552,17 +552,17 @@ var CommunicatePage = {
                     audioState: 'unreachable',
                     audioReason: self.tt('communicate.offline_reason', 'Car is offline or unreachable'),
                     audioGuidance:
-                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its OverDrive connection is reachable.'),
+                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its Altitude 8848 connection is reachable.'),
                     listenerReady: false,
                     listenerState: 'unreachable',
                     listenerReason: self.tt('communicate.offline_reason', 'Car is offline or unreachable'),
                     listenerGuidance:
-                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its OverDrive connection is reachable.'),
+                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its Altitude 8848 connection is reachable.'),
                     messagesReady: false,
                     messageState: 'unreachable',
                     messageReason: self.tt('communicate.offline_reason', 'Car is offline or unreachable'),
                     messageGuidance:
-                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its OverDrive connection is reachable.')
+                        self.tt('communicate.offline_guidance', 'Check that the car is powered on and its Altitude 8848 connection is reachable.')
                 };
                 self.renderStatus();
             });

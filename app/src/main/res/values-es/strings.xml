@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">Mantiene activa en segundo plano la monitorización del vehículo de Overdrive. Este servicio no lee ni interactúa con el contenido de la pantalla.</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">«Auto» elige la cámara adecuada para tu versión en cada arranque. Cámara 1 = BYD Seal; cámara 0 = versiones del Atto. Reinicia el daemon después de cambiar el ID de la cámara para que el ajuste surta efecto.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">ID de cámara de la dashcam original</string>
-    <string name="camera_oem_dashcam_hint">Elige el ID de AVMCamera que corresponde al sensor frontal de la dashcam. La dashcam es lo OPUESTO a la panorámica: Seal/Han, panorámica = 1 → dashcam = 0; Atto/Tang, panorámica = 0 → dashcam = 1. Déjalo en «Auto» para que OverDrive lo elija.</string>
+    <string name="camera_oem_dashcam_hint">Elige el ID de AVMCamera que corresponde al sensor frontal de la dashcam. La dashcam es lo OPUESTO a la panorámica: Seal/Han, panorámica = 1 → dashcam = 0; Atto/Tang, panorámica = 0 → dashcam = 1. Déjalo en «Auto» para que Altitude 8848 lo elija.</string>
     <string name="camera_oem_dashcam_auto_resolved">Auto: usando el ID %1$d (la panorámica es el ID %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">Auto: la panorámica es el ID %1$d y no se puede deducir el de la dashcam</string>
     <string name="camera_oem_dashcam_save">Guardar</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">Transmisión panorámica: detección automática clásica / sondeando</string>
     <string name="camera_mapping_current_format">Asignación actual: %1$s</string>
     <string name="camera_mapping_current_none">Asignación actual: auto / predeterminada</string>
-    <string name="camera_mapping_hint">OverDrive mantiene de forma predeterminada el comportamiento de arranque clásico, pero ahora permite calibrar bien la franja panorámica combinada. Previsualiza cada segmento combinado sin procesar, asigna los roles lógicos 360 al segmento que realmente muestra delante, derecha, atrás e izquierda en tu vehículo, y el daemon reutilizará esa disposición para la grabación, la transmisión y la IA tras reiniciar.</string>
+    <string name="camera_mapping_hint">Altitude 8848 mantiene de forma predeterminada el comportamiento de arranque clásico, pero ahora permite calibrar bien la franja panorámica combinada. Previsualiza cada segmento combinado sin procesar, asigna los roles lógicos 360 al segmento que realmente muestra delante, derecha, atrás e izquierda en tu vehículo, y el daemon reutilizará esa disposición para la grabación, la transmisión y la IA tras reiniciar.</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">Escanear para conectar</string>
     <string name="dashboard_qr_waiting">Esperando el túnel…</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">Elige tu idioma</string>
-    <string name="setup_language_body">De forma predeterminada se usa el idioma de tu unidad central. Toca para elegir otro para la app de OverDrive y el túnel web.</string>
+    <string name="setup_language_body">De forma predeterminada se usa el idioma de tu unidad central. Toca para elegir otro para la app de Altitude 8848 y el túnel web.</string>
     <string name="setup_language_button">Elegir idioma</string>
     <string name="setup_autostart_title">Desactiva la restricción de inicio automático</string>
-    <string name="setup_autostart_body">Toca abajo para abrir el inicio automático de BYD. Busca OverDrive en la lista y desmarca la casilla. BYD borra este ajuste en cada instalación, así que tendrás que repetirlo después de las actualizaciones.</string>
+    <string name="setup_autostart_body">Toca abajo para abrir el inicio automático de BYD. Busca Altitude 8848 en la lista y desmarca la casilla. BYD borra este ajuste en cada instalación, así que tendrás que repetirlo después de las actualizaciones.</string>
     <string name="setup_autostart_button">Abrir inicio automático de BYD</string>
     <string name="setup_overlay_title">Permitir mostrar sobre otras apps</string>
     <string name="setup_overlay_body">Actívalo para ver un indicador flotante de estado de la grabación y del seguimiento de viajes sobre otras apps.</string>
@@ -571,9 +571,9 @@
     <string name="dialog_traffic_cannot_check_title">No se puede comprobar el estado</string>
     <string name="dialog_traffic_cannot_check_message">La conexión ADB aún no está lista.\n\nLa app necesita acceso ADB para administrar los paquetes del sistema. Comprueba que:\n\n• La depuración por USB esté activada en las opciones de desarrollador\n• Se haya aceptado el aviso de autorización de ADB\n\nEl estado se actualizará solo cuando se establezca la conexión.</string>
     <string name="dialog_traffic_disable_title">¿Desactivar el monitor de tráfico de BYD?</string>
-    <string name="dialog_traffic_disable_message">El monitor de tráfico de BYD (com.byd.trafficmonitor) es una app del sistema que controla qué apps pueden usar datos móviles. Impide que las apps de terceros, incluida OverDrive, usen la SIM integrada del vehículo.\n\n¿Por qué desactivarlo?\n\n• Permite que OverDrive y otras apps que instales usen internet por la SIM de BYD\n• Es necesario para acceder a tu vehículo de forma remota por la SIM de BYD\n\nLa navegación, el Bluetooth y el resto de las funciones del vehículo no se ven afectados.\n\nDespués de desactivarlo hace falta un reinicio forzado (mantén pulsado el botón de la consola central durante 5 segundos).</string>
+    <string name="dialog_traffic_disable_message">El monitor de tráfico de BYD (com.byd.trafficmonitor) es una app del sistema que controla qué apps pueden usar datos móviles. Impide que las apps de terceros, incluida Altitude 8848, usen la SIM integrada del vehículo.\n\n¿Por qué desactivarlo?\n\n• Permite que Altitude 8848 y otras apps que instales usen internet por la SIM de BYD\n• Es necesario para acceder a tu vehículo de forma remota por la SIM de BYD\n\nLa navegación, el Bluetooth y el resto de las funciones del vehículo no se ven afectados.\n\nDespués de desactivarlo hace falta un reinicio forzado (mantén pulsado el botón de la consola central durante 5 segundos).</string>
     <string name="dialog_traffic_enable_title">¿Volver a activar el monitor de tráfico de BYD?</string>
-    <string name="dialog_traffic_enable_message">El monitor de tráfico de BYD está desactivado actualmente.\n\nSi lo vuelves a activar, OverDrive y otras apps de terceros volverán a quedar bloqueadas para usar la SIM integrada del vehículo, y el acceso remoto por la SIM de BYD dejará de funcionar.\n\nDespués de activarlo hace falta un reinicio forzado (mantén pulsado el botón de la consola central durante 5 segundos).</string>
+    <string name="dialog_traffic_enable_message">El monitor de tráfico de BYD está desactivado actualmente.\n\nSi lo vuelves a activar, Altitude 8848 y otras apps de terceros volverán a quedar bloqueadas para usar la SIM integrada del vehículo, y el acceso remoto por la SIM de BYD dejará de funcionar.\n\nDespués de activarlo hace falta un reinicio forzado (mantén pulsado el botón de la consola central durante 5 segundos).</string>
     <string name="dialog_traffic_status_enabled">Monitor de tráfico activado</string>
     <string name="dialog_traffic_status_disabled">Monitor de tráfico desactivado</string>
     <string name="dialog_traffic_reboot_message">El cambio se ha aplicado.\n\nHaz ahora un reinicio forzado:\nmantén pulsado el botón de la consola central durante 5 segundos.</string>
@@ -733,7 +733,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">Consejos y solución de problemas</string>
     <string name="setup_traffic_title">Desactiva el monitor de tráfico de BYD</string>
-    <string name="setup_traffic_body">El monitor de tráfico de BYD impide que las apps de terceros accedan a internet. Si lo desactivas, OverDrive y cualquier otra app que instales podrán usar la red. Después hace falta un reinicio forzado.</string>
+    <string name="setup_traffic_body">El monitor de tráfico de BYD impide que las apps de terceros accedan a internet. Si lo desactivas, Altitude 8848 y cualquier otra app que instales podrán usar la red. Después hace falta un reinicio forzado.</string>
     <string name="setup_traffic_button">Abrir el monitor de tráfico</string>
     <string name="setup_camera_fix_title">¿Las cámaras se ven negras o mal?</string>
     <string name="setup_camera_fix_body">Ve a la sonda de cámaras, pon el ID de cámara en 0, toca Guardar y reinicia el daemon de la cámara. Si las imágenes siguen mal, repite con el ID de cámara 1. No toques la sección de asignación.</string>
@@ -757,7 +757,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD Cloud</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">Estado de OverDrive</string>
+    <string name="status_overlay_notif_title">Estado de Altitude 8848</string>
     <string name="status_overlay_notif_text">Superposición de estado activa</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -809,7 +809,7 @@
     <string name="settings_privacy_title">Privacidad y datos</string>
     <string name="settings_privacy_body">Al restablecer se borran el índice de grabaciones, las credenciales en caché, el estado de los daemons y las preferencias del dispositivo. No se puede deshacer.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">Acerca de OverDrive</string>
+    <string name="settings_about_title">Acerca de Altitude 8848</string>
     <string name="settings_about_version_label">Versión</string>
     <string name="settings_about_package_label">Compilación</string>
     <string name="settings_about_check_update_value">Busca la última versión en GitHub e instálala si es más reciente.</string>
@@ -940,7 +940,7 @@
     <string name="settings_action_check_update">Buscar actualizaciones</string>
     <string name="settings_action_reset_data">Restablecer datos…</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -1009,11 +1009,11 @@
     <string name="settings_section_storage_subtitle">Dónde se guardan las grabaciones, límites de espacio y limpieza de la dashcam de BYD.</string>
     <string name="settings_section_daemons_subtitle">Ejecutores de Cloudflared, Zrok, Telegram y MQTT.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">Acerca de OverDrive</string>
+    <string name="settings_about_row_title">Acerca de Altitude 8848</string>
     <string name="settings_about_row_subtitle">Versión, licencia y apoyo al desarrollo.</string>
     <string name="settings_reset_row_subtitle">Borra las grabaciones, los eventos o todas las cachés.</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -1030,7 +1030,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">En el dispositivo, de forma predeterminada</string>
-    <string name="settings_privacy_stance_body">OverDrive se ejecuta íntegramente en la unidad central. Ninguna telemetría sale de tu vehículo, salvo por los túneles y las integraciones que configures expresamente.</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 se ejecuta íntegramente en la unidad central. Ninguna telemetría sale de tu vehículo, salvo por los túneles y las integraciones que configures expresamente.</string>
     <string name="settings_privacy_overline_storage">ALMACENAMIENTO LOCAL</string>
     <string name="settings_privacy_overline_reset">RESTABLECER DATOS</string>
     <string name="settings_privacy_storage_clips_label">Clips en el disco</string>
@@ -1040,18 +1040,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d clips</string>
     <string name="settings_privacy_reset_subtitle">Elige las categorías: grabaciones, eventos, configuración de los daemons, telemetría en caché…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">Seguridad</string>
-    <string name="settings_security_subtitle">Bloquea la app de OverDrive para que los pasajeros y quien estacione el vehículo no puedan abrirla sin tu PIN.</string>
+    <string name="settings_security_subtitle">Bloquea la app de Altitude 8848 para que los pasajeros y quien estacione el vehículo no puedan abrirla sin tu PIN.</string>
     <string name="settings_security_stance_title">Solo bloqueo de la interfaz</string>
-    <string name="settings_security_stance_body">La vigilancia, la grabación, la disuasión, las alertas y los servicios en segundo plano siguen funcionando mientras la app está bloqueada. El PIN protege la interfaz de OverDrive y nada más.</string>
+    <string name="settings_security_stance_body">La vigilancia, la grabación, la disuasión, las alertas y los servicios en segundo plano siguen funcionando mientras la app está bloqueada. El PIN protege la interfaz de Altitude 8848 y nada más.</string>
     <string name="settings_security_overline_lock">Bloqueo de la app</string>
     <string name="settings_security_overline_recovery">Si olvidas tu PIN</string>
     <string name="settings_security_toggle_title">Pedir PIN</string>
-    <string name="settings_security_toggle_subtitle_off">Desactivado: cualquiera puede abrir OverDrive.</string>
-    <string name="settings_security_toggle_subtitle_on">Activado: se necesita el PIN para abrir OverDrive.</string>
+    <string name="settings_security_toggle_subtitle_off">Desactivado: cualquiera puede abrir Altitude 8848.</string>
+    <string name="settings_security_toggle_subtitle_on">Activado: se necesita el PIN para abrir Altitude 8848.</string>
     <string name="settings_security_change_title">Cambiar PIN</string>
     <string name="settings_security_change_subtitle">Confirma el PIN actual y define uno nuevo.</string>
     <string name="settings_security_autolock_title">Bloqueo automático</string>
@@ -1088,7 +1088,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">Introduce el PIN</string>
     <string name="pin_lock_title_unlocked">Desbloqueado</string>
-    <string name="pin_lock_subtitle_default">Desbloquea OverDrive para continuar.</string>
+    <string name="pin_lock_subtitle_default">Desbloquea Altitude 8848 para continuar.</string>
     <string name="pin_lock_subtitle_wrong">PIN incorrecto. Inténtalo de nuevo.</string>
     <string name="pin_lock_subtitle_locked_out">Demasiados intentos. Inténtalo de nuevo en breve.</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->
@@ -1536,7 +1536,7 @@
     <string name="toast_safekeep_action_failed">SafeKeep no pudo hacerlo: %1$s</string>
     <string name="toast_safekeep_open_failed">Ninguna app puede abrir este enlace</string>
     <string name="daemons_wifi_auto_enable_title">Wi&#8209;Fi</string>
-    <string name="daemons_wifi_auto_enable_subtitle">Activa o desactiva el Wi&#8209;Fi ahora. Si está desactivado, los daemons del centinela de OverDrive no lo volverán a activar.</string>
+    <string name="daemons_wifi_auto_enable_subtitle">Activa o desactiva el Wi&#8209;Fi ahora. Si está desactivado, los daemons del centinela de Altitude 8848 no lo volverán a activar.</string>
     <string name="daemons_wifi_auto_enable_save_failed">No se pudo cambiar el estado del Wi&#8209;Fi.</string>
     <string name="toast_traffic_monitor_persist_failed">Se aplicó, pero no se pudo guardar la preferencia, por lo que no sobrevivirá a una actualización del firmware.</string>
     <string name="toast_cloudflared_encrypt_failed">No se pudo proteger el token de Cloudflared.</string>
@@ -1545,7 +1545,7 @@
     <string name="dialog_tailscale_adb_enable_title">¿Permitir ADB remoto?</string>
     <string name="dialog_tailscale_adb_enable_message">Esto amplía el alcance de ADB a la tailnet (puerto 5555) para que puedas depurar esta unidad central de forma remota.\n\nAntes de activarlo:\n• ADB da acceso COMPLETO al shell: un dispositivo de la tailnet con una clave autorizada puede leer datos, instalar apps y cambiar ajustes del sistema\n• Esto añade tu tailnet como ruta; no expone ADB a internet\n• ADB ya acepta conexiones desde la red local, así que desactivar esto no cierra ADB por completo\n• El equipo que se conecte sigue necesitando una clave ADB autorizada\n• Al activar el punto de acceso Wi-Fi se pierde la conexión Wi-Fi, por lo que el acceso remoto dependerá de los datos móviles\n\nActívalo solo en una tailnet que controles. Puedes desactivarlo cuando quieras.</string>
     <string name="dialog_create_evidence_pack_title">¿Crear un paquete de pruebas?</string>
-    <string name="dialog_create_evidence_pack_message">OverDrive envía a tu proveedor de IA configurado únicamente metadatos filtrados del evento. El video se queda en local y solo se añade al paquete de pruebas descargado.</string>
+    <string name="dialog_create_evidence_pack_message">Altitude 8848 envía a tu proveedor de IA configurado únicamente metadatos filtrados del evento. El video se queda en local y solo se añade al paquete de pruebas descargado.</string>
     <string name="toast_evidence_pack_creating">Creando el paquete de pruebas…</string>
     <string name="toast_evidence_pack_ready">Paquete de pruebas listo</string>
     <string name="toast_evidence_pack_unavailable">Esta grabación aún no está indexada</string>
@@ -1567,7 +1567,7 @@
     <string name="remote_voice_mute">Silenciar la voz remota</string>
     <string name="remote_voice_unmute">Activar el sonido de la voz remota</string>
     <string name="remote_voice_notification_title">Voz remota activa</string>
-    <string name="remote_voice_notification_text">Se está recibiendo audio en directo de una sesión autenticada de OverDrive</string>
+    <string name="remote_voice_notification_text">Se está recibiendo audio en directo de una sesión autenticada de Altitude 8848</string>
     <string name="settings_remote_communication_title">Comunicación remota</string>
     <string name="settings_remote_communication_subtitle">Activa la voz, la escucha del habitáculo y los mensajes desde la consola web. Si el permiso de superposición indica «Se requiere permiso», tócalo y permite «Mostrar sobre otras apps».</string>
     <string name="settings_remote_voice_title">Activar la voz remota</string>
@@ -1708,7 +1708,7 @@
     <string name="vehicle_setup_run">Ejecutar configuración del vehículo</string>
     <string name="vehicle_setup_pick_title">Elige tu vehículo</string>
     <string name="vehicle_setup_pick_checking">Comprobando esta unidad central…</string>
-    <string name="vehicle_setup_pick_subtitle">OverDrive configura para él el almacenamiento, el sistema de cámaras y la batería.</string>
+    <string name="vehicle_setup_pick_subtitle">Altitude 8848 configura para él el almacenamiento, el sistema de cámaras y la batería.</string>
     <string name="vehicle_setup_detected_badge">Detectado</string>
     <string name="vehicle_setup_not_listed">Mi vehículo no aparece en la lista</string>
     <string name="vehicle_setup_not_listed_badge">Ajustes predeterminados</string>
@@ -1769,14 +1769,14 @@
     <string name="vehicle_setup_done_title">Todo listo</string>
     <string name="vehicle_setup_done_subtitle">Abre la vista en directo para comprobar las cámaras.</string>
     <string name="scratch_root_dialog_title">Almacenamiento del daemon</string>
-    <string name="scratch_root_dialog_intro">OverDrive comparte sus ajustes, bloqueos y registros entre la app y sus daemons en segundo plano mediante una carpeta que pertenece al shell de ADB. En algunas unidades centrales (el BYD Shark 6 y otras unidades DiLink 5.0), el firmware bloquea esa carpeta, el shell no puede crear archivos en ella y ningún daemon puede iniciarse.</string>
+    <string name="scratch_root_dialog_intro">Altitude 8848 comparte sus ajustes, bloqueos y registros entre la app y sus daemons en segundo plano mediante una carpeta que pertenece al shell de ADB. En algunas unidades centrales (el BYD Shark 6 y otras unidades DiLink 5.0), el firmware bloquea esa carpeta, el shell no puede crear archivos en ella y ningún daemon puede iniciarse.</string>
     <string name="scratch_root_current_folder">Carpeta actual: %1$s</string>
     <string name="scratch_root_switch_label">Almacenamiento alternativo del daemon</string>
-    <string name="scratch_root_switch_summary">Actívalo solo si los daemons no pueden iniciarse en esta unidad central. No se mueve ni se borra nada: la app arranca con ajustes nuevos en la otra carpeta, y al volver a desactivarlo se recuperan los anteriores. Al cambiarlo se detienen todos los daemons y se reinicia OverDrive.</string>
+    <string name="scratch_root_switch_summary">Actívalo solo si los daemons no pueden iniciarse en esta unidad central. No se mueve ni se borra nada: la app arranca con ajustes nuevos en la otra carpeta, y al volver a desactivarlo se recuperan los anteriores. Al cambiarlo se detienen todos los daemons y se reinicia Altitude 8848.</string>
     <string name="scratch_root_paths">Estándar: %1$s\nAlternativa: %2$s</string>
-    <string name="scratch_root_confirm_title">¿Reiniciar OverDrive?</string>
-    <string name="scratch_root_confirm_enable">Se detendrán todos los daemons, el almacenamiento pasará a la carpeta alternativa y OverDrive se reiniciará. Después habrá que volver a elegir el modo de cámara y otros ajustes.</string>
-    <string name="scratch_root_confirm_disable">Se detendrán todos los daemons, el almacenamiento volverá a la carpeta estándar y OverDrive se reiniciará.</string>
+    <string name="scratch_root_confirm_title">¿Reiniciar Altitude 8848?</string>
+    <string name="scratch_root_confirm_enable">Se detendrán todos los daemons, el almacenamiento pasará a la carpeta alternativa y Altitude 8848 se reiniciará. Después habrá que volver a elegir el modo de cámara y otros ajustes.</string>
+    <string name="scratch_root_confirm_disable">Se detendrán todos los daemons, el almacenamiento volverá a la carpeta estándar y Altitude 8848 se reiniciará.</string>
     <string name="scratch_root_working">Cambiando el almacenamiento del daemon…</string>
     <string name="scratch_root_failed">No se pudo cambiar el almacenamiento del daemon: %1$s</string>
     <string name="scratch_root_failed_adb">No se puede acceder al shell de ADB. Activa la depuración por USB o inalámbrica y vuelve a intentarlo.</string>
@@ -1892,7 +1892,7 @@
     <string name="voice_enroll_next">Entendido. Otra vez (%1$d de %2$d)</string>
     <string name="voice_enroll_say">Di «OverDrive» (%1$d de %2$d)</string>
     <string name="voice_enroll_learning">Aprendiendo tu voz…</string>
-    <string name="voice_enroll_done">Entendido: OverDrive ya conoce tu voz</string>
+    <string name="voice_enroll_done">Entendido: Altitude 8848 ya conoce tu voz</string>
     <string name="voice_enroll_failed">No se pudo aprender tu voz. Inténtalo de nuevo en un vehículo silencioso</string>
     <string name="settings_native_vehicle_overline">Manual vehicle profile</string>
     <string name="settings_native_vehicle_profile_title">Native vehicle controls</string>

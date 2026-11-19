@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">Overdrive araç izlemesini arka planda etkin tutar. Bu hizmet ekran içeriğini okumaz veya onunla etkileşime girmez.</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">Otomatik, her açılışta aracınızın versiyonuna uygun kamerayı seçer. Kamera 1 = BYD Seal, Kamera 0 = Atto versiyonları. Ayarın geçerli olması için kamera kimliğini değiştirdikten sonra daemon\'u yeniden başlatın.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">OEM Dashcam kamera kimliği</string>
-    <string name="camera_oem_dashcam_hint">Ön dashcam sensörünü gösteren AVMCamera kimliğini seçin. Dashcam, pano kimliğinin TERSİDİR: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. OverDrive\'ın seçmesi için Otomatik\'te bırakın.</string>
+    <string name="camera_oem_dashcam_hint">Ön dashcam sensörünü gösteren AVMCamera kimliğini seçin. Dashcam, pano kimliğinin TERSİDİR: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Altitude 8848\'ın seçmesi için Otomatik\'te bırakın.</string>
     <string name="camera_oem_dashcam_auto_resolved">Otomatik — %1$d kimliği kullanılıyor (pano kimliği %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">Otomatik — pano kimliği %1$d, dashcam belirlenemiyor</string>
     <string name="camera_oem_dashcam_save">Kaydet</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">Panoramik akış: Eski otomatik algılama / yoklama</string>
     <string name="camera_mapping_current_format">Geçerli eşleme: %1$s</string>
     <string name="camera_mapping_current_none">Geçerli eşleme: Otomatik / öntanımlı</string>
-    <string name="camera_mapping_hint">OverDrive öntanımlı olarak eski başlangıç davranışını korur, ancak artık birleşik panoramik şeridi düzgün şekilde kalibre etmenize olanak tanır. Her ham birleşik dilimi önizleyin, mantıksal 360 rollerini aracınızda gerçekten ön/sağ/arka/sol görüntüyü gösteren dilimle eşleyin; daemon yeniden başlatıldıktan sonra bu düzeni kayıt, akış ve AI için kullanır.</string>
+    <string name="camera_mapping_hint">Altitude 8848 öntanımlı olarak eski başlangıç davranışını korur, ancak artık birleşik panoramik şeridi düzgün şekilde kalibre etmenize olanak tanır. Her ham birleşik dilimi önizleyin, mantıksal 360 rollerini aracınızda gerçekten ön/sağ/arka/sol görüntüyü gösteren dilimle eşleyin; daemon yeniden başlatıldıktan sonra bu düzeni kayıt, akış ve AI için kullanır.</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">Bağlanmak için tarayın</string>
     <string name="dashboard_qr_waiting">Tünel bekleniyor…</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">Dilinizi Seçin</string>
-    <string name="setup_language_body">Öntanımlı olarak multimedya ünitenizin dilini kullanır. OverDrive uygulaması ve web tüneli için farklı bir dil seçmek üzere dokunun.</string>
+    <string name="setup_language_body">Öntanımlı olarak multimedya ünitenizin dilini kullanır. Altitude 8848 uygulaması ve web tüneli için farklı bir dil seçmek üzere dokunun.</string>
     <string name="setup_language_button">Dil Seç</string>
     <string name="setup_autostart_title">Otomatik başlatma kısıtlamasını devre dışı bırak</string>
-    <string name="setup_autostart_body">BYD Otomatik Başlatma\'yı açmak için aşağıya dokunun. Listede OverDrive\'ı bulun ve kutunun işaretini kaldırın. BYD bu ayarı her yüklemede siler — güncellemelerden sonra yeniden yapmanız gerekir.</string>
+    <string name="setup_autostart_body">BYD Otomatik Başlatma\'yı açmak için aşağıya dokunun. Listede Altitude 8848\'ı bulun ve kutunun işaretini kaldırın. BYD bu ayarı her yüklemede siler — güncellemelerden sonra yeniden yapmanız gerekir.</string>
     <string name="setup_autostart_button">BYD Otomatik Başlatma\'yı aç</string>
     <string name="setup_overlay_title">Diğer Uygulamalarda Gösterilmesine İzin Ver</string>
     <string name="setup_overlay_body">Kayıt ve yolculuk takibi için diğer uygulamaların üzerinde kayan bir durum göstergesi görüntülemek üzere bunu etkinleştirin.</string>
@@ -455,9 +455,9 @@
     <string name="dialog_traffic_cannot_check_title">Durum denetlenemiyor</string>
     <string name="dialog_traffic_cannot_check_message">ADB bağlantısı henüz hazır değil.\n\nUygulamanın sistem paketlerini yönetebilmesi için ADB erişimi gerekiyor. Lütfen şunlardan emin olun:\n\n• Geliştirici seçeneklerinde USB hata ayıklama etkin\n• ADB yetkilendirme isteği kabul edildi\n\nBağlantı kurulduğunda durum otomatik olarak güncellenir.</string>
     <string name="dialog_traffic_disable_title">BYD Traffic Monitor devre dışı bırakılsın mı?</string>
-    <string name="dialog_traffic_disable_message">BYD Traffic Monitor (com.byd.trafficmonitor), hangi uygulamaların mobil veri kullanabileceğini denetleyen yerleşik bir sistem uygulamasıdır. OverDrive dahil üçüncü taraf uygulamaların aracın yerleşik SIM\'ini kullanmasını engeller.\n\nNeden devre dışı bırakmalı?\n\n• OverDrive ve yüklediğiniz diğer uygulamaların BYD SIM üzerinden internet kullanmasını sağlar\n• Aracınıza BYD SIM üzerinden uzaktan erişmek için gereklidir\n\nNavigasyon, Bluetooth ve diğer tüm araç işlevleri etkilenmez.\n\nDevre dışı bıraktıktan sonra zorla yeniden başlatma gerekir (orta konsol düğmesini 5 saniye basılı tutun).</string>
+    <string name="dialog_traffic_disable_message">BYD Traffic Monitor (com.byd.trafficmonitor), hangi uygulamaların mobil veri kullanabileceğini denetleyen yerleşik bir sistem uygulamasıdır. Altitude 8848 dahil üçüncü taraf uygulamaların aracın yerleşik SIM\'ini kullanmasını engeller.\n\nNeden devre dışı bırakmalı?\n\n• Altitude 8848 ve yüklediğiniz diğer uygulamaların BYD SIM üzerinden internet kullanmasını sağlar\n• Aracınıza BYD SIM üzerinden uzaktan erişmek için gereklidir\n\nNavigasyon, Bluetooth ve diğer tüm araç işlevleri etkilenmez.\n\nDevre dışı bıraktıktan sonra zorla yeniden başlatma gerekir (orta konsol düğmesini 5 saniye basılı tutun).</string>
     <string name="dialog_traffic_enable_title">BYD Traffic Monitor yeniden etkinleştirilsin mi?</string>
-    <string name="dialog_traffic_enable_message">BYD Traffic Monitor şu anda devre dışı.\n\nYeniden etkinleştirirseniz OverDrive ve diğer üçüncü taraf uygulamaların aracın yerleşik SIM\'ini kullanması tekrar engellenir, bu yüzden BYD SIM üzerinden uzaktan erişim artık çalışmaz.\n\nEtkinleştirdikten sonra zorla yeniden başlatma gerekir (orta konsol düğmesini 5 saniye basılı tutun).</string>
+    <string name="dialog_traffic_enable_message">BYD Traffic Monitor şu anda devre dışı.\n\nYeniden etkinleştirirseniz Altitude 8848 ve diğer üçüncü taraf uygulamaların aracın yerleşik SIM\'ini kullanması tekrar engellenir, bu yüzden BYD SIM üzerinden uzaktan erişim artık çalışmaz.\n\nEtkinleştirdikten sonra zorla yeniden başlatma gerekir (orta konsol düğmesini 5 saniye basılı tutun).</string>
     <string name="dialog_traffic_status_enabled">Traffic Monitor etkin</string>
     <string name="dialog_traffic_status_disabled">Traffic Monitor devre dışı</string>
     <string name="dialog_traffic_reboot_message">Değişiklik uygulandı.\n\nLütfen şimdi zorla yeniden başlatma yapın:\nOrta konsol düğmesini 5 saniye basılı tutun.</string>
@@ -583,7 +583,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">İpuçları ve sorun giderme</string>
     <string name="setup_traffic_title">BYD Traffic Monitor\'ü devre dışı bırak</string>
-    <string name="setup_traffic_body">BYD Traffic Monitor, üçüncü taraf uygulamaların internete erişmesini engeller. Devre dışı bırakmak, OverDrive\'ın ve yüklediğiniz diğer uygulamaların ağı gerçekten kullanabilmesini sağlar. Ardından zorla yeniden başlatma gerekir.</string>
+    <string name="setup_traffic_body">BYD Traffic Monitor, üçüncü taraf uygulamaların internete erişmesini engeller. Devre dışı bırakmak, Altitude 8848\'ın ve yüklediğiniz diğer uygulamaların ağı gerçekten kullanabilmesini sağlar. Ardından zorla yeniden başlatma gerekir.</string>
     <string name="setup_traffic_button">Trafik monitörünü aç</string>
     <string name="setup_camera_fix_title">Kamera görüntüsü siyah veya yanlış mı?</string>
     <string name="setup_camera_fix_body">Kamera yoklamasında Kamera kimliğini 0 yapın, Kaydet düğmesine dokunun, ardından kamera daemon sürecini yeniden başlatın. Görüntüler hâlâ yanlışsa Kamera kimliği 1 ile tekrarlayın. Eşleme bölümüne dokunmayın.</string>
@@ -607,7 +607,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD Cloud</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">OverDrive Durumu</string>
+    <string name="status_overlay_notif_title">Altitude 8848 Durumu</string>
     <string name="status_overlay_notif_text">Durum ekran katmanı etkin</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -656,7 +656,7 @@
     <string name="settings_privacy_title">Gizlilik &amp; veriler</string>
     <string name="settings_privacy_body">Sıfırlama; kayıt dizinini, önbelleğe alınmış giriş bilgilerini, daemon durumunu ve cihazdaki tercihleri temizler. Bu işlem geri alınamaz.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">OverDrive hakkında</string>
+    <string name="settings_about_title">Altitude 8848 hakkında</string>
     <string name="settings_about_version_label">Versiyon</string>
     <string name="settings_about_package_label">Sürüm</string>
     <string name="settings_about_check_update_value">En son GitHub sürümünü kontrol edin ve daha yeniyse yükleyin.</string>
@@ -760,7 +760,7 @@
     <string name="settings_action_check_update">Güncellemeleri kontrol edin</string>
     <string name="settings_action_reset_data">Verileri sıfırla…</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -827,11 +827,11 @@
     <string name="settings_section_storage_subtitle">Kayıtların kaydedildiği yer, alan sınırları, BYD araç kamerası temizliği.</string>
     <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT çalıştırıcıları.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">OverDrive hakkında</string>
+    <string name="settings_about_row_title">Altitude 8848 hakkında</string>
     <string name="settings_about_row_subtitle">Sürüm, lisans, geliştirmeye destek.</string>
     <string name="settings_reset_row_subtitle">Kayıtları, olayları ya da tüm önbellekleri temizle.</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -848,7 +848,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">Öntanımlı olarak cihazda</string>
-    <string name="settings_privacy_stance_body">OverDrive tamamen multimedya ünitesinde çalışır. Açıkça yapılandırdığınız tüneller ve entegrasyonlar dışında hiçbir telemetri aracınızdan dışarı çıkmaz.</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 tamamen multimedya ünitesinde çalışır. Açıkça yapılandırdığınız tüneller ve entegrasyonlar dışında hiçbir telemetri aracınızdan dışarı çıkmaz.</string>
     <string name="settings_privacy_overline_storage">YEREL DEPOLAMA</string>
     <string name="settings_privacy_overline_reset">VERİ SIFIRLAMA</string>
     <string name="settings_privacy_storage_clips_label">Disk üzerindeki klipler</string>
@@ -858,18 +858,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d klip</string>
     <string name="settings_privacy_reset_subtitle">Kategorileri seçin: kayıtlar, olaylar, daemon yapılandırmaları, önbelleğe alınmış telemetri…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">Güvenlik</string>
-    <string name="settings_security_subtitle">Yolcuların ve vale görevlilerinin PIN\'iniz olmadan açamaması için OverDrive uygulamasını kilitleyin.</string>
+    <string name="settings_security_subtitle">Yolcuların ve vale görevlilerinin PIN\'iniz olmadan açamaması için Altitude 8848 uygulamasını kilitleyin.</string>
     <string name="settings_security_stance_title">Yalnızca arayüz kilidi</string>
-    <string name="settings_security_stance_body">Uygulama kilitliyken gözetim, kayıt, caydırıcı, uyarılar ve arka plan hizmetleri çalışmaya devam eder. PIN yalnızca OverDrive arayüzünü kısıtlar, başka hiçbir şeyi değil.</string>
+    <string name="settings_security_stance_body">Uygulama kilitliyken gözetim, kayıt, caydırıcı, uyarılar ve arka plan hizmetleri çalışmaya devam eder. PIN yalnızca Altitude 8848 arayüzünü kısıtlar, başka hiçbir şeyi değil.</string>
     <string name="settings_security_overline_lock">Uygulama kilidi</string>
     <string name="settings_security_overline_recovery">PIN\'inizi unutursanız</string>
     <string name="settings_security_toggle_title">PIN gerektir</string>
-    <string name="settings_security_toggle_subtitle_off">Kapalı — herkes OverDrive\'ı açabilir.</string>
-    <string name="settings_security_toggle_subtitle_on">Açık — OverDrive\'ı açmak için PIN gerekli.</string>
+    <string name="settings_security_toggle_subtitle_off">Kapalı — herkes Altitude 8848\'ı açabilir.</string>
+    <string name="settings_security_toggle_subtitle_on">Açık — Altitude 8848\'ı açmak için PIN gerekli.</string>
     <string name="settings_security_change_title">PIN Değiştir</string>
     <string name="settings_security_change_subtitle">Mevcut PIN\'i onaylayın, ardından yeni bir tane belirleyin.</string>
     <string name="settings_security_autolock_title">Otomatik kilit</string>
@@ -906,7 +906,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">PIN girin</string>
     <string name="pin_lock_title_unlocked">Kilidi açıldı</string>
-    <string name="pin_lock_subtitle_default">Devam etmek için OverDrive\'ın kilidini açın.</string>
+    <string name="pin_lock_subtitle_default">Devam etmek için Altitude 8848\'ın kilidini açın.</string>
     <string name="pin_lock_subtitle_wrong">Yanlış PIN. Tekrar deneyin.</string>
     <string name="pin_lock_subtitle_locked_out">Çok fazla deneme. Kısa süre sonra tekrar deneyin.</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->
@@ -1431,7 +1431,7 @@
     <string name="recording_lib_index_down_body">Kayıtlarınız diskte güvende, ancak kitaplık dizini çalışmıyor. Otomatik olarak yeniden deneniyor…</string>
     <string name="recording_lib_type_replay">TEKRAR</string>
     <string name="daemons_wifi_auto_enable_title">Wi‑Fi</string>
-    <string name="daemons_wifi_auto_enable_subtitle">Wi‑Fi\'ı şimdi açar veya kapatır. Kapalıyken OverDrive\'ın sentry daemon\'ları onu yeniden açmaz.</string>
+    <string name="daemons_wifi_auto_enable_subtitle">Wi‑Fi\'ı şimdi açar veya kapatır. Kapalıyken Altitude 8848\'ın sentry daemon\'ları onu yeniden açmaz.</string>
     <string name="daemons_wifi_auto_enable_save_failed">Wi‑Fi durumu değiştirilemedi.</string>
     <string name="toast_traffic_monitor_persist_failed">Uygulandı, ancak tercih kaydedilemedi — ürün yazılımı güncellemesinden sonra korunmayacak.</string>
     <string name="dashboard_tunnel_failed">Tünel hatası</string>
@@ -1456,7 +1456,7 @@
     <string name="dialog_tailscale_adb_enable_title">Uzaktan ADB\'ye izin verilsin mi?</string>
     <string name="dialog_tailscale_adb_enable_message">Bu, ADB için tailnet erişimi ekler (port 5555); böylece bu multimedya ünitesinde uzaktan hata ayıklayabilirsiniz.\n\nEtkinleştirmeden önce:\n• ADB TAM kabuk erişimi verir — yetkili anahtarı olan bir tailnet cihazı verileri okuyabilir, uygulama yükleyebilir ve sistem ayarlarını değiştirebilir\n• Bu, tailnet\'inizi bir rota olarak ekler; ADB\'yi genel internete açmaz\n• ADB yerel ağdan gelen bağlantıları zaten kabul eder, bu yüzden bunu kapatmak ADB\'yi tamamen kapatmaz\n• Bağlanan bilgisayarın yine de yetkili bir ADB anahtarı olmalıdır\n• Wi-Fi erişim noktasını açmak Wi-Fi bağlantısını keser; bu durumda uzaktan erişim mobil veriye bağlı kalır\n\nBunu yalnızca kontrolü sizde olan bir tailnet\'te etkinleştirin. İstediğiniz zaman kapatabilirsiniz.</string>
     <string name="dialog_create_evidence_pack_title">Kanıt paketi oluşturulsun mu?</string>
-    <string name="dialog_create_evidence_pack_message">OverDrive, yapılandırdığınız yapay zekâ sağlayıcısına yalnızca filtrelenmiş olay meta verilerini gönderir. Video cihazda kalır ve yalnızca indirilen kanıt paketine eklenir.</string>
+    <string name="dialog_create_evidence_pack_message">Altitude 8848, yapılandırdığınız yapay zekâ sağlayıcısına yalnızca filtrelenmiş olay meta verilerini gönderir. Video cihazda kalır ve yalnızca indirilen kanıt paketine eklenir.</string>
     <string name="toast_evidence_pack_creating">Kanıt paketi oluşturuluyor…</string>
     <string name="toast_evidence_pack_ready">Kanıt paketi hazır</string>
     <string name="toast_evidence_pack_unavailable">Bu kayıt henüz dizine eklenmedi</string>
@@ -1480,7 +1480,7 @@
     <string name="remote_voice_mute">Uzaktan sesi kapat</string>
     <string name="remote_voice_unmute">Uzaktan sesi aç</string>
     <string name="remote_voice_notification_title">Uzaktan ses etkin</string>
-    <string name="remote_voice_notification_text">Kimliği doğrulanmış bir OverDrive oturumundan canlı ses alınıyor</string>
+    <string name="remote_voice_notification_text">Kimliği doğrulanmış bir Altitude 8848 oturumundan canlı ses alınıyor</string>
     <string name="settings_remote_communication_title">Uzaktan iletişim</string>
     <string name="settings_remote_communication_subtitle">Web konsolundan ses, kabin dinleme ve mesajları etkinleştirin. Ekran katmanı izni İzin gerekli diyorsa ona dokunun ve Diğer uygulamaların üzerinde göster seçeneğine izin verin.</string>
     <string name="settings_remote_voice_title">Uzaktan sesi etkinleştir</string>

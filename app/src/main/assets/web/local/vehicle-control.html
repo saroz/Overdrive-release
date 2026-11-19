@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title data-i18n="app.vehicle_control_title">Vehicle Control - OverDrive</title>
+    <title data-i18n="app.vehicle_control_title">Vehicle Control - Altitude 8848</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="../shared/app-icon-dark.webp">
@@ -11,7 +11,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#DB4F1C">
     <script src="../shared/on-actions.js?v=1"></script>
-    <script src="../shared/theme.js?v=12"></script>
+    <script src="../shared/theme.js?v=13"></script>
     <script src="../shared/skeleton.js?v=4"></script>
     <!-- View-mode bootstrap. Runs before first paint so the lite/immersive
          chrome renders without flicker. 'lite' (default) boots controls-only:
@@ -21,11 +21,11 @@
          status bar). html.vc-mode-* scopes the CSS for each mode. -->
     <script src="../shared/pages/vehicle-control.page.js?v=1"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=25"></script>
+    <script src="../shared/app-shell.js?v=26"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
     <link rel="stylesheet" href="../shared/vehicle-control.css?v=53">
-    <link rel="stylesheet" href="../shared/ui.css?v=2">
+    <link rel="stylesheet" href="../shared/ui.css?v=3">
 </head>
 <body class="ui-app" data-page="vehicle-control" data-ui-workspace>
     <div class="app-layout">
@@ -600,7 +600,7 @@
                              each switch covers its action from every command source. The list
                              stays hidden until the daemon's values are verified. -->
                         <div class="vc-panel-row" id="panelSafety" style="display:none;">
-                            <div class="vc-safety-note" data-i18n="automation.safety_warning">These guards apply to matching vehicle actions started through OverDrive's Automations, Action Groups, Key Mapping, Quick Controls, MQTT, Vehicle Controls, and saved seat positions. Turning one off lets OverDrive attempt that action while the car is moving or its state is unknown. Advanced raw shell, CAN, and diagnostic actions are outside these guards.</div>
+                            <div class="vc-safety-note" data-i18n="automation.safety_warning">These guards apply to matching vehicle actions started through Altitude 8848's Automations, Action Groups, Key Mapping, Quick Controls, MQTT, Vehicle Controls, and saved seat positions. Turning one off lets Altitude 8848 attempt that action while the car is moving or its state is unknown. Advanced raw shell, CAN, and diagnostic actions are outside these guards.</div>
                             <div class="vc-safety-status" id="vcSafetyStatus" role="status" data-i18n="automation.safety_loading">Loading safety settings…</div>
                             <div class="vc-safety-list" id="vcSafetyList" style="display:none;">
                                 <div class="vc-safety-row">

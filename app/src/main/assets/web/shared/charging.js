@@ -1,5 +1,5 @@
 /**
- * OverDrive - Charging Analytics Module
+ * Altitude 8848 - Charging Analytics Module
  *
  * Mirrors the Trips pattern (trips.js): a session-card list + a per-session
  * detail drill-in, plus a stats tab with hand-rolled Canvas2D charts.
@@ -2278,7 +2278,7 @@ var CHARGING = {
         }
         var title = this._t('charge.quality_info_title', 'Why was this data excluded?');
         var body = this._t('charge.quality_info_body',
-            'OverDrive identified an explicit AC session whose stored peak power is at least 25 kW, which contradicts that connection type and matches a known legacy telemetry fault. The original session, samples, cost and totals remain unchanged. OverDrive only hides that session\'s charging energy, average power and peak power from the affected displays so the invalid readings are not presented as evidence.\n\nThe LFP calibration candidate badge is separate: it requires a completed 10% or lower to 99% or higher SOC span and an LFP battery declared by the configured physical vehicle model. It does not make the hidden power readings valid.');
+            'Altitude 8848 identified an explicit AC session whose stored peak power is at least 25 kW, which contradicts that connection type and matches a known legacy telemetry fault. The original session, samples, cost and totals remain unchanged. Altitude 8848 only hides that session\'s charging energy, average power and peak power from the affected displays so the invalid readings are not presented as evidence.\n\nThe LFP calibration candidate badge is separate: it requires a completed 10% or lower to 99% or higher SOC span and an LFP battery declared by the configured physical vehicle model. It does not make the hidden power readings valid.');
         if (window.BYD && BYD.utils && typeof BYD.utils.alertDialog === 'function') {
             return BYD.utils.alertDialog({ title: title, body: body });
         }

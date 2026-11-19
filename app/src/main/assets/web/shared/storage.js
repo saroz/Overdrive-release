@@ -1,5 +1,5 @@
 /**
- * OverDrive - Storage settings page (storage.html)
+ * Altitude 8848 - Storage settings page (storage.html)
  * Every storage option in one place: surveillance events, drive recordings,
  * trip telemetry, factory dashcam (BYD DVR) clean-up and trip recovery.
  * Ported from surveillance.js, recording.js and trips.js: same endpoints,

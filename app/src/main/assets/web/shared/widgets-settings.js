@@ -20,7 +20,7 @@ const WidgetsSettings = {
         terrain: true,
     },
     CATALOG: [
-        { id: 'battery', key: 'widgets.w_battery', name: 'Battery & range', desc: 'widgets.w_battery_desc', descFb: "Glass battery cell with the charge and the range left: OverDrive's calibrated range once it has learned your trips. Plug-in hybrids get a second cell for fuel." },
+        { id: 'battery', key: 'widgets.w_battery', name: 'Battery & range', desc: 'widgets.w_battery_desc', descFb: "Glass battery cell with the charge and the range left: Altitude 8848's calibrated range once it has learned your trips. Plug-in hybrids get a second cell for fuel." },
         { id: 'charging', key: 'widgets.w_charging', name: 'Charging', desc: 'widgets.w_charging_desc', descFb: 'Time to full, the charge limit and light flowing in.' },
         { id: 'trip', key: 'widgets.w_trip', name: 'Live trip', desc: 'widgets.w_trip_desc', descFb: "This trip's distance, time and efficiency, with average and top speed, the energy used and the battery from start to now." },
         { id: 'drive', key: 'widgets.w_drive', name: 'Live drive', desc: 'widgets.w_drive_desc', descFb: "The last five minutes of power, regen and speed as a glowing ribbon, with this trip's distance, time, efficiency and top speed." },

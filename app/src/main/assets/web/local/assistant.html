@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title data-i18n="app.assistant_title">Assistant - OverDrive</title>
+    <title data-i18n="app.assistant_title">Assistant - Altitude 8848</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
     <script src="../shared/on-actions.js?v=1"></script>
-    <script src="../shared/theme.js?v=12"></script>
+    <script src="../shared/theme.js?v=13"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=25"></script>
+    <script src="../shared/app-shell.js?v=26"></script>
     <script src="../shared/pages/assistant.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
-    <link rel="stylesheet" href="../shared/ui.css?v=2">
+    <link rel="stylesheet" href="../shared/ui.css?v=3">
     <link rel="stylesheet" href="../shared/pages/assistant.css?v=1">
 </head>
 <body class="ui-app assistant-page" data-page="assistant">
@@ -23,7 +23,7 @@
             <div class="ui-main">
 
             <header class="ui-page-head">
-                <h1 data-i18n="genai.page_title">OverDrive Assistant</h1>
+                <h1 data-i18n="genai.page_title">Altitude 8848 Assistant</h1>
                 <div class="ui-page-actions">
                     <span class="ui-badge inactive" id="genAiBadge" data-i18n="genai.off">OFF</span>
                 </div>
@@ -74,12 +74,12 @@
                                     <button class="ui-button ai-icon-button" id="genAiVoiceBtn" type="button" disabled aria-label="Voice unavailable" aria-pressed="false" title="Native realtime voice is unavailable for this provider" data-i18n-attr="aria-label:genai.voice_unavailable;title:genai.voice_unavailable">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3M8 22h8"/></svg>
                                     </button>
-                                    <textarea id="genAiInput" rows="1" maxlength="12000" placeholder="Ask OverDrive…" data-i18n-attr="placeholder:genai.input_placeholder"></textarea>
+                                    <textarea id="genAiInput" rows="1" maxlength="12000" placeholder="Ask Altitude 8848…" data-i18n-attr="placeholder:genai.input_placeholder"></textarea>
                                     <button class="ui-button ui-button-primary ai-icon-button" id="genAiSendBtn" type="submit" aria-label="Send" data-i18n-attr="aria-label:genai.aria_send">
                                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
                                     </button>
                                 </form>
-                                <div class="ai-voice-note" id="genAiVoiceNote" data-i18n="genai.voice_note">Voice appears only for providers with native realtime audio; OverDrive does not add speech-to-text fallback.</div>
+                                <div class="ai-voice-note" id="genAiVoiceNote" data-i18n="genai.voice_note">Voice appears only for providers with native realtime audio; Altitude 8848 does not add speech-to-text fallback.</div>
                             </div>
                         </div>
                     </div>
@@ -258,7 +258,7 @@
                         </div>
                         <div class="ui-summary-text">
                             <h2 class="ui-panel-title" id="tbTitle" data-i18n="trip_briefing.title">Trip Briefing</h2>
-                            <div class="ui-panel-sub" data-i18n="trip_briefing.intro">At car start, OverDrive suggests where you're likely going and asks if you want directions.</div>
+                            <div class="ui-panel-sub" data-i18n="trip_briefing.intro">At car start, Altitude 8848 suggests where you're likely going and asks if you want directions.</div>
                         </div>
                         <div class="ui-summary-ctl">
                             <label class="ui-toggle">
@@ -331,11 +331,11 @@
                                 <div class="ui-row">
                                     <div class="ui-row-copy">
                                         <label class="ui-row-title" for="tbDefaultApp" data-i18n="trip_briefing.app">Default navigation app</label>
-                                        <div class="ui-row-desc" data-i18n="trip_briefing.app_desc">Opens when you say yes. If it isn't installed, OverDrive is offered first.</div>
+                                        <div class="ui-row-desc" data-i18n="trip_briefing.app_desc">Opens when you say yes. If it isn't installed, Altitude 8848 is offered first.</div>
                                     </div>
                                     <div class="ui-row-end">
                                         <select class="ui-input" id="tbDefaultApp" disabled>
-                                            <option value="overdrive" data-i18n="trip_briefing.app_overdrive">OverDrive</option>
+                                            <option value="overdrive" data-i18n="trip_briefing.app_overdrive">Altitude 8848</option>
                                             <option value="waze" data-i18n="trip_briefing.app_waze">Waze</option>
                                             <option value="gmaps" data-i18n="trip_briefing.app_gmaps">Google Maps</option>
                                             <option value="car" data-i18n="trip_briefing.app_car">Car navigation</option>
@@ -618,14 +618,14 @@
                                         </select>
                                         <label class="ui-label" for="voiceSensitivity" data-i18n="voice_assistant.sensitivity">Wake word sensitivity</label>
                                     </div>
-                                    <span class="ui-hint" data-i18n="voice_assistant.sensitivity_hint">Lower it if OverDrive wakes up on its own; raise it if it often misses you.</span>
+                                    <span class="ui-hint" data-i18n="voice_assistant.sensitivity_hint">Lower it if Altitude 8848 wakes up on its own; raise it if it often misses you.</span>
                                 </div>
                                 <div class="ui-field">
                                     <div class="ui-field-box">
                                         <select class="ui-input" id="voiceFollowUp" disabled></select>
                                         <label class="ui-label" for="voiceFollowUp" data-i18n="voice_assistant.follow_up">Follow-up window</label>
                                     </div>
-                                    <span class="ui-hint" data-i18n="voice_assistant.follow_up_hint">How long OverDrive keeps listening for another command without the wake word.</span>
+                                    <span class="ui-hint" data-i18n="voice_assistant.follow_up_hint">How long Altitude 8848 keeps listening for another command without the wake word.</span>
                                 </div>
                                 <div class="ui-field">
                                     <div class="ui-field-box">
@@ -637,7 +637,7 @@
                                         </select>
                                         <label class="ui-label" for="voiceCommandLanguage" data-i18n="voice_assistant.command_language">Command language</label>
                                     </div>
-                                    <span class="ui-hint" data-i18n="voice_assistant.command_language_hint">Which spoken commands OverDrive listens for. Only commands in this language are recognised locally.</span>
+                                    <span class="ui-hint" data-i18n="voice_assistant.command_language_hint">Which spoken commands Altitude 8848 listens for. Only commands in this language are recognised locally.</span>
                                 </div>
                                 <div class="ui-field wide">
                                     <div class="ui-field-box">
@@ -660,14 +660,14 @@
                                         </select>
                                         <label class="ui-label" for="voiceMicSource" data-i18n="voice_assistant.mic_source">Microphone input (experimental)</label>
                                     </div>
-                                    <span class="ui-hint" data-i18n="voice_assistant.mic_source_hint">Voice communication may let the car cancel its own speakers so the wake word is heard over music. Try it if OverDrive misses you while media plays.</span>
+                                    <span class="ui-hint" data-i18n="voice_assistant.mic_source_hint">Voice communication may let the car cancel its own speakers so the wake word is heard over music. Try it if Altitude 8848 misses you while media plays.</span>
                                 </div>
                             </div>
 
                             <div class="ui-row" id="voiceEnrollRow">
                                 <div class="ui-row-copy">
                                     <div class="ui-row-title" data-i18n="voice_assistant.enroll_title">Train the wake word to your voice</div>
-                                    <div class="ui-row-desc" data-i18n="voice_assistant.enroll_desc">Say “OverDrive” 4 times when the car asks. OverDrive learns how you say it, which helps with accents. Train parked, with the car on and the assistant listening.</div>
+                                    <div class="ui-row-desc" data-i18n="voice_assistant.enroll_desc">Say “OverDrive” 4 times when the car asks. Altitude 8848 learns how you say it, which helps with accents. Train parked, with the car on and the assistant listening.</div>
                                     <div class="ui-row-desc" data-i18n="voice_assistant.enroll_people_desc">Each person can train their own voice: type their name, then Train. Up to 4 voices.</div>
                                     <div class="ui-row-desc" data-i18n="voice_assistant.enroll_music_desc">For the wake word over music, play music at your usual volume and use Train with music.</div>
                                     <div class="ui-row-desc" id="voiceEnrollStatus" aria-live="polite"></div>
@@ -702,7 +702,7 @@
                             <div class="ui-row">
                                 <div class="ui-row-copy">
                                     <div class="ui-row-title" data-i18n="voice_assistant.resume_media_title">Resume media afterwards</div>
-                                    <div class="ui-row-desc" data-i18n="voice_assistant.resume_media_desc">Plays the music or podcast again when OverDrive is done, but only if OverDrive paused it. Turn off to leave it paused.</div>
+                                    <div class="ui-row-desc" data-i18n="voice_assistant.resume_media_desc">Plays the music or podcast again when Altitude 8848 is done, but only if Altitude 8848 paused it. Turn off to leave it paused.</div>
                                 </div>
                                 <div class="ui-row-end">
                                     <label class="ui-toggle">
@@ -748,7 +748,7 @@
                                 <li data-i18n="genai.privacy_3">Vehicle context is sent only for an explicit grounded action. Context is treated as data, never as provider instructions.</li>
                                 <li data-i18n="genai.privacy_4">Starting voice opens a provider-native realtime session through the daemon. It closes when stopped, when this page leaves the foreground, or after inactivity.</li>
                                 <li data-i18n="genai.privacy_5">When the master switch is off, active calls are cancelled and the provider connection pool and dispatcher are destroyed.</li>
-                                <li data-i18n="genai.privacy_6">Requests re-evaluate the OverDrive proxy route each time. Public providers use the sing-box proxy when it is running, otherwise a direct connection. Tailnet endpoints, and private LAN endpoints while the Tailscale proxy is enabled, go only through Tailscale and fail closed if it is unavailable.</li>
+                                <li data-i18n="genai.privacy_6">Requests re-evaluate the Altitude 8848 proxy route each time. Public providers use the sing-box proxy when it is running, otherwise a direct connection. Tailnet endpoints, and private LAN endpoints while the Tailscale proxy is enabled, go only through Tailscale and fail closed if it is unavailable.</li>
                             </ul>
                             <div class="ui-row">
                                 <div class="ui-row-copy">

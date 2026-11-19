@@ -6,23 +6,23 @@
     "note": "Font mestra. Les altres configuracions regionals són generades per dev/i18n_translate.py mitjançant NLLB-200. Editeu només aquest fitxer; regenereu la resta."
   },
   "app": {
-    "name": "OverDrive",
+    "name": "Altitude 8848",
     "tagline": "Sistema de vigilància",
-    "live_view_title": "Visualització en directe - OverDrive",
-    "events_title": "Esdeveniments - OverDrive",
-    "surveillance_title": "Vigilància - OverDrive",
-    "recordings_title": "Gravacions - OverDrive",
-    "performance_title": "Rendiment - OverDrive",
-    "abrp_title": "ABRP - OverDrive",
-    "mqtt_title": "MQTT - OverDrive",
-    "trips_title": "Viatges - OverDrive",
-    "notifications_title": "Notificacions - OverDrive",
-    "vehicle_control_title": "Control del vehicle - OverDrive",
-    "login_title": "Inici de sessió - OverDrive",
-    "byd_cloud_title": "BYD Cloud - OverDrive",
-    "telegram_title": "Telegram - OverDrive",
-    "dashboard_title": "Tauler de control - OverDrive",
-    "road_sense_title": "RoadSense - OverDrive"
+    "live_view_title": "Visualització en directe - Altitude 8848",
+    "events_title": "Esdeveniments - Altitude 8848",
+    "surveillance_title": "Vigilància - Altitude 8848",
+    "recordings_title": "Gravacions - Altitude 8848",
+    "performance_title": "Rendiment - Altitude 8848",
+    "abrp_title": "ABRP - Altitude 8848",
+    "mqtt_title": "MQTT - Altitude 8848",
+    "trips_title": "Viatges - Altitude 8848",
+    "notifications_title": "Notificacions - Altitude 8848",
+    "vehicle_control_title": "Control del vehicle - Altitude 8848",
+    "login_title": "Inici de sessió - Altitude 8848",
+    "byd_cloud_title": "BYD Cloud - Altitude 8848",
+    "telegram_title": "Telegram - Altitude 8848",
+    "dashboard_title": "Tauler de control - Altitude 8848",
+    "road_sense_title": "RoadSense - Altitude 8848"
   },
   "nav": {
     "dashboard": "Tauler de control",
@@ -46,7 +46,7 @@
     "overview_group": "Resum",
     "vehicle_group": "Vehicle",
     "about_group": "Quant a",
-    "brand_home": "OverDrive — obrir el tauler",
+    "brand_home": "Altitude 8848 — obrir el tauler",
     "telegram": "Telegram",
     "road_sense": "RoadSense"
   },
@@ -292,7 +292,7 @@
   "login": {
     "subtitle": "Introduïu el token del dispositiu per accedir-hi",
     "device_id": "ID del dispositiu",
-    "find_hint": "Trobeu-ho a la vostra aplicació OverDrive → Tauler de control → Codi d'accés",
+    "find_hint": "Trobeu-ho a la vostra aplicació Altitude 8848 → Tauler de control → Codi d'accés",
     "login_btn": "Inicia sessió",
     "privacy": "Les vostres dades es queden al dispositiu."
   },
@@ -1613,7 +1613,7 @@
     "install_failed_start": "No s'ha pogut iniciar la instal·lació",
     "install_request_failed": "La sol·licitud d'instal·lació ha fallat: {error}",
     "install_failed": "La instal·lació ha fallat: {error}",
-    "updating": "S'està actualitzant OverDrive",
+    "updating": "S'està actualitzant Altitude 8848",
     "reconnecting": "S'està tornant a connectar...",
     "headunit_installing": "La unitat de control de la pantalla està instal·lant l'actualització. Aquesta pàgina s'actualitzarà automàticament quan la nova versió estigui en línia.",
     "phase_queued": "A la cua — s'està preparant...",
@@ -1634,7 +1634,7 @@
     "lan_hint": "L'accés a la xarxa local (<code>{ips}</code>) es recupera uns ~{seconds} s més ràpid que el túnel; canvieu-hi ara si podeu.",
     "recommend_inapp_default": "BYD esborra la llista blanca d'inici automàtic a cada instal·lació. L'aplicació del cotxe us ho demanarà; l'aplicació web no pot fer-ho.",
     "recommend_inapp_intro": "<strong>Recomanat: actualitzeu des de l'aplicació del cotxe.</strong> {reason}",
-    "title_update_to": "Voleu actualitzar OverDrive a la versió <span class=\"upd-newv\">{version}</span>?",
+    "title_update_to": "Voleu actualitzar Altitude 8848 a la versió <span class=\"upd-newv\">{version}</span>?",
     "currently_on": "Versió actual: {version}",
     "downtime_warning": "<strong>L'accés remot estarà fora de línia durant uns ~{minutes} min.</strong> Els dimonis es reiniciaran i el túnel es tornarà a connectar després de la instal·lació.",
     "fallback_check_label": "Cercar actualitzacions",
@@ -1836,7 +1836,7 @@
   },
   "map": {
     "your_vehicle": "El vostre vehicle",
-    "your_vehicle_sub": "Vigilància d'OverDrive",
+    "your_vehicle_sub": "Vigilància d'Altitude 8848",
     "you_are_here": "Sou aquí"
   },
   "pip": {
@@ -1916,14 +1916,14 @@
     "auto": "Auto"
   },
   "about": {
-    "page_title": "Quant a — OverDrive",
+    "page_title": "Quant a — Altitude 8848",
     "page_title_short": "Quant a",
     "contributors_title": "Col·laboradors",
-    "contributors_sub": "Persones que han enviat codi a OverDrive.",
+    "contributors_sub": "Persones que han enviat codi a Altitude 8848.",
     "supporters_title": "Patrocinadors",
     "supporters_sub": "La gent que ha mantingut amb cafeïna les publicacions nocturnes.",
     "acknowledgements_title": "Acknowledgements",
-    "acknowledgements_sub": "Third-party assets used in OverDrive, with their licenses.",
+    "acknowledgements_sub": "Third-party assets used in Altitude 8848, with their licenses.",
     "ack_chimes": "RoadSense warning chimes — sounds from the Google Sound Library, licensed under",
     "empty": "La llista s'omple a mesura que la gent hi col·labora.",
     "support": {
@@ -1964,7 +1964,7 @@
     "recommend_step_5": "Trieu un període d'autorització que s'ajusti al temps que voleu que aquest perfil continuï actiu.",
     "recommend_step_6": "Tanqueu la sessió de l'aplicació BYD, després registreu-vos amb el correu electrònic secundari utilitzant el codi de verificació i creeu una contrasenya.",
     "recommend_step_7": "Toqueu Tancar o Obrir a l'aplicació BYD — us demanarà que definiu un PIN de control.",
-    "recommend_step_8": "Introduïu el correu electrònic secundari, la contrasenya i el PIN de control aquí a OverDrive."
+    "recommend_step_8": "Introduïu el correu electrònic secundari, la contrasenya i el PIN de control aquí a Altitude 8848."
   },
   "telegram": {
     "page_title": "Telegram",
@@ -1972,7 +1972,7 @@
     "tab_pair": "Aparellar",
     "tab_preferences": "Preferències",
     "bot_title": "Token del bot",
-    "bot_hint": "Creeu un bot mitjançant @BotFather a Telegram, copieu el token aquí i OverDrive el validarà. El token només s'emmagatzema en aquest dispositiu.",
+    "bot_hint": "Creeu un bot mitjançant @BotFather a Telegram, copieu el token aquí i Altitude 8848 el validarà. El token només s'emmagatzema en aquest dispositiu.",
     "token": "Token del bot",
     "token_supporting": "Format: 123456789:ABCdef-GHI...",
     "token_keep": "Deixeu-ho en blanc per conservar l'actual",
@@ -2106,7 +2106,7 @@
     "mode_continuous": "Continu",
     "mode_smart": "Intel·ligent",
     "mode_off_desc_recording": "No enregistris des del sensor davanter OEM. La càmera de salpàs panoràmica continua escrivint cam_*.mp4 amb normalitat.",
-    "mode_continuous_desc_recording": "Enregistra sempre dvr_*.mp4 mentre OverDrive s'està executant, independentment del que estigui fent la càmera de salpàs panoràmica.",
+    "mode_continuous_desc_recording": "Enregistra sempre dvr_*.mp4 mentre Altitude 8848 s'està executant, independentment del que estigui fent la càmera de salpàs panoràmica.",
     "mode_smart_desc_recording": "Imita la càmera de salpàs panoràmica: quan la panoràmica està enregistrant (es dispara el mode Conducció / Continu / Protecció de proximitat), enregistra també dvr_*.mp4. Si la panoràmica s'atura, l'OEM també s'atura.",
     "mode_off_desc_surveillance": "No enregistris des del sensor davanter OEM en mode vigilància. El sentinella panoràmic continua escrivint event_*.mp4 amb normalitat.",
     "mode_continuous_desc_surveillance": "Enregistra sempre dvr_*.mp4 durant tot el temps que el cotxe estigui aparcat, independentment del moviment. Consumirà l'emmagatzematge molt més ràpidament.",
@@ -2118,12 +2118,12 @@
     "surveillance_mode_set_continuous": "Càmera de salpàs OEM en vigilància: Contínua",
     "surveillance_mode_set_smart": "Càmera de salpàs OEM en vigilància: Intel·ligent (imita el moviment panoràmic)",
     "native_dvr_title": "Aplicació nativa de DVR (com.byd.cdr)",
-    "native_dvr_explainer": "L'aplicació de càmera de salpàs de fàbrica enregistra a /sdcard/DCIM/BYDCam i obre l'AVMCamera a cada ACC ON. Si es desactiva, es permet que OverDrive gestioni la càmera sense conflictes.",
+    "native_dvr_explainer": "L'aplicació de càmera de salpàs de fàbrica enregistra a /sdcard/DCIM/BYDCam i obre l'AVMCamera a cada ACC ON. Si es desactiva, es permet que Altitude 8848 gestioni la càmera sense conflictes.",
     "native_dvr_disable": "Desactivar el DVR natiu",
     "native_dvr_enable": "Tornar a activar el DVR natiu",
     "native_dvr_status_enabled": "Estat: Activat",
-    "native_dvr_status_disabled": "Estat: Desactivat per OverDrive",
-    "native_dvr_disable_toast": "DVR natiu desactivat. OverDrive ara controla la càmera.",
+    "native_dvr_status_disabled": "Estat: Desactivat per Altitude 8848",
+    "native_dvr_disable_toast": "DVR natiu desactivat. Altitude 8848 ara controla la càmera.",
     "native_dvr_enable_toast": "DVR natiu tornat a activar.",
     "start_timeout": "S'ha esgotat el temps d'espera de la línia de transmissió (pipeline) — comproveu els registres del dimoni"
   }

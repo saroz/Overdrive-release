@@ -1082,7 +1082,7 @@ BYD.performance = {
             // Show current / max so thermal throttling is self-evident: when the
             // current freq sits well below max under load (and temp is high) the
             // SoC is throttling — which drags the whole head-unit UI on this
-            // shared SDM665, not just OverDrive. maxFreqMhz is the static hardware
+            // shared SDM665, not just Altitude 8848. maxFreqMhz is the static hardware
             // ceiling; omitted (0) on kernels that don't expose it.
             if (data.cpu.maxFreqMhz) {
                 this.updateMetric('cpuFreq', data.cpu.freqMhz + ' / ' + data.cpu.maxFreqMhz, ' MHz');

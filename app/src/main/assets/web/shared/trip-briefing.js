@@ -1,4 +1,4 @@
-/* OverDrive Trip Briefing tab (Assistant page). ES5 for the head-unit WebView floor. */
+/* Altitude 8848 Trip Briefing tab (Assistant page). ES5 for the head-unit WebView floor. */
 (function (window, document) {
     'use strict';
 
@@ -25,8 +25,8 @@
         loading: 'Loading Trip Briefing…',
         preparing: 'Reading your trips…',
         not_ready_title: 'Your trips aren\'t ready yet',
-        not_ready_desc: 'OverDrive is still reading your trip history. Try again in a minute.',
-        error_title: 'Can\'t reach OverDrive',
+        not_ready_desc: 'Altitude 8848 is still reading your trip history. Try again in a minute.',
+        error_title: 'Can\'t reach Altitude 8848',
         error_desc: 'The car didn\'t answer. Check that it\'s on and connected, then try again.',
         retry: 'Try again',
         no_trips_title: 'No trips yet',
@@ -41,7 +41,7 @@
         mode_local: 'Local',
         mode_hybrid: 'Hybrid',
         mode_genai: 'GenAI',
-        app_overdrive: 'OverDrive',
+        app_overdrive: 'Altitude 8848',
         app_waze: 'Waze',
         app_gmaps: 'Google Maps',
         app_car: 'Car navigation',

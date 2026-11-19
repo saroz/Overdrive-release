@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">Keeps Overdrive vehicle monitoring active in the background. This service does not read or interact with screen content.</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">Auto picks the right camera for your trim on every boot. Camera 1 = BYD Seal, Camera 0 = Atto trims. Restart the daemon after changing camera ID for the setting to take effect.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">OEM Dashcam Camera ID</string>
-    <string name="camera_oem_dashcam_hint">Pick the AVMCamera id that points at the forward dashcam sensor. Dashcam is the OPPOSITE of pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Leave on Auto to let OverDrive pick.</string>
+    <string name="camera_oem_dashcam_hint">Pick the AVMCamera id that points at the forward dashcam sensor. Dashcam is the OPPOSITE of pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Leave on Auto to let Altitude 8848 pick.</string>
     <string name="camera_oem_dashcam_auto_resolved">Auto — using id %1$d (pano is id %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">Auto — pano id is %1$d, can\'t infer dashcam</string>
     <string name="camera_oem_dashcam_save">Save</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">Panoramic stream: Legacy auto-detect / probing</string>
     <string name="camera_mapping_current_format">Current mapping: %1$s</string>
     <string name="camera_mapping_current_none">Current mapping: Auto / default</string>
-    <string name="camera_mapping_hint">OverDrive keeps the legacy startup behavior by default, but now lets you calibrate the merged panoramic strip properly. Preview each raw merged slice, map the logical 360 roles to the slice that actually shows front/right/rear/left on your vehicle, and the daemon will reuse that layout for recording, streaming, and AI after restart.</string>
+    <string name="camera_mapping_hint">Altitude 8848 keeps the legacy startup behavior by default, but now lets you calibrate the merged panoramic strip properly. Preview each raw merged slice, map the logical 360 roles to the slice that actually shows front/right/rear/left on your vehicle, and the daemon will reuse that layout for recording, streaming, and AI after restart.</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">Scan to Connect</string>
     <string name="dashboard_qr_waiting">Waiting for tunnel…</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">Pick Your Language</string>
-    <string name="setup_language_body">Defaults to your head unit\'s language. Tap to choose a different one for the OverDrive app and the web tunnel.</string>
+    <string name="setup_language_body">Defaults to your head unit\'s language. Tap to choose a different one for the Altitude 8848 app and the web tunnel.</string>
     <string name="setup_language_button">Choose Language</string>
     <string name="setup_autostart_title">Disable Auto-Start Restriction</string>
-    <string name="setup_autostart_body">Tap below to open BYD Auto-Start. Find OverDrive in the list and uncheck the box. BYD wipes this on every install — you\'ll redo it after updates.</string>
+    <string name="setup_autostart_body">Tap below to open BYD Auto-Start. Find Altitude 8848 in the list and uncheck the box. BYD wipes this on every install — you\'ll redo it after updates.</string>
     <string name="setup_autostart_button">Open BYD Auto-Start</string>
     <string name="setup_overlay_title">Allow Display Over Other Apps</string>
     <string name="setup_overlay_body">Enable this to show a floating status indicator for recording and trip tracking on top of other apps.</string>
@@ -580,7 +580,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">Tips &amp; troubleshooting</string>
     <string name="setup_traffic_title">Disable BYD Traffic Monitor</string>
-    <string name="setup_traffic_body">The BYD Traffic Monitor blocks third-party apps from reaching the internet. Disabling it lets OverDrive and any other apps you install actually use the network. A hard reboot is required afterwards.</string>
+    <string name="setup_traffic_body">The BYD Traffic Monitor blocks third-party apps from reaching the internet. Disabling it lets Altitude 8848 and any other apps you install actually use the network. A hard reboot is required afterwards.</string>
     <string name="setup_traffic_button">Open Traffic Monitor</string>
     <string name="setup_camera_fix_title">Camera feeds black or incorrect?</string>
     <string name="setup_camera_fix_body">Camera probe, set Camera ID to 0, tap Save, then restart the camera daemon. If the feeds are still wrong, repeat with Camera ID 1. Leave the mapping section untouched.</string>
@@ -604,7 +604,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD Cloud</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">OverDrive Status</string>
+    <string name="status_overlay_notif_title">Altitude 8848 Status</string>
     <string name="status_overlay_notif_text">Status overlay active</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -651,7 +651,7 @@
     <string name="settings_privacy_title">Privacy &amp; data</string>
     <string name="settings_privacy_body">Reset clears recordings index, cached credentials, daemon state, and on-device preferences. The action cannot be undone.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">About OverDrive</string>
+    <string name="settings_about_title">About Altitude 8848</string>
     <string name="settings_about_version_label">Version</string>
     <string name="settings_about_package_label">Build</string>
     <string name="settings_about_check_update_value">Check the latest GitHub release and install if newer.</string>
@@ -753,7 +753,7 @@
     <string name="settings_action_check_update">Check for updates</string>
     <string name="settings_action_reset_data">Reset data…</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -823,11 +823,11 @@
     <string name="settings_section_surveillance_subtitle">Detection zones, schedule, motion sensitivity.</string>
     <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT runners.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">About OverDrive</string>
+    <string name="settings_about_row_title">About Altitude 8848</string>
     <string name="settings_about_row_subtitle">Version, license, support development.</string>
     <string name="settings_reset_row_subtitle">Clear recordings, events, or all caches.</string>
     <!-- Footer -->
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
     <!-- ============================================================ -->
     <!-- Appearance pane — SOTA visual theme picker                    -->
     <!-- ============================================================ -->
@@ -844,7 +844,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">On-device by default</string>
-    <string name="settings_privacy_stance_body">OverDrive runs entirely on the head unit. No telemetry leaves your car except via the tunnels and integrations you explicitly configure.</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 runs entirely on the head unit. No telemetry leaves your car except via the tunnels and integrations you explicitly configure.</string>
     <string name="settings_privacy_overline_storage">LOCAL STORAGE</string>
     <string name="settings_privacy_overline_reset">DATA RESET</string>
     <string name="settings_privacy_storage_clips_label">Clips on disk</string>
@@ -854,18 +854,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d clips</string>
     <string name="settings_privacy_reset_subtitle">Choose categories: recordings, events, daemon configs, cached telemetry…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">Security</string>
-    <string name="settings_security_subtitle">Lock the OverDrive app so passengers and valets can\'t open it without your PIN.</string>
+    <string name="settings_security_subtitle">Lock the Altitude 8848 app so passengers and valets can\'t open it without your PIN.</string>
     <string name="settings_security_stance_title">UI lock only</string>
-    <string name="settings_security_stance_body">Surveillance, recording, deterrent, alerts, and background services keep running while the app is locked. The PIN gates the OverDrive interface, nothing else.</string>
+    <string name="settings_security_stance_body">Surveillance, recording, deterrent, alerts, and background services keep running while the app is locked. The PIN gates the Altitude 8848 interface, nothing else.</string>
     <string name="settings_security_overline_lock">App lock</string>
     <string name="settings_security_overline_recovery">If you forget your PIN</string>
     <string name="settings_security_toggle_title">Require PIN</string>
-    <string name="settings_security_toggle_subtitle_off">Off — anyone can open OverDrive.</string>
-    <string name="settings_security_toggle_subtitle_on">On — PIN required to open OverDrive.</string>
+    <string name="settings_security_toggle_subtitle_off">Off — anyone can open Altitude 8848.</string>
+    <string name="settings_security_toggle_subtitle_on">On — PIN required to open Altitude 8848.</string>
     <string name="settings_security_change_title">Change PIN</string>
     <string name="settings_security_change_subtitle">Confirm current PIN, then set a new one.</string>
     <string name="settings_security_autolock_title">Auto-lock</string>
@@ -902,7 +902,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">Enter PIN</string>
     <string name="pin_lock_title_unlocked">Unlocked</string>
-    <string name="pin_lock_subtitle_default">Unlock OverDrive to continue.</string>
+    <string name="pin_lock_subtitle_default">Unlock Altitude 8848 to continue.</string>
     <string name="pin_lock_subtitle_wrong">Wrong PIN. Try again.</string>
     <string name="pin_lock_subtitle_locked_out">Too many attempts. Try again shortly.</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title data-i18n="app.performance_title">Performance - OverDrive</title>
+    <title data-i18n="app.performance_title">Performance - Altitude 8848</title>
     <link rel="icon" type="image/webp" href="../shared/app-icon-dark.webp">
     <script src="../shared/on-actions.js?v=1"></script>
-    <script src="../shared/theme.js?v=12"></script>
+    <script src="../shared/theme.js?v=13"></script>
     <script src="../shared/ph-icons.js?v=1"></script>
-    <script src="../shared/app-shell.js?v=25"></script>
+    <script src="../shared/app-shell.js?v=26"></script>
     <!--
       Bottom-tab manifest — performance dashboard splits into 4 tabs
       so the long single-scroll page stops being a wall of charts:
@@ -23,7 +23,7 @@
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
-    <link rel="stylesheet" href="../shared/ui.css?v=2">
+    <link rel="stylesheet" href="../shared/ui.css?v=3">
     <link rel="stylesheet" href="../shared/pages/performance.css?v=1">
 </head>
 <body class="ui-app" data-page="performance">
@@ -243,7 +243,7 @@
                         </div>
                         <div class="metric-value"><span id="cpuValue">--</span><span class="unit">%</span></div>
                         <div class="metric-subtitle" data-i18n="performance.system_cpu_basis">Whole device · all cores combined (0–100%).</div>
-                        <div class="metric-subtitle"><span data-i18n="performance.card_overdrive_app">OverDrive app</span>: <span id="cpuAppValue">--</span>% <span style="opacity:0.6">device</span></div>
+                        <div class="metric-subtitle"><span data-i18n="performance.card_overdrive_app">Altitude 8848 app</span>: <span id="cpuAppValue">--</span>% <span style="opacity:0.6">device</span></div>
                         <div class="metric-bar"><div class="metric-bar-fill" id="cpuBar" style="width: 0%"></div></div>
                         <!-- Android top uses a per-core scale: 100% means one fully busy core. -->
                         <div class="metric-subtitle" style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:0.7;margin-top:4px">
@@ -279,7 +279,7 @@
                         <div class="memory-breakdown" data-i18n-attr="title:performance.app_memory_basis">
                             <div class="breakdown-item">
                                 <div class="breakdown-value" id="appMemTotal">--</div>
-                                <div class="breakdown-label" data-i18n="performance.card_app_pss">OverDrive PSS</div>
+                                <div class="breakdown-label" data-i18n="performance.card_app_pss">Altitude 8848 PSS</div>
                             </div>
                             <div class="breakdown-item">
                                 <div class="breakdown-value" id="appMemNative">--</div>

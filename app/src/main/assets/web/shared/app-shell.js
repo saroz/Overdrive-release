@@ -159,9 +159,8 @@
     function buildShellMarkup() {
         // Brand (mockup .brand): the app glyph in the ink tile, then the name.
         var header = ''
-            + '<a href="index.html" class="ui-brand" data-sidebar-brand aria-label="OverDrive — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">'
-            +   '<span class="ui-brand-mark"><span class="ui-brand-glyph"></span></span>'
-            +   '<span class="ui-brand-text" data-i18n="app.name">OverDrive</span>'
+            + '<a href="index.html" class="ui-brand" data-sidebar-brand aria-label="Altitude 8848 — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">'
+            +   '<img class="ui-brand-logo" src="../shared/brand/altitude-8848.svg" alt="Altitude 8848">'
             + '</a>';
 
         var nav = '<nav class="ui-nav" data-sidebar-nav aria-label="Main navigation">' + buildNav() + '</nav>';
@@ -538,12 +537,11 @@
         bar.className = 'ui-topbar';
         bar.innerHTML =
             '<nav class="ui-breadcrumb" aria-label="Breadcrumb">' +
-              '<span data-i18n="app.name">OverDrive</span><span aria-hidden="true">/</span>' +
+              '<span data-i18n="app.name">Altitude 8848</span><span aria-hidden="true">/</span>' +
               '<strong>' + esc(pageTitle) + '</strong>' +
             '</nav>' +
-            '<a class="ui-topbar-brand" href="index.html" aria-label="OverDrive — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">' +
-              '<span class="ui-brand-mark"><span class="ui-brand-glyph"></span></span>' +
-              '<span data-i18n="app.name">OverDrive</span>' +
+            '<a class="ui-topbar-brand" href="index.html" aria-label="Altitude 8848 — open Dashboard" data-i18n-attr="aria-label:nav.brand_home">' +
+              '<img class="ui-brand-logo" src="../shared/brand/altitude-8848.svg" alt="Altitude 8848">' +
             '</a>' +
             '<div class="ui-topbar-actions">' +
               '<button type="button" class="ui-icon-button ui-topbar-search od-search-open" aria-label="Search" data-i18n-attr="aria-label:common.search">' + navIcon('search') + '</button>' +

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">تجاوز القرص</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">يحافظ على مراقبة المركبات الزائدة على القيادة نشطة في الخلفية. هذه الخدمة لا تقرأ أو تتفاعل مع محتوى الشاشة.</string>
     <!-- Recording Mode Labels -->
@@ -179,7 +179,7 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">اختر لغتك</string>
-    <string name="setup_language_body">الافتراضي إلى لغة وحدة الرأس الخاصة بك. انقر لاختيار واحدة مختلفة لتطبيق OverDrive ونفق الويب.</string>
+    <string name="setup_language_body">الافتراضي إلى لغة وحدة الرأس الخاصة بك. انقر لاختيار واحدة مختلفة لتطبيق Altitude 8848 ونفق الويب.</string>
     <string name="setup_language_button">اختر اللغة</string>
     <string name="setup_autostart_title">تعطيل تقييد البدء التلقائي</string>
     <string name="setup_autostart_body">انقر أدناه لفتح BYD Stto-Start. ابحث عن تجاوز القرص في القائمة وألغي تحديد المربع. يمحو BYD هذا على كل تثبيت - ستعيد القيام به بعد التحديثات.</string>
@@ -467,9 +467,9 @@
     <string name="dialog_traffic_cannot_check_title">لا يمكن التحقق من الحالة</string>
     <string name="dialog_traffic_cannot_check_message">اتصال ADB غير جاهز بعد.\n\nيحتاج التطبيق إلى الوصول إلى ADB لإدارة حزم النظام. الرجاء ضمان:\n\n• تم تمكين تصحيح أخطاء USB في خيارات المطور\n• تم قبول طلب تفويض ADB\n\nسيتم تحديث الحالة تلقائياً بمجرد الاتصال.</string>
     <string name="dialog_traffic_disable_title">تعطيل Traffic Monitor من BYD؟</string>
-    <string name="dialog_traffic_disable_message">يُعد Traffic Monitor من BYD (com.byd.trafficmonitor) تطبيق نظام مدمجًا يحدد التطبيقات التي يُسمح لها باستخدام بيانات الجوال. وهو يمنع تطبيقات الجهات الخارجية، بما فيها OverDrive، من استخدام شريحة SIM المدمجة في السيارة.\n\nلماذا تعطيله؟\n\n• يتيح لـ OverDrive وللتطبيقات الأخرى التي تثبّتها استخدام الإنترنت عبر شريحة SIM من BYD\n• مطلوب للوصول إلى سيارتك عن بعد عبر شريحة SIM من BYD\n\nلن تتأثر الملاحة والبلوتوث وجميع وظائف السيارة الأخرى.\n\nيلزم إجراء إعادة تشغيل إجبارية بعد التعطيل (اضغط مع الاستمرار على زر الكونسول الوسطي لمدة 5 ثوانٍ).</string>
+    <string name="dialog_traffic_disable_message">يُعد Traffic Monitor من BYD (com.byd.trafficmonitor) تطبيق نظام مدمجًا يحدد التطبيقات التي يُسمح لها باستخدام بيانات الجوال. وهو يمنع تطبيقات الجهات الخارجية، بما فيها Altitude 8848، من استخدام شريحة SIM المدمجة في السيارة.\n\nلماذا تعطيله؟\n\n• يتيح لـ Altitude 8848 وللتطبيقات الأخرى التي تثبّتها استخدام الإنترنت عبر شريحة SIM من BYD\n• مطلوب للوصول إلى سيارتك عن بعد عبر شريحة SIM من BYD\n\nلن تتأثر الملاحة والبلوتوث وجميع وظائف السيارة الأخرى.\n\nيلزم إجراء إعادة تشغيل إجبارية بعد التعطيل (اضغط مع الاستمرار على زر الكونسول الوسطي لمدة 5 ثوانٍ).</string>
     <string name="dialog_traffic_enable_title">إعادة تفعيل Traffic Monitor من BYD؟</string>
-    <string name="dialog_traffic_enable_message">تطبيق Traffic Monitor من BYD معطّل حاليًا.\n\nستؤدي إعادة تفعيله إلى منع OverDrive وتطبيقات الجهات الخارجية الأخرى من استخدام شريحة SIM المدمجة في السيارة مجددًا، وبالتالي سيتوقف الوصول عن بعد عبر شريحة SIM من BYD عن العمل.\n\nيلزم إجراء إعادة تشغيل إجبارية بعد التفعيل (اضغط مع الاستمرار على زر الكونسول الوسطي لمدة 5 ثوانٍ).</string>
+    <string name="dialog_traffic_enable_message">تطبيق Traffic Monitor من BYD معطّل حاليًا.\n\nستؤدي إعادة تفعيله إلى منع Altitude 8848 وتطبيقات الجهات الخارجية الأخرى من استخدام شريحة SIM المدمجة في السيارة مجددًا، وبالتالي سيتوقف الوصول عن بعد عبر شريحة SIM من BYD عن العمل.\n\nيلزم إجراء إعادة تشغيل إجبارية بعد التفعيل (اضغط مع الاستمرار على زر الكونسول الوسطي لمدة 5 ثوانٍ).</string>
     <string name="dialog_traffic_status_enabled">تطبيق Traffic Monitor مفعّل</string>
     <string name="dialog_traffic_status_disabled">تطبيق Traffic Monitor معطّل</string>
     <string name="dialog_traffic_reboot_message">The change has been applied.\n\nPlease perform a hard reboot now:\nPress and hold the central console button for 5 seconds.</string>
@@ -595,7 +595,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">نصائح &amp; استكشاف الأخطاء</string>
     <string name="setup_traffic_title">تعطيل Traffic Monitor من BYD</string>
-    <string name="setup_traffic_body">يمنع تطبيق Traffic Monitor من BYD تطبيقات الجهات الخارجية من الوصول إلى الإنترنت. ويتيح تعطيله لـ OverDrive ولأي تطبيقات أخرى تثبّتها استخدام الشبكة فعليًا. يلزم إجراء إعادة تشغيل إجبارية بعد ذلك.</string>
+    <string name="setup_traffic_body">يمنع تطبيق Traffic Monitor من BYD تطبيقات الجهات الخارجية من الوصول إلى الإنترنت. ويتيح تعطيله لـ Altitude 8848 ولأي تطبيقات أخرى تثبّتها استخدام الشبكة فعليًا. يلزم إجراء إعادة تشغيل إجبارية بعد ذلك.</string>
     <string name="setup_traffic_button">فتح Traffic Monitor</string>
     <string name="setup_camera_fix_title">تغذية الكاميرا سوداء أو غير صحيحة؟</string>
     <string name="setup_camera_fix_body">مسبار الكاميرا، عيّن معرف الكاميرا على 0، انقر على الحفظ، ثم أعد تشغيل مسبار الكاميرا. إذا كانت الخلاصات لا تزال خاطئة، قم بتكرارها مع معرف الكاميرا 1. اترك قسم رسم الخرائط دون أن يمس.</string>
@@ -667,7 +667,7 @@
     <string name="settings_privacy_title">الخصوصية &amp; البيانات</string>
     <string name="settings_privacy_body">إعادة تعيين فهرس التسجيلات، بيانات الاعتماد المخزنة مؤقتا، حالة الرديمون والتفضيلات على الجهاز. لا يمكن التراجع عن هذا الإجراء.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">حول OverDrive</string>
+    <string name="settings_about_title">حول Altitude 8848</string>
     <string name="settings_about_version_label">الإصدار</string>
     <string name="settings_about_package_label">بناء</string>
     <string name="settings_about_check_update_value">تحقق من أحدث إصدار لـ GitHub وتثبيته إذا كان أحدث.</string>
@@ -838,7 +838,7 @@
     <string name="settings_section_storage_subtitle">مكان حفظ التسجيلات، حدود المساحة، تنظيف كاميرا BYD.</string>
     <string name="settings_section_daemons_subtitle">خدمات Cloudflared و Zrok و Telegram و MQTT.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">حول OverDrive</string>
+    <string name="settings_about_row_title">حول Altitude 8848</string>
     <string name="settings_about_row_subtitle">الإصدار، الترخيص، دعم التطوير.</string>
     <string name="settings_reset_row_subtitle">مسح التسجيلات أو الأحداث أو جميع المخبآت.</string>
     <!-- Footer -->
@@ -869,11 +869,11 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d مقطع</string>
     <string name="settings_privacy_reset_subtitle">اختر فئات: تسجيلات، أحداث، تكوينات دايمون، القياس عن بعد الذاكرة المؤقتة…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">أمان</string>
-    <string name="settings_security_subtitle">قفل تطبيق OverDrive حتى لا يتمكن المسافرون والقيم من فتحه بدون رقم التعريف الشخصي الخاص بك.</string>
+    <string name="settings_security_subtitle">قفل تطبيق Altitude 8848 حتى لا يتمكن المسافرون والقيم من فتحه بدون رقم التعريف الشخصي الخاص بك.</string>
     <string name="settings_security_stance_title">تأمين واجهة المستخدم فقط</string>
     <string name="settings_security_stance_body">يستمر تشغيل خدمات المراقبة والتسجيل والردع والتنبيهات والخلفية أثناء قفل التطبيق. بوابة PIN الخاصة بواجهة تجاوز القرص، لا شيء آخر.</string>
     <string name="settings_security_overline_lock">قفل التطبيق</string>

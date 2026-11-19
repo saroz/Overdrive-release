@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">Holder Overdrive køretøjets overvågning aktiv i baggrunden. Denne tjeneste læser eller interagerer ikke med skærmindhold.</string>
     <!-- Recording Mode Labels -->
@@ -134,7 +134,7 @@
     <string name="camera_selection_hint">Auto vælger det rigtige kamera til din trim ved hver start. Kamera 1 = BYD Seal, Kamera 0 = Atto trimmer. Genstart dæmonen efter ændring af kamera-id for at indstillingen kan træde i kraft.</string>
     <!-- OEM Dashcam camera ID picker (Phase 5: separate forward-sensor pipeline) -->
     <string name="camera_oem_dashcam_title">OEM Dashcam Kamera ID</string>
-    <string name="camera_oem_dashcam_hint">Vælg AVMCamera id, der peger på den fremadrettede dashcam sensor. Dashcam er OPPOSITE pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Lad auto-fortsætte for at lade OverDrive vælge.</string>
+    <string name="camera_oem_dashcam_hint">Vælg AVMCamera id, der peger på den fremadrettede dashcam sensor. Dashcam er OPPOSITE pano: Seal/Han pano = 1 → dashcam = 0; Atto / Tang pano = 0 → dashcam = 1. Lad auto-fortsætte for at lade Altitude 8848 vælge.</string>
     <string name="camera_oem_dashcam_auto_resolved">Auto — brug af id %1$d (pano er id %2$d)</string>
     <string name="camera_oem_dashcam_auto_unavailable">Auto — pano-id er %1$d, kan ikke udlede dashcam</string>
     <string name="camera_oem_dashcam_save">Gem</string>
@@ -162,7 +162,7 @@
     <string name="camera_mapping_summary_probing">Panoramisk strøm: Legacy auto-detect / probing</string>
     <string name="camera_mapping_current_format">Nuværende kortlægning: %1$s</string>
     <string name="camera_mapping_current_none">Nuværende kortlægning: Auto / standard</string>
-    <string name="camera_mapping_hint">OverDrive holder som standard arven opstartsadfærd men lader dig nu kalibrere den sammenlagte panoramastrimmel korrekt. Få vist hver rå sammenflettede skive, kort de logiske 360 roller til den skive, der faktisk viser for-/højre/bag/venstre på dit køretøj, og dæmonen vil genbruge dette layout til optagelse, streaming, og AI efter genstart.</string>
+    <string name="camera_mapping_hint">Altitude 8848 holder som standard arven opstartsadfærd men lader dig nu kalibrere den sammenlagte panoramastrimmel korrekt. Få vist hver rå sammenflettede skive, kort de logiske 360 roller til den skive, der faktisk viser for-/højre/bag/venstre på dit køretøj, og dæmonen vil genbruge dette layout til optagelse, streaming, og AI efter genstart.</string>
     <!-- fragment_dashboard -->
     <string name="dashboard_scan_to_connect">Scan for at forbinde</string>
     <string name="dashboard_qr_waiting">Venter på tunnel…</string>
@@ -179,10 +179,10 @@
     <string name="setup_step_two_label">2</string>
     <string name="setup_step_three_label">3</string>
     <string name="setup_language_title">Vælg Dit Sprog</string>
-    <string name="setup_language_body">Standard er din hovedenheds sprog. Tryk for at vælge en anden for OverDrive-appen og web-tunnelen.</string>
+    <string name="setup_language_body">Standard er din hovedenheds sprog. Tryk for at vælge en anden for Altitude 8848-appen og web-tunnelen.</string>
     <string name="setup_language_button">Vælg Sprog</string>
     <string name="setup_autostart_title">Deaktivér Auto-Start Begrænsning</string>
-    <string name="setup_autostart_body">Tryk nedenfor for at åbne BYD Auto-Start. Find OverDrive på listen og fjern markeringen af boksen. BYD tørrer dette på hver installation - du vil gentage det efter opdateringer.</string>
+    <string name="setup_autostart_body">Tryk nedenfor for at åbne BYD Auto-Start. Find Altitude 8848 på listen og fjern markeringen af boksen. BYD tørrer dette på hver installation - du vil gentage det efter opdateringer.</string>
     <string name="setup_autostart_button">Åbn BYD Auto-Start</string>
     <string name="setup_overlay_title">Tillad Visning Over Andre Apps</string>
     <string name="setup_overlay_body">Aktiver dette for at vise en flydende statusindikator til optagelse og tur sporing på toppen af andre apps.</string>
@@ -577,7 +577,7 @@
     <!-- Setup guide — post-setup tips section -->
     <string name="setup_tips_header">Tips &amp; fejlfinding</string>
     <string name="setup_traffic_title">Deaktivér BYD Trafik Monitor</string>
-    <string name="setup_traffic_body">BYD Traffic Monitor blokerer tredjeparts-apps fra at nå internettet. Deaktivering af det giver OverDrive og alle andre apps, du installerer, faktisk bruger netværket. En harddisk genstart er påkrævet bagefter.</string>
+    <string name="setup_traffic_body">BYD Traffic Monitor blokerer tredjeparts-apps fra at nå internettet. Deaktivering af det giver Altitude 8848 og alle andre apps, du installerer, faktisk bruger netværket. En harddisk genstart er påkrævet bagefter.</string>
     <string name="setup_traffic_button">Åben Trafik Overvågning</string>
     <string name="setup_camera_fix_title">Kamera feeds sort eller forkert?</string>
     <string name="setup_camera_fix_body">Kameraprobe, sæt Kamera-id til 0, tryk Gem og genstart derefter kameradæmonen. Hvis feeds stadig er forkert, gentag med Kamera ID 1. Efterlad mapping sektionen uberørt.</string>
@@ -601,7 +601,7 @@
     <string name="nav_page_mqtt">MQTT</string>
     <string name="nav_page_byd_cloud">BYD Cloud</string>
     <!-- StatusOverlayService persistent notification (foreground service) -->
-    <string name="status_overlay_notif_title">OverDrive Status</string>
+    <string name="status_overlay_notif_title">Altitude 8848 Status</string>
     <string name="status_overlay_notif_text">Status overlay active</string>
     <!-- DaemonKeepaliveService persistent notification (foreground service)
          and the group-summary row that collapses Overdrive's three FGS
@@ -648,7 +648,7 @@
     <string name="settings_privacy_title">Privatliv &amp; data</string>
     <string name="settings_privacy_body">Nulstil rydder optagelser indeks, cachede legitimationsoplysninger, dæmontilstand og indstillinger på enheden. Handlingen kan ikke fortrydes.</string>
     <!-- Settings → About pane copy -->
-    <string name="settings_about_title">Om OverDrive</string>
+    <string name="settings_about_title">Om Altitude 8848</string>
     <string name="settings_about_version_label">Version</string>
     <string name="settings_about_package_label">Byg</string>
     <string name="settings_about_check_update_value">Tjek den seneste GitHub udgivelse og installer hvis nyere.</string>
@@ -750,7 +750,7 @@
     <string name="settings_action_check_update">Søg efter opdateringer</string>
     <string name="settings_action_reset_data">Nulstil data…</string>
     <!-- Content descriptions for rail / segmented controls -->
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
     <!-- ============================================================== -->
     <!-- Dashboard SOTA revamp                                            -->
     <!-- ============================================================== -->
@@ -820,7 +820,7 @@
     <string name="settings_section_surveillance_subtitle">Detektionszoner, tidsplan, bevægelsesfølsomhed.</string>
     <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT løbere.</string>
     <!-- About / data row subtitles -->
-    <string name="settings_about_row_title">Om OverDrive</string>
+    <string name="settings_about_row_title">Om Altitude 8848</string>
     <string name="settings_about_row_subtitle">Version, licens, støtte udvikling.</string>
     <string name="settings_reset_row_subtitle">Ryd optagelser, begivenheder eller alle caches.</string>
     <!-- Footer -->
@@ -841,7 +841,7 @@
     <!-- Privacy pane — stance + storage summary + reset               -->
     <!-- ============================================================ -->
     <string name="settings_privacy_stance_title">On-device som standard</string>
-    <string name="settings_privacy_stance_body">OverDrive kører helt på hovedenheden. Ingen telemetri forlader din bil undtagen via de tunneler og integrationer, du udtrykkeligt konfigurerer.</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 kører helt på hovedenheden. Ingen telemetri forlader din bil undtagen via de tunneler og integrationer, du udtrykkeligt konfigurerer.</string>
     <string name="settings_privacy_overline_storage">LOKAL OPBEVARING</string>
     <string name="settings_privacy_overline_reset">RESET TIL DATA</string>
     <string name="settings_privacy_storage_clips_label">Klip på disk</string>
@@ -851,18 +851,18 @@
     <string name="settings_privacy_storage_count_format_plural">%1$d klip</string>
     <string name="settings_privacy_reset_subtitle">Vælg kategorier: optagelser, begivenheder, dæmon configs, cachede telemetri…</string>
     <!-- Settings → Security pane copy + PIN unlock screen.
-         The lock guards the OverDrive UI only. Cam daemon, AccSentry,
+         The lock guards the Altitude 8848 UI only. Cam daemon, AccSentry,
          surveillance, recording, Telegram alerts, status overlay, and the
          deterrent screen all run independently regardless of this state. -->
     <string name="settings_security_title">Sikkerhed</string>
-    <string name="settings_security_subtitle">Lås OverDrive-appen, så passagerer og valets ikke kan åbne den uden din PIN-kode.</string>
+    <string name="settings_security_subtitle">Lås Altitude 8848-appen, så passagerer og valets ikke kan åbne den uden din PIN-kode.</string>
     <string name="settings_security_stance_title">Kun UI lås</string>
-    <string name="settings_security_stance_body">Overdrev, optagelse, afskrækkelse, advarsler og baggrundstjenester bliver ved med at køre, mens app\'en er låst. PIN-gates OverDrive-interfacet, intet andet.</string>
+    <string name="settings_security_stance_body">Overdrev, optagelse, afskrækkelse, advarsler og baggrundstjenester bliver ved med at køre, mens app\'en er låst. PIN-gates Altitude 8848-interfacet, intet andet.</string>
     <string name="settings_security_overline_lock">App lås</string>
     <string name="settings_security_overline_recovery">Hvis du har glemt din PIN-kode</string>
     <string name="settings_security_toggle_title">Kræv Pinkode</string>
-    <string name="settings_security_toggle_subtitle_off">Fra - alle kan åbne OverDrive.</string>
-    <string name="settings_security_toggle_subtitle_on">Til — PIN-kode kræves for at åbne OverDrive.</string>
+    <string name="settings_security_toggle_subtitle_off">Fra - alle kan åbne Altitude 8848.</string>
+    <string name="settings_security_toggle_subtitle_on">Til — PIN-kode kræves for at åbne Altitude 8848.</string>
     <string name="settings_security_change_title">Skift Pinkode</string>
     <string name="settings_security_change_subtitle">Bekræft den aktuelle pinkode, og angiv derefter en ny.</string>
     <string name="settings_security_autolock_title">Auto-lås</string>
@@ -899,7 +899,7 @@
          the app lock is enabled and the session isn\'t fresh. -->
     <string name="pin_lock_title">Indtast PIN-kode</string>
     <string name="pin_lock_title_unlocked">Oplåst</string>
-    <string name="pin_lock_subtitle_default">Lås OverDrive op for at fortsætte.</string>
+    <string name="pin_lock_subtitle_default">Lås Altitude 8848 op for at fortsætte.</string>
     <string name="pin_lock_subtitle_wrong">Forkert PIN-kode. Prøv igen.</string>
     <string name="pin_lock_subtitle_locked_out">For mange forsøg. Prøv igen snarest.</string>
     <!-- %1$s is a formatted countdown like "30s" or "2:45". -->

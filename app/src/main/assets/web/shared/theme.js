@@ -664,13 +664,10 @@
         try {
             var isDark = (effective === 'dark');
             var tile = isDark ? '/shared/app-icon-dark.webp'        : '/shared/app-icon-light.webp';
-            var glyph = isDark ? '/shared/app-icon-glyph-dark.webp' : '/shared/app-icon-glyph-light.webp';
             var fav = document.querySelector('link[rel~="icon"]');
             var at = document.querySelector('link[rel~="apple-touch-icon"]');
-            var imgs = document.querySelectorAll('.brand-logo img');
-            if (fav) fav.href = tile;
+            if (fav) fav.href = '/shared/brand/altitude-8848.svg';
             if (at) at.href = tile;
-            for (var i = 0; i < imgs.length; i++) imgs[i].src = glyph;
         } catch (e) { console.warn('applyThemeIcons', e); }
     }
 

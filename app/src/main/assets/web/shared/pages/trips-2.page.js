@@ -33,7 +33,7 @@ window.TripExport = {
             b.onclick = function () {
                 close();
                 var path = '/api/safekeep/export/trip?id=' + encodeURIComponent(id) + '&format=' + f[0];
-                // The app WebView drops downloads; the native bridge saves into Download/OverDrive/.
+                // The app WebView drops downloads; the native bridge saves into Download/Altitude 8848/.
                 if (window.AndroidBridge && typeof AndroidBridge.downloadToFile === 'function') {
                     setTimeout(function () {
                         var saved = '';

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OverDrive</string>
+    <string name="app_name">Altitude 8848</string>
 
     <!-- Accessibility Service -->
     <string name="accessibility_service_description">पृष्ठभूमिमा Overdrive गाडी अनुगमन सक्रिय राख्छ। यो सेवाले स्क्रिनको सामग्री पढ्दैन वा अन्तरक्रिया गर्दैन।</string>
@@ -175,7 +175,7 @@
     <string name="camera_recording_engine_title">रेकर्डिङ इन्जिन</string>
     <string name="camera_recording_engine_label">गाडी चालु हुँदा CPU मा रेकर्ड गर्नुहोस्</string>
     <string name="camera_recording_engine_hint">CPU: चलाउँदा सबैभन्दा सहज स्क्रिन।\nGPU: उत्कृष्ट रेकर्डिङ। लेन्स सुधार र गति/समय ओभरले सधैं क्लिपमा सेभ हुन्छन्।</string>
-    <string name="camera_recording_engine_subtitle">लेन्स सुधार चालु भएको CPU मा, क्लिपमा गति/समय ओभरले हुँदैन र OverDrive मा बजाउँदा मात्र सुधारिन्छ। Telegram, क्लाउड ब्याकअप वा डाउनलोड गरिएका प्रतिलिपि असुधारिएको रहन्छन्। गाडी बन्द हुँदा Sentry ले GPU मा रेकर्ड गर्छ ताकि यसको AI ले CPU राखोस्। DiLink 3 मा पूर्वनिर्धारित रूपमा चालु हुन्छ। परिवर्तन गर्दा क्यामेरा सेवा रिस्टार्ट हुन्छ।</string>
+    <string name="camera_recording_engine_subtitle">लेन्स सुधार चालु भएको CPU मा, क्लिपमा गति/समय ओभरले हुँदैन र Altitude 8848 मा बजाउँदा मात्र सुधारिन्छ। Telegram, क्लाउड ब्याकअप वा डाउनलोड गरिएका प्रतिलिपि असुधारिएको रहन्छन्। गाडी बन्द हुँदा Sentry ले GPU मा रेकर्ड गर्छ ताकि यसको AI ले CPU राखोस्। DiLink 3 मा पूर्वनिर्धारित रूपमा चालु हुन्छ। परिवर्तन गर्दा क्यामेरा सेवा रिस्टार्ट हुन्छ।</string>
     <string name="camera_recording_engine_in_use_cpu">प्रयोगमा: CPU</string>
     <string name="camera_recording_engine_in_use_gpu">प्रयोगमा: GPU</string>
     <string name="camera_recording_engine_in_use_gpu_reason">प्रयोगमा: GPU (%1$s)</string>
@@ -249,10 +249,10 @@
     <string name="setup_step_two_label">२</string>
     <string name="setup_step_three_label">३</string>
     <string name="setup_language_title">आफ्नो भाषा छान्नुहोस्</string>
-    <string name="setup_language_body">तपाईंको हेड युनिटको भाषामा पूर्वनिर्धारित हुन्छ। OverDrive एप र वेब टनेलका लागि अर्को भाषा छान्न ट्याप गर्नुहोस्।</string>
+    <string name="setup_language_body">तपाईंको हेड युनिटको भाषामा पूर्वनिर्धारित हुन्छ। Altitude 8848 एप र वेब टनेलका लागि अर्को भाषा छान्न ट्याप गर्नुहोस्।</string>
     <string name="setup_language_button">भाषा छान्नुहोस्</string>
     <string name="setup_autostart_title">स्वत:-सुरु प्रतिबन्ध असक्षम पार्नुहोस्</string>
-    <string name="setup_autostart_body">BYD Auto-Start खोल्न तल ट्याप गर्नुहोस्। सूचीमा OverDrive खोजेर बाकस अनचेक गर्नुहोस्। BYD ले हरेक स्थापनामा यो मेट्छ — अपडेट पछि फेरि गर्नुपर्छ।</string>
+    <string name="setup_autostart_body">BYD Auto-Start खोल्न तल ट्याप गर्नुहोस्। सूचीमा Altitude 8848 खोजेर बाकस अनचेक गर्नुहोस्। BYD ले हरेक स्थापनामा यो मेट्छ — अपडेट पछि फेरि गर्नुपर्छ।</string>
     <string name="setup_autostart_button">BYD Auto-Start खोल्नुहोस्</string>
     <string name="setup_autostart_enabling">स्वत:-सुरु सक्षम गरिँदैछ…</string>
     <string name="setup_autostart_enabled">स्वत:-सुरु सक्षम भयो ✓</string>
@@ -526,7 +526,7 @@
     <string name="daemons_count_pending">सेवाहरू लोड हुँदैछन्…</string>
     <string name="daemons_count_fmt">%2$d मध्ये %1$d चलिरहेको</string>
     <string name="daemons_wifi_auto_enable_title">Wi&#8209;Fi</string>
-    <string name="daemons_wifi_auto_enable_subtitle">अहिले Wi&#8209;Fi अन वा अफ गर्छ। अफ हुँदा OverDrive को सेन्ट्री डेमनले यसलाई पुन: अन गर्दैन।</string>
+    <string name="daemons_wifi_auto_enable_subtitle">अहिले Wi&#8209;Fi अन वा अफ गर्छ। अफ हुँदा Altitude 8848 को सेन्ट्री डेमनले यसलाई पुन: अन गर्दैन।</string>
     <string name="daemons_wifi_auto_enable_save_failed">Wi&#8209;Fi स्थिति परिवर्तन गर्न सकिएन।</string>
 
     <!-- dialog_update_progress -->
@@ -666,10 +666,10 @@
     <string name="dialog_traffic_cannot_check_message">ADB जडान अझै तयार छैन। विकासकर्ता विकल्पमा USB डिबगिङ सक्षम र अधिकृत भएको सुनिश्चित गर्नुहोस्।</string>
 
     <string name="dialog_traffic_disable_title">BYD ट्राफिक मोनिटर अक्षम गर्ने हो?</string>
-    <string name="dialog_traffic_disable_message">BYD ट्राफिक मोनिटर (com.byd.trafficmonitor) ले OverDrive लगायत तेस्रो-पक्ष एपलाई गाडीको SIM बाट इन्टरनेट प्रयोग गर्न रोक्छ। अक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ (केन्द्र कन्सोल बटन ५ सेकेन्ड थिचिराख्नुहोस्)।</string>
+    <string name="dialog_traffic_disable_message">BYD ट्राफिक मोनिटर (com.byd.trafficmonitor) ले Altitude 8848 लगायत तेस्रो-पक्ष एपलाई गाडीको SIM बाट इन्टरनेट प्रयोग गर्न रोक्छ। अक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ (केन्द्र कन्सोल बटन ५ सेकेन्ड थिचिराख्नुहोस्)।</string>
 
     <string name="dialog_traffic_enable_title">BYD ट्राफिक मोनिटर पुन: सक्षम गर्ने हो?</string>
-    <string name="dialog_traffic_enable_message">पुन: सक्षम गर्दा OverDrive लाई गाडीको SIM प्रयोग गर्न पुन: रोकिन्छ। सक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ।</string>
+    <string name="dialog_traffic_enable_message">पुन: सक्षम गर्दा Altitude 8848 लाई गाडीको SIM प्रयोग गर्न पुन: रोकिन्छ। सक्षम गरेपछि हार्ड रिबुट आवश्यक पर्छ।</string>
 
     <string name="dialog_traffic_status_enabled">ट्राफिक मोनिटर सक्षम छ</string>
     <string name="dialog_traffic_status_disabled">ट्राफिक मोनिटर अक्षम छ</string>
@@ -829,7 +829,7 @@
     <string name="dialog_delete_recording_title">रेकर्डिङ मेटाउनुहोस्</string>
     <string name="dialog_delete_recording_message">%1$s मेटाउने हो?\nयो पूर्ववत गर्न सकिँदैन।</string>
     <string name="dialog_create_evidence_pack_title">प्रमाण प्याक बनाउने हो?</string>
-    <string name="dialog_create_evidence_pack_message">OverDrive ले फिल्टर गरिएको घटना मेटाडेटा मात्र पठाउँछ। भिडियो स्थानीय रूपमै रहन्छ।</string>
+    <string name="dialog_create_evidence_pack_message">Altitude 8848 ले फिल्टर गरिएको घटना मेटाडेटा मात्र पठाउँछ। भिडियो स्थानीय रूपमै रहन्छ।</string>
     <string name="toast_evidence_pack_creating">प्रमाण प्याक बन्दैछ…</string>
     <string name="toast_evidence_pack_ready">प्रमाण प्याक तयार छ</string>
     <string name="toast_evidence_pack_unavailable">यो रेकर्डिङ अझै अनुक्रमणिका भएको छैन</string>
@@ -845,7 +845,7 @@
     <string name="setup_overlay_already_granted">पहिले नै अनुमति छ</string>
     <string name="setup_tips_header">सुझाव र समस्या निवारण</string>
     <string name="setup_traffic_title">BYD ट्राफिक मोनिटर अक्षम गर्नुहोस्</string>
-    <string name="setup_traffic_body">BYD ट्राफिक मोनिटरले तेस्रो-पक्ष एपहरूलाई इन्टरनेटमा जान रोक्छ। यसलाई अक्षम गर्दा OverDrive ले नेटवर्क प्रयोग गर्न सक्छ। त्यसपछि हार्ड रिबुट आवश्यक छ।</string>
+    <string name="setup_traffic_body">BYD ट्राफिक मोनिटरले तेस्रो-पक्ष एपहरूलाई इन्टरनेटमा जान रोक्छ। यसलाई अक्षम गर्दा Altitude 8848 ले नेटवर्क प्रयोग गर्न सक्छ। त्यसपछि हार्ड रिबुट आवश्यक छ।</string>
     <string name="setup_traffic_button">ट्राफिक मोनिटर खोल्नुहोस्</string>
     <string name="setup_camera_fix_title">क्यामेरा फिड कालो वा गलत छ?</string>
     <string name="setup_camera_fix_body">क्यामेरा प्रोबमा Camera ID 0 सेट गरी Save ट्याप गर्नुहोस्, अनि क्यामेरा डेमन रिस्टार्ट गर्नुहोस्। अझै गलत भए Camera ID 1 प्रयास गर्नुहोस्।</string>
@@ -873,7 +873,7 @@
     <string name="nav_page_assistant">सहायक</string>
 
     <!-- Persistent notifications -->
-    <string name="status_overlay_notif_title">OverDrive स्थिति</string>
+    <string name="status_overlay_notif_title">Altitude 8848 स्थिति</string>
     <string name="status_overlay_notif_text">स्थिति ओभरले सक्रिय छ</string>
     <string name="daemon_keepalive_notif_title">Overdrive सक्रिय छ</string>
     <string name="daemon_keepalive_notif_text">गाडी प्रणालीहरू अनुगमन हुँदैछ</string>
@@ -927,7 +927,7 @@
     <string name="remote_voice_mute">रिमोट आवाज म्युट गर्नुहोस्</string>
     <string name="remote_voice_unmute">रिमोट आवाज अनम्युट गर्नुहोस्</string>
     <string name="remote_voice_notification_title">रिमोट आवाज सक्रिय छ</string>
-    <string name="remote_voice_notification_text">प्रमाणित OverDrive सत्रबाट लाइभ अडियो प्राप्त हुँदैछ</string>
+    <string name="remote_voice_notification_text">प्रमाणित Altitude 8848 सत्रबाट लाइभ अडियो प्राप्त हुँदैछ</string>
     <string name="settings_remote_communication_title">रिमोट सञ्चार</string>
     <string name="settings_remote_communication_subtitle">वेब कन्सोलबाट आवाज, क्याबिन सुन्ने सुविधा र सन्देशहरू सक्षम गर्नुहोस्।</string>
     <string name="settings_remote_voice_title">रिमोट आवाज सक्षम गर्नुहोस्</string>
@@ -967,7 +967,7 @@
     <string name="settings_privacy_body">रिसेटले रेकर्डिङ अनुक्रमणिका, क्यास गरिएका प्रमाणपत्र, डेमन स्थिति र उपकरणका प्राथमिकताहरू खाली गर्छ। यो पूर्ववत गर्न सकिँदैन।</string>
 
     <!-- Settings → About -->
-    <string name="settings_about_title">OverDrive बारे</string>
+    <string name="settings_about_title">Altitude 8848 बारे</string>
     <string name="settings_about_version_label">संस्करण</string>
     <string name="settings_about_package_label">बिल्ड</string>
     <string name="settings_about_vehicle_title">गाडी र हेड युनिट</string>
@@ -1065,7 +1065,7 @@
     <string name="factory_dvr_scanning">microSD कार्डमा BYD ड्यासक्याम क्लिप खोजिँदैछ…</string>
     <string name="factory_dvr_no_card">कुनै microSD कार्ड भेटिएन। BYD को ड्यासक्यामले आफ्ना क्लिप त्यहाँ सेभ गर्छ।</string>
     <string name="factory_dvr_not_found">microSD कार्डमा कुनै BYD ड्यासक्याम फोल्डर भेटिएन।</string>
-    <string name="factory_dvr_unreadable">OverDrive ले %1$s पढ्न सक्दैन।</string>
+    <string name="factory_dvr_unreadable">Altitude 8848 ले %1$s पढ्न सक्दैन।</string>
     <string name="factory_dvr_empty">%1$s मा कुनै भिडियो क्लिप छैन।</string>
     <plurals name="factory_dvr_summary">
         <item quantity="one">%1$d क्लिप · %2$s</item>
@@ -1182,7 +1182,7 @@
     <string name="vehicle_setup_run">गाडी सेटअप चलाउनुहोस्</string>
     <string name="vehicle_setup_pick_title">आफ्नो गाडी छान्नुहोस्</string>
     <string name="vehicle_setup_pick_checking">यो हेड युनिट जाँच हुँदैछ…</string>
-    <string name="vehicle_setup_pick_subtitle">OverDrive ले यसका लागि भण्डारण, क्यामेरा प्रणाली र ब्याट्री सेटअप गर्छ।</string>
+    <string name="vehicle_setup_pick_subtitle">Altitude 8848 ले यसका लागि भण्डारण, क्यामेरा प्रणाली र ब्याट्री सेटअप गर्छ।</string>
     <string name="vehicle_setup_detected_badge">पत्ता लागेको</string>
     <string name="vehicle_setup_not_listed">मेरो गाडी सूचीमा छैन</string>
     <string name="vehicle_setup_not_listed_badge">पूर्वनिर्धारित सेटिङ</string>
@@ -1245,14 +1245,14 @@
 
     <!-- Daemon storage -->
     <string name="scratch_root_dialog_title">डेमन भण्डारण</string>
-    <string name="scratch_root_dialog_intro">OverDrive ले एप र पृष्ठभूमि डेमनहरू बीच सेटिङ र लगहरू ADB शेलको फोल्डरमार्फत साझा गर्छ। केही हेड युनिट (Shark 6 / DiLink 5.0) मा फर्मवेयरले मानक फोल्डर लक गर्छ।</string>
+    <string name="scratch_root_dialog_intro">Altitude 8848 ले एप र पृष्ठभूमि डेमनहरू बीच सेटिङ र लगहरू ADB शेलको फोल्डरमार्फत साझा गर्छ। केही हेड युनिट (Shark 6 / DiLink 5.0) मा फर्मवेयरले मानक फोल्डर लक गर्छ।</string>
     <string name="scratch_root_current_folder">हालको फोल्डर: %1$s</string>
     <string name="scratch_root_switch_label">वैकल्पिक डेमन भण्डारण</string>
-    <string name="scratch_root_switch_summary">यो हेड युनिटमा डेमन सुरु हुन नसकेको खण्डमा मात्र अन गर्नुहोस्। परिवर्तन गर्दा सबै डेमन रोकिन्छन् र OverDrive रिस्टार्ट हुन्छ।</string>
+    <string name="scratch_root_switch_summary">यो हेड युनिटमा डेमन सुरु हुन नसकेको खण्डमा मात्र अन गर्नुहोस्। परिवर्तन गर्दा सबै डेमन रोकिन्छन् र Altitude 8848 रिस्टार्ट हुन्छ।</string>
     <string name="scratch_root_paths">मानक: %1$s\nवैकल्पिक: %2$s</string>
-    <string name="scratch_root_confirm_title">OverDrive रिस्टार्ट गर्ने हो?</string>
-    <string name="scratch_root_confirm_enable">सबै डेमन रोकिनेछन्, भण्डारण वैकल्पिक फोल्डरमा स्विच हुनेछ र OverDrive रिस्टार्ट हुनेछ।</string>
-    <string name="scratch_root_confirm_disable">सबै डेमन रोकिनेछन्, भण्डारण मानक फोल्डरमा फर्कनेछ र OverDrive रिस्टार्ट हुनेछ।</string>
+    <string name="scratch_root_confirm_title">Altitude 8848 रिस्टार्ट गर्ने हो?</string>
+    <string name="scratch_root_confirm_enable">सबै डेमन रोकिनेछन्, भण्डारण वैकल्पिक फोल्डरमा स्विच हुनेछ र Altitude 8848 रिस्टार्ट हुनेछ।</string>
+    <string name="scratch_root_confirm_disable">सबै डेमन रोकिनेछन्, भण्डारण मानक फोल्डरमा फर्कनेछ र Altitude 8848 रिस्टार्ट हुनेछ।</string>
     <string name="scratch_root_working">डेमन भण्डारण स्विच हुँदैछ…</string>
     <string name="scratch_root_failed">डेमन भण्डारण स्विच गर्न सकिएन: %1$s</string>
     <string name="scratch_root_failed_adb">ADB शेल पहुँचयोग्य छैन। USB/वायरलेस डिबगिङ सक्षम गरी फेरि प्रयास गर्नुहोस्।</string>
@@ -1304,7 +1304,7 @@
     <!-- Settings → About / Privacy actions -->
     <string name="settings_action_check_update">अपडेटहरू जाँच गर्नुहोस्</string>
     <string name="settings_action_reset_data">डेटा रिसेट गर्नुहोस्…</string>
-    <string name="cd_brand_logo">OverDrive</string>
+    <string name="cd_brand_logo">Altitude 8848</string>
 
     <!-- Dashboard SOTA revamp -->
     <string name="dashboard_hero_headline">निगरानीमा</string>
@@ -1361,10 +1361,10 @@
     <string name="settings_section_surveillance_subtitle">पहिचान क्षेत्र, तालिका, चाल संवेदनशीलता।</string>
     <string name="settings_section_storage_subtitle">रेकर्डिङ कहाँ जाने, स्थान सीमा, BYD ड्यासक्याम सफाइ।</string>
     <string name="settings_section_daemons_subtitle">Cloudflared, Zrok, Telegram, MQTT रनरहरू।</string>
-    <string name="settings_about_row_title">OverDrive बारे</string>
+    <string name="settings_about_row_title">Altitude 8848 बारे</string>
     <string name="settings_about_row_subtitle">संस्करण, इजाजतपत्र, विकास सहायता।</string>
     <string name="settings_reset_row_subtitle">रेकर्डिङ, घटना वा सबै क्यास खाली गर्नुहोस्।</string>
-    <string name="settings_footer_format">OverDrive %1$s · %2$s</string>
+    <string name="settings_footer_format">Altitude 8848 %1$s · %2$s</string>
 
     <!-- Appearance pane -->
     <string name="settings_appearance_subtitle">थिम, भाषा र दृश्य प्राथमिकताहरू।</string>
@@ -1376,7 +1376,7 @@
 
     <!-- Privacy pane -->
     <string name="settings_privacy_stance_title">पूर्वनिर्धारित रूपमा उपकरणमै</string>
-    <string name="settings_privacy_stance_body">OverDrive पूर्ण रूपमा हेड युनिटमै चल्छ। तपाईंले स्पष्ट रूपमा कन्फिगर गरेका टनेल र एकीकरणबाहेक कुनै टेलिमेट्री बाहिर जाँदैन।</string>
+    <string name="settings_privacy_stance_body">Altitude 8848 पूर्ण रूपमा हेड युनिटमै चल्छ। तपाईंले स्पष्ट रूपमा कन्फिगर गरेका टनेल र एकीकरणबाहेक कुनै टेलिमेट्री बाहिर जाँदैन।</string>
     <string name="settings_privacy_overline_storage">स्थानीय भण्डारण</string>
     <string name="settings_privacy_overline_reset">डेटा रिसेट</string>
     <string name="settings_privacy_storage_clips_label">डिस्कमा क्लिप</string>
@@ -1404,14 +1404,14 @@
 
     <!-- Security pane + PIN lock -->
     <string name="settings_security_title">सुरक्षा</string>
-    <string name="settings_security_subtitle">तपाईंको PIN बिना अरूले OverDrive एप खोल्न नसक्ने गरी लक गर्नुहोस्।</string>
+    <string name="settings_security_subtitle">तपाईंको PIN बिना अरूले Altitude 8848 एप खोल्न नसक्ने गरी लक गर्नुहोस्।</string>
     <string name="settings_security_stance_title">UI लक मात्र</string>
     <string name="settings_security_stance_body">एप लक हुँदा पनि निगरानी, रेकर्डिङ, चेतावनी र पृष्ठभूमि सेवाहरू चलिरहन्छन्।</string>
     <string name="settings_security_overline_lock">एप लक</string>
     <string name="settings_security_overline_recovery">PIN बिर्सनुभएमा</string>
     <string name="settings_security_toggle_title">PIN आवश्यक पार्नुहोस्</string>
-    <string name="settings_security_toggle_subtitle_off">अफ — जो कोहीले OverDrive खोल्न सक्छ।</string>
-    <string name="settings_security_toggle_subtitle_on">अन — OverDrive खोल्न PIN चाहिन्छ।</string>
+    <string name="settings_security_toggle_subtitle_off">अफ — जो कोहीले Altitude 8848 खोल्न सक्छ।</string>
+    <string name="settings_security_toggle_subtitle_on">अन — Altitude 8848 खोल्न PIN चाहिन्छ।</string>
     <string name="settings_security_change_title">PIN परिवर्तन गर्नुहोस्</string>
     <string name="settings_security_change_subtitle">हालको PIN पुष्टि गरी नयाँ सेट गर्नुहोस्।</string>
     <string name="settings_security_autolock_title">स्वत:-लक</string>
@@ -1444,7 +1444,7 @@
 
     <string name="pin_lock_title">PIN प्रविष्ट गर्नुहोस्</string>
     <string name="pin_lock_title_unlocked">अनलक भयो</string>
-    <string name="pin_lock_subtitle_default">जारी राख्न OverDrive अनलक गर्नुहोस्।</string>
+    <string name="pin_lock_subtitle_default">जारी राख्न Altitude 8848 अनलक गर्नुहोस्।</string>
     <string name="pin_lock_subtitle_wrong">गलत PIN। फेरि प्रयास गर्नुहोस्।</string>
     <string name="pin_lock_subtitle_locked_out">धेरै प्रयासहरू। केही बेरमा फेरि प्रयास गर्नुहोस्।</string>
     <string name="pin_lock_subtitle_locked_out_countdown">लक गरियो। %1$s मा फेरि प्रयास गर्नुहोस्।</string>
@@ -1830,7 +1830,7 @@
     <string name="voice_enroll_next">बुझियो — फेरि (%1$d / %2$d)</string>
     <string name="voice_enroll_say">“OverDrive” भन्नुहोस् (%1$d / %2$d)</string>
     <string name="voice_enroll_learning">तपाईंको आवाज सिक्दैछ…</string>
-    <string name="voice_enroll_done">बुझियो — OverDrive ले अब तपाईंको आवाज चिन्छ</string>
+    <string name="voice_enroll_done">बुझियो — Altitude 8848 ले अब तपाईंको आवाज चिन्छ</string>
     <string name="voice_enroll_failed">तपाईंको आवाज सिक्न सकिएन। शान्त गाडीमा फेरि प्रयास गर्नुहोस्</string>
     <string name="settings_native_vehicle_overline">म्यानुअल गाडी प्रोफाइल</string>
     <string name="settings_native_vehicle_profile_title">नेटिभ गाडी नियन्त्रणहरू</string>
