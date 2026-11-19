@@ -15,17 +15,7 @@
         Bindings — the enable switch + list of current key bindings
         Add      — capture a key + pick the action it should fire
     -->
-    <script>
-        window.OT_TABS = [
-            { id: 'bindings', label: 'Bindings', i18n: 'keymap.tab_bindings', svg: '<rect width="20" height="14" x="2" y="5" rx="2"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M7 13h10"/>', readOnly: true },
-            { id: 'add',      label: 'Add',      i18n: 'keymap.tab_add',      svg: '<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>', readOnly: true }
-        ];
-        window.OT_setActiveTab = function (id) {
-            var btn = document.querySelector('[data-tab-target="' + id + '"]');
-            if (btn) { btn.click(); return true; }
-            return false;
-        };
-    </script>
+    <script src="../shared/pages/key-mapping.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
@@ -402,14 +392,6 @@
     <script src="../shared/update-flow.js?v=3"></script>
     <script src="../shared/key-mapping.js?v=40"></script>
     <script src="../shared/cluster-projection.js?v=1"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            BYD.i18n.init().then(function () {
-                BYD.core.init();
-                KM.init();
-                if (window.ClusterProjection) ClusterProjection.renderInto('kmClusterSizeMount', 'kmClusterSize');
-            });
-        });
-    </script>
+    <script src="../shared/pages/key-mapping-2.page.js?v=1"></script>
 </body>
 </html>

@@ -17,17 +17,7 @@
       Storage (location, limit, BYD CDR auto-cleanup) lives on storage.html.
       i18n keys live under "recording.tab_*" in web/i18n/*.json.
     -->
-    <script>
-        // Capture is the default tab — owns the recording-mode picker, OEM
-        // Dashcam card, and Native DVR control. Status is read-only and
-        // was the previous default; that hid the OEM Dashcam toggle behind
-        // a tab the user had to discover.
-        window.OT_TABS = [
-            { id: 'capture', label: 'Capture', i18n: 'recording.tab_capture', svg: '<path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/>' },
-            { id: 'quality', label: 'Quality', i18n: 'recording.tab_quality', svg: '<path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>' },
-            { id: 'oem',     label: 'Dashcam',   i18n: 'recording.tab_oem', svg: '<rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/><circle cx="10" cy="12" r="2.5"/>' }
-        ];
-    </script>
+    <script src="../shared/pages/recording.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
@@ -762,14 +752,6 @@
     <script src="../shared/update-flow.js?v=4"></script>
     <script src="../shared/storage-budget.js?v=9"></script>
     <script src="../shared/recording.js?v=dl5fish1"></script>
-    <script>
-        BYD.i18n.init().then(function () {
-            BYD.core.init();
-            return RecSettings.init();
-        }).catch(function (error) {
-            console.error('Failed to initialize recording settings:', error);
-            if (BYD.utils && BYD.utils.unlockSettingsHydration) BYD.utils.unlockSettingsHydration();
-        });
-    </script>
+    <script src="../shared/pages/recording-2.page.js?v=1"></script>
 </body>
 </html>

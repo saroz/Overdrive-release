@@ -19,13 +19,7 @@
         Status   — verified state, VIN, cloud-push observability, data-merge toggle
         Advanced — destructive actions (Clear credentials)
     -->
-    <script>
-        window.OT_TABS = [
-            { id: 'account',  label: 'Account',  i18n: 'byd_cloud.tab_account',  svg: '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>' },
-            { id: 'status',   label: 'Status',   i18n: 'byd_cloud.tab_status',   svg: '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>', readOnly: true },
-            { id: 'advanced', label: 'Advanced', i18n: 'byd_cloud.tab_advanced', svg: '<polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>' }
-        ];
-    </script>
+    <script src="../shared/pages/byd-cloud.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
@@ -283,67 +277,6 @@
     <script src="../shared/update-flow.js?v=4"></script>
     <!-- BydCloud module + SurvSettings stubs live in surveillance.js. -->
     <script src="../shared/surveillance.js?v=survtoggle20"></script>
-    <script>
-
-        // Mirror legacy section-level visibility (set by BydCloud.updateStatusUI)
-        // onto the wrapper cards so that clearCard / mergeCard / pushCard hide
-        // when their inner section hides — without us having to monkey-patch
-        // the shared module.
-        (function () {
-            function mirror(sectionId, cardId) {
-                var sec = document.getElementById(sectionId);
-                var card = document.getElementById(cardId);
-                if (!sec || !card || typeof MutationObserver === 'undefined') return;
-                var apply = function () {
-                    var hidden = sec.style.display === 'none';
-                    card.style.display = hidden ? 'none' : '';
-                };
-                new MutationObserver(apply).observe(sec, { attributes: true, attributeFilter: ['style'] });
-                apply();
-            }
-            // bydCloudInfoEmpty inverts bydCloudInfo's visibility — show empty
-            // text only when info is hidden.
-            function invertMirror(sectionId, hostId) {
-                var sec = document.getElementById(sectionId);
-                var host = document.getElementById(hostId);
-                if (!sec || !host || typeof MutationObserver === 'undefined') return;
-                var apply = function () {
-                    host.style.display = sec.style.display === 'none' ? '' : 'none';
-                };
-                new MutationObserver(apply).observe(sec, { attributes: true, attributeFilter: ['style'] });
-                apply();
-            }
-            document.addEventListener('app-shell:ready', function () {
-                mirror('bydCloudPushSection', 'bydCloudPushCard');
-                mirror('bydCloudMergeSection', 'bydCloudMergeCard');
-                mirror('bydClearSection',     'bydClearCard');
-                invertMirror('bydCloudInfo',  'bydCloudInfoEmpty');
-                // Hide the Advanced empty-state once any clear-card etc. shows up.
-                var clearCard = document.getElementById('bydClearCard');
-                var emptyAdv  = document.getElementById('bydAdvancedEmpty');
-                if (clearCard && emptyAdv) {
-                    var sync = function () {
-                        emptyAdv.style.display = clearCard.style.display === 'none' ? '' : 'none';
-                    };
-                    new MutationObserver(sync).observe(clearCard, { attributes: true, attributeFilter: ['style'] });
-                    sync();
-                }
-            });
-        }());
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var unlockSettings = function () {
-                if (BYD.utils && BYD.utils.unlockSettingsHydration) {
-                    BYD.utils.unlockSettingsHydration();
-                }
-            };
-            BYD.i18n.init().then(function () {
-                BYD.core.init();
-                if (window.BydCloud && BydCloud.loadStatus) {
-                    return BydCloud.loadStatus();
-                }
-            }).then(unlockSettings, unlockSettings);
-        });
-    </script>
+    <script src="../shared/pages/byd-cloud-2.page.js?v=1"></script>
 </body>
 </html>

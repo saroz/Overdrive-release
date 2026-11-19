@@ -17,13 +17,7 @@
       its own inline Save & Test button — moving it to the tab-bar action
       slot would lose the password-input pairing.
     -->
-    <script>
-        window.OT_TABS = [
-            { id: 'status',    label: 'Status',    i18n: 'abrp.tab_status',    svg: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>', readOnly: true },
-            { id: 'token',     label: 'Token',     i18n: 'abrp.tab_token',     svg: '<rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>' },
-            { id: 'telemetry', label: 'Telemetry', i18n: 'abrp.tab_telemetry', svg: '<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>', readOnly: true }
-        ];
-    </script>
+    <script src="../shared/pages/abrp.page.js?v=1"></script>
     <script src="../shared/app-tabs.js?v=4"></script>
     <link rel="stylesheet" href="../shared/styles.css?v=39">
     <link rel="stylesheet" href="../shared/revamp.css?v=2">
@@ -263,14 +257,6 @@
     <script src="../shared/settings-hydration.js?v=1"></script>
     <script src="../shared/update-flow.js?v=4"></script>
     <script src="../shared/abrp.js?v=toggle3"></script>
-    <script>
-        BYD.i18n.init().then(function () {
-            BYD.core.init();
-            return ABRP.init();
-        }).catch(function (error) {
-            console.error('Failed to initialize ABRP:', error);
-            if (BYD.utils && BYD.utils.unlockSettingsHydration) BYD.utils.unlockSettingsHydration();
-        });
-    </script>
+    <script src="../shared/pages/abrp-2.page.js?v=1"></script>
 </body>
 </html>
